@@ -1,0 +1,51 @@
+name: Deploy brief server
+
+# Puts brief-server/ on Cloudflare Workers. Needs two repository secrets:
+#   CLOUDFLARE_API_TOKEN  (Cloudflare token from the "Edit Cloudflare Workers" template)
+#   ANTHROPIC_API_KEY     (Claude API key)
+# Optional: CLOUDFLARE_ACCOUNT_ID if the token can see more than one account.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["brief-server/**", ".github/workflows/deploy-brief-server.yml"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: brief-server
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check secrets
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "${{ secrets.ANTHROPIC_API_KEY }}" ]; then
+            echo "::warning::CLOUDFLARE_API_TOKEN or ANTHROPIC_API_KEY is not set yet, so the brief server was not deployed."
+            echo "SKIP=1" >> "$GITHUB_ENV"
+          fi
+      - uses: actions/setup-node@v4
+        if: env.SKIP != '1'
+        with:
+          node-version: 22
+      - run: npm install
+        if: env.SKIP != '1'
+      - name: Find or create the saved-briefs store
+        if: env.SKIP != '1'
+        run: |
+          id=$(npx wrangler kv namespace list | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s.slice(s.indexOf("[")));const n=j.find(x=>/BRIEFS$/.test(x.title));process.stdout.write(n?n.id:"")})')
+          if [ -z "$id" ]; then
+            npx wrangler kv namespace create BRIEFS
+            id=$(npx wrangler kv namespace list | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s.slice(s.indexOf("[")));const n=j.find(x=>/BRIEFS$/.test(x.title));process.stdout.write(n?n.id:"")})')
+          fi
+          echo "KV id: $id"
+          sed -i "s/REPLACE_WITH_KV_ID/$id/" wrangler.toml
+      - name: Deploy
+        if: env.SKIP != '1'
+        run: npx wrangler deploy
+      - name: Save the Claude key as a Cloudflare secret
+        if: env.SKIP != '1'
+        run: printf '%s' "${{ secrets.ANTHROPIC_API_KEY }}" | npx wrangler secret put ANTHROPIC_API_KEY
