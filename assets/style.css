@@ -160,3 +160,6 @@ footer strong{color:var(--ink)}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));translate:-50% 0;background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:8px;font-size:14px;z-index:20;opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.show{opacity:1}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* TradingView iframes are light-scheme documents; matching their color-scheme keeps transparent widgets from getting a white backdrop on this dark page. */
+.tradingview-widget-container iframe{color-scheme:light}
