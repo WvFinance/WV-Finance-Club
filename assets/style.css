@@ -209,4 +209,4 @@ svg.hist text{fill:var(--muted);font-size:12px;font-family:var(--f-mono)}
 #pos-body,#sec-body,#hist-body{min-width:0}
 .pview{min-width:0;max-width:100%}#pos-body{overflow:hidden}
 .histlegend{margin:0 0 8px}
-#pos-body{margin-bottom:20px}
+#pv-positions #picks{margin-bottom:20px}
