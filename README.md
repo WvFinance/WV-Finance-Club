@@ -26,6 +26,8 @@ The Waubonsie Valley Finance Club's website: our class portfolio, stock research
 | `config.js` | Settings, including the optional Finnhub key |
 | `data/portfolio.json` | The club's picks |
 | `data/news.json` | Claude's news briefs |
+| `data/prices.json` | Daily closing prices, updated automatically |
+| `scripts/update_prices.py`, `.github/workflows/update-prices.yml` | The robot that refreshes `prices.json` every weekday after the market closes |
 
 ### A pick in `data/portfolio.json`
 
@@ -34,6 +36,7 @@ The Waubonsie Valley Finance Club's website: our class portfolio, stock research
   "ticker": "NVDA",
   "symbol": "NASDAQ:NVDA",
   "name": "Nvidia Corp.",
+  "sector": "Tech",
   "entryDate": "2026-11-05",
   "entryPrice": 217.09,
   "invested": 1000,
@@ -45,9 +48,11 @@ The Waubonsie Valley Finance Club's website: our class portfolio, stock research
 }
 ```
 
-`spyEntryPrice` is the S&P 500 fund's (SPY) price on the same day, so the site can compare our pick with the market.
+`sector` is the type of business (Tech, Banks, Health, Energy and so on) and powers the sector pie chart. `spyEntryPrice` is the S&P 500 fund's (SPY) price on the same day, so the site can compare our pick with the market.
 
 ## Live prices
+
+Every weekday after the market closes, a GitHub Action saves the day's closing prices for our stocks and SPY into `data/prices.json`. The portfolio values, the positions table and the "Club vs S&P 500 over time" chart use those prices.
 
 Charts, search and headlines come from TradingView's free widgets and need no account. The dollar values on the portfolio tab use [Finnhub](https://finnhub.io/register): create a free account, copy the API key, and put it in `config.js`. A free key allows 60 lookups a minute, which is plenty for the club.
 

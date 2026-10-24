@@ -11,6 +11,7 @@ const fmt0=v=>"$"+Math.round(v).toLocaleString("en-US");
 const fmtPct=(v,d=1)=>(v>=0?"+":"−")+Math.abs(v*100).toFixed(d)+"%";
 const fmtShares=v=>v.toLocaleString("en-US",{maximumFractionDigits:4});
 const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const fmtStamp=s=>{const d=new Date(s);return isNaN(d)?s:d.toLocaleString("en-US",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});};
 const fmtDate=s=>{const[y,m,d]=s.slice(0,10).split("-").map(Number);return MON[m-1]+" "+d+", "+y;};
 const cls=v=>v>0.0005?"up":v<-0.0005?"down":"flat";
 const arrow=v=>v>0.0005?"▲":v<-0.0005?"▼":"■";
@@ -30,7 +31,7 @@ function tv(container,name,config){
 }
 
 /* ---------- State ---------- */
-const S={picks:[],briefs:[],quotes:{},tk:(store.get("wvfc.tk")||"NVDA"),newsTk:null,watch:[]};
+const S={picks:[],briefs:[],quotes:{},prices:{dates:[],closes:{}},tk:(store.get("wvfc.tk")||"NVDA"),newsTk:null,watch:[]};
 try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="string");}catch(e){S.watch=[];}
 
 /* ---------- Tabs ---------- */
@@ -62,12 +63,17 @@ function renderTape(){
 }
 
 /* ---------- Portfolio ---------- */
+// Live Finnhub quote when a key is set, otherwise the latest daily close from data/prices.json.
+function lastClose(tk){const c=S.prices.closes&&S.prices.closes[tk];if(!c)return null;for(let i=c.length-1;i>=0;i--)if(c[i]!=null)return c[i];return null;}
+function closeOn(tk,date){const c=S.prices.closes&&S.prices.closes[tk],d=S.prices.dates||[];if(!c)return null;let v=null;for(let i=0;i<d.length&&d[i]<=date;i++)if(c[i]!=null)v=c[i];return v;}
+function priceOf(tk){const q=S.quotes[tk];return q?q.c:lastClose(tk);}
+function spyEntry(p){return p.spyEntryPrice||closeOn("SPY",p.entryDate);}
 function calc(p){
-  const q=S.quotes[p.ticker],spy=S.quotes.SPY;if(!q)return null;
-  const cur=q.c,ret=cur/p.entryPrice-1;const spyRet=spy&&p.spyEntryPrice?spy.c/p.spyEntryPrice-1:null;
+  const cur=priceOf(p.ticker),spyNow=priceOf("SPY");if(cur==null)return null;const q=S.quotes[p.ticker];
+  const ret=cur/p.entryPrice-1;const se=spyEntry(p);const spyRet=spyNow&&se?spyNow/se-1:null;
   const shares=p.shares||(p.invested?p.invested/p.entryPrice:null);const invested=shares?(p.invested||shares*p.entryPrice):null;
   const value=shares?shares*cur:null;
-  return{cur,ret,spyRet,alpha:spyRet==null?null:ret-spyRet,shares,invested,value,gain:value!=null?value-invested:null,spyValue:invested&&spyRet!=null?invested*(1+spyRet):null,day:q.dp/100};
+  return{cur,ret,spyRet,alpha:spyRet==null?null:ret-spyRet,shares,invested,value,gain:value!=null?value-invested:null,spyValue:invested&&spyRet!=null?invested*(1+spyRet):null,day:q?q.dp/100:null};
 }
 function renderTiles(){
   const box=$("#tiles");box.replaceChildren();
@@ -84,8 +90,8 @@ function renderTiles(){
     tile("Beating the market",cs.length?`${beating} of ${cs.length}`:"–",spyV!=null?((val-spyV)>=0?`club leads by ${fmt0(val-spyV)}`:`club trails by ${fmt0(spyV-val)}`):"picks ahead of the S&P 500"));
   $("#cnt-picks").textContent=S.picks.length?String(S.picks.length):"";
   const note=$("#price-note");
-  if(S.picks.length&&!CFG.finnhubKey){note.hidden=false;note.textContent="Live dollar values turn on once a Finnhub key is added to config.js. The charts on each pick are already live.";}
-  else if(S.picks.length&&!all){note.hidden=false;note.textContent="Some live prices didn't load. Refresh the page to try again.";}
+  if(S.picks.length&&!all){note.hidden=false;note.textContent="Prices for a new pick show up after the next daily price update, usually within a few minutes.";}
+  else if(S.picks.length&&!CFG.finnhubKey&&S.prices.updated){note.hidden=false;note.textContent=`Values use closing prices from ${fmtStamp(S.prices.updated)}. The chart on each pick is live.`;}
   else note.hidden=true;
 }
 function niceStep(raw){const p=Math.pow(10,Math.floor(Math.log10(raw)));const f=raw/p;return(f<1.5?1:f<3?2:f<7?5:10)*p;}
@@ -139,7 +145,87 @@ function renderPicks(){
   }
   wrap.append(grid);
 }
-function renderPortfolio(){renderTiles();renderCompare();renderPicks();}
+/* ---------- Portfolio dropdowns ---------- */
+const SECTOR_COLORS=["#3987e5","#d95926","#199e70","#c98500","#d55181","#008300","#9085e9","#e66767"];
+const emptyNote=t=>el("p",{class:"meta dropnote",text:t});
+function renderPositions(){
+  const box=$("#pos-body");const rows=S.picks.map(p=>({p,c:calc(p)}));
+  if(!rows.length){box.replaceChildren(emptyNote("No positions yet. Each debate winner shows up here."));return;}
+  const total=rows.reduce((s,r)=>s+(r.c&&r.c.value!=null?r.c.value:0),0);
+  const td=(t,k)=>el("td",{class:k||"",text:t});
+  const tbody=el("tbody",{},rows.map(({p,c})=>el("tr",{},
+    el("td",{},el("b",{text:p.ticker})),td(p.name||""),td(p.sector||"–"),
+    td(c&&c.shares?fmtShares(c.shares):"–","num"),td(fmt$(p.entryPrice),"num"),td(c?fmt$(c.cur):"–","num"),
+    td(c&&c.value!=null?fmt$(c.value):"–","num"),
+    td(c&&c.gain!=null?(c.gain>=0?"+":"−")+fmt$(Math.abs(c.gain)):"–","num "+(c?cls(c.ret):"")),
+    td(c?fmtPct(c.ret):"–","num "+(c?cls(c.ret):"")),
+    td(c&&c.value!=null&&total?Math.round(c.value/total*100)+"%":"–","num"))));
+  const head=el("thead",{},el("tr",{},["Ticker","Name","Sector","Shares","Bought at","Price now","Worth now","Gain $","Gain %","% of portfolio"].map((h,i)=>el("th",{class:i>2?"num":"",text:h}))));
+  box.replaceChildren(el("div",{class:"tablewrap"},el("table",{class:"pos"},head,tbody)));
+}
+function renderSectors(){
+  const box=$("#sec-body");const by={};
+  for(const p of S.picks){const c=calc(p);const v=c&&c.value!=null?c.value:(p.invested||0);if(v>0)by[p.sector||"Other"]=(by[p.sector||"Other"]||0)+v;}
+  let parts=Object.entries(by).sort((a,b)=>b[1]-a[1]);
+  if(!parts.length){box.replaceChildren(emptyNote("The pie fills in once the club owns a stock. Each slice is a type of business, like Tech or Banks."));return;}
+  if(parts.length>6){const rest=parts.slice(5).reduce((s,x)=>s+x[1],0);parts=parts.slice(0,5).concat([["Other",rest]]);}
+  const total=parts.reduce((s,x)=>s+x[1],0);const R=90,r0=56,C=110;
+  const svg=sv("svg",{viewBox:"0 0 220 220",class:"donut",role:"img","aria-label":"What we own by sector"});
+  let a=-Math.PI/2;
+  parts.forEach(([name,v],i)=>{const frac=v/total;const col=SECTOR_COLORS[i%SECTOR_COLORS.length];
+    if(frac>=0.9999){svg.append(sv("circle",{cx:C,cy:C,r:(R+r0)/2,fill:"none",stroke:col,"stroke-width":R-r0}));}
+    else{const b=a+frac*Math.PI*2,big=frac>0.5?1:0,P=(rad,ang)=>`${C+rad*Math.cos(ang)} ${C+rad*Math.sin(ang)}`;
+      const path=sv("path",{d:`M${P(R,a)}A${R} ${R} 0 ${big} 1 ${P(R,b)}L${P(r0,b)}A${r0} ${r0} 0 ${big} 0 ${P(r0,a)}Z`,fill:col,stroke:"var(--surface)","stroke-width":2});
+      const t=sv("title");t.textContent=`${name}: ${Math.round(frac*100)}%`;path.append(t);svg.append(path);a=b;}});
+  const mid=sv("text",{x:C,y:C-2,"text-anchor":"middle",class:"donut-n"});mid.textContent=String(parts.length);
+  const sub=sv("text",{x:C,y:C+18,"text-anchor":"middle",class:"donut-s"});sub.textContent=parts.length===1?"sector":"sectors";svg.append(mid,sub);
+  const legend=el("ul",{class:"seclegend"},parts.map(([name,v],i)=>el("li",{},el("i",{style:`background:${SECTOR_COLORS[i%SECTOR_COLORS.length]}`}),el("span",{text:name}),el("b",{text:Math.round(v/total*100)+"%"}),el("span",{class:"meta",text:fmt0(v)}))));
+  box.replaceChildren(el("div",{class:"secwrap"},svg,legend));
+}
+function historySeries(){
+  const d=S.prices.dates||[],cl=S.prices.closes||{};if(!d.length||!cl.SPY)return null;
+  const picks=S.picks.filter(p=>cl[p.ticker]&&p.entryDate);if(!picks.length)return null;
+  const first=picks.reduce((m,p)=>p.entryDate<m?p.entryDate:m,picks[0].entryDate);
+  const legs=picks.map(p=>{const inv=p.invested||(p.shares||0)*p.entryPrice;const sh=p.shares||inv/p.entryPrice;const se=spyEntry(p);return{p,inv,sh,spySh:se?inv/se:0};});
+  const last={};const out=[];
+  d.forEach((day,i)=>{for(const tk of Object.keys(cl))if(cl[tk][i]!=null)last[tk]=cl[tk][i];
+    if(day<first)return;let club=0,spy=0,inv=0;
+    for(const l of legs)if(l.p.entryDate<=day){const px=last[l.p.ticker]!=null?last[l.p.ticker]:l.p.entryPrice;club+=l.sh*px;spy+=l.spySh*(last.SPY||0);inv+=l.inv;}
+    if(inv>0)out.push({day,club,spy,inv});});
+  return out.length?out:null;
+}
+function renderHistory(){
+  const box=$("#hist-body");const pts=historySeries();
+  if(!pts){box.replaceChildren(emptyNote(S.picks.length?"The chart fills in after the next daily price update.":"Once we own stocks, this line shows our portfolio's value each day next to the same money in the S&P 500."));return;}
+  const W=Math.max(320,box.clientWidth||760),H=300,L=64,Rr=16,T=16,B=30;
+  const vals=pts.flatMap(p=>[p.club,p.spy]);let mn=Math.min(...vals),mx=Math.max(...vals);const pad=(mx-mn)*0.1||mx*0.05||1;mn-=pad;mx+=pad;
+  const x=i=>L+(pts.length===1?0.5:i/(pts.length-1))*(W-L-Rr),y=v=>T+(1-(v-mn)/(mx-mn))*(H-T-B);
+  const svg=sv("svg",{viewBox:`0 0 ${W} ${H}`,class:"hist",role:"img","aria-label":"Club portfolio value compared with the S&P 500 over time"});
+  const step=niceStep((mx-mn)/4);for(let v=Math.ceil(mn/step)*step;v<=mx;v+=step){const Y=y(v);svg.append(sv("line",{x1:L,x2:W-Rr,y1:Y,y2:Y,stroke:"var(--line)"}));const t=sv("text",{x:L-8,y:Y+4,"text-anchor":"end"});t.textContent=fmt0(v);svg.append(t);}
+  const nt=Math.min(W<520?3:5,pts.length);for(let k=0;k<nt;k++){const i=nt===1?0:Math.round(k*(pts.length-1)/(nt-1));const t=sv("text",{x:x(i),y:H-8,"text-anchor":k===0?"start":k===nt-1?"end":"middle"});t.textContent=fmtDate(pts[i].day).replace(/, \d{4}$/,"");svg.append(t);}
+  const line=(key,col,w)=>sv("path",{d:pts.map((p,i)=>(i?"L":"M")+x(i).toFixed(1)+" "+y(p[key]).toFixed(1)).join(""),fill:"none",stroke:col,"stroke-width":w,"stroke-linejoin":"round","stroke-linecap":"round"});
+  svg.append(line("spy","var(--ink-2)",2),line("club","var(--gold)",2.5));
+  const lastP=pts[pts.length-1];svg.append(sv("circle",{cx:x(pts.length-1),cy:y(lastP.club),r:4,fill:"var(--gold)"}),sv("circle",{cx:x(pts.length-1),cy:y(lastP.spy),r:3.5,fill:"var(--ink-2)"}));
+  const cross=sv("line",{y1:T,y2:H-B,stroke:"var(--muted)","stroke-dasharray":"3 3",visibility:"hidden"});
+  const dotC=sv("circle",{r:4.5,fill:"var(--gold)",visibility:"hidden"}),dotS=sv("circle",{r:4,fill:"var(--ink-2)",visibility:"hidden"});svg.append(cross,dotC,dotS);
+  const tip=el("div",{class:"histtip",hidden:true});
+  const hide=()=>{tip.hidden=true;[cross,dotC,dotS].forEach(n=>n.setAttribute("visibility","hidden"));};
+  svg.addEventListener("pointermove",e=>{const rc=svg.getBoundingClientRect();const px=(e.clientX-rc.left)*W/rc.width;
+    const i=Math.max(0,Math.min(pts.length-1,Math.round((px-L)/(W-L-Rr)*(pts.length-1))));const p=pts[i],X=x(i);
+    cross.setAttribute("x1",X);cross.setAttribute("x2",X);dotC.setAttribute("cx",X);dotC.setAttribute("cy",y(p.club));dotS.setAttribute("cx",X);dotS.setAttribute("cy",y(p.spy));
+    [cross,dotC,dotS].forEach(n=>n.setAttribute("visibility","visible"));
+    tip.replaceChildren(el("div",{class:"meta",text:fmtDate(p.day)}),el("div",{},el("i",{style:"background:var(--gold)"}),"Club ",el("b",{text:fmt$(p.club)})),el("div",{},el("i",{style:"background:var(--ink-2)"}),"S&P 500 ",el("b",{text:fmt$(p.spy)})),el("div",{class:"meta",text:"Money put in: "+fmt0(p.inv)}));
+    tip.hidden=false;const left=X*rc.width/W;tip.style.left=Math.min(Math.max(left,70),rc.width-70)+"px";});
+  svg.addEventListener("pointerleave",hide);
+  const diff=lastP.club-lastP.spy;
+  const summary=el("p",{class:"histsum"},"Today the club's stocks are worth ",el("b",{class:"gold",text:fmt0(lastP.club)}),". The same money in the S&P 500 would be worth ",el("b",{text:fmt0(lastP.spy)}),". ",
+    el("span",{class:cls(diff/lastP.inv),text:Math.abs(diff)<0.5?"We're even with the market.":diff>0?`We're ahead by ${fmt0(diff)}.`:`We're behind by ${fmt0(-diff)}.`}));
+  box.replaceChildren(summary,el("div",{class:"histwrap"},svg,tip));
+}
+function renderBreakdown(){
+  for(const[id,fn]of[["drop-pos",renderPositions],["drop-sec",renderSectors],["drop-hist",renderHistory]]){const d=$("#"+id);if(d&&d.open)fn();}
+}
+function renderPortfolio(){renderTiles();renderCompare();renderPicks();renderBreakdown();}
 
 /* ---------- Search ---------- */
 function normSym(raw){const v=String(raw||"").trim().toUpperCase().replace(/\s+/g,"");if(!v)return null;if(!/^[A-Z0-9.:\-!_]{1,24}$/.test(v))return null;return v;}
@@ -227,13 +313,15 @@ function renderSearchBrief(){
 let rsT;window.addEventListener("resize",()=>{clearTimeout(rsT);rsT=setTimeout(renderCompare,120);});
 darkMQ.addEventListener&&darkMQ.addEventListener("change",()=>{rendered.search=null;rendered.news=null;renderPicks();const t=location.hash.slice(1);if(t==="search")renderSearch();if(t==="news")renderNewsFeed();});
 async function boot(){
+  for(const id of["drop-pos","drop-sec","drop-hist"]){const d=$("#"+id);if(d)d.addEventListener("toggle",()=>{if(d.open)renderBreakdown();});}
   renderWatch();renderQuick();
-  const [pf,nw]=await Promise.allSettled([loadJSON("data/portfolio.json"),loadJSON("data/news.json")]);
+  const [pf,nw,px]=await Promise.allSettled([loadJSON("data/portfolio.json"),loadJSON("data/news.json"),loadJSON("data/prices.json")]);
+  if(px.status==="fulfilled"&&px.value&&px.value.closes)S.prices=px.value;
   if(pf.status==="fulfilled")S.picks=(pf.value.picks||[]).filter(p=>p.ticker&&p.entryPrice>0&&p.entryDate);
   if(nw.status==="fulfilled"){S.briefs=nw.value.briefs||[];if(nw.value.updated)$("#news-asof").textContent="News briefs updated "+fmtDate(nw.value.updated);}
   renderTape();renderPortfolio();renderNews();
   showTab(location.hash.slice(1)||"portfolio");
-  if(S.picks.length&&CFG.finnhubKey){await Promise.all(S.picks.map(p=>quote(p.ticker)).concat([quote("SPY")]));renderTiles();renderCompare();renderPicks();}
+  if(S.picks.length&&CFG.finnhubKey){await Promise.all(S.picks.map(p=>quote(p.ticker)).concat([quote("SPY")]));renderTiles();renderCompare();renderPicks();renderBreakdown();}
 }
 boot();
 })();

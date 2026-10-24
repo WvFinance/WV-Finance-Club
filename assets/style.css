@@ -171,3 +171,29 @@ footer strong{color:var(--ink)}
 
 /* TradingView iframes are light-scheme documents; matching their color-scheme keeps transparent widgets from getting a white backdrop on this dark page. */
 .tradingview-widget-container iframe{color-scheme:light}
+
+/* Portfolio dropdowns */
+.drops{display:grid;gap:12px;margin:0 0 20px}
+.dropbody{padding:0 20px 20px;min-width:0}
+.dropnote{margin:0}
+.tablewrap{overflow-x:auto}
+table.pos{width:100%;border-collapse:collapse;font-size:14px;white-space:nowrap}
+table.pos th{text-align:left;font-weight:600;color:var(--ink-2);font-size:12px;text-transform:uppercase;letter-spacing:.04em;padding:8px 10px;border-bottom:1px solid var(--line)}
+table.pos td{padding:10px;border-bottom:1px solid var(--line)}
+table.pos .num{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+table.pos td.up{color:var(--up)}table.pos td.down{color:var(--down)}
+.secwrap{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+svg.donut{width:220px;height:220px;flex:none}
+.donut-n{fill:var(--ink);font-family:var(--f-display);font-weight:800;font-size:34px}
+.donut-s{fill:var(--ink-2);font-size:13px}
+.seclegend{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:16px;min-width:220px}
+.seclegend li{display:grid;grid-template-columns:14px 1fr auto auto;gap:10px;align-items:center}
+.seclegend i{width:14px;height:14px;border-radius:3px}
+.seclegend b{font-family:var(--f-mono)}
+.histsum{margin:0 0 12px;font-size:16px}.histsum .gold{color:var(--gold)}
+.histsum .up{color:var(--up)}.histsum .down{color:var(--down)}
+.histwrap{position:relative}
+svg.hist{width:100%;height:auto;display:block;touch-action:pan-y}
+svg.hist text{fill:var(--muted);font-size:12px;font-family:var(--f-mono)}
+.histtip{position:absolute;top:0;transform:translateX(-50%);background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:13px;pointer-events:none;white-space:nowrap}
+.histtip i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
