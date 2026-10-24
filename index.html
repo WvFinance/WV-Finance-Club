@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>WV Finance Club</title>
+<meta name="description" content="Waubonsie Valley Finance Club: our class portfolio, stock research and news briefs.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <a class="brand" href="#portfolio">
+      <img class="crest" src="assets/logo.png" alt="Waubonsie Valley Finance Club logo" width="58" height="58">
+      <div><h1>WV Finance Club</h1><p>Waubonsie Valley · Portfolio · Research · News</p></div>
+    </a>
+    <div class="datanote">
+      <span class="chip live"><span class="dot"></span>Market data from TradingView</span>
+      <span class="chip asof" id="news-asof">News briefs</span>
+    </div>
+  </div>
+</header>
+
+<div class="tape" id="tape" aria-label="Market ticker"></div>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" id="tab-portfolio" aria-controls="portfolio" aria-selected="true" data-tab="portfolio">Class Portfolio<span class="count" id="cnt-picks"></span></button>
+    <button class="tab" role="tab" id="tab-search" aria-controls="search" aria-selected="false" data-tab="search">Search</button>
+    <button class="tab" role="tab" id="tab-news" aria-controls="news" aria-selected="false" data-tab="news">News<span class="count" id="cnt-news"></span></button>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<!-- PORTFOLIO -->
+<section role="tabpanel" id="portfolio" aria-labelledby="tab-portfolio">
+  <div class="sechead">
+    <div>
+      <h2>Class Portfolio</h2>
+      <p class="sub">Every stock here won a club debate. Members pitch a stock, debate another member, and the audience votes. The winner joins the portfolio with the audience's reasons as its thesis.</p>
+    </div>
+  </div>
+  <div class="tiles" id="tiles"></div>
+  <p class="notice" id="price-note" hidden></p>
+  <div class="panel" id="cmp-panel" hidden>
+    <div class="sechead"><div><div class="eyebrow">Since each pick's entry date</div><h3 class="h3">Our picks vs the S&amp;P 500</h3></div>
+      <div class="legend"><span><i style="background:var(--gold)"></i>Club pick</span><span><i style="background:var(--muted)"></i>S&amp;P 500 (SPY), same dates</span></div></div>
+    <div class="compare" id="cmp"></div>
+  </div>
+  <div id="picks"></div>
+</section>
+
+<!-- SEARCH -->
+<section role="tabpanel" id="search" aria-labelledby="tab-search" hidden>
+  <div class="panel searchpanel">
+    <form class="searchbar" id="searchform" role="search">
+      <svg class="mag" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input class="inp" id="q" type="search" placeholder="Search any stock by ticker, like NVDA, COST or F" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Stock ticker">
+      <button class="btn primary" type="submit">Search</button>
+    </form>
+    <div class="quick" id="quick"></div>
+    <p class="hint">Don't know the ticker? Click the stock name at the top left of the chart to search by company name.</p>
+  </div>
+  <div class="panel symbolinfo" id="tv-info"></div>
+  <div class="stock">
+    <div class="panel chartpanel"><div class="tvbox chart" id="tv-chart"></div></div>
+    <div class="side">
+      <div class="panel">
+        <div class="sechead" style="margin-bottom:8px"><div class="eyebrow">My watchlist</div><button class="btn small" id="wl-toggle" type="button">Add to watchlist</button></div>
+        <div class="wl" id="wl"></div>
+        <p class="meta" style="margin:8px 0 0">Saved on this device only.</p>
+      </div>
+      <div class="panel" id="s-brief" hidden></div>
+    </div>
+  </div>
+  <div class="two">
+    <div class="panel"><div class="eyebrow" style="margin-bottom:8px">Key financials</div><div class="tvbox fin" id="tv-fin"></div></div>
+    <div class="panel"><div class="eyebrow" style="margin-bottom:8px">Latest headlines</div><div class="tvbox feed" id="tv-feed"></div></div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section role="tabpanel" id="news" aria-labelledby="tab-news" hidden>
+  <div class="sechead">
+    <div><h2>News briefs</h2>
+    <p class="sub">Claude reads recent articles and sums up what they say: an overall Bullish, Neutral or Bearish read, the main points on each side, and links to every source. There are always briefs for the S&amp;P 500 and the Nasdaq, plus one for each stock in the Class Portfolio.</p></div>
+  </div>
+  <div class="panel" id="news-meter-panel" hidden>
+    <div class="sechead" style="margin-bottom:8px"><div class="eyebrow">Overall read across briefs</div><div class="legend" id="news-legend"></div></div>
+    <div class="meter" id="news-meter"></div>
+  </div>
+  <div class="newsgrid">
+    <div class="nlist" id="nlist"></div>
+    <div class="brief-col">
+      <div class="panel brief" id="brief"></div>
+      <div class="panel"><div class="eyebrow" style="margin-bottom:8px" id="feed-label">Live headlines</div><div class="tvbox feed" id="tv-newsfeed"></div></div>
+    </div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong>For education only, not financial advice.</strong> This site is a learning tool for the Waubonsie Valley Finance Club. Nothing here is a recommendation to buy or sell any security.</div>
+    <div><strong>About the data:</strong> charts, quotes, financials and headlines come from <a href="https://www.tradingview.com/" target="_blank" rel="noopener">TradingView</a>, and portfolio prices from Finnhub. Some quotes may be delayed. News briefs are written by Claude from the linked articles.</div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="config.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
