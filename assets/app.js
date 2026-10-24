@@ -150,7 +150,7 @@ const SECTOR_COLORS=["#3987e5","#d95926","#199e70","#c98500","#d55181","#008300"
 const emptyNote=t=>el("p",{class:"meta dropnote",text:t});
 function renderPositions(){
   const box=$("#pos-body");const rows=S.picks.map(p=>({p,c:calc(p)}));
-  box.hidden=!rows.length;if(!rows.length)return;
+  $("#drop-pos").hidden=!rows.length;if(!rows.length)return;
   const total=rows.reduce((s,r)=>s+(r.c&&r.c.value!=null?r.c.value:0),0);
   const td=(t,k)=>el("td",{class:k||"",text:t});
   const tbody=el("tbody",{},rows.map(({p,c})=>el("tr",{},
