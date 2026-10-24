@@ -1,4 +1,186 @@
 {
   "updated": "2026-10-24",
-  "picks": []
+  "test": true,
+  "picks": [
+    {
+      "ticker": "AAPL",
+      "symbol": "NASDAQ:AAPL",
+      "name": "Apple",
+      "sector": "Tech",
+      "entryDate": "2026-07-01",
+      "entryPrice": 0,
+      "invested": 1000,
+      "shares": 0,
+      "pitchedBy": "Test student",
+      "thesis": "TEST PICK: fake data to try out the site.",
+      "debate": {
+        "opponent": "MSFT",
+        "votesFor": 15,
+        "votesAgainst": 10,
+        "date": "2026-07-01"
+      }
+    },
+    {
+      "ticker": "JPM",
+      "symbol": "NYSE:JPM",
+      "name": "JPMorgan Chase",
+      "sector": "Banks",
+      "entryDate": "2026-07-15",
+      "entryPrice": 0,
+      "invested": 1000,
+      "shares": 0,
+      "pitchedBy": "Test student",
+      "thesis": "TEST PICK: fake data to try out the site.",
+      "debate": {
+        "opponent": "BAC",
+        "votesFor": 16,
+        "votesAgainst": 10,
+        "date": "2026-07-15"
+      }
+    },
+    {
+      "ticker": "NVDA",
+      "symbol": "NASDAQ:NVDA",
+      "name": "Nvidia",
+      "sector": "Tech",
+      "entryDate": "2026-08-03",
+      "entryPrice": 0,
+      "invested": 1000,
+      "shares": 0,
+      "pitchedBy": "Test student",
+      "thesis": "TEST PICK: fake data to try out the site.",
+      "debate": {
+        "opponent": "AMD",
+        "votesFor": 17,
+        "votesAgainst": 9,
+        "date": "2026-08-03"
+      }
+    },
+    {
+      "ticker": "XOM",
+      "symbol": "NYSE:XOM",
+      "name": "Exxon Mobil",
+      "sector": "Energy",
+      "entryDate": "2026-08-17",
+      "entryPrice": 0,
+      "invested": 1000,
+      "shares": 0,
+      "pitchedBy": "Test student",
+      "thesis": "TEST PICK: fake data to try out the site.",
+      "debate": {
+        "opponent": "CVX",
+        "votesFor": 18,
+        "votesAgainst": 9,
+        "date": "2026-08-17"
+      }
+    },
+    {
+      "ticker": "JNJ",
+      "symbol": "NYSE:JNJ",
+      "name": "Johnson & Johnson",
+      "sector": "Health",
+      "entryDate": "2026-09-01",
+      "entryPrice": 0,
+      "invested": 1000,
+      "shares": 0,
+      "pitchedBy": "Test student",
+      "thesis": "TEST PICK: fake data to try out the site.",
+      "debate": {
+        "opponent": "PFE",
+        "votesFor": 19,
+        "votesAgainst": 8,
+        "date": "2026-09-01"
+      }
+    },
+    {
+      "ticker": "AMZN",
+      "symbol": "NASDAQ:AMZN",
+      "name": "Amazon",
+      "sector": "Shopping",
+      "entryDate": "2026-09-15",
+      "entryPrice": 0,
+      "invested": 1000,
+      "shares": 0,
+      "pitchedBy": "Test student",
+      "thesis": "TEST PICK: fake data to try out the site.",
+      "debate": {
+        "opponent": "WMT",
+        "votesFor": 20,
+        "votesAgainst": 8,
+        "date": "2026-09-15"
+      }
+    },
+    {
+      "ticker": "KO",
+      "symbol": "NYSE:KO",
+      "name": "Coca-Cola",
+      "sector": "Food & drinks",
+      "entryDate": "2026-09-29",
+      "entryPrice": 0,
+      "invested": 1000,
+      "shares": 0,
+      "pitchedBy": "Test student",
+      "thesis": "TEST PICK: fake data to try out the site.",
+      "debate": {
+        "opponent": "PEP",
+        "votesFor": 21,
+        "votesAgainst": 7,
+        "date": "2026-09-29"
+      }
+    },
+    {
+      "ticker": "MSFT",
+      "symbol": "NASDAQ:MSFT",
+      "name": "Microsoft",
+      "sector": "Tech",
+      "entryDate": "2026-10-06",
+      "entryPrice": 0,
+      "invested": 1000,
+      "shares": 0,
+      "pitchedBy": "Test student",
+      "thesis": "TEST PICK: fake data to try out the site.",
+      "debate": {
+        "opponent": "GOOGL",
+        "votesFor": 22,
+        "votesAgainst": 7,
+        "date": "2026-10-06"
+      }
+    },
+    {
+      "ticker": "CAT",
+      "symbol": "NYSE:CAT",
+      "name": "Caterpillar",
+      "sector": "Industrial",
+      "entryDate": "2026-10-13",
+      "entryPrice": 0,
+      "invested": 1000,
+      "shares": 0,
+      "pitchedBy": "Test student",
+      "thesis": "TEST PICK: fake data to try out the site.",
+      "debate": {
+        "opponent": "DE",
+        "votesFor": 23,
+        "votesAgainst": 6,
+        "date": "2026-10-13"
+      }
+    },
+    {
+      "ticker": "DIS",
+      "symbol": "NYSE:DIS",
+      "name": "Disney",
+      "sector": "Media",
+      "entryDate": "2026-10-20",
+      "entryPrice": 0,
+      "invested": 1000,
+      "shares": 0,
+      "pitchedBy": "Test student",
+      "thesis": "TEST PICK: fake data to try out the site.",
+      "debate": {
+        "opponent": "NFLX",
+        "votesFor": 24,
+        "votesAgainst": 6,
+        "date": "2026-10-20"
+      }
+    }
+  ]
 }
