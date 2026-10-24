@@ -108,19 +108,7 @@ function renderTiles(){
 }
 function niceStep(raw){const p=Math.pow(10,Math.floor(Math.log10(raw)));const f=raw/p;return(f<1.5?1:f<3?2:f<7?5:10)*p;}
 function renderCompare(){
-  const rows=S.picks.map(p=>({p,c:calc(p)})).filter(r=>r.c&&r.c.spyRet!=null);const panel=$("#cmp-panel"),box=$("#cmp");
-  panel.hidden=!rows.length;if(!rows.length)return;
-  const W=Math.max(300,box.clientWidth||680),rowH=44,labW=56,padR=60,top=8,H=top+rows.length*rowH+22;
-  const vals=rows.flatMap(r=>[r.c.ret,r.c.spyRet,0]);let mn=Math.min(...vals),mx=Math.max(...vals);const pad=(mx-mn)*0.08||0.05;mn-=pad;mx+=pad;
-  const x=v=>labW+(v-mn)/(mx-mn)*(W-labW-padR);
-  const svg=sv("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Each pick's return compared with the S&P 500 over the same dates"});
-  const step=niceStep((mx-mn)/5);for(let v=Math.ceil(mn/step)*step;v<=mx;v+=step){const X=x(v);svg.append(sv("line",{x1:X,x2:X,y1:top,y2:H-20,stroke:"var(--line)","stroke-width":Math.abs(v)<1e-9?1.5:1}));const t=sv("text",{x:X,y:H-6,"text-anchor":"middle"});t.textContent=(v>=0?"+":"")+Math.round(v*100)+"%";svg.append(t);}
-  rows.forEach((r,i)=>{const y0=top+i*rowH;const lab=sv("text",{x:0,y:y0+rowH/2+4,style:"fill:var(--ink);font-weight:500;font-size:13px"});lab.textContent=r.p.ticker;svg.append(lab);
-    [[r.c.ret,"var(--gold)",y0+8],[r.c.spyRet,"var(--muted)",y0+24]].forEach(([v,col,y],j)=>{const a=x(0),b=x(v);const g=sv("g");
-      g.append(sv("rect",{x:Math.min(a,b),y,width:Math.max(1,Math.abs(b-a)),height:13,rx:3,fill:col}));
-      const t=sv("text",{x:v>=0?b+6:b-6,y:y+11,"text-anchor":v>=0?"start":"end",style:j===0?"fill:var(--ink)":"fill:var(--ink-2)"});t.textContent=fmtPct(v);g.append(t);
-      const ti=sv("title");ti.textContent=`${j===0?r.p.ticker:"S&P 500"}: ${fmtPct(v)} since ${fmtDate(r.p.entryDate)}`;g.append(ti);svg.append(g);});});
-  box.replaceChildren(svg);
+  const panel=$("#cmp-panel");panel.hidden=!S.picks.length;if(S.picks.length)renderHistory($("#cmp"));
 }
 function renderPicks(){
   const wrap=$("#picks");wrap.replaceChildren();
@@ -206,33 +194,37 @@ function historySeries(){
     if(inv>0)out.push({day,club,spy,inv});});
   return out.length?out:null;
 }
-function renderHistory(){
-  const box=$("#hist-body");const pts=historySeries();
+function renderHistory(box=$("#hist-body")){
+  const pts=historySeries();
   if(!pts){box.replaceChildren(emptyNote(S.picks.length?"The chart fills in after the next daily price update.":"Once we own stocks, this line shows our portfolio's value each day next to the same money in the S&P 500."));return;}
   const W=Math.max(320,box.clientWidth||760),H=300,L=64,Rr=16,T=16,B=30;
-  const vals=pts.flatMap(p=>[p.club,p.spy]);let mn=Math.min(...vals),mx=Math.max(...vals);const pad=(mx-mn)*0.1||mx*0.05||1;mn-=pad;mx+=pad;
+  // Plot growth in %, (value / money put in) - 1, so buying a new stock doesn't make the line jump.
+  for(const p of pts){p.c=p.club/p.inv-1;p.s=p.spy/p.inv-1;}
+  const vals=pts.flatMap(p=>[p.c,p.s,0]);let mn=Math.min(...vals),mx=Math.max(...vals);const pad=(mx-mn)*0.1||0.01;mn-=pad;mx+=pad;
   const x=i=>L+(pts.length===1?0.5:i/(pts.length-1))*(W-L-Rr),y=v=>T+(1-(v-mn)/(mx-mn))*(H-T-B);
   const svg=sv("svg",{viewBox:`0 0 ${W} ${H}`,class:"hist",role:"img","aria-label":"Club portfolio value compared with the S&P 500 over time"});
-  const step=niceStep((mx-mn)/4);for(let v=Math.ceil(mn/step)*step;v<=mx;v+=step){const Y=y(v);svg.append(sv("line",{x1:L,x2:W-Rr,y1:Y,y2:Y,stroke:"var(--line)"}));const t=sv("text",{x:L-8,y:Y+4,"text-anchor":"end"});t.textContent=fmt0(v);svg.append(t);}
+  const step=niceStep((mx-mn)/4);for(let v=Math.ceil(mn/step)*step;v<=mx;v+=step){const Y=y(v);svg.append(sv("line",{x1:L,x2:W-Rr,y1:Y,y2:Y,stroke:"var(--line)"}));const t=sv("text",{x:L-8,y:Y+4,"text-anchor":"end"});t.textContent=(v>0?"+":"")+Math.round(v*100*10)/10+"%";svg.append(t);}
+  svg.append(sv("line",{x1:L,x2:W-Rr,y1:y(0),y2:y(0),stroke:"var(--muted)","stroke-width":1.5}));
   const nt=Math.min(W<520?3:5,pts.length);for(let k=0;k<nt;k++){const i=nt===1?0:Math.round(k*(pts.length-1)/(nt-1));const t=sv("text",{x:x(i),y:H-8,"text-anchor":k===0?"start":k===nt-1?"end":"middle"});t.textContent=fmtDate(pts[i].day).replace(/, \d{4}$/,"");svg.append(t);}
   const line=(key,col,w)=>sv("path",{d:pts.map((p,i)=>(i?"L":"M")+x(i).toFixed(1)+" "+y(p[key]).toFixed(1)).join(""),fill:"none",stroke:col,"stroke-width":w,"stroke-linejoin":"round","stroke-linecap":"round"});
-  svg.append(line("spy","var(--ink-2)",2),line("club","var(--gold)",2.5));
-  const lastP=pts[pts.length-1];svg.append(sv("circle",{cx:x(pts.length-1),cy:y(lastP.club),r:4,fill:"var(--gold)"}),sv("circle",{cx:x(pts.length-1),cy:y(lastP.spy),r:3.5,fill:"var(--ink-2)"}));
+  svg.append(line("s","var(--ink-2)",2),line("c","var(--gold)",3));
+  const lastP=pts[pts.length-1];svg.append(sv("circle",{cx:x(pts.length-1),cy:y(lastP.c),r:4,fill:"var(--gold)"}),sv("circle",{cx:x(pts.length-1),cy:y(lastP.s),r:3.5,fill:"var(--ink-2)"}));
   const cross=sv("line",{y1:T,y2:H-B,stroke:"var(--muted)","stroke-dasharray":"3 3",visibility:"hidden"});
   const dotC=sv("circle",{r:4.5,fill:"var(--gold)",visibility:"hidden"}),dotS=sv("circle",{r:4,fill:"var(--ink-2)",visibility:"hidden"});svg.append(cross,dotC,dotS);
   const tip=el("div",{class:"histtip",hidden:true});
   const hide=()=>{tip.hidden=true;[cross,dotC,dotS].forEach(n=>n.setAttribute("visibility","hidden"));};
   svg.addEventListener("pointermove",e=>{const rc=svg.getBoundingClientRect();const px=(e.clientX-rc.left)*W/rc.width;
     const i=Math.max(0,Math.min(pts.length-1,Math.round((px-L)/(W-L-Rr)*(pts.length-1))));const p=pts[i],X=x(i);
-    cross.setAttribute("x1",X);cross.setAttribute("x2",X);dotC.setAttribute("cx",X);dotC.setAttribute("cy",y(p.club));dotS.setAttribute("cx",X);dotS.setAttribute("cy",y(p.spy));
+    cross.setAttribute("x1",X);cross.setAttribute("x2",X);dotC.setAttribute("cx",X);dotC.setAttribute("cy",y(p.c));dotS.setAttribute("cx",X);dotS.setAttribute("cy",y(p.s));
     [cross,dotC,dotS].forEach(n=>n.setAttribute("visibility","visible"));
-    tip.replaceChildren(el("div",{class:"meta",text:fmtDate(p.day)}),el("div",{},el("i",{style:"background:var(--gold)"}),"Club ",el("b",{text:fmt$(p.club)})),el("div",{},el("i",{style:"background:var(--ink-2)"}),"S&P 500 ",el("b",{text:fmt$(p.spy)})),el("div",{class:"meta",text:"Money put in: "+fmt0(p.inv)}));
+    tip.replaceChildren(el("div",{class:"meta",text:fmtDate(p.day)}),el("div",{},el("i",{style:"background:var(--gold)"}),"Our portfolio ",el("b",{text:fmtPct(p.c)})," ("+fmt0(p.club)+")"),el("div",{},el("i",{style:"background:var(--ink-2)"}),"S&P 500 ",el("b",{text:fmtPct(p.s)})," ("+fmt0(p.spy)+")"),el("div",{class:"meta",text:"Money put in so far: "+fmt0(p.inv)}));
     tip.hidden=false;const left=X*rc.width/W;tip.style.left=Math.min(Math.max(left,70),rc.width-70)+"px";});
   svg.addEventListener("pointerleave",hide);
   const diff=lastP.club-lastP.spy;
-  const summary=el("p",{class:"histsum"},"Today the club's stocks are worth ",el("b",{class:"gold",text:fmt0(lastP.club)}),". The same money in the S&P 500 would be worth ",el("b",{text:fmt0(lastP.spy)}),". ",
+  const summary=el("p",{class:"histsum"},"Our portfolio is ",el("b",{class:"gold",text:(lastP.c>=0?"up ":"down ")+fmtPct(Math.abs(lastP.c)).slice(1)}),". The same money in the S&P 500 would be ",el("b",{text:(lastP.s>=0?"up ":"down ")+fmtPct(Math.abs(lastP.s)).slice(1)}),". ",
     el("span",{class:cls(diff/lastP.inv),text:Math.abs(diff)<0.5?"We're even with the market.":diff>0?`We're ahead by ${fmt0(diff)}.`:`We're behind by ${fmt0(-diff)}.`}));
-  box.replaceChildren(summary,el("div",{class:"histwrap"},svg,tip));
+  const legend=el("div",{class:"legend histlegend"},el("span",{},el("i",{style:"background:var(--gold)"}),"Our portfolio"),el("span",{},el("i",{style:"background:var(--ink-2)"}),"Same money in the S&P 500"));
+  box.replaceChildren(summary,legend,el("div",{class:"histwrap"},svg,tip));
 }
 function renderBreakdown(){
   if(!S.loaded)return;if(S_view==="positions")renderPositions();else if(S_view==="sectors")renderSectors();else if(S_view==="history")renderHistory();

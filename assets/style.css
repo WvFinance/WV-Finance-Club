@@ -208,3 +208,4 @@ svg.hist text{fill:var(--muted);font-size:12px;font-family:var(--f-mono)}
 .tabmenu button.on::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-right:8px;translate:0 -2px}
 #pos-body,#sec-body,#hist-body{min-width:0}
 .pview{min-width:0;max-width:100%}#pos-body{overflow:hidden}
+.histlegend{margin:0 0 8px}
