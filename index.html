@@ -79,10 +79,14 @@
       <div class="panel" id="s-brief" hidden></div>
     </div>
   </div>
-  <div class="two">
-    <div class="panel"><div class="eyebrow" style="margin-bottom:8px">Key financials</div><div class="tvbox fin" id="tv-fin"></div></div>
-    <div class="panel"><div class="eyebrow" style="margin-bottom:8px">Latest headlines</div><div class="tvbox feed" id="tv-feed"></div></div>
-  </div>
+  <details class="drop" id="drop-fin">
+    <summary><span>Key financials</span><span class="sym" data-sym></span></summary>
+    <div class="tvbox fin" id="tv-fin"></div>
+  </details>
+  <details class="drop" id="drop-feed">
+    <summary><span>Latest headlines</span><span class="sym" data-sym></span></summary>
+    <div class="tvbox feed" id="tv-feed"></div>
+  </details>
 </section>
 
 <!-- NEWS -->

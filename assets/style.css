@@ -121,8 +121,14 @@ section[role="tabpanel"]{display:grid;gap:20px}
 .tvbox .tradingview-widget-container,.tvbox .tradingview-widget-container__widget{height:100%;width:100%}
 .tvbox:empty::before,.tvbox.loading::before{content:"Loading from TradingView…";position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:13px}
 .side{display:grid;gap:16px;min-width:0}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media (max-width:900px){.two{grid-template-columns:minmax(0,1fr)}}
+details.drop{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+details.drop>summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:700;font-size:16px}
+details.drop>summary::-webkit-details-marker{display:none}
+details.drop>summary .sym{font-family:var(--f-mono);font-weight:500;font-size:13px;color:var(--muted)}
+details.drop>summary::after{content:"";margin-left:auto;width:9px;height:9px;border-right:2px solid var(--gold);border-bottom:2px solid var(--gold);rotate:45deg;translate:0 -3px;transition:rotate .15s}
+details.drop[open]>summary::after{rotate:225deg;translate:0 3px}
+details.drop>summary:hover{color:var(--gold)}
+details.drop>.tvbox{padding:0 12px 12px}
 .wl{display:grid;gap:2px}
 .wl-row{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:6px 4px;border-radius:6px}
 .wl-row:hover{background:var(--surface-2)}

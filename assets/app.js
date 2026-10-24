@@ -148,10 +148,18 @@ function renderSearch(){
   const sym=S.tk,theme=tvTheme();rendered.search=sym+theme;
   tv($("#tv-info"),"symbol-info",{symbol:sym,width:"100%",colorTheme:theme,isTransparent:true});
   tv($("#tv-chart"),"advanced-chart",{autosize:true,symbol:sym,interval:"D",timezone:"America/Chicago",theme,style:"1",allow_symbol_change:true,calendar:false,hide_volume:false,studies:["MASimple@tv-basicstudies"],support_host:"https://www.tradingview.com"});
-  tv($("#tv-fin"),"financials",{symbol:sym,colorTheme:theme,isTransparent:true,largeChartUrl:"",displayMode:"regular",width:"100%",height:"100%"});
-  tv($("#tv-feed"),"timeline",{feedMode:"symbol",symbol:sym,colorTheme:theme,isTransparent:true,displayMode:"regular",width:"100%",height:"100%"});
+  document.querySelectorAll(".drop [data-sym]").forEach(e=>e.textContent=bare(sym));
+  renderDrops();
   renderWatch();renderSearchBrief();renderQuick();
 }
+// The dropdowns load their widget only when open, and reload when the stock changes.
+function renderDrops(){
+  const sym=S.tk,theme=tvTheme();
+  const fin=$("#drop-fin"),feed=$("#drop-feed");
+  if(fin.open&&rendered.fin!==sym){rendered.fin=sym;tv($("#tv-fin"),"financials",{symbol:sym,colorTheme:theme,isTransparent:true,largeChartUrl:"",displayMode:"regular",width:"100%",height:"100%"});}
+  if(feed.open&&rendered.feed!==sym){rendered.feed=sym;tv($("#tv-feed"),"timeline",{feedMode:"symbol",symbol:sym,colorTheme:theme,isTransparent:true,displayMode:"regular",width:"100%",height:"100%"});}
+}
+$("#drop-fin").addEventListener("toggle",renderDrops);$("#drop-feed").addEventListener("toggle",renderDrops);
 function renderQuick(){
   const q=$("#quick");q.replaceChildren(el("span",{text:"Try:"}));
   const list=[...new Set(S.picks.map(p=>p.symbol||p.ticker).concat(["NASDAQ:AAPL","NASDAQ:NVDA","NASDAQ:MSFT","NASDAQ:AMZN","NASDAQ:TSLA","NYSE:JPM","NASDAQ:COST","NYSE:KO"]))].slice(0,10);
