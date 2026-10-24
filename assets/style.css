@@ -1,24 +1,16 @@
-/* WV Finance Club: black, white, green and gold. Green masthead, black tab rail, white (or near-black) page. */
+/* WV Finance Club: black, white, green and gold. Green masthead, black tab rail, black page with white text. */
 :root{
-  --bg:#f7f7f5; --surface:#ffffff; --surface-2:#efefec; --ink:#111111; --ink-2:#4a4a48; --muted:#6e6e6b; --line:#e0e0dc;
-  --brand-2:#1d6a3a; --green:#185c32; --on-green:#ffffff;
-  --mast:#103420; --band:#0b0b0b; --band-ink:#ffffff; --band-ink-2:#b4b4b0;
-  --gold:#a8771c; --gold-soft:#f4e7c9; --on-gold:#1d1404;
-  --up:#13875c; --up-soft:#dcf1e7; --down:#c43535; --down-soft:#f8e1e1; --flat:#64645f; --flat-soft:#ecece8;
+  --bg:#0a0a0a; --surface:#141414; --surface-2:#1e1e1e; --ink:#f3f3f1; --ink-2:#b3b3af; --muted:#8a8a86; --line:#2b2b29;
+  --brand-2:#6cc58a; --green:#1f7a43; --on-green:#ffffff;
+  --mast:#103420; --band:#000000; --band-ink:#ffffff; --band-ink-2:#a9a9a5;
+  --gold:#d9a943; --gold-soft:#2e2510; --on-gold:#1d1404;
+  --up:#33b884; --up-soft:#11291f; --down:#ec6b6b; --down-soft:#331618; --flat:#a3a39e; --flat-soft:#242422;
+  color-scheme:dark;
   --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
   --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
   --r:10px;
-  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root{
-  --bg:#0a0a0a; --surface:#141414; --surface-2:#1e1e1e; --ink:#f3f3f1; --ink-2:#b3b3af; --muted:#8a8a86; --line:#2b2b29;
-  --brand-2:#6cc58a; --green:#1f7a43; --on-green:#ffffff;
-  --mast:#0c2617; --band:#000000; --band-ink:#ffffff; --band-ink-2:#a9a9a5;
-  --gold:#d9a943; --gold-soft:#2e2510; --on-gold:#1d1404;
-  --up:#33b884; --up-soft:#11291f; --down:#ec6b6b; --down-soft:#331618; --flat:#a3a39e; --flat-soft:#242422;
-  color-scheme:dark;
-}}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}

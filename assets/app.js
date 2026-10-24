@@ -19,7 +19,7 @@ const bare=sym=>String(sym).split(":").pop().toUpperCase();
 
 /* ---------- TradingView widgets ---------- */
 const darkMQ=window.matchMedia("(prefers-color-scheme: dark)");
-const tvTheme=()=>darkMQ.matches?"dark":"light";
+const tvTheme=()=>"dark";
 function tv(container,name,config){
   if(!container)return;container.replaceChildren();
   const wrap=el("div",{class:"tradingview-widget-container"},el("div",{class:"tradingview-widget-container__widget"}));
