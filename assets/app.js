@@ -180,7 +180,7 @@ function renderSectors(){
   for(const p of S.picks){const c=calc(p);const v=c&&c.value!=null?c.value:(p.invested||0);if(v>0)by[p.sector||"Other"]=(by[p.sector||"Other"]||0)+v;}
   let parts=Object.entries(by).sort((a,b)=>b[1]-a[1]);
   if(!parts.length){box.replaceChildren(emptyNote("The pie fills in once the club owns a stock. Each slice is a type of business, like Tech or Banks."));return;}
-  if(parts.length>6){const rest=parts.slice(5).reduce((s,x)=>s+x[1],0);parts=parts.slice(0,5).concat([["Other",rest]]);}
+  if(parts.length>8){const rest=parts.slice(7).reduce((s,x)=>s+x[1],0);parts=parts.slice(0,7).concat([["Other",rest]]);}
   const total=parts.reduce((s,x)=>s+x[1],0);const R=90,r0=56,C=110;
   const svg=sv("svg",{viewBox:"0 0 220 220",class:"donut",role:"img","aria-label":"What we own by sector"});
   let a=-Math.PI/2;
