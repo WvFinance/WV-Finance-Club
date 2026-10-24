@@ -1,0 +1,15 @@
+{
+  "name": "wvfc-brief-server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.140.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.40.0"
+  }
+}

@@ -302,14 +302,28 @@ function renderNewsFeed(){
 }
 // On Search, show the club's brief for the stock whenever one exists, even if it isn't in the portfolio.
 function anyBriefFor(sym){const t=bare(sym);return S.briefs.find(b=>bare(b.symbol||b.ticker)===t||b.ticker===t)||null;}
+// Briefs written on the spot by the brief server, kept for this page visit.
+const liveBriefs={};
+async function loadLiveBrief(sym){
+  const t=bare(sym);if(liveBriefs[t])return;liveBriefs[t]={loading:true};
+  try{const r=await fetch(`${CFG.briefApi.replace(/\/$/,"")}/brief?symbol=${encodeURIComponent(sym)}`);const b=await r.json();
+    liveBriefs[t]=r.ok?b:{error:b.error||"The brief couldn't be written right now."};}
+  catch(e){liveBriefs[t]={error:"The brief couldn't be written right now. Check your connection and try again."};}
+  if(bare(S.tk)===t)renderSearchBrief();
+}
 function renderSearchBrief(){
-  const box=$("#s-brief");const n=anyBriefFor(S.tk);box.hidden=!n;if(!n)return;
+  const box=$("#s-brief");let n=anyBriefFor(S.tk);
+  if(!n&&CFG.briefApi){const t=bare(S.tk),lb=liveBriefs[t];
+    if(!lb||lb.loading){box.hidden=false;box.replaceChildren(el("div",{class:"eyebrow",text:`News brief · ${t}`}),el("h3",{class:"loading",text:"Brief loading…"}),el("p",{class:"meta",text:"Claude is reading the latest news about this stock. This takes about 30 seconds."}));if(!lb)loadLiveBrief(S.tk);return;}
+    if(lb.error){box.hidden=false;box.replaceChildren(el("div",{class:"eyebrow",text:`News brief · ${t}`}),el("p",{text:lb.error}),el("button",{class:"btn small",text:"Try again",onclick:()=>{delete liveBriefs[t];renderSearchBrief();}}));return;}
+    n=lb;}
+  box.hidden=!n;if(!n)return;
   const inNews=visibleBriefs().includes(n);
   box.replaceChildren(...[
     el("div",{class:"sechead"},el("div",{},el("div",{class:"eyebrow",text:`News brief · ${n.market?n.name:n.ticker}`}),el("h3",{text:n.headline||""})),sentiPill(n.sentiment)),
     el("p",{class:"lede",text:n.summary||""}),
     el("div",{class:"sides"},el("div",{class:"side-col bull"},el("h4",{text:"What the bulls say"}),el("ul",{},(n.bull||[]).map(x=>el("li",{text:x})))),el("div",{class:"side-col bear"},el("h4",{text:"What the bears say"}),el("ul",{},(n.bear||[]).map(x=>el("li",{text:x}))))),
-    el("div",{class:"meta",text:`Written by Claude from ${(n.sources||[]).length} ${(n.sources||[]).length===1?"article":"articles"} · updated ${n.updatedAt?fmtDate(n.updatedAt):"recently"}`}),
+    el("div",{class:"meta",text:`${n.auto?"Written just now by Claude":"Written by Claude"} from ${(n.sources||[]).length} ${(n.sources||[]).length===1?"article":"articles"} · updated ${n.updatedAt?fmtDate(n.updatedAt):"recently"}`}),
     inNews?el("div",{},el("button",{class:"btn small",text:"Sources and full brief →",onclick:()=>{S.newsTk=n.ticker;renderNews();showTab("news",true);}})):el("ul",{class:"sources"},(n.sources||[]).map(s=>el("li",{},el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer",text:s.title}),el("span",{class:"o",text:[s.outlet,s.date].filter(Boolean).join(" · ")}))))].filter(Boolean));
 }
 
