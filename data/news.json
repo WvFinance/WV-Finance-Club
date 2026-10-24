@@ -1,255 +1,420 @@
 {
-  "updated": "2026-10-24",
-  "briefs": [
+ "updated": "2026-10-24",
+ "briefs": [
+  {
+   "bear": [
+    "Prices for everyday things rose 3.7% from a year ago, which is higher than people want",
+    "Oil jumped over 10% in one week, which makes gas and shipping more expensive",
+    "Some AI companies have borrowed huge amounts of money, and investors worry they can't pay it back",
+    "Higher interest rates make safer choices like savings and bonds more attractive than stocks"
+   ],
+   "bull": [
+    "The market is only about 2% below its all-time high",
+    "Investors think the Federal Reserve probably won't raise interest rates in October",
+    "Big companies like Goldman Sachs and TSMC made more money than expected",
+    "Stocks bounced back on Oct 19 as investors bought shares that had dropped"
+   ],
+   "headline": "The market slipped from its record high this month",
+   "market": true,
+   "name": "S&P 500",
+   "nextEvent": "The Federal Reserve meets October 27-28 to decide on interest rates, and Microsoft, Amazon and Apple share their results",
+   "order": 1,
+   "sentiment": "neutral",
+   "sources": [
     {
-      "bear": [
-        "Prices for everyday things rose 3.7% from a year ago, which is higher than people want",
-        "Oil jumped over 10% in one week, which makes gas and shipping more expensive",
-        "Some AI companies have borrowed huge amounts of money, and investors worry they can't pay it back",
-        "Higher interest rates make safer choices like savings and bonds more attractive than stocks"
-      ],
-      "bull": [
-        "The market is only about 2% below its all-time high",
-        "Investors think the Federal Reserve probably won't raise interest rates in October",
-        "Big companies like Goldman Sachs and TSMC made more money than expected",
-        "Stocks bounced back on Oct 19 as investors bought shares that had dropped"
-      ],
-      "headline": "The market slipped from its record high this month",
-      "market": true,
-      "name": "S&P 500",
-      "nextEvent": "The Federal Reserve meets October 27-28 to decide on interest rates, and Microsoft, Amazon and Apple share their results",
-      "order": 1,
-      "sentiment": "neutral",
-      "sources": [
-        {
-          "date": "Oct 18, 2026",
-          "outlet": "Thrive in Markets",
-          "title": "Weekend Recap: October 18, 2026",
-          "url": "https://thriveinmarkets.com/market-insights/weekend-recap-2026-10-18/"
-        },
-        {
-          "date": "Oct 19, 2026",
-          "outlet": "RoboForex",
-          "title": "Stock market outlook for the week of 19-23 October 2026",
-          "url": "https://roboforex.com/beginners/analytics/forex-forecast/indices/indices-forecast-2026-10-19/"
-        }
-      ],
-      "summary": "The S&P 500 is a group of 500 of the biggest US companies, so it shows how the whole market is doing. It fell about 2% in the week ending Oct 16, to 7,659. Prices rising faster than expected, oil going over $100 a barrel, and worries about companies borrowing a lot of money for AI all made investors nervous.",
-      "ticker": "SP500",
-      "updatedAt": "2026-10-24T17:10:00Z",
-      "symbol": "AMEX:SPY"
+     "date": "Oct 18, 2026",
+     "outlet": "Thrive in Markets",
+     "title": "Weekend Recap: October 18, 2026",
+     "url": "https://thriveinmarkets.com/market-insights/weekend-recap-2026-10-18/"
     },
     {
-      "bear": [
-        "The Nasdaq broke the steady upward trend it had been on since April",
-        "Investors are asking whether all the money spent on AI will actually pay off",
-        "Chip stocks fell around the world, and South Korea's market dropped so fast that trading was paused",
-        "High oil prices, rising prices for everyday things, and higher interest rates hurt tech stocks the most"
-      ],
-      "bull": [
-        "After the big drop, many tech stocks were cheaper, and buyers jumped in quickly",
-        "Citigroup thinks AI could drive almost 70% of company profit growth around the world next year",
-        "Companies keep signing big AI deals, like reported talks to sell about $45 billion of computing power to Anthropic",
-        "The selling seems to be slowing down"
-      ],
-      "headline": "Tech stocks had their worst week since June, then bounced a little",
-      "market": true,
-      "name": "Nasdaq",
-      "nextEvent": "Big tech companies report their results over the next two weeks, starting with Microsoft on October 27",
-      "order": 2,
-      "sentiment": "bearish",
-      "sources": [
-        {
-          "date": "Oct 20, 2026",
-          "outlet": "XTB",
-          "title": "Chart of the day: US100 (Nasdaq 100) rebound in AI trade vs weakening technical picture",
-          "url": "https://www.xtb.com/en/market-analysis/chart-of-the-day-us100-nasdaq-100-rebound-in-ai-trade-vs-weakening-technical-picture"
-        },
-        {
-          "date": "Oct 18, 2026",
-          "outlet": "Thrive in Markets",
-          "title": "Weekend Recap: October 18, 2026",
-          "url": "https://thriveinmarkets.com/market-insights/weekend-recap-2026-10-18/"
-        }
-      ],
-      "summary": "The Nasdaq is full of tech companies, so it shows how tech stocks are doing. It fell 4.5% in the week ending Oct 16, mostly because computer chip stocks dropped hard. It went back up 1.1% on Oct 19, but experts said that was a small bounce, not a full recovery.",
-      "ticker": "NASDAQ",
-      "updatedAt": "2026-10-24T17:10:00Z",
-      "symbol": "NASDAQ:QQQ"
-    },
-    {
-      "bear": [
-        "Apple expects sales to grow 9% to 11% next quarter, less than the 12% experts hoped for",
-        "Some of last quarter's profit came from a one-time refund on tariffs (taxes on imports), so it won't happen again",
-        "The stock is already expensive, so a lot of good news is already in the price",
-        "A few experts think the stock is worth less, between $250 and $304"
-      ],
-      "bull": [
-        "Sales grew 16% to $109.4 billion, and profit per share beat what experts expected",
-        "iPhone sales grew about 22%, and services like the App Store and iCloud grew 12%",
-        "Several big banks raised their price goals, some as high as $380 to $400",
-        "New AI-powered devices, including a foldable iPhone, could get people to upgrade"
-      ],
-      "headline": "Apple had a great quarter, but experts disagree on how much higher it can go",
-      "nextEvent": "Apple shares its next results on November 2, 2026",
-      "sentiment": "neutral",
-      "sources": [
-        {
-          "date": "Oct 18, 2026",
-          "outlet": "Beinsure",
-          "title": "Apple stock forecast: Wall Street analysts split on AAPL's upside",
-          "url": "https://beinsure.com/news/apple-stock-forecast-wall-street-analysts-split-on-aapls-upside/"
-        }
-      ],
-      "summary": "Apple made more money than expected last quarter thanks to strong iPhone sales, and its stock is near its highest price of the year at about $343 (Oct 16). Most experts still say buy, but their average price goal is now a little below today's price. Apple also predicted slower growth than people hoped, and the stock is expensive: buyers are paying about 39 times Apple's yearly profit per share.",
-      "ticker": "AAPL",
-      "updatedAt": "2026-10-24T16:45:00Z",
-      "symbol": "NASDAQ:AAPL"
-    },
-    {
-      "bear": [
-        "Over the last year, Amazon spent $7.6 billion more cash than it brought in, after bringing in $18.2 billion extra the year before",
-        "It spent $66.1 billion more on buildings and equipment, mostly for AI",
-        "Some investors wonder if spending this much on AI can last, which caused a drop the week before"
-      ],
-      "bull": [
-        "AWS sales grew 37% to $42.2 billion last quarter",
-        "Total sales grew 20% to $200.6 billion, and profit from operations rose to $27.5 billion from $19.2 billion",
-        "Morgan Stanley, a big bank, changed its view on the stock and AI stocks bounced back"
-      ],
-      "headline": "Amazon's cloud business is booming, but it's spending a ton on AI",
-      "nextEvent": "Amazon shares its next results on October 29, 2026",
-      "sentiment": "bullish",
-      "sources": [
-        {
-          "date": "Oct 20, 2026",
-          "outlet": "Gotrade",
-          "title": "Amazon Stock News (Oct 20, 2026): AMZN Rises 5.0% to $262.45",
-          "url": "https://www.heygotrade.com/en/news/amazon-amzn-stock-news-october-20-2026/"
-        }
-      ],
-      "summary": "Amazon's stock jumped 5% to $262.45 on Oct 19 after a big bank changed its view on the stock and AI stocks bounced back. Amazon Web Services (AWS), which rents computing power to other companies, is growing 37% a year. The catch: Amazon is spending so much on AI data centers that it spent more cash than it brought in over the last year.",
-      "ticker": "AMZN",
-      "updatedAt": "2026-10-24T16:45:00Z",
-      "symbol": "NASDAQ:AMZN"
-    },
-    {
-      "bear": [
-        "Profit missed expectations even without the one-time investment loss",
-        "Money from bond trading fell 4%, and fees from helping companies raise money dropped 8% from last quarter",
-        "Costs went up 12%, and it set aside $2.7 billion for loans that might not get paid back",
-        "Experts may lower their price goals after the miss"
-      ],
-      "bull": [
-        "Sales rose 8% to $50.2 billion, and the amount it lent out grew 10%",
-        "It keeps a big cushion of money set aside for safety, and it earns a strong return for its owners",
-        "The bank expects the money it earns from loans to grow about 10% next year",
-        "The stock is fairly priced compared with its profits, and some banks think it can reach $400 to $420"
-      ],
-      "headline": "JPMorgan missed expectations for the first time since 2023, but it's still very profitable",
-      "nextEvent": "JPMorgan shares its next results in mid-January 2027",
-      "sentiment": "neutral",
-      "sources": [
-        {
-          "date": "Oct 13, 2026",
-          "outlet": "Beinsure",
-          "title": "JPMorgan Chase stock forecast after earnings miss",
-          "url": "https://beinsure.com/news/jpmorgan-chase-stock-forecast-earnings-miss/"
-        }
-      ],
-      "summary": "JPMorgan, the biggest bank in the US, earned $5.57 per share last quarter, below the $5.85 experts expected. Part of that was a $658 million loss on investments. Shares were around $336 on Oct 13. Its loans and everyday banking keep growing, but some parts of the business slowed down and costs went up.",
-      "ticker": "JPM",
-      "updatedAt": "2026-10-24T16:45:00Z",
-      "symbol": "NYSE:JPM"
-    },
-    {
-      "bear": [
-        "Microsoft plans to spend about $175 billion on data centers in 2026, which could shrink its profit margins",
-        "All that spending has already cut the extra cash it brings in",
-        "If Azure grows less than about 45%, investors will be disappointed, and the stock has jumped or dropped up to 15% after recent results"
-      ],
-      "bull": [
-        "Microsoft says customer demand is bigger than what it can supply",
-        "Cloud sales passed $214 billion last year, almost two-thirds of all its sales",
-        "Sales of Microsoft 365 (Word, Excel, Teams) should grow faster as it starts charging for AI features"
-      ],
-      "headline": "Microsoft's results on Oct 27 will show if its cloud business is still growing fast",
-      "nextEvent": "Microsoft shares its next results on October 27, 2026",
-      "sentiment": "neutral",
-      "sources": [
-        {
-          "date": "Oct 1, 2026",
-          "outlet": "Trefis",
-          "title": "Which Dates Could Move Microsoft Stock Most?",
-          "url": "https://www.trefis.com/articles/617316/which-dates-could-move-microsoft-stock-most/2026-10-01"
-        }
-      ],
-      "summary": "Microsoft's stock is up about 34% over three months because companies want its cloud and AI services. Microsoft says customers want more than it can provide right now. Its next results are the big test: investors expect its cloud service, Azure, to grow about 45%. The worry is how much Microsoft is spending on data centers.",
-      "ticker": "MSFT",
-      "updatedAt": "2026-10-24T16:45:00Z",
-      "symbol": "NASDAQ:MSFT"
-    },
-    {
-      "bear": [
-        "Nvidia isn't counting on any data center sales in China",
-        "Interest rates on government bonds rose to about 5.1%, which usually hurts expensive tech stocks",
-        "Worries about how customers will pay for AI caused a big drop in chip stocks in mid-October"
-      ],
-      "bull": [
-        "Sales were $96.2 billion last quarter, up 106% from a year ago",
-        "It keeps about 75 cents of every dollar in sales after the cost of making its chips, which is very high",
-        "Its new Vera Rubin chips are going into full production, and the CEO says demand is speeding up"
-      ],
-      "headline": "Nvidia is still growing fast, but AI stocks got shaky this month",
-      "nextEvent": "Nvidia's biggest customers (Meta, Microsoft, Amazon) share their results over the next two weeks, and their AI spending plans move Nvidia's stock",
-      "sentiment": "bullish",
-      "sources": [
-        {
-          "date": "Oct 20, 2026",
-          "outlet": "Gotrade",
-          "title": "Nvidia Stock News (Oct 20, 2026): NVDA Rises 1.4% to $217.09",
-          "url": "https://www.heygotrade.com/en/news/nvidia-nvda-stock-news-october-20-2026/"
-        }
-      ],
-      "summary": "Nvidia makes the chips that power AI. Its sales more than doubled last quarter, and its CEO says demand is speeding up as its new Vera Rubin chips start shipping. The stock bounced to about $217 on Oct 19 after a week of AI chip stocks falling, leaving it about 11% below its high for the year. The worries are about how AI companies will pay for all their spending, rising interest rates, and China.",
-      "ticker": "NVDA",
-      "updatedAt": "2026-10-24T16:45:00Z",
-      "symbol": "NASDAQ:NVDA"
-    },
-    {
-      "bear": [
-        "Profit from running the business fell 56% to $718 million",
-        "Spending on research grew 69% as Tesla puts more money into AI and robots",
-        "Sales from its energy business, like home and grid batteries, fell 16% and missed expectations",
-        "Money from selling emission credits to other carmakers fell 73%, so that easy profit is fading"
-      ],
-      "bull": [
-        "Tesla delivered 486,532 cars, over 24,000 more than experts expected",
-        "It kept 19.6% of each sales dollar after costs, up from 16.8% last quarter",
-        "It brought in $1.53 billion more cash than it spent, after spending $1.09 billion more than it brought in the quarter before",
-        "Paid Full Self-Driving subscriptions grew 67% to 1.74 million"
-      ],
-      "headline": "Tesla beat expectations, but its operating profit fell by more than half",
-      "nextEvent": "Tesla shares how many cars it delivered in early January",
-      "sentiment": "neutral",
-      "sources": [
-        {
-          "date": "Oct 21, 2026",
-          "outlet": "Electrek",
-          "title": "Tesla (TSLA) Q3 2026 financial results",
-          "url": "https://electrek.co/2026/10/21/tesla-tsla-q3-2026-financial-results/"
-        },
-        {
-          "date": "Oct 20, 2026",
-          "outlet": "Electrek",
-          "title": "Tesla (TSLA) Q3 2026 earnings preview",
-          "url": "https://electrek.co/2026/10/20/tesla-tsla-q3-2026-earnings-preview/"
-        }
-      ],
-      "summary": "Tesla shared its results on Oct 21. Sales stayed flat at $28.05 billion, and profit per share of $0.48 beat the $0.45 experts expected. It kept more money on each car it sold and brought in more cash than it spent. But spending on AI, self-driving taxis and its Optimus robot cut its operating profit by 56%.",
-      "ticker": "TSLA",
-      "updatedAt": "2026-10-24T16:45:00Z",
-      "symbol": "NASDAQ:TSLA"
+     "date": "Oct 19, 2026",
+     "outlet": "RoboForex",
+     "title": "Stock market outlook for the week of 19-23 October 2026",
+     "url": "https://roboforex.com/beginners/analytics/forex-forecast/indices/indices-forecast-2026-10-19/"
     }
-  ]
+   ],
+   "summary": "The S&P 500 is a group of 500 of the biggest US companies, so it shows how the whole market is doing. It fell about 2% in the week ending Oct 16, to 7,659. Prices rising faster than expected, oil going over $100 a barrel, and worries about companies borrowing a lot of money for AI all made investors nervous.",
+   "ticker": "SP500",
+   "updatedAt": "2026-10-24T17:10:00Z",
+   "symbol": "AMEX:SPY"
+  },
+  {
+   "bear": [
+    "The Nasdaq broke the steady upward trend it had been on since April",
+    "Investors are asking whether all the money spent on AI will actually pay off",
+    "Chip stocks fell around the world, and South Korea's market dropped so fast that trading was paused",
+    "High oil prices, rising prices for everyday things, and higher interest rates hurt tech stocks the most"
+   ],
+   "bull": [
+    "After the big drop, many tech stocks were cheaper, and buyers jumped in quickly",
+    "Citigroup thinks AI could drive almost 70% of company profit growth around the world next year",
+    "Companies keep signing big AI deals, like reported talks to sell about $45 billion of computing power to Anthropic",
+    "The selling seems to be slowing down"
+   ],
+   "headline": "Tech stocks had their worst week since June, then bounced a little",
+   "market": true,
+   "name": "Nasdaq",
+   "nextEvent": "Big tech companies report their results over the next two weeks, starting with Microsoft on October 27",
+   "order": 2,
+   "sentiment": "bearish",
+   "sources": [
+    {
+     "date": "Oct 20, 2026",
+     "outlet": "XTB",
+     "title": "Chart of the day: US100 (Nasdaq 100) rebound in AI trade vs weakening technical picture",
+     "url": "https://www.xtb.com/en/market-analysis/chart-of-the-day-us100-nasdaq-100-rebound-in-ai-trade-vs-weakening-technical-picture"
+    },
+    {
+     "date": "Oct 18, 2026",
+     "outlet": "Thrive in Markets",
+     "title": "Weekend Recap: October 18, 2026",
+     "url": "https://thriveinmarkets.com/market-insights/weekend-recap-2026-10-18/"
+    }
+   ],
+   "summary": "The Nasdaq is full of tech companies, so it shows how tech stocks are doing. It fell 4.5% in the week ending Oct 16, mostly because computer chip stocks dropped hard. It went back up 1.1% on Oct 19, but experts said that was a small bounce, not a full recovery.",
+   "ticker": "NASDAQ",
+   "updatedAt": "2026-10-24T17:10:00Z",
+   "symbol": "NASDAQ:QQQ"
+  },
+  {
+   "bear": [
+    "Apple expects sales to grow 9% to 11% next quarter, less than the 12% experts hoped for",
+    "Some of last quarter's profit came from a one-time refund on tariffs (taxes on imports), so it won't happen again",
+    "The stock is already expensive, so a lot of good news is already in the price",
+    "A few experts think the stock is worth less, between $250 and $304"
+   ],
+   "bull": [
+    "Sales grew 16% to $109.4 billion, and profit per share beat what experts expected",
+    "iPhone sales grew about 22%, and services like the App Store and iCloud grew 12%",
+    "Several big banks raised their price goals, some as high as $380 to $400",
+    "New AI-powered devices, including a foldable iPhone, could get people to upgrade"
+   ],
+   "headline": "Apple had a great quarter, but experts disagree on how much higher it can go",
+   "nextEvent": "Apple shares its next results on November 2, 2026",
+   "sentiment": "neutral",
+   "sources": [
+    {
+     "date": "Oct 18, 2026",
+     "outlet": "Beinsure",
+     "title": "Apple stock forecast: Wall Street analysts split on AAPL's upside",
+     "url": "https://beinsure.com/news/apple-stock-forecast-wall-street-analysts-split-on-aapls-upside/"
+    }
+   ],
+   "summary": "Apple made more money than expected last quarter thanks to strong iPhone sales, and its stock is near its highest price of the year at about $343 (Oct 16). Most experts still say buy, but their average price goal is now a little below today's price. Apple also predicted slower growth than people hoped, and the stock is expensive: buyers are paying about 39 times Apple's yearly profit per share.",
+   "ticker": "AAPL",
+   "updatedAt": "2026-10-24T16:45:00Z",
+   "symbol": "NASDAQ:AAPL"
+  },
+  {
+   "bear": [
+    "Over the last year, Amazon spent $7.6 billion more cash than it brought in, after bringing in $18.2 billion extra the year before",
+    "It spent $66.1 billion more on buildings and equipment, mostly for AI",
+    "Some investors wonder if spending this much on AI can last, which caused a drop the week before"
+   ],
+   "bull": [
+    "AWS sales grew 37% to $42.2 billion last quarter",
+    "Total sales grew 20% to $200.6 billion, and profit from operations rose to $27.5 billion from $19.2 billion",
+    "Morgan Stanley, a big bank, changed its view on the stock and AI stocks bounced back"
+   ],
+   "headline": "Amazon's cloud business is booming, but it's spending a ton on AI",
+   "nextEvent": "Amazon shares its next results on October 29, 2026",
+   "sentiment": "bullish",
+   "sources": [
+    {
+     "date": "Oct 20, 2026",
+     "outlet": "Gotrade",
+     "title": "Amazon Stock News (Oct 20, 2026): AMZN Rises 5.0% to $262.45",
+     "url": "https://www.heygotrade.com/en/news/amazon-amzn-stock-news-october-20-2026/"
+    }
+   ],
+   "summary": "Amazon's stock jumped 5% to $262.45 on Oct 19 after a big bank changed its view on the stock and AI stocks bounced back. Amazon Web Services (AWS), which rents computing power to other companies, is growing 37% a year. The catch: Amazon is spending so much on AI data centers that it spent more cash than it brought in over the last year.",
+   "ticker": "AMZN",
+   "updatedAt": "2026-10-24T16:45:00Z",
+   "symbol": "NASDAQ:AMZN"
+  },
+  {
+   "bear": [
+    "Profit missed expectations even without the one-time investment loss",
+    "Money from bond trading fell 4%, and fees from helping companies raise money dropped 8% from last quarter",
+    "Costs went up 12%, and it set aside $2.7 billion for loans that might not get paid back",
+    "Experts may lower their price goals after the miss"
+   ],
+   "bull": [
+    "Sales rose 8% to $50.2 billion, and the amount it lent out grew 10%",
+    "It keeps a big cushion of money set aside for safety, and it earns a strong return for its owners",
+    "The bank expects the money it earns from loans to grow about 10% next year",
+    "The stock is fairly priced compared with its profits, and some banks think it can reach $400 to $420"
+   ],
+   "headline": "JPMorgan missed expectations for the first time since 2023, but it's still very profitable",
+   "nextEvent": "JPMorgan shares its next results in mid-January 2027",
+   "sentiment": "neutral",
+   "sources": [
+    {
+     "date": "Oct 13, 2026",
+     "outlet": "Beinsure",
+     "title": "JPMorgan Chase stock forecast after earnings miss",
+     "url": "https://beinsure.com/news/jpmorgan-chase-stock-forecast-earnings-miss/"
+    }
+   ],
+   "summary": "JPMorgan, the biggest bank in the US, earned $5.57 per share last quarter, below the $5.85 experts expected. Part of that was a $658 million loss on investments. Shares were around $336 on Oct 13. Its loans and everyday banking keep growing, but some parts of the business slowed down and costs went up.",
+   "ticker": "JPM",
+   "updatedAt": "2026-10-24T16:45:00Z",
+   "symbol": "NYSE:JPM"
+  },
+  {
+   "bear": [
+    "Microsoft plans to spend about $175 billion on data centers in 2026, which could shrink its profit margins",
+    "All that spending has already cut the extra cash it brings in",
+    "If Azure grows less than about 45%, investors will be disappointed, and the stock has jumped or dropped up to 15% after recent results"
+   ],
+   "bull": [
+    "Microsoft says customer demand is bigger than what it can supply",
+    "Cloud sales passed $214 billion last year, almost two-thirds of all its sales",
+    "Sales of Microsoft 365 (Word, Excel, Teams) should grow faster as it starts charging for AI features"
+   ],
+   "headline": "Microsoft's results on Oct 27 will show if its cloud business is still growing fast",
+   "nextEvent": "Microsoft shares its next results on October 27, 2026",
+   "sentiment": "neutral",
+   "sources": [
+    {
+     "date": "Oct 1, 2026",
+     "outlet": "Trefis",
+     "title": "Which Dates Could Move Microsoft Stock Most?",
+     "url": "https://www.trefis.com/articles/617316/which-dates-could-move-microsoft-stock-most/2026-10-01"
+    }
+   ],
+   "summary": "Microsoft's stock is up about 34% over three months because companies want its cloud and AI services. Microsoft says customers want more than it can provide right now. Its next results are the big test: investors expect its cloud service, Azure, to grow about 45%. The worry is how much Microsoft is spending on data centers.",
+   "ticker": "MSFT",
+   "updatedAt": "2026-10-24T16:45:00Z",
+   "symbol": "NASDAQ:MSFT"
+  },
+  {
+   "bear": [
+    "Nvidia isn't counting on any data center sales in China",
+    "Interest rates on government bonds rose to about 5.1%, which usually hurts expensive tech stocks",
+    "Worries about how customers will pay for AI caused a big drop in chip stocks in mid-October"
+   ],
+   "bull": [
+    "Sales were $96.2 billion last quarter, up 106% from a year ago",
+    "It keeps about 75 cents of every dollar in sales after the cost of making its chips, which is very high",
+    "Its new Vera Rubin chips are going into full production, and the CEO says demand is speeding up"
+   ],
+   "headline": "Nvidia is still growing fast, but AI stocks got shaky this month",
+   "nextEvent": "Nvidia's biggest customers (Meta, Microsoft, Amazon) share their results over the next two weeks, and their AI spending plans move Nvidia's stock",
+   "sentiment": "bullish",
+   "sources": [
+    {
+     "date": "Oct 20, 2026",
+     "outlet": "Gotrade",
+     "title": "Nvidia Stock News (Oct 20, 2026): NVDA Rises 1.4% to $217.09",
+     "url": "https://www.heygotrade.com/en/news/nvidia-nvda-stock-news-october-20-2026/"
+    }
+   ],
+   "summary": "Nvidia makes the chips that power AI. Its sales more than doubled last quarter, and its CEO says demand is speeding up as its new Vera Rubin chips start shipping. The stock bounced to about $217 on Oct 19 after a week of AI chip stocks falling, leaving it about 11% below its high for the year. The worries are about how AI companies will pay for all their spending, rising interest rates, and China.",
+   "ticker": "NVDA",
+   "updatedAt": "2026-10-24T16:45:00Z",
+   "symbol": "NASDAQ:NVDA"
+  },
+  {
+   "bear": [
+    "Profit from running the business fell 56% to $718 million",
+    "Spending on research grew 69% as Tesla puts more money into AI and robots",
+    "Sales from its energy business, like home and grid batteries, fell 16% and missed expectations",
+    "Money from selling emission credits to other carmakers fell 73%, so that easy profit is fading"
+   ],
+   "bull": [
+    "Tesla delivered 486,532 cars, over 24,000 more than experts expected",
+    "It kept 19.6% of each sales dollar after costs, up from 16.8% last quarter",
+    "It brought in $1.53 billion more cash than it spent, after spending $1.09 billion more than it brought in the quarter before",
+    "Paid Full Self-Driving subscriptions grew 67% to 1.74 million"
+   ],
+   "headline": "Tesla beat expectations, but its operating profit fell by more than half",
+   "nextEvent": "Tesla shares how many cars it delivered in early January",
+   "sentiment": "neutral",
+   "sources": [
+    {
+     "date": "Oct 21, 2026",
+     "outlet": "Electrek",
+     "title": "Tesla (TSLA) Q3 2026 financial results",
+     "url": "https://electrek.co/2026/10/21/tesla-tsla-q3-2026-financial-results/"
+    },
+    {
+     "date": "Oct 20, 2026",
+     "outlet": "Electrek",
+     "title": "Tesla (TSLA) Q3 2026 earnings preview",
+     "url": "https://electrek.co/2026/10/20/tesla-tsla-q3-2026-earnings-preview/"
+    }
+   ],
+   "summary": "Tesla shared its results on Oct 21. Sales stayed flat at $28.05 billion, and profit per share of $0.48 beat the $0.45 experts expected. It kept more money on each car it sold and brought in more cash than it spent. But spending on AI, self-driving taxis and its Optimus robot cut its operating profit by 56%.",
+   "ticker": "TSLA",
+   "updatedAt": "2026-10-24T16:45:00Z",
+   "symbol": "NASDAQ:TSLA"
+  },
+  {
+   "ticker": "XOM",
+   "symbol": "NYSE:XOM",
+   "sentiment": "bullish",
+   "headline": "Exxon is near its highest price in a year, helped by high oil prices",
+   "summary": "Exxon's stock is up about 55% this year and hit a new one-year high of $183.21 on Oct 23. A big reason is that oil prices have been high because of fighting in the Middle East, which helps every oil company. Exxon is also pumping record amounts of oil in Texas and off the coast of Guyana in South America. The worry: if oil prices drop, a lot of these gains could go away.",
+   "bull": [
+    "Exxon pumps more than 1.8 million barrels a day in the Permian area of Texas, a record",
+    "Its Guyana project makes about 900,000 barrels a day, and a fifth oil ship should start by the end of the year",
+    "Experts expect profit per share of $3.95 this quarter, about double last year's $1.88"
+   ],
+   "bear": [
+    "Much of the rise came from high oil prices, which could fall if the Middle East calms down",
+    "Oil prices dropped from five-month highs on Oct 19 after the US loosened rules on Russian oil",
+    "The stock now costs more than the average price experts think it's worth ($173)"
+   ],
+   "nextEvent": "Exxon shares its next results on October 30, 2026",
+   "sources": [
+    {
+     "title": "What's Going On With Exxon Stock On Monday?",
+     "url": "https://www.benzinga.com/markets/large-cap/26/10/62447738/whats-going-on-with-exxon-stock-on-monday",
+     "outlet": "Benzinga",
+     "date": "Oct 19, 2026"
+    },
+    {
+     "title": "Has The Story Under ExxonMobil Stock Run Out?",
+     "url": "https://www.trefis.com/stock/xom/articles/617542/has-the-story-under-exxonmobil-stock-run-out/2026-10-05",
+     "outlet": "Trefis",
+     "date": "Oct 5, 2026"
+    }
+   ],
+   "updatedAt": "2026-10-24T19:50:00Z"
+  },
+  {
+   "ticker": "JNJ",
+   "symbol": "NYSE:JNJ",
+   "sentiment": "neutral",
+   "headline": "J&J's sales keep growing, but a big lawsuit bill hurt its profit",
+   "summary": "Johnson & Johnson makes medicines and medical devices. On Oct 13 it said sales grew 6% to $25.4 billion, a little better than expected, and it raised its forecast for the year a bit. But it set aside $5.5 billion to settle lawsuits claiming its baby powder (talc) caused cancer, so its profit for the quarter fell 96%.",
+   "bull": [
+    "Medicine sales grew almost 8% to $16.8 billion, led by drugs for cancer and skin disease",
+    "Profit without one-time costs was $2.59 a share, beating the $2.53 experts expected",
+    "J&J raised its profit forecast for 2026 a little"
+   ],
+   "bear": [
+    "A $5.5 billion charge to settle about 76,000 talc lawsuits wiped out most of this quarter's profit",
+    "The settlement only works if at least 95% of the people suing agree to it",
+    "Its medical device business grew only 2.5%"
+   ],
+   "nextEvent": "J&J shares its next results in January 2027",
+   "sources": [
+    {
+     "title": "Johnson & Johnson Beats Third-Quarter Earnings Estimates and Raises 2026 Revenue and Profit Outlook",
+     "url": "https://finance.yahoo.com/healthcare/articles/johnson-johnson-beats-third-quarter-123822189.html",
+     "outlet": "Yahoo Finance",
+     "date": "Oct 13, 2026"
+    },
+    {
+     "title": "J&J Q3 2026 Earnings: Talc Offer Charge and Raised Outlook",
+     "url": "https://www.stocktitan.net/articles/johnson-johnson-q3-2026-earnings-talc-settlement",
+     "outlet": "Stock Titan",
+     "date": "Oct 13, 2026"
+    }
+   ],
+   "updatedAt": "2026-10-24T19:50:00Z"
+  },
+  {
+   "ticker": "KO",
+   "symbol": "NYSE:KO",
+   "sentiment": "neutral",
+   "headline": "Coca-Cola is up a lot this year, but people are buying fewer drinks",
+   "summary": "Coca-Cola's stock is up about 33% this year, almost three times as much as the S&P 500. Coke can raise prices and people keep buying, which is a big strength. But in North America and Europe people are buying fewer drinks, and the stock now costs more compared with its profits than most stocks. Its next results come out Oct 27.",
+   "bull": [
+    "Coke sells more than 40% of all non-alcoholic drinks in the world",
+    "It can raise prices without losing many customers",
+    "Experts expect sales to grow about 4% and profit per share about 6% this quarter"
+   ],
+   "bear": [
+    "People in North America and Europe are buying fewer drinks",
+    "Shoppers with less money may cut back if prices keep rising",
+    "The stock costs about 27 times its expected yearly profit, compared with about 19 for the S&P 500"
+   ],
+   "nextEvent": "Coca-Cola shares its next results on October 27, 2026",
+   "sources": [
+    {
+     "title": "Coca-Cola Shows Mixed Trends Pre-Q3 Earnings: To Buy or Not to Buy?",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/coca-cola-shows-mixed-trends-130000823.html",
+     "outlet": "Zacks via Yahoo Finance",
+     "date": "Oct 22, 2026"
+    }
+   ],
+   "updatedAt": "2026-10-24T19:50:00Z"
+  },
+  {
+   "ticker": "CAT",
+   "symbol": "NYSE:CAT",
+   "sentiment": "bearish",
+   "headline": "Caterpillar has fallen about 30% from its high as investors worry it got too expensive",
+   "summary": "Caterpillar makes construction machines and the big engines and generators that power AI data centers. That AI demand pushed the stock way up this year, to a high above $1,060 in June. Since then it has dropped about 30%. A bank lowered its price goal and questioned whether AI spending will last, the government started looking into farm equipment prices, and tariffs are adding costs.",
+   "bull": [
+    "Sales grew 24% to $20.5 billion last quarter",
+    "Its sales of power generators jumped 72%, mostly for data centers",
+    "It has $72 billion of orders waiting to be filled, almost double a year ago"
+   ],
+   "bear": [
+    "The stock still costs about 31 times its yearly profit, much more than the S&P 500 average of about 23",
+    "Tariffs could cost it about $600 million this quarter",
+    "Truist, a bank, lowered its price goal and asked whether AI spending will keep going"
+   ],
+   "nextEvent": "Caterpillar shares its next results on October 29, 2026",
+   "sources": [
+    {
+     "title": "Caterpillar shares extend decline, down 30% from record high",
+     "url": "https://www.xtb.com/en/market-analysis/caterpillar-shares-extend-decline-down-30-from-record-high",
+     "outlet": "XTB",
+     "date": "Oct 7, 2026"
+    },
+    {
+     "title": "How Much Higher Can Caterpillar Stock Go From Here?",
+     "url": "https://www.trefis.com/stock/cat/articles/618997/how-much-higher-can-caterpillar-stock-go-from-here/2026-10-16",
+     "outlet": "Trefis",
+     "date": "Oct 16, 2026"
+    },
+    {
+     "title": "Caterpillar schedules October 29 results",
+     "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/caterpillar-schedules-october-29-results-caterpillar-stock-has-usd-323-6-billion-market-value/70398423",
+     "outlet": "Ad Hoc News",
+     "date": "Oct 23, 2026"
+    }
+   ],
+   "updatedAt": "2026-10-24T19:50:00Z"
+  },
+  {
+   "ticker": "DIS",
+   "symbol": "NYSE:DIS",
+   "sentiment": "neutral",
+   "headline": "Disney's parks and streaming are growing, but investors still aren't sure",
+   "summary": "Disney's stock dropped more than 10% from its August high, to about $101 in early October, because investors worry about how fast it can grow. Since then it has bounced back to about $112. Its parks and Disney+ are both growing, and some big banks think the stock is a bargain. Disney is also reportedly combining its TV groups and cutting hundreds of jobs.",
+   "bull": [
+    "Parks, cruises and other experiences brought in almost $10 billion, up 10%",
+    "Streaming (Disney+ and Hulu) sales grew 11% to $5.5 billion",
+    "Goldman Sachs called the stock a buy and thinks it could reach $140"
+   ],
+   "bear": [
+    "Sales came in lower than experts expected in three of the last five quarters",
+    "Combining the TV groups means job cuts and extra costs",
+    "A court fight with the government over its ABC TV stations is still going"
+   ],
+   "nextEvent": "Disney shares its next results in November 2026",
+   "sources": [
+    {
+     "title": "Disney Stock Falls Into a Correction, but Goldman Sachs Calls It Highly Compelling",
+     "url": "https://www.benzinga.com/markets/equities/26/10/62153066/disney-stock-falls-into-a-correction-but-goldman-sachs-calls-it-highly-compelling",
+     "outlet": "Benzinga",
+     "date": "Oct 4, 2026"
+    },
+    {
+     "title": "Disney Stock Is 13% Below Its High as It Reportedly Merges Its TV Divisions",
+     "url": "https://www.tikr.com/blog/disney-stock-is-13-below-its-high-as-it-reportedly-merges-its-tv-divisions-heres-where-the-stock-could-go-by-2030",
+     "outlet": "TIKR",
+     "date": "Oct 2, 2026"
+    }
+   ],
+   "updatedAt": "2026-10-24T19:50:00Z"
+  }
+ ]
 }
