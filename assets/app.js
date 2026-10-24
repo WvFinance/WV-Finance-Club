@@ -36,15 +36,27 @@ try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="stri
 
 /* ---------- Tabs ---------- */
 const TABS=["portfolio","search","news"];const rendered={};
+const PVIEWS=["overview","positions","sectors","history"];let S_view="overview";
 function showTab(name,push){
-  if(!TABS.includes(name))name="portfolio";
+  if(PVIEWS.includes(name)){S_view=name;name="portfolio";}else if(name==="portfolio")S_view="overview";
+  if(!TABS.includes(name)){name="portfolio";}
+  if(name==="portfolio"){for(const v of PVIEWS)$("#pv-"+v).hidden=v!==S_view;
+    document.querySelectorAll("#pf-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===S_view));renderBreakdown();}
   for(const t of TABS){$("#"+t).hidden=t!==name;$("#tab-"+t).setAttribute("aria-selected",String(t===name));}
-  if(push){try{history.replaceState(null,"","#"+name)}catch(e){}}
+  if(push){try{history.replaceState(null,"","#"+(name==="portfolio"&&S_view!=="overview"?S_view:name))}catch(e){}}
   if(name==="search"&&rendered.search!==S.tk+tvTheme())renderSearch();
   if(name==="news")renderNewsFeed();
   window.scrollTo({top:0});
 }
-document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.tab,true)));
+document.querySelectorAll(".tab:not(.hasmenu)").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.tab,true)));
+const pfTab=$("#tab-portfolio"),pfMenu=$("#pf-menu");
+function setMenu(open){pfMenu.hidden=!open;pfTab.setAttribute("aria-expanded",String(open));
+  if(open){const r=pfTab.getBoundingClientRect(),n=pfTab.closest("nav").getBoundingClientRect();pfMenu.style.left=Math.max(8,r.left-n.left)+"px";}}
+pfTab.addEventListener("click",e=>{e.stopPropagation();setMenu(pfMenu.hidden);});
+pfMenu.addEventListener("click",e=>{const b=e.target.closest("[data-view]");if(!b)return;setMenu(false);showTab(b.dataset.view,true);});
+document.addEventListener("click",e=>{if(!pfMenu.hidden&&!pfMenu.contains(e.target))setMenu(false);});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!pfMenu.hidden){setMenu(false);pfTab.focus();}});
+window.addEventListener("resize",()=>setMenu(false));
 window.addEventListener("hashchange",()=>showTab(location.hash.slice(1)));
 
 /* ---------- Data ---------- */
@@ -223,7 +235,7 @@ function renderHistory(){
   box.replaceChildren(summary,el("div",{class:"histwrap"},svg,tip));
 }
 function renderBreakdown(){
-  for(const[id,fn]of[["drop-pos",renderPositions],["drop-sec",renderSectors],["drop-hist",renderHistory]]){const d=$("#"+id);if(d&&d.open)fn();}
+  if(!S.loaded)return;if(S_view==="positions")renderPositions();else if(S_view==="sectors")renderSectors();else if(S_view==="history")renderHistory();
 }
 function renderPortfolio(){renderTiles();renderCompare();renderPicks();renderBreakdown();}
 
@@ -310,16 +322,15 @@ function renderSearchBrief(){
 }
 
 /* ---------- Boot ---------- */
-let rsT;window.addEventListener("resize",()=>{clearTimeout(rsT);rsT=setTimeout(renderCompare,120);});
+let rsT;window.addEventListener("resize",()=>{clearTimeout(rsT);rsT=setTimeout(()=>{renderCompare();if(S_view==="history")renderHistory();},120);});
 darkMQ.addEventListener&&darkMQ.addEventListener("change",()=>{rendered.search=null;rendered.news=null;renderPicks();const t=location.hash.slice(1);if(t==="search")renderSearch();if(t==="news")renderNewsFeed();});
 async function boot(){
-  for(const id of["drop-pos","drop-sec","drop-hist"]){const d=$("#"+id);if(d)d.addEventListener("toggle",()=>{if(d.open)renderBreakdown();});}
   renderWatch();renderQuick();
   const [pf,nw,px]=await Promise.allSettled([loadJSON("data/portfolio.json"),loadJSON("data/news.json"),loadJSON("data/prices.json")]);
   if(px.status==="fulfilled"&&px.value&&px.value.closes)S.prices=px.value;
   if(pf.status==="fulfilled")S.picks=(pf.value.picks||[]).filter(p=>p.ticker&&p.entryPrice>0&&p.entryDate);
   if(nw.status==="fulfilled"){S.briefs=nw.value.briefs||[];if(nw.value.updated)$("#news-asof").textContent="News briefs updated "+fmtDate(nw.value.updated);}
-  renderTape();renderPortfolio();renderNews();
+  S.loaded=true;renderTape();renderPortfolio();renderNews();
   showTab(location.hash.slice(1)||"portfolio");
   if(S.picks.length&&CFG.finnhubKey){await Promise.all(S.picks.map(p=>quote(p.ticker)).concat([quote("SPY")]));renderTiles();renderCompare();renderPicks();renderBreakdown();}
 }

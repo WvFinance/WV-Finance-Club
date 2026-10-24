@@ -173,8 +173,6 @@ footer strong{color:var(--ink)}
 .tradingview-widget-container iframe{color-scheme:light}
 
 /* Portfolio dropdowns */
-.drops{display:grid;gap:12px;margin:0 0 20px}
-.dropbody{padding:0 20px 20px;min-width:0}
 .dropnote{margin:0}
 .tablewrap{overflow-x:auto}
 table.pos{width:100%;border-collapse:collapse;font-size:14px;white-space:nowrap}
@@ -197,3 +195,16 @@ svg.hist{width:100%;height:auto;display:block;touch-action:pan-y}
 svg.hist text{fill:var(--muted);font-size:12px;font-family:var(--f-mono)}
 .histtip{position:absolute;top:0;transform:translateX(-50%);background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:13px;pointer-events:none;white-space:nowrap}
 .histtip i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
+
+/* Class Portfolio tab menu */
+.tabs{position:sticky}
+.tab .caret{display:inline-block;width:7px;height:7px;border-right:2px solid var(--gold);border-bottom:2px solid var(--gold);rotate:45deg;margin-left:9px;translate:0 -3px;transition:rotate .15s}
+.tab[aria-expanded="true"] .caret{rotate:225deg;translate:0 1px}
+.tabmenu{position:absolute;top:100%;z-index:6;min-width:250px;background:var(--surface-2);border:1px solid var(--line);border-top:2px solid var(--gold);border-radius:0 0 10px 10px;padding:6px;display:grid;box-shadow:0 12px 28px rgba(0,0,0,.5)}
+.tabmenu[hidden]{display:none}
+.tabmenu button{appearance:none;border:0;background:none;color:var(--ink);text-align:left;font:600 15px var(--f-body,inherit);padding:11px 12px;border-radius:6px;cursor:pointer}
+.tabmenu button:hover,.tabmenu button:focus-visible{background:var(--surface);color:var(--gold)}
+.tabmenu button.on{color:var(--gold)}
+.tabmenu button.on::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-right:8px;translate:0 -2px}
+#pos-body,#sec-body,#hist-body{min-width:0}
+.pview{min-width:0;max-width:100%}#pos-body{overflow:hidden}

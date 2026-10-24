@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=2026102402">
+<link rel="stylesheet" href="assets/style.css?v=2026102403">
 </head>
 <body>
 
@@ -29,9 +29,15 @@
 
 <nav class="tabs" aria-label="Sections">
   <div class="wrap" role="tablist">
-    <button class="tab" role="tab" id="tab-portfolio" aria-controls="portfolio" aria-selected="true" data-tab="portfolio">Class Portfolio<span class="count" id="cnt-picks"></span></button>
+    <button class="tab hasmenu" role="tab" id="tab-portfolio" aria-controls="portfolio" aria-selected="true" aria-haspopup="menu" aria-expanded="false" data-tab="portfolio">Class Portfolio<span class="count" id="cnt-picks"></span><span class="caret" aria-hidden="true"></span></button>
     <button class="tab" role="tab" id="tab-search" aria-controls="search" aria-selected="false" data-tab="search">Search</button>
     <button class="tab" role="tab" id="tab-news" aria-controls="news" aria-selected="false" data-tab="news">News<span class="count" id="cnt-news"></span></button>
+  </div>
+  <div class="tabmenu" id="pf-menu" role="menu" hidden>
+    <button role="menuitem" data-view="overview">Overview</button>
+    <button role="menuitem" data-view="positions">All positions</button>
+    <button role="menuitem" data-view="sectors">What we own by sector</button>
+    <button role="menuitem" data-view="history">Club vs S&amp;P 500 over time</button>
   </div>
 </nav>
 
@@ -40,6 +46,7 @@
 
 <!-- PORTFOLIO -->
 <section role="tabpanel" id="portfolio" aria-labelledby="tab-portfolio">
+ <div class="pview" id="pv-overview">
   <div class="sechead">
     <div>
       <h2>Class Portfolio</h2>
@@ -47,11 +54,6 @@
     </div>
   </div>
   <div class="tiles" id="tiles"></div>
-  <div class="drops">
-    <details class="drop" id="drop-pos"><summary><span>All positions</span></summary><div class="dropbody" id="pos-body"></div></details>
-    <details class="drop" id="drop-sec"><summary><span>What we own by sector</span></summary><div class="dropbody" id="sec-body"></div></details>
-    <details class="drop" id="drop-hist"><summary><span>Club vs S&amp;P 500 over time</span></summary><div class="dropbody" id="hist-body"></div></details>
-  </div>
   <p class="notice" id="price-note" hidden></p>
   <div class="panel" id="cmp-panel" hidden>
     <div class="sechead"><div><div class="eyebrow">Since each pick's entry date</div><h3 class="h3">Our picks vs the S&amp;P 500</h3></div>
@@ -59,6 +61,19 @@
     <div class="compare" id="cmp"></div>
   </div>
   <div id="picks"></div>
+ </div>
+ <div class="pview" id="pv-positions" hidden>
+  <div class="sechead"><div><h2>All positions</h2><p class="sub">Every stock the club owns, what we paid, and what it's worth now.</p></div></div>
+  <div class="panel" id="pos-body"></div>
+ </div>
+ <div class="pview" id="pv-sectors" hidden>
+  <div class="sechead"><div><h2>What we own by sector</h2><p class="sub">How our money is split across types of business, like Tech or Banks. Owning a mix helps if one area has a bad year.</p></div></div>
+  <div class="panel" id="sec-body"></div>
+ </div>
+ <div class="pview" id="pv-history" hidden>
+  <div class="sechead"><div><h2>Club vs S&amp;P 500 over time</h2><p class="sub">Our portfolio's value each day, next to what the same money would be worth in the S&amp;P 500. Jumps happen on days we add a new stock.</p></div></div>
+  <div class="panel" id="hist-body"></div>
+ </div>
 </section>
 
 <!-- SEARCH -->
@@ -126,7 +141,7 @@
 </footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="config.js?v=2026102402"></script>
-<script src="assets/app.js?v=2026102402"></script>
+<script src="config.js?v=2026102403"></script>
+<script src="assets/app.js?v=2026102403"></script>
 </body>
 </html>
