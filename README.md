@@ -2,6 +2,8 @@
 
 The Waubonsie Valley Finance Club's website: our class portfolio, stock research and news briefs.
 
+**Live site:** https://wvfinance.github.io/WV-Finance-Club/
+
 ## What's on the site
 
 - **Class Portfolio**: every stock the club owns, what we paid, how many shares, what it's worth now, and how it compares with putting the same money in the S&P 500.
