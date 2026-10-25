@@ -237,7 +237,7 @@ function openStock(sym){S.tk=sym;store.set("wvfc.tk",sym);if(!$("#search").hidde
 function renderSearch(){
   const sym=S.tk,theme=tvTheme();rendered.search=sym+theme;
   tv($("#tv-info"),"symbol-info",{symbol:sym,width:"100%",colorTheme:theme,isTransparent:true});
-  tv($("#tv-chart"),"advanced-chart",{autosize:true,symbol:sym,interval:"D",timezone:"America/Chicago",theme,style:"1",allow_symbol_change:true,calendar:false,hide_volume:false,studies:["MASimple@tv-basicstudies"],support_host:"https://www.tradingview.com"});
+  tv($("#tv-chart"),"advanced-chart",{autosize:true,symbol:sym,interval:"D",timezone:"America/Chicago",theme,style:"1",allow_symbol_change:true,calendar:false,hide_volume:false,studies:[],support_host:"https://www.tradingview.com"});
   document.querySelectorAll(".drop [data-sym]").forEach(e=>e.textContent=bare(sym));
   renderDrops();
   renderWatch();renderSearchBrief();renderQuick();
