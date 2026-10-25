@@ -311,7 +311,15 @@ async function loadLiveBrief(sym){
   catch(e){liveBriefs[t]={error:"The brief couldn't be written right now. Check your connection and try again."};}
   if(bare(S.tk)===t)renderSearchBrief();
 }
+// The 3 newest articles behind the current stock's brief, shown above the headlines dropdown.
+function renderLatest3(n){
+  const box=$("#latest3");const src=(n&&n.sources||[]).slice().sort((a,b)=>(Date.parse(b.date)||0)-(Date.parse(a.date)||0)).slice(0,3);
+  box.hidden=!src.length;if(!src.length)return;
+  box.replaceChildren(el("h3",{class:"h3",text:src.length===3?"3 latest articles":"Latest articles"}),
+    el("ul",{class:"latestlist"},src.map(s=>el("li",{},el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer",text:s.title}),el("span",{class:"o",text:[s.outlet,s.date].filter(Boolean).join(" · ")})))));
+}
 function renderSearchBrief(){
+  renderLatest3(anyBriefFor(S.tk)||(liveBriefs[bare(S.tk)]&&!liveBriefs[bare(S.tk)].loading&&!liveBriefs[bare(S.tk)].error?liveBriefs[bare(S.tk)]:null));
   const box=$("#s-brief");let n=anyBriefFor(S.tk);
   if(!n&&CFG.briefApi){const t=bare(S.tk),lb=liveBriefs[t];
     if(!lb||lb.loading){box.hidden=false;box.replaceChildren(el("div",{class:"eyebrow",text:`News brief · ${t}`}),el("h3",{class:"loading",text:"Brief loading…"}),el("p",{class:"meta",text:"Claude is reading the latest news about this stock. This takes about 30 seconds."}));if(!lb)loadLiveBrief(S.tk);return;}

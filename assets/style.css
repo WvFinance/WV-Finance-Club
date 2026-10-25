@@ -258,3 +258,11 @@ table.pos th{padding:10px 12px}
 .nitem{padding:14px 16px;gap:6px 10px}
 .brief .lede,#s-brief .lede{max-width:none}
 #tv-feed{height:400px}
+.feedcol{display:grid;gap:16px;min-width:0;align-content:start}
+.latest3 .h3{margin:0 0 12px}
+.latestlist{list-style:none;margin:0;padding:0;display:grid}
+.latestlist li{display:grid;gap:4px;padding:12px 0;border-top:1px solid var(--line)}
+.latestlist li:first-child{border-top:0;padding-top:0}
+.latestlist a{color:var(--ink);font-weight:600;text-decoration:none}
+.latestlist a:hover{color:var(--gold);text-decoration:underline}
+.latestlist .o{font-size:12px;color:var(--muted);font-family:var(--f-mono)}
