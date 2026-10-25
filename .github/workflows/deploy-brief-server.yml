@@ -43,6 +43,20 @@ jobs:
           fi
           echo "KV id: $id"
           sed -i "s/REPLACE_WITH_KV_ID/$id/" wrangler.toml
+      - name: Make sure the account has a workers.dev address
+        if: env.SKIP != '1'
+        run: |
+          acct="${CLOUDFLARE_ACCOUNT_ID:-$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" https://api.cloudflare.com/client/v4/accounts | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>process.stdout.write(JSON.parse(s).result[0].id))')}"
+          api="https://api.cloudflare.com/client/v4/accounts/$acct/workers/subdomain"
+          cur=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$api")
+          echo "Current: $cur"
+          if ! echo "$cur" | grep -q '"subdomain":"'; then
+            for name in wvfinance wvfinanceclub wv-finance-club wvfc-$RANDOM; do
+              res=$(curl -s -X PUT -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" -d "{\"subdomain\":\"$name\"}" "$api")
+              echo "Try $name: $res"
+              echo "$res" | grep -q '"success":true' && break
+            done
+          fi
       - name: Deploy
         if: env.SKIP != '1'
         run: npx wrangler deploy
