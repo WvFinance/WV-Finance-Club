@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24",
+ "updated": "2026-10-25",
  "briefs": [
   {
    "bear": [
@@ -164,30 +164,49 @@
   },
   {
    "bear": [
-    "Microsoft plans to spend about $175 billion on data centers in 2026, which could shrink its profit margins",
-    "All that spending has already cut the extra cash it brings in",
-    "If Azure grows less than about 45%, investors will be disappointed, and the stock has jumped or dropped up to 15% after recent results"
+    "Microsoft is spending huge amounts on AI: about $115.9 billion on data centers and equipment last year, and more than $50 billion expected this quarter alone.",
+    "Some experts say the stock is already priced high. One firm thinks it could drop to $440, and another lowered its rating to 'Hold' on Oct. 12.",
+    "Rivals are growing fast. In one recent quarter, Alphabet's cloud business grew 82%, compared with 43% for Microsoft's."
    ],
    "bull": [
-    "Microsoft says customer demand is bigger than what it can supply",
-    "Cloud sales passed $214 billion last year, almost two-thirds of all its sales",
-    "Sales of Microsoft 365 (Word, Excel, Teams) should grow faster as it starts charging for AI features"
+    "Many Wall Street firms raised the price they think the stock could reach. Most of their targets now fall between $570 and $725.",
+    "Customers have signed deals worth $678 billion that Microsoft hasn't been paid for yet. Microsoft also said people want more of its cloud service than it can currently supply.",
+    "Volkswagen Group gave Microsoft's Copilot AI helper to more than 330,000 workers. Copilot also passed 30 million paying users."
    ],
-   "headline": "Microsoft's results on Oct 27 will show if its cloud business is still growing fast",
-   "nextEvent": "Microsoft shares its next results on October 27, 2026",
-   "sentiment": "neutral",
+   "headline": "Microsoft hit a record high, then slipped ahead of its Oct. 28 earnings report",
+   "nextEvent": "Earnings report on Oct 28, 2026, after the stock market closes",
+   "sentiment": "bullish",
    "sources": [
     {
-     "date": "Oct 1, 2026",
-     "outlet": "Trefis",
-     "title": "Which Dates Could Move Microsoft Stock Most?",
-     "url": "https://www.trefis.com/articles/617316/which-dates-could-move-microsoft-stock-most/2026-10-01"
+     "title": "Microsoft's wild ride: Stock hits new record after a year of ups and downs",
+     "url": "https://www.geekwire.com/2026/microsofts-wild-ride-stock-hits-new-record-after-a-year-of-ups-and-downs/",
+     "outlet": "GeekWire",
+     "date": "Oct 14, 2026"
+    },
+    {
+     "title": "Microsoft (MSFT) Stock Gets Fair Value Bump As AI Revenue Views Lift",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-msft-stock-gets-fair-130950997.html",
+     "outlet": "Yahoo Finance (Simply Wall St)",
+     "date": "Oct 19, 2026"
+    },
+    {
+     "title": "Microsoft Stock News (Oct 22, 2026): MSFT Rises 0.2% to $532.95",
+     "url": "https://www.heygotrade.com/en/news/microsoft-msft-stock-news-october-22-2026/",
+     "outlet": "Gotrade News",
+     "date": "Oct 22, 2026"
+    },
+    {
+     "title": "Microsoft Stock Forecast: MSFT Pulls Back From $546.35 as Azure's 45% Guide Faces the AI Spending Test",
+     "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262235490-microsoft-stock-forecast-q1-earnings-preview-azure-546-resistance-october-23-2026-tradingkey",
+     "outlet": "TradingKey",
+     "date": "Oct 24, 2026"
     }
    ],
-   "summary": "Microsoft's stock is up about 34% over three months because companies want its cloud and AI services. Microsoft says customers want more than it can provide right now. Its next results are the big test: investors expect its cloud service, Azure, to grow about 45%. The worry is how much Microsoft is spending on data centers.",
+   "summary": "Microsoft's stock closed at a record $543.45 on Oct. 13. It had climbed from $352.83 in late June, and the company became worth just over $4 trillion. A lot of that rise started in July, when Microsoft said Azure, its cloud service that rents out computer power, grew 43% and now brings in more than $100 billion a year. On Oct. 22 the stock fell 2.23% to $521.08 when many AI and chip stocks dropped, because investors are worried about how much money tech companies are spending on AI.",
    "ticker": "MSFT",
-   "updatedAt": "2026-10-24T16:45:00Z",
-   "symbol": "NASDAQ:MSFT"
+   "updatedAt": "2026-10-25T01:39:12.333Z",
+   "symbol": "NASDAQ:MSFT",
+   "name": "Microsoft"
   },
   {
    "bear": [
