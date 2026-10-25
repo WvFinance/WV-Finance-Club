@@ -6,6 +6,10 @@ on:
   schedule:
     - cron: "0 23 * * 0"   # Sunday 6pm Central (5pm in winter)
   workflow_dispatch:
+    inputs:
+      only:
+        description: "Only these tickers, like MSFT,SP500 (leave empty for all)"
+        default: ""
 
 permissions:
   contents: write
@@ -28,6 +32,7 @@ jobs:
         working-directory: brief-server
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ONLY: ${{ inputs.only }}
       - name: Save the new briefs
         run: |
           if git diff --quiet -- data/news.json; then echo "No change"; exit 0; fi

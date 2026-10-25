@@ -26,10 +26,17 @@ for (const p of picks) {
   });
 }
 
+// ONLY=MSFT,SP500 refreshes just those briefs (for testing).
+const only = (process.env.ONLY || "").split(",").map(x => x.trim().toUpperCase()).filter(Boolean);
+if (only.length) jobs.splice(0, jobs.length, ...jobs.filter(j => only.includes(j.ticker)));
+
 let done = 0, failed = 0;
 async function run(job) {
   try {
-    const b = await writeBrief(apiKey, job.subject);
+    let b;
+    // One retry, because a brief with too few articles is thrown out.
+    try { b = await writeBrief(apiKey, job.subject, { minSources: 3 }); }
+    catch (e) { console.log(`${job.ticker}: retrying (${e.message})`); b = await writeBrief(apiKey, job.subject, { minSources: 3 }); }
     const next = { ...job.base };
     for (const k of FRESH) next[k] = b[k];
     if (!next.market && b.name) next.name = b.name;
@@ -44,9 +51,8 @@ async function run(job) {
   }
 }
 
-// Three at a time keeps the run short without hitting rate limits.
-const queue = [...jobs];
-await Promise.all([0, 1, 2].map(async () => { while (queue.length) await run(queue.shift()); }));
+// One at a time, so the briefs don't compete for the web search tool.
+for (const job of jobs) await run(job);
 
 if (done) {
   news.updated = new Date().toISOString().slice(0, 10);
