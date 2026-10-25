@@ -213,3 +213,60 @@ svg.hist text{fill:var(--muted);font-size:12px;font-family:var(--f-mono)}
 .dropbody{padding:0 20px 20px;min-width:0}
 #s-brief h3.loading{animation:pulse 1.4s ease-in-out infinite}@keyframes pulse{50%{opacity:.45}}
 details.srcdrop{background:none;margin-top:4px}details.srcdrop>summary{font-size:16px;padding:10px 14px}details.srcdrop>.sources{padding:0 14px 12px;margin:0}
+
+/* Roomier layout (Charlie, 2026-10-25): bigger text and more space everywhere */
+body{font-size:17px;line-height:1.6}
+.wrap{max-width:1280px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+main .wrap{padding-block:40px 64px}
+section[role="tabpanel"],.pview{display:grid;gap:32px}
+.pview[hidden]{display:none}
+.panel{padding:28px}
+.eyebrow{font-size:13px}
+.sechead{gap:12px 20px}
+.sechead h2{font-size:32px}
+.h3{font-size:22px}
+.sub{font-size:16px;margin-top:8px}
+.tiles{gap:20px}
+.tile{padding:22px 24px}
+.tile .v{font-size:34px;margin-top:8px}
+.tile .n{font-size:15px;margin-top:4px}
+.picks{grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:24px}
+.pick{padding:24px;gap:18px}
+.kv{gap:16px 12px;padding-block:16px}
+.kv .k{font-size:12px}
+.kv .val{font-size:16px}
+.stock,.two,.newsgrid,.brief-col{gap:32px}
+.side{gap:24px}
+.brief{gap:22px}
+.brief h3{font-size:28px}
+.brief .lede{font-size:18px}
+.side-col{padding:20px 22px}
+.side-col h4{font-size:17px;margin-bottom:10px}
+.side-col ul{font-size:16px;gap:10px}
+details.drop>summary{padding:20px 28px}
+.dropbody{padding:0 28px 28px}
+table.pos{font-size:15px}
+table.pos td{padding:14px 12px}
+table.pos th{padding:10px 12px}
+.histsum{font-size:18px;margin-bottom:18px}
+.seclegend{font-size:18px;gap:14px}
+.tabs .tab{font-size:16px;padding:16px 18px 14px}
+@media (max-width:600px){
+  body{font-size:16px}
+  .wrap{padding-left:16px;padding-right:16px}
+  main .wrap{padding-block:24px 40px}
+  section[role="tabpanel"],.pview{gap:20px}
+  .panel{padding:18px}
+  .sechead h2{font-size:26px}
+  .picks{grid-template-columns:minmax(0,1fr);gap:16px}
+  .pick{padding:18px}
+  .tile{padding:16px 18px}
+  .tile .v{font-size:28px}
+  details.drop>summary{padding:16px 18px}
+  .dropbody{padding:0 18px 18px}
+}
+.newsgrid{grid-template-columns:320px minmax(0,1fr)}
+.nlist{gap:10px}
+.nitem{padding:14px 16px;gap:6px 10px}
+.nitem .t{font-size:17px}
+.nitem .h{font-size:15px;line-height:1.45}
