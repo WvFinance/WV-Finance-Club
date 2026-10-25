@@ -1,0 +1,18 @@
+name: Test brief server
+
+# Asks the brief server for one brief and prints it. Costs one brief unless it's already saved today.
+on:
+  workflow_dispatch:
+    inputs:
+      symbol:
+        description: "Stock to test, like NASDAQ:AMD"
+        default: "NASDAQ:AMD"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -sS -m 180 -w '\nHTTP %{http_code} in %{time_total}s\n' \
+            -H "Origin: https://wvfinance.github.io" \
+            "https://wvfc-brief-server.wvfinance.workers.dev/brief?symbol=${{ inputs.symbol }}"
