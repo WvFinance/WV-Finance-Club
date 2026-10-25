@@ -5,5 +5,5 @@
 // searching a stock without a brief writes one on the spot. Leave it empty to turn that off.
 window.WVFC_CONFIG = {
   finnhubKey: "",
-  briefApi: ""
+  briefApi: "https://wvfc-brief-server.wvfinance.workers.dev"
 };
