@@ -324,7 +324,7 @@ function renderSearchBrief(){
     el("p",{class:"lede",text:n.summary||""}),
     el("div",{class:"sides"},el("div",{class:"side-col bull"},el("h4",{text:"What the bulls say"}),el("ul",{},(n.bull||[]).map(x=>el("li",{text:x})))),el("div",{class:"side-col bear"},el("h4",{text:"What the bears say"}),el("ul",{},(n.bear||[]).map(x=>el("li",{text:x}))))),
     el("div",{class:"meta",text:`${n.auto?"Written just now by Claude":"Written by Claude"} from ${(n.sources||[]).length} ${(n.sources||[]).length===1?"article":"articles"} · updated ${n.updatedAt?fmtDate(n.updatedAt):"recently"}`}),
-    inNews?el("div",{},el("button",{class:"btn small",text:"Sources and full brief →",onclick:()=>{S.newsTk=n.ticker;renderNews();showTab("news",true);}})):el("ul",{class:"sources"},(n.sources||[]).map(s=>el("li",{},el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer",text:s.title}),el("span",{class:"o",text:[s.outlet,s.date].filter(Boolean).join(" · ")}))))].filter(Boolean));
+    inNews?el("div",{},el("button",{class:"btn small",text:"Sources and full brief →",onclick:()=>{S.newsTk=n.ticker;renderNews();showTab("news",true);}})):el("details",{class:"drop srcdrop"},el("summary",{},el("span",{text:`Sources (${(n.sources||[]).length})`})),el("ul",{class:"sources"},(n.sources||[]).map(s=>el("li",{},el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer",text:s.title}),el("span",{class:"o",text:[s.outlet,s.date].filter(Boolean).join(" · ")})))))].filter(Boolean));
 }
 
 /* ---------- Boot ---------- */
