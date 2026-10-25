@@ -17,3 +17,7 @@ Writes a news brief for any stock someone searches on the site. It runs on Cloud
 Each new brief does a few web searches and reads a few articles, roughly 10 to 25 cents. A brief is saved for 24 hours, so searching the same stock again that day is free. `DAILY_LIMIT` in `wrangler.toml` caps new briefs per day (40 by default), and the spend limit in the Claude Console is a hard backstop.
 
 The API key lives only in Cloudflare's secret storage. Never put it in this repository, because the repository is public.
+
+## Weekly news refresh
+
+`scripts/refresh-news.mjs` rewrites the S&P 500, Nasdaq and every portfolio stock's brief in `data/news.json`. The **Refresh news briefs** GitHub Action runs it every Sunday evening (and you can run it by hand from the Actions tab). It uses the same `ANTHROPIC_API_KEY` repository secret, so each run costs roughly 10 to 25 cents per brief.
