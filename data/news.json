@@ -664,34 +664,41 @@
    "ticker": "DIS",
    "symbol": "NYSE:DIS",
    "sentiment": "neutral",
-   "headline": "Disney's parks and streaming are growing, but investors still aren't sure",
-   "summary": "Disney's stock dropped more than 10% from its August high, to about $101 in early October, because investors worry about how fast it can grow. Since then it has bounced back to about $112. Its parks and Disney+ are both growing, and some big banks think the stock is a bargain. Disney is also reportedly combining its TV groups and cutting hundreds of jobs.",
+   "headline": "Disney stock inches up as it cuts costs and pays big to hire AI workers",
+   "summary": "Disney shares were trading near $113 on October 22, up a bit more than 2% from the week before. New CEO Josh D'Amaro is reshaping the company. Disney is merging its TV and streaming teams, raising prices for Disney+ and Hulu without ads, and cutting more jobs to make more money. Disney also agreed to pay $60 million a year to hire 66 workers from Character.AI, an AI chatbot company that has gone bankrupt (meaning it can't pay its debts), while one research firm lowered its guess for where Disney's stock is headed.",
    "bull": [
-    "Parks, cruises and other experiences brought in almost $10 billion, up 10%",
-    "Streaming (Disney+ and Hulu) sales grew 11% to $5.5 billion",
-    "Goldman Sachs called the stock a buy and thinks it could reach $140"
+    "In its last quarterly report, Disney brought in $25.25 billion in sales, up 6.8% from a year earlier, and its profit per share beat what experts expected.",
+    "Disney's cost cutting and price increases are meant to help it keep more of the money it makes.",
+    "Hiring Character.AI's workers and getting rights to its technology gives Disney more AI know-how under its new CEO's plan."
    ],
    "bear": [
-    "Sales came in lower than experts expected in three of the last five quarters",
-    "Combining the TV groups means job cuts and extra costs",
-    "A court fight with the government over its ABC TV stations is still going"
+    "Research firm Arete lowered its price target (its guess of what the stock should be worth) from $88 to $86, about 24% below where the stock was trading.",
+    "Disney will spend about $180 million over three years on the AI workers' pay and bonuses to keep them, right after laying off several hundred of its own staff.",
+    "Character.AI has faced lawsuits from families saying its chatbots hurt their teens, and one market expert said investors now want to see real results."
    ],
-   "nextEvent": "Disney shares its next results in November 2026",
+   "nextEvent": "Disney reports its full-year and fourth-quarter 2026 results on November 17, 2026, before the stock market opens.",
    "sources": [
     {
-     "title": "Disney Stock Falls Into a Correction, but Goldman Sachs Calls It Highly Compelling",
-     "url": "https://www.benzinga.com/markets/equities/26/10/62153066/disney-stock-falls-into-a-correction-but-goldman-sachs-calls-it-highly-compelling",
-     "outlet": "Benzinga",
-     "date": "Oct 4, 2026"
+     "title": "Disney stock weekly forecast: Rally runs into overbought conditions amid restructuring and new technology deals",
+     "url": "https://tradersunion.com/news/stocks/show/3928294-disney-gains-2-06percent-over-the/",
+     "outlet": "Traders Union",
+     "date": "Oct 22, 2026"
     },
     {
-     "title": "Disney Stock Is 13% Below Its High as It Reportedly Merges Its TV Divisions",
-     "url": "https://www.tikr.com/blog/disney-stock-is-13-below-its-high-as-it-reportedly-merges-its-tv-divisions-heres-where-the-stock-could-go-by-2030",
-     "outlet": "TIKR",
-     "date": "Oct 2, 2026"
+     "title": "Disney to Spend $60 Million a Year on Character.AI Talent After Its Own Layoffs as AI Startup Faces Bankruptcy",
+     "url": "https://www.benzinga.com/markets/tech/26/10/62427403/disney-60-million-character-ai-employees-ai-strategy",
+     "outlet": "Benzinga",
+     "date": "Oct 17, 2026"
+    },
+    {
+     "title": "Walt Disney stock: Arete lowers target from USD 88 to USD 86 for Walt Disney stock",
+     "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/walt-disney-stock-arete-lowers-target-from-usd-88-to-usd-86-for-walt-disney-stock/70394571",
+     "outlet": "ad-hoc-news.de",
+     "date": "Oct 22, 2026"
     }
    ],
-   "updatedAt": "2026-10-24T19:50:00Z"
+   "updatedAt": "2026-10-25T02:04:05.476Z",
+   "name": "The Walt Disney Company"
   }
  ]
 }
