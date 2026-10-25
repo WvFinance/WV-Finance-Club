@@ -8,9 +8,36 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=2026102509">
+<link rel="stylesheet" href="assets/style.css?v=2026102510">
+<script>
+// Club password screen. The password is checked by its SHA-256 hash (lowercased), so it isn't written here.
+// To change it: hash the new password in lowercase and replace WVFC_PASS below.
+window.WVFC_PASS="fa347c18e366bd1348b942438f2bd44dd392e9ccfb81af17856afcf20d5c226e";
+try{if(localStorage.getItem("wvfc-pass")===window.WVFC_PASS)document.documentElement.classList.add("unlocked");}catch(e){}
+</script>
 </head>
 <body>
+
+<div id="gate" role="dialog" aria-label="Enter the club password">
+  <form id="gate-form" autocomplete="off">
+    <img src="assets/logo.png" alt="Waubonsie Valley Finance Club" width="180" height="180">
+    <input id="gate-pass" type="password" placeholder="Club password" aria-label="Club password" autofocus>
+    <p id="gate-msg" role="alert"></p>
+  </form>
+</div>
+<script>
+(function(){
+  const form=document.getElementById("gate-form"),inp=document.getElementById("gate-pass"),msg=document.getElementById("gate-msg");
+  async function sha(t){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");}
+  form.addEventListener("submit",async e=>{e.preventDefault();
+    const h=await sha(inp.value.trim().toLowerCase());
+    if(h!==window.WVFC_PASS){msg.textContent="That's not the password. Try again.";inp.value="";inp.focus();form.classList.remove("shake");void form.offsetWidth;form.classList.add("shake");return;}
+    let saved=false;try{localStorage.setItem("wvfc-pass",h);saved=localStorage.getItem("wvfc-pass")===h;}catch(err){}
+    // Reload so the charts draw at full size; without storage, just open the page.
+    if(saved)location.reload();else document.documentElement.classList.add("unlocked");
+  });
+})();
+</script>
 
 <header class="mast">
   <div class="wrap">
@@ -143,7 +170,7 @@
 </footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="config.js?v=2026102509"></script>
-<script src="assets/app.js?v=2026102509"></script>
+<script src="config.js?v=2026102510"></script>
+<script src="assets/app.js?v=2026102510"></script>
 </body>
 </html>

@@ -266,3 +266,15 @@ table.pos th{padding:10px 12px}
 .latestlist a{color:var(--ink);font-weight:600;text-decoration:none}
 .latestlist a:hover{color:var(--gold);text-decoration:underline}
 .latestlist .o{font-size:12px;color:var(--muted);font-family:var(--f-mono)}
+
+/* Password screen */
+html:not(.unlocked) body>*:not(#gate):not(script){display:none!important}
+html.unlocked #gate{display:none}
+#gate{position:fixed;inset:0;z-index:50;background:#000;display:grid;place-items:center;padding:24px}
+#gate-form{display:grid;justify-items:center;gap:28px;width:min(360px,100%)}
+#gate-form img{width:180px;height:180px}
+#gate-pass{width:100%;box-sizing:border-box;background:var(--surface);border:1px solid var(--line);border-radius:999px;color:var(--ink);font:inherit;font-size:17px;padding:14px 22px;text-align:center;outline:none}
+#gate-pass:focus{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 25%,transparent)}
+#gate-msg{margin:-12px 0 0;min-height:1.4em;color:var(--down);font-size:14px}
+#gate-form.shake{animation:shake .35s}
+@keyframes shake{25%{translate:-8px}50%{translate:8px}75%{translate:-4px}}
