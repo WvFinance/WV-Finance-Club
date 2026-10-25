@@ -103,7 +103,7 @@ function renderTiles(){
   $("#cnt-picks").textContent=S.picks.length?String(S.picks.length):"";
   const note=$("#price-note");
   if(S.picks.length&&!all){note.hidden=false;note.textContent="Prices for a new pick show up after the next daily price update, usually within a few minutes.";}
-  else if(S.picks.length&&!CFG.finnhubKey&&S.prices.updated){note.hidden=false;note.textContent=`Values use closing prices from ${fmtStamp(S.prices.updated)}. The chart on each pick is live.`;}
+  else if(S.picks.length&&!CFG.finnhubKey&&S.prices.updated){note.hidden=false;const lastDay=(S.prices.dates||[]).slice(-1)[0];note.textContent=`Values use closing prices from ${lastDay?fmtDate(lastDay):fmtStamp(S.prices.updated)}. The chart on each pick is live.`;}
   else note.hidden=true;
 }
 function niceStep(raw){const p=Math.pow(10,Math.floor(Math.log10(raw)));const f=raw/p;return(f<1.5?1:f<3?2:f<7?5:10)*p;}
