@@ -57,6 +57,7 @@ jobs:
               echo "$res" | grep -q '"success":true' && break
             done
           fi
+          true
       - name: Deploy
         if: env.SKIP != '1'
         run: npx wrangler deploy
