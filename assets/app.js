@@ -290,8 +290,8 @@ function renderNews(){
     el("p",{class:"lede",text:n.summary||""}),
     el("div",{class:"sides"},el("div",{class:"side-col bull"},el("h4",{text:"What the bulls say"}),el("ul",{},(n.bull||[]).map(x=>el("li",{text:x})))),el("div",{class:"side-col bear"},el("h4",{text:"What the bears say"}),el("ul",{},(n.bear||[]).map(x=>el("li",{text:x}))))),
     n.nextEvent?el("div",{class:"notice"},el("b",{text:"Coming up: "}),n.nextEvent):null,
-    el("div",{},el("div",{class:"eyebrow",style:"margin-bottom:6px",text:`Sources (${(n.sources||[]).length})`}),el("ul",{class:"sources"},(n.sources||[]).map(s=>el("li",{},el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer",text:s.title}),el("span",{class:"o",text:[s.outlet,s.date].filter(Boolean).join(" · ")}))))),
-    el("div",{class:"meta",text:`Written by Claude from the articles above · updated ${n.updatedAt?fmtDate(n.updatedAt):"recently"}. Summaries can leave things out, so read the articles before you pitch.`}),
+    el("details",{class:"drop srcdrop"},el("summary",{},el("span",{text:`Sources (${(n.sources||[]).length})`})),el("ul",{class:"sources"},(n.sources||[]).map(s=>el("li",{},el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer",text:s.title}),el("span",{class:"o",text:[s.outlet,s.date].filter(Boolean).join(" · ")}))))),
+    el("div",{class:"meta",text:`Written by Claude from the articles in Sources · updated ${n.updatedAt?fmtDate(n.updatedAt):"recently"}. Summaries can leave things out, so read the articles before you pitch.`}),
     el("div",{},el("button",{class:"btn small",text:`Open ${n.market?n.name:n.ticker} chart →`,onclick:()=>{openStock(n.symbol||n.ticker);showTab("search",true);}}))].filter(Boolean));
 }
 function renderNewsFeed(){
