@@ -2,7 +2,7 @@ name: Deploy brief server
 
 # Puts brief-server/ on Cloudflare Workers. Needs two repository secrets:
 #   CLOUDFLARE_API_TOKEN  (Cloudflare token from the "Edit Cloudflare Workers" template)
-#   ANTHROPIC_API_KEY     (Claude API key)
+#   GEMINI_API_KEY        (free Google Gemini API key from aistudio.google.com)
 # Optional: CLOUDFLARE_ACCOUNT_ID if the token can see more than one account.
 on:
   workflow_dispatch:
@@ -23,8 +23,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check secrets
         run: |
-          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "${{ secrets.ANTHROPIC_API_KEY }}" ]; then
-            echo "::warning::CLOUDFLARE_API_TOKEN or ANTHROPIC_API_KEY is not set yet, so the brief server was not deployed."
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "${{ secrets.GEMINI_API_KEY }}" ]; then
+            echo "::warning::CLOUDFLARE_API_TOKEN or GEMINI_API_KEY is not set yet, so the brief server was not deployed."
             echo "SKIP=1" >> "$GITHUB_ENV"
           fi
       - uses: actions/setup-node@v4
@@ -61,6 +61,9 @@ jobs:
       - name: Deploy
         if: env.SKIP != '1'
         run: npx wrangler deploy
-      - name: Save the Claude key as a Cloudflare secret
+      - name: Save the Gemini key as a Cloudflare secret
         if: env.SKIP != '1'
-        run: printf '%s' "${{ secrets.ANTHROPIC_API_KEY }}" | npx wrangler secret put ANTHROPIC_API_KEY
+        run: printf '%s' "${{ secrets.GEMINI_API_KEY }}" | npx wrangler secret put GEMINI_API_KEY
+      - name: Remove the old Claude key from Cloudflare
+        if: env.SKIP != '1'
+        run: yes | npx wrangler secret delete ANTHROPIC_API_KEY || true
