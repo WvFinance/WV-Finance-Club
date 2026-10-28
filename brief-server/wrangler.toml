@@ -13,6 +13,8 @@ id = "REPLACE_WITH_KV_ID"
 ALLOWED_ORIGIN = "https://wvfinance.github.io"
 # Most new briefs the server will write in one day. Saved briefs don't count.
 DAILY_LIMIT = "40"
+# Free Google Gemini model that writes the briefs.
+GEMINI_MODEL = "gemini-flash-latest"
 
-# The Claude API key is a secret, never put it in this file:
-#   npx wrangler secret put ANTHROPIC_API_KEY
+# The Gemini API key is a secret, never put it in this file.
+# It comes from the GEMINI_API_KEY GitHub secret when the deploy workflow runs.
