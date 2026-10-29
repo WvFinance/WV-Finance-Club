@@ -1,6 +1,8 @@
 // Gathers recent news about a stock from free public feeds (no keys, no cost):
 // Google News and Yahoo Finance. Used by the brief server before Gemini writes the brief.
 
+import { secFacts } from "./sec.js";
+
 const UA = "Mozilla/5.0 (compatible; WVFC-brief-server/1.0; +https://wvfinance.github.io)";
 const DAYS = 14;
 const MAX_ARTICLES = 15;
@@ -143,10 +145,13 @@ export async function checkFeeds(ticker) {
     try { const items = await f(ticker); out[name] = { items: items.length, recent: cleanArticles([items]).length }; }
     catch (e) { out[name] = { error: String(e.message || e) }; }
   }
+  try { const f = await secFacts(ticker); out.SEC = f ? f.text : "no quarterly numbers found"; }
+  catch (e) { out.SEC = { error: String(e.message || e) }; }
   return out;
 }
 
 export async function gatherNews(ticker) {
+  const official = secFacts(ticker).catch(e => { console.warn("SEC failed:", String(e.message || e)); return null; });
   const feeds = await Promise.allSettled(Object.values(FEEDS).map(f => f(ticker)));
   for (const f of feeds) if (f.status === "rejected") console.warn("news feed failed:", String(f.reason));
   const articles = cleanArticles(feeds.filter(f => f.status === "fulfilled").map(f => f.value));
@@ -157,5 +162,7 @@ export async function gatherNews(ticker) {
     const text = articleText(await get(a.url, 5000, PAGE_CAP));
     if (text.length > 200) a.text = text;
   }));
-  return articles;
+  // The company's official numbers go first, so the brief can quote real results.
+  const facts = await official;
+  return facts ? [facts, ...articles] : articles;
 }

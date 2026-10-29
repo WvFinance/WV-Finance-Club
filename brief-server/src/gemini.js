@@ -33,7 +33,7 @@ function articleBlock(articles) {
     `[${i + 1}] ${a.title}`,
     `Outlet: ${a.outlet || "unknown"} · ${a.date}`,
     a.summary ? `Summary: ${a.summary}` : "",
-    a.text ? `Article text: ${a.text}` : "",
+    a.text ? `${a.official ? "Official numbers" : "Article text"}: ${a.text}` : "",
   ].filter(Boolean).join("\n")).join("\n\n");
 }
 
@@ -83,7 +83,7 @@ export function checkBrief(text, articles) {
 export async function writeBrief(apiKey, symbol, model) {
   const ticker = symbol.split(":").pop();
   const articles = await gatherNews(ticker);
-  if (articles.length < 3) throw new BriefError(`only ${articles.length} recent articles`, "no-news");
+  if (articles.filter(a => !a.official).length < 3) throw new BriefError(`only ${articles.length} recent articles`, "no-news");
   const prompt = `Write the news brief for ${symbol}.\n\nArticles:\n\n${articleBlock(articles)}`;
   let lastError;
   for (let attempt = 0; attempt < 2; attempt++) {
