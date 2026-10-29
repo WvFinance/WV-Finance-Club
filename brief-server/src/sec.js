@@ -2,7 +2,7 @@
 // Turns the latest quarterly report into a few plain sentences before Gemini sees them,
 // so the brief can quote real results without copying finance jargon.
 
-const UA = "WV Finance Club brief server (https://wvfinance.github.io; github.com/WvFinance)";
+const UA = "WV Finance Club brief server warrior.financec@gmail.com";
 const DAY = 86400000;
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const REVENUE = ["RevenueFromContractWithCustomerExcludingAssessedTax", "Revenues", "SalesRevenueNet", "RevenuesNetOfInterestExpense"];

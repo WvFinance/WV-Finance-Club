@@ -4,7 +4,7 @@ Writes a news brief for any stock someone searches on the site, for free. It run
 
 How a brief is made:
 1. `src/news.js` gathers the stock's news from the last two weeks from free public feeds (Google News, Bing News and Yahoo Finance), up to 15 articles mixed across the feeds, and reads the full text of up to 6 of them when the site allows it.
-2. `src/sec.js` adds the company's latest official quarterly numbers (sales and profit) from the SEC's free EDGAR data, written as plain sentences. The SEC asks for a contact email in each request; until one is set in `sec.js`, the SEC may refuse and briefs are written without it.
+2. `src/sec.js` adds the company's latest official quarterly numbers (sales and profit) from the SEC's free EDGAR data, written as plain sentences. The SEC requires a contact email in each request; the club email is set in `sec.js`. If the SEC is unreachable, briefs are written without its numbers.
 3. `src/gemini.js` hands everything to Google Gemini's free tier (model set by `GEMINI_MODEL` in `wrangler.toml`), with wording rules for high school readers and an example brief to copy. Gemini's own Google Search is not used, because it isn't free.
 4. The server checks the brief: 3 bull and 3 bear reasons, a short headline, at least 3 articles from at least 2 outlets, and (`src/wording.js`) no unexplained finance jargon and a reading level of about grade 9. If the wording is too hard, Gemini rewrites it once. The server fills in the source links itself, so every source is a real article.
 
