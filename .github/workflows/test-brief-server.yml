@@ -13,7 +13,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: Check the news feeds
+        run: |
+          r=$(curl -sS -m 60 "https://wvfc-brief-server.wvfinance.workers.dev/news-check?symbol=${{ inputs.symbol }}")
+          echo "$r"; echo "::notice title=News feeds::$r"
+      - name: Ask for a brief
+        run: |
           code=$(curl -sS -m 180 -o brief.json -w '%{http_code}' \
             -H "Origin: https://wvfinance.github.io" \
             "https://wvfc-brief-server.wvfinance.workers.dev/brief?symbol=${{ inputs.symbol }}")

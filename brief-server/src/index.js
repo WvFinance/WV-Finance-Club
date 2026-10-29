@@ -2,6 +2,7 @@
 // GET /brief?symbol=NASDAQ:AMD returns a news brief in the same shape as data/news.json.
 // Briefs are saved for a day so the same stock is only written once a day.
 import { writeBrief } from "./gemini.js";
+import { checkFeeds } from "./news.js";
 
 const DAY = 24 * 60 * 60;
 
@@ -23,6 +24,11 @@ export default {
     const headers = cors(env, request.headers.get("Origin"));
     if (request.method === "OPTIONS") return new Response(null, { headers });
     const url = new URL(request.url);
+    if (url.pathname === "/news-check") {
+      const t = (url.searchParams.get("symbol") || "AAPL").toUpperCase().split(":").pop();
+      if (!/^[A-Z][A-Z0-9.\-]{0,9}$/.test(t)) return json({ error: "bad ticker" }, 400, headers);
+      return json(await checkFeeds(t), 200, headers);
+    }
     if (url.pathname !== "/brief") return json({ error: "not found" }, 404, headers);
 
     const symbol = (url.searchParams.get("symbol") || "").toUpperCase();

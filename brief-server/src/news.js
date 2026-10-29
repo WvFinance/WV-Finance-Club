@@ -100,12 +100,23 @@ export function articleText(html) {
 }
 
 // Gathers up to 15 articles from the last two weeks, and the full text of up to 3 of them.
+const FEEDS = {
+  "Google News": t => get(`https://news.google.com/rss/search?q=${encodeURIComponent(`${t} stock when:${DAYS}d`)}&hl=en-US&gl=US&ceid=US:en`).then(parseGoogleNews),
+  "Yahoo Finance": t => get(`https://feeds.finance.yahoo.com/rss/2.0/headline?s=${encodeURIComponent(t)}&region=US&lang=en-US`).then(parseYahoo),
+};
+
+// What each feed returned, for the /news-check test (no AI, no cost).
+export async function checkFeeds(ticker) {
+  const out = {};
+  for (const [name, f] of Object.entries(FEEDS)) {
+    try { const items = await f(ticker); out[name] = { items: items.length, recent: cleanArticles([items]).length }; }
+    catch (e) { out[name] = { error: String(e.message || e) }; }
+  }
+  return out;
+}
+
 export async function gatherNews(ticker) {
-  const q = encodeURIComponent(`${ticker} stock when:${DAYS}d`);
-  const feeds = await Promise.allSettled([
-    get(`https://news.google.com/rss/search?q=${q}&hl=en-US&gl=US&ceid=US:en`).then(parseGoogleNews),
-    get(`https://feeds.finance.yahoo.com/rss/2.0/headline?s=${encodeURIComponent(ticker)}&region=US&lang=en-US`).then(parseYahoo),
-  ]);
+  const feeds = await Promise.allSettled(Object.values(FEEDS).map(f => f(ticker)));
   for (const f of feeds) if (f.status === "rejected") console.warn("news feed failed:", String(f.reason));
   const articles = cleanArticles(feeds.filter(f => f.status === "fulfilled").map(f => f.value));
 
