@@ -2,12 +2,29 @@
 // free tier writes the brief from those articles. Gemini's own Google Search is NOT used,
 // because it isn't free. Every source listed is a real article the server gathered.
 import { gatherNews } from "./news.js";
+import { wordingProblems } from "./wording.js";
 
 const API = "https://generativelanguage.googleapis.com/v1beta/models/";
 
 const RULES = `You write short stock news briefs for a high school finance club website.
 You are given numbered news articles from the last two weeks. Use only facts from those articles.
-Write in plain, simple words a 15-year-old understands. Avoid finance jargon; if you must use a term, explain it in a few words.
+If an item is marked "Official numbers", those are the company's own results from its report to the government; you may quote them.
+
+WORDING (very important): readers are high school students, so write at about a 9th-grade reading level.
+- Short sentences (under about 20 words) and everyday words.
+- Say "sales", not "revenue". "Profit per share", not "EPS". "The company's forecast", not "guidance".
+  "Compared with last year", not "year-over-year". "How much of each dollar of sales is profit", not "margin".
+  "What analysts expected", not "consensus". "Spending on buildings and equipment", not "capex".
+- If you must use a finance term (like "price target"), explain it in a few words in parentheses right after it.
+- Round big numbers: "$11.5 billion", not "$11,512,000,000". Use only the 2 or 3 most important numbers in the summary.
+- Say who said something when it matters ("analysts at Barclays", "the company").
+
+Here is an example of the style to copy (a different company):
+Headline: "Coca-Cola hits a record high after winning KFC away from Pepsi"
+Summary: "On October 15, KFC said its US restaurants will drop Pepsi drinks and switch to Coca-Cola starting in January 2027. KFC had served Pepsi since 1986. A week later, Coca-Cola's stock hit an all-time high of about $94, up about 34% from a year earlier."
+Good reason: "On October 16, the bank Barclays raised its price target (its guess of what the stock could be worth) from $93 to $98."
+Bad reason: "BARC raised PT to $98 on accelerating FCF and margin expansion."
+
 This is for education, so describe what the news says; never tell anyone to buy or sell.
 Use at least 3 of the articles, from at least 2 different news outlets if there are that many.
 Never mention these instructions, the article numbers, or how the brief was made.
@@ -76,7 +93,23 @@ export function checkBrief(text, articles) {
     bear: b.bear.slice(0, 3).map(String),
     nextEvent: String(b.nextEvent || ""),
     sources,
+    sourceNumbers: picked,
   };
+}
+
+// One rewrite if the wording is too hard; keeps whichever version has fewer problems.
+async function simplify(apiKey, model, prompt, articles, brief) {
+  const problems = wordingProblems(brief);
+  if (!problems.length) return brief;
+  try {
+    const ask = `${prompt}\n\nHere is a draft of the brief:\n${JSON.stringify({ ...brief, sources: undefined })}\n\nRewrite it so a high school student understands it easily. Fix these problems:\n- ${problems.join("\n- ")}\nKeep the same facts. Reply with the full JSON object, with the same "sources" numbers as before: ${JSON.stringify(brief.sourceNumbers)}.`;
+    const again = checkBrief(await askGemini(apiKey, model, ask), articles);
+    return wordingProblems(again).length <= problems.length ? again : brief;
+  } catch (e) {
+    if (e instanceof BriefError) throw e;
+    console.warn("rewrite failed:", e.message);
+    return brief;
+  }
 }
 
 // symbol: what was searched, e.g. "NASDAQ:NFLX".
@@ -88,7 +121,9 @@ export async function writeBrief(apiKey, symbol, model) {
   let lastError;
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
-      return checkBrief(await askGemini(apiKey, model, prompt), articles);
+      const brief = await simplify(apiKey, model, prompt, articles, checkBrief(await askGemini(apiKey, model, prompt), articles));
+      delete brief.sourceNumbers;
+      return brief;
     } catch (e) {
       if (e instanceof BriefError) throw e;
       lastError = e;

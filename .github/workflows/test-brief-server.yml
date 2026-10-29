@@ -13,6 +13,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Ask for a brief
         run: |
           code=$(curl -sS -m 180 -o brief.json -w '%{http_code}' \
@@ -20,6 +21,8 @@ jobs:
             "https://wvfc-brief-server.wvfinance.workers.dev/brief?symbol=${{ inputs.symbol }}")
           cat brief.json; echo; echo "HTTP $code"
           msg=$(node -e 'const b=JSON.parse(require("fs").readFileSync("brief.json","utf8"));console.log(b.error?"Error: "+b.error:`${b.headline} (${b.sentiment}, ${(b.sources||[]).length} sources: ${[...new Set((b.sources||[]).map(s=>s.outlet))].join(", ")})`)' 2>/dev/null || echo "Unreadable reply")
+          words=$(node --input-type=module -e 'import { gradeLevel, unexplainedJargon } from "./brief-server/src/wording.js"; import fs from "fs"; const b = JSON.parse(fs.readFileSync("brief.json", "utf8")); if (b.summary) { const t = [b.summary, ...b.bull, ...b.bear].join(" "); const j = unexplainedJargon([b.headline, t].join(" ")); console.log(`Reading level: grade ${gradeLevel(t).toFixed(1)}. Unexplained jargon: ${j.length ? j.join(", ") : "none"}.`); }' 2>/dev/null)
+          [ -n "$words" ] && echo "::notice title=Wording::$words"
           if [ "$code" = 200 ]; then echo "::notice title=Brief OK::$msg"; else echo "::error title=HTTP $code::$msg"; exit 1; fi
       - name: Check the news feeds
         if: always()
