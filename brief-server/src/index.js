@@ -44,8 +44,7 @@ export default {
       await env.BRIEFS.put("brief:" + ticker, JSON.stringify(brief), { expirationTtl: DAY });
       return json(brief, 200, headers);
     } catch (e) {
-      if (e.limit) return json({ error: "We've used today's free briefs. Try again tomorrow." }, 429, headers);
-      console.error(symbol, e);
+   if (e.limit) return json({ error: "We've used today's free briefs. Try again tomorrow.", google: e.message }, 429, headers);      console.error(symbol, e);
       return json({ error: "The brief couldn't be written right now. Try again in a minute." }, 502, headers);
     }
   },
