@@ -1,6 +1,7 @@
 name: Test brief server
 
 # Asks the brief server for one brief and prints it. Free (uses one of the day's free Gemini briefs).
+# The run turns red if no brief comes back, and the result shows at the top of the run page.
 on:
   workflow_dispatch:
     inputs:
@@ -13,6 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          curl -sS -m 180 -w '\nHTTP %{http_code} in %{time_total}s\n' \
+          code=$(curl -sS -m 180 -o brief.json -w '%{http_code}' \
             -H "Origin: https://wvfinance.github.io" \
-            "https://wvfc-brief-server.wvfinance.workers.dev/brief?symbol=${{ inputs.symbol }}"
+            "https://wvfc-brief-server.wvfinance.workers.dev/brief?symbol=${{ inputs.symbol }}")
+          cat brief.json; echo; echo "HTTP $code"
+          msg=$(node -e 'const b=JSON.parse(require("fs").readFileSync("brief.json","utf8"));console.log(b.error?"Error: "+b.error:`${b.headline} (${b.sentiment}, ${(b.sources||[]).length} sources: ${[...new Set((b.sources||[]).map(s=>s.outlet))].join(", ")})`)' 2>/dev/null || echo "Unreadable reply")
+          if [ "$code" = 200 ]; then echo "::notice title=Brief OK::$msg"; else echo "::error title=HTTP $code::$msg"; exit 1; fi
