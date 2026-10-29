@@ -7,7 +7,7 @@ const JARGON = [
   "guidance", "margins?", "multiples?", "headwinds?", "tailwinds?", "capex", "capital expenditures?", "free cash flow",
   "diluted", "GAAP", "top line", "bottom line", "fiscal", "valuation", "outperform", "underperform", "overweight",
   "underweight", "price target", "short interest", "dividend yield", "buybacks?", "market cap(?:italization)?",
-  "sequential(?:ly)?", "accretive", "dilutive", "run-rate", "TAM", "ARPU", "comps", "comparable sales", "operating income",
+  "sequential(?:ly)?", "Q[1-4]", "H[12]", "FY\\d*", "accretive", "dilutive", "run-rate", "TAM", "ARPU", "comps", "comparable sales", "operating income",
 ];
 const JARGON_RE = new RegExp(`(?<![\\w-])(${JARGON.join("|")})(?![\\w-])`, "gi");
 

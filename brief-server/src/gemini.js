@@ -16,6 +16,7 @@ WORDING (very important): readers are high school students, so write at about a 
   "Compared with last year", not "year-over-year". "How much of each dollar of sales is profit", not "margin".
   "What analysts expected", not "consensus". "Spending on buildings and equipment", not "capex".
 - If you must use a finance term (like "price target"), explain it in a few words in parentheses right after it.
+- Say "the July-to-September quarter" or "the last three months", not "Q3". Say "the company's year", not "fiscal year".
 - Round big numbers: "$11.5 billion", not "$11,512,000,000". Use only the 2 or 3 most important numbers in the summary.
 - Say who said something when it matters ("analysts at Barclays", "the company").
 

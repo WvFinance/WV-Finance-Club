@@ -53,7 +53,7 @@ export default {
       console.error(symbol, e.message || e);
       if (e.kind === "no-news") return json({ error: `We couldn't find enough recent news for ${ticker}. Make sure you typed the stock's ticker symbol, not the company name (for example NFLX for Netflix).` }, 404, headers);
       if (e.kind === "limit") return json({ error: "We've used today's free briefs. Try again tomorrow." }, 429, headers);
-      return json({ error: "The brief couldn't be written right now. Try again in a minute." }, 502, headers);
+      return json({ error: "The brief couldn't be written right now. Try again in a minute.", reason: String(e.message || e).slice(0, 160) }, 502, headers);
     }
   },
 };
