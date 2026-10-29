@@ -229,7 +229,54 @@ function renderHistory(box=$("#hist-body")){
 function renderBreakdown(){
   if(!S.loaded)return;if(S_view==="positions")renderPositions();else if(S_view==="sectors")renderSectors();else if(S_view==="history")renderHistory();
 }
-function renderPortfolio(){renderTiles();renderCompare();renderPicks();renderBreakdown();}
+/* ---------- Market today, upcoming events and weekly recap ---------- */
+// Index funds stand in for the indexes: SPY = S&P 500, QQQ = Nasdaq 100, DIA = Dow.
+const MKT=[["SPY","S&P 500"],["QQQ","Nasdaq"],["DIA","Dow"]];
+function moveOver(tk,back){const d=S.prices.dates||[];if(d.length<=back)return null;const a=closeOn(tk,d[d.length-1]),b=closeOn(tk,d[d.length-1-back]);return a!=null&&b?a/b-1:null;}
+function marketDay(){const d=S.prices.dates||[];const last=d[d.length-1];if(!last)return null;
+  const isToday=last===new Date().toLocaleDateString("en-CA",{timeZone:"America/New_York"});
+  return{last,label:isToday?"Market today":"Market on "+new Date(last+"T12:00:00").toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"})};}
+function renderMarket(){
+  const box=$("#market"),md=marketDay();const rows=MKT.map(([tk,name])=>({name,r:moveOver(tk,1)})).filter(x=>x.r!=null);
+  if(!md||!rows.length){box.hidden=true;return;}
+  // The "why" sentence comes from the S&P 500 brief, but only if it was written in the last 2 days.
+  const sp=S.briefs.find(b=>b.ticker==="SP500");const fresh=sp&&sp.headline&&sp.updatedAt&&(new Date(md.last+"T23:59:00")-new Date(sp.updatedAt))<3*864e5;
+  const avg=rows.reduce((s,x)=>s+x.r,0)/rows.length;
+  const why=fresh?sp.headline:avg>0.002?"Stocks went up overall.":avg<-0.002?"Stocks went down overall.":"Stocks barely moved.";
+  box.replaceChildren(el("div",{class:"eyebrow",text:md.label}),
+    el("div",{class:"mkrow"},rows.map(x=>el("div",{class:"mk"},el("span",{text:x.name}),el("b",{class:cls(x.r),text:fmtPct(x.r,2)})))),
+    el("p",{class:"mkwhy"},el("b",{text:"Why: "}),why));
+  box.hidden=false;
+}
+const MONS={jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+// Pull the first "Oct 28" / "October 28, 2026" style date out of a brief's "coming up" text.
+function eventDate(t){const m=String(t||"").match(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+(\d{1,2})(?!\d)(?:st|nd|rd|th)?(?:,?\s+(\d{4}))?/i);
+  if(!m)return null;return new Date(m[3]?+m[3]:new Date().getFullYear(),MONS[m[1].slice(0,3).toLowerCase()],+m[2]);}
+function renderEvents(){
+  const panel=$("#events-panel"),box=$("#events");const held=new Map(S.picks.map(p=>[p.ticker,p]));
+  const today=new Date();today.setHours(0,0,0,0);
+  const rows=S.briefs.filter(b=>b.nextEvent&&held.has(b.ticker)).map(b=>({b,d:eventDate(b.nextEvent)})).filter(r=>!r.d||r.d>=today)
+    .sort((x,y)=>(x.d?x.d.getTime():Infinity)-(y.d?y.d.getTime():Infinity));
+  panel.hidden=!rows.length;if(!rows.length)return;
+  box.replaceChildren(...rows.map(({b,d})=>el("button",{type:"button",class:"event",onclick:()=>{S.newsTk=b.ticker;renderNews();showTab("news",true);}},
+    el("span",{class:"edate"+(d?"":" tbd")},d?el("b",{text:d.toLocaleDateString("en-US",{month:"short",day:"numeric"})}):el("b",{text:"Soon"}),el("span",{text:d?d.toLocaleDateString("en-US",{weekday:"short"}):"date TBD"})),
+    el("span",{class:"etext"},el("b",{text:b.ticker+" · "+(held.get(b.ticker).name||"")}),el("span",{text:b.nextEvent})))));
+}
+// Best and worst pick over the last 5 market days, with the headline from each one's brief as the reason.
+function renderRecap(){
+  const panel=$("#recap");const rows=S.picks.map(p=>({p,r:moveOver(p.ticker,5)})).filter(x=>x.r!=null).sort((a,b)=>b.r-a.r);
+  if(rows.length<2){panel.hidden=true;return;}
+  const spy=moveOver("SPY",5);
+  const card=(title,x)=>{const b=S.briefs.find(n=>n.ticker===x.p.ticker);
+    return el("button",{type:"button",class:"recapcard",onclick:()=>{S.newsTk=x.p.ticker;renderNews();renderNewsFeed();$("#brief").scrollIntoView({behavior:"smooth",block:"start"});}},
+      el("div",{class:"eyebrow",text:title}),el("div",{class:"rtop"},el("b",{text:x.p.ticker+" · "+(x.p.name||"")}),el("span",{class:"rmove "+cls(x.r),text:fmtPct(x.r)})),
+      el("p",{text:b&&b.headline?"What moved it: "+b.headline:"No brief yet for this stock."}));};
+  panel.replaceChildren(el("div",{class:"sechead",style:"margin-bottom:10px"},el("div",{},el("div",{class:"eyebrow",text:"Weekly recap · last 5 market days"}),el("h3",{class:"h3",text:"Our best and worst stock this week"})),
+      spy!=null?el("span",{class:"meta",text:`S&P 500 ${fmtPct(spy)}`}):null),
+    el("div",{class:"recapgrid"},card("Best",rows[0]),card("Worst",rows[rows.length-1])));
+  panel.hidden=false;
+}
+function renderPortfolio(){renderMarket();renderTiles();renderCompare();renderEvents();renderPicks();renderBreakdown();}
 
 /* ---------- Search ---------- */
 function normSym(raw){const v=String(raw||"").trim().toUpperCase().replace(/\s+/g,"");if(!v)return null;if(!/^[A-Z0-9.:\-!_]{1,24}$/.test(v))return null;return v;}
@@ -272,6 +319,7 @@ const inPortfolio=tk=>S.picks.some(p=>p.ticker===tk);
 function visibleBriefs(){return S.briefs.filter(b=>b.market).sort((a,b)=>(a.order||0)-(b.order||0)).concat(S.briefs.filter(b=>!b.market&&inPortfolio(b.ticker)).sort((a,b)=>a.ticker.localeCompare(b.ticker)));}
 function briefForSymbol(sym){const t=bare(sym);return visibleBriefs().find(b=>bare(b.symbol||b.ticker)===t||b.ticker===t)||null;}
 function renderNews(){
+  renderRecap();
   const list=visibleBriefs();$("#cnt-news").textContent=list.length?String(list.length):"";
   const nl=$("#nlist"),br=$("#brief");nl.replaceChildren();
   if(!list.length){br.replaceChildren(el("div",{class:"empty",style:"border:0"},el("h3",{text:"No briefs yet"})));$("#news-meter-panel").hidden=true;return;}

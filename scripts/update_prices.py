@@ -1,4 +1,4 @@
-"""Download daily closing prices for every stock in the portfolio plus SPY.
+"""Download daily closing prices for every stock in the portfolio plus SPY, QQQ and DIA.
 
 Writes data/prices.json, which the site uses for current values and the
 "Club vs S&P 500" chart. Runs in GitHub Actions (see .github/workflows).
@@ -34,7 +34,8 @@ def yahoo_closes(ticker, start):
 
 def main():
     picks = json.loads(PORTFOLIO.read_text()).get("picks", [])
-    tickers = sorted({p["ticker"].upper() for p in picks if p.get("ticker")} | {"SPY"})
+    # QQQ and DIA track the Nasdaq 100 and the Dow for the "Market today" box.
+    tickers = sorted({p["ticker"].upper() for p in picks if p.get("ticker")} | {"SPY", "QQQ", "DIA"})
     dates = [dt.date.fromisoformat(p["entryDate"]) for p in picks if p.get("entryDate")]
     # Start a few days before the first pick so the chart has a starting close.
     start = (min(dates) if dates else dt.date.today() - dt.timedelta(days=365)) - dt.timedelta(days=7)
