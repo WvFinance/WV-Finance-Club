@@ -71,7 +71,7 @@ async function quote(tk){
 function renderTape(){
   const syms=[{proName:"FOREXCOM:SPXUSD",title:"S&P 500"},{proName:"FOREXCOM:NSXUSD",title:"Nasdaq 100"},{proName:"FOREXCOM:DJI",title:"Dow 30"}]
     .concat(S.picks.map(p=>({proName:p.symbol||p.ticker,title:p.ticker})));
-  tv($("#tape"),"ticker-tape",{symbols:syms,showSymbolLogo:true,isTransparent:true,displayMode:"adaptive",colorTheme:"dark"});
+  tv($("#tape"),"ticker-tape",{symbols:syms,showSymbolLogo:true,isTransparent:true,displayMode:"regular",colorTheme:"dark"});
 }
 
 /* ---------- Portfolio ---------- */
