@@ -1,6 +1,6 @@
 name: Test brief server
 
-# Asks the brief server for one brief and prints it. Costs one brief unless it's already saved today.
+# Asks the brief server for one brief and prints it. Free (uses one of the day's free Gemini briefs).
 on:
   workflow_dispatch:
     inputs:

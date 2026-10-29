@@ -32,19 +32,21 @@ export default {
     const saved = await env.BRIEFS.get("brief:" + ticker, "json");
     if (saved) return json(saved, 200, headers);
 
-    // Daily cap so a busy day stays inside the free limit.
+    // Daily cap so a busy day stays inside the free Gemini limit.
     const today = new Date().toISOString().slice(0, 10);
     const used = Number(await env.BRIEFS.get("count:" + today)) || 0;
     if (used >= Number(env.DAILY_LIMIT || 40)) return json({ error: "We've written all the briefs we can for today. Try again tomorrow." }, 429, headers);
     await env.BRIEFS.put("count:" + today, String(used + 1), { expirationTtl: 2 * DAY });
 
     try {
-      const b = await writeBrief(env.GEMINI_API_KEY, symbol, env.GEMINI_MODEL || "gemini-flash-latest");
-      const brief = { ticker, symbol, ...b, updatedAt: new Date().toISOString(), auto: true };
+      const b = await writeBrief(env.GEMINI_API_KEY, symbol, env.GEMINI_MODEL || "gemini-3.5-flash-lite");
+      const brief = { ticker, symbol, ...b, updatedAt: new Date().toISOString(), auto: true, writer: "Gemini" };
       await env.BRIEFS.put("brief:" + ticker, JSON.stringify(brief), { expirationTtl: DAY });
       return json(brief, 200, headers);
     } catch (e) {
-   if (e.limit) return json({ error: "We've used today's free briefs. Try again tomorrow.", google: e.message }, 429, headers);      console.error(symbol, e);
+      console.error(symbol, e.message || e);
+      if (e.kind === "no-news") return json({ error: `There isn't enough recent news about ${ticker} to write a brief yet.` }, 404, headers);
+      if (e.kind === "limit") return json({ error: "We've used today's free briefs. Try again tomorrow." }, 429, headers);
       return json({ error: "The brief couldn't be written right now. Try again in a minute." }, 502, headers);
     }
   },
