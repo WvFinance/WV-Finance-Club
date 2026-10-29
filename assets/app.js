@@ -242,7 +242,8 @@ function renderMarket(){
   // The "why" sentence comes from the S&P 500 brief, but only if it was written in the last 2 days.
   const sp=S.briefs.find(b=>b.ticker==="SP500");const fresh=sp&&sp.headline&&sp.updatedAt&&(new Date(md.last+"T23:59:00")-new Date(sp.updatedAt))<3*864e5;
   const avg=rows.reduce((s,x)=>s+x.r,0)/rows.length;
-  const why=fresh?sp.headline:avg>0.002?"Stocks went up overall.":avg<-0.002?"Stocks went down overall.":"Stocks barely moved.";
+  // Up to 3 sentences from the brief's summary, which says more than its headline.
+  const why=fresh?((sp.summary||"").split(/(?<=[.!?])\s+(?=[A-Z])/).slice(0,3).join(" ")||sp.headline):avg>0.002?"Stocks went up overall.":avg<-0.002?"Stocks went down overall.":"Stocks barely moved.";
   box.replaceChildren(el("div",{class:"eyebrow",text:md.label}),
     el("div",{class:"mkrow"},rows.map(x=>el("div",{class:"mk"},el("span",{text:x.name}),el("b",{class:cls(x.r),text:fmtPct(x.r,2)})))),
     el("p",{class:"mkwhy"},el("b",{text:"Why: "}),why));
