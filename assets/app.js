@@ -119,12 +119,13 @@ function renderPicks(){
         el("div",{},el("b",{text:"2. Debate"}),"Two members go head to head on their stocks at the meeting."),
         el("div",{},el("b",{text:"3. Vote"}),"The audience votes A or B on the Google Form and says why. The winner joins the portfolio at that day's price."))));
     return;}
-  const grid=el("div",{class:"picks"});
+  // On phones each stock is a short row (ticker, value, gain) that opens to the full card.
+  const compact=phoneMQ.matches;const grid=el("div",{class:compact?"picks compact":"picks"});
   for(const p of S.picks){
     const c=calc(p);const sym=p.symbol||p.ticker;const mini=el("div",{class:"mini"});
     const d=p.debate;const tot=d?(d.votesFor||0)+(d.votesAgainst||0):0;
-    grid.append(el("article",{class:"pick"},
-      el("div",{class:"pick-top"},
+    const card=el("article",{class:"pick"},
+      compact?null:el("div",{class:"pick-top"},
         el("div",{style:"min-width:0"},el("div",{class:"tk",text:p.ticker}),el("div",{class:"tk-name",text:p.name||""})),
         c?el("div",{},el("div",{class:"price-big",text:fmt$(c.cur)}),el("div",{style:"text-align:right"},el("span",{class:"pill "+cls(c.ret),text:arrow(c.ret)+" "+fmtPct(c.ret)}))):null),
       mini,
@@ -139,11 +140,19 @@ function renderPicks(){
       d&&tot?el("div",{class:"debate"},el("div",{class:"eyebrow",text:`Won the debate vs ${d.opponent} · ${d.votesFor}–${d.votesAgainst}`}),
         el("div",{class:"vbar","aria-hidden":"true"},el("span",{style:`width:${d.votesFor/tot*100}%;background:var(--gold)`}),el("span",{style:`width:${d.votesAgainst/tot*100}%;background:var(--muted)`}))):null,
       el("div",{class:"meta",text:"Pitched by "+(p.pitchedBy||"a member")}),
-      el("div",{},el("button",{class:"btn small",text:"Full chart & news →",onclick:()=>{openStock(sym);showTab("search",true);}}))));
-    tv(mini,"mini-symbol-overview",{symbol:sym,width:"100%",height:170,dateRange:"12M",colorTheme:tvTheme(),isTransparent:true,autosize:false,largeChartUrl:""});
+      el("div",{},el("button",{class:"btn small",text:"Full chart & news →",onclick:()=>{openStock(sym);showTab("search",true);}})));
+    const drawMini=()=>tv(mini,"mini-symbol-overview",{symbol:sym,width:"100%",height:170,dateRange:"12M",colorTheme:tvTheme(),isTransparent:true,autosize:false,largeChartUrl:""});
+    if(!compact){grid.append(card);drawMini();continue;}
+    // The mini chart loads only when a row is opened.
+    const row=el("details",{class:"pickrow"},el("summary",{},
+      el("div",{class:"pr-name"},el("span",{class:"tk",text:p.ticker}),el("span",{class:"tk-name",text:p.name||""})),
+      el("div",{class:"pr-val"},el("b",{text:c&&c.value!=null?fmt$(c.value):"–"}),c?el("span",{class:"pill "+cls(c.ret),text:arrow(c.ret)+" "+fmtPct(c.ret)}):null)),card);
+    row.addEventListener("toggle",()=>{if(row.open&&!mini.childElementCount)drawMini();});
+    grid.append(row);
   }
   wrap.append(grid);
 }
+const phoneMQ=matchMedia("(max-width:600px)");phoneMQ.addEventListener&&phoneMQ.addEventListener("change",()=>{if(S.loaded){renderPicks();renderEvents();}});
 /* ---------- Portfolio dropdowns ---------- */
 const SECTOR_COLORS=["#3987e5","#d95926","#199e70","#c98500","#d55181","#008300","#9085e9","#e66767"];
 const emptyNote=t=>el("p",{class:"meta dropnote",text:t});
@@ -258,9 +267,12 @@ function renderEvents(){
   const rows=S.briefs.filter(b=>b.nextEvent&&held.has(b.ticker)).map(b=>({b,d:eventDate(b.nextEvent)})).filter(r=>!r.d||r.d>=today)
     .sort((x,y)=>(x.d?x.d.getTime():Infinity)-(y.d?y.d.getTime():Infinity));
   panel.hidden=!rows.length;if(!rows.length)return;
-  box.replaceChildren(...rows.map(({b,d})=>el("button",{type:"button",class:"event",onclick:()=>{S.newsTk=b.ticker;renderNews();showTab("news",true);}},
+  // Show the next 3; the rest open with "Show all".
+  const shown=S.eventsAll?rows:rows.slice(0,3);
+  const more=rows.length>3?el("button",{type:"button",class:"btn small evmore",text:S.eventsAll?"Show fewer":`Show all ${rows.length}`,onclick:()=>{S.eventsAll=!S.eventsAll;renderEvents();}}):null;
+  box.replaceChildren(...shown.map(({b,d})=>el("button",{type:"button",class:"event",onclick:()=>{S.newsTk=b.ticker;renderNews();showTab("news",true);}},
     el("span",{class:"edate"+(d?"":" tbd")},d?el("b",{text:d.toLocaleDateString("en-US",{month:"short",day:"numeric"})}):el("b",{text:"Soon"}),el("span",{text:d?d.toLocaleDateString("en-US",{weekday:"short"}):"date TBD"})),
-    el("span",{class:"etext"},el("b",{text:b.ticker+" · "+(held.get(b.ticker).name||"")}),el("span",{text:b.nextEvent})))));
+    el("span",{class:"etext"},el("b",{text:b.ticker+" · "+(held.get(b.ticker).name||"")}),el("span",{text:b.nextEvent})))),...(more?[more]:[]));
 }
 // Best and worst pick over the last 5 market days, with the headline from each one's brief as the reason.
 function renderRecap(){
@@ -302,6 +314,7 @@ function renderQuick(){
   const list=[...new Set(S.picks.map(p=>p.symbol||p.ticker).concat(["NASDAQ:AAPL","NASDAQ:NVDA","NASDAQ:MSFT","NASDAQ:AMZN","NASDAQ:TSLA","NYSE:JPM","NASDAQ:COST","NYSE:KO"]))].slice(0,10);
   list.forEach(s=>q.append(el("button",{class:"qchip"+(bare(s)===bare(S.tk)?" on":""),type:"button",text:bare(s),onclick:()=>openStock(s)})));
 }
+if(phoneMQ.matches)$("#q").placeholder="Ticker, like NVDA";
 $("#searchform").addEventListener("submit",e=>{e.preventDefault();const s=normSym($("#q").value);if(!s){toast("Type a ticker, like AAPL or NYSE:F");return;}$("#q").value="";$("#q").blur();openStock(s);});
 function saveWatch(){store.set("wvfc.watch",JSON.stringify(S.watch));}
 function renderWatch(){

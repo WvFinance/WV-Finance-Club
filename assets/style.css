@@ -312,3 +312,21 @@ html.unlocked #gate{display:none}
 .recapcard p{margin:0;color:var(--ink-2);font-size:14px}
 .rtop{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
 .rmove{font-family:var(--f-display);font-size:20px}
+/* Phone fixes */
+.searchpanel>*,.searchbar{min-width:0}
+.evmore{justify-self:start;margin-top:4px}
+.pickrow{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.pickrow>summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;cursor:pointer}
+.pickrow>summary::-webkit-details-marker{display:none}
+.pickrow .pr-name{display:grid;min-width:0}
+.pickrow .pr-name .tk-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pickrow .pr-val{display:grid;justify-items:end;gap:4px;flex:none}
+.pickrow[open]>summary{border-bottom:1px solid var(--line)}
+.pickrow>.pick{border:0;background:none;padding:14px}
+.picks.compact{gap:10px}
+@media (max-width:600px){
+  .mkrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .mk{display:grid;gap:2px}
+  .mk b{font-size:20px}
+  .tabs .tab{padding:14px 10px 12px}
+}
