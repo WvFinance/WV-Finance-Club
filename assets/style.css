@@ -281,7 +281,7 @@ html.unlocked #gate{display:none}
 
 /* Log Out button, top right of the header */
 .mast .wrap{position:relative}
-.logout{position:absolute;top:16px;right:max(24px,env(safe-area-inset-right,0px));appearance:none;cursor:pointer;border:1px solid color-mix(in srgb,var(--band-ink) 35%,transparent);background:transparent;color:var(--band-ink);border-radius:999px;padding:5px 14px;font-family:var(--f-body);font-size:13px;font-weight:600;letter-spacing:.02em;line-height:1.3}
-.logout:hover{background:color-mix(in srgb,var(--band-ink) 12%,transparent);border-color:var(--band-ink)}
+.logout{position:absolute;top:16px;right:max(24px,env(safe-area-inset-right,0px));appearance:none;cursor:pointer;border:1px solid var(--gold);background:var(--gold);color:var(--on-gold);border-radius:999px;padding:5px 14px;font-family:var(--f-body);font-size:13px;font-weight:600;letter-spacing:.02em;line-height:1.3}
+.logout:hover{background:color-mix(in srgb,var(--gold) 85%,#fff);border-color:color-mix(in srgb,var(--gold) 85%,#fff)}
 @media (max-width:600px){.logout{top:12px;right:16px;padding:4px 10px;font-size:12px}.crest{width:46px;height:46px}.brand{gap:10px;padding-right:72px}.brand h1{white-space:nowrap;font-size:20px}}
 @media (max-width:359px){.crest{width:40px;height:40px}.brand h1{font-size:18px}}
