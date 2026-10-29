@@ -285,8 +285,11 @@ html.unlocked #gate{display:none}
 .logout:hover{background:color-mix(in srgb,var(--gold) 85%,#fff);border-color:color-mix(in srgb,var(--gold) 85%,#fff)}
 @media (max-width:600px){.logout{top:12px;right:16px;padding:4px 10px;font-size:12px}.crest{width:46px;height:46px}.brand{gap:10px;padding-right:72px}.brand h1{white-space:nowrap;font-size:20px}}
 @media (max-width:359px){.crest{width:40px;height:40px}.brand h1{font-size:18px}}
-/* Ticker tape a little smaller: shrink the TradingView widget to 85% (text and height) */
-.tape .tradingview-widget-container{zoom:.85}
+/* Ticker tape a little smaller: scale the TradingView widget to 85%. A transform (not zoom) so iPhone Safari
+   keeps it full width with no white gap; the widget is drawn 1/0.85 wide, then shrunk to fit. */
+.tape{height:40px;overflow:hidden}
+.tape .tradingview-widget-container{width:117.65%;transform:scale(.85);transform-origin:0 0}
+.tape iframe{color-scheme:dark;background:transparent}
 /* Market today, upcoming events and weekly recap */
 .market{display:grid;gap:10px}
 .mkrow{display:flex;flex-wrap:wrap;gap:10px 28px}
