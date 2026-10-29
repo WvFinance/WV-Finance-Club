@@ -20,14 +20,14 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Check secrets
         run: |
           if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "${{ secrets.GEMINI_API_KEY }}" ]; then
             echo "::warning::CLOUDFLARE_API_TOKEN or GEMINI_API_KEY is not set yet, so the brief server was not deployed."
             echo "SKIP=1" >> "$GITHUB_ENV"
           fi
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         if: env.SKIP != '1'
         with:
           node-version: 22

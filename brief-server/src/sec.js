@@ -4,6 +4,7 @@
 
 const UA = "WV Finance Club brief server warrior.financec@gmail.com";
 const DAY = 86400000;
+const MAX_AGE = 200 * DAY; // numbers older than this aren't "the latest", so they're left out
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const REVENUE = ["RevenueFromContractWithCustomerExcludingAssessedTax", "Revenues", "SalesRevenueNet", "RevenuesNetOfInterestExpense"];
 
@@ -22,11 +23,20 @@ async function get(url, ms = 6000) {
   }
 }
 
-// "$11.5 billion", "$820 million", "a loss of $1.2 billion".
+// "$11.5 billion", "$820 million".
 export function money(v) {
   const a = Math.abs(v);
   const s = a >= 1e9 ? `$${(a / 1e9).toFixed(a >= 1e11 ? 0 : 1)} billion` : a >= 1e6 ? `$${Math.round(a / 1e6)} million` : `$${Math.round(a).toLocaleString("en-US")}`;
   return v < 0 ? `a loss of ${s}` : s;
+}
+
+// "NVIDIA CORP /DE/" -> full "Nvidia Corp" and short "Nvidia"; "AT&T INC." -> "AT&T Inc." and "AT&T".
+export function companyNames(raw) {
+  const clean = raw.replace(/&amp;/g, "&").replace(/\s*\/[A-Z]{2,}\/?\s*$/i, "").replace(/\s+/g, " ").trim();
+  const full = clean.split(" ").map(w => /&|^[A-Z]{1,3}$/.test(w) && !/^(INC|CO|THE)$/.test(w) ? w : w.charAt(0) + w.slice(1).toLowerCase()).join(" ");
+  const short = full.replace(/,?\s+(inc\.?|corp\.?|corporation|co\.?|company|holdings?|group|ltd\.?|plc|n\.?v\.?|s\.?a\.?|incorporated|class [a-z])$/gi, "")
+    .replace(/,?\s+(inc\.?|corp\.?|corporation|co\.?|company|holdings?|group|ltd\.?|plc)$/gi, "").replace(/\s*&$/, "").trim();
+  return { full, short: short || full };
 }
 
 // Picks the newest 3-month result and the same 3 months a year earlier.
@@ -52,22 +62,30 @@ function change(now, before) {
   return pct === 0 ? ", about the same as" : `, ${pct > 0 ? "up" : "down"} ${Math.abs(pct)}% from`;
 }
 
-// Returns an article-shaped object (title, url, outlet, date, text) or null if the SEC has nothing.
-export async function secFacts(ticker) {
+// The company's SEC ID and name, or null for funds and tickers the SEC doesn't know.
+export async function secLookup(ticker) {
   const atom = await get(`https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=${encodeURIComponent(ticker)}&type=10-Q&dateb=&owner=include&count=1&output=atom`);
   const cik = atom && (atom.match(/<cik>(\d+)<\/cik>/i) || [])[1];
   if (!cik) return null;
-  const company = ((atom.match(/<conformed-name>([^<]+)<\/conformed-name>/i) || [])[1] || ticker).replace(/&amp;/g, "&").toLowerCase().replace(/\b[a-z]/g, c => c.toUpperCase());
-  const cik10 = cik.padStart(10, "0");
+  const raw = (atom.match(/<conformed-name>([^<]+)<\/conformed-name>/i) || [])[1] || ticker;
+  return { cik, ...companyNames(raw) };
+}
 
-  let sales = null;
-  for (const name of REVENUE) { sales = await concept(cik10, name); if (sales) break; }
-  const profit = await concept(cik10, "NetIncomeLoss");
+// Returns an article-shaped object (title, url, outlet, date, text) or null if there are no recent numbers.
+export async function secFacts(company, now = Date.now()) {
+  if (!company) return null;
+  const cik10 = company.cik.padStart(10, "0");
+
+  // Companies change how they label sales over the years, so use whichever label has the newest quarter.
+  const found = (await Promise.all(REVENUE.map(n => concept(cik10, n).catch(() => null)))).filter(Boolean);
+  const sales = found.sort((a, b) => b.now.e - a.now.e)[0] || null;
+  let profit = await concept(cik10, "NetIncomeLoss").catch(() => null);
   const main = sales || profit;
-  if (!main) return null;
+  if (!main || now - main.now.e > MAX_AGE) return null;
+  // Profit must be for the same 3 months as sales, or it's left out.
+  if (sales && profit && Math.abs(profit.now.e - sales.now.e) > 10 * DAY) profit = null;
 
-  const end = new Date(main.now.e);
-  const lines = [`In the 3 months that ended ${fmtDate(end)}:`];
+  const lines = [`In the 3 months that ended ${fmtDate(new Date(main.now.e))}:`];
   if (sales) lines.push(`Sales were ${money(sales.now.val)}${sales.before ? `${change(sales.now, sales.before)} ${money(sales.before.val)} in the same 3 months a year earlier` : ""}.`);
   if (profit) {
     const was = v => v < 0 ? `a loss of ${money(-v)}` : `a profit of ${money(v)}`;
@@ -76,8 +94,8 @@ export async function secFacts(ticker) {
   const accn = main.now.accn;
   const filed = new Date(main.now.filed);
   return {
-    title: `${company}: official quarterly report to the SEC (Form ${main.now.form})`,
-    url: accn ? `https://www.sec.gov/Archives/edgar/data/${Number(cik)}/${accn.replace(/-/g, "")}/` : `https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=${cik}`,
+    title: `${company.full}: official quarterly report to the SEC (Form ${main.now.form})`,
+    url: accn ? `https://www.sec.gov/Archives/edgar/data/${Number(company.cik)}/${accn.replace(/-/g, "")}/` : `https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=${company.cik}`,
     outlet: "SEC (company's official report)",
     published: filed,
     date: fmtDate(filed),

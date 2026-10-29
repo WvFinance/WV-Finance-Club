@@ -13,6 +13,10 @@ id = "REPLACE_WITH_KV_ID"
 ALLOWED_ORIGIN = "https://wvfinance.github.io"
 # Most new briefs the server will write in one day. Saved briefs don't count.
 DAILY_LIMIT = "40"
+# Most new briefs one internet address can ask for in a day (a whole school shares one address).
+VISITOR_LIMIT = "25"
+# Most /news-check test calls per day.
+CHECK_LIMIT = "30"
 # Free Google Gemini model that writes the briefs (free tier, without Google Search).
 GEMINI_MODEL = "gemini-3.5-flash-lite"
 

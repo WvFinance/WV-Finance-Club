@@ -1,7 +1,8 @@
 // Gathers recent news about a stock from free public feeds (no keys, no cost):
-// Google News and Yahoo Finance. Used by the brief server before Gemini writes the brief.
+// Google News, Bing News and Yahoo Finance, plus official numbers from the SEC (sec.js).
+// Used by the brief server before Gemini writes the brief.
 
-import { secFacts } from "./sec.js";
+import { secLookup, secFacts } from "./sec.js";
 
 const UA = "Mozilla/5.0 (compatible; WVFC-brief-server/1.0; +https://wvfinance.github.io)";
 const DAYS = 14;
@@ -129,30 +130,43 @@ export function articleText(html, max = 3000) {
   return out.slice(0, max);
 }
 
-// Tries a slow feed a second time before giving up on it.
-const retry = f => f().catch(() => f());
+// Tries a feed once more only if it failed fast (like a quick "busy" reply); a feed that
+// hung until its time limit isn't tried again, so a brief never waits on it twice.
+async function retryFast(f) {
+  const start = Date.now();
+  try { return await f(); }
+  catch (e) { if (Date.now() - start > 2000) throw e; return f(); }
+}
+
+// Search words for Google and Bing: the company name when the SEC knows it ("Ford Motor" stock),
+// so short tickers like F or ON don't pull in unrelated news. Yahoo searches by exact ticker.
+const words = (t, name) => name ? `"${name}" stock` : `${t} stock`;
 
 const FEEDS = {
-  "Google News": t => retry(() => get(`https://news.google.com/rss/search?q=${encodeURIComponent(`${t} stock when:${DAYS}d`)}&hl=en-US&gl=US&ceid=US:en`, 10000)).then(parseGoogleNews),
-  "Bing News": t => retry(() => get(`https://www.bing.com/news/search?q=${encodeURIComponent(`${t} stock`)}&format=rss&mkt=en-US`, 8000)).then(parseBing),
+  "Google News": (t, name) => retryFast(() => get(`https://news.google.com/rss/search?q=${encodeURIComponent(`${words(t, name)} when:${DAYS}d`)}&hl=en-US&gl=US&ceid=US:en`, 6000)).then(parseGoogleNews),
+  "Bing News": (t, name) => retryFast(() => get(`https://www.bing.com/news/search?q=${encodeURIComponent(words(t, name))}&format=rss&mkt=en-US`, 6000)).then(parseBing),
   "Yahoo Finance": t => get(`https://feeds.finance.yahoo.com/rss/2.0/headline?s=${encodeURIComponent(t)}&region=US&lang=en-US`).then(parseYahoo),
 };
 
+const lookup = ticker => secLookup(ticker).catch(e => { console.warn("SEC lookup failed:", String(e.message || e)); return null; });
+
 // What each feed returned, for the /news-check test (no AI, no cost).
 export async function checkFeeds(ticker) {
-  const out = {};
+  const company = await lookup(ticker);
+  const out = { company: company ? company.short : "not found at the SEC (searching by ticker)" };
   for (const [name, f] of Object.entries(FEEDS)) {
-    try { const items = await f(ticker); out[name] = { items: items.length, recent: cleanArticles([items]).length }; }
+    try { const items = await f(ticker, company?.short); out[name] = { items: items.length, recent: cleanArticles([items]).length }; }
     catch (e) { out[name] = { error: String(e.message || e) }; }
   }
-  try { const f = await secFacts(ticker); out.SEC = f ? f.text : "no quarterly numbers found"; }
+  try { const f = await secFacts(company); out.SEC = f ? f.text : "no recent quarterly numbers"; }
   catch (e) { out.SEC = { error: String(e.message || e) }; }
   return out;
 }
 
 export async function gatherNews(ticker) {
-  const official = secFacts(ticker).catch(e => { console.warn("SEC failed:", String(e.message || e)); return null; });
-  const feeds = await Promise.allSettled(Object.values(FEEDS).map(f => f(ticker)));
+  const company = await lookup(ticker);
+  const official = secFacts(company).catch(e => { console.warn("SEC failed:", String(e.message || e)); return null; });
+  const feeds = await Promise.allSettled(Object.values(FEEDS).map(f => f(ticker, company?.short)));
   for (const f of feeds) if (f.status === "rejected") console.warn("news feed failed:", String(f.reason));
   const articles = cleanArticles(feeds.filter(f => f.status === "fulfilled").map(f => f.value));
 

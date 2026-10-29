@@ -19,9 +19,15 @@ The **Test brief server** workflow shows each test brief's headline, sources, re
 5. Run the **Deploy brief server** workflow (it also runs by itself whenever `brief-server/` changes). Its log prints the server's address.
 6. Put that address in `briefApi` in `config.js` at the root of the site.
 
-## Cost
+## Cost and limits
 
-$0. The news feeds are free and need no key, and Gemini without Google Search is free on its free tier. A brief is saved for 24 hours, so searching the same stock again that day reuses it. `DAILY_LIMIT` in `wrangler.toml` caps new briefs per day (40). If Google's free limit is reached, the site says to try again tomorrow; nothing is ever charged.
+$0. The news feeds and SEC data are free and need no key, and Gemini without Google Search is free on its free tier. Nothing is ever charged; when a limit is reached, the site says when to try again.
+
+- A brief is saved for 24 hours, so searching the same stock again that day reuses it.
+- `DAILY_LIMIT` in `wrangler.toml`: new briefs per day for the whole site (40).
+- `VISITOR_LIMIT`: new briefs per day from one internet address (25), so nobody can use up the whole day. A school network counts as one address.
+- Only real briefs count. Typos and stocks with no recent news don't use up the day's briefs.
+- `CHECK_LIMIT`: calls per day to `/news-check`, the free feed check the test workflow uses (30).
 
 The API key lives only in Cloudflare's secret storage. Never put it in this repository, because the repository is public.
 

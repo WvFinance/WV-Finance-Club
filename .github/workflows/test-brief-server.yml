@@ -13,7 +13,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Ask for a brief
         run: |
           code=$(curl -sS -m 180 -o brief.json -w '%{http_code}' \

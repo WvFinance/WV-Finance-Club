@@ -2,7 +2,7 @@
 // free tier writes the brief from those articles. Gemini's own Google Search is NOT used,
 // because it isn't free. Every source listed is a real article the server gathered.
 import { gatherNews } from "./news.js";
-import { wordingProblems } from "./wording.js";
+import { wordingProblems, explainJargon, givesAdvice } from "./wording.js";
 
 const API = "https://generativelanguage.googleapis.com/v1beta/models/";
 
@@ -65,7 +65,11 @@ async function askGemini(apiKey, model, prompt) {
       generationConfig: { responseMimeType: "application/json" },
     }),
   });
-  if (res.status === 429) throw new BriefError(`Gemini 429: ${await res.text()}`, "limit");
+  if (res.status === 429) {
+    // Google's free tier has a per-day and a per-minute limit; they need different messages.
+    const body = await res.text();
+    throw new BriefError(`Gemini 429: ${body.slice(0, 300)}`, /PerDay/i.test(body) ? "limit-day" : "limit-minute");
+  }
   if (!res.ok) throw new Error(`Gemini ${res.status}: ${await res.text()}`);
   const cand = (await res.json()).candidates?.[0];
   return (cand?.content?.parts || []).map(p => p.text || "").join("");
@@ -114,15 +118,20 @@ async function simplify(apiKey, model, prompt, articles, brief) {
 }
 
 // symbol: what was searched, e.g. "NASDAQ:NFLX".
-export async function writeBrief(apiKey, symbol, model) {
+// beforeAI runs once the news is gathered and just before Gemini is used, so the daily limits
+// only count real briefs (typos and stocks with no news don't use up the day's briefs).
+export async function writeBrief(apiKey, symbol, model, { beforeAI } = {}) {
   const ticker = symbol.split(":").pop();
   const articles = await gatherNews(ticker);
   if (articles.filter(a => !a.official).length < 3) throw new BriefError(`only ${articles.length} recent articles`, "no-news");
+  if (beforeAI) await beforeAI();
   const prompt = `Write the news brief for ${symbol}.\n\nArticles:\n\n${articleBlock(articles)}`;
   let lastError;
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
-      const brief = await simplify(apiKey, model, prompt, articles, checkBrief(await askGemini(apiKey, model, prompt), articles));
+      const brief = explainJargon(await simplify(apiKey, model, prompt, articles, checkBrief(await askGemini(apiKey, model, prompt), articles)));
+      // Education only: a brief that still gives buy/sell advice after the rewrite is never shown.
+      if (givesAdvice(brief)) throw new Error("brief gives buy/sell advice");
       delete brief.sourceNumbers;
       return brief;
     } catch (e) {
