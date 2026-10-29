@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=2026102512">
+<link rel="stylesheet" href="assets/style.css?v=2026102917">
 <script>
 // Club password screen. The password is checked by its SHA-256 hash (lowercased), so it isn't written here.
 // To change it: hash the new password in lowercase and replace WVFC_PASS below.
@@ -36,11 +36,19 @@ try{if(localStorage.getItem("wvfc-pass")===window.WVFC_PASS)document.documentEle
     // Reload so the charts draw at full size; without storage, just open the page.
     if(saved)location.reload();else document.documentElement.classList.add("unlocked");
   });
+  // Log Out: forget the saved password and go back to the password screen.
+  document.addEventListener("click",e=>{
+    if(!e.target.closest("#logout"))return;
+    try{localStorage.removeItem("wvfc-pass");}catch(err){}
+    document.documentElement.classList.remove("unlocked");
+    inp.value="";msg.textContent="";window.scrollTo(0,0);inp.focus();
+  });
 })();
 </script>
 
 <header class="mast">
   <div class="wrap">
+    <button type="button" class="logout" id="logout">Log Out</button>
     <a class="brand" href="#portfolio">
       <img class="crest" src="assets/logo.png" alt="Waubonsie Valley Finance Club logo" width="58" height="58">
       <div><h1>WV Finance Club</h1><p>Waubonsie Valley · Portfolio · Research · News</p></div>
