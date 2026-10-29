@@ -34,7 +34,7 @@ a{color:var(--brand-2)}
 .chip.asof{border:1px solid color-mix(in srgb,var(--band-ink) 30%,transparent);color:var(--band-ink-2)}
 .chip .dot{width:7px;height:7px;border-radius:50%;background:currentColor}
 
-.tape{background:var(--band);min-height:46px;border-bottom:1px solid color-mix(in srgb,var(--band-ink) 12%,transparent)}
+.tape{background:var(--band);min-height:39px;border-bottom:1px solid color-mix(in srgb,var(--band-ink) 12%,transparent)}
 .tabs{position:sticky;top:0;z-index:5;background:var(--band);box-shadow:0 1px 0 color-mix(in srgb,var(--gold) 55%,transparent)}
 .tabs .wrap{display:flex;gap:4px;overflow-x:auto}
 .tab{appearance:none;border:0;background:none;padding:14px 14px 12px;font-family:var(--f-display);font-weight:700;font-size:15px;letter-spacing:.02em;color:var(--band-ink-2);border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
@@ -285,3 +285,5 @@ html.unlocked #gate{display:none}
 .logout:hover{background:color-mix(in srgb,var(--gold) 85%,#fff);border-color:color-mix(in srgb,var(--gold) 85%,#fff)}
 @media (max-width:600px){.logout{top:12px;right:16px;padding:4px 10px;font-size:12px}.crest{width:46px;height:46px}.brand{gap:10px;padding-right:72px}.brand h1{white-space:nowrap;font-size:20px}}
 @media (max-width:359px){.crest{width:40px;height:40px}.brand h1{font-size:18px}}
+/* Ticker tape a little smaller: shrink the TradingView widget to 85% (text and height) */
+.tape .tradingview-widget-container{zoom:.85}
