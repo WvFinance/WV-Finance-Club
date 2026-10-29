@@ -13,7 +13,7 @@ export async function writeBrief(apiKey, subject, model) {
       tools: [{ google_search: {} }],
     }),
   });
-  if (res.status === 429) throw Object.assign(new Error("free limit reached"), { limit: true });
+   if (res.status === 429) throw Object.assign(new Error(await res.text()), { limit: true });
   if (!res.ok) throw new Error(`Gemini ${res.status}: ${await res.text()}`);
   const cand = (await res.json()).candidates?.[0];
   const text = (cand?.content?.parts || []).map(p => p.text || "").join("");
