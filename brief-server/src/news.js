@@ -4,6 +4,8 @@
 const UA = "Mozilla/5.0 (compatible; WVFC-brief-server/1.0; +https://wvfinance.github.io)";
 const DAYS = 14;
 const MAX_ARTICLES = 15;
+const FULL_TEXT = 6;        // how many articles to read in full
+const PAGE_CAP = 200000;    // most characters read from one article page
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 // "Mon D, YYYY", the date style the site uses.
@@ -29,13 +31,13 @@ const tag = (xml, name) => {
   return m ? m[1] : "";
 };
 
-async function get(url, ms = 6000) {
+async function get(url, ms = 6000, cap = 400000) {
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), ms);
   try {
     const r = await fetch(url, { headers: { "User-Agent": UA, "Accept": "application/rss+xml, application/xml, text/html;q=0.9, */*;q=0.8" }, signal: ctrl.signal });
     if (!r.ok) throw new Error(`${r.status} from ${new URL(url).hostname}`);
-    return await readCapped(r, 400000);
+    return await readCapped(r, cap);
   } finally {
     clearTimeout(t);
   }
@@ -62,6 +64,21 @@ export function parseGoogleNews(xml) {
     let title = stripTags(tag(it, "title"));
     if (outlet && title.endsWith(" - " + outlet)) title = title.slice(0, -(outlet.length + 3));
     return { title, url: decode(tag(it, "link")).trim(), outlet, published: new Date(stripTags(tag(it, "pubDate"))), summary: "" };
+  });
+}
+
+// Bing links point to bing.com/news/apiclick.aspx?...&url=<real article>; keep the real link.
+export function parseBing(xml) {
+  return [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map(([, it]) => {
+    let url = decode(tag(it, "link")).trim();
+    try { const real = new URL(url).searchParams.get("url"); if (real && /^https?:\/\//.test(real)) url = real; } catch {}
+    return {
+      title: stripTags(tag(it, "title")),
+      url,
+      outlet: stripTags(tag(it, "News:Source")) || "Bing News",
+      published: new Date(stripTags(tag(it, "pubDate"))),
+      summary: stripTags(tag(it, "description")).slice(0, 600),
+    };
   });
 }
 
@@ -98,16 +115,24 @@ export function cleanArticles(lists, now = new Date()) {
 }
 
 // The readable paragraphs of an article page, or "" if the site blocks us.
-export function articleText(html) {
-  const paras = [...html.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)]
-    .map(m => stripTags(m[1]))
-    .filter(p => p.length > 60 && !/cookie|subscribe|sign in|newsletter|javascript/i.test(p));
-  return paras.join(" ").slice(0, 1500);
+// Stops as soon as it has enough text, to stay inside the free server's short time limit.
+export function articleText(html, max = 3000) {
+  let out = "";
+  for (const m of html.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)) {
+    if (m[1].length < 60) continue;
+    const p = stripTags(m[1]);
+    if (p.length > 60 && !/cookie|subscribe|sign in|newsletter|javascript/i.test(p)) out += (out ? " " : "") + p;
+    if (out.length >= max) break;
+  }
+  return out.slice(0, max);
 }
 
-// Gathers up to 15 articles from the last two weeks, and the full text of up to 3 of them.
+// Tries a slow feed a second time before giving up on it.
+const retry = f => f().catch(() => f());
+
 const FEEDS = {
-  "Google News": t => get(`https://news.google.com/rss/search?q=${encodeURIComponent(`${t} stock when:${DAYS}d`)}&hl=en-US&gl=US&ceid=US:en`).then(parseGoogleNews),
+  "Google News": t => retry(() => get(`https://news.google.com/rss/search?q=${encodeURIComponent(`${t} stock when:${DAYS}d`)}&hl=en-US&gl=US&ceid=US:en`, 10000)).then(parseGoogleNews),
+  "Bing News": t => retry(() => get(`https://www.bing.com/news/search?q=${encodeURIComponent(`${t} stock`)}&format=rss&mkt=en-US`, 8000)).then(parseBing),
   "Yahoo Finance": t => get(`https://feeds.finance.yahoo.com/rss/2.0/headline?s=${encodeURIComponent(t)}&region=US&lang=en-US`).then(parseYahoo),
 };
 
@@ -126,10 +151,10 @@ export async function gatherNews(ticker) {
   for (const f of feeds) if (f.status === "rejected") console.warn("news feed failed:", String(f.reason));
   const articles = cleanArticles(feeds.filter(f => f.status === "fulfilled").map(f => f.value));
 
-  // Google News links only redirect in a browser, so try full text on direct links (mostly Yahoo).
-  const direct = articles.filter(a => !/news\.google\.com/.test(a.url)).slice(0, 3);
+  // Google News links only redirect in a browser, so read full text from direct links (Yahoo, Bing).
+  const direct = articles.filter(a => !/news\.google\.com/.test(a.url)).slice(0, FULL_TEXT);
   await Promise.allSettled(direct.map(async a => {
-    const text = articleText(await get(a.url, 4000));
+    const text = articleText(await get(a.url, 5000, PAGE_CAP));
     if (text.length > 200) a.text = text;
   }));
   return articles;
