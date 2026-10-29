@@ -80,15 +80,21 @@ export function cleanArticles(lists, now = new Date()) {
   const cutoff = now.getTime() - DAYS * 86400000;
   const seen = new Set();
   const out = [];
-  for (const a of lists.flat().sort((x, y) => y.published - x.published)) {
-    if (!a.title || !/^https?:\/\//.test(a.url) || !(a.published.getTime() >= cutoff)) continue;
-    const key = a.title.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().slice(0, 70);
-    if (seen.has(key)) continue;
-    seen.add(key);
-    out.push({ ...a, date: fmtDate(a.published) });
-    if (out.length >= MAX_ARTICLES) break;
+  // Each feed newest first, then take turns between feeds so every brief gets a mix of outlets.
+  const queues = lists.map(l => l.filter(a => a.title && /^https?:\/\//.test(a.url) && a.published.getTime() >= cutoff)
+    .sort((x, y) => y.published - x.published));
+  while (out.length < MAX_ARTICLES && queues.some(q => q.length)) {
+    for (const q of queues) {
+      const a = q.shift();
+      if (!a) continue;
+      const key = a.title.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().slice(0, 70);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push({ ...a, date: fmtDate(a.published) });
+      if (out.length >= MAX_ARTICLES) break;
+    }
   }
-  return out;
+  return out.sort((x, y) => y.published - x.published);
 }
 
 // The readable paragraphs of an article page, or "" if the site blocks us.
