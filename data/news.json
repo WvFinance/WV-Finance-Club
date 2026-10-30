@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29",
+ "updated": "2026-10-30",
  "briefs": [
   {
    "bear": [
@@ -372,53 +372,41 @@
    "ticker": "XOM",
    "symbol": "NYSE:XOM",
    "sentiment": "bullish",
-   "headline": "Exxon hits record highs after saying refining added $4.5 billion to profits",
-   "summary": "In mid-October, Exxon gave an early look at its results for July to September. It said bigger refining margins, meaning the extra money it makes turning crude oil into fuels like gasoline, will add about $4.5 billion to profits compared with the quarter before. The stock rose 2% on October 17 to a record high of about $179, and it climbed more than 2% again on October 23 to around $183 as investors got ready for the full report. Lower oil prices and some one-time accounting effects will take back part of that gain.",
+   "headline": "Exxon beats profit expectations as its refineries cash in on a diesel shortage",
+   "summary": "On October 30, Exxon reported adjusted profit of $17.5 billion for July to September, or $4.23 per share, beating the $4.08 per share analysts expected. Most of the jump came from refining (turning oil into fuels like diesel), where profit roughly doubled from the quarter before because fighting in the Middle East and attacks on Russian refineries left the world short of diesel. Profit from pumping oil fell about 20% because oil prices were lower than in the spring. Exxon also raised its quarterly dividend to $1.07 per share and plans to buy back $20 billion of its own shares in 2027.",
    "bull": [
-    "Refining margins are expected to add $4.5 billion to profits in the July–September quarter, more than double what the fuels business earned the quarter before.",
-    "A Goldman Sachs analyst said the early numbers point to profit of about $4.10 per share, higher than the $3.87 many experts expected.",
-    "Exxon owns oil fields and also refineries, so strong refining made up for lower oil prices. The company keeps paying a $1.03 per share dividend, a cash payment to shareholders, every quarter."
+    "Profit of $4.23 per share beat what analysts expected, and was up from $3.52 the quarter before.",
+    "Refining profit was about $9 billion, up roughly 120% from the quarter before, as its Gulf Coast refineries ran at full speed.",
+    "Exxon raised its quarterly dividend (cash paid to shareholders) to $1.07 per share and plans $20 billion of share buybacks (the company buying its own shares) in 2027."
    ],
    "bear": [
-    "Lower oil prices are expected to cut about $1.3 billion from profits in Exxon's oil-drilling business, and the chemicals business faces a $600 million hit.",
-    "Exxon expects $2.5 billion in negative 'timing effects', meaning accounting changes that make this quarter's reported profit look lower.",
-    "Wells Fargo lowered its rating on the stock, and one market expert warned the rally may have gone too far and could reverse quickly if results disappoint."
+    "Profit from pumping oil and gas fell about 20% because oil prices averaged lower than in the spring.",
+    "The refining boom depends on supply problems from war, which could ease and shrink those profits.",
+    "Oil and gas output was flat at about 4.5 million barrels a day."
    ],
-   "nextEvent": "Third-quarter earnings report on October 30, 2026, before the market opens",
+   "nextEvent": "Exxon's next dividend of $1.07 per share is paid on December 10, 2026",
    "sources": [
     {
-     "title": "ExxonMobil Sees $4.5 Billion Boost from Higher Refining Margins",
-     "url": "https://www.benzinga.com/markets/large-cap/26/10/62416970/exxonmobil-sees-4-5-billion-boost-from-higher-refining-margins",
-     "outlet": "Benzinga",
-     "date": "Oct 16, 2026"
+     "title": "ExxonMobil Announces Third-Quarter 2026 Results",
+     "url": "https://www.stocktitan.net/news/XOM/exxon-mobil-announces-third-quarter-2026-xek57lw8yhqm.html",
+     "outlet": "StockTitan",
+     "date": "Oct 30, 2026"
     },
     {
-     "title": "ExxonMobil's Refining Profits Are Set to Jump $4.5 Billion. Here's What XOM Investors Need to Know.",
-     "url": "https://www.fool.com/investing/2026/10/16/exxonmobils-refining-profits-are-set-to-jump-45-billion-heres-what-xom-investors-need-to-know/",
-     "outlet": "The Motley Fool",
-     "date": "Oct 16, 2026"
+     "title": "ExxonMobil beats third-quarter profit estimates on refining boom",
+     "url": "https://www.globalbankingandfinance.com/exxonmobil-beats-third-quarter-profit-estimates-refining/",
+     "outlet": "Global Banking & Finance Review (Reuters)",
+     "date": "Oct 30, 2026"
     },
     {
-     "title": "Why Did XOM, V, TEAM Stocks Hit 52-Week Highs Last Week?",
-     "url": "https://stocktwits.com/news-articles/markets/equity/why-did-xom-v-team-stocks-hit-52-week-highs-last-week/cZx8BkvRBtz",
-     "outlet": "Stocktwits",
-     "date": "Oct 18, 2026"
-    },
-    {
-     "title": "ExxonMobil stock may move 2.5% on Oct. 30 earnings report",
-     "url": "https://www.investing.com/news/stock-market-news/exxonmobil-stock-may-move-25-on-oct-30-earnings-report-93CH-4969912",
-     "outlet": "Investing.com",
-     "date": "Oct 23, 2026"
-    },
-    {
-     "title": "Why is Exxon Mobil stock up 2.4% today?",
-     "url": "https://tradersunion.com/news/stocks/show/3946295-exxon-mobil-rises-2-44percent-today/",
-     "outlet": "Traders Union",
-     "date": "Oct 23, 2026"
+     "title": "Can Exxon's $4.5 Billion Refining Windfall Defy Dropping Crude Prices on Oct. 30?",
+     "url": "https://247wallst.com/investing/2026/10/26/can-exxons-4-5-billion-refining-windfall-defy-dropping-crude-prices-on-oct-30/",
+     "outlet": "24/7 Wall St.",
+     "date": "Oct 26, 2026"
     }
    ],
-   "updatedAt": "2026-10-25T01:51:15.050Z",
-   "name": "Exxon Mobil Corporation"
+   "updatedAt": "2026-10-30T10:40:20.919Z",
+   "name": "Exxon Mobil"
   },
   {
    "ticker": "JNJ",
