@@ -21,6 +21,8 @@ const bare=sym=>String(sym).split(":").pop().toUpperCase();
 /* ---------- TradingView widgets ---------- */
 const darkMQ=window.matchMedia("(prefers-color-scheme: dark)");
 const tvTheme=()=>"dark";
+// Clicks inside the widgets open the stock on our own Search tab (TradingView adds ?tvwidgetsymbol=...), not on TradingView.
+const SELF=location.origin+location.pathname;
 function tv(container,name,config){
   if(!container)return;container.replaceChildren();
   const wrap=el("div",{class:"tradingview-widget-container"},el("div",{class:"tradingview-widget-container__widget"}));
@@ -71,7 +73,7 @@ async function quote(tk){
 function renderTape(){
   const syms=[{proName:"FOREXCOM:SPXUSD",title:"S&P 500"},{proName:"FOREXCOM:NSXUSD",title:"Nasdaq 100"},{proName:"FOREXCOM:DJI",title:"Dow 30"},{proName:"COINBASE:BTCUSD",title:"Bitcoin"},{proName:"COINBASE:ETHUSD",title:"Ethereum"}]
     .concat(S.picks.filter(p=>!["BTC","ETH"].includes(p.ticker)).map(p=>({proName:p.symbol||p.ticker,title:p.ticker})));
-  tv($("#tape"),"ticker-tape",{symbols:syms,showSymbolLogo:true,isTransparent:true,displayMode:"regular",colorTheme:"dark"});
+  tv($("#tape"),"ticker-tape",{symbols:syms,showSymbolLogo:true,isTransparent:true,displayMode:"regular",colorTheme:"dark",largeChartUrl:SELF});
 }
 
 /* ---------- Portfolio ---------- */
@@ -141,7 +143,7 @@ function renderPicks(){
         el("div",{class:"vbar","aria-hidden":"true"},el("span",{style:`width:${d.votesFor/tot*100}%;background:var(--gold)`}),el("span",{style:`width:${d.votesAgainst/tot*100}%;background:var(--muted)`}))):null,
       el("div",{class:"meta",text:"Pitched by "+(p.pitchedBy||"a member")}),
       el("div",{},el("button",{class:"btn small",text:"Full chart & news →",onclick:()=>{openStock(sym);showTab("search",true);}})));
-    const drawMini=()=>tv(mini,"mini-symbol-overview",{symbol:sym,width:"100%",height:170,dateRange:"12M",colorTheme:tvTheme(),isTransparent:true,autosize:false,largeChartUrl:""});
+    const drawMini=()=>tv(mini,"mini-symbol-overview",{symbol:sym,width:"100%",height:170,dateRange:"12M",colorTheme:tvTheme(),isTransparent:true,autosize:false,largeChartUrl:SELF});
     if(!compact){grid.append(card);drawMini();continue;}
     // The mini chart loads only when a row is opened.
     const row=el("details",{class:"pickrow"},el("summary",{},
@@ -295,7 +297,7 @@ function normSym(raw){const v=String(raw||"").trim().toUpperCase().replace(/\s+/
 function openStock(sym){S.tk=sym;store.set("wvfc.tk",sym);if(!$("#search").hidden)renderSearch();renderWatch();renderQuick();}
 function renderSearch(){
   const sym=S.tk,theme=tvTheme();rendered.search=sym+theme;
-  tv($("#tv-info"),"symbol-info",{symbol:sym,width:"100%",colorTheme:theme,isTransparent:true});
+  tv($("#tv-info"),"symbol-info",{symbol:sym,width:"100%",colorTheme:theme,isTransparent:true,largeChartUrl:SELF});
   tv($("#tv-chart"),"advanced-chart",{autosize:true,symbol:sym,interval:"D",timezone:"America/Chicago",theme,style:"1",allow_symbol_change:true,calendar:false,hide_volume:false,studies:[],support_host:"https://www.tradingview.com"});
   document.querySelectorAll(".drop [data-sym]").forEach(e=>e.textContent=bare(sym));
   renderDrops();
@@ -305,7 +307,7 @@ function renderSearch(){
 function renderDrops(){
   const sym=S.tk,theme=tvTheme();
   const fin=$("#drop-fin"),feed=$("#drop-feed");
-  if(fin.open&&rendered.fin!==sym){rendered.fin=sym;tv($("#tv-fin"),"financials",{symbol:sym,colorTheme:theme,isTransparent:true,largeChartUrl:"",displayMode:"regular",width:"100%",height:"100%"});}
+  if(fin.open&&rendered.fin!==sym){rendered.fin=sym;tv($("#tv-fin"),"financials",{symbol:sym,colorTheme:theme,isTransparent:true,largeChartUrl:SELF,displayMode:"regular",width:"100%",height:"100%"});}
   if(feed.open&&rendered.feed!==sym){rendered.feed=sym;tv($("#tv-feed"),"timeline",{feedMode:"symbol",symbol:sym,colorTheme:theme,isTransparent:true,displayMode:"regular",width:"100%",height:"100%"});}
 }
 $("#drop-fin").addEventListener("toggle",renderDrops);$("#drop-feed").addEventListener("toggle",renderDrops);
@@ -438,6 +440,8 @@ async function boot(){
   if(pf.status==="fulfilled")S.picks=(pf.value.picks||[]).filter(p=>p.ticker&&p.entryPrice>0&&p.entryDate);
   if(nw.status==="fulfilled"){S.briefs=nw.value.briefs||[];if(nw.value.updated)$("#news-asof").textContent="News briefs updated "+fmtDate(nw.value.updated);}
   S.loaded=true;renderTape();renderPortfolio();renderNews();
+  const fromWidget=new URLSearchParams(location.search).get("tvwidgetsymbol");
+  if(fromWidget){try{history.replaceState(null,"",location.pathname+"#search")}catch(e){}openStock(fromWidget.toUpperCase());}
   showTab(location.hash.slice(1)||"portfolio");
   if(S.picks.length&&CFG.finnhubKey){await Promise.all(S.picks.map(p=>quote(p.ticker)).concat([quote("SPY")]));renderTiles();renderCompare();renderPicks();renderBreakdown();}
 }
