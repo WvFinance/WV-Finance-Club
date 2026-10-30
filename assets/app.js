@@ -319,7 +319,7 @@ if(phoneMQ.matches)$("#q").placeholder="Name or ticker, like Nvidia";
 // data/stocks.json is the SEC's list of US stocks and funds, biggest first (updated weekly by GitHub Actions).
 const COINS=[["BTC","Bitcoin","COINBASE:BTCUSD"],["ETH","Ethereum","COINBASE:ETHUSD"],["SOL","Solana","COINBASE:SOLUSD"]];
 let stockList=null,stockLoad=null,sugg=[],suggAt=-1;
-function loadStocks(){if(!stockLoad)stockLoad=loadJSON("data/stocks.json").then(j=>{stockList=(j.stocks||[]).map(([t,n,ex],i)=>({t,n,sym:ex+":"+t,lo:n.toLowerCase(),i}));
+function loadStocks(){if(!stockLoad)stockLoad=loadJSON("data/stocks.json").then(j=>{stockList=(j.stocks||[]).map(([t,n,ex],i)=>({t,n,sym:ex?ex+":"+t:t,lo:n.toLowerCase(),i}));
   stockList.unshift(...COINS.map(([t,n,sym],i)=>({t,n:n+" (crypto)",sym,lo:n.toLowerCase(),i:-1})));}).catch(()=>{stockList=[];});return stockLoad;}
 function findStocks(q){
   q=q.trim().toLowerCase();if(!q||!stockList)return[];const qt=q.toUpperCase().replace(/^[A-Z]+:/,"");
