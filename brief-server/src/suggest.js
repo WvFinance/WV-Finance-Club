@@ -1,10 +1,10 @@
-// Suggestions tab: stock pitch ideas, meeting topic ideas and private site feedback.
+// Suggestions tab: stock pitch ideas and meeting topic ideas.
 // Members see pitch and topic ideas in random order and can upvote them, but never the vote counts.
-// Only the club leader sees counts and feedback, with the SUGGEST_ADMIN password (a Cloudflare secret).
+// Only the club leader sees counts, with the SUGGEST_ADMIN password (a Cloudflare secret).
 // Everything is one list saved under "sg:items" in the same store as the briefs.
 
 const DAY = 24 * 60 * 60;
-const KINDS = ["pitch", "topic", "feedback"];
+const KINDS = ["pitch", "topic"];
 const MAX_ITEMS = 400;
 const ADD_LIMIT = 15;   // new suggestions one internet address can add per day
 const VOTE_LIMIT = 200; // votes one internet address can give per day (a whole school shares one address)
@@ -57,7 +57,7 @@ export async function handleSuggest(request, env, url, json, headers) {
 
   if (url.pathname === "/suggest" && request.method === "POST") {
     const kind = KINDS.includes(body.kind) ? body.kind : null;
-    const text = clean(body.text, kind === "feedback" ? 600 : 120);
+    const text = clean(body.text, 120);
     const why = clean(body.why, 300);
     if (!kind || text.length < 2) return json({ error: "Please write your idea first." }, 400, headers);
     if (!(await underLimit(env, `sg:add:${day}:${ip}`, ADD_LIMIT))) return json({ error: "This network has sent a lot of suggestions today. Try again tomorrow." }, 429, headers);

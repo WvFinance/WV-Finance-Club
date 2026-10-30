@@ -452,7 +452,7 @@ boot();
 // Saved on the brief server. Members never see vote counts; only the club leader does.
 const IDEA_API=(CFG.briefApi||"").replace(/\/$/,"");
 const voter=(()=>{let v=store.get("wvfc.voter");if(!/^[a-z0-9]{12,40}$/.test(v||"")){v=Array.from(crypto.getRandomValues(new Uint8Array(12)),b=>b.toString(36).padStart(2,"0")).join("").slice(0,20);store.set("wvfc.voter",v);}return v;})();
-const IDEA_HINTS={pitch:["Stock name or ticker, like Costco","Why should the club debate it? (optional)"],topic:["Topic, like how ETFs work","What should we learn? (optional)"],feedback:["What should change on the site?",""]};
+const IDEA_HINTS={pitch:["Stock name or ticker, like Costco","Why should the club debate it? (optional)"],topic:["Topic, like how ETFs work","What should we learn? (optional)"]};
 async function ideaCall(path,body){
   const r=await fetch(IDEA_API+path,body?{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}:{});
   let j={};try{j=await r.json();}catch(e){}
@@ -461,16 +461,16 @@ async function ideaCall(path,body){
 }
 const ideaForm=$("#idea-form"),ideaText=$("#idea-text"),ideaWhy=$("#idea-why"),ideaMsg=$("#idea-msg");
 function ideaKind(){return ideaForm.querySelector("input[name=kind]:checked").value;}
-function setIdeaHints(){const[a,b]=IDEA_HINTS[ideaKind()];ideaText.placeholder=a;ideaWhy.placeholder=b;ideaWhy.hidden=!b;ideaText.maxLength=ideaKind()==="feedback"?600:120;}
+function setIdeaHints(){const[a,b]=IDEA_HINTS[ideaKind()];ideaText.placeholder=a;ideaWhy.placeholder=b;}
 ideaForm.addEventListener("change",setIdeaHints);setIdeaHints();
 ideaForm.addEventListener("submit",async e=>{
   e.preventDefault();const kind=ideaKind(),text=ideaText.value.trim();
   if(!text){ideaMsg.textContent="Write your idea first.";ideaText.focus();return;}
   const btn=ideaForm.querySelector("button[type=submit]");btn.disabled=true;ideaMsg.textContent="Sending…";
-  try{await ideaCall("/suggest",{kind,text,why:kind==="feedback"?"":ideaWhy.value.trim()});
+  try{await ideaCall("/suggest",{kind,text,why:ideaWhy.value.trim()});
     ideaText.value="";ideaWhy.value="";
-    ideaMsg.textContent=kind==="feedback"?"Thanks! Your feedback went to the club leader.":"Thanks! Your idea is on the list.";
-    if(kind!=="feedback")loadIdeas(true);}
+    ideaMsg.textContent="Thanks! Your idea is on the list.";
+    loadIdeas(true);}
   catch(err){ideaMsg.textContent=err.message;}
   btn.disabled=false;
 });
