@@ -40,10 +40,13 @@ def main():
     # Start a few days before the first pick so the chart has a starting close.
     start = (min(dates) if dates else dt.date.today() - dt.timedelta(days=365)) - dt.timedelta(days=7)
 
+    # Crypto picks name their Yahoo symbol, like {"ticker": "BTC", "yahoo": "BTC-USD"}.
+    yahoo = {p["ticker"].upper(): p["yahoo"] for p in picks if p.get("ticker") and p.get("yahoo")}
+
     series, failed = {}, []
     for t in tickers:
         try:
-            series[t] = yahoo_closes(t.replace(".", "-"), start)
+            series[t] = yahoo_closes(yahoo.get(t, t.replace(".", "-")), start)
         except Exception as e:  # keep going so one bad ticker doesn't stop the update
             failed.append(t)
             print(f"Could not download {t}: {e}")
@@ -55,6 +58,12 @@ def main():
         for t in failed:
             if t in old["closes"]:
                 series[t] = dict(zip(old["dates"], old["closes"][t]))
+
+    # Crypto trades every day, but the site works in stock market days: keep only days the market was open.
+    if "SPY" in series:
+        for t in yahoo:
+            if t in series:
+                series[t] = {d: c for d, c in series[t].items() if d in series["SPY"]}
 
     all_dates = sorted({d for s in series.values() for d in s})
     data = {
