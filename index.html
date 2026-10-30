@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=2026103002">
+<link rel="stylesheet" href="assets/style.css?v=2026103005">
 <script>
 // Club password screen. The password is checked by its SHA-256 hash (lowercased), so it isn't written here.
 // To change it: hash the new password in lowercase and replace WVFC_PASS below.
@@ -63,9 +63,10 @@ try{if(localStorage.getItem("wvfc-pass")===window.WVFC_PASS)document.documentEle
 
 <nav class="tabs" aria-label="Sections">
   <div class="wrap" role="tablist">
-    <button class="tab hasmenu" role="tab" id="tab-portfolio" aria-controls="portfolio" aria-selected="true" aria-haspopup="menu" aria-expanded="false" data-tab="portfolio">Class Portfolio<span class="count" id="cnt-picks"></span><span class="caret" aria-hidden="true"></span></button>
+    <button class="tab hasmenu" role="tab" id="tab-portfolio" aria-controls="portfolio" aria-selected="true" aria-haspopup="menu" aria-expanded="false" data-tab="portfolio"><span class="tlong">Class </span>Portfolio<span class="count" id="cnt-picks"></span><span class="caret" aria-hidden="true"></span></button>
     <button class="tab" role="tab" id="tab-search" aria-controls="search" aria-selected="false" data-tab="search">Search</button>
     <button class="tab" role="tab" id="tab-news" aria-controls="news" aria-selected="false" data-tab="news">News<span class="count" id="cnt-news"></span></button>
+    <button class="tab" role="tab" id="tab-ideas" aria-controls="ideas" aria-selected="false" data-tab="ideas">Suggestions</button>
   </div>
   <div class="tabmenu" id="pf-menu" role="menu" hidden>
     <button role="menuitem" data-view="overview">Overview</button>
@@ -169,6 +170,35 @@ try{if(localStorage.getItem("wvfc-pass")===window.WVFC_PASS)document.documentEle
   </div>
 </section>
 
+<!-- SUGGESTIONS -->
+<section role="tabpanel" id="ideas" aria-labelledby="tab-ideas" hidden>
+  <div class="sechead">
+    <div>
+      <h2>Suggestions</h2>
+      <p class="sub">Share an idea and upvote the ones you like. Votes are private.</p>
+    </div>
+  </div>
+  <form class="panel ideaform" id="idea-form" autocomplete="off">
+    <div class="kindpick" role="radiogroup" aria-label="What kind of idea">
+      <label><input type="radio" name="kind" value="pitch" checked><span>Stock to pitch</span></label>
+      <label><input type="radio" name="kind" value="topic"><span>Meeting topic</span></label>
+      <label><input type="radio" name="kind" value="feedback"><span>Site feedback</span></label>
+    </div>
+    <input id="idea-text" maxlength="120" aria-label="Your idea">
+    <textarea id="idea-why" rows="2" maxlength="300" aria-label="Why"></textarea>
+    <div class="ideaact"><button class="btn primary" type="submit">Send idea</button><span class="meta" id="idea-msg" role="status"></span></div>
+  </form>
+  <div class="idealists">
+    <div class="panel"><h3 class="h3">Stocks to pitch</h3><ul class="idealist" id="ideas-pitch"></ul></div>
+    <div class="panel"><h3 class="h3">Meeting topics</h3><ul class="idealist" id="ideas-topic"></ul></div>
+  </div>
+  <div class="leader">
+    <button class="btn ghost small" type="button" id="leader-open">Club leader</button>
+    <form id="leader-form" hidden><input type="password" id="leader-pass" placeholder="Leader password" aria-label="Leader password"><button class="btn small" type="submit">Open</button><span class="meta" id="leader-msg" role="alert"></span></form>
+    <div class="panel" id="leader-view" hidden></div>
+  </div>
+</section>
+
 </div>
 </main>
 
@@ -181,6 +211,6 @@ try{if(localStorage.getItem("wvfc-pass")===window.WVFC_PASS)document.documentEle
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="config.js?v=2026102512"></script>
-<script src="assets/app.js?v=2026103004"></script>
+<script src="assets/app.js?v=2026103005"></script>
 </body>
 </html>

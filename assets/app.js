@@ -37,7 +37,7 @@ const S={picks:[],briefs:[],quotes:{},prices:{dates:[],closes:{}},tk:(store.get(
 try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="string");}catch(e){S.watch=[];}
 
 /* ---------- Tabs ---------- */
-const TABS=["portfolio","search","news"];const rendered={};
+const TABS=["portfolio","search","news","ideas"];const rendered={};
 const PVIEWS=["overview","positions","sectors","history"];let S_view="overview";
 function showTab(name,push){
   if(PVIEWS.includes(name)){S_view=name;name="portfolio";}else if(name==="portfolio")S_view="overview";
@@ -48,6 +48,7 @@ function showTab(name,push){
   if(push){try{history.replaceState(null,"","#"+(name==="portfolio"&&S_view!=="overview"?S_view:name))}catch(e){}}
   if(name==="search"&&rendered.search!==S.tk+tvTheme())renderSearch();
   if(name==="news")renderNewsFeed();
+  if(name==="ideas")loadIdeas();
   window.scrollTo({top:0});
 }
 document.querySelectorAll(".tab:not(.hasmenu)").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.tab,true)));
@@ -446,4 +447,71 @@ async function boot(){
   if(S.picks.length&&CFG.finnhubKey){await Promise.all(S.picks.map(p=>quote(p.ticker)).concat([quote("SPY")]));renderTiles();renderCompare();renderPicks();renderBreakdown();}
 }
 boot();
+
+/* ---------- Suggestions ---------- */
+// Saved on the brief server. Members never see vote counts; only the club leader does.
+const IDEA_API=(CFG.briefApi||"").replace(/\/$/,"");
+const voter=(()=>{let v=store.get("wvfc.voter");if(!/^[a-z0-9]{12,40}$/.test(v||"")){v=Array.from(crypto.getRandomValues(new Uint8Array(12)),b=>b.toString(36).padStart(2,"0")).join("").slice(0,20);store.set("wvfc.voter",v);}return v;})();
+const IDEA_HINTS={pitch:["Stock name or ticker, like Costco","Why should the club debate it? (optional)"],topic:["Topic, like how ETFs work","What should we learn? (optional)"],feedback:["What should change on the site?",""]};
+async function ideaCall(path,body){
+  const r=await fetch(IDEA_API+path,body?{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}:{});
+  let j={};try{j=await r.json();}catch(e){}
+  if(!r.ok)throw new Error(j.error||"Something went wrong. Try again in a minute.");
+  return j;
+}
+const ideaForm=$("#idea-form"),ideaText=$("#idea-text"),ideaWhy=$("#idea-why"),ideaMsg=$("#idea-msg");
+function ideaKind(){return ideaForm.querySelector("input[name=kind]:checked").value;}
+function setIdeaHints(){const[a,b]=IDEA_HINTS[ideaKind()];ideaText.placeholder=a;ideaWhy.placeholder=b;ideaWhy.hidden=!b;ideaText.maxLength=ideaKind()==="feedback"?600:120;}
+ideaForm.addEventListener("change",setIdeaHints);setIdeaHints();
+ideaForm.addEventListener("submit",async e=>{
+  e.preventDefault();const kind=ideaKind(),text=ideaText.value.trim();
+  if(!text){ideaMsg.textContent="Write your idea first.";ideaText.focus();return;}
+  const btn=ideaForm.querySelector("button[type=submit]");btn.disabled=true;ideaMsg.textContent="Sending…";
+  try{await ideaCall("/suggest",{kind,text,why:kind==="feedback"?"":ideaWhy.value.trim()});
+    ideaText.value="";ideaWhy.value="";
+    ideaMsg.textContent=kind==="feedback"?"Thanks! Your feedback went to the club leader.":"Thanks! Your idea is on the list.";
+    if(kind!=="feedback")loadIdeas(true);}
+  catch(err){ideaMsg.textContent=err.message;}
+  btn.disabled=false;
+});
+let ideasLoaded=false;
+async function loadIdeas(force){
+  if(ideasLoaded&&!force)return;ideasLoaded=true;
+  if(!IDEA_API){$("#ideas-pitch").replaceChildren(el("li",{class:"empty",text:"Suggestions aren't set up yet."}));return;}
+  let d;try{d=await ideaCall("/suggest?voter="+voter);}catch(e){ideasLoaded=false;for(const k of["pitch","topic"])$("#ideas-"+k).replaceChildren(el("li",{class:"empty",text:"Ideas couldn't be loaded. Try again in a minute."}));return;}
+  const voted=new Set(d.voted||[]);
+  for(const k of["pitch","topic"]){
+    const list=(d.items||[]).filter(i=>i.kind===k);
+    $("#ideas-"+k).replaceChildren(...(list.length?list.map(i=>ideaRow(i,voted.has(i.id))):[el("li",{class:"empty",text:k==="pitch"?"No stock ideas yet. Be the first!":"No topic ideas yet. Be the first!"})]));
+  }
+}
+function ideaRow(i,done){
+  const b=el("button",{type:"button",class:"btn small vote","aria-pressed":String(done),text:done?"Upvoted ✓":"▲ Upvote",disabled:done});
+  b.addEventListener("click",async()=>{b.disabled=true;b.textContent="…";
+    try{await ideaCall("/suggest/vote",{id:i.id,voter});b.textContent="Upvoted ✓";b.setAttribute("aria-pressed","true");}
+    catch(e){b.disabled=false;b.textContent="▲ Upvote";toast(e.message);}});
+  return el("li",{},el("div",{},el("div",{class:"t",text:i.text}),i.why?el("div",{class:"w",text:i.why}):null),b);
+}
+// Club leader view. The password stays only in this tab's memory and is checked by the server.
+let leaderPass="";
+$("#leader-open").addEventListener("click",()=>{const f=$("#leader-form");f.hidden=!f.hidden;if(!f.hidden)$("#leader-pass").focus();});
+$("#leader-form").addEventListener("submit",e=>{e.preventDefault();leaderPass=$("#leader-pass").value;leaderLoad();});
+const KIND_NAME={pitch:"Stock to pitch",topic:"Meeting topic",feedback:"Site feedback"};
+async function leaderLoad(action,id){
+  const msg=$("#leader-msg");msg.textContent=action?"":"Checking…";
+  let d;try{d=await ideaCall("/suggest/admin",{password:leaderPass,action,id});}
+  catch(e){msg.textContent=e.message;$("#leader-view").hidden=true;return;}
+  msg.textContent="";$("#leader-form").hidden=true;$("#leader-pass").value="";
+  const v=$("#leader-view");v.hidden=false;
+  const act=(label,a,it)=>el("button",{type:"button",class:"btn small",text:label,onclick:()=>{if(a!=="delete"||confirmDelete(it))leaderLoad(a,it.id);}});
+  v.replaceChildren(el("div",{class:"sechead"},el("h3",{class:"h3",text:"Leader view: all ideas, most votes first"}),el("button",{type:"button",class:"btn ghost small",text:"Close",onclick:()=>{v.hidden=true;leaderPass="";}})),
+    ...(d.items.length?d.items.map(it=>el("div",{class:"lrow"+(it.hidden?" off":"")},
+      el("div",{class:"n",title:"votes",text:it.kind==="feedback"?"–":String(it.votes)}),
+      el("div",{},el("div",{class:"k",text:KIND_NAME[it.kind]+" · "+fmtDate(it.at)+(it.hidden?" · hidden":"")}),el("div",{class:"t",text:it.text}),it.why?el("div",{class:"meta",text:it.why}):null),
+      el("div",{class:"acts"},it.kind==="feedback"?null:act(it.hidden?"Show":"Hide",it.hidden?"show":"hide",it),act("Delete","delete",it)))):[el("p",{class:"meta",text:"No ideas yet."})]));
+  if(action)loadIdeas(true);
+}
+// Two taps to delete, without a pop-up box.
+const armed=new Set();
+function confirmDelete(it){if(armed.has(it.id))return true;armed.add(it.id);toast("Tap Delete again to remove it for good.");setTimeout(()=>armed.delete(it.id),4000);return false;}
 })();

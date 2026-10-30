@@ -3,6 +3,7 @@
 // Briefs are saved for a day so the same stock is only written once a day.
 import { writeBrief } from "./gemini.js";
 import { checkFeeds } from "./news.js";
+import { handleSuggest } from "./suggest.js";
 
 const DAY = 24 * 60 * 60;
 
@@ -10,7 +11,8 @@ function cors(env, origin) {
   const ok = origin === env.ALLOWED_ORIGIN || /^http:\/\/localhost(:\d+)?$/.test(origin || "");
   return {
     "Access-Control-Allow-Origin": ok ? origin : env.ALLOWED_ORIGIN,
-    "Access-Control-Allow-Methods": "GET, OPTIONS",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
     "Vary": "Origin",
   };
 }
@@ -38,6 +40,8 @@ export default {
     const headers = cors(env, request.headers.get("Origin"));
     if (request.method === "OPTIONS") return new Response(null, { headers });
     const url = new URL(request.url);
+    const suggest = await handleSuggest(request, env, url, json, headers);
+    if (suggest) return suggest;
     if (url.pathname === "/news-check") {
       // Test page for the Test brief server workflow. No AI, but it calls the SEC and the
       // news sites, so it's capped per day to keep the server in good standing with them.
