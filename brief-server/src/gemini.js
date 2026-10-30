@@ -6,7 +6,7 @@ import { wordingProblems, explainJargon, givesAdvice } from "./wording.js";
 
 const API = "https://generativelanguage.googleapis.com/v1beta/models/";
 
-const RULES = `You write short stock news briefs for a high school finance club website.
+const RULES = `You write detailed stock news briefs for a high school finance club website.
 You are given numbered news articles from the last two weeks. Use only facts from those articles.
 If an item is marked "Official numbers", those are the company's own results from its report to the government; you may quote them.
 
@@ -17,8 +17,14 @@ WORDING (very important): readers are high school students, so write at about a 
   "What analysts expected", not "consensus". "Spending on buildings and equipment", not "capex".
 - If you must use a finance term (like "price target"), explain it in a few words in parentheses right after it.
 - Say "the July-to-September quarter" or "the last three months", not "Q3". Say "the company's year", not "fiscal year".
-- Round big numbers: "$11.5 billion", not "$11,512,000,000". Use only the 2 or 3 most important numbers in the summary.
+- Round big numbers: "$11.5 billion", not "$11,512,000,000".
 - Say who said something when it matters ("analysts at Barclays", "the company").
+
+DETAIL (very important): be specific, never vague. Pack in the real facts from the articles.
+- The summary is 4 to 6 short sentences. Give the stock's price or move with a percent, the dates things happened,
+  the key numbers (sales, profit, how many units, how much money), and what is coming up next.
+- Every bull and bear reason is one or two short sentences built on a specific fact: a number, a date, a product,
+  or who said it. "iPhone sales rose 8% to $49 billion in the July-to-September quarter" is good; "strong iPhone demand" is too vague.
 
 Here is an example of the style to copy (a different company):
 Headline: "Coca-Cola hits a record high after winning KFC away from Pepsi"
@@ -35,9 +41,9 @@ Reply with only a JSON object with exactly these keys:
   "name": "company name",
   "sentiment": "bullish" | "neutral" | "bearish",
   "headline": "one short sentence, under 90 characters",
-  "summary": "3 or 4 short sentences on what is going on and why the stock moved",
-  "bull": ["3 short reasons the news is good for the stock"],
-  "bear": ["3 short reasons the news is bad for the stock"],
+  "summary": "4 to 6 short sentences with specific numbers and dates on what is going on and why the stock moved",
+  "bull": ["3 specific reasons the news is good for the stock, each with a number, date or name"],
+  "bear": ["3 specific reasons the news is bad for the stock, each with a number, date or name"],
   "nextEvent": "the next big date mentioned in the articles, like the next earnings report, or an empty string",
   "sources": [the numbers of every article you used, like 1, 4, 7]
 }`;
