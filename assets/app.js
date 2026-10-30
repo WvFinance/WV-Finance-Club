@@ -314,8 +314,37 @@ function renderQuick(){
   const list=[...new Set(S.picks.map(p=>p.symbol||p.ticker).concat(["NASDAQ:AAPL","NASDAQ:NVDA","NASDAQ:MSFT","NASDAQ:AMZN","NASDAQ:TSLA","NYSE:JPM","NASDAQ:COST","NYSE:KO"]))].slice(0,10);
   list.forEach(s=>q.append(el("button",{class:"qchip"+(bare(s)===bare(S.tk)?" on":""),type:"button",text:bare(s),onclick:()=>openStock(s)})));
 }
-if(phoneMQ.matches)$("#q").placeholder="Ticker, like NVDA";
-$("#searchform").addEventListener("submit",e=>{e.preventDefault();const s=normSym($("#q").value);if(!s){toast("Type a ticker, like AAPL or NYSE:F");return;}$("#q").value="";$("#q").blur();openStock(s);});
+if(phoneMQ.matches)$("#q").placeholder="Name or ticker, like Nvidia";
+/* ---------- Search suggestions: the top 3 matches by name or ticker ---------- */
+// data/stocks.json is the SEC's list of US stocks and funds, biggest first (updated weekly by GitHub Actions).
+const COINS=[["BTC","Bitcoin","COINBASE:BTCUSD"],["ETH","Ethereum","COINBASE:ETHUSD"],["SOL","Solana","COINBASE:SOLUSD"]];
+let stockList=null,stockLoad=null,sugg=[],suggAt=-1;
+function loadStocks(){if(!stockLoad)stockLoad=loadJSON("data/stocks.json").then(j=>{stockList=(j.stocks||[]).map(([t,n,ex],i)=>({t,n,sym:ex+":"+t,lo:n.toLowerCase(),i}));
+  stockList.unshift(...COINS.map(([t,n,sym],i)=>({t,n:n+" (crypto)",sym,lo:n.toLowerCase(),i:-1})));}).catch(()=>{stockList=[];});return stockLoad;}
+function findStocks(q){
+  q=q.trim().toLowerCase();if(!q||!stockList)return[];const qt=q.toUpperCase().replace(/^[A-Z]+:/,"");
+  // Best first: exact ticker, then name starts with it, ticker starts with it, a word in the name starts with it, then name contains it. Bigger companies win ties.
+  const rank=s=>s.t===qt?0:s.lo.startsWith(q)?1:s.t.startsWith(qt)?2:(" "+s.lo).includes(" "+q)?3:q.length>2&&s.lo.includes(q)?4:9;
+  const out=[];for(const s of stockList){const r=rank(s);if(r<9)out.push([r,s]);}
+  return out.sort((a,b)=>a[0]-b[0]||a[1].i-b[1].i).slice(0,3).map(x=>x[1]);
+}
+function showSuggest(){
+  const box=$("#suggest"),inp=$("#q");box.replaceChildren(...sugg.map((s,i)=>el("li",{role:"option",id:"sg"+i,class:i===suggAt?"on":"","aria-selected":String(i===suggAt),
+    onmousedown:e=>{e.preventDefault();pickSuggest(i);}},el("b",{text:s.t}),el("span",{text:s.n}))));
+  box.hidden=!sugg.length;inp.setAttribute("aria-expanded",String(!!sugg.length));
+  if(suggAt>=0)inp.setAttribute("aria-activedescendant","sg"+suggAt);else inp.removeAttribute("aria-activedescendant");
+}
+function pickSuggest(i){const s=sugg[i];if(!s)return;sugg=[];suggAt=-1;showSuggest();$("#q").value="";$("#q").blur();openStock(s.sym);}
+$("#q").addEventListener("focus",loadStocks);
+$("#q").addEventListener("input",async()=>{await loadStocks();sugg=findStocks($("#q").value);suggAt=-1;showSuggest();});
+$("#q").addEventListener("keydown",e=>{
+  if(!sugg.length)return;
+  if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();suggAt=(suggAt+(e.key==="ArrowDown"?1:sugg.length-1)+1)%(sugg.length+1)-1;if(suggAt<-1)suggAt=sugg.length-1;showSuggest();}
+  else if(e.key==="Escape"){sugg=[];showSuggest();}
+  else if(e.key==="Enter"&&suggAt>=0){e.preventDefault();pickSuggest(suggAt);}});
+$("#q").addEventListener("blur",()=>setTimeout(()=>{sugg=[];showSuggest();},150));
+$("#searchform").addEventListener("submit",e=>{e.preventDefault();// A name like "apple" opens the top match; a ticker, or a symbol like NYSE:F, works as before.
+  if(!/^[A-Z]+:/i.test($("#q").value.trim())){const top=findStocks($("#q").value)[0];if(top){sugg=[top];pickSuggest(0);return;}}const s=normSym($("#q").value);if(!s){toast("Type a ticker, like AAPL or NYSE:F");return;}$("#q").value="";$("#q").blur();openStock(s);});
 function saveWatch(){store.set("wvfc.watch",JSON.stringify(S.watch));}
 function renderWatch(){
   const box=$("#wl");box.replaceChildren();const on=S.watch.some(w=>bare(w)===bare(S.tk));

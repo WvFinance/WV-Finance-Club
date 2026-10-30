@@ -328,3 +328,9 @@ html.unlocked #gate{display:none}
   .mk b{font-size:20px}
   .tabs .tab{padding:14px 10px 12px}
 }
+/* Search suggestions */
+.suggest{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:20;list-style:none;margin:0;padding:6px;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.suggest li{display:flex;gap:12px;align-items:baseline;padding:10px 12px;border-radius:6px;cursor:pointer}
+.suggest li b{font-family:var(--f-mono);min-width:56px}
+.suggest li span{color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.suggest li:hover,.suggest li.on{background:var(--gold-soft)}

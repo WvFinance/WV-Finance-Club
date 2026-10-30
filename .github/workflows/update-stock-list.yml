@@ -1,0 +1,36 @@
+name: Update stock list
+
+# Refreshes data/stocks.json (ticker, name, exchange) for the search bar's suggestions. Free.
+on:
+  schedule:
+    - cron: "0 9 * * 0"   # Sunday morning
+  push:
+    branches: [main]
+    paths: [scripts/update_stock_list.py, .github/workflows/update-stock-list.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-stock-list
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python scripts/update_stock_list.py
+      - name: Save the new list
+        run: |
+          git add data/stocks.json
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git config user.name "wvfc-price-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update stock list"
+          git pull --rebase origin main
+          git push
