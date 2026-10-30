@@ -21,7 +21,8 @@ KEEP_UPPER = {"ETF", "REIT", "LLC", "PLC", "NV", "SA", "AG", "SE", "LP", "ADR", 
 
 
 def nice(name):
-    """Turn 'NVIDIA CORP' into 'Nvidia Corp'; names already in mixed case stay as they are."""
+    """Turn 'NVIDIA CORP' into 'Nvidia Corp' and drop share-type words like 'Common Stock'."""
+    name = re.sub(r"\s+(Common Stock|Common Shares|Ordinary Shares|Capital Stock|American Depositary Shares?|Depositary Shares?|Units?)\b.*$", "", name.strip()) or name
     if name != name.upper():
         return name
     words = []
