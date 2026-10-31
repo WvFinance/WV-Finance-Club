@@ -37,7 +37,7 @@ const S={picks:[],briefs:[],quotes:{},prices:{dates:[],closes:{}},tk:(store.get(
 try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="string");}catch(e){S.watch=[];}
 
 /* ---------- Tabs ---------- */
-const TABS=["portfolio","mine","search","news","ideas"].filter(t=>document.getElementById(t));const rendered={};
+const TABS=["portfolio","mine","trade","search","news","ideas"].filter(t=>document.getElementById(t));const rendered={};
 const PVIEWS=["overview","positions","sectors","history"];let S_view="overview";
 function showTab(name,push){
   if(PVIEWS.includes(name)){S_view=name;name="portfolio";}else if(name==="portfolio")S_view="overview";

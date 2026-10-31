@@ -62,6 +62,9 @@ async function start(){
   user=session.user;root.classList.add("unlocked");
   $("#mine-who").textContent=`Your own stocks, saved to ${user.email}. Only you can see them.`;
   loadWatch();loadHoldings();
+  // The trading game (paper.js) may load after this runs, so it can also read WVFC_SESSION.
+  window.WVFC_SESSION={db,user};
+  document.dispatchEvent(new CustomEvent("wvfc:login",{detail:{db,user}}));
 }
 
 /* ---------- Watchlist saved to the account ---------- */
