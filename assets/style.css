@@ -368,3 +368,4 @@ html.unlocked #gate{display:none}
 .lrow .acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
 #leader-form[hidden]{display:none}
 .lrow .t{font-weight:600;overflow-wrap:anywhere}
+#tab-ideas{margin-left:auto}
