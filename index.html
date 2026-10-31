@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=2026103102">
+<link rel="stylesheet" href="assets/style.css?v=2026103103">
 <script>
 // Club password, needed once to create an account. It's checked by its SHA-256 hash (lowercased), so it isn't written here.
 // To change it: hash the new password in lowercase and replace WVFC_PASS below.
@@ -51,6 +51,7 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
   <div class="wrap" role="tablist">
     <button class="tab hasmenu" role="tab" id="tab-portfolio" aria-controls="portfolio" aria-selected="true" aria-haspopup="menu" aria-expanded="false" data-tab="portfolio"><span class="tlong">Class </span>Portfolio<span class="count" id="cnt-picks"></span><span class="caret" aria-hidden="true"></span></button>
     <button class="tab" role="tab" id="tab-mine" aria-controls="mine" aria-selected="false" data-tab="mine">My Portfolio</button>
+    <button class="tab" role="tab" id="tab-trade" aria-controls="trade" aria-selected="false" data-tab="trade">Trading</button>
     <button class="tab" role="tab" id="tab-search" aria-controls="search" aria-selected="false" data-tab="search">Search</button>
     <button class="tab" role="tab" id="tab-news" aria-controls="news" aria-selected="false" data-tab="news">News<span class="count" id="cnt-news"></span></button>
     <button class="tab" role="tab" id="tab-ideas" aria-controls="ideas" aria-selected="false" data-tab="ideas">Suggestions</button>
@@ -121,6 +122,43 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
     </ul>
     <label class="btn primary filebtn">Choose file<input type="file" id="mine-file" accept=".csv,text/csv"></label>
     <div id="mine-preview" hidden></div>
+  </div>
+</section>
+
+<!-- TRADING GAME -->
+<section role="tabpanel" id="trade" aria-labelledby="tab-trade" hidden>
+  <div class="sechead">
+    <div>
+      <h2>Trading game</h2>
+      <p class="sub">Practice with $50,000 of pretend money at real prices. The biggest % gain tops the leaderboard.</p>
+    </div>
+  </div>
+  <p class="meta" id="pt-loading">Loading the game…</p>
+  <form class="panel ptjoin" id="pt-join" hidden autocomplete="off">
+    <h3 class="h3">Join the game</h3>
+    <p class="meta">You'll get $50,000 of pretend money to buy and sell real stocks. Pick the name everyone will see on the leaderboard.</p>
+    <div class="ptrow"><input class="ptinp" id="pt-name" maxlength="30" placeholder="Your name, like Charlie R." aria-label="Name for the leaderboard" required><button class="btn primary" type="submit">Start with $50,000</button></div>
+    <p class="ptmsg" id="pt-join-msg" role="alert"></p>
+  </form>
+  <div id="pt-game" hidden>
+    <div class="tiles" id="pt-tiles"></div>
+    <div class="two ptmain">
+      <form class="panel" id="pt-form" autocomplete="off">
+        <h3 class="h3">Buy or sell</h3>
+        <p class="meta" id="pt-market"></p>
+        <label class="ptlabel" for="pt-sym">Stock ticker</label>
+        <div class="ptrow"><input class="ptinp sym" id="pt-sym" maxlength="10" placeholder="Like NVDA" autocapitalize="characters" spellcheck="false"><button class="btn" type="button" id="pt-check">Check price</button></div>
+        <p class="ptprice" id="pt-price" aria-live="polite"></p>
+        <label class="ptlabel" for="pt-qty">Shares</label>
+        <input class="ptinp" id="pt-qty" type="number" min="1" step="1" inputmode="numeric" placeholder="How many shares">
+        <p class="meta" id="pt-est"></p>
+        <div class="ptrow"><button class="btn primary" type="button" id="pt-buy">Buy</button><button class="btn sell" type="button" id="pt-sell">Sell</button></div>
+        <p class="ptmsg" id="pt-msg" role="alert"></p>
+      </form>
+      <div class="panel"><h3 class="h3">Leaderboard</h3><div id="pt-board"></div></div>
+    </div>
+    <div class="panel" id="pt-hold"></div>
+    <div class="panel" id="pt-trades"></div>
   </div>
 </section>
 
@@ -219,8 +257,9 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="config.js?v=2026103102"></script>
-<script src="assets/app.js?v=2026103101"></script>
+<script src="assets/app.js?v=2026103103"></script>
 <script src="assets/vendor/supabase-2.118.0.js"></script>
-<script src="assets/account.js?v=2026103102"></script>
+<script src="assets/account.js?v=2026103103"></script>
+<script src="assets/paper.js?v=2026103103"></script>
 </body>
 </html>

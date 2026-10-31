@@ -394,3 +394,43 @@ html.unlocked #gate{display:none}
 .filebtn input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
 #mine-preview{margin-top:20px;border-top:1px solid var(--line);padding-top:20px}
 #mine-preview .ideaact{margin-top:16px;display:flex;gap:10px}
+
+/* Trading game */
+#pt-game{min-width:0}
+#pt-tiles{margin-bottom:16px}
+.ptmain{margin-bottom:16px}
+.ptjoin .meta{margin:6px 0 14px}
+.ptrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.ptinp{flex:1;min-width:0;width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;color:var(--ink);font:inherit;font-size:16px;padding:10px 12px;outline:none}
+.ptrow .ptinp{width:auto}
+.ptinp:focus{border-color:var(--gold)}
+.ptinp.sym{text-transform:uppercase;font-family:var(--f-mono)}
+.ptinp.sym::placeholder{text-transform:none;font-family:var(--f-body)}
+.ptlabel{display:block;font-size:13px;font-weight:600;color:var(--ink-2);margin:14px 0 6px}
+#pt-form .meta{margin:6px 0 0}
+#pt-market.open{color:var(--up)}
+.ptprice{margin:10px 0 0;min-height:1.5em}
+.ptprice .up{color:var(--up)}.ptprice .down{color:var(--down)}
+#pt-form .ptrow:last-of-type{margin-top:16px}
+#pt-form .ptrow .btn{flex:1;justify-content:center;padding:11px 14px;font-size:15px}
+#pt-form .ptrow .btn#pt-check{flex:none}
+.btn.sell{background:var(--down-soft);border-color:var(--down);color:var(--down)}
+.ptmsg{margin:10px 0 0;min-height:1.2em;color:var(--down);font-size:14px}
+#pt-hold{margin-bottom:16px}
+#pt-hold .meta{margin:4px 0 12px}
+.ptboard{list-style:none;margin:12px 0 0;padding:0;display:grid}
+.ptboard li{display:grid;grid-template-columns:44px minmax(0,1fr) auto auto;gap:12px;align-items:baseline;padding:10px 8px;border-top:1px solid var(--line)}
+.ptboard li:first-child{border-top:0}
+.ptboard li.me{background:var(--gold-soft);border-radius:8px}
+.ptboard .r{font-family:var(--f-mono);color:var(--gold)}
+.ptboard .n{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ptboard .g{font-family:var(--f-mono);text-align:right}
+.ptboard .v{font-family:var(--f-mono);color:var(--ink-2);text-align:right;font-size:13px}
+.ptboard .up{color:var(--up)}.ptboard .down{color:var(--down)}.ptboard .flat{color:var(--flat)}
+@media (max-width:600px){.ptboard li{grid-template-columns:36px minmax(0,1fr) auto}.ptboard .v{display:none}}
+.ptlist{list-style:none;margin:12px 0 0;padding:0;display:grid}
+.ptlist li{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:10px 0;border-top:1px solid var(--line)}
+.ptlist li:first-child{border-top:0}
+.ptlist .o{margin-left:auto;font-size:12px;color:var(--muted);font-family:var(--f-mono)}
+.pttag{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:999px}
+.pttag.buy{background:var(--up-soft);color:var(--up)}.pttag.sell{background:var(--down-soft);color:var(--down)}

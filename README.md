@@ -62,6 +62,12 @@ Charts, search and headlines come from TradingView's free widgets and need no ac
 
 Logins and data are stored in [Supabase](https://supabase.com). `supabase/setup.sql` creates the tables and the rules that let each member see only their own data; run it once in Supabase's SQL Editor. The project address and publishable key are in `config.js` (the publishable key is meant to be public). Code: `assets/account.js`.
 
+## Trading game
+
+The **Trading** tab is a practice game. Each member who joins gets $50,000 of pretend money to buy and sell real stocks at the real price, and a leaderboard ranks everyone by % gain. Trades only go through while the market is open (weekdays 8:30am to 3pm Chicago time; market holidays aren't counted).
+
+Prices come from [Finnhub](https://finnhub.io). The database looks them up itself, so nobody can send in a fake price, and the Finnhub key is kept in Supabase's Vault, not in the website. `supabase/paper-trading.sql` sets it all up: put the Finnhub key near the top, then run it once in Supabase's SQL Editor. A scheduled job keeps the prices of owned stocks fresh every 10 minutes during market hours. Code: `assets/paper.js`.
+
 ---
 
 For education only, not financial advice.
