@@ -1,4 +1,4 @@
-// Member accounts for beta.html: log in, My Portfolio (from a Fidelity or Schwab file) and a watchlist saved to the account.
+// Member accounts: log in, My Portfolio (from a Fidelity or Schwab file) and a watchlist saved to the account.
 // Logins and data live in Supabase. Each table's row rules only let a member read and change their own rows.
 (function(){
 "use strict";
@@ -26,17 +26,21 @@ function setMode(m){mode=m;const login=m==="login";
   $("#auth-q").textContent=login?"New here?":"Already have an account?";
   $("#auth-switch").textContent=login?"Create an account":"Log in";
   $("#auth-pass").setAttribute("autocomplete",login?"current-password":"new-password");
-  $("#auth-pass").placeholder=login?"Password":"Password (8 or more characters)";
+  $("#auth-pass").placeholder=login?"Password":"Make a password (8 or more characters)";
+  $("#auth-club").hidden=login;$("#auth-club").required=!login;
   msg.textContent="";}
 $("#auth-switch").addEventListener("click",()=>setMode(mode==="login"?"signup":"login"));
 const AUTH_ERR=[[/invalid login credentials/i,"That email and password don't match. Try again."],[/already registered|already been registered/i,"That email already has an account. Log in instead."],
   [/email not confirmed/i,"Confirm your email first. Check your inbox for the link."],[/password should be|weak password/i,"Pick a longer password, at least 8 characters."],
-  [/rate limit|too many/i,"Too many tries. Wait a minute and try again."],[/fetch|network/i,"Couldn't reach the login server. Check your internet and try again."]];
+  [/rate limit|too many/i,"Too many tries. Wait a minute and try again."],[/club password/,"That's not the club password. Ask a club leader for it."],[/fetch|network/i,"Couldn't reach the login server. Check your internet and try again."]];
+async function sha(t){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");}
 const authErr=e=>{const m=String(e&&e.message||e);const hit=AUTH_ERR.find(([r])=>r.test(m));return hit?hit[1]:m;};
 $("#gate-form").addEventListener("submit",async e=>{e.preventDefault();
   const email=$("#auth-email").value.trim(),password=$("#auth-pass").value,go=$("#auth-go");
   go.disabled=true;msg.textContent="";
   try{
+    // New accounts need the club password, so only members can join.
+    if(mode==="signup"&&window.WVFC_PASS&&await sha($("#auth-club").value.trim().toLowerCase())!==window.WVFC_PASS)throw new Error("club password");
     const r=mode==="login"?await db.auth.signInWithPassword({email,password}):await db.auth.signUp({email,password});
     if(r.error)throw r.error;
     if(!r.data.session){setMode("login");msg.textContent="Account made. Check your email for the confirm link, then log in.";return;}
