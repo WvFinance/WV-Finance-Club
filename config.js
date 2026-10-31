@@ -3,7 +3,7 @@
 // values in the Class Portfolio. Charts, search and headlines work without it.
 // briefApi: the address of the brief server (see brief-server/README.md). When it is set,
 // searching a stock without a brief writes one on the spot. Leave it empty to turn that off.
-// supabaseUrl, supabaseKey: member logins and each member's own portfolio and watchlist (beta.html only).
+// supabaseUrl, supabaseKey: member logins and each member's own portfolio and watchlist.
 // The publishable key is meant to be public; the database rules keep each member's data private.
 window.WVFC_CONFIG = {
   finnhubKey: "",

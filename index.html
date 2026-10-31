@@ -10,41 +10,27 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/style.css?v=2026103102">
 <script>
-// Club password screen. The password is checked by its SHA-256 hash (lowercased), so it isn't written here.
+// Club password, needed once to create an account. It's checked by its SHA-256 hash (lowercased), so it isn't written here.
 // To change it: hash the new password in lowercase and replace WVFC_PASS below.
 window.WVFC_PASS="a4d50ac457e7c49bd2149a2f7db734f6afb014682df3b1c08c449bfde560921c";
-try{if(localStorage.getItem("wvfc-pass")===window.WVFC_PASS)document.documentElement.classList.add("unlocked");}catch(e){}
+// Supabase keeps the login in this browser, so open the page straight away if one is saved.
+try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
 </script>
 </head>
 <body>
 
-<div id="gate" role="dialog" aria-label="Enter the club password">
-  <form id="gate-form" autocomplete="off">
+<div id="gate" role="dialog" aria-label="Log in">
+  <form id="gate-form" class="authform" autocomplete="on">
     <img src="assets/logo.png" alt="Waubonsie Valley Finance Club" width="180" height="180">
-    <input id="gate-pass" type="password" placeholder="Club password" aria-label="Club password" autofocus>
+    <h2 id="auth-title">Log in</h2>
+    <input id="auth-email" type="email" placeholder="Email" aria-label="Email" autocomplete="email" required>
+    <input id="auth-pass" type="password" placeholder="Password" aria-label="Password" autocomplete="current-password" minlength="8" required>
+    <input id="auth-club" type="password" placeholder="Club password" aria-label="Club password" autocomplete="off" hidden>
+    <button class="btn primary" id="auth-go" type="submit">Log in</button>
     <p id="gate-msg" role="alert"></p>
+    <p class="authswitch"><span id="auth-q">New here?</span> <button type="button" class="linkbtn" id="auth-switch">Create an account</button></p>
   </form>
 </div>
-<script>
-(function(){
-  const form=document.getElementById("gate-form"),inp=document.getElementById("gate-pass"),msg=document.getElementById("gate-msg");
-  async function sha(t){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");}
-  form.addEventListener("submit",async e=>{e.preventDefault();
-    const h=await sha(inp.value.trim().toLowerCase());
-    if(h!==window.WVFC_PASS){msg.textContent="That's not the password. Try again.";inp.value="";inp.focus();form.classList.remove("shake");void form.offsetWidth;form.classList.add("shake");return;}
-    let saved=false;try{localStorage.setItem("wvfc-pass",h);saved=localStorage.getItem("wvfc-pass")===h;}catch(err){}
-    // Reload so the charts draw at full size; without storage, just open the page.
-    if(saved)location.reload();else document.documentElement.classList.add("unlocked");
-  });
-  // Log Out: forget the saved password and go back to the password screen.
-  document.addEventListener("click",e=>{
-    if(!e.target.closest("#logout"))return;
-    try{localStorage.removeItem("wvfc-pass");}catch(err){}
-    document.documentElement.classList.remove("unlocked");
-    inp.value="";msg.textContent="";window.scrollTo(0,0);inp.focus();
-  });
-})();
-</script>
 
 <header class="mast">
   <div class="wrap">
@@ -64,6 +50,7 @@ try{if(localStorage.getItem("wvfc-pass")===window.WVFC_PASS)document.documentEle
 <nav class="tabs" aria-label="Sections">
   <div class="wrap" role="tablist">
     <button class="tab hasmenu" role="tab" id="tab-portfolio" aria-controls="portfolio" aria-selected="true" aria-haspopup="menu" aria-expanded="false" data-tab="portfolio"><span class="tlong">Class </span>Portfolio<span class="count" id="cnt-picks"></span><span class="caret" aria-hidden="true"></span></button>
+    <button class="tab" role="tab" id="tab-mine" aria-controls="mine" aria-selected="false" data-tab="mine">My Portfolio</button>
     <button class="tab" role="tab" id="tab-search" aria-controls="search" aria-selected="false" data-tab="search">Search</button>
     <button class="tab" role="tab" id="tab-news" aria-controls="news" aria-selected="false" data-tab="news">News<span class="count" id="cnt-news"></span></button>
     <button class="tab" role="tab" id="tab-ideas" aria-controls="ideas" aria-selected="false" data-tab="ideas">Suggestions</button>
@@ -113,6 +100,28 @@ try{if(localStorage.getItem("wvfc-pass")===window.WVFC_PASS)document.documentEle
   <div class="sechead"><div><h2>Club vs S&amp;P 500 over time</h2><p class="sub">Our portfolio's value each day, next to what the same money would be worth in the S&amp;P 500. It shows how much we have gained or lost, in %, since we started.</p></div></div>
   <div class="panel" id="hist-body"></div>
  </div>
+</section>
+
+<!-- MY PORTFOLIO -->
+<section role="tabpanel" id="mine" aria-labelledby="tab-mine" hidden>
+  <div class="sechead">
+    <div>
+      <h2>My Portfolio</h2>
+      <p class="sub" id="mine-who">Your own stocks. Only you can see them.</p>
+    </div>
+  </div>
+  <div class="tiles" id="mine-tiles" hidden></div>
+  <div class="panel" id="mine-list"></div>
+  <div class="panel upload" id="mine-upload">
+    <h3 class="h3">Add your stocks from a file</h3>
+    <p class="meta">Download your positions file from your broker, then pick it here. Uploading again replaces what's saved.</p>
+    <ul class="howto">
+      <li><b>Fidelity:</b> Accounts &amp; Trade, then Portfolio, then Positions. Press the download button (the arrow above the table).</li>
+      <li><b>Schwab:</b> Accounts, then Positions. Press Export at the top right of the table.</li>
+    </ul>
+    <label class="btn primary filebtn">Choose file<input type="file" id="mine-file" accept=".csv,text/csv"></label>
+    <div id="mine-preview" hidden></div>
+  </div>
 </section>
 
 <!-- SEARCH -->
@@ -209,7 +218,9 @@ try{if(localStorage.getItem("wvfc-pass")===window.WVFC_PASS)document.documentEle
 </footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="config.js?v=2026102512"></script>
+<script src="config.js?v=2026103102"></script>
 <script src="assets/app.js?v=2026103101"></script>
+<script src="assets/vendor/supabase-2.118.0.js"></script>
+<script src="assets/account.js?v=2026103102"></script>
 </body>
 </html>
