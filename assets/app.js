@@ -37,7 +37,7 @@ const S={picks:[],briefs:[],quotes:{},prices:{dates:[],closes:{}},tk:(store.get(
 try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="string");}catch(e){S.watch=[];}
 
 /* ---------- Tabs ---------- */
-const TABS=["portfolio","search","news","ideas"];const rendered={};
+const TABS=["portfolio","mine","search","news","ideas"].filter(t=>document.getElementById(t));const rendered={};
 const PVIEWS=["overview","positions","sectors","history"];let S_view="overview";
 function showTab(name,push){
   if(PVIEWS.includes(name)){S_view=name;name="portfolio";}else if(name==="portfolio")S_view="overview";
@@ -49,6 +49,7 @@ function showTab(name,push){
   if(name==="search"&&rendered.search!==S.tk+tvTheme())renderSearch();
   if(name==="news")renderNewsFeed();
   if(name==="ideas")loadIdeas();
+  document.dispatchEvent(new CustomEvent("wvfc:tab",{detail:name}));
   window.scrollTo({top:0});
 }
 document.querySelectorAll(".tab:not(.hasmenu)").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.tab,true)));
@@ -348,7 +349,9 @@ $("#q").addEventListener("keydown",e=>{
 $("#q").addEventListener("blur",()=>setTimeout(()=>{sugg=[];showSuggest();},150));
 $("#searchform").addEventListener("submit",e=>{e.preventDefault();// A name like "apple" opens the top match; a ticker, or a symbol like NYSE:F, works as before.
   if(!/^[A-Z]+:/i.test($("#q").value.trim())){const top=findStocks($("#q").value)[0];if(top){sugg=[top];pickSuggest(0);return;}}const s=normSym($("#q").value);if(!s){toast("Type a ticker, like AAPL or NYSE:F");return;}$("#q").value="";$("#q").blur();openStock(s);});
-function saveWatch(){store.set("wvfc.watch",JSON.stringify(S.watch));}
+function saveWatch(){store.set("wvfc.watch",JSON.stringify(S.watch));if(window.WVFC_ACCOUNT)window.WVFC_ACCOUNT.saveWatch(S.watch);}
+// Lets the account page (beta.html) load a saved watchlist and open stocks.
+window.WVFC_APP={setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},prices:()=>S.prices};
 function renderWatch(){
   const box=$("#wl");box.replaceChildren();const on=S.watch.some(w=>bare(w)===bare(S.tk));
   $("#wl-toggle").textContent=on?"On watchlist ✓":"Add to watchlist";

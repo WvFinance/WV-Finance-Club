@@ -56,6 +56,12 @@ Every weekday after the market closes, a GitHub Action saves the day's closing p
 
 Charts, search and headlines come from TradingView's free widgets and need no account. The dollar values on the portfolio tab use [Finnhub](https://finnhub.io/register): create a free account, copy the API key, and put it in `config.js`. A free key allows 60 lookups a minute, which is plenty for the club.
 
+## Member accounts (test page)
+
+`beta.html` is a test copy of the site where each member logs in with their own email and password instead of the club password. It adds a **My Portfolio** tab: members upload the positions file from Fidelity or Schwab, check what was found, and save it to their account. Their Search watchlist is saved to their account too, so it follows them to any device. The live `index.html` doesn't change.
+
+Logins and data are stored in [Supabase](https://supabase.com). `supabase/setup.sql` creates the tables and the rules that let each member see only their own data; run it once in Supabase's SQL Editor. The project address and publishable key are in `config.js` (the publishable key is meant to be public). Code: `assets/account.js`.
+
 ---
 
 For education only, not financial advice.

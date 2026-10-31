@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>WV Finance Club (test)</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Waubonsie Valley Finance Club: our class portfolio, stock research and news briefs.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css?v=2026103102">
+<script>
+// Test page with member accounts. Supabase keeps the login in this browser, so open the page straight away if one is saved.
+try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
+</script>
+</head>
+<body>
+
+<div id="gate" role="dialog" aria-label="Log in">
+  <form id="gate-form" class="authform" autocomplete="on">
+    <img src="assets/logo.png" alt="Waubonsie Valley Finance Club" width="180" height="180">
+    <h2 id="auth-title">Log in</h2>
+    <input id="auth-email" type="email" placeholder="Email" aria-label="Email" autocomplete="email" required>
+    <input id="auth-pass" type="password" placeholder="Password" aria-label="Password" autocomplete="current-password" minlength="8" required>
+    <button class="btn primary" id="auth-go" type="submit">Log in</button>
+    <p id="gate-msg" role="alert"></p>
+    <p class="authswitch"><span id="auth-q">New here?</span> <button type="button" class="linkbtn" id="auth-switch">Create an account</button></p>
+  </form>
+</div>
+
+<header class="mast">
+  <div class="wrap">
+    <button type="button" class="logout" id="logout">Log Out</button>
+    <a class="brand" href="#portfolio">
+      <img class="crest" src="assets/logo.png" alt="Waubonsie Valley Finance Club logo" width="58" height="58">
+      <div><h1>WV Finance Club</h1><p>Waubonsie Valley · Portfolio · Research · News</p></div>
+    </a>
+    <div class="datanote">
+      <span class="chip asof" id="news-asof">News briefs</span>
+    </div>
+  </div>
+</header>
+
+<div class="tape" id="tape" aria-label="Market ticker"></div>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button class="tab hasmenu" role="tab" id="tab-portfolio" aria-controls="portfolio" aria-selected="true" aria-haspopup="menu" aria-expanded="false" data-tab="portfolio"><span class="tlong">Class </span>Portfolio<span class="count" id="cnt-picks"></span><span class="caret" aria-hidden="true"></span></button>
+    <button class="tab" role="tab" id="tab-mine" aria-controls="mine" aria-selected="false" data-tab="mine">My Portfolio</button>
+    <button class="tab" role="tab" id="tab-search" aria-controls="search" aria-selected="false" data-tab="search">Search</button>
+    <button class="tab" role="tab" id="tab-news" aria-controls="news" aria-selected="false" data-tab="news">News<span class="count" id="cnt-news"></span></button>
+    <button class="tab" role="tab" id="tab-ideas" aria-controls="ideas" aria-selected="false" data-tab="ideas">Suggestions</button>
+  </div>
+  <div class="tabmenu" id="pf-menu" role="menu" hidden>
+    <button role="menuitem" data-view="overview">Overview</button>
+    <button role="menuitem" data-view="positions">All positions</button>
+    <button role="menuitem" data-view="sectors">What we own by sector</button>
+    <button role="menuitem" data-view="history">Club vs S&amp;P 500 over time</button>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<!-- PORTFOLIO -->
+<section role="tabpanel" id="portfolio" aria-labelledby="tab-portfolio">
+ <div class="pview" id="pv-overview">
+  <div class="sechead">
+    <div>
+      <h2>Class Portfolio</h2>
+      <p class="sub">Every stock here won a club debate.</p>
+    </div>
+  </div>
+  <div class="tiles" id="tiles"></div>
+  <p class="notice" id="price-note" hidden></p>
+  <div class="panel market" id="market" hidden></div>
+  <div class="panel" id="cmp-panel" hidden>
+    <div class="sechead"><div><div class="eyebrow">How much our money has grown</div><h3 class="h3">Our portfolio vs the S&amp;P 500</h3></div></div>
+    <div class="compare" id="cmp"></div>
+  </div>
+  <div class="panel" id="events-panel" hidden>
+    <div class="sechead"><div><div class="eyebrow">Coming up</div><h3 class="h3">Upcoming events for our stocks</h3></div></div>
+    <div class="events" id="events"></div>
+  </div>
+ </div>
+ <div class="pview" id="pv-positions" hidden>
+  <div class="sechead"><div><h2>All positions</h2><p class="sub">Every stock the club owns, what we paid, and what it's worth now.</p></div></div>
+  <div id="picks"></div>
+  <details class="drop" id="drop-pos"><summary><span>All positions table</span></summary><div class="dropbody" id="pos-body"></div></details>
+ </div>
+ <div class="pview" id="pv-sectors" hidden>
+  <div class="sechead"><div><h2>What we own by sector</h2><p class="sub">How our money is split across types of business, like Tech or Banks. Owning a mix helps if one area has a bad year.</p></div></div>
+  <div class="panel" id="sec-body"></div>
+ </div>
+ <div class="pview" id="pv-history" hidden>
+  <div class="sechead"><div><h2>Club vs S&amp;P 500 over time</h2><p class="sub">Our portfolio's value each day, next to what the same money would be worth in the S&amp;P 500. It shows how much we have gained or lost, in %, since we started.</p></div></div>
+  <div class="panel" id="hist-body"></div>
+ </div>
+</section>
+
+<!-- MY PORTFOLIO -->
+<section role="tabpanel" id="mine" aria-labelledby="tab-mine" hidden>
+  <div class="sechead">
+    <div>
+      <h2>My Portfolio</h2>
+      <p class="sub" id="mine-who">Your own stocks. Only you can see them.</p>
+    </div>
+  </div>
+  <div class="tiles" id="mine-tiles" hidden></div>
+  <div class="panel" id="mine-list"></div>
+  <div class="panel upload" id="mine-upload">
+    <h3 class="h3">Add your stocks from a file</h3>
+    <p class="meta">Download your positions file from your broker, then pick it here. Uploading again replaces what's saved.</p>
+    <ul class="howto">
+      <li><b>Fidelity:</b> Accounts &amp; Trade, then Portfolio, then Positions. Press the download button (the arrow above the table).</li>
+      <li><b>Schwab:</b> Accounts, then Positions. Press Export at the top right of the table.</li>
+    </ul>
+    <label class="btn primary filebtn">Choose file<input type="file" id="mine-file" accept=".csv,text/csv"></label>
+    <div id="mine-preview" hidden></div>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<section role="tabpanel" id="search" aria-labelledby="tab-search" hidden>
+  <div class="panel searchpanel">
+    <form class="searchbar" id="searchform" role="search">
+      <svg class="mag" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input class="inp" id="q" type="search" placeholder="Search by name or ticker, like Nvidia or NVDA" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Stock name or ticker" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggest">
+      <ul class="suggest" id="suggest" role="listbox" hidden></ul>
+      <button class="btn primary" type="submit">Search</button>
+    </form>
+    <div class="quick" id="quick"></div>
+    <p class="hint">Type a company name or ticker, then tap the stock you want from the list.</p>
+  </div>
+  <div class="panel symbolinfo" id="tv-info"></div>
+  <div class="stock">
+    <div class="panel chartpanel"><div class="tvbox chart" id="tv-chart"></div></div>
+    <div class="side">
+      <div class="panel">
+        <div class="sechead" style="margin-bottom:8px"><div class="eyebrow">My watchlist</div><button class="btn small" id="wl-toggle" type="button">Add to watchlist</button></div>
+        <div class="wl" id="wl"></div>
+        <p class="meta" style="margin:8px 0 0">Saved on this device only.</p>
+      </div>
+    </div>
+  </div>
+  <div class="panel brief" id="s-brief" hidden></div>
+  <div class="two">
+  <details class="drop" id="drop-fin">
+    <summary><span>Key financials</span><span class="sym" data-sym></span></summary>
+    <div class="tvbox fin" id="tv-fin"></div>
+  </details>
+  <div class="feedcol">
+  <div class="panel latest3" id="latest3" hidden></div>
+  <details class="drop" id="drop-feed">
+    <summary><span>More headlines</span><span class="sym" data-sym></span></summary>
+    <div class="tvbox feed" id="tv-feed"></div>
+  </details>
+  </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section role="tabpanel" id="news" aria-labelledby="tab-news" hidden>
+  <div class="panel" id="recap" hidden></div>
+  <div class="panel" id="news-meter-panel" hidden>
+    <div class="sechead" style="margin-bottom:8px"><div class="eyebrow">How the news feels overall</div><div class="legend" id="news-legend"></div></div>
+    <div class="meter" id="news-meter"></div>
+  </div>
+  <div class="newsgrid">
+    <div class="nlist" id="nlist"></div>
+    <div class="brief-col">
+      <div class="panel brief" id="brief"></div>
+      <div class="panel"><div class="eyebrow" style="margin-bottom:8px" id="feed-label">Live headlines</div><div class="tvbox feed" id="tv-newsfeed"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SUGGESTIONS -->
+<section role="tabpanel" id="ideas" aria-labelledby="tab-ideas" hidden>
+  <div class="sechead">
+    <div>
+      <h2>Suggestions</h2>
+      <p class="sub">Share an idea and upvote the ones you like. Votes are private.</p>
+    </div>
+  </div>
+  <form class="panel ideaform" id="idea-form" autocomplete="off">
+    <div class="kindpick" role="radiogroup" aria-label="What kind of idea">
+      <label><input type="radio" name="kind" value="pitch" checked><span>Stock to pitch</span></label>
+      <label><input type="radio" name="kind" value="topic"><span>Meeting topic</span></label>
+    </div>
+    <input id="idea-text" maxlength="120" aria-label="Your idea">
+    <textarea id="idea-why" rows="2" maxlength="300" aria-label="Why"></textarea>
+    <div class="ideaact"><button class="btn primary" type="submit">Send idea</button><span class="meta" id="idea-msg" role="status"></span></div>
+  </form>
+  <div class="idealists">
+    <div class="panel"><h3 class="h3">Stocks to pitch</h3><ul class="idealist" id="ideas-pitch"></ul></div>
+    <div class="panel"><h3 class="h3">Meeting topics</h3><ul class="idealist" id="ideas-topic"></ul></div>
+  </div>
+  <div class="leader">
+    <button class="btn ghost small" type="button" id="leader-open">Club leader</button>
+    <form id="leader-form" hidden><input type="password" id="leader-pass" placeholder="Leader password" aria-label="Leader password"><button class="btn small" type="submit">Open</button><span class="meta" id="leader-msg" role="alert"></span></form>
+    <div class="panel" id="leader-view" hidden></div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong>For education only, not financial advice.</strong> This site is a learning tool for the Waubonsie Valley Finance Club. Nothing here is a recommendation to buy or sell any security.</div>
+    <div><strong>About the data:</strong> charts, quotes, financials and headlines come from TradingView.</div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="config.js?v=2026103101"></script>
+<script src="assets/app.js?v=2026103101"></script>
+<script src="assets/vendor/supabase-2.118.0.js"></script>
+<script src="assets/account.js?v=2026103101"></script>
+</body>
+</html>
