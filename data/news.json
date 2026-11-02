@@ -1,66 +1,66 @@
 {
- "updated": "2026-10-30",
+ "updated": "2026-11-02",
  "briefs": [
   {
    "bear": [
-    "Higher interest rates make borrowing more expensive, and traders expect another increase in December.",
-    "The 10-year Treasury yield (the interest the government pays to borrow for 10 years) rose back above 5%, which can pull money away from stocks.",
-    "Worries about how much companies are spending on AI returned after Alphabet's report."
+    "Friday was the index's worst day since June, falling 1.8%.",
+    "Intel had its worst day since 1974 after a weak forecast, and the selling spread to other tech stocks.",
+    "Big events this week, including the midterm elections and the jobs report, could cause more big swings."
    ],
    "bull": [
-    "The Fed said the US economy is growing at a strong pace, and growth for July to September came in better than expected.",
-    "Microsoft beat expectations, with its Azure cloud business growing 48%.",
-    "Earlier in the week, the S&P 500 rose to about 7,690 as oil prices eased."
+    "Profits for S&P 500 companies are up about 30% from a year earlier, and 82% have beaten what analysts expected.",
+    "Most of the 11 groups of stocks in the S&P 500 still gained last week, led by health care and consumer staples (everyday products like food and soap).",
+    "The S&P 500 is still up about 10.7% this year."
    ],
-   "headline": "S&P 500 slips as the Fed holds rates and Alphabet's big drop shakes tech",
+   "headline": "S&P 500 has its worst day since June as AI worries hit tech stocks",
    "market": true,
    "name": "S&P 500",
-   "nextEvent": "US midterm elections on November 3, 2026, and the Fed's next interest-rate decision on December 9, 2026",
+   "nextEvent": "US midterm elections on November 3, 2026, and the October jobs report on November 6, 2026",
    "order": 1,
-   "sentiment": "neutral",
+   "sentiment": "bearish",
    "sources": [
     {
-     "title": "S&P 500, Nasdaq advance as oil eases ahead of Fed decision",
-     "url": "https://www.kitco.com/news/off-the-wire/2026-10-27/sp-500-nasdaq-advance-oil-eases-ahead-fed-decision",
-     "outlet": "Kitco (Reuters)",
-     "date": "Oct 27, 2026"
+     "title": "How major US stock indexes fared Friday 10/30/2026",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/major-us-stock-indexes-fared-202111310.html",
+     "outlet": "Yahoo Finance (AP)",
+     "date": "Oct 30, 2026"
     },
     {
-     "title": "Rate decision live: Interest rates held steady in split vote, Warsh says politics played 'no role' ahead of midterm elections",
-     "url": "https://finance.yahoo.com/economy/policy/live/fed-meeting-live-updates-interest-rates-held-steady-in-split-vote-warsh-says-politics-played-no-role-ahead-of-midterm-elections-191946928.html",
-     "outlet": "Yahoo Finance",
-     "date": "Oct 28, 2026"
-    },
-    {
-     "title": "Stock Market Today Live October 28, 2026: Fed Holds Rates; Fortinet and Alphabet Fall After Hours",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-october-28-2026",
+     "title": "Stock Market Today October 30, 2026: Tech Stocks Fall as Intel Has Its Worst Day in Decades",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-october-30-2026",
      "outlet": "StockTitan",
-     "date": "Oct 28, 2026"
+     "date": "Oct 30, 2026"
     },
     {
-     "title": "Stock Market Today: Nasdaq Plunges as Google Crashes 13%, AI Spending Fears Return",
-     "url": "https://coinpaper.com/38068/stock-market-today-nasdaq-plunges-as-google-crashes-13-ai-spending-fears-return",
-     "outlet": "Coinpaper",
-     "date": "Oct 29, 2026"
+     "title": "Week Ahead: US Midterms, Apple Earnings and October Jobs",
+     "url": "https://www.heygotrade.com/en/news/weekly-economic-outlook-2026-11-02/",
+     "outlet": "Gotrade",
+     "date": "Nov 2, 2026"
+    },
+    {
+     "title": "Stock market today: Dow, S&P 500, Nasdaq futures recover from bruising sell-off ahead of busy week",
+     "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-2-dow-sp-500-nasdaq-091835095.html",
+     "outlet": "Yahoo Finance",
+     "date": "Nov 2, 2026"
     }
    ],
-   "summary": "On October 28, the Federal Reserve (the US central bank) kept its main interest rate at 3.75% to 4%, but two of its 12 voters wanted to raise it. Traders now see about an 85% chance of a rate increase on December 9, because the Fed says inflation is still too high. Stocks closed a little higher that day, then fell on October 29 after Alphabet (Google's parent) dropped about 13% on its results. Big earnings reports from Microsoft, Alphabet and Amazon made this one of the busiest weeks of the year.",
+   "summary": "On Friday, October 30, the S&P 500 fell 1.8% to 7,580, its worst day since June, and ended the week down 0.6%. The drop came after Intel's stock crashed about 29% on a weak forecast and Amazon and Alphabet disappointed investors, reviving worries about how much big tech is spending on AI. Even so, most companies are reporting strong results: profits for S&P 500 companies are up about 30% from a year earlier so far. Futures (early bets on where stocks will open) pointed higher on Monday morning ahead of a busy week.",
    "ticker": "SP500",
-   "updatedAt": "2026-10-29T21:46:51.349Z",
+   "updatedAt": "2026-11-02T11:40:32.174Z",
    "symbol": "AMEX:SPY"
   },
   {
    "bear": [
-    "Alphabet's stock dropped about 13% in one day, wiping out more than $500 billion in value.",
-    "Tech companies are spending huge amounts on AI, and investors worry the payoff will take a long time.",
-    "The Fed may raise interest rates in December, which usually hurts fast-growing tech stocks the most."
+    "The Nasdaq lost 5.2% in October, and the Nasdaq-100 briefly fell into a correction (a drop of 10% or more from its high).",
+    "Intel's stock fell about 29% in one day, and AMD dropped about 11%.",
+    "Investors are worried that big tech companies are spending too much on AI."
    ],
    "bull": [
-    "Microsoft's sales rose 19% to $92.3 billion, beating expectations, and its Azure cloud grew 48%.",
-    "Amazon's cloud business, AWS, grew 39%, its fastest pace in nearly five years.",
-    "Google Cloud sales more than doubled to $30.7 billion, showing strong demand for AI services."
+    "Futures pointed to a bounce of about 0.8% for the Nasdaq-100 on Monday morning.",
+    "Amazon recovered most of an early 7% drop on Friday and closed down only 1.4%.",
+    "The Nasdaq is still up about 9.4% this year."
    ],
-   "headline": "Nasdaq falls more than 1% as Alphabet's 13% drop revives AI spending fears",
+   "headline": "Nasdaq drops 2.9% on Friday and loses 5.2% in October as tech stocks slide",
    "market": true,
    "name": "Nasdaq",
    "nextEvent": "Apple reports its earnings on November 2, 2026, after the stock market closes",
@@ -68,33 +68,33 @@
    "sentiment": "bearish",
    "sources": [
     {
-     "title": "Stock Market Today: Nasdaq Plunges as Google Crashes 13%, AI Spending Fears Return",
-     "url": "https://coinpaper.com/38068/stock-market-today-nasdaq-plunges-as-google-crashes-13-ai-spending-fears-return",
-     "outlet": "Coinpaper",
-     "date": "Oct 29, 2026"
+     "title": "How major US stock indexes fared Friday 10/30/2026",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/major-us-stock-indexes-fared-202111310.html",
+     "outlet": "Yahoo Finance (AP)",
+     "date": "Oct 30, 2026"
     },
     {
-     "title": "Wall Street ends lower as Alphabet revenue miss revives AI capex jitters",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-futures-slide-mixed-big-083556706.html",
-     "outlet": "Yahoo Finance (Reuters)",
-     "date": "Oct 29, 2026"
+     "title": "Stock Market Today October 30, 2026: Tech Stocks Fall as Intel Has Its Worst Day in Decades",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-october-30-2026",
+     "outlet": "StockTitan",
+     "date": "Oct 30, 2026"
     },
     {
-     "title": "Microsoft's stock rises on solid earnings and revenue beat, with Azure growing 48%",
-     "url": "https://siliconangle.com/2026/10/28/microsofts-stock-rises-on-solid-earnings-and-revenue-beat-with-azure-growing-48/",
-     "outlet": "SiliconANGLE",
-     "date": "Oct 28, 2026"
+     "title": "Stock market today: Dow, S&P 500, Nasdaq futures recover from bruising sell-off ahead of busy week",
+     "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-2-dow-sp-500-nasdaq-091835095.html",
+     "outlet": "Yahoo Finance",
+     "date": "Nov 2, 2026"
     },
     {
-     "title": "Stock Market Today, Oct. 29: Amazon Falls on Q3 Earnings Report and Capex Concerns",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/10/29/stock-market-today-oct-29-amazon-falls-on-q3-earnings-report-and-capex-concerns/",
-     "outlet": "The Motley Fool",
-     "date": "Oct 29, 2026"
+     "title": "Week Ahead: US Midterms, Apple Earnings and October Jobs",
+     "url": "https://www.heygotrade.com/en/news/weekly-economic-outlook-2026-11-02/",
+     "outlet": "Gotrade",
+     "date": "Nov 2, 2026"
     }
    ],
-   "summary": "On October 29, the Nasdaq fell more than 1% after Alphabet (Google's parent) dropped about 13%. Alphabet's search ad sales grew more slowly, and it spent $51.4 billion on AI equipment in three months, so it burned more cash than it brought in. Microsoft beat expectations with its cloud growing 48%, but its stock still slipped as investors worried about AI costs. Amazon's stock fell in after-hours trading after its profit per share came in below what analysts expected.",
+   "summary": "On Friday, October 30, the Nasdaq fell 2.9% to 25,437, ending the week down 2% and the month of October down 5.2%. Intel crashed about 29% after forecasting lower sales, its worst day since 1974, and other chip stocks such as AMD fell too. Earlier in the week, Alphabet dropped about 12% to 13% and Amazon also slipped after their results, as investors worried about huge spending on AI. Futures (early bets on where stocks will open) pointed up about 0.8% on Monday morning before Apple's earnings report.",
    "ticker": "NASDAQ",
-   "updatedAt": "2026-10-29T21:46:51.349Z",
+   "updatedAt": "2026-11-02T11:40:32.174Z",
    "symbol": "NASDAQ:QQQ"
   },
   {
@@ -139,28 +139,28 @@
   },
   {
    "bear": [
-    "Profit per share of $1.89 missed what analysts expected.",
-    "Amazon plans to spend about $220 billion on buildings and equipment this year, and over the past 12 months it spent $42.4 billion more cash than it brought in.",
-    "Its long-term debt is about $173 billion, nearly triple its level in December."
+    "Profit of $1.89 per share and sales of $201.9 billion were slightly below what analysts expected.",
+    "Over the past 12 months, Amazon spent $42.4 billion more cash than it brought in, mostly because of AI spending.",
+    "Amazon plans to spend about $220 billion on buildings and equipment this year."
    ],
    "bull": [
-    "AWS grew 39%, its fastest pace in nearly five years, and earned about 63% of Amazon's operating profit.",
-    "Operating income (profit from its main business) jumped to $28.1 billion from $17.4 billion a year earlier.",
-    "Amazon expects AWS to grow more than 40% in both 2027 and 2028."
+    "AWS grew 39%, its fastest pace in nearly five years.",
+    "The stock recovered most of an early 7% drop and closed down only 1.4% on Friday.",
+    "Operating income (profit from its main business) jumped to $28.1 billion from $17.4 billion a year earlier."
    ],
-   "headline": "Amazon falls after hours as profit misses, even with its cloud growing 39%",
+   "headline": "Amazon recovers most of its early drop after missing profit expectations",
    "nextEvent": "",
-   "sentiment": "bearish",
+   "sentiment": "neutral",
    "sources": [
+    {
+     "title": "Stock Market Today October 30, 2026: Tech Stocks Fall as Intel Has Its Worst Day in Decades",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-october-30-2026",
+     "outlet": "StockTitan",
+     "date": "Oct 30, 2026"
+    },
     {
      "title": "Stock Market Today, Oct. 29: Amazon Falls on Q3 Earnings Report and Capex Concerns",
      "url": "https://www.fool.com/coverage/stock-market-today/2026/10/29/stock-market-today-oct-29-amazon-falls-on-q3-earnings-report-and-capex-concerns/",
-     "outlet": "The Motley Fool",
-     "date": "Oct 29, 2026"
-    },
-    {
-     "title": "AWS Jumps 39% as Amazon's Cash Flow Sinks: Rapid Earnings Reaction",
-     "url": "https://www.fool.com/investing/2026/10/29/aws-jumps-39-as-amazons-cash-flow-sinks-rapid-earn/",
      "outlet": "The Motley Fool",
      "date": "Oct 29, 2026"
     },
@@ -169,11 +169,17 @@
      "url": "https://en.shiftdelete.net/amazon-q3-earnings/",
      "outlet": "ShiftDelete.Net",
      "date": "Oct 29, 2026"
+    },
+    {
+     "title": "Week Ahead: US Midterms, Apple Earnings and October Jobs",
+     "url": "https://www.heygotrade.com/en/news/weekly-economic-outlook-2026-11-02/",
+     "outlet": "Gotrade",
+     "date": "Nov 2, 2026"
     }
    ],
-   "summary": "On October 29, Amazon reported sales of $201.9 billion for July to September, up 12%, just under what analysts expected. Profit per share was $1.89, below the roughly $1.96 to $1.97 analysts expected. Its cloud business, AWS, grew 39% to $46 billion, its fastest growth in nearly five years. The stock had already fallen 4.25% during the day and dropped about 6% to 8% more in after-hours trading, as investors worried about Amazon's huge spending on AI.",
+   "summary": "On October 29, Amazon reported sales of $201.9 billion and profit of $1.89 per share, both slightly below what analysts expected. Its cloud business, AWS, grew 39%, its fastest growth in nearly five years. The stock fell about 7% early on Friday, October 30, but recovered most of that and closed down just 1.4%. Investors are weighing strong cloud growth against Amazon's huge spending on AI, which has made its cash flow negative over the past year.",
    "ticker": "AMZN",
-   "updatedAt": "2026-10-29T21:46:51.348Z",
+   "updatedAt": "2026-11-02T11:40:32.167Z",
    "symbol": "NASDAQ:AMZN",
    "name": "Amazon"
   },
