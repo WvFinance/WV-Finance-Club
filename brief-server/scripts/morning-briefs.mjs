@@ -4,6 +4,8 @@
 //   node scripts/morning-briefs.mjs rules        the brief instructions (the same ones the API refresh uses)
 //   node scripts/morning-briefs.mjs list         every brief to check, with when it was last written
 //   node scripts/morning-briefs.mjs save <dir>   checks <dir>/<TICKER>.json files and puts them into data/news.json
+//   node scripts/morning-briefs.mjs recap <file> checks the after-close market recap (the "Why" on the Portfolio tab)
+//                                                and puts it into data/news.json as "market"
 //
 // Run from brief-server/. Needs no packages.
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
@@ -54,7 +56,26 @@ if (mode === "rules") {
   }
   console.log(`Saved ${saved} briefs, ${bad} need fixing.`);
   if (bad) process.exit(1);
+} else if (mode === "recap") {
+  // The evening task writes { date, why, sources } after the market closes. The date must be the newest
+  // day in data/prices.json, so the "Why" always matches the % moves shown next to it.
+  if (!dir) throw new Error("Use: recap <file.json>");
+  const prices = JSON.parse(readFileSync(new URL("../../data/prices.json", import.meta.url), "utf8"));
+  const last = (prices.dates || []).at(-1);
+  const r = JSON.parse(readFileSync(dir, "utf8"));
+  const why = String(r.why || "").trim();
+  const sentences = why.split(/(?<=[.!?])\s+(?=[A-Z0-9"])/).filter(Boolean);
+  const problems = [];
+  if (r.date !== last) problems.push(`date is ${r.date}, but the newest price day is ${last} (pull again, or wait for "Update closing prices")`);
+  if (sentences.length < 2 || sentences.length > 4) problems.push(`why needs 2 to 4 sentences (has ${sentences.length})`);
+  if (why.length > 520) problems.push(`why is too long (${why.length} characters, max 520)`);
+  const sources = Array.isArray(r.sources) ? r.sources.filter(s => s && s.url && s.outlet && s.title) : [];
+  if (sources.length < 2 || new Set(sources.map(s => s.outlet)).size < 2) problems.push("needs at least 2 sources from 2 different news sites");
+  if (problems.length) { console.log(`Recap NOT saved: ${problems.join("; ")}. Fix the file and run recap again.`); process.exit(1); }
+  news.market = { date: r.date, why, sources: sources.map(({ title, url, outlet, date }) => ({ title, url, outlet, date: date || "" })), updatedAt: new Date().toISOString() };
+  writeFileSync(NEWS, JSON.stringify(news, null, 1) + "\n");
+  console.log(`Recap saved for ${r.date}: ${why}`);
 } else {
-  console.error("Use: rules, list or save <dir>");
+  console.error("Use: rules, list, save <dir> or recap <file>");
   process.exit(1);
 }

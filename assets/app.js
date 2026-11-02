@@ -251,11 +251,15 @@ function marketDay(){const d=S.prices.dates||[];const last=d[d.length-1];if(!las
 function renderMarket(){
   const box=$("#market"),md=marketDay();const rows=MKT.map(([tk,name])=>({name,r:moveOver(tk,1)})).filter(x=>x.r!=null);
   if(!md||!rows.length){box.hidden=true;return;}
-  // The "why" sentence comes from the S&P 500 brief, but only if it was written in the last 2 days.
-  const sp=S.briefs.find(b=>b.ticker==="SP500");const fresh=sp&&sp.headline&&sp.updatedAt&&(new Date(md.last+"T23:59:00")-new Date(sp.updatedAt))<3*864e5;
+  // The "why" comes from the after-close market recap written for this exact day.
+  // If that's missing, use the S&P 500 brief, but only if it was written after this day's close
+  // (a brief written that morning would still be about the day before).
+  const mr=S.marketRecap;const sp=S.briefs.find(b=>b.ticker==="SP500");
+  const spFresh=sp&&sp.headline&&sp.updatedAt&&new Date(sp.updatedAt)>=new Date(md.last+"T21:00:00Z")&&(new Date(sp.updatedAt)-new Date(md.last+"T21:00:00Z"))<3*864e5;
   const avg=rows.reduce((s,x)=>s+x.r,0)/rows.length;
-  // Up to 3 sentences from the brief's summary, which says more than its headline.
-  const why=fresh?((sp.summary||"").split(/(?<=[.!?])\s+(?=[A-Z])/).slice(0,3).join(" ")||sp.headline):avg>0.002?"Stocks went up overall.":avg<-0.002?"Stocks went down overall.":"Stocks barely moved.";
+  const why=mr&&mr.date===md.last&&mr.why?mr.why
+    :spFresh?((sp.summary||"").split(/(?<=[.!?])\s+(?=[A-Z])/).slice(0,3).join(" ")||sp.headline)
+    :avg>0.002?"Stocks went up overall.":avg<-0.002?"Stocks went down overall.":"Stocks barely moved.";
   box.replaceChildren(el("div",{class:"eyebrow",text:md.label}),
     el("div",{class:"mkrow"},rows.map(x=>el("div",{class:"mk"},el("span",{text:x.name}),el("b",{class:cls(x.r),text:fmtPct(x.r,2)})))),
     el("p",{class:"mkwhy"},el("b",{text:"Why: "}),why));
@@ -442,7 +446,7 @@ async function boot(){
   const [pf,nw,px]=await Promise.allSettled([loadJSON("data/portfolio.json"),loadJSON("data/news.json"),loadJSON("data/prices.json")]);
   if(px.status==="fulfilled"&&px.value&&px.value.closes)S.prices=px.value;
   if(pf.status==="fulfilled")S.picks=(pf.value.picks||[]).filter(p=>p.ticker&&p.entryPrice>0&&p.entryDate);
-  if(nw.status==="fulfilled"){S.briefs=nw.value.briefs||[];if(nw.value.updated)$("#news-asof").textContent="News briefs updated "+fmtDate(nw.value.updated);}
+  if(nw.status==="fulfilled"){S.briefs=nw.value.briefs||[];S.marketRecap=nw.value.market||null;if(nw.value.updated)$("#news-asof").textContent="News briefs updated "+fmtDate(nw.value.updated);}
   S.loaded=true;renderTape();renderPortfolio();renderNews();
   const fromWidget=new URLSearchParams(location.search).get("tvwidgetsymbol");
   if(fromWidget){try{history.replaceState(null,"",location.pathname+"#search")}catch(e){}openStock(fromWidget.toUpperCase());}

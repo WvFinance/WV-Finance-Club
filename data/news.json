@@ -696,5 +696,30 @@
    ],
    "updatedAt": "2026-10-30T22:58:10.581Z"
   }
- ]
+ ],
+ "market": {
+  "date": "2026-11-02",
+  "why": "On Monday, November 2, big tech stocks kept sliding, which pulled the S&P 500 and Nasdaq down. Chip companies were hit hardest: Marvell fell about 13% after agreeing to buy Lumentum, and Oracle dropped about 8% after saying it will sell $10 billion of new stock to raise money. The Dow went up because oil prices fell almost 8% on hopes for US-Iran peace talks, which helped airlines and stores like Home Depot.",
+  "sources": [
+   {
+    "title": "Stock market today: S&P 500 and Nasdaq extend tech sell-off, Dow gains as oil prices plunge",
+    "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-2-dow-sp-500-nasdaq-091835095.html",
+    "outlet": "Yahoo Finance",
+    "date": "Nov 2, 2026"
+   },
+   {
+    "title": "Tech Stocks Pull the Nasdaq Lower in the Stock Market Today, November 2, as Oil Tumbles",
+    "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-2-2026",
+    "outlet": "Stock Titan",
+    "date": "Nov 2, 2026"
+   },
+   {
+    "title": "S&P 500 Closes Down 0.5% While the Dow Gains Nearly 1%",
+    "url": "https://247wallst.com/cards/money-rotated-out-of-tech-today-the-dow-and-nasdaq-split-by-gspc-market-bell-01m6f16sjakb82rhj0p9s07n7a",
+    "outlet": "24/7 Wall St.",
+    "date": "Nov 2, 2026"
+   }
+  ],
+  "updatedAt": "2026-11-02T23:44:34.396Z"
+ }
 }
