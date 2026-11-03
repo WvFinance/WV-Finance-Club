@@ -46,7 +46,7 @@ async function load(){
     mineShow("error");if($("#mine"))$("#mine-loading").textContent="Your stocks couldn't be loaded. Try again in a minute.";loaded=false;return;}
   if(!acct){$("#pt-game").hidden=true;$("#pt-join").hidden=false;mineShow("join");if(!$("#pt-name").value)$("#pt-name").value=(user.email||"").split("@")[0].slice(0,30);return;}
   G.acct=acct;$("#pt-join").hidden=true;$("#pt-game").hidden=false;mineShow("game");
-  const[pos,tr,od]=await Promise.all([db.from("paper_positions").select("*"),db.from("paper_trades").select("*").order("at",{ascending:false}).limit(10),
+  const[pos,tr,od]=await Promise.all([db.from("paper_positions").select("*"),db.from("paper_trades").select("*").order("at",{ascending:false}).limit(1000),
     db.from("paper_orders").select("*").order("created_at",{ascending:false}).limit(40)]);
   G.pos=pos.data||[];G.trades=tr.data||[];G.orders=od.error?[]:(od.data||[]);
   renderAll();
@@ -72,7 +72,7 @@ const SIDE={buy:"Buy",sell:"Sell",short:"Short",cover:"Buy to cover"};
 const DID={buy:"Bought",sell:"Sold",short:"Shorted",cover:"Bought back"};
 const KIND={market:"Market",limit:"Limit",stop:"Stop",stop_limit:"Stop-limit",trailing_stop:"Trailing stop",auto:"Automatic"};
 const when=t=>new Date(t).toLocaleString("en-US",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});
-function renderAll(){renderTiles();renderOrders();renderHold($("#pt-hold"));renderTrades();renderBoard();renderEst();renderMine();}
+function renderAll(){renderTiles();renderOrders();renderTrades();renderBoard();renderEst();renderMine();}
 function renderMine(){if(!$("#mine"))return;renderTiles($("#mine-tiles"));renderHold($("#mine-hold"),true);renderOrders($("#mine-orders"),true);}
 function renderTiles(box){
   const stocks=G.pos.reduce((s,p)=>s+priceOf(p)*p.shares,0),value=+G.acct.cash+stocks,gain=value-START;
@@ -123,13 +123,23 @@ function renderHold(box,mine){
     el("p",{class:"meta",text:G.pos.some(p=>p.shares<0)?"Prices update every few minutes while the market is open. A short makes money when the price goes down.":"Prices update every few minutes while the market is open."}),
     el("div",{class:"tablewrap"},el("table",{class:"pos"},head,body)));
 }
+// Order History: every trade this member has made, newest first.
+let histAll=false;
 function renderTrades(){
   const box=$("#pt-trades");
-  if(!G.trades.length){box.hidden=true;return;}box.hidden=false;
-  box.replaceChildren(el("h3",{class:"h3",text:"Your recent trades"}),el("ul",{class:"ptlist"},G.trades.map(t=>el("li",{},
-    el("span",{class:"pttag "+t.side,text:DID[t.side]||t.side}),
-    el("span",{text:`${+t.shares} ${t.symbol} at ${fmt$(t.price)} = ${fmt$(t.total)}`+(t.how&&t.how!=="market"?(t.how==="auto"?" (bought back automatically: the price doubled)":` (${KIND[t.how].toLowerCase()} order)`):"")}),
-    el("span",{class:"o",text:when(t.at)})))));
+  if(!G.trades.length){box.replaceChildren(el("h3",{class:"h3",text:"Order History"}),el("p",{class:"meta",text:"You haven't made any trades yet. Type a ticker above and place an order. Every trade you make will be saved here."}));return;}
+  const list=histAll?G.trades:G.trades.slice(0,25);
+  const td=(t,k)=>el("td",{class:k||"",text:t});
+  const head=el("thead",{},el("tr",{},["Date","Action","Stock","Shares","Price","Total","Order type"].map((t,i)=>el("th",{class:i>=3&&i<=5?"num":"",text:t}))));
+  const body=el("tbody",{},list.map(t=>el("tr",{},
+    td(when(t.at)),el("td",{},el("span",{class:"pttag "+t.side,text:DID[t.side]||t.side})),
+    el("td",{},el("button",{type:"button",class:"linkbtn sym",text:t.symbol,title:`Open ${t.symbol} on Search`,onclick:()=>window.WVFC_APP&&window.WVFC_APP.openStock(t.symbol)})),
+    td(String(+t.shares),"num"),td(fmt$(t.price),"num"),td(fmt$(t.total),"num"),
+    td(t.how==="auto"?"Automatic (price doubled)":(KIND[t.how]||"Market")))));
+  box.replaceChildren(el("h3",{class:"h3",text:"Order History"}),
+    el("p",{class:"meta",text:`Every trade you've made, newest first. ${G.trades.length} trade${G.trades.length===1?"":"s"} so far.`}),
+    el("div",{class:"tablewrap"},el("table",{class:"pos"},head,body)),
+    G.trades.length>25?el("button",{type:"button",class:"btn small",style:"margin-top:12px",text:histAll?"Show fewer":`Show all ${G.trades.length}`,onclick:()=>{histAll=!histAll;renderTrades();}}):"");
 }
 // Class Leaderboard: only players from your school, ranked among themselves.
 function classBoard(){
