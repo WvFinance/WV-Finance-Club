@@ -371,7 +371,7 @@ const inPortfolio=tk=>S.picks.some(p=>p.ticker===tk);
 function visibleBriefs(){return S.briefs.filter(b=>b.market).sort((a,b)=>(a.order||0)-(b.order||0)).concat(S.briefs.filter(b=>!b.market&&inPortfolio(b.ticker)&&!S.briefs.some(m=>m.market&&m.ticker===b.ticker)).sort((a,b)=>a.ticker.localeCompare(b.ticker)));}
 function briefForSymbol(sym){const t=bare(sym);return visibleBriefs().find(b=>bare(b.symbol||b.ticker)===t||b.ticker===t)||null;}
 // Two news boards share this code: the News tab (market, crypto and our stocks)
-// and "News for our stocks" under Class Portfolio (only our stocks). ids starting with "c-" are the second one.
+// and "News" under the Class Portfolio menu (only our stocks). ids starting with "c-" are the second one.
 const secOf=tk=>{const p=S.picks.find(x=>x.ticker===tk);return p&&p.sector||"";};
 // Grouped by sector (A to Z), then ticker, so each sector gets its own heading.
 const classBriefs=()=>S.briefs.filter(b=>!b.market&&inPortfolio(b.ticker)).sort((a,b)=>(secOf(a.ticker)||"~").localeCompare(secOf(b.ticker)||"~")||a.ticker.localeCompare(b.ticker));
