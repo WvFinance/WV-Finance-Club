@@ -261,13 +261,13 @@ function moveOver(tk,back){const d=S.prices.dates||[];if(d.length<=back)return n
 function marketDay(){const d=S.prices.dates||[];const last=d[d.length-1];if(!last)return null;
   const isToday=last===new Date().toLocaleDateString("en-CA",{timeZone:"America/New_York"});
   return{last,label:isToday?"Market today":"Market on "+new Date(last+"T12:00:00").toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"})};}
-// Until the after-close explanation is written (about 4:30pm Chicago time), say plainly what happened.
+// Until the after-close explanation is written (a little after 5pm Chicago time), say plainly what happened.
 function plainWhy(rows,avg){
   const up=rows.filter(x=>x.r>0.0005).map(x=>x.name),down=rows.filter(x=>x.r<-0.0005).map(x=>x.name);
   const list=a=>a.length>1?a.slice(0,-1).join(", ")+" and "+a[a.length-1]:a[0];
   const what=up.length&&down.length?`The ${list(up)} went up, but the ${list(down)} went down.`
     :avg>0.002?"Stocks went up overall.":avg<-0.002?"Stocks went down overall.":"Stocks barely moved.";
-  return what+" The full reason why is added after the market closes, around 4:30pm Chicago time.";
+  return what+" The full reason why is added after the market closes, a little after 5pm Chicago time.";
 }
 function renderMarket(){
   const box=$("#market"),md=marketDay();const rows=MKT.map(([ix,fund,name])=>{const c=(S.prices.closes||{})[ix];const a=c&&c[c.length-1]!=null&&c[c.length-2]!=null?moveOver(ix,1):null;return{name,r:a!=null?a:moveOver(fund,1)};}).filter(x=>x.r!=null);
