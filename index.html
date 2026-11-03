@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=2026110333">
+<link rel="stylesheet" href="assets/style.css?v=2026110334">
 <script>
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
@@ -68,7 +68,6 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
     <button role="menuitem" data-view="sectors">What we own by sector</button>
     <button role="menuitem" data-view="history">Club vs S&amp;P 500</button>
     <button role="menuitem" data-view="classnews">News</button>
-    <button role="menuitem" data-view="ideas">Submit Suggestion</button>
   </div>
   <div class="tabmenu" id="dist-menu" role="menu" hidden>
     <button role="menuitem" data-view="dschools">District Leaderboard</button>
@@ -88,6 +87,7 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
       <h2>Class Portfolio</h2>
       <p class="sub">Every stock here won a club debate.</p>
     </div>
+    <a class="btn primary" href="#ideas">Submit Suggestion</a>
   </div>
   <a class="wkbanner" id="wk-banner" href="#dweek" hidden></a>
   <div class="tiles" id="tiles"></div>

@@ -477,3 +477,4 @@ select.ptinp{appearance:none;cursor:pointer;padding-right:34px;background-image:
 /* Footer bar: news brief date and Log Out */
 footer .footbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding-block:14px;border-bottom:1px solid var(--line)}
 footer .chip.asof{border-color:var(--line);color:var(--ink-2)}
+#pv-overview>.sechead{flex-wrap:nowrap;align-items:flex-start}#pv-overview>.sechead .btn{white-space:nowrap;flex:none}
