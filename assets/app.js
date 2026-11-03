@@ -255,14 +255,22 @@ function renderBreakdown(){
   if(!S.loaded)return;if(S_view==="positions")renderPositions();else if(S_view==="sectors")renderSectors();else if(S_view==="history")renderHistory();
 }
 /* ---------- Market today, upcoming events and weekly recap ---------- */
-// Index funds stand in for the indexes: SPY = S&P 500, QQQ = Nasdaq 100, DIA = Dow.
-const MKT=[["SPY","S&P 500"],["QQQ","Nasdaq"],["DIA","Dow"]];
+// The real indexes (the numbers on the news); their index funds fill in if an index is missing.
+const MKT=[["^GSPC","SPY","S&P 500"],["^IXIC","QQQ","Nasdaq"],["^DJI","DIA","Dow"]];
 function moveOver(tk,back){const d=S.prices.dates||[];if(d.length<=back)return null;const a=closeOn(tk,d[d.length-1]),b=closeOn(tk,d[d.length-1-back]);return a!=null&&b?a/b-1:null;}
 function marketDay(){const d=S.prices.dates||[];const last=d[d.length-1];if(!last)return null;
   const isToday=last===new Date().toLocaleDateString("en-CA",{timeZone:"America/New_York"});
   return{last,label:isToday?"Market today":"Market on "+new Date(last+"T12:00:00").toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"})};}
+// Until the after-close explanation is written (about 4:30pm Chicago time), say plainly what happened.
+function plainWhy(rows,avg){
+  const up=rows.filter(x=>x.r>0.0005).map(x=>x.name),down=rows.filter(x=>x.r<-0.0005).map(x=>x.name);
+  const list=a=>a.length>1?a.slice(0,-1).join(", ")+" and "+a[a.length-1]:a[0];
+  const what=up.length&&down.length?`The ${list(up)} went up, but the ${list(down)} went down.`
+    :avg>0.002?"Stocks went up overall.":avg<-0.002?"Stocks went down overall.":"Stocks barely moved.";
+  return what+" The full reason why is added after the market closes, around 4:30pm Chicago time.";
+}
 function renderMarket(){
-  const box=$("#market"),md=marketDay();const rows=MKT.map(([tk,name])=>({name,r:moveOver(tk,1)})).filter(x=>x.r!=null);
+  const box=$("#market"),md=marketDay();const rows=MKT.map(([ix,fund,name])=>{const c=(S.prices.closes||{})[ix];const a=c&&c[c.length-1]!=null&&c[c.length-2]!=null?moveOver(ix,1):null;return{name,r:a!=null?a:moveOver(fund,1)};}).filter(x=>x.r!=null);
   if(!md||!rows.length){box.hidden=true;return;}
   // The "why" comes from the after-close market recap written for this exact day.
   // If that's missing, use the S&P 500 brief, but only if it was written after this day's close
@@ -272,7 +280,7 @@ function renderMarket(){
   const avg=rows.reduce((s,x)=>s+x.r,0)/rows.length;
   const why=mr&&mr.date===md.last&&mr.why?mr.why
     :spFresh?((sp.summary||"").split(/(?<=[.!?])\s+(?=[A-Z])/).slice(0,3).join(" ")||sp.headline)
-    :avg>0.002?"Stocks went up overall.":avg<-0.002?"Stocks went down overall.":"Stocks barely moved.";
+    :plainWhy(rows,avg);
   box.replaceChildren(el("div",{class:"eyebrow",text:md.label}),
     el("div",{class:"mkrow"},rows.map(x=>el("div",{class:"mk"},el("span",{text:x.name}),el("b",{class:cls(x.r),text:fmtPct(x.r,2)})))),
     el("p",{class:"mkwhy"},el("b",{text:"Why: "}),why));
