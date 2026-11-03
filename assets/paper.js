@@ -36,7 +36,10 @@ function renderMarket(){const open=marketOpen();const m=$("#pt-market");
 
 /* ---------- Loading ---------- */
 async function load(){
-  loaded=true;renderMarket();
+  loaded=true;
+  // A teacher's Paper Trading tab is their school's Class Portfolio instead of the game (staff.js).
+  if(await (window.WVFC_ROLE_READY||Promise.resolve())==="teacher"){$("#pt-loading").hidden=true;return;}
+  renderMarket();
   const{data:acct,error}=await db.from("paper_accounts").select("*").maybeSingle();
   $("#pt-loading").hidden=true;
   if(error){$("#pt-loading").hidden=false;$("#pt-loading").textContent="The game couldn't be loaded. Try again in a minute.";

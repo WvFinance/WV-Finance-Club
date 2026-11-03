@@ -69,7 +69,7 @@ async function start(){
   let session=null;try{({data:{session}}=await db.auth.getSession());}catch(e){}
   if(!session){root.classList.remove("unlocked");setMode("login");$("#auth-email").focus();return;}
   user=session.user;root.classList.add("unlocked");
-  loadSchool();loadWatch();
+  window.WVFC_ROLE_READY=loadSchool();loadWatch();
   // The trading game (paper.js) may load after this runs, so it can also read WVFC_SESSION.
   window.WVFC_SESSION={db,user};
   document.dispatchEvent(new CustomEvent("wvfc:login",{detail:{db,user}}));
@@ -83,9 +83,11 @@ async function loadSchool(){
   try{const{data,error}=await db.from("profiles").select("school_id,role").maybeSingle();if(!error&&data){if(data.school_id)school=data.school_id;if(data.role)role=data.role;}}catch(e){}
   window.WVFC_ROLE=role;
   if(role==="admin")school=await adminSchoolPick(school);
-  if(role==="teacher"||role==="admin"){$("#tab-staff").hidden=false;
+  if(role==="teacher"){$("#tab-mine").hidden=true;$("#tab-trade").textContent="Class Trading";}
+  if(role==="teacher"||role==="admin"){$("#tab-staff").hidden=role!=="admin";
     window.WVFC_STAFF={db,role,school};document.dispatchEvent(new CustomEvent("wvfc:staff",{detail:window.WVFC_STAFF}));}
   window.WVFC_APP&&window.WVFC_APP.setSchool(school);
+  return role;
 }
 // Admin only: a "Viewing" menu at the top to look at any school as if logged in there.
 async function adminSchoolPick(own){
