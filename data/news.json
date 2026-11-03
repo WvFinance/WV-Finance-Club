@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02",
+ "updated": "2026-11-03",
  "briefs": [
   {
    "bear": [
@@ -87,41 +87,47 @@
   },
   {
    "bear": [
-    "Reports say Apple cut October component orders for the iPhone 18 Pro by 15% to 20%, though Apple hasn't confirmed this.",
-    "The stock is expensive, at about 36 to 40 times its profit, and trades above analysts' average price target (their guess of what the stock is worth) of about $340.",
-    "Apple expects its profit per dollar of sales to drop from last quarter, which had a one-time boost from tariff refunds."
+    "Apple expects its gross margin (profit per dollar of sales) to fall to 45% to 46% next quarter, from 47.9%, partly because memory chips cost more.",
+    "iPad sales fell 10% and wearables like the Apple Watch fell 8%.",
+    "The stock fell 1.8% on Monday and dropped further in trading after the report."
    ],
    "bull": [
-    "The $1,999 iPhone Duo drew strong preorders, with delivery dates stretching into 2027.",
-    "Apple has beaten analysts' expectations 12 times in a row.",
-    "iPhone 18 Pro sales in China rose 29% in the first three weeks."
+    "Sales of $114.5 billion and profit of $2.10 per share both beat what analysts expected.",
+    "iPhone sales rose 17% to $57.6 billion, and sales in China grew about 21%.",
+    "Apple expects sales to grow 7% to 10% in the October to December quarter, and it has more iPhone Duo orders than it can make right now."
    ],
-   "headline": "Apple nears its Nov. 2 earnings with strong iPhone Duo demand but Pro worries",
-   "nextEvent": "Apple reports its earnings on November 2, 2026, after the stock market closes",
+   "headline": "Apple beats sales and profit guesses, but its stock slips on a weaker profit forecast",
+   "nextEvent": "Apple pays its next dividend of $0.27 per share on November 16, 2026",
    "sentiment": "neutral",
    "sources": [
     {
-     "title": "Apple (AAPL) Stock Falls Amid Market Uptick: What Investors Need to Know",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/apple-aapl-stock-falls-amid-204503686.html",
-     "outlet": "Yahoo Finance (Zacks)",
-     "date": "Oct 26, 2026"
+     "title": "Apple Reports 4Q 2026 Results: $30.7B Profit on $114.5B Revenue",
+     "url": "https://www.macrumors.com/2026/11/02/apple-4q-2026-earnings/",
+     "outlet": "MacRumors",
+     "date": "Nov 2, 2026"
     },
     {
-     "title": "Apple (AAPL) Expected to Post Earnings on Monday",
-     "url": "https://www.marketbeat.com/instant-alerts/upcoming-apple-aapl-expected-to-post-earnings-on-monday-2026-10-26/",
-     "outlet": "MarketBeat",
-     "date": "Oct 26, 2026"
+     "title": "Stock Market Today (Nov. 2, 2026): Apple falls after posting slower earnings growth; S&P 500 falls ahead of U.S. midterms",
+     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-02-2026",
+     "outlet": "TheStreet",
+     "date": "Nov 2, 2026"
     },
     {
-     "title": "Apple (AAPL) Stock: What Wall Street Expects from Earnings Monday",
-     "url": "https://moneycheck.com/apple-aapl-stock-what-wall-street-expects-from-earnings-monday",
-     "outlet": "MoneyCheck",
-     "date": "Oct 28, 2026"
+     "title": "Tech Stocks Pulled the Nasdaq Lower in the Stock Market Today, November 2, 2026, as Oil Tumbled",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-2-2026",
+     "outlet": "StockTitan",
+     "date": "Nov 2, 2026"
+    },
+    {
+     "title": "AI Return Doubts Weigh on Nasdaq, Index Falls Over 1%; Memory and Optical Communications Stocks Slump",
+     "url": "https://finance.biggo.com/news/345f3228-1d14-4f62-bca9-0c4446b03f49",
+     "outlet": "BigGo Finance",
+     "date": "Nov 3, 2026"
     }
    ],
-   "summary": "Apple reports its results for July to September on November 2, and analysts expect about $113 billion in sales and $1.99 in profit per share. Its new foldable iPhone Duo launched October 23 with strong early orders, and some deliveries are now pushed into 2027. But reports say Apple cut component orders for the iPhone 18 Pro by 15% to 20%, and Pro sales in the US fell 4% in the first three weeks. The stock closed at $344.02 on October 26, near its all-time high.",
+   "summary": "On November 2, Apple said sales for July to September rose 12% to a record $114.5 billion, and profit was $2.10 per share. Both beat what analysts expected ($113.5 billion and $2.00). iPhone sales grew 17% and Mac sales grew 24%, but iPad sales fell 10%. The stock fell 1.8% during the day and slipped further after the report, because Apple expects its profit per dollar of sales to drop next quarter as memory chips get more expensive.",
    "ticker": "AAPL",
-   "updatedAt": "2026-10-29T21:46:51.345Z",
+   "updatedAt": "2026-11-03T06:28:45.127Z",
    "symbol": "NASDAQ:AAPL",
    "name": "Apple"
   },
@@ -289,41 +295,47 @@
   },
   {
    "bear": [
-    "The Justice Department is looking at whether the Hugging Face deal could hurt competition.",
-    "A report says OpenAI plans to buy Google's AI chips, which could mean more competition for Nvidia.",
-    "Rising memory prices are expected to squeeze Nvidia's profit per dollar of sales for a few more months."
+    "The stock is down about 16% since October 6, a loss of about $896 billion in company value.",
+    "More investors doubt that the huge spending on AI will pay off, which hurts all chip stocks.",
+    "The Justice Department is looking at whether the Hugging Face deal could hurt competition."
    ],
    "bull": [
-    "Sales last quarter jumped 106% to $96.2 billion, and Nvidia expects about $108 billion next quarter.",
-    "Nvidia says demand is much higher than it can supply, and OpenAI's planned purchases could be worth about $600 billion through 2030.",
-    "Its new Vera Rubin chips started shipping in August."
+    "Nvidia has held up better than most chip stocks in the sell-off.",
+    "Its sales last quarter jumped 106% to $96.2 billion, and it expects about $108 billion next quarter.",
+    "Some business leaders, like John Chambers, say they would not bet against Nvidia."
    ],
-   "headline": "Nvidia dips on a government review of its Hugging Face deal",
+   "headline": "Nvidia slips again as a big sell-off in chip stocks keeps spreading",
    "nextEvent": "Nvidia's next earnings report is expected in November 2026 (around Nov 18, not yet confirmed)",
-   "sentiment": "neutral",
+   "sentiment": "bearish",
    "sources": [
+    {
+     "title": "The Intel stock collapse is getting worse — and the $3.7 trillion chip rout is spreading",
+     "url": "https://finance.yahoo.com/markets/article/the-intel-stock-collapse-is-getting-worse--and-the-37-trillion-chip-rout-is-spreading-212154947.html",
+     "outlet": "Yahoo Finance",
+     "date": "Nov 2, 2026"
+    },
+    {
+     "title": "AI Return Doubts Weigh on Nasdaq, Index Falls Over 1%; Memory and Optical Communications Stocks Slump",
+     "url": "https://finance.biggo.com/news/345f3228-1d14-4f62-bca9-0c4446b03f49",
+     "outlet": "BigGo Finance",
+     "date": "Nov 3, 2026"
+    },
+    {
+     "title": "Tech Stocks Pulled the Nasdaq Lower in the Stock Market Today, November 2, 2026, as Oil Tumbled",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-2-2026",
+     "outlet": "StockTitan",
+     "date": "Nov 2, 2026"
+    },
     {
      "title": "Nvidia Stock (NVDA) Falls 1.2% on Reports of DOJ Inquiry (Oct 28)",
      "url": "https://www.heygotrade.com/en/news/nvidia-nvda-stock-news-october-29-2026/",
      "outlet": "Gotrade",
      "date": "Oct 29, 2026"
-    },
-    {
-     "title": "OpenAI Reportedly Plans to Buy Google's AI Chips. Should You Sell Nvidia Stock?",
-     "url": "https://www.fool.com/investing/2026/10/28/openai-reportedly-plans-to-buy-google-s-ai-chips-should-you-sell-nvidia-stock/",
-     "outlet": "The Motley Fool",
-     "date": "Oct 28, 2026"
-    },
-    {
-     "title": "Can NVIDIA Stock Jump 50%?",
-     "url": "https://www.trefis.com/stock/nvda/articles/621299/can-nvidia-stock-jump-50/2026-10-29",
-     "outlet": "Trefis",
-     "date": "Oct 29, 2026"
     }
    ],
-   "summary": "On October 28, Nvidia's stock fell 1.2% to $215.38 after Reuters reported that the US Justice Department is asking whether Nvidia's $12.9 billion deal to buy Hugging Face, a popular home for AI models, could hurt competition. A day earlier, a report said OpenAI plans to buy AI chips from Google, one of Nvidia's rivals. Even so, Nvidia's sales in its last quarter more than doubled to $96.2 billion, and it expects about $108 billion next quarter. The stock is about 9% below its October 6 record high.",
+   "summary": "On Monday, November 2, Nvidia's stock fell 1.26% while almost every chip stock dropped, even though most other S&P 500 stocks rose. Chip stocks have lost about $3.7 trillion in value since October 6, as more investors doubt that the huge spending on AI will pay off. Nvidia has held up better than most chip companies, but it is still down about 16% since October 6. Late in October, the stock also dipped after a report that the US Justice Department is looking into its plan to buy Hugging Face.",
    "ticker": "NVDA",
-   "updatedAt": "2026-10-29T21:46:51.349Z",
+   "updatedAt": "2026-11-03T06:28:45.129Z",
    "symbol": "NASDAQ:NVDA",
    "name": "Nvidia"
   },
@@ -365,26 +377,32 @@
   {
    "ticker": "XOM",
    "symbol": "NYSE:XOM",
-   "sentiment": "bullish",
-   "headline": "Exxon beats profit expectations as its refineries cash in on a diesel shortage",
-   "summary": "On October 30, Exxon reported adjusted profit of $17.5 billion for July to September, or $4.23 per share, beating the $4.08 per share analysts expected. Most of the jump came from refining (turning oil into fuels like diesel), where profit roughly doubled from the quarter before because fighting in the Middle East and attacks on Russian refineries left the world short of diesel. Profit from pumping oil fell about 20% because oil prices were lower than in the spring. Exxon also raised its quarterly dividend to $1.07 per share and plans to buy back $20 billion of its own shares in 2027.",
+   "sentiment": "neutral",
+   "headline": "Exxon falls 4% as oil prices drop on hopes for US-Iran peace talks",
+   "summary": "On Monday, November 2, Exxon's stock fell about 4% after oil prices plunged more than 7%, on hopes that the US and Iran may restart peace talks. Lower oil prices usually mean less profit for oil companies like Exxon. This came just after strong results on October 30, when Exxon earned $4.23 per share, beating the $4.08 analysts expected, thanks to big profits from refining (turning oil into fuels like diesel). Exxon also raised its quarterly dividend to $1.07 per share.",
    "bull": [
     "Profit of $4.23 per share beat what analysts expected, and was up from $3.52 the quarter before.",
-    "Refining profit was about $9 billion, up roughly 120% from the quarter before, as its Gulf Coast refineries ran at full speed.",
-    "Exxon raised its quarterly dividend (cash paid to shareholders) to $1.07 per share and plans $20 billion of share buybacks (the company buying its own shares) in 2027."
+    "Refining profit roughly doubled from the quarter before because the world is short of diesel.",
+    "Exxon raised its quarterly dividend (cash paid to shareholders) to $1.07 per share and plans $20 billion of share buybacks in 2027."
    ],
    "bear": [
-    "Profit from pumping oil and gas fell about 20% because oil prices averaged lower than in the spring.",
-    "The refining boom depends on supply problems from war, which could ease and shrink those profits.",
-    "Oil and gas output was flat at about 4.5 million barrels a day."
+    "The stock fell about 4% on November 2 as oil prices dropped more than 7%.",
+    "Peace talks between the US and Iran could keep pushing oil prices down.",
+    "Profit from pumping oil and gas already fell about 20% last quarter because of lower oil prices."
    ],
    "nextEvent": "Exxon's next dividend of $1.07 per share is paid on December 10, 2026",
    "sources": [
     {
-     "title": "ExxonMobil Announces Third-Quarter 2026 Results",
-     "url": "https://www.stocktitan.net/news/XOM/exxon-mobil-announces-third-quarter-2026-xek57lw8yhqm.html",
+     "title": "Tech Stocks Pulled the Nasdaq Lower in the Stock Market Today, November 2, 2026, as Oil Tumbled",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-2-2026",
      "outlet": "StockTitan",
-     "date": "Oct 30, 2026"
+     "date": "Nov 2, 2026"
+    },
+    {
+     "title": "AI Return Doubts Weigh on Nasdaq, Index Falls Over 1%; Memory and Optical Communications Stocks Slump",
+     "url": "https://finance.biggo.com/news/345f3228-1d14-4f62-bca9-0c4446b03f49",
+     "outlet": "BigGo Finance",
+     "date": "Nov 3, 2026"
     },
     {
      "title": "ExxonMobil beats third-quarter profit estimates on refining boom",
@@ -393,13 +411,13 @@
      "date": "Oct 30, 2026"
     },
     {
-     "title": "Can Exxon's $4.5 Billion Refining Windfall Defy Dropping Crude Prices on Oct. 30?",
-     "url": "https://247wallst.com/investing/2026/10/26/can-exxons-4-5-billion-refining-windfall-defy-dropping-crude-prices-on-oct-30/",
-     "outlet": "24/7 Wall St.",
-     "date": "Oct 26, 2026"
+     "title": "ExxonMobil Announces Third-Quarter 2026 Results",
+     "url": "https://www.stocktitan.net/news/XOM/exxon-mobil-announces-third-quarter-2026-xek57lw8yhqm.html",
+     "outlet": "StockTitan",
+     "date": "Oct 30, 2026"
     }
    ],
-   "updatedAt": "2026-10-30T10:40:20.919Z",
+   "updatedAt": "2026-11-03T06:28:45.129Z",
    "name": "Exxon Mobil"
   },
   {
