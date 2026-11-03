@@ -698,28 +698,28 @@
   }
  ],
  "market": {
-  "date": "2026-11-02",
-  "why": "On Monday, November 2, tech stocks kept falling, which pulled the S&P 500 and Nasdaq down. Chip companies were hit hardest: Marvell fell about 13% after agreeing to buy Lumentum, and Oracle dropped about 9% after saying it will raise $20 billion, half by selling new stock. The Dow rose because oil prices fell almost 8% on hopes for a US-Iran peace deal, which helped airlines and stores like Home Depot.",
+  "date": "2026-11-03",
+  "why": "On Tuesday, November 3, chip stocks bounced back after Monday's drop, which lifted the Nasdaq and the S&P 500. AMD rose about 3.7% ahead of its earnings report after the bell. The Dow slipped because Apple fell after warning its profit margins (how much it keeps from each sale) could shrink, and some store and bank stocks were weak too.",
   "sources": [
    {
-    "title": "Stock market today: S&P 500 and Nasdaq extend tech sell-off, Dow gains as oil prices plunge",
-    "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-2-dow-sp-500-nasdaq-091835095.html",
+    "title": "Stock market today: Dow slips, S&P and Nasdaq gain as chip stocks rally, focus shifts to midterm elections",
+    "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-3-dow-sp-500-nasdaq-midterms-amd-earnings-141143244.html",
     "outlet": "Yahoo Finance",
-    "date": "Nov 2, 2026"
+    "date": "Nov 3, 2026"
    },
    {
-    "title": "Tech Stocks Pull the Nasdaq Lower in the Stock Market Today, November 2, as Oil Tumbles",
-    "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-2-2026",
-    "outlet": "Stock Titan",
-    "date": "Nov 2, 2026"
+    "title": "Stock Market Today (Nov. 3, 2026): Nasdaq, Russell 2000 finish higher in homestretch of U.S. midterm election",
+    "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-03-2026",
+    "outlet": "TheStreet",
+    "date": "Nov 3, 2026"
    },
    {
-    "title": "Oil Plunges 7% on U.S.-Iran Talks Hopes; Stocks Mixed as AI Shares Slide",
-    "url": "https://en.sedaily.com/international/2026/11/03/oil-plunges-7-percent-on-us-iran-talks-hopes-stocks-mixed",
-    "outlet": "Seoul Economic Daily",
-    "date": "Nov 2, 2026"
+    "title": "03 November 2026 Market Close & Major Financial Headlines: Nasdaq Leads as Technology Shares Recover; Dow Falls",
+    "url": "https://econcurrents.substack.com/p/03-november-2026-market-close-and",
+    "outlet": "EconCurrents",
+    "date": "Nov 3, 2026"
    }
   ],
-  "updatedAt": "2026-11-02T23:50:51.453Z"
+  "updatedAt": "2026-11-03T22:24:04.692Z"
  }
 }

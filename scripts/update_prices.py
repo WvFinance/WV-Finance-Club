@@ -8,6 +8,7 @@ import json
 import pathlib
 import re
 import time
+import urllib.parse
 import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ def yahoo_closes(ticker, start):
     """Return {YYYY-MM-DD: close} from Yahoo Finance's chart endpoint."""
     p1 = int(dt.datetime.combine(start, dt.time()).replace(tzinfo=dt.timezone.utc).timestamp())
     p2 = int(time.time()) + 86400
-    url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}"
+    url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{urllib.parse.quote(ticker)}"
            f"?period1={p1}&period2={p2}&interval=1d&events=div%2Csplit")
     with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
         res = json.load(r)["chart"]["result"][0]
@@ -69,6 +70,9 @@ def main():
     picks = all_picks() + site_picks()
     # QQQ and DIA track the Nasdaq 100 and the Dow for the "Market today" box.
     tickers = sorted({p["ticker"].upper() for p in picks if p.get("ticker")} | {"SPY", "QQQ", "DIA"})
+    # The real indexes for the "Market today" box, so its numbers match the news:
+    # ^GSPC = S&P 500, ^IXIC = Nasdaq Composite, ^DJI = Dow Jones.
+    tickers += ["^GSPC", "^IXIC", "^DJI"]
     dates = [dt.date.fromisoformat(p["entryDate"]) for p in picks if p.get("entryDate")]
     # Start a few days before the first pick so the chart has a starting close.
     start = (min(dates) if dates else dt.date.today() - dt.timedelta(days=365)) - dt.timedelta(days=7)
