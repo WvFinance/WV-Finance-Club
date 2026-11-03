@@ -332,6 +332,16 @@ html.unlocked #gate{display:none}
 /* Phone fixes */
 .searchpanel>*,.searchbar{min-width:0}
 .evmore{justify-self:start;margin-top:4px}
+/* News tab: Upcoming calendar under My portfolio */
+.news-left{display:grid;gap:20px;min-width:0}
+.upcoming{display:grid;gap:10px}
+.upcoming .h3{margin:0}
+.upcoming .event{cursor:default;gap:12px;padding:10px}
+.upcoming .event:hover{border-color:var(--line)}
+.upcoming button.event{cursor:pointer}
+.upcoming button.event:hover{border-color:var(--gold)}
+.upcoming .etext{font-size:13px}
+.etag{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--gold)}
 .pickrow{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
 .pickrow>summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;cursor:pointer}
 .pickrow>summary::-webkit-details-marker{display:none}

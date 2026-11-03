@@ -378,7 +378,7 @@ function saveWatch(){store.set("wvfc.watch",JSON.stringify(S.watch));if(window.W
 // Lets the account page (beta.html) load a saved watchlist and open stocks.
 // account.js tells us the member's school once they're logged in; boot() waits for it.
 let schoolSet;const schoolReady=new Promise(r=>{schoolSet=r;});
-window.WVFC_APP={setSchool(id){schoolSet(id);},setMine(list){const m=[...new Set(list.map(bare))];if(S.mine&&m.join()===S.mine.join())return;S.mine=m;rendered.news=null;renderNews();if(!$("#news").hidden)renderNewsFeed();},setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},prices:()=>S.prices,refreshPicks:()=>refreshPicks(),picks:()=>S.picks,classRows:()=>classRows(),calc:p=>calc(p)};
+window.WVFC_APP={setSchool(id){schoolSet(id);},setMine(list){const m=[...new Set(list.map(bare))];if(S.mine&&m.join()===S.mine.join())return;S.mine=m;rendered.news=null;renderNews();loadEarnings();if(!$("#news").hidden)renderNewsFeed();},setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},prices:()=>S.prices,refreshPicks:()=>refreshPicks(),picks:()=>S.picks,classRows:()=>classRows(),calc:p=>calc(p)};
 function renderWatch(){
   const box=$("#wl");box.replaceChildren();const on=S.watch.some(w=>bare(w)===bare(S.tk));
   $("#wl-toggle").textContent=on?"On watchlist ✓":"Add to watchlist";
@@ -435,7 +435,51 @@ function newsBoard(cls){
 function renderNews(){
   renderRecap();
   const list=visibleBriefs();$("#cnt-news").textContent=list.length?String(list.length):"";
-  newsBoard(false);newsBoard(true);
+  newsBoard(false);newsBoard(true);renderUpcoming();
+}
+/* ---------- News tab: Upcoming calendar (under My portfolio) ---------- */
+// Market-wide dates come from data/market-calendar.json. Earnings days for the member's own
+// Paper Trading stocks come from Finnhub through Supabase (supabase/calendar.sql). Dividend and other
+// dates come from each stock's news brief ("Coming up"), when the brief gives a date.
+const CAL_KIND={
+  fed:["Fed","The Federal Reserve decides interest rates. Lower rates usually help stocks, higher rates can hurt them."],
+  jobs:["Jobs","The government says how many jobs were added last month. It shows if the economy is strong or slowing down."],
+  cpi:["Inflation","Shows how fast prices for everyday things are rising. High inflation can mean higher interest rates."],
+  closed:["No trading","The stock market is closed, so Paper Trading can't buy or sell today."],
+  early:["Short day","The market closes at 1pm Eastern (noon Chicago time) instead of 4pm."]};
+async function loadEarnings(){
+  const ss=window.WVFC_SESSION;if(!ss||!ss.db||!(S.mine||[]).length){S.earn=[];renderUpcoming();return;}
+  try{const{data,error}=await ss.db.rpc("my_calendar");S.earn=!error&&Array.isArray(data)?data:[];}catch(e){S.earn=[];}
+  renderUpcoming();
+}
+function upcomingRows(){
+  const today=new Date();today.setHours(0,0,0,0);const end=new Date(today.getTime()+92*864e5);
+  const day=iso=>new Date(iso+"T12:00:00");const inRange=d=>d&&d>=today&&d<=end;const rows=[];
+  (S.marketCal||[]).forEach(e=>{const d=day(e.date),k=CAL_KIND[e.type]||["Market",""];if(inRange(d))rows.push({d,tag:k[0],title:e.title,mean:k[1]});});
+  const mine=S.mine||[],earnTk=new Set();
+  (S.earn||[]).forEach(e=>{const d=e.date&&day(e.date);if(!inRange(d)||!mine.includes(e.symbol)||earnTk.has(e.symbol+e.date))return;earnTk.add(e.symbol+e.date);
+    const when=e.hour==="bmo"?" before the market opens":e.hour==="amc"?" after the market closes":"";
+    rows.push({d,tag:"Earnings",tk:e.symbol,title:`${e.symbol} reports earnings${when}`,mean:"The company shares how much money it made. The stock often jumps or drops a lot right after."});});
+  mine.forEach(tk=>{const b=S.briefs.find(x=>x.ticker===tk);if(!b||!b.nextEvent)return;const d=eventDate(b.nextEvent);if(!inRange(d))return;
+    const div=/dividend/i.test(b.nextEvent),earn=/earning|results/i.test(b.nextEvent);
+    if(earn&&[...earnTk].some(k=>k.startsWith(tk)))return;
+    rows.push({d,tag:div?"Dividend":earn?"Earnings":"Coming up",tk,title:b.nextEvent,
+      mean:div?"The company pays its owners a little cash for each share. (Paper Trading doesn't pay dividends.)":earn?"The company shares how much money it made. The stock often jumps or drops a lot right after.":""});});
+  return rows.sort((a,b)=>a.d-b.d||(a.tk?1:0)-(b.tk?1:0));
+}
+function renderUpcoming(){
+  const box=$("#upcoming");if(!box)return;const rows=upcomingRows();box.hidden=!rows.length;if(!rows.length)return;
+  const shown=S.upAll?rows:rows.slice(0,4);
+  const more=rows.length>4?el("button",{type:"button",class:"btn small evmore",text:S.upAll?"Show fewer":`Show all ${rows.length}`,onclick:()=>{S.upAll=!S.upAll;renderUpcoming();}}):null;
+  const hasMine=(S.mine||[]).length;
+  box.replaceChildren(el("div",{},el("div",{class:"eyebrow",text:"Coming up"}),el("h3",{class:"h3",text:"Upcoming"})),
+    el("div",{class:"events"},shown.map(r=>{const inner=[el("span",{class:"edate"},el("b",{text:r.d.toLocaleDateString("en-US",{month:"short",day:"numeric"})}),el("span",{text:r.d.toLocaleDateString("en-US",{weekday:"short"})})),
+      el("span",{class:"etext"},el("span",{class:"etag",text:r.tag}),el("b",{text:r.title}),r.mean?el("span",{text:r.mean}):null)];
+      return r.tk&&S.briefs.some(b=>b.ticker===r.tk&&visibleBriefs().includes(b))
+        ?el("button",{type:"button",class:"event",title:`Open the ${r.tk} brief`,onclick:()=>{S.newsTk=r.tk;newsBoard(false);renderNewsFeed();$("#brief").scrollIntoView({behavior:"smooth",block:"start"});}},...inner)
+        :el("div",{class:"event"},...inner);})),
+    ...(more?[more]:[]),
+    ...(hasMine?[]:[el("p",{class:"meta",style:"margin:0",text:"Buy stocks in Paper Trading to see their earnings days here too."})]));
 }
 function renderNewsFeed(){
   const n=visibleBriefs().find(x=>x.ticker===S.newsTk);const key=(n?n.ticker:"mkt")+tvTheme();if(rendered.news===key)return;rendered.news=key;
@@ -544,7 +588,8 @@ function showBrand(sc){
 
 async function boot(){
   renderWatch();renderQuick();
-  const [sl,nw,px]=await Promise.allSettled([loadJSON("data/schools.json"),loadJSON("data/news.json"),loadJSON("data/prices.json")]);
+  const [sl,nw,px,mc]=await Promise.allSettled([loadJSON("data/schools.json"),loadJSON("data/news.json"),loadJSON("data/prices.json"),loadJSON("data/market-calendar.json")]);
+  if(mc.status==="fulfilled")S.marketCal=mc.value.events||[];
   if(px.status==="fulfilled"&&px.value&&px.value.closes)S.prices=px.value;
   S.schools=sl.status==="fulfilled"&&sl.value.schools&&sl.value.schools.length?sl.value.schools:DEFAULT_SCHOOLS;
   // Wait for the login to say which school this is (a page with no login shows the log in box anyway).
