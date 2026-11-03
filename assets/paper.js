@@ -15,11 +15,12 @@ if(!$("#trade"))return;
 
 let db=null,user=null,loaded=false,busy=false;
 const G={acct:null,pos:[],prices:{},trades:[],board:[],orders:[]};
-const onGame=()=>!$("#trade").hidden||!!$("#mine")&&!$("#mine").hidden;
+// The News tab needs the game too: it shows news for the stocks you own.
+const onGame=()=>!$("#trade").hidden||!!$("#mine")&&!$("#mine").hidden||!!$("#news")&&!$("#news").hidden;
 function signedIn(d){if(db)return;db=d.db;user=d.user;if(onGame())load();if($("#dv-dpeople")&&!$("#dv-dpeople").hidden&&!$("#district").hidden)renderDistrictPeople();}
 document.addEventListener("wvfc:login",e=>signedIn(e.detail));
 if(window.WVFC_SESSION)signedIn(window.WVFC_SESSION);
-document.addEventListener("wvfc:tab",e=>{if((e.detail==="trade"||e.detail==="mine")&&db&&!loaded)load();});
+document.addEventListener("wvfc:tab",e=>{if((e.detail==="trade"||e.detail==="mine"||e.detail==="news")&&db&&!loaded)load();});
 const goTrade=()=>$("#tab-trade").click();
 if($("#mine")){$("#mine-trade").addEventListener("click",goTrade);$("#mine-join-go").addEventListener("click",goTrade);}
 function mineShow(which){if(!$("#mine"))return;$("#mine-loading").hidden=which!=="loading"&&which!=="error";$("#mine-join").hidden=which!=="join";$("#mine-game").hidden=which!=="game";$("#mine-trade").hidden=which!=="game";}
@@ -38,13 +39,13 @@ function renderMarket(){const open=marketOpen();const m=$("#pt-market");
 async function load(){
   loaded=true;
   // A teacher's Paper Trading tab is their school's Class Portfolio instead of the game (staff.js).
-  if(await (window.WVFC_ROLE_READY||Promise.resolve())==="teacher"){$("#pt-loading").hidden=true;return;}
+  if(await (window.WVFC_ROLE_READY||Promise.resolve())==="teacher"){$("#pt-loading").hidden=true;window.WVFC_APP&&window.WVFC_APP.setMine&&window.WVFC_APP.setMine([]);return;}
   renderMarket();
   const{data:acct,error}=await db.from("paper_accounts").select("*").maybeSingle();
   $("#pt-loading").hidden=true;
   if(error){$("#pt-loading").hidden=false;$("#pt-loading").textContent="The game couldn't be loaded. Try again in a minute.";
     mineShow("error");if($("#mine"))$("#mine-loading").textContent="Your stocks couldn't be loaded. Try again in a minute.";loaded=false;return;}
-  if(!acct){$("#pt-game").hidden=true;$("#pt-join").hidden=false;mineShow("join");if(!$("#pt-name").value)$("#pt-name").value=(user.email||"").split("@")[0].slice(0,30);return;}
+  if(!acct){window.WVFC_APP&&window.WVFC_APP.setMine&&window.WVFC_APP.setMine([]);$("#pt-game").hidden=true;$("#pt-join").hidden=false;mineShow("join");if(!$("#pt-name").value)$("#pt-name").value=(user.email||"").split("@")[0].slice(0,30);return;}
   G.acct=acct;$("#pt-join").hidden=true;$("#pt-game").hidden=false;mineShow("game");
   const[pos,tr,od]=await Promise.all([db.from("paper_positions").select("*"),db.from("paper_trades").select("*").order("at",{ascending:false}).limit(1000),
     db.from("paper_orders").select("*").order("created_at",{ascending:false}).limit(40)]);
@@ -72,7 +73,9 @@ const SIDE={buy:"Buy",sell:"Sell",short:"Short",cover:"Buy to cover"};
 const DID={buy:"Bought",sell:"Sold",short:"Shorted",cover:"Bought back"};
 const KIND={market:"Market",limit:"Limit",stop:"Stop",stop_limit:"Stop-limit",trailing_stop:"Trailing stop",auto:"Automatic"};
 const when=t=>new Date(t).toLocaleString("en-US",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});
-function renderAll(){renderTiles();renderOrders();renderTrades();renderBoard();renderEst();renderMine();}
+// Tells the News tab which stocks this member owns, so it shows their news.
+function shareMine(){window.WVFC_APP&&window.WVFC_APP.setMine&&window.WVFC_APP.setMine(G.pos.map(p=>p.symbol));}
+function renderAll(){shareMine();renderTiles();renderOrders();renderTrades();renderBoard();renderEst();renderMine();}
 function renderMine(){if(!$("#mine"))return;renderTiles($("#mine-tiles"));renderHold($("#mine-hold"),true);renderOrders($("#mine-orders"),true);}
 function renderTiles(box){
   const stocks=G.pos.reduce((s,p)=>s+priceOf(p)*p.shares,0),value=+G.acct.cash+stocks,gain=value-START;

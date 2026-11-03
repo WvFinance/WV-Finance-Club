@@ -33,7 +33,7 @@ function tv(container,name,config){
 }
 
 /* ---------- State ---------- */
-const S={livePx:{},schools:[],school:null,picks:[],briefs:[],quotes:{},prices:{dates:[],closes:{}},tk:(store.get("wvfc.tk")||"NVDA"),newsTk:null,classTk:null,watch:[]};
+const S={livePx:{},schools:[],school:null,picks:[],briefs:[],quotes:{},prices:{dates:[],closes:{}},tk:(store.get("wvfc.tk")||"NVDA"),newsTk:null,classTk:null,watch:[],mine:null};
 try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="string");}catch(e){S.watch=[];}
 
 /* ---------- Tabs ---------- */
@@ -289,7 +289,7 @@ function renderEvents(){
   // Show the next 3; the rest open with "Show all".
   const shown=S.eventsAll?rows:rows.slice(0,3);
   const more=rows.length>3?el("button",{type:"button",class:"btn small evmore",text:S.eventsAll?"Show fewer":`Show all ${rows.length}`,onclick:()=>{S.eventsAll=!S.eventsAll;renderEvents();}}):null;
-  box.replaceChildren(...shown.map(({b,d})=>el("button",{type:"button",class:"event",onclick:()=>{S.newsTk=b.ticker;renderNews();showTab("news",true);}},
+  box.replaceChildren(...shown.map(({b,d})=>el("button",{type:"button",class:"event",onclick:()=>{S.classTk=b.ticker;newsBoard(true);rendered.classnews=null;showTab("classnews",true);}},
     el("span",{class:"edate"+(d?"":" tbd")},d?el("b",{text:d.toLocaleDateString("en-US",{month:"short",day:"numeric"})}):el("b",{text:"Soon"}),el("span",{text:d?d.toLocaleDateString("en-US",{weekday:"short"}):"date TBD"})),
     el("span",{class:"etext"},el("b",{text:b.ticker+" · "+(held.get(b.ticker).name||"")}),el("span",{text:b.nextEvent})))),...(more?[more]:[]));
 }
@@ -299,7 +299,7 @@ function renderRecap(){
   if(rows.length<2){panel.hidden=true;return;}
   const spy=moveOver("SPY",5);
   const card=(title,x)=>{const b=S.briefs.find(n=>n.ticker===x.p.ticker);
-    return el("button",{type:"button",class:"recapcard",onclick:()=>{S.newsTk=x.p.ticker;renderNews();renderNewsFeed();$("#brief").scrollIntoView({behavior:"smooth",block:"start"});}},
+    return el("button",{type:"button",class:"recapcard",onclick:()=>{S.classTk=x.p.ticker;newsBoard(true);renderClassFeed();$("#c-brief").scrollIntoView({behavior:"smooth",block:"start"});}},
       el("div",{class:"eyebrow",text:title}),el("div",{class:"rtop"},el("b",{text:x.p.ticker+" · "+(x.p.name||"")}),el("span",{class:"rmove "+cls(x.r),text:fmtPct(x.r)})),
       el("p",{text:b&&b.headline?"What moved it: "+b.headline:"No brief yet for this stock."}));};
   panel.replaceChildren(el("div",{class:"sechead",style:"margin-bottom:10px"},el("div",{},el("div",{class:"eyebrow",text:"Weekly recap · last 5 market days"}),el("h3",{class:"h3",text:"Our best and worst stock this week"})),
@@ -368,7 +368,7 @@ function saveWatch(){store.set("wvfc.watch",JSON.stringify(S.watch));if(window.W
 // Lets the account page (beta.html) load a saved watchlist and open stocks.
 // account.js tells us the member's school once they're logged in; boot() waits for it.
 let schoolSet;const schoolReady=new Promise(r=>{schoolSet=r;});
-window.WVFC_APP={setSchool(id){schoolSet(id);},setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},prices:()=>S.prices,refreshPicks:()=>refreshPicks(),picks:()=>S.picks,classRows:()=>classRows(),calc:p=>calc(p)};
+window.WVFC_APP={setSchool(id){schoolSet(id);},setMine(list){const m=[...new Set(list.map(bare))];if(S.mine&&m.join()===S.mine.join())return;S.mine=m;rendered.news=null;renderNews();if(!$("#news").hidden)renderNewsFeed();},setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},prices:()=>S.prices,refreshPicks:()=>refreshPicks(),picks:()=>S.picks,classRows:()=>classRows(),calc:p=>calc(p)};
 function renderWatch(){
   const box=$("#wl");box.replaceChildren();const on=S.watch.some(w=>bare(w)===bare(S.tk));
   $("#wl-toggle").textContent=on?"On watchlist ✓":"Add to watchlist";
@@ -381,9 +381,12 @@ $("#wl-toggle").addEventListener("click",()=>{const i=S.watch.findIndex(w=>bare(
 const SENT={bullish:["Bullish","M5 1 L9 9 L1 9 Z"],neutral:["Neutral","M1 4 H9 V6 H1 Z"],bearish:["Bearish","M1 1 H9 L5 9 Z"]};
 function sentiPill(s){const k=SENT[s]?s:"neutral";const p=el("span",{class:"senti "+k});const ic=sv("svg",{viewBox:"0 0 10 10","aria-hidden":"true"});ic.append(sv("path",{d:SENT[k][1],fill:"currentColor"}));p.append(ic,SENT[k][0]);return p;}
 const inPortfolio=tk=>S.picks.some(p=>p.ticker===tk);
-function visibleBriefs(){return S.briefs.filter(b=>b.market).sort((a,b)=>(a.order||0)-(b.order||0)).concat(S.briefs.filter(b=>!b.market&&inPortfolio(b.ticker)&&!S.briefs.some(m=>m.market&&m.ticker===b.ticker)).sort((a,b)=>a.ticker.localeCompare(b.ticker)));}
+// News tab: the market, crypto, then the stocks in the member's own Paper Trading account (My Portfolio).
+// The Class Portfolio's stocks have their own News view under the Class Portfolio menu.
+const inMine=tk=>(S.mine||[]).includes(tk);
+function visibleBriefs(){return S.briefs.filter(b=>b.market).sort((a,b)=>(a.order||0)-(b.order||0)).concat(S.briefs.filter(b=>!b.market&&inMine(b.ticker)&&!S.briefs.some(m=>m.market&&m.ticker===b.ticker)).sort((a,b)=>a.ticker.localeCompare(b.ticker)));}
 function briefForSymbol(sym){const t=bare(sym);return visibleBriefs().find(b=>bare(b.symbol||b.ticker)===t||b.ticker===t)||null;}
-// Two news boards share this code: the News tab (market, crypto and our stocks)
+// Two news boards share this code: the News tab (market, crypto and My Portfolio stocks)
 // and "News" under the Class Portfolio menu (only our stocks). ids starting with "c-" are the second one.
 const secOf=tk=>{const p=S.picks.find(x=>x.ticker===tk);return p&&p.sector||"";};
 // Grouped by sector (A to Z), then ticker, so each sector gets its own heading.
@@ -400,11 +403,14 @@ function newsBoard(cls){
   id("news-legend").replaceChildren(...["bullish","neutral","bearish"].map(k=>el("span",{},el("i",{style:`background:var(--${k==="bullish"?"up":k==="bearish"?"down":"flat"})`}),`${SENT[k][0]} ${counts[k]}`)));
   if(!S[key]||!list.some(n=>n.ticker===S[key]))S[key]=list[0].ticker;
   const mk=list.filter(n=>n.market).length,sk=list.length-mk;const label=t=>el("div",{class:"eyebrow",style:"margin:6px 2px 0",text:t});
-  // Groups: the market (S&P 500, Nasdaq), crypto (Bitcoin, Ethereum), then the club's stocks.
-  list.forEach((n,i)=>{const prev=list[i-1];if(!cls){if(i===0&&mk&&!n.crypto)nl.append(label("The market"));if(n.crypto&&!(prev&&prev.crypto))nl.append(label("Crypto"));if(i===mk&&sk)nl.append(label("Class portfolio"));}
+  // Groups: the market (S&P 500, Nasdaq), crypto (Bitcoin, Ethereum), then the member's own stocks.
+  list.forEach((n,i)=>{const prev=list[i-1];if(!cls){if(i===0&&mk&&!n.crypto)nl.append(label("The market"));if(n.crypto&&!(prev&&prev.crypto))nl.append(label("Crypto"));if(i===mk&&sk)nl.append(label("My portfolio"));}
     else if(i===0||secOf(n.ticker)!==secOf(prev.ticker))nl.append(label(secOf(n.ticker)||"Other"));
     nl.append(el("button",{class:"nitem","aria-current":String(n.ticker===S[key]),onclick:()=>{S[key]=n.ticker;newsBoard(cls);cls?renderClassFeed():renderNewsFeed();if(innerWidth<820)br.scrollIntoView({behavior:"smooth",block:"start"});}},el("span",{class:"t",text:n.market?n.name:n.ticker}),sentiPill(n.sentiment),el("span",{class:"h",text:n.headline||""})));});
-  if(!cls&&!sk){nl.append(label("Class portfolio"),el("div",{class:"notice",text:S.picks.length?"Briefs for our picks are on the way.":"Briefs for our stocks show up here once they're in the Class Portfolio."}));}
+  if(!cls){const mine=S.mine||[],missing=mine.filter(t=>!list.some(b=>b.ticker===t));
+    if(!sk)nl.append(label("My portfolio"));
+    if(!mine.length)nl.append(el("div",{class:"notice",text:S.mine?"Buy a stock in Paper Trading and its news shows up here.":"Log in and buy stocks in Paper Trading to see their news here."}));
+    else if(missing.length)nl.append(el("div",{class:"notice",text:`No brief yet for ${missing.join(", ")}.`}));}
   if(cls){const missing=S.picks.filter(p=>!list.some(b=>b.ticker===p.ticker)).map(p=>p.ticker);if(missing.length)nl.append(el("div",{class:"notice",text:`No brief yet for ${missing.join(", ")}.`}));}
   const n=list.find(x=>x.ticker===S[key]);
   br.replaceChildren(...[
