@@ -526,6 +526,13 @@ async function renderSchools(){
     el("p",{class:"meta",style:"margin-top:12px",text:"Ranked by % gain, so a school with fewer picks can still win. Prices are the latest daily closes."}));
 }
 
+// Header name and logo follow the school (an admin's "Viewing" school too).
+function showBrand(sc){
+  const club=sc.club||"WV Finance Club",logo=sc.logo||"assets/logo.png";
+  $(".brand h1").textContent=club;document.title=club;
+  const img=$(".crest");img.src=logo;img.alt=sc.name+" logo";img.classList.toggle("wide",!!sc.wideLogo);
+}
+
 async function boot(){
   renderWatch();renderQuick();
   const [sl,nw,px]=await Promise.allSettled([loadJSON("data/schools.json"),loadJSON("data/news.json"),loadJSON("data/prices.json")]);
@@ -535,6 +542,7 @@ async function boot(){
   const sid=await Promise.race([schoolReady,new Promise(r=>setTimeout(()=>r(null),10000))]);
   S.school=S.schools.find(sc=>sc.id===sid)||S.schools[0];
   $("#school-name").textContent=S.school.name;
+  showBrand(S.school);
   S.picks=await schoolPicks(S.school);
   if(nw.status==="fulfilled"){S.briefs=nw.value.briefs||[];S.marketRecap=nw.value.market||null;if(nw.value.updated)$("#news-asof").textContent="News briefs updated "+fmtDate(nw.value.updated);}
   S.loaded=true;renderTape();renderPortfolio();renderNews();
