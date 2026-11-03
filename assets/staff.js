@@ -13,7 +13,7 @@ const cls=v=>v>0.00005?"up":v<-0.00005?"down":"flat";
 const when=t=>t?new Date(t).toLocaleString("en-US",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}):"–";
 function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove("show"),2600);}
 const errText=e=>String(e&&e.message||e||"Something went wrong. Try again.");
-if(!$("#staff"))return;
+if(!$("#staff")||!$("#trade"))return;
 
 const DID={buy:"Bought",sell:"Sold",short:"Shorted",cover:"Bought back"};
 const SIDE={buy:"Buy",sell:"Sell",short:"Short",cover:"Buy to cover"};
@@ -23,11 +23,17 @@ const STAT={open:"Waiting",filled:"Went through",canceled:"Canceled",failed:"Did
 let ST=null,loaded=false,people=[],schools=[];
 function start(d){if(ST)return;ST=d;
   const admin=d.role==="admin";
-  $("#st-sub").textContent=admin?"Admin view: every school's Class Portfolio and students. Only your account can see all schools. Students' game accounts are view only.":"Buy and sell for your school's Class Portfolio, and see what your students are buying in Paper Trading (view only). Only teachers can see this tab.";
-  if(!$("#staff").hidden)load();}
+  // Teachers (club sponsors) have no separate Students tab: their Paper Trading tab becomes the Class Portfolio,
+  // with their students below it.
+  if(!admin){const t=$("#trade");for(const id of ["#pt-loading","#pt-join","#pt-game"])$(id).style.display="none";
+    t.querySelector(".sechead h2").textContent="Class Trading";
+    t.querySelector(".sechead .sub").textContent="You're the club sponsor, so you buy and sell for your school's Class Portfolio here. Below that is what your students are buying in Paper Trading (view only).";
+    t.append($("#st-loading"),$("#st-body"));}
+  if(admin)$("#st-sub").textContent=admin?"Admin view: every school's Class Portfolio and students. Only your account can see all schools. Students' game accounts are view only.":"Buy and sell for your school's Class Portfolio, and see what your students are buying in Paper Trading (view only). Only teachers can see this tab.";
+  const home=admin?"#staff":"#trade";if($(home)&&!$(home).hidden)load();}
 document.addEventListener("wvfc:staff",e=>start(e.detail));
 if(window.WVFC_STAFF)start(window.WVFC_STAFF);
-document.addEventListener("wvfc:tab",e=>{if(e.detail==="staff"&&ST&&!loaded)load();});
+document.addEventListener("wvfc:tab",e=>{if(ST&&!loaded&&e.detail===(ST.role==="admin"?"staff":"trade"))load();});
 
 async function load(){
   loaded=true;$("#st-loading").hidden=false;$("#st-loading").textContent="Loading students…";
@@ -65,7 +71,7 @@ function renderList(){
   if(!list.length){box.replaceChildren(el("h3",{class:"h3",text:"Students"}),el("p",{class:"meta",text:students().length?"No students match.":"No students have made an account yet."}));return;}
   const cols=["Student"].concat(all?["School"]:[],["Account value","Gain %","Stocks","Trades","Waiting orders","Last trade"]);
   const td=(t,k)=>el("td",{class:k||"",text:t});
-  box.replaceChildren(el("h3",{class:"h3",text:"Students"}),el("p",{class:"meta",text:"Tap a student to see their stocks, trades and orders."}),
+  box.replaceChildren(el("h3",{class:"h3",text:ST.role==="admin"?"Students":"Your students"}),el("p",{class:"meta",text:"Tap a student to see their stocks, trades and orders."}),
     el("div",{class:"tablewrap"},el("table",{class:"pos sttable"},
       el("thead",{},el("tr",{},cols.map((t,i)=>el("th",{class:i>(all?1:0)?"num":"",text:t})))),
       el("tbody",{},list.map(p=>el("tr",{},
@@ -151,7 +157,7 @@ async function renderClass(){
   const td=(t,k)=>el("td",{class:k||"",text:t});
   const held=picks.map(p=>({p,c:app.calc(p)}));
   box.replaceChildren(el("h3",{class:"h3",text:`${name} Class Portfolio`}),
-    el("p",{class:"meta",text:(ST.role==="admin"?`You're trading for ${name}. Use the Viewing menu at the top to pick another school. `:"Only teachers can buy and sell here. ")+"Trades use the real price right now, looked up by the database."}),
+    el("p",{class:"meta",text:(ST.role==="admin"?`You're trading for ${name}. Use the Viewing menu at the top to pick another school. `:"Only the club sponsor can buy and sell here. ")+"Trades use the real price right now, looked up by the database."}),
     form,m,
     el("h4",{class:"pth4",text:"What the class owns"}),
     picks.length?el("div",{class:"tablewrap"},el("table",{class:"pos"},
