@@ -59,6 +59,7 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
     <button class="tab" role="tab" id="tab-trade" aria-controls="trade" aria-selected="false" data-tab="trade">Paper Trading</button>
     <button class="tab" role="tab" id="tab-search" aria-controls="search" aria-selected="false" data-tab="search">Search</button>
     <button class="tab" role="tab" id="tab-news" aria-controls="news" aria-selected="false" data-tab="news">News<span class="count" id="cnt-news"></span></button>
+    <button class="tab" role="tab" id="tab-district" aria-controls="district" aria-selected="false" data-tab="district"><span class="tlong">District </span>Leaderboard</button>
     <button class="tab" role="tab" id="tab-ideas" aria-controls="ideas" aria-selected="false" data-tab="ideas">Suggestions</button>
     <button class="tab" role="tab" id="tab-staff" aria-controls="staff" aria-selected="false" data-tab="staff" hidden>Students</button>
   </div>
@@ -68,7 +69,6 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
     <button role="menuitem" data-view="sectors">What we own by sector</button>
     <button role="menuitem" data-view="history">Club vs S&amp;P 500</button>
     <button role="menuitem" data-view="classnews">News</button>
-    <button role="menuitem" data-view="schools">School leaderboard</button>
   </div>
 </nav>
 
@@ -118,10 +118,6 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
       <div class="panel" id="c-feed-panel"><div class="eyebrow" style="margin-bottom:8px" id="c-feed-label">Live headlines</div><div class="tvbox feed" id="c-tv-newsfeed"></div></div>
     </div>
   </div>
- </div>
- <div class="pview" id="pv-schools" hidden>
-  <div class="sechead"><div><h2>School leaderboard</h2><p class="sub">Every school's Class Portfolio, ranked by how much it has gained, in %, since its first pick.</p></div></div>
-  <div class="panel" id="schools-body"></div>
  </div>
  <div class="pview" id="pv-history" hidden>
   <div class="sechead"><div><h2>Club vs S&amp;P 500</h2><p class="sub">Our portfolio's value each day, next to what the same money would be worth in the S&amp;P 500. It shows how much we have gained or lost, in %, since we started.</p></div></div>
@@ -266,6 +262,12 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
 </section>
 
 <!-- SUGGESTIONS -->
+<!-- DISTRICT LEADERBOARD -->
+<section role="tabpanel" id="district" aria-labelledby="tab-district" hidden>
+  <div class="sechead"><div><h2>District Leaderboard</h2><p class="sub">Every school's Class Portfolio, ranked by how much it has gained, in %, since its first pick.</p></div></div>
+  <div class="panel" id="schools-body"></div>
+</section>
+
 <section role="tabpanel" id="ideas" aria-labelledby="tab-ideas" hidden>
   <div class="sechead">
     <div>
@@ -327,7 +329,7 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="config.js?v=2026103102"></script>
-<script src="assets/app.js?v=2026110350"></script>
+<script src="assets/app.js?v=2026110360"></script>
 <script src="assets/vendor/supabase-2.118.0.js"></script>
 <script src="assets/account.js?v=2026110340"></script>
 <script src="assets/paper.js?v=2026110340"></script>
