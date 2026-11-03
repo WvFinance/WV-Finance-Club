@@ -13,7 +13,7 @@ const START=50000;
 if(!$("#trade"))return;
 
 let db=null,user=null,loaded=false,busy=false;
-const G={acct:null,pos:[],prices:{},trades:[],board:[]};
+const G={acct:null,pos:[],prices:{},trades:[],board:[],orders:[]};
 function signedIn(d){if(db)return;db=d.db;user=d.user;if(!$("#trade").hidden)load();}
 document.addEventListener("wvfc:login",e=>signedIn(e.detail));
 if(window.WVFC_SESSION)signedIn(window.WVFC_SESSION);
@@ -26,7 +26,7 @@ function marketOpen(){
   const m=+p.hour*60+ +p.minute;return!["Sat","Sun"].includes(p.weekday)&&m>=510&&m<=900;
 }
 function renderMarket(){const open=marketOpen();const m=$("#pt-market");
-  m.textContent=open?"The market is open. Trades go through right away at the real price.":"The market is closed. You can check prices, and trades go through on weekdays from 8:30am to 3pm Chicago time.";
+  m.textContent=open?"The market is open. Market orders go through right away at the real price.":"The market is closed (weekdays 8:30am to 3pm Chicago time). You can still place limit and stop orders: they wait for the market to open.";
   m.className="meta "+(open?"open":"closed");}
 
 /* ---------- Loading ---------- */
@@ -37,8 +37,9 @@ async function load(){
   if(error){$("#pt-loading").hidden=false;$("#pt-loading").textContent="The game couldn't be loaded. Try again in a minute.";loaded=false;return;}
   if(!acct){$("#pt-game").hidden=true;$("#pt-join").hidden=false;if(!$("#pt-name").value)$("#pt-name").value=(user.email||"").split("@")[0].slice(0,30);return;}
   G.acct=acct;$("#pt-join").hidden=true;$("#pt-game").hidden=false;
-  const[pos,tr]=await Promise.all([db.from("paper_positions").select("*"),db.from("paper_trades").select("*").order("at",{ascending:false}).limit(10)]);
-  G.pos=pos.data||[];G.trades=tr.data||[];
+  const[pos,tr,od]=await Promise.all([db.from("paper_positions").select("*"),db.from("paper_trades").select("*").order("at",{ascending:false}).limit(10),
+    db.from("paper_orders").select("*").order("created_at",{ascending:false}).limit(40)]);
+  G.pos=pos.data||[];G.trades=tr.data||[];G.orders=od.error?[]:(od.data||[]);
   renderAll();
   // Fresh prices for what they own, then the leaderboard.
   await Promise.all(G.pos.map(p=>quote(p.symbol).catch(()=>null)));
@@ -53,35 +54,71 @@ $("#pt-join").addEventListener("submit",async e=>{e.preventDefault();const m=$("
   if(error){m.textContent=errText(error);return;}
   toast("You're in! You have $50,000 to trade.");load();});
 
+
 /* ---------- Rendering ---------- */
+// A short has negative shares and a negative cost (the cash it brought in), so price × shares is what it's worth.
 const priceOf=p=>G.prices[p.symbol]?+G.prices[p.symbol].price:+p.cost/+p.shares;
-function renderAll(){renderTiles();renderHold();renderTrades();renderBoard();renderEst();}
+const money=v=>(v<0?"−":"")+fmt$(Math.abs(v));
+const SIDE={buy:"Buy",sell:"Sell",short:"Short",cover:"Buy to cover"};
+const DID={buy:"Bought",sell:"Sold",short:"Shorted",cover:"Bought back"};
+const KIND={market:"Market",limit:"Limit",stop:"Stop",stop_limit:"Stop-limit",trailing_stop:"Trailing stop",auto:"Automatic"};
+const when=t=>new Date(t).toLocaleString("en-US",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});
+function renderAll(){renderTiles();renderOrders();renderHold();renderTrades();renderBoard();renderEst();}
 function renderTiles(){
   const stocks=G.pos.reduce((s,p)=>s+priceOf(p)*p.shares,0),value=+G.acct.cash+stocks,gain=value-START;
   const me=G.board.find(r=>r.me);
   const tile=(label,val,note,k)=>el("div",{class:"tile"},el("div",{class:"eyebrow",text:label}),el("div",{class:"v "+(k||""),text:val}),el("div",{class:"n",text:note}));
-  $("#pt-tiles").replaceChildren(tile("Account value",fmt$(value),"Cash plus stocks"),tile("Total gain",signed$(gain),fmtPct(gain/START)+" since you started",cls(gain)),
-    tile("Cash to spend",fmt$(G.acct.cash),"Pretend money"),tile("Your rank",me?"#"+me.rank:"–",me?`out of ${G.board.length} players`:"Loading…"));
+  $("#pt-tiles").replaceChildren(tile("Account value",fmt$(value),G.pos.some(p=>p.shares<0)?"Cash plus stocks, minus shorts":"Cash plus stocks"),tile("Total gain",signed$(gain),fmtPct(gain/START)+" since you started",cls(gain)),
+    tile("Cash to spend",money(+G.acct.cash),"Pretend money"),tile("Your rank",me?"#"+me.rank:"–",me?`out of ${G.board.length} players`:"Loading…"));
 }
+function orderText(o){
+  const n=`${+o.shares} ${o.symbol}`;
+  if(o.kind==="limit")return `${SIDE[o.side]} ${n} at ${fmt$(o.limit_price)} or ${o.side==="buy"||o.side==="cover"?"less":"more"}`;
+  if(o.kind==="stop")return `${SIDE[o.side]} ${n} if it ${o.side==="buy"||o.side==="cover"?"rises":"falls"} to ${fmt$(o.stop_price)}`;
+  if(o.kind==="stop_limit")return `${SIDE[o.side]} ${n} if it ${o.side==="buy"||o.side==="cover"?"rises":"falls"} to ${fmt$(o.stop_price)}, at ${fmt$(o.limit_price)} or ${o.side==="buy"||o.side==="cover"?"less":"more"}`;
+  return `${SIDE[o.side]} ${n} if it ${o.side==="buy"||o.side==="cover"?"rises":"drops"} ${+o.trail_pct}% from its ${o.side==="buy"||o.side==="cover"?"low":"high"}`+(o.mark?` (${o.side==="buy"||o.side==="cover"?"low":"high"} so far ${fmt$(o.mark)})`:"");
+}
+function renderOrders(){
+  const box=$("#pt-orders"),open=G.orders.filter(o=>o.status==="open"),
+    done=G.orders.filter(o=>o.status!=="open"&&Date.now()-new Date(o.done_at||o.created_at)<7*864e5).slice(0,5);
+  if(!open.length&&!done.length){box.hidden=true;return;}box.hidden=false;
+  const STAT={filled:"Went through",canceled:"Canceled",failed:"Didn't go through"};
+  box.replaceChildren(el("h3",{class:"h3",text:"Your waiting orders"}),
+    el("p",{class:"meta",text:"Waiting orders are checked every 2 minutes while the market is open, so the price you get can be a little different from your line."}),
+    open.length?el("ul",{class:"ptlist"},open.map(o=>el("li",{},
+      el("span",{class:"pttag wait",text:KIND[o.kind]+(o.triggered?" · stop hit":"")}),el("span",{text:orderText(o)}),
+      el("span",{class:"o",text:"placed "+when(o.created_at)}),
+      el("button",{type:"button",class:"btn small",text:"Cancel",onclick:e=>cancel(o.id,e.currentTarget)})))):el("p",{class:"meta",text:"No waiting orders right now."}),
+    done.length?el("h4",{class:"pth4",text:"Lately"}):"",
+    done.length?el("ul",{class:"ptlist done"},done.map(o=>el("li",{},
+      el("span",{class:"pttag "+(o.status==="filled"?"buy":o.status==="failed"?"sell":"wait"),text:STAT[o.status]}),
+      el("span",{text:orderText(o)+(o.note?`. ${o.note}`:"")}),el("span",{class:"o",text:when(o.done_at||o.created_at)})))):"");
+}
+async function cancel(id,b){b.disabled=true;
+  const{error}=await db.rpc("paper_cancel_order",{oid:id});
+  if(error){toast(errText(error));b.disabled=false;return;}
+  toast("Order canceled");load();}
 function renderHold(){
   const box=$("#pt-hold");
-  if(!G.pos.length){box.replaceChildren(el("h3",{class:"h3",text:"Your stocks"}),el("p",{class:"meta",text:"You don't own any stocks yet. Type a ticker above and press Buy."}));return;}
+  if(!G.pos.length){box.replaceChildren(el("h3",{class:"h3",text:"Your stocks"}),el("p",{class:"meta",text:"You don't own any stocks yet. Type a ticker above and place an order."}));return;}
   const td=(t,k)=>el("td",{class:k||"",text:t});
-  const rows=G.pos.map(p=>({p,px:priceOf(p)})).map(r=>Object.assign(r,{value:r.px*r.p.shares,gain:r.px*r.p.shares-r.p.cost})).sort((a,b)=>b.value-a.value);
+  const rows=G.pos.map(p=>({p,px:priceOf(p)})).map(r=>Object.assign(r,{value:r.px*r.p.shares,gain:r.px*r.p.shares-r.p.cost})).sort((a,b)=>Math.abs(b.value)-Math.abs(a.value));
   const head=el("thead",{},el("tr",{},["Stock","Shares","Paid per share","Price now","Worth now","Gain $","Gain %",""].map((t,i)=>el("th",{class:i&&i<7?"num":"",text:t}))));
-  const body=el("tbody",{},rows.map(({p,px,value,gain})=>{const gp=gain/p.cost;return el("tr",{},
-    el("td",{},el("button",{type:"button",class:"linkbtn sym",text:p.symbol,title:`Open ${p.symbol} on Search`,onclick:()=>window.WVFC_APP&&window.WVFC_APP.openStock(p.symbol)})),
-    td(String(+p.shares),"num"),td(fmt$(p.cost/p.shares),"num"),td(fmt$(px),"num"),td(fmt$(value),"num"),td(signed$(gain),"num "+cls(gp)),td(fmtPct(gp),"num "+cls(gp)),
-    el("td",{},el("button",{type:"button",class:"btn small",text:"Sell",onclick:()=>fill(p.symbol,+p.shares)})));}));
-  box.replaceChildren(el("h3",{class:"h3",text:"Your stocks"}),el("p",{class:"meta",text:"Prices update every few minutes while the market is open."}),el("div",{class:"tablewrap"},el("table",{class:"pos"},head,body)));
+  const body=el("tbody",{},rows.map(({p,px,value,gain})=>{const sh=p.shares<0,gp=gain/Math.abs(p.cost);return el("tr",{},
+    el("td",{},el("button",{type:"button",class:"linkbtn sym",text:p.symbol,title:`Open ${p.symbol} on Search`,onclick:()=>window.WVFC_APP&&window.WVFC_APP.openStock(p.symbol)}),sh?el("span",{class:"pttag short",text:"Short"}):""),
+    td(String(Math.abs(p.shares)),"num"),td(fmt$(p.cost/p.shares),"num"),td(fmt$(px),"num"),td(money(value),"num"),td(signed$(gain),"num "+cls(gp)),td(fmtPct(gp),"num "+cls(gp)),
+    el("td",{},el("button",{type:"button",class:"btn small",text:sh?"Cover":"Sell",onclick:()=>fill(p.symbol,Math.abs(p.shares),sh?"cover":"sell")})));}));
+  box.replaceChildren(el("h3",{class:"h3",text:"Your stocks"}),
+    el("p",{class:"meta",text:G.pos.some(p=>p.shares<0)?"Prices update every few minutes while the market is open. A short makes money when the price goes down.":"Prices update every few minutes while the market is open."}),
+    el("div",{class:"tablewrap"},el("table",{class:"pos"},head,body)));
 }
 function renderTrades(){
   const box=$("#pt-trades");
   if(!G.trades.length){box.hidden=true;return;}box.hidden=false;
   box.replaceChildren(el("h3",{class:"h3",text:"Your recent trades"}),el("ul",{class:"ptlist"},G.trades.map(t=>el("li",{},
-    el("span",{class:"pttag "+t.side,text:t.side==="buy"?"Bought":"Sold"}),
-    el("span",{text:`${+t.shares} ${t.symbol} at ${fmt$(t.price)} = ${fmt$(t.total)}`}),
-    el("span",{class:"o",text:new Date(t.at).toLocaleString("en-US",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})})))));
+    el("span",{class:"pttag "+t.side,text:DID[t.side]||t.side}),
+    el("span",{text:`${+t.shares} ${t.symbol} at ${fmt$(t.price)} = ${fmt$(t.total)}`+(t.how&&t.how!=="market"?(t.how==="auto"?" (bought back automatically: the price doubled)":` (${KIND[t.how].toLowerCase()} order)`):"")}),
+    el("span",{class:"o",text:when(t.at)})))));
 }
 function renderBoard(){
   const box=$("#pt-board");
@@ -91,39 +128,83 @@ function renderBoard(){
     el("span",{class:"g "+cls(+r.gain_pct),text:fmtPct(+r.gain_pct)}),el("span",{class:"v",text:fmt$(r.value)})))));
 }
 
-/* ---------- Trading ---------- */
-const symIn=$("#pt-sym"),qtyIn=$("#pt-qty"),msg=$("#pt-msg");
+/* ---------- Order form ---------- */
+const symIn=$("#pt-sym"),qtyIn=$("#pt-qty"),kindIn=$("#pt-kind"),msg=$("#pt-msg");
 const cleanSym=()=>symIn.value.trim().toUpperCase();
+const side=()=>(document.querySelector('input[name="pt-side"]:checked')||{}).value||"buy";
+const buying=()=>side()==="buy"||side()==="cover";
 let shown=null;
-function fill(sym,qty){symIn.value=sym;qtyIn.value=qty||"";checkPrice();$("#pt-form").scrollIntoView({behavior:"smooth",block:"start"});}
+function fill(sym,qty,sd){symIn.value=sym;qtyIn.value=qty||"";
+  const r=document.querySelector(`input[name="pt-side"][value="${sd||"buy"}"]`);if(r)r.checked=true;
+  formChanged();checkPrice();$("#pt-form").scrollIntoView({behavior:"smooth",block:"start"});}
 async function checkPrice(){
   const s=cleanSym();msg.textContent="";if(!s){$("#pt-price").textContent="";shown=null;renderEst();return;}
   $("#pt-price").textContent="Checking…";
   try{const q=await quote(s);shown=q;const own=G.pos.find(p=>p.symbol===q.symbol);
     const day=q.prev_close?q.price/q.prev_close-1:null;
-    $("#pt-price").replaceChildren(el("b",{text:`${q.symbol} is ${fmt$(q.price)}`}),day!=null?el("span",{class:cls(day),text:` ${fmtPct(day)} today`}):"",own?el("span",{class:"meta",text:` · you own ${+own.shares}`}):"");}
+    $("#pt-price").replaceChildren(el("b",{text:`${q.symbol} is ${fmt$(q.price)}`}),day!=null?el("span",{class:cls(day),text:` ${fmtPct(day)} today`}):"",
+      own?el("span",{class:"meta",text:own.shares<0?` · you're shorting ${-own.shares}`:` · you own ${+own.shares}`}):"");}
   catch(e){shown=null;$("#pt-price").textContent="";msg.textContent=errText(e);}
   renderEst();
 }
-function renderEst(){const q=+qtyIn.value,est=$("#pt-est");
-  est.textContent=shown&&q>0&&shown.symbol===cleanSym()?`About ${fmt$(q*shown.price)} for ${q} shares. You have ${fmt$(G.acct?G.acct.cash:0)} in cash.`:"";}
+function help(){
+  const k=kindIn.value,sd=side(),b=buying(),up=b?"rises":"falls";
+  const act={buy:"buys",sell:"sells",short:"shorts",cover:"buys back your short"}[sd];
+  let t={
+    market:`Trades right away at the price now. Only works while the market is open.`,
+    limit:b?`Waits until the price drops to your limit price or lower, then ${act}. You never pay more than your limit.`
+           :`Waits until the price rises to your limit price or higher, then ${act}. You never get less than your limit.`,
+    stop:sd==="sell"?`Stop loss: if the price falls to your stop price, it sells at the price then. It protects you from losing too much.`
+        :sd==="cover"?`If the price rises to your stop price, it buys back your short. It protects a short from losing too much.`
+        :`If the price ${up} to your stop price, it ${act} at the price then.`,
+    stop_limit:`When the price ${up} to your stop price, it turns into a limit order: it only ${act.split(" ")[0]} at your limit price or ${b?"lower":"higher"}. If the price moves too fast, it might not trade at all.`,
+    trailing_stop:b?`Follows the lowest price since you placed it. If the price rises this % above that low, it ${act}.`
+                   :`Follows the highest price since you placed it. If the price drops this % below that high, it ${act}. The line moves up as the stock goes up, so it locks in gains.`
+  }[k];
+  if(sd==="short")t+=" Shorting is a bet that the price goes down: you sell borrowed shares now and buy them back later. If the price goes up, you lose money. Rules: all your shorts together can be worth at most half your account, and a short is bought back automatically if the price doubles.";
+  return t;
+}
+function formChanged(){
+  const k=kindIn.value;
+  $("#pt-stop-box").hidden=!(k==="stop"||k==="stop_limit");
+  $("#pt-limit-box").hidden=!(k==="limit"||k==="stop_limit");
+  $("#pt-trail-box").hidden=k!=="trailing_stop";
+  $("#pt-help").textContent=help();
+  const go=$("#pt-go");go.textContent=k==="market"?SIDE[side()]+" now":"Place "+KIND[k].toLowerCase()+" order";
+  go.className="btn "+(side()==="sell"||side()==="short"?"sell":"primary");
+  renderEst();
+}
+function renderEst(){const q=+qtyIn.value,est=$("#pt-est"),k=kindIn.value,lim=+$("#pt-limit").value;
+  if(!(q>0)){est.textContent="";return;}
+  const cash=`You have ${money(G.acct?+G.acct.cash:0)} in cash.`;
+  if((k==="limit"||k==="stop_limit")&&lim>0){est.textContent=`About ${fmt$(q*lim)} for ${q} shares at your limit. ${cash}`;return;}
+  est.textContent=shown&&shown.symbol===cleanSym()?`About ${fmt$(q*shown.price)} for ${q} shares at today's price. ${cash}`:"";}
 $("#pt-check").addEventListener("click",checkPrice);
 symIn.addEventListener("change",checkPrice);
 symIn.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();checkPrice();}});
 qtyIn.addEventListener("input",renderEst);
-$("#pt-form").addEventListener("submit",e=>e.preventDefault());
-async function trade(side){
-  if(busy)return;const sym=cleanSym(),qty=+qtyIn.value;msg.textContent="";
+$("#pt-limit").addEventListener("input",renderEst);
+kindIn.addEventListener("change",formChanged);
+$("#pt-side").addEventListener("change",formChanged);
+formChanged();
+$("#pt-form").addEventListener("submit",async e=>{e.preventDefault();
+  if(busy)return;const sym=cleanSym(),qty=+qtyIn.value,k=kindIn.value,sd=side();msg.textContent="";
   if(!sym){msg.textContent="Type a ticker first, like NVDA.";return;}
   if(!(qty>0)||qty!==Math.floor(qty)){msg.textContent="Enter a whole number of shares, like 5.";return;}
-  busy=true;const b=$(side==="buy"?"#pt-buy":"#pt-sell"),label=b.textContent;b.disabled=true;b.textContent="…";
-  try{const{data,error}=await db.rpc("paper_trade",{sym,side,qty});if(error)throw error;
-    toast(`${side==="buy"?"Bought":"Sold"} ${+data.shares} ${data.symbol} at ${fmt$(data.price)}`);
-    qtyIn.value="";$("#pt-est").textContent="";await load();}
+  const num=id=>{const v=$(id).value.trim();return v===""?null:+v;};
+  const args={sym,side:sd,qty,kind:k,limit_price:num("#pt-limit"),stop_price:num("#pt-stop"),trail_pct:num("#pt-trail")};
+  if((k==="limit"||k==="stop_limit")&&!(args.limit_price>0)){msg.textContent="Enter a limit price.";return;}
+  if((k==="stop"||k==="stop_limit")&&!(args.stop_price>0)){msg.textContent="Enter a stop price.";return;}
+  if(k==="trailing_stop"&&!(args.trail_pct>=1&&args.trail_pct<=50)){msg.textContent="Enter a trailing percent between 1 and 50.";return;}
+  busy=true;const b=$("#pt-go"),label=b.textContent;b.disabled=true;b.textContent="…";
+  try{
+    if(k==="market"){const{data,error}=await db.rpc("paper_trade",{sym,side:sd,qty});if(error)throw error;
+      toast(`${DID[data.side]} ${+data.shares} ${data.symbol} at ${fmt$(data.price)}`);}
+    else{const{data,error}=await db.rpc("paper_place_order",args);if(error)throw error;
+      toast(data.status==="filled"?`Your ${KIND[k].toLowerCase()} order went through right away`:data.status==="failed"?`Your order didn't go through: ${data.note}`:`Order placed. It will wait until ${data.symbol} reaches your price.`);}
+    qtyIn.value="";$("#pt-limit").value="";$("#pt-stop").value="";$("#pt-trail").value="";$("#pt-est").textContent="";await load();}
   catch(e){msg.textContent=errText(e);}
   finally{busy=false;b.disabled=false;b.textContent=label;}
-}
-$("#pt-buy").addEventListener("click",()=>trade("buy"));
-$("#pt-sell").addEventListener("click",()=>trade("sell"));
+});
 setInterval(()=>{if(loaded&&!$("#trade").hidden)renderMarket();},60000);
 })();
