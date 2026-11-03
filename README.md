@@ -27,6 +27,7 @@ The Waubonsie Valley Finance Club's website: our class portfolio, stock research
 | `data/portfolio.json` | Waubonsie's Class Portfolio picks |
 | `data/schools.json` | Every school on the site and where its Class Portfolio file is (Neuqua and Metea are in `data/portfolios/`) |
 | `supabase/district.sql` | School sign-up codes (checked by the database), each member's school, and the district leaderboard |
+| `supabase/weekly-challenge.sql` | Weekly school-vs-school challenge: saves each Paper Trading account's value every Monday and ranks schools by average % gain |
 | `data/news.json` | Claude's news briefs |
 | `data/prices.json` | Daily closing prices, updated automatically |
 | `scripts/update_prices.py`, `.github/workflows/update-prices.yml` | The robot that refreshes `prices.json` every weekday after the market closes |
@@ -60,15 +61,15 @@ Charts, search and headlines come from TradingView's free widgets and need no ac
 
 ## Member accounts
 
-Each member logs in with their own email and password (the club password is needed once, to make an account). Their Search watchlist is saved to their account, so it follows them to any device. The **My Portfolio** tab shows the stocks, shorts and waiting orders they have in the trading game below. Only they can see it.
+Each member logs in with their own email and password (their school code, like wvhs01, is needed once, to make an account). Their watchlist (on the page that opens from the search bar at the top) is saved to their account, so it follows them to any device. The **My Portfolio** tab shows the stocks, shorts and waiting orders they have in the trading game below. Only they can see it.
 
-Logins and data are stored in [Supabase](https://supabase.com). `supabase/setup.sql` creates the tables and the rules that let each member see only their own data; run it once in Supabase's SQL Editor (its `holdings` table held the old Fidelity/Schwab uploads and is no longer used by the site). The project address and publishable key are in `config.js` (the publishable key is meant to be public). Code: `assets/account.js`.
+Logins and data are stored in [Supabase](https://supabase.com). `supabase/setup.sql` creates the tables and the rules that let each member see only their own data; run it once in Supabase's SQL Editor (it also removes the old `holdings` table that held Fidelity/Schwab uploads). The project address and publishable key are in `config.js` (the publishable key is meant to be public). Code: `assets/account.js`.
 
 ## Trading game
 
 The **Paper Trading** tab is a practice game. Each member who joins gets $50,000 of pretend money to buy and sell real stocks at the real price, and a leaderboard ranks everyone by % gain. Trades only go through while the market is open (weekdays 8:30am to 3pm Chicago time; market holidays aren't counted).
 
-Prices come from [Finnhub](https://finnhub.io). The database looks them up itself, so nobody can send in a fake price, and the Finnhub key is kept in Supabase's Vault, not in the website. `supabase/paper-trading.sql` sets it all up: put the Finnhub key near the top, then run it once in Supabase's SQL Editor (its `holdings` table held the old Fidelity/Schwab uploads and is no longer used by the site). A scheduled job keeps the prices of owned stocks fresh during market hours. Code: `assets/paper.js`.
+Prices come from [Finnhub](https://finnhub.io). The database looks them up itself, so nobody can send in a fake price, and the Finnhub key is kept in Supabase's Vault, not in the website. `supabase/paper-trading.sql` sets it all up: put the Finnhub key near the top, then run it once in Supabase's SQL Editor. A scheduled job keeps the prices of owned stocks fresh during market hours. Code: `assets/paper.js`.
 
 ### Order types
 

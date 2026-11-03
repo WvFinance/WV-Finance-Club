@@ -17,7 +17,7 @@ let db=null,user=null,loaded=false,busy=false;
 const G={acct:null,pos:[],prices:{},trades:[],board:[],orders:[]};
 // The News tab needs the game too: it shows news for the stocks you own.
 const onGame=()=>!$("#trade").hidden||!!$("#mine")&&!$("#mine").hidden||!!$("#news")&&!$("#news").hidden;
-function signedIn(d){if(db)return;db=d.db;user=d.user;if(onGame())load();if($("#dv-dpeople")&&!$("#dv-dpeople").hidden&&!$("#district").hidden)renderDistrictPeople();}
+function signedIn(d){if(db)return;db=d.db;user=d.user;if(onGame())load();if($("#dv-dpeople")&&!$("#dv-dpeople").hidden&&!$("#district").hidden)renderDistrictPeople();loadChallenge();}
 document.addEventListener("wvfc:login",e=>signedIn(e.detail));
 if(window.WVFC_SESSION)signedIn(window.WVFC_SESSION);
 document.addEventListener("wvfc:tab",e=>{if((e.detail==="trade"||e.detail==="mine"||e.detail==="news")&&db&&!loaded)load();});
@@ -172,6 +172,45 @@ async function renderDistrictPeople(){
     el("p",{class:"meta",style:"margin-top:12px",text:"Everyone starts with $50,000 of pretend money. Showing the top 50."}));
 }
 document.addEventListener("wvfc:dpeople",()=>renderDistrictPeople());
+
+/* ---------- Weekly Challenge: school vs school, Monday to Friday (supabase/weekly-challenge.sql) ---------- */
+let wk=null,wkErr=false;
+async function loadChallenge(){
+  if(!db)return;
+  const{data,error}=await db.rpc("challenge_board");
+  wkErr=!!error;wk=error?null:(data||[]);
+  renderBanner();if($("#dv-dweek")&&!$("#dv-dweek").hidden&&!$("#district").hidden)renderChallenge();
+}
+const pctOf=v=>v==null?"–":fmtPct(+v);
+// The winner of last week, and who leads this week, as one short line at the top of the Class Portfolio.
+function renderBanner(){
+  const b=$("#wk-banner");if(!b)return;
+  const now=(wk||[]).filter(r=>r.players>0),last=(wk||[]).filter(r=>r.last_players>0).sort((a,c)=>+c.last_gain-+a.last_gain);
+  if(!now.length&&!last.length){b.hidden=true;return;}
+  b.replaceChildren(el("span",{class:"trophy","aria-hidden":"true",text:"🏆"}),
+    el("span",{},last.length?el("b",{text:`Last week's winner: ${last[0].school} (${pctOf(last[0].last_gain)})`}):el("b",{text:"Weekly Challenge"}),
+      now.length?el("span",{text:` · This week ${now[0].school} leads with ${pctOf(now[0].week_gain)}`}):"",
+      el("span",{class:"more",text:" See the scores →"})));
+  b.hidden=false;
+}
+function renderChallenge(){
+  const box=$("#dweek-body");if(!box)return;
+  if(!db){box.replaceChildren(el("p",{class:"meta",text:"Log in to see the challenge."}));return;}
+  if(wkErr){box.replaceChildren(el("p",{class:"meta",text:"The Weekly Challenge starts soon."}));return;}
+  if(!wk){box.replaceChildren(el("p",{class:"meta",text:"Loading…"}));return;}
+  const ranked=wk.filter(r=>r.players>0),none=wk.filter(r=>!(r.players>0));
+  const row=(r,i,gain,n)=>el("li",{class:r.mine?"me":""},el("span",{class:"r",text:"#"+(i+1)}),
+    el("span",{class:"n",text:r.school+(r.mine?" (your school)":"")},el("small",{class:"sc",text:`${n} player${n===1?"":"s"}`})),
+    el("span",{class:"g "+cls(+gain),text:pctOf(gain)}),el("span",{class:"v",text:""}));
+  const last=wk.filter(r=>r.last_players>0).sort((a,c)=>+c.last_gain-+a.last_gain);
+  const d=wk[0]&&wk[0].week?new Date(wk[0].week+"T12:00:00"):null;
+  box.replaceChildren(el("h3",{class:"h3",text:d?`This week (since Monday, ${d.toLocaleDateString("en-US",{month:"short",day:"numeric"})})`:"This week"}),
+    ranked.length?el("ol",{class:"ptboard schools"},ranked.map((r,i)=>row(r,i,r.week_gain,r.players))):el("p",{class:"meta",text:"No one has traded yet this week."}),
+    none.length?el("p",{class:"meta",style:"margin-top:10px",text:`No players yet: ${none.map(r=>r.school).join(", ")}.`}):"",
+    el("h3",{class:"h3",style:"margin-top:22px",text:"Last week"}),
+    last.length?el("ol",{class:"ptboard schools"},last.map((r,i)=>row(r,i,r.last_gain,r.last_players))):el("p",{class:"meta",text:"The first winner will show here after a full week."}));
+}
+document.addEventListener("wvfc:dweek",()=>{renderChallenge();loadChallenge();});
 
 /* ---------- Order form ---------- */
 const symIn=$("#pt-sym"),qtyIn=$("#pt-qty"),kindIn=$("#pt-kind"),msg=$("#pt-msg");

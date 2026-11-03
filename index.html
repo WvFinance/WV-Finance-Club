@@ -4,15 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>WV Finance Club</title>
-<meta name="description" content="Waubonsie Valley Finance Club: our class portfolio, stock research and news briefs.">
+<meta name="description" content="Finance clubs at Metea Valley, Neuqua Valley and Waubonsie Valley: class portfolios, paper trading, stock research and news briefs.">
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=2026110330">
+<link rel="stylesheet" href="assets/style.css?v=2026110332">
 <script>
-// Old club password, only used until supabase/district.sql has been run. After that, each school's code
-// (like wvhs01) is checked by the database itself, so it can't be skipped.
-window.WVFC_PASS="a4d50ac457e7c49bd2149a2f7db734f6afb014682df3b1c08c449bfde560921c";
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
 </script>
@@ -47,6 +44,12 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
       <label class="schoolpick" id="school-pick-wrap" hidden><span>Viewing</span><select id="school-pick" aria-label="Which school to view"></select></label>
       <span class="chip asof" id="news-asof">News briefs</span>
     </div>
+    <form class="searchbar topsearch" id="searchform" role="search">
+      <svg class="mag" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input class="inp" id="q" type="search" placeholder="Search by name or ticker, like Nvidia or NVDA" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Stock name or ticker" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggest">
+      <ul class="suggest" id="suggest" role="listbox" hidden></ul>
+      <button class="btn primary" type="submit">Search</button>
+    </form>
   </div>
 </header>
 
@@ -57,10 +60,8 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
     <button class="tab hasmenu" role="tab" id="tab-portfolio" aria-controls="portfolio" aria-selected="true" aria-haspopup="menu" aria-expanded="false" data-tab="portfolio"><span class="tlong">Class </span>Portfolio<span class="count" id="cnt-picks"></span><span class="caret" aria-hidden="true"></span></button>
     <button class="tab" role="tab" id="tab-mine" aria-controls="mine" aria-selected="false" data-tab="mine">My Portfolio</button>
     <button class="tab" role="tab" id="tab-trade" aria-controls="trade" aria-selected="false" data-tab="trade">Paper Trading</button>
-    <button class="tab" role="tab" id="tab-search" aria-controls="search" aria-selected="false" data-tab="search">Search</button>
     <button class="tab" role="tab" id="tab-news" aria-controls="news" aria-selected="false" data-tab="news">News<span class="count" id="cnt-news"></span></button>
     <button class="tab hasmenu" role="tab" id="tab-district" aria-controls="district" aria-selected="false" aria-haspopup="menu" aria-expanded="false" data-tab="district">District<span class="caret" aria-hidden="true"></span></button>
-    <button class="tab" role="tab" id="tab-ideas" aria-controls="ideas" aria-selected="false" data-tab="ideas">Submit Suggestion</button>
     <button class="tab" role="tab" id="tab-staff" aria-controls="staff" aria-selected="false" data-tab="staff" hidden>Students</button>
   </div>
   <div class="tabmenu" id="pf-menu" role="menu" hidden>
@@ -69,10 +70,12 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
     <button role="menuitem" data-view="sectors">What we own by sector</button>
     <button role="menuitem" data-view="history">Club vs S&amp;P 500</button>
     <button role="menuitem" data-view="classnews">News</button>
+    <button role="menuitem" data-view="ideas">Submit Suggestion</button>
   </div>
   <div class="tabmenu" id="dist-menu" role="menu" hidden>
     <button role="menuitem" data-view="dschools">District Leaderboard</button>
     <button role="menuitem" data-view="dpeople">District Individual Leaderboard</button>
+    <button role="menuitem" data-view="dweek">Weekly Challenge</button>
   </div>
 </nav>
 
@@ -88,6 +91,7 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
       <p class="sub">Every stock here won a club debate.</p>
     </div>
   </div>
+  <a class="wkbanner" id="wk-banner" href="#dweek" hidden></a>
   <div class="tiles" id="tiles"></div>
   <p class="notice" id="price-note" hidden></p>
   <div class="panel market" id="market" hidden></div>
@@ -127,6 +131,32 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
  <div class="pview" id="pv-history" hidden>
   <div class="sechead"><div><h2>Club vs S&amp;P 500</h2><p class="sub">Our portfolio's value each day, next to what the same money would be worth in the S&amp;P 500. It shows how much we have gained or lost, in %, since we started.</p></div></div>
   <div class="panel" id="hist-body"></div>
+ </div>
+ <div class="pview" id="pv-ideas" hidden>
+   <div class="sechead">
+     <div>
+       <h2>Submit Suggestion</h2>
+       <p class="sub">Share an idea and upvote the ones you like. Votes are private.</p>
+     </div>
+   </div>
+   <form class="panel ideaform" id="idea-form" autocomplete="off">
+     <div class="kindpick" role="radiogroup" aria-label="What kind of idea">
+       <label><input type="radio" name="kind" value="pitch" checked><span>Stock to pitch</span></label>
+       <label><input type="radio" name="kind" value="topic"><span>Meeting topic</span></label>
+     </div>
+     <input id="idea-text" maxlength="120" aria-label="Your idea">
+     <textarea id="idea-why" rows="2" maxlength="300" aria-label="Why"></textarea>
+     <div class="ideaact"><button class="btn primary" type="submit">Send idea</button><span class="meta" id="idea-msg" role="status"></span></div>
+   </form>
+   <div class="idealists">
+     <div class="panel"><h3 class="h3">Stocks to pitch</h3><ul class="idealist" id="ideas-pitch"></ul></div>
+     <div class="panel"><h3 class="h3">Meeting topics</h3><ul class="idealist" id="ideas-topic"></ul></div>
+   </div>
+   <div class="leader">
+     <button class="btn ghost small" type="button" id="leader-open">Club leader</button>
+     <form id="leader-form" hidden><input type="password" id="leader-pass" placeholder="Leader password" aria-label="Leader password"><button class="btn small" type="submit">Open</button><span class="meta" id="leader-msg" role="alert"></span></form>
+     <div class="panel" id="leader-view" hidden></div>
+   </div>
  </div>
 </section>
 
@@ -211,16 +241,9 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
 </section>
 
 <!-- SEARCH -->
-<section role="tabpanel" id="search" aria-labelledby="tab-search" hidden>
+<section role="tabpanel" id="search" aria-label="Stock search" hidden>
   <div class="panel searchpanel">
-    <form class="searchbar" id="searchform" role="search">
-      <svg class="mag" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      <input class="inp" id="q" type="search" placeholder="Search by name or ticker, like Nvidia or NVDA" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Stock name or ticker" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggest">
-      <ul class="suggest" id="suggest" role="listbox" hidden></ul>
-      <button class="btn primary" type="submit">Search</button>
-    </form>
     <div class="quick" id="quick"></div>
-    <p class="hint">Type a company name or ticker, then tap the stock you want from the list.</p>
   </div>
   <div class="panel symbolinfo" id="tv-info"></div>
   <div class="stock">
@@ -264,7 +287,6 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
   </div>
 </section>
 
-<!-- SUGGESTIONS -->
 <!-- DISTRICT LEADERBOARD -->
 <section role="tabpanel" id="district" aria-labelledby="tab-district" hidden>
  <div class="pview" id="dv-dschools">
@@ -275,33 +297,10 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
   <div class="sechead"><div><h2>District Individual Leaderboard</h2><p class="sub">Every Paper Trading player in the district, ranked by how much their $50,000 has grown, in %.</p></div></div>
   <div class="panel" id="dpeople-body"></div>
  </div>
-</section>
-
-<section role="tabpanel" id="ideas" aria-labelledby="tab-ideas" hidden>
-  <div class="sechead">
-    <div>
-      <h2>Submit Suggestion</h2>
-      <p class="sub">Share an idea and upvote the ones you like. Votes are private.</p>
-    </div>
-  </div>
-  <form class="panel ideaform" id="idea-form" autocomplete="off">
-    <div class="kindpick" role="radiogroup" aria-label="What kind of idea">
-      <label><input type="radio" name="kind" value="pitch" checked><span>Stock to pitch</span></label>
-      <label><input type="radio" name="kind" value="topic"><span>Meeting topic</span></label>
-    </div>
-    <input id="idea-text" maxlength="120" aria-label="Your idea">
-    <textarea id="idea-why" rows="2" maxlength="300" aria-label="Why"></textarea>
-    <div class="ideaact"><button class="btn primary" type="submit">Send idea</button><span class="meta" id="idea-msg" role="status"></span></div>
-  </form>
-  <div class="idealists">
-    <div class="panel"><h3 class="h3">Stocks to pitch</h3><ul class="idealist" id="ideas-pitch"></ul></div>
-    <div class="panel"><h3 class="h3">Meeting topics</h3><ul class="idealist" id="ideas-topic"></ul></div>
-  </div>
-  <div class="leader">
-    <button class="btn ghost small" type="button" id="leader-open">Club leader</button>
-    <form id="leader-form" hidden><input type="password" id="leader-pass" placeholder="Leader password" aria-label="Leader password"><button class="btn small" type="submit">Open</button><span class="meta" id="leader-msg" role="alert"></span></form>
-    <div class="panel" id="leader-view" hidden></div>
-  </div>
+ <div class="pview" id="dv-dweek" hidden>
+  <div class="sechead"><div><h2>Weekly Challenge</h2><p class="sub">School vs school, Monday to Friday. Your school's score is the average % its Paper Trading players gain this week. Only players who have made at least one trade count. A new week starts every Monday morning.</p></div></div>
+  <div class="panel" id="dweek-body"></div>
+ </div>
 </section>
 
 <!-- TEACHER AND ADMIN VIEW (only shows for teacher and admin accounts; the database checks this too) -->
@@ -331,17 +330,17 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
 
 <footer>
   <div class="wrap">
-    <div><strong>For education only, not financial advice.</strong> This site is a learning tool for the Waubonsie Valley Finance Club. Nothing here is a recommendation to buy or sell any security.</div>
+    <div><strong>For education only, not financial advice.</strong> This site is a learning tool for the finance clubs at Metea Valley, Neuqua Valley and Waubonsie Valley. Nothing here is a recommendation to buy or sell any security.</div>
     <div><strong>About the data:</strong> charts, quotes, financials and headlines come from TradingView.</div>
   </div>
 </footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="config.js?v=2026103102"></script>
-<script src="assets/app.js?v=2026110390"></script>
+<script src="assets/app.js?v=2026110393"></script>
 <script src="assets/vendor/supabase-2.118.0.js"></script>
-<script src="assets/account.js?v=2026110340"></script>
-<script src="assets/paper.js?v=2026110390"></script>
+<script src="assets/account.js?v=2026110341"></script>
+<script src="assets/paper.js?v=2026110391"></script>
 <script src="assets/staff.js?v=2026110340"></script>
 </body>
 </html>
