@@ -1,4 +1,5 @@
 // Trading game: $50,000 of pretend money, real prices, a club leaderboard.
+// The My Portfolio tab shows the same game stocks and waiting orders, without the order form.
 // Prices and trades are handled by the database (supabase/paper-trading.sql), so nobody can send in a fake price.
 (function(){
 "use strict";
@@ -14,10 +15,14 @@ if(!$("#trade"))return;
 
 let db=null,user=null,loaded=false,busy=false;
 const G={acct:null,pos:[],prices:{},trades:[],board:[],orders:[]};
-function signedIn(d){if(db)return;db=d.db;user=d.user;if(!$("#trade").hidden)load();}
+const onGame=()=>!$("#trade").hidden||!!$("#mine")&&!$("#mine").hidden;
+function signedIn(d){if(db)return;db=d.db;user=d.user;if(onGame())load();}
 document.addEventListener("wvfc:login",e=>signedIn(e.detail));
 if(window.WVFC_SESSION)signedIn(window.WVFC_SESSION);
-document.addEventListener("wvfc:tab",e=>{if(e.detail==="trade"&&db&&!loaded)load();});
+document.addEventListener("wvfc:tab",e=>{if((e.detail==="trade"||e.detail==="mine")&&db&&!loaded)load();});
+const goTrade=()=>$("#tab-trade").click();
+if($("#mine")){$("#mine-trade").addEventListener("click",goTrade);$("#mine-join-go").addEventListener("click",goTrade);}
+function mineShow(which){if(!$("#mine"))return;$("#mine-loading").hidden=which!=="loading"&&which!=="error";$("#mine-join").hidden=which!=="join";$("#mine-game").hidden=which!=="game";$("#mine-trade").hidden=which!=="game";}
 const errText=e=>String(e&&e.message||e||"Something went wrong. Try again.");
 
 /* ---------- Market hours (Chicago time) ---------- */
@@ -34,9 +39,10 @@ async function load(){
   loaded=true;renderMarket();
   const{data:acct,error}=await db.from("paper_accounts").select("*").maybeSingle();
   $("#pt-loading").hidden=true;
-  if(error){$("#pt-loading").hidden=false;$("#pt-loading").textContent="The game couldn't be loaded. Try again in a minute.";loaded=false;return;}
-  if(!acct){$("#pt-game").hidden=true;$("#pt-join").hidden=false;if(!$("#pt-name").value)$("#pt-name").value=(user.email||"").split("@")[0].slice(0,30);return;}
-  G.acct=acct;$("#pt-join").hidden=true;$("#pt-game").hidden=false;
+  if(error){$("#pt-loading").hidden=false;$("#pt-loading").textContent="The game couldn't be loaded. Try again in a minute.";
+    mineShow("error");if($("#mine"))$("#mine-loading").textContent="Your stocks couldn't be loaded. Try again in a minute.";loaded=false;return;}
+  if(!acct){$("#pt-game").hidden=true;$("#pt-join").hidden=false;mineShow("join");if(!$("#pt-name").value)$("#pt-name").value=(user.email||"").split("@")[0].slice(0,30);return;}
+  G.acct=acct;$("#pt-join").hidden=true;$("#pt-game").hidden=false;mineShow("game");
   const[pos,tr,od]=await Promise.all([db.from("paper_positions").select("*"),db.from("paper_trades").select("*").order("at",{ascending:false}).limit(10),
     db.from("paper_orders").select("*").order("created_at",{ascending:false}).limit(40)]);
   G.pos=pos.data||[];G.trades=tr.data||[];G.orders=od.error?[]:(od.data||[]);
@@ -63,12 +69,13 @@ const SIDE={buy:"Buy",sell:"Sell",short:"Short",cover:"Buy to cover"};
 const DID={buy:"Bought",sell:"Sold",short:"Shorted",cover:"Bought back"};
 const KIND={market:"Market",limit:"Limit",stop:"Stop",stop_limit:"Stop-limit",trailing_stop:"Trailing stop",auto:"Automatic"};
 const when=t=>new Date(t).toLocaleString("en-US",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});
-function renderAll(){renderTiles();renderOrders();renderHold();renderTrades();renderBoard();renderEst();}
-function renderTiles(){
+function renderAll(){renderTiles();renderOrders();renderHold($("#pt-hold"));renderTrades();renderBoard();renderEst();renderMine();}
+function renderMine(){if(!$("#mine"))return;renderTiles($("#mine-tiles"));renderHold($("#mine-hold"),true);renderOrders($("#mine-orders"),true);}
+function renderTiles(box){
   const stocks=G.pos.reduce((s,p)=>s+priceOf(p)*p.shares,0),value=+G.acct.cash+stocks,gain=value-START;
   const me=G.board.find(r=>r.me);
   const tile=(label,val,note,k)=>el("div",{class:"tile"},el("div",{class:"eyebrow",text:label}),el("div",{class:"v "+(k||""),text:val}),el("div",{class:"n",text:note}));
-  $("#pt-tiles").replaceChildren(tile("Account value",fmt$(value),G.pos.some(p=>p.shares<0)?"Cash plus stocks, minus shorts":"Cash plus stocks"),tile("Total gain",signed$(gain),fmtPct(gain/START)+" since you started",cls(gain)),
+  (box||$("#pt-tiles")).replaceChildren(tile("Account value",fmt$(value),G.pos.some(p=>p.shares<0)?"Cash plus stocks, minus shorts":"Cash plus stocks"),tile("Total gain",signed$(gain),fmtPct(gain/START)+" since you started",cls(gain)),
     tile("Cash to spend",money(+G.acct.cash),"Pretend money"),tile("Your rank",me?"#"+me.rank:"–",me?`out of ${G.board.length} players`:"Loading…"));
 }
 function orderText(o){
@@ -78,13 +85,13 @@ function orderText(o){
   if(o.kind==="stop_limit")return `${SIDE[o.side]} ${n} if it ${o.side==="buy"||o.side==="cover"?"rises":"falls"} to ${fmt$(o.stop_price)}, at ${fmt$(o.limit_price)} or ${o.side==="buy"||o.side==="cover"?"less":"more"}`;
   return `${SIDE[o.side]} ${n} if it ${o.side==="buy"||o.side==="cover"?"rises":"drops"} ${+o.trail_pct}% from its ${o.side==="buy"||o.side==="cover"?"low":"high"}`+(o.mark?` (${o.side==="buy"||o.side==="cover"?"low":"high"} so far ${fmt$(o.mark)})`:"");
 }
-function renderOrders(){
-  const box=$("#pt-orders"),open=G.orders.filter(o=>o.status==="open"),
-    done=G.orders.filter(o=>o.status!=="open"&&Date.now()-new Date(o.done_at||o.created_at)<7*864e5).slice(0,5);
+function renderOrders(box,mine){
+  box=box||$("#pt-orders");const open=G.orders.filter(o=>o.status==="open"),
+    done=mine?[]:G.orders.filter(o=>o.status!=="open"&&Date.now()-new Date(o.done_at||o.created_at)<7*864e5).slice(0,5);
   if(!open.length&&!done.length){box.hidden=true;return;}box.hidden=false;
   const STAT={filled:"Went through",canceled:"Canceled",failed:"Didn't go through"};
   box.replaceChildren(el("h3",{class:"h3",text:"Your waiting orders"}),
-    el("p",{class:"meta",text:"Waiting orders are checked every 2 minutes while the market is open, so the price you get can be a little different from your line."}),
+    el("p",{class:"meta",text:mine?"Orders that will buy or sell once the stock reaches your price.":"Waiting orders are checked every 2 minutes while the market is open, so the price you get can be a little different from your line."}),
     open.length?el("ul",{class:"ptlist"},open.map(o=>el("li",{},
       el("span",{class:"pttag wait",text:KIND[o.kind]+(o.triggered?" · stop hit":"")}),el("span",{text:orderText(o)}),
       el("span",{class:"o",text:"placed "+when(o.created_at)}),
@@ -98,16 +105,17 @@ async function cancel(id,b){b.disabled=true;
   const{error}=await db.rpc("paper_cancel_order",{oid:id});
   if(error){toast(errText(error));b.disabled=false;return;}
   toast("Order canceled");load();}
-function renderHold(){
-  const box=$("#pt-hold");
-  if(!G.pos.length){box.replaceChildren(el("h3",{class:"h3",text:"Your stocks"}),el("p",{class:"meta",text:"You don't own any stocks yet. Type a ticker above and place an order."}));return;}
+function renderHold(box,mine){
+  if(!G.pos.length){box.replaceChildren(el("h3",{class:"h3",text:"Your stocks"}),el("p",{class:"meta",text:mine?"You don't own any stocks yet. Go to Paper Trading to buy your first one.":"You don't own any stocks yet. Type a ticker above and place an order."}));return;}
+  const total=+G.acct.cash+G.pos.reduce((s,p)=>s+priceOf(p)*p.shares,0);
   const td=(t,k)=>el("td",{class:k||"",text:t});
   const rows=G.pos.map(p=>({p,px:priceOf(p)})).map(r=>Object.assign(r,{value:r.px*r.p.shares,gain:r.px*r.p.shares-r.p.cost})).sort((a,b)=>Math.abs(b.value)-Math.abs(a.value));
-  const head=el("thead",{},el("tr",{},["Stock","Shares","Paid per share","Price now","Worth now","Gain $","Gain %",""].map((t,i)=>el("th",{class:i&&i<7?"num":"",text:t}))));
+  const head=el("thead",{},el("tr",{},(mine?["Stock","Shares","Paid per share","Price now","Worth now","Gain $","Gain %","% of account",""]:["Stock","Shares","Paid per share","Price now","Worth now","Gain $","Gain %",""]).map((t,i,a)=>el("th",{class:i&&i<a.length-1?"num":"",text:t}))));
   const body=el("tbody",{},rows.map(({p,px,value,gain})=>{const sh=p.shares<0,gp=gain/Math.abs(p.cost);return el("tr",{},
     el("td",{},el("button",{type:"button",class:"linkbtn sym",text:p.symbol,title:`Open ${p.symbol} on Search`,onclick:()=>window.WVFC_APP&&window.WVFC_APP.openStock(p.symbol)}),sh?el("span",{class:"pttag short",text:"Short"}):""),
     td(String(Math.abs(p.shares)),"num"),td(fmt$(p.cost/p.shares),"num"),td(fmt$(px),"num"),td(money(value),"num"),td(signed$(gain),"num "+cls(gp)),td(fmtPct(gp),"num "+cls(gp)),
-    el("td",{},el("button",{type:"button",class:"btn small",text:sh?"Cover":"Sell",onclick:()=>fill(p.symbol,Math.abs(p.shares),sh?"cover":"sell")})));}));
+    mine?td(total>0?Math.round(Math.abs(value)/total*100)+"%":"–","num"):"",
+    el("td",{},el("button",{type:"button",class:"btn small",text:sh?"Cover":"Sell",onclick:()=>{if(mine)goTrade();fill(p.symbol,Math.abs(p.shares),sh?"cover":"sell");}})));}));
   box.replaceChildren(el("h3",{class:"h3",text:"Your stocks"}),
     el("p",{class:"meta",text:G.pos.some(p=>p.shares<0)?"Prices update every few minutes while the market is open. A short makes money when the price goes down.":"Prices update every few minutes while the market is open."}),
     el("div",{class:"tablewrap"},el("table",{class:"pos"},head,body)));

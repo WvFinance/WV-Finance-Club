@@ -383,20 +383,10 @@ html.unlocked #gate{display:none}
 .linkbtn.sym{text-decoration:none;font-family:var(--f-mono);font-weight:600}
 .linkbtn.sym:hover{text-decoration:underline}
 #mine-tiles{margin-bottom:16px}
-#mine-list .sechead{align-items:flex-start}
-#mine-list .meta{margin:4px 0 12px}
-.upload{margin-top:16px}
-.upload .h3{margin-bottom:6px}
-.upload .meta{margin:0 0 10px}
-.howto{margin:0 0 16px;padding-left:20px;display:grid;gap:6px;color:var(--ink-2)}
-.howto b{color:var(--ink)}
-.filebtn{position:relative}
-.filebtn input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
-#mine-preview{margin-top:20px;border-top:1px solid var(--line);padding-top:20px}
-#mine-preview .ideaact{margin-top:16px;display:flex;gap:10px}
+#mine-join .meta{margin:6px 0 14px}
 
 /* Trading game */
-#pt-game{min-width:0}
+#pt-game,#mine-game{min-width:0}
 #pt-tiles{margin-bottom:16px}
 .ptmain{margin-bottom:16px}
 .ptjoin .meta{margin:6px 0 14px}
@@ -416,8 +406,8 @@ html.unlocked #gate{display:none}
 #pt-form .ptrow .btn#pt-check{flex:none}
 .btn.sell{background:var(--down-soft);border-color:var(--down);color:var(--down)}
 .ptmsg{margin:10px 0 0;min-height:1.2em;color:var(--down);font-size:14px}
-#pt-hold{margin-bottom:16px}
-#pt-hold .meta{margin:4px 0 12px}
+#pt-hold,#mine-hold{margin-bottom:16px}
+#pt-hold .meta,#mine-hold .meta{margin:4px 0 12px}
 .ptboard{list-style:none;margin:12px 0 0;padding:0;display:grid}
 .ptboard li{display:grid;grid-template-columns:44px minmax(0,1fr) auto auto;gap:12px;align-items:baseline;padding:10px 8px;border-top:1px solid var(--line)}
 .ptboard li:first-child{border-top:0}
@@ -443,5 +433,5 @@ select.ptinp{appearance:none;cursor:pointer;padding-right:34px;background-image:
 .ptprices>[hidden]{display:none}
 .pth4{margin:18px 0 0;font-size:13px;font-weight:600;color:var(--ink-2);text-transform:uppercase;letter-spacing:.06em}
 #pt-orders{margin-bottom:16px}
-#pt-orders .meta{margin:4px 0 0}
+#pt-orders .meta,#mine-orders .meta{margin:4px 0 0}
 .ptlist.done li{color:var(--ink-2);font-size:14px}

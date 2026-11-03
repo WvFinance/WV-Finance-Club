@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=2026110301">
+<link rel="stylesheet" href="assets/style.css?v=2026110302">
 <script>
 // Club password, needed once to create an account. It's checked by its SHA-256 hash (lowercased), so it isn't written here.
 // To change it: hash the new password in lowercase and replace WVFC_PASS below.
@@ -108,20 +108,20 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
   <div class="sechead">
     <div>
       <h2>My Portfolio</h2>
-      <p class="sub" id="mine-who">Your own stocks. Only you can see them.</p>
+      <p class="sub">The stocks you own in the Paper Trading game. Only you can see this page.</p>
     </div>
+    <button class="btn primary" type="button" id="mine-trade" hidden>Go to Paper Trading</button>
   </div>
-  <div class="tiles" id="mine-tiles" hidden></div>
-  <div class="panel" id="mine-list"></div>
-  <div class="panel upload" id="mine-upload">
-    <h3 class="h3">Add your stocks from a file</h3>
-    <p class="meta">Download your positions file from your broker, then pick it here. Uploading again replaces what's saved.</p>
-    <ul class="howto">
-      <li><b>Fidelity:</b> Accounts &amp; Trade, then Portfolio, then Positions. Press the download button (the arrow above the table).</li>
-      <li><b>Schwab:</b> Accounts, then Positions. Press Export at the top right of the table.</li>
-    </ul>
-    <label class="btn primary filebtn">Choose file<input type="file" id="mine-file" accept=".csv,text/csv"></label>
-    <div id="mine-preview" hidden></div>
+  <p class="meta" id="mine-loading">Loading your stocks…</p>
+  <div class="panel" id="mine-join" hidden>
+    <h3 class="h3">You haven't joined the game yet</h3>
+    <p class="meta">Join Paper Trading to get $50,000 of pretend money. The stocks you buy will show up here.</p>
+    <button class="btn primary" type="button" id="mine-join-go">Join Paper Trading</button>
+  </div>
+  <div id="mine-game" hidden>
+    <div class="tiles" id="mine-tiles"></div>
+    <div class="panel" id="mine-hold"></div>
+    <div class="panel" id="mine-orders" hidden></div>
   </div>
 </section>
 
@@ -281,7 +281,7 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
 <script src="config.js?v=2026103102"></script>
 <script src="assets/app.js?v=2026103103"></script>
 <script src="assets/vendor/supabase-2.118.0.js"></script>
-<script src="assets/account.js?v=2026103103"></script>
-<script src="assets/paper.js?v=2026110301"></script>
+<script src="assets/account.js?v=2026110302"></script>
+<script src="assets/paper.js?v=2026110302"></script>
 </body>
 </html>
