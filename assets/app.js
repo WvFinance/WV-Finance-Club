@@ -33,17 +33,17 @@ function tv(container,name,config){
 }
 
 /* ---------- State ---------- */
-const S={picks:[],briefs:[],quotes:{},prices:{dates:[],closes:{}},tk:(store.get("wvfc.tk")||"NVDA"),newsTk:null,watch:[]};
+const S={picks:[],briefs:[],quotes:{},prices:{dates:[],closes:{}},tk:(store.get("wvfc.tk")||"NVDA"),newsTk:null,classTk:null,watch:[]};
 try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="string");}catch(e){S.watch=[];}
 
 /* ---------- Tabs ---------- */
 const TABS=["portfolio","mine","trade","search","news","ideas"].filter(t=>document.getElementById(t));const rendered={};
-const PVIEWS=["overview","positions","sectors","history"];let S_view="overview";
+const PVIEWS=["overview","positions","sectors","history","classnews"];let S_view="overview";
 function showTab(name,push){
   if(PVIEWS.includes(name)){S_view=name;name="portfolio";}else if(name==="portfolio")S_view="overview";
   if(!TABS.includes(name)){name="portfolio";}
   if(name==="portfolio"){for(const v of PVIEWS)$("#pv-"+v).hidden=v!==S_view;
-    document.querySelectorAll("#pf-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===S_view));renderBreakdown();}
+    document.querySelectorAll("#pf-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===S_view));renderBreakdown();if(S_view==="classnews")renderClassFeed();}
   for(const t of TABS){$("#"+t).hidden=t!==name;$("#tab-"+t).setAttribute("aria-selected",String(t===name));}
   if(push){try{history.replaceState(null,"","#"+(name==="portfolio"&&S_view!=="overview"?S_view:name))}catch(e){}}
   if(name==="search"&&rendered.search!==S.tk+tvTheme())renderSearch();
@@ -370,22 +370,27 @@ function sentiPill(s){const k=SENT[s]?s:"neutral";const p=el("span",{class:"sent
 const inPortfolio=tk=>S.picks.some(p=>p.ticker===tk);
 function visibleBriefs(){return S.briefs.filter(b=>b.market).sort((a,b)=>(a.order||0)-(b.order||0)).concat(S.briefs.filter(b=>!b.market&&inPortfolio(b.ticker)&&!S.briefs.some(m=>m.market&&m.ticker===b.ticker)).sort((a,b)=>a.ticker.localeCompare(b.ticker)));}
 function briefForSymbol(sym){const t=bare(sym);return visibleBriefs().find(b=>bare(b.symbol||b.ticker)===t||b.ticker===t)||null;}
-function renderNews(){
-  renderRecap();
-  const list=visibleBriefs();$("#cnt-news").textContent=list.length?String(list.length):"";
-  const nl=$("#nlist"),br=$("#brief");nl.replaceChildren();
-  if(!list.length){br.replaceChildren(el("div",{class:"empty",style:"border:0"},el("h3",{text:"No briefs yet"})));$("#news-meter-panel").hidden=true;return;}
+// Two news boards share this code: the News tab (market, crypto and our stocks)
+// and "News for our stocks" under Class Portfolio (only our stocks). ids starting with "c-" are the second one.
+const classBriefs=()=>S.briefs.filter(b=>!b.market&&inPortfolio(b.ticker)).sort((a,b)=>a.ticker.localeCompare(b.ticker));
+function newsBoard(cls){
+  const id=x=>$("#"+(cls?"c-":"")+x),key=cls?"classTk":"newsTk";
+  const list=cls?classBriefs():visibleBriefs();
+  const nl=id("nlist"),br=id("brief");nl.replaceChildren();
+  if(!list.length){br.replaceChildren(el("div",{class:"empty",style:"border:0"},el("h3",{text:cls?"No briefs for our stocks yet":"No briefs yet"})));id("news-meter-panel").hidden=true;if(cls)id("feed-panel").hidden=true;return;}
+  if(cls)id("feed-panel").hidden=false;
   const counts={bullish:0,neutral:0,bearish:0};list.forEach(n=>counts[n.sentiment in counts?n.sentiment:"neutral"]++);
-  $("#news-meter-panel").hidden=false;const mt=$("#news-meter");mt.replaceChildren();
+  id("news-meter-panel").hidden=false;const mt=id("news-meter");mt.replaceChildren();
   [["bullish","var(--up)"],["neutral","var(--flat)"],["bearish","var(--down)"]].forEach(([k,c])=>{if(counts[k])mt.append(el("span",{style:`flex:${counts[k]};background:${c}`,title:`${counts[k]} ${k}`}));});
-  $("#news-legend").replaceChildren(...["bullish","neutral","bearish"].map(k=>el("span",{},el("i",{style:`background:var(--${k==="bullish"?"up":k==="bearish"?"down":"flat"})`}),`${SENT[k][0]} ${counts[k]}`)));
-  if(!S.newsTk||!list.some(n=>n.ticker===S.newsTk))S.newsTk=list[0].ticker;
+  id("news-legend").replaceChildren(...["bullish","neutral","bearish"].map(k=>el("span",{},el("i",{style:`background:var(--${k==="bullish"?"up":k==="bearish"?"down":"flat"})`}),`${SENT[k][0]} ${counts[k]}`)));
+  if(!S[key]||!list.some(n=>n.ticker===S[key]))S[key]=list[0].ticker;
   const mk=list.filter(n=>n.market).length,sk=list.length-mk;const label=t=>el("div",{class:"eyebrow",style:"margin:6px 2px 0",text:t});
   // Groups: the market (S&P 500, Nasdaq), crypto (Bitcoin, Ethereum), then the club's stocks.
-  list.forEach((n,i)=>{const prev=list[i-1];if(i===0&&mk&&!n.crypto)nl.append(label("The market"));if(n.crypto&&!(prev&&prev.crypto))nl.append(label("Crypto"));if(i===mk&&sk)nl.append(label("Class portfolio"));
-    nl.append(el("button",{class:"nitem","aria-current":String(n.ticker===S.newsTk),onclick:()=>{S.newsTk=n.ticker;renderNews();renderNewsFeed();if(innerWidth<820)$("#brief").scrollIntoView({behavior:"smooth",block:"start"});}},el("span",{class:"t",text:n.market?n.name:n.ticker}),sentiPill(n.sentiment),el("span",{class:"h",text:n.headline||""})));});
-  if(!sk){nl.append(label("Class portfolio"),el("div",{class:"notice",text:S.picks.length?"Briefs for our picks are on the way.":"Briefs for our stocks show up here once they're in the Class Portfolio."}));}
-  const n=list.find(x=>x.ticker===S.newsTk);
+  list.forEach((n,i)=>{const prev=list[i-1];if(!cls){if(i===0&&mk&&!n.crypto)nl.append(label("The market"));if(n.crypto&&!(prev&&prev.crypto))nl.append(label("Crypto"));if(i===mk&&sk)nl.append(label("Class portfolio"));}
+    nl.append(el("button",{class:"nitem","aria-current":String(n.ticker===S[key]),onclick:()=>{S[key]=n.ticker;newsBoard(cls);cls?renderClassFeed():renderNewsFeed();if(innerWidth<820)br.scrollIntoView({behavior:"smooth",block:"start"});}},el("span",{class:"t",text:n.market?n.name:n.ticker}),sentiPill(n.sentiment),el("span",{class:"h",text:n.headline||""})));});
+  if(!cls&&!sk){nl.append(label("Class portfolio"),el("div",{class:"notice",text:S.picks.length?"Briefs for our picks are on the way.":"Briefs for our stocks show up here once they're in the Class Portfolio."}));}
+  if(cls){const missing=S.picks.filter(p=>!list.some(b=>b.ticker===p.ticker)).map(p=>p.ticker);if(missing.length)nl.append(el("div",{class:"notice",text:`No brief yet for ${missing.join(", ")}.`}));}
+  const n=list.find(x=>x.ticker===S[key]);
   br.replaceChildren(...[
     el("div",{class:"sechead"},el("div",{},el("div",{class:"eyebrow",text:n.market?`${n.crypto?"Crypto":"Market"} brief · ${n.name}`:`${n.ticker} · ${n.name||""}`}),el("h3",{text:n.headline||""})),sentiPill(n.sentiment)),
     el("p",{class:"lede",text:n.summary||""}),
@@ -395,11 +400,21 @@ function renderNews(){
     el("div",{class:"meta",text:`Updated ${n.updatedAt?fmtDate(n.updatedAt):"recently"}`}),
     el("div",{},el("button",{class:"btn small",text:`Open ${n.market?n.name:n.ticker} chart →`,onclick:()=>{openStock(n.symbol||n.ticker);showTab("search",true);}}))].filter(Boolean));
 }
+function renderNews(){
+  renderRecap();
+  const list=visibleBriefs();$("#cnt-news").textContent=list.length?String(list.length):"";
+  newsBoard(false);newsBoard(true);
+}
 function renderNewsFeed(){
   const n=visibleBriefs().find(x=>x.ticker===S.newsTk);const key=(n?n.ticker:"mkt")+tvTheme();if(rendered.news===key)return;rendered.news=key;
   const theme=tvTheme();
   if(n&&(!n.market||n.crypto)){$("#feed-label").textContent=`Live headlines · ${n.crypto?n.name:n.ticker}`;tv($("#tv-newsfeed"),"timeline",{feedMode:"symbol",symbol:n.symbol||n.ticker,colorTheme:theme,isTransparent:true,displayMode:"regular",width:"100%",height:"100%"});}
   else{$("#feed-label").textContent="Live headlines · US stock market";tv($("#tv-newsfeed"),"timeline",{feedMode:"market",market:"stock",colorTheme:theme,isTransparent:true,displayMode:"regular",width:"100%",height:"100%"});}
+}
+function renderClassFeed(){
+  const n=classBriefs().find(x=>x.ticker===S.classTk);if(!n)return;const key=n.ticker+tvTheme();if(rendered.classnews===key)return;rendered.classnews=key;
+  $("#c-feed-label").textContent=`Live headlines · ${n.ticker}`;
+  tv($("#c-tv-newsfeed"),"timeline",{feedMode:"symbol",symbol:n.symbol||n.ticker,colorTheme:tvTheme(),isTransparent:true,displayMode:"regular",width:"100%",height:"100%"});
 }
 // On Search, show the club's brief for the stock whenever one exists, even if it isn't in the portfolio.
 function anyBriefFor(sym){const t=bare(sym);return S.briefs.find(b=>bare(b.symbol||b.ticker)===t||b.ticker===t)||null;}
@@ -440,7 +455,7 @@ function renderSearchBrief(){
 
 /* ---------- Boot ---------- */
 let rsT;window.addEventListener("resize",()=>{clearTimeout(rsT);rsT=setTimeout(()=>{renderCompare();if(S_view==="history")renderHistory();},120);});
-darkMQ.addEventListener&&darkMQ.addEventListener("change",()=>{rendered.search=null;rendered.news=null;renderPicks();const t=location.hash.slice(1);if(t==="search")renderSearch();if(t==="news")renderNewsFeed();});
+darkMQ.addEventListener&&darkMQ.addEventListener("change",()=>{rendered.search=null;rendered.news=null;rendered.classnews=null;renderPicks();const t=location.hash.slice(1);if(t==="search")renderSearch();if(t==="news")renderNewsFeed();if(t==="classnews")renderClassFeed();});
 async function boot(){
   renderWatch();renderQuick();
   const [pf,nw,px]=await Promise.allSettled([loadJSON("data/portfolio.json"),loadJSON("data/news.json"),loadJSON("data/prices.json")]);

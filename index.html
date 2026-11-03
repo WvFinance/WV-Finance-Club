@@ -61,6 +61,7 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
     <button role="menuitem" data-view="positions">All positions</button>
     <button role="menuitem" data-view="sectors">What we own by sector</button>
     <button role="menuitem" data-view="history">Club vs S&amp;P 500 over time</button>
+    <button role="menuitem" data-view="classnews">News for our stocks</button>
   </div>
 </nav>
 
@@ -96,6 +97,20 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
  <div class="pview" id="pv-sectors" hidden>
   <div class="sechead"><div><h2>What we own by sector</h2><p class="sub">How our money is split across types of business, like Tech or Banks. Owning a mix helps if one area has a bad year.</p></div></div>
   <div class="panel" id="sec-body"></div>
+ </div>
+ <div class="pview" id="pv-classnews" hidden>
+  <div class="sechead"><div><h2>News for our stocks</h2><p class="sub">The latest news brief for each stock in the Class Portfolio. Tap a stock to read its brief.</p></div></div>
+  <div class="panel" id="c-news-meter-panel" hidden>
+    <div class="sechead" style="margin-bottom:8px"><div class="eyebrow">How the news feels for our stocks</div><div class="legend" id="c-news-legend"></div></div>
+    <div class="meter" id="c-news-meter"></div>
+  </div>
+  <div class="newsgrid">
+    <div class="nlist" id="c-nlist"></div>
+    <div class="brief-col">
+      <div class="panel brief" id="c-brief"></div>
+      <div class="panel" id="c-feed-panel"><div class="eyebrow" style="margin-bottom:8px" id="c-feed-label">Live headlines</div><div class="tvbox feed" id="c-tv-newsfeed"></div></div>
+    </div>
+  </div>
  </div>
  <div class="pview" id="pv-history" hidden>
   <div class="sechead"><div><h2>Club vs S&amp;P 500 over time</h2><p class="sub">Our portfolio's value each day, next to what the same money would be worth in the S&amp;P 500. It shows how much we have gained or lost, in %, since we started.</p></div></div>
