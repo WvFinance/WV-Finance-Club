@@ -333,15 +333,16 @@ html.unlocked #gate{display:none}
 .searchpanel>*,.searchbar{min-width:0}
 .evmore{justify-self:start;margin-top:4px}
 /* News tab: Upcoming calendar under My portfolio */
-.news-left{display:grid;gap:20px;min-width:0}
-.upcoming{display:grid;gap:10px}
-.upcoming .h3{margin:0}
-.upcoming .event{cursor:default;gap:12px;padding:10px}
-.upcoming .event:hover{border-color:var(--line)}
-.upcoming button.event{cursor:pointer}
-.upcoming button.event:hover{border-color:var(--gold)}
-.upcoming .etext{font-size:13px}
-.etag{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--gold)}
+.news-left{display:grid;gap:18px;min-width:0}
+.upcoming{display:grid;gap:4px}
+.uplist{display:grid;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:4px}
+.uprow summary{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:6px;cursor:pointer;list-style:none;font-size:14px;min-width:0}
+.uprow summary::-webkit-details-marker{display:none}
+.uprow summary:hover,.uprow[open] summary{background:var(--surface-2)}
+.uprow .ud{flex:none;width:48px;font-weight:600;color:var(--gold);font-size:13px}
+.uprow .ut{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}
+.uprow .um{margin:0;padding:2px 8px 8px 66px;font-size:13px;color:var(--ink-2);display:grid;gap:6px;justify-items:start}
+.upcoming .evmore{margin:2px 0 0}
 .pickrow{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
 .pickrow>summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;cursor:pointer}
 .pickrow>summary::-webkit-details-marker{display:none}
