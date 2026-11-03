@@ -27,17 +27,12 @@ $("#auth-switch").addEventListener("click",()=>setMode(mode==="login"?"signup":"
 const AUTH_ERR=[[/invalid login credentials/i,"That email and password don't match. Try again."],[/already registered|already been registered/i,"That email already has an account. Log in instead."],
   [/email not confirmed/i,"Confirm your email first. Check your inbox for the link."],[/password should be|weak password/i,"Pick a longer password, at least 8 characters."],
   [/rate limit|too many/i,"Too many tries. Wait a minute and try again."],[/club password|school code/,"That's not a school code. Ask your club leader for it."],[/database error saving new user/i,"That school code or email wasn't accepted. Check both and try again."],[/fetch|network/i,"Couldn't reach the login server. Check your internet and try again."]];
-async function sha(t){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");}
 // New accounts need their school's code (like wvhs01). This first look only gives a clear message;
 // the real check happens inside the database (supabase/district.sql).
 async function checkSchool(code,email){
   if(!code)throw new Error("school code");
   const{data,error}=await db.rpc("school_for_code",{c:code});
-  if(error){
-    // The school list isn't set up yet (district.sql not run): use the old club password.
-    if(/school_for_code|function|schema cache/i.test(error.message||"")&&!/fetch|network/i.test(error.message||"")){
-      if(window.WVFC_PASS&&await sha(code)!==window.WVFC_PASS)throw new Error("school code");return;}
-    throw error;}
+  if(error)throw error;
   const s=data&&data[0];if(!s)throw new Error("school code");
   const dom=String(s.email_domain||"").replace(/^@/,"").toLowerCase();
   if(dom&&!email.toLowerCase().endsWith("@"+dom))throw new Error(`Use your ${s.name} school email (it ends in @${dom}).`);

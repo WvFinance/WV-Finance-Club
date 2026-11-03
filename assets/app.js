@@ -37,25 +37,27 @@ const S={livePx:{},schools:[],school:null,picks:[],briefs:[],quotes:{},prices:{d
 try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="string");}catch(e){S.watch=[];}
 
 /* ---------- Tabs ---------- */
-const TABS=["portfolio","mine","trade","search","news","district","ideas","staff"].filter(t=>document.getElementById(t));const rendered={};
-const PVIEWS=["overview","positions","sectors","history","classnews"];let S_view="overview";
-const DVIEWS=["dschools","dpeople"];let D_view="dschools";
+const TABS=["portfolio","mine","trade","search","news","district","staff"].filter(t=>document.getElementById(t));const rendered={};
+const PVIEWS=["overview","positions","sectors","history","classnews","ideas"];let S_view="overview";
+const DVIEWS=["dschools","dpeople","dweek"];let D_view="dschools";
 function showTab(name,push){
   if(name==="schools")name="dschools";
   if(DVIEWS.includes(name)){D_view=name;name="district";}else if(name==="district")D_view="dschools";
   if(PVIEWS.includes(name)){S_view=name;name="portfolio";}else if(name==="portfolio")S_view="overview";
-  if(!TABS.includes(name)||$("#tab-"+name).hidden){name="portfolio";}
+  // Search has no tab button: the search bar at the top opens it.
+  const tb=n=>$("#tab-"+n);
+  if(!TABS.includes(name)||(tb(name)&&tb(name).hidden)){name="portfolio";}
   if(name==="portfolio"){for(const v of PVIEWS)$("#pv-"+v).hidden=v!==S_view;
-    document.querySelectorAll("#pf-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===S_view));renderBreakdown();if(S_view==="classnews")renderClassFeed();}
-  for(const t of TABS){$("#"+t).hidden=t!==name;$("#tab-"+t).setAttribute("aria-selected",String(t===name));}
+    document.querySelectorAll("#pf-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===S_view));renderBreakdown();if(S_view==="classnews")renderClassFeed();if(S_view==="ideas")loadIdeas();}
+  for(const t of TABS){$("#"+t).hidden=t!==name;if(tb(t))tb(t).setAttribute("aria-selected",String(t===name));}
   if(name==="district"){for(const v of DVIEWS)$("#dv-"+v).hidden=v!==D_view;
     document.querySelectorAll("#dist-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===D_view));}
   if(push){try{history.replaceState(null,"","#"+(name==="portfolio"&&S_view!=="overview"?S_view:name==="district"&&D_view!=="dschools"?D_view:name))}catch(e){}}
   if(name==="search"&&rendered.search!==S.tk+tvTheme())renderSearch();
   if(name==="news")renderNewsFeed();
-  if(name==="ideas")loadIdeas();
   if(name==="district"&&D_view==="dschools")renderSchools();
   if(name==="district"&&D_view==="dpeople")document.dispatchEvent(new CustomEvent("wvfc:dpeople"));
+  if(name==="district"&&D_view==="dweek")document.dispatchEvent(new CustomEvent("wvfc:dweek"));
   document.dispatchEvent(new CustomEvent("wvfc:tab",{detail:name}));
   window.scrollTo({top:0});
 }
@@ -353,7 +355,7 @@ function showSuggest(){
   box.hidden=!sugg.length;inp.setAttribute("aria-expanded",String(!!sugg.length));
   if(suggAt>=0)inp.setAttribute("aria-activedescendant","sg"+suggAt);else inp.removeAttribute("aria-activedescendant");
 }
-function pickSuggest(i){const s=sugg[i];if(!s)return;sugg=[];suggAt=-1;showSuggest();$("#q").value="";$("#q").blur();openStock(s.sym);}
+function pickSuggest(i){const s=sugg[i];if(!s)return;sugg=[];suggAt=-1;showSuggest();$("#q").value="";$("#q").blur();openStock(s.sym);showTab("search",true);}
 $("#q").addEventListener("focus",loadStocks);
 $("#q").addEventListener("input",async()=>{await loadStocks();sugg=findStocks($("#q").value);suggAt=-1;showSuggest();});
 $("#q").addEventListener("keydown",e=>{
@@ -363,7 +365,7 @@ $("#q").addEventListener("keydown",e=>{
   else if(e.key==="Enter"&&suggAt>=0){e.preventDefault();pickSuggest(suggAt);}});
 $("#q").addEventListener("blur",()=>setTimeout(()=>{sugg=[];showSuggest();},150));
 $("#searchform").addEventListener("submit",e=>{e.preventDefault();// A name like "apple" opens the top match; a ticker, or a symbol like NYSE:F, works as before.
-  if(!/^[A-Z]+:/i.test($("#q").value.trim())){const top=findStocks($("#q").value)[0];if(top){sugg=[top];pickSuggest(0);return;}}const s=normSym($("#q").value);if(!s){toast("Type a ticker, like AAPL or NYSE:F");return;}$("#q").value="";$("#q").blur();openStock(s);});
+  if(!/^[A-Z]+:/i.test($("#q").value.trim())){const top=findStocks($("#q").value)[0];if(top){sugg=[top];pickSuggest(0);return;}}const s=normSym($("#q").value);if(!s){toast("Type a ticker, like AAPL or NYSE:F");return;}$("#q").value="";$("#q").blur();openStock(s);showTab("search",true);});
 function saveWatch(){store.set("wvfc.watch",JSON.stringify(S.watch));if(window.WVFC_ACCOUNT)window.WVFC_ACCOUNT.saveWatch(S.watch);}
 // Lets the account page (beta.html) load a saved watchlist and open stocks.
 // account.js tells us the member's school once they're logged in; boot() waits for it.
