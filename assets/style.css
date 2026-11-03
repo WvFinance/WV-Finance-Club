@@ -442,3 +442,16 @@ select.ptinp{appearance:none;cursor:pointer;padding-right:34px;background-image:
 #pt-orders{margin-bottom:16px}
 #pt-orders .meta,#mine-orders .meta{margin:4px 0 0}
 .ptlist.done li{color:var(--ink-2);font-size:14px}
+
+/* Admin school switcher and the Students tab (teachers and admin only) */
+.schoolpick{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--band-ink-2)}
+.schoolpick select{appearance:auto;background:var(--gold);color:var(--on-gold);border:0;border-radius:999px;padding:3px 8px;font:inherit;font-weight:700;cursor:pointer}
+.strow{display:flex;flex-wrap:wrap;gap:12px}
+.strow select.ptinp{flex:0 1 220px}
+.strow input.ptinp{flex:1 1 240px}
+#st-body{min-width:0;display:grid;gap:16px}
+#st-body>*{min-width:0}
+#st-detail .tiles{margin:12px 0 4px}
+.stmail{display:block;font-size:12px;color:var(--muted);font-weight:400}
+.stsym{font-family:var(--f-mono);margin-right:6px}
+.sttable td{vertical-align:top}

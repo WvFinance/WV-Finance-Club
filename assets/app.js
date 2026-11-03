@@ -37,11 +37,11 @@ const S={schools:[],school:null,picks:[],briefs:[],quotes:{},prices:{dates:[],cl
 try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="string");}catch(e){S.watch=[];}
 
 /* ---------- Tabs ---------- */
-const TABS=["portfolio","mine","trade","search","news","ideas"].filter(t=>document.getElementById(t));const rendered={};
+const TABS=["portfolio","mine","trade","search","news","ideas","staff"].filter(t=>document.getElementById(t));const rendered={};
 const PVIEWS=["overview","positions","sectors","history","classnews","schools"];let S_view="overview";
 function showTab(name,push){
   if(PVIEWS.includes(name)){S_view=name;name="portfolio";}else if(name==="portfolio")S_view="overview";
-  if(!TABS.includes(name)){name="portfolio";}
+  if(!TABS.includes(name)||$("#tab-"+name).hidden){name="portfolio";}
   if(name==="portfolio"){for(const v of PVIEWS)$("#pv-"+v).hidden=v!==S_view;
     document.querySelectorAll("#pf-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===S_view));renderBreakdown();if(S_view==="classnews")renderClassFeed();if(S_view==="schools")renderSchools();}
   for(const t of TABS){$("#"+t).hidden=t!==name;$("#tab-"+t).setAttribute("aria-selected",String(t===name));}
@@ -482,7 +482,7 @@ async function renderSchools(){
     const has=t.ret!=null;if(has)rank++;const mine=S.school&&sc.id===S.school.id;
     const note=has?`${t.count} ${t.count===1?"stock":"stocks"}`+(t.spyRet!=null?` · S&P 500 ${fmtPct(t.spyRet)} with the same money`:""):"No picks yet";
     return el("li",{class:mine?"me":""},el("span",{class:"r",text:has?"#"+rank:"–"}),
-      el("span",{class:"n",text:sc.name+(mine?" (your school)":"")},el("small",{class:"sc",text:note})),
+      el("span",{class:"n",text:sc.name+(mine?(window.WVFC_ROLE==="admin"?" (viewing)":" (your school)"):"")},el("small",{class:"sc",text:note})),
       el("span",{class:"g "+(has?cls(t.ret):""),text:has?fmtPct(t.ret):"–"}),el("span",{class:"v",text:has?fmt0(t.val):""}));})),
     el("p",{class:"meta",style:"margin-top:12px",text:"Ranked by % gain, so a school with fewer picks can still win. Prices are the latest daily closes."}));
 }

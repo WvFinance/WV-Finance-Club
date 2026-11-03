@@ -77,10 +77,26 @@ async function start(){
 
 /* ---------- Which school the member belongs to ---------- */
 // Accounts made before schools existed have no profile row; they're Waubonsie.
+// Teachers and the admin also get the Students tab (staff.js). The admin can switch to view any school.
 async function loadSchool(){
-  let school="wvhs";
-  try{const{data,error}=await db.from("profiles").select("school_id").maybeSingle();if(!error&&data&&data.school_id)school=data.school_id;}catch(e){}
+  let school="wvhs",role="student";
+  try{const{data,error}=await db.from("profiles").select("school_id,role").maybeSingle();if(!error&&data){if(data.school_id)school=data.school_id;if(data.role)role=data.role;}}catch(e){}
+  window.WVFC_ROLE=role;
+  if(role==="admin")school=await adminSchoolPick(school);
+  if(role==="teacher"||role==="admin"){$("#tab-staff").hidden=false;
+    window.WVFC_STAFF={db,role,school};document.dispatchEvent(new CustomEvent("wvfc:staff",{detail:window.WVFC_STAFF}));}
   window.WVFC_APP&&window.WVFC_APP.setSchool(school);
+}
+// Admin only: a "Viewing" menu at the top to look at any school as if logged in there.
+async function adminSchoolPick(own){
+  let schools=[];try{const r=await fetch("data/schools.json",{cache:"no-cache"});schools=(await r.json()).schools||[];}catch(e){}
+  if(!schools.length)return own;
+  let pick=own;try{const v=localStorage.getItem("wvfc.viewSchool");if(schools.some(s=>s.id===v))pick=v;}catch(e){}
+  const sel=$("#school-pick");
+  sel.replaceChildren(...schools.map(s=>{const o=document.createElement("option");o.value=s.id;o.textContent=s.name;o.selected=s.id===pick;return o;}));
+  sel.addEventListener("change",()=>{try{localStorage.setItem("wvfc.viewSchool",sel.value);}catch(e){}location.reload();});
+  $("#school-pick-wrap").hidden=false;
+  return pick;
 }
 
 /* ---------- Watchlist saved to the account ---------- */
