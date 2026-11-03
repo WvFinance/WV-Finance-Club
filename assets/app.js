@@ -373,7 +373,8 @@ function briefForSymbol(sym){const t=bare(sym);return visibleBriefs().find(b=>ba
 // Two news boards share this code: the News tab (market, crypto and our stocks)
 // and "News for our stocks" under Class Portfolio (only our stocks). ids starting with "c-" are the second one.
 const secOf=tk=>{const p=S.picks.find(x=>x.ticker===tk);return p&&p.sector||"";};
-const classBriefs=()=>S.briefs.filter(b=>!b.market&&inPortfolio(b.ticker)).sort((a,b)=>a.ticker.localeCompare(b.ticker));
+// Grouped by sector (A to Z), then ticker, so each sector gets its own heading.
+const classBriefs=()=>S.briefs.filter(b=>!b.market&&inPortfolio(b.ticker)).sort((a,b)=>(secOf(a.ticker)||"~").localeCompare(secOf(b.ticker)||"~")||a.ticker.localeCompare(b.ticker));
 function newsBoard(cls){
   const id=x=>$("#"+(cls?"c-":"")+x),key=cls?"classTk":"newsTk";
   const list=cls?classBriefs():visibleBriefs();
@@ -388,7 +389,8 @@ function newsBoard(cls){
   const mk=list.filter(n=>n.market).length,sk=list.length-mk;const label=t=>el("div",{class:"eyebrow",style:"margin:6px 2px 0",text:t});
   // Groups: the market (S&P 500, Nasdaq), crypto (Bitcoin, Ethereum), then the club's stocks.
   list.forEach((n,i)=>{const prev=list[i-1];if(!cls){if(i===0&&mk&&!n.crypto)nl.append(label("The market"));if(n.crypto&&!(prev&&prev.crypto))nl.append(label("Crypto"));if(i===mk&&sk)nl.append(label("Class portfolio"));}
-    nl.append(el("button",{class:"nitem","aria-current":String(n.ticker===S[key]),onclick:()=>{S[key]=n.ticker;newsBoard(cls);cls?renderClassFeed():renderNewsFeed();if(innerWidth<820)br.scrollIntoView({behavior:"smooth",block:"start"});}},el("span",{class:"t"},n.market?n.name:n.ticker,cls&&secOf(n.ticker)?el("span",{class:"sec",text:" · "+secOf(n.ticker)}):null),sentiPill(n.sentiment),el("span",{class:"h",text:n.headline||""})));});
+    else if(i===0||secOf(n.ticker)!==secOf(prev.ticker))nl.append(label(secOf(n.ticker)||"Other"));
+    nl.append(el("button",{class:"nitem","aria-current":String(n.ticker===S[key]),onclick:()=>{S[key]=n.ticker;newsBoard(cls);cls?renderClassFeed():renderNewsFeed();if(innerWidth<820)br.scrollIntoView({behavior:"smooth",block:"start"});}},el("span",{class:"t",text:n.market?n.name:n.ticker}),sentiPill(n.sentiment),el("span",{class:"h",text:n.headline||""})));});
   if(!cls&&!sk){nl.append(label("Class portfolio"),el("div",{class:"notice",text:S.picks.length?"Briefs for our picks are on the way.":"Briefs for our stocks show up here once they're in the Class Portfolio."}));}
   if(cls){const missing=S.picks.filter(p=>!list.some(b=>b.ticker===p.ticker)).map(p=>p.ticker);if(missing.length)nl.append(el("div",{class:"notice",text:`No brief yet for ${missing.join(", ")}.`}));}
   const n=list.find(x=>x.ticker===S[key]);
