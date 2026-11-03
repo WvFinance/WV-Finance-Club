@@ -23,7 +23,7 @@ const STAT={open:"Waiting",filled:"Went through",canceled:"Canceled",failed:"Did
 let ST=null,loaded=false,people=[],schools=[];
 function start(d){if(ST)return;ST=d;
   const admin=d.role==="admin";
-  $("#st-sub").textContent=admin?"Admin view: every student at every school. Only your account can see all schools. View only.":"What the students at your school are buying in Paper Trading. Only teachers can see this. View only.";
+  $("#st-sub").textContent=admin?"Admin view: every school's Class Portfolio and students. Only your account can see all schools. Students' game accounts are view only.":"Buy and sell for your school's Class Portfolio, and see what your students are buying in Paper Trading (view only). Only teachers can see this tab.";
   if(!$("#staff").hidden)load();}
 document.addEventListener("wvfc:staff",e=>start(e.detail));
 if(window.WVFC_STAFF)start(window.WVFC_STAFF);
@@ -50,7 +50,7 @@ function shown(){
   const school=ST.role==="admin"?$("#st-school").value:"all",q=$("#st-find").value.trim().toLowerCase();
   return students().filter(p=>(school==="all"||p.school_id===school)&&(!q||(p.name||"").toLowerCase().includes(q)||(p.email||"").toLowerCase().includes(q)));
 }
-function render(){renderTiles();renderList();renderTeachers();}
+function render(){renderClass();renderTiles();renderList();renderTeachers();}
 function renderTiles(){
   const list=shown(),play=list.filter(p=>p.joined);
   const avg=play.length?play.reduce((s,p)=>s+(+p.gain_pct),0)/play.length:null;
@@ -127,6 +127,72 @@ async function setRole(email,role,m){
   if(error){m.textContent=errText(error);$("#st-teachers").querySelectorAll("button").forEach(b=>b.disabled=false);return;}
   toast(role==="teacher"?`${email} is now a teacher at ${data}.`:`${email} is no longer a teacher.`);
   loaded=false;await load();
+}
+
+/* ---------- Class Portfolio: teachers buy and sell for their school ---------- */
+// The database looks up the real price and checks the teacher's school (supabase/class-portfolio.sql).
+const SECTORS=["Tech","Banks","Health","Energy","Shopping","Food & drinks","Media","Industrial","Real estate","Utilities","Materials","Other"];
+let stocks=null,classBusy=false;
+async function stockList(){if(!stocks){try{const r=await fetch("data/stocks.json");stocks=new Map(((await r.json()).stocks||[]).map(x=>[x[0],x]));}catch(e){stocks=new Map();}}return stocks;}
+const schoolName=id=>{const s=schools.find(x=>x.id===id);return s?s.name:(people.find(p=>p.school_id===id)||{}).school||"your school";};
+async function renderClass(){
+  const box=$("#st-class"),app=window.WVFC_APP;if(!app||!app.picks){box.hidden=true;return;}box.hidden=false;
+  const picks=app.picks(),rows=(await app.classRows()).filter(r=>r.school_id===ST.school&&r.sold_at).sort((a,b)=>b.sold_at<a.sold_at?-1:1);
+  const name=schoolName(ST.school);
+  const m=el("p",{class:"ptmsg",role:"alert"});
+  const inp=(id,attrs)=>el("input",Object.assign({class:"ptinp",id},attrs));
+  const form=el("form",{class:"stbuy",autocomplete:"off",onsubmit:e=>{e.preventDefault();buy(m);}},
+    el("div",{},el("label",{class:"ptlabel",for:"cb-sym",text:"Stock ticker"}),inp("cb-sym",{maxlength:10,placeholder:"Like COST",autocapitalize:"characters",spellcheck:"false",required:true})),
+    el("div",{},el("label",{class:"ptlabel",for:"cb-amt",text:"Dollars to spend"}),inp("cb-amt",{type:"number",min:1,step:"0.01",inputmode:"decimal",placeholder:"Like 1000",required:true})),
+    el("div",{},el("label",{class:"ptlabel",for:"cb-sec",text:"Sector"}),el("select",{class:"ptinp",id:"cb-sec"},SECTORS.map(x=>el("option",{value:x,text:x})))),
+    el("div",{},el("label",{class:"ptlabel",for:"cb-who",text:"Pitched by (optional)"}),inp("cb-who",{maxlength:60,placeholder:"Student's name"})),
+    el("div",{class:"wide"},el("label",{class:"ptlabel",for:"cb-why",text:"Why we bought it (optional)"}),inp("cb-why",{maxlength:400,placeholder:"The pitch in one sentence"})),
+    el("div",{class:"wide"},el("button",{class:"btn primary",type:"submit",id:"cb-go",text:"Buy for the Class Portfolio"})));
+  const td=(t,k)=>el("td",{class:k||"",text:t});
+  const held=picks.map(p=>({p,c:app.calc(p)}));
+  box.replaceChildren(el("h3",{class:"h3",text:`${name} Class Portfolio`}),
+    el("p",{class:"meta",text:(ST.role==="admin"?`You're trading for ${name}. Use the Viewing menu at the top to pick another school. `:"Only teachers can buy and sell here. ")+"Trades use the real price right now, looked up by the database."}),
+    form,m,
+    el("h4",{class:"pth4",text:"What the class owns"}),
+    picks.length?el("div",{class:"tablewrap"},el("table",{class:"pos"},
+      el("thead",{},el("tr",{},["Stock","Bought","Paid per share","Money in","Worth now",""].map((t,i,a)=>el("th",{class:i&&i<a.length-1?"num":"",text:t})))),
+      el("tbody",{},held.map(({p,c})=>el("tr",{},el("td",{},el("b",{class:"stsym",text:p.ticker}),el("small",{class:"stmail",text:p.name||""})),
+        td(p.entryDate,"num"),td(fmt$(p.entryPrice),"num"),td(fmt$(p.invested||(p.shares||0)*p.entryPrice),"num"),td(c&&c.value!=null?fmt$(c.value):"–","num"),
+        el("td",{},el("button",{type:"button",class:"btn small sell",text:"Sell",onclick:e=>sell(p,e.currentTarget,m)})))))))
+      :el("p",{class:"meta",text:"The Class Portfolio is empty. Buy its first stock above."}),
+    rows.length?el("h4",{class:"pth4",text:"Sold"}):"",
+    rows.length?el("ul",{class:"ptlist"},rows.slice(0,20).map(r=>{const g=r.sold_price/r.entry_price-1;return el("li",{},
+      el("span",{class:"pttag sell",text:"Sold"}),el("span",{text:`${r.ticker}: bought at ${fmt$(r.entry_price)}, sold at ${fmt$(r.sold_price)}`}),
+      el("span",{class:cls(g),text:fmtPct(g)}),el("span",{class:"o",text:when(r.sold_at)}));})):"");
+}
+async function buy(m){
+  if(classBusy)return;m.textContent="";
+  const sym=$("#cb-sym").value.trim().toUpperCase(),amt=+$("#cb-amt").value;
+  if(!sym){m.textContent="Type a ticker first, like COST.";return;}
+  if(!(amt>=1)){m.textContent="Enter how many dollars to spend.";return;}
+  const st=(await stockList()).get(sym);
+  classBusy=true;const b=$("#cb-go");b.disabled=true;
+  try{
+    const{data,error}=await ST.db.rpc("class_buy",{school:ST.school,sym,dollars:amt,stock_name:st?st[1]:null,stock_symbol:st&&st[2]?`${st[2]}:${sym}`:null,
+      stock_sector:$("#cb-sec").value,pitched:$("#cb-who").value,why:$("#cb-why").value});
+    if(error)throw error;
+    toast(`Bought ${(+data.shares).toFixed(2)} shares of ${data.ticker} at ${fmt$(data.entry_price)} for the Class Portfolio`);
+    await window.WVFC_APP.refreshPicks();renderClass();
+  }catch(e){m.textContent=/class_buy|schema cache/i.test(errText(e))?"Class Portfolio trading isn't set up yet. Run supabase/class-portfolio.sql in Supabase first.":errText(e);b.disabled=false;}
+  finally{classBusy=false;}
+}
+async function sell(p,b,m){
+  if(classBusy)return;m.textContent="";
+  if(b.dataset.sure!=="1"){b.dataset.sure="1";b.textContent="Sure? Sell";return;}
+  classBusy=true;b.disabled=true;
+  try{
+    const r=p.dbId?await ST.db.rpc("class_sell",{pick:p.dbId})
+      :await ST.db.rpc("class_sell_file",{school:ST.school,sym:p.ticker,bought:p.entryDate,paid:p.entryPrice,amount:p.invested||null,qty:p.shares||null,stock_name:p.name||null,stock_sector:p.sector||null});
+    if(r.error)throw r.error;
+    toast(`Sold ${p.ticker} at ${fmt$(r.data.sold_price)}`);
+    await window.WVFC_APP.refreshPicks();renderClass();
+  }catch(e){m.textContent=/class_sell|schema cache/i.test(errText(e))?"Class Portfolio trading isn't set up yet. Run supabase/class-portfolio.sql in Supabase first.":errText(e);b.disabled=false;}
+  finally{classBusy=false;}
 }
 
 $("#st-school").addEventListener("change",()=>{$("#st-detail").hidden=true;render();});
