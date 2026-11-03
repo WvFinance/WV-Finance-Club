@@ -66,7 +66,20 @@ Logins and data are stored in [Supabase](https://supabase.com). `supabase/setup.
 
 The **Paper Trading** tab is a practice game. Each member who joins gets $50,000 of pretend money to buy and sell real stocks at the real price, and a leaderboard ranks everyone by % gain. Trades only go through while the market is open (weekdays 8:30am to 3pm Chicago time; market holidays aren't counted).
 
-Prices come from [Finnhub](https://finnhub.io). The database looks them up itself, so nobody can send in a fake price, and the Finnhub key is kept in Supabase's Vault, not in the website. `supabase/paper-trading.sql` sets it all up: put the Finnhub key near the top, then run it once in Supabase's SQL Editor. A scheduled job keeps the prices of owned stocks fresh every 10 minutes during market hours. Code: `assets/paper.js`.
+Prices come from [Finnhub](https://finnhub.io). The database looks them up itself, so nobody can send in a fake price, and the Finnhub key is kept in Supabase's Vault, not in the website. `supabase/paper-trading.sql` sets it all up: put the Finnhub key near the top, then run it once in Supabase's SQL Editor. A scheduled job keeps the prices of owned stocks fresh during market hours. Code: `assets/paper.js`.
+
+### Order types
+
+`supabase/paper-orders.sql` adds more ways to trade. Run it once in Supabase's SQL Editor, after `paper-trading.sql`.
+
+- **Market**: trade right now at the real price (market hours only).
+- **Limit**: wait for a better price. Buy at your price or lower, sell at your price or higher.
+- **Stop** (stop loss): once the price passes your line, trade at the price then.
+- **Stop-limit**: a stop that turns into a limit order, so it only trades at your limit or better.
+- **Trailing stop**: a stop that follows the price. A sell follows the highest price and trades if it drops a set % below it.
+- **Short / Buy to cover**: bet a stock goes down by selling borrowed shares and buying them back later. All your shorts together can be worth at most half your account, and a short is bought back automatically if the price doubles.
+
+Waiting orders can be placed any time and are checked every 2 minutes while the market is open, so the fill price can be a little different from the line. Each member can have up to 20 waiting orders.
 
 ---
 

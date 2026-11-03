@@ -411,7 +411,7 @@ html.unlocked #gate{display:none}
 #pt-market.open{color:var(--up)}
 .ptprice{margin:10px 0 0;min-height:1.5em}
 .ptprice .up{color:var(--up)}.ptprice .down{color:var(--down)}
-#pt-form .ptrow:last-of-type{margin-top:16px}
+#pt-form .ptgo{margin-top:16px}
 #pt-form .ptrow .btn{flex:1;justify-content:center;padding:11px 14px;font-size:15px}
 #pt-form .ptrow .btn#pt-check{flex:none}
 .btn.sell{background:var(--down-soft);border-color:var(--down);color:var(--down)}
@@ -433,4 +433,15 @@ html.unlocked #gate{display:none}
 .ptlist li:first-child{border-top:0}
 .ptlist .o{margin-left:auto;font-size:12px;color:var(--muted);font-family:var(--f-mono)}
 .pttag{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:999px}
-.pttag.buy{background:var(--up-soft);color:var(--up)}.pttag.sell{background:var(--down-soft);color:var(--down)}
+.pttag.buy,.pttag.cover{background:var(--up-soft);color:var(--up)}.pttag.sell,.pttag.short{background:var(--down-soft);color:var(--down)}
+.pttag.wait{background:var(--gold-soft);color:var(--gold)}
+td .pttag.short{margin-left:8px;font-size:11px}
+select.ptinp{appearance:none;cursor:pointer;padding-right:34px;background-image:linear-gradient(45deg,transparent 50%,var(--ink-2) 50%),linear-gradient(135deg,var(--ink-2) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat}
+#pt-side{margin-top:2px}
+.pthelp{margin:8px 0 0;font-size:14px;line-height:1.5;color:var(--ink-2)}
+.ptprices{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0 12px}
+.ptprices>[hidden]{display:none}
+.pth4{margin:18px 0 0;font-size:13px;font-weight:600;color:var(--ink-2);text-transform:uppercase;letter-spacing:.06em}
+#pt-orders{margin-bottom:16px}
+#pt-orders .meta{margin:4px 0 0}
+.ptlist.done li{color:var(--ink-2);font-size:14px}
