@@ -455,31 +455,31 @@ async function loadEarnings(){
 function upcomingRows(){
   const today=new Date();today.setHours(0,0,0,0);const end=new Date(today.getTime()+92*864e5);
   const day=iso=>new Date(iso+"T12:00:00");const inRange=d=>d&&d>=today&&d<=end;const rows=[];
-  (S.marketCal||[]).forEach(e=>{const d=day(e.date),k=CAL_KIND[e.type]||["Market",""];if(inRange(d))rows.push({d,tag:k[0],title:e.title,mean:k[1]});});
+  const EARN="The company shares how much money it made. The stock often jumps or drops a lot right after.";
+  (S.marketCal||[]).forEach(e=>{const d=day(e.date),k=CAL_KIND[e.type]||["",""];if(inRange(d))rows.push({d,k:e.type,title:e.title,mean:k[1]});});
   const mine=S.mine||[],earnTk=new Set();
   (S.earn||[]).forEach(e=>{const d=e.date&&day(e.date);if(!inRange(d)||!mine.includes(e.symbol)||earnTk.has(e.symbol+e.date))return;earnTk.add(e.symbol+e.date);
-    const when=e.hour==="bmo"?" before the market opens":e.hour==="amc"?" after the market closes":"";
-    rows.push({d,tag:"Earnings",tk:e.symbol,title:`${e.symbol} reports earnings${when}`,mean:"The company shares how much money it made. The stock often jumps or drops a lot right after."});});
+    const when=e.hour==="bmo"?"Before the market opens. ":e.hour==="amc"?"After the market closes. ":"";
+    rows.push({d,k:"earn",tk:e.symbol,title:`${e.symbol} earnings`,mean:when+EARN});});
   mine.forEach(tk=>{const b=S.briefs.find(x=>x.ticker===tk);if(!b||!b.nextEvent)return;const d=eventDate(b.nextEvent);if(!inRange(d))return;
     const div=/dividend/i.test(b.nextEvent),earn=/earning|results/i.test(b.nextEvent);
     if(earn&&[...earnTk].some(k=>k.startsWith(tk)))return;
-    rows.push({d,tag:div?"Dividend":earn?"Earnings":"Coming up",tk,title:b.nextEvent,
-      mean:div?"The company pays its owners a little cash for each share. (Paper Trading doesn't pay dividends.)":earn?"The company shares how much money it made. The stock often jumps or drops a lot right after.":""});});
+    const amt=(b.nextEvent.match(/\$\d+(?:\.\d+)?/)||[""])[0];
+    rows.push({d,k:div?"div":earn?"earn":"other",tk,title:div?`${tk} dividend${amt?" "+amt+"/share":""}`:earn?`${tk} earnings`:`${tk}: ${b.nextEvent}`,
+      mean:b.nextEvent.replace(/\.\s*$/,"")+". "+(div?"The company pays its owners a little cash for each share. (Paper Trading doesn't pay dividends.)":earn?EARN:"")});});
   return rows.sort((a,b)=>a.d-b.d||(a.tk?1:0)-(b.tk?1:0));
 }
+// One short line per date; tap a line to see what it means.
 function renderUpcoming(){
   const box=$("#upcoming");if(!box)return;const rows=upcomingRows();box.hidden=!rows.length;if(!rows.length)return;
-  const shown=S.upAll?rows:rows.slice(0,4);
-  const more=rows.length>4?el("button",{type:"button",class:"btn small evmore",text:S.upAll?"Show fewer":`Show all ${rows.length}`,onclick:()=>{S.upAll=!S.upAll;renderUpcoming();}}):null;
-  const hasMine=(S.mine||[]).length;
-  box.replaceChildren(el("div",{},el("div",{class:"eyebrow",text:"Coming up"}),el("h3",{class:"h3",text:"Upcoming"})),
-    el("div",{class:"events"},shown.map(r=>{const inner=[el("span",{class:"edate"},el("b",{text:r.d.toLocaleDateString("en-US",{month:"short",day:"numeric"})}),el("span",{text:r.d.toLocaleDateString("en-US",{weekday:"short"})})),
-      el("span",{class:"etext"},el("span",{class:"etag",text:r.tag}),el("b",{text:r.title}),r.mean?el("span",{text:r.mean}):null)];
-      return r.tk&&S.briefs.some(b=>b.ticker===r.tk&&visibleBriefs().includes(b))
-        ?el("button",{type:"button",class:"event",title:`Open the ${r.tk} brief`,onclick:()=>{S.newsTk=r.tk;newsBoard(false);renderNewsFeed();$("#brief").scrollIntoView({behavior:"smooth",block:"start"});}},...inner)
-        :el("div",{class:"event"},...inner);})),
-    ...(more?[more]:[]),
-    ...(hasMine?[]:[el("p",{class:"meta",style:"margin:0",text:"Buy stocks in Paper Trading to see their earnings days here too."})]));
+  const shown=S.upAll?rows:rows.slice(0,5);
+  const more=rows.length>5?el("button",{type:"button",class:"btn small evmore",text:S.upAll?"Show fewer":`Show all ${rows.length}`,onclick:()=>{S.upAll=!S.upAll;renderUpcoming();}}):null;
+  box.replaceChildren(el("div",{class:"eyebrow",style:"margin:6px 2px 0",text:"Upcoming"}),
+    el("div",{class:"uplist"},shown.map(r=>el("details",{class:"uprow"},
+      el("summary",{},el("span",{class:"ud",text:r.d.toLocaleDateString("en-US",{month:"short",day:"numeric"})}),el("span",{class:"ut",text:r.title})),
+      el("div",{class:"um"},el("span",{text:r.d.toLocaleDateString("en-US",{weekday:"long"})+". "+(r.mean||"")}),
+        r.tk&&visibleBriefs().some(b=>b.ticker===r.tk)?el("button",{type:"button",class:"btn small",text:`Read the ${r.tk} brief`,onclick:()=>{S.newsTk=r.tk;newsBoard(false);renderNewsFeed();$("#brief").scrollIntoView({behavior:"smooth",block:"start"});}}):null)))),
+    ...(more?[more]:[]));
 }
 function renderNewsFeed(){
   const n=visibleBriefs().find(x=>x.ticker===S.newsTk);const key=(n?n.ticker:"mkt")+tvTheme();if(rendered.news===key)return;rendered.news=key;
