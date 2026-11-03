@@ -26,16 +26,31 @@ function setMode(m){mode=m;const login=m==="login";
 $("#auth-switch").addEventListener("click",()=>setMode(mode==="login"?"signup":"login"));
 const AUTH_ERR=[[/invalid login credentials/i,"That email and password don't match. Try again."],[/already registered|already been registered/i,"That email already has an account. Log in instead."],
   [/email not confirmed/i,"Confirm your email first. Check your inbox for the link."],[/password should be|weak password/i,"Pick a longer password, at least 8 characters."],
-  [/rate limit|too many/i,"Too many tries. Wait a minute and try again."],[/club password/,"That's not the club password. Ask a club leader for it."],[/fetch|network/i,"Couldn't reach the login server. Check your internet and try again."]];
+  [/rate limit|too many/i,"Too many tries. Wait a minute and try again."],[/club password|school code/,"That's not a school code. Ask your club leader for it."],[/database error saving new user/i,"That school code or email wasn't accepted. Check both and try again."],[/fetch|network/i,"Couldn't reach the login server. Check your internet and try again."]];
 async function sha(t){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");}
+// New accounts need their school's code (like wvhs01). This first look only gives a clear message;
+// the real check happens inside the database (supabase/district.sql).
+async function checkSchool(code,email){
+  if(!code)throw new Error("school code");
+  const{data,error}=await db.rpc("school_for_code",{c:code});
+  if(error){
+    // The school list isn't set up yet (district.sql not run): use the old club password.
+    if(/school_for_code|function|schema cache/i.test(error.message||"")&&!/fetch|network/i.test(error.message||"")){
+      if(window.WVFC_PASS&&await sha(code)!==window.WVFC_PASS)throw new Error("school code");return;}
+    throw error;}
+  const s=data&&data[0];if(!s)throw new Error("school code");
+  const dom=String(s.email_domain||"").replace(/^@/,"").toLowerCase();
+  if(dom&&!email.toLowerCase().endsWith("@"+dom))throw new Error(`Use your ${s.name} school email (it ends in @${dom}).`);
+}
 const authErr=e=>{const m=String(e&&e.message||e);const hit=AUTH_ERR.find(([r])=>r.test(m));return hit?hit[1]:m;};
 $("#gate-form").addEventListener("submit",async e=>{e.preventDefault();
   const email=$("#auth-email").value.trim(),password=$("#auth-pass").value,go=$("#auth-go");
   go.disabled=true;msg.textContent="";
   try{
-    // New accounts need the club password, so only members can join.
-    if(mode==="signup"&&window.WVFC_PASS&&await sha($("#auth-club").value.trim().toLowerCase())!==window.WVFC_PASS)throw new Error("club password");
-    const r=mode==="login"?await db.auth.signInWithPassword({email,password}):await db.auth.signUp({email,password});
+    const code=$("#auth-club").value.trim().toLowerCase();
+    if(mode==="signup")await checkSchool(code,email);
+    // The database checks the school code again when the account is made, so this check can't be skipped.
+    const r=mode==="login"?await db.auth.signInWithPassword({email,password}):await db.auth.signUp({email,password,options:{data:{school_code:code}}});
     if(r.error)throw r.error;
     if(!r.data.session){setMode("login");msg.textContent="Account made. Check your email for the confirm link, then log in.";return;}
     // Reload so the charts draw at full size.
@@ -54,10 +69,18 @@ async function start(){
   let session=null;try{({data:{session}}=await db.auth.getSession());}catch(e){}
   if(!session){root.classList.remove("unlocked");setMode("login");$("#auth-email").focus();return;}
   user=session.user;root.classList.add("unlocked");
-  loadWatch();
+  loadSchool();loadWatch();
   // The trading game (paper.js) may load after this runs, so it can also read WVFC_SESSION.
   window.WVFC_SESSION={db,user};
   document.dispatchEvent(new CustomEvent("wvfc:login",{detail:{db,user}}));
+}
+
+/* ---------- Which school the member belongs to ---------- */
+// Accounts made before schools existed have no profile row; they're Waubonsie.
+async function loadSchool(){
+  let school="wvhs";
+  try{const{data,error}=await db.from("profiles").select("school_id").maybeSingle();if(!error&&data&&data.school_id)school=data.school_id;}catch(e){}
+  window.WVFC_APP&&window.WVFC_APP.setSchool(school);
 }
 
 /* ---------- Watchlist saved to the account ---------- */

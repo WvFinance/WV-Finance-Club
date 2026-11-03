@@ -414,6 +414,8 @@ html.unlocked #gate{display:none}
 .ptboard li.me{background:var(--gold-soft);border-radius:8px}
 .ptboard .r{font-family:var(--f-mono);color:var(--gold)}
 .ptboard .n{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ptboard .sc{display:block;font-weight:400;font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis}
+.ptboard.schools .n,.ptboard.schools .sc{white-space:normal}
 .ptboard .g{font-family:var(--f-mono);text-align:right}
 .ptboard .v{font-family:var(--f-mono);color:var(--ink-2);text-align:right;font-size:13px}
 .ptboard .up{color:var(--up)}.ptboard .down{color:var(--down)}.ptboard .flat{color:var(--flat)}

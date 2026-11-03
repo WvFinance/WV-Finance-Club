@@ -33,17 +33,17 @@ function tv(container,name,config){
 }
 
 /* ---------- State ---------- */
-const S={picks:[],briefs:[],quotes:{},prices:{dates:[],closes:{}},tk:(store.get("wvfc.tk")||"NVDA"),newsTk:null,classTk:null,watch:[]};
+const S={schools:[],school:null,picks:[],briefs:[],quotes:{},prices:{dates:[],closes:{}},tk:(store.get("wvfc.tk")||"NVDA"),newsTk:null,classTk:null,watch:[]};
 try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="string");}catch(e){S.watch=[];}
 
 /* ---------- Tabs ---------- */
 const TABS=["portfolio","mine","trade","search","news","ideas"].filter(t=>document.getElementById(t));const rendered={};
-const PVIEWS=["overview","positions","sectors","history","classnews"];let S_view="overview";
+const PVIEWS=["overview","positions","sectors","history","classnews","schools"];let S_view="overview";
 function showTab(name,push){
   if(PVIEWS.includes(name)){S_view=name;name="portfolio";}else if(name==="portfolio")S_view="overview";
   if(!TABS.includes(name)){name="portfolio";}
   if(name==="portfolio"){for(const v of PVIEWS)$("#pv-"+v).hidden=v!==S_view;
-    document.querySelectorAll("#pf-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===S_view));renderBreakdown();if(S_view==="classnews")renderClassFeed();}
+    document.querySelectorAll("#pf-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===S_view));renderBreakdown();if(S_view==="classnews")renderClassFeed();if(S_view==="schools")renderSchools();}
   for(const t of TABS){$("#"+t).hidden=t!==name;$("#tab-"+t).setAttribute("aria-selected",String(t===name));}
   if(push){try{history.replaceState(null,"","#"+(name==="portfolio"&&S_view!=="overview"?S_view:name))}catch(e){}}
   if(name==="search"&&rendered.search!==S.tk+tvTheme())renderSearch();
@@ -355,7 +355,9 @@ $("#searchform").addEventListener("submit",e=>{e.preventDefault();// A name like
   if(!/^[A-Z]+:/i.test($("#q").value.trim())){const top=findStocks($("#q").value)[0];if(top){sugg=[top];pickSuggest(0);return;}}const s=normSym($("#q").value);if(!s){toast("Type a ticker, like AAPL or NYSE:F");return;}$("#q").value="";$("#q").blur();openStock(s);});
 function saveWatch(){store.set("wvfc.watch",JSON.stringify(S.watch));if(window.WVFC_ACCOUNT)window.WVFC_ACCOUNT.saveWatch(S.watch);}
 // Lets the account page (beta.html) load a saved watchlist and open stocks.
-window.WVFC_APP={setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},prices:()=>S.prices};
+// account.js tells us the member's school once they're logged in; boot() waits for it.
+let schoolSet;const schoolReady=new Promise(r=>{schoolSet=r;});
+window.WVFC_APP={setSchool(id){schoolSet(id);},setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},prices:()=>S.prices};
 function renderWatch(){
   const box=$("#wl");box.replaceChildren();const on=S.watch.some(w=>bare(w)===bare(S.tk));
   $("#wl-toggle").textContent=on?"On watchlist ✓":"Add to watchlist";
@@ -459,11 +461,42 @@ function renderSearchBrief(){
 /* ---------- Boot ---------- */
 let rsT;window.addEventListener("resize",()=>{clearTimeout(rsT);rsT=setTimeout(()=>{renderCompare();if(S_view==="history")renderHistory();},120);});
 darkMQ.addEventListener&&darkMQ.addEventListener("change",()=>{rendered.search=null;rendered.news=null;rendered.classnews=null;renderPicks();const t=location.hash.slice(1);if(t==="search")renderSearch();if(t==="news")renderNewsFeed();if(t==="classnews")renderClassFeed();});
+/* ---------- Schools ---------- */
+// data/schools.json lists every school and where its Class Portfolio file is.
+const OK_PICK=p=>p&&p.ticker&&p.entryPrice>0&&p.entryDate;
+const DEFAULT_SCHOOLS=[{id:"wvhs",name:"Waubonsie Valley",portfolio:"data/portfolio.json"}];
+const pfCache={};
+function schoolPicks(sc){if(!pfCache[sc.portfolio])pfCache[sc.portfolio]=loadJSON(sc.portfolio).then(j=>(j.picks||[]).filter(OK_PICK)).catch(()=>[]);return pfCache[sc.portfolio];}
+// One school's Class Portfolio as a whole: money in, worth now, and the same money in the S&P 500.
+function schoolTotals(picks){
+  let inv=0,val=0,spy=0,priced=0,spyOK=true;
+  for(const p of picks){const c=calc(p);if(!c||!c.invested)continue;priced++;inv+=c.invested;val+=c.value;if(c.spyValue==null)spyOK=false;else spy+=c.spyValue;}
+  return{count:picks.length,priced,inv,val,ret:inv?val/inv-1:null,spyRet:inv&&spyOK?spy/inv-1:null};
+}
+async function renderSchools(){
+  const box=$("#schools-body");if(!S.loaded){box.replaceChildren(el("p",{class:"meta",text:"Loading…"}));return;}
+  const rows=await Promise.all(S.schools.map(async sc=>({sc,t:schoolTotals(await schoolPicks(sc))})));
+  rows.sort((a,b)=>(b.t.ret==null?-1e9:b.t.ret)-(a.t.ret==null?-1e9:a.t.ret));
+  let rank=0;
+  box.replaceChildren(el("ol",{class:"ptboard schools"},rows.map(({sc,t})=>{
+    const has=t.ret!=null;if(has)rank++;const mine=S.school&&sc.id===S.school.id;
+    const note=has?`${t.count} ${t.count===1?"stock":"stocks"}`+(t.spyRet!=null?` · S&P 500 ${fmtPct(t.spyRet)} with the same money`:""):"No picks yet";
+    return el("li",{class:mine?"me":""},el("span",{class:"r",text:has?"#"+rank:"–"}),
+      el("span",{class:"n",text:sc.name+(mine?" (your school)":"")},el("small",{class:"sc",text:note})),
+      el("span",{class:"g "+(has?cls(t.ret):""),text:has?fmtPct(t.ret):"–"}),el("span",{class:"v",text:has?fmt0(t.val):""}));})),
+    el("p",{class:"meta",style:"margin-top:12px",text:"Ranked by % gain, so a school with fewer picks can still win. Prices are the latest daily closes."}));
+}
+
 async function boot(){
   renderWatch();renderQuick();
-  const [pf,nw,px]=await Promise.allSettled([loadJSON("data/portfolio.json"),loadJSON("data/news.json"),loadJSON("data/prices.json")]);
+  const [sl,nw,px]=await Promise.allSettled([loadJSON("data/schools.json"),loadJSON("data/news.json"),loadJSON("data/prices.json")]);
   if(px.status==="fulfilled"&&px.value&&px.value.closes)S.prices=px.value;
-  if(pf.status==="fulfilled")S.picks=(pf.value.picks||[]).filter(p=>p.ticker&&p.entryPrice>0&&p.entryDate);
+  S.schools=sl.status==="fulfilled"&&sl.value.schools&&sl.value.schools.length?sl.value.schools:DEFAULT_SCHOOLS;
+  // Wait for the login to say which school this is (a page with no login shows the log in box anyway).
+  const sid=await Promise.race([schoolReady,new Promise(r=>setTimeout(()=>r(null),10000))]);
+  S.school=S.schools.find(sc=>sc.id===sid)||S.schools[0];
+  $("#school-name").textContent=S.school.name;
+  S.picks=await schoolPicks(S.school);
   if(nw.status==="fulfilled"){S.briefs=nw.value.briefs||[];S.marketRecap=nw.value.market||null;if(nw.value.updated)$("#news-asof").textContent="News briefs updated "+fmtDate(nw.value.updated);}
   S.loaded=true;renderTape();renderPortfolio();renderNews();
   const fromWidget=new URLSearchParams(location.search).get("tvwidgetsymbol");

@@ -1,4 +1,4 @@
-"""Download daily closing prices for every stock in the portfolio plus SPY, QQQ and DIA.
+"""Download daily closing prices for every stock in every school's portfolio plus SPY, QQQ and DIA.
 
 Writes data/prices.json, which the site uses for current values and the
 "Club vs S&P 500" chart. Runs in GitHub Actions (see .github/workflows).
@@ -10,7 +10,7 @@ import time
 import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-PORTFOLIO = ROOT / "data" / "portfolio.json"
+SCHOOLS = ROOT / "data" / "schools.json"
 OUT = ROOT / "data" / "prices.json"
 UA = {"User-Agent": "Mozilla/5.0 (WV Finance Club price updater)"}
 
@@ -32,8 +32,19 @@ def yahoo_closes(ticker, start):
     return out
 
 
+def all_picks():
+    """Every school's picks (data/schools.json says where each school's portfolio file is)."""
+    files = [s["portfolio"] for s in json.loads(SCHOOLS.read_text()).get("schools", []) if s.get("portfolio")]
+    picks = []
+    for f in dict.fromkeys(files or ["data/portfolio.json"]):
+        path = ROOT / f
+        if path.exists():
+            picks += json.loads(path.read_text()).get("picks", [])
+    return picks
+
+
 def main():
-    picks = json.loads(PORTFOLIO.read_text()).get("picks", [])
+    picks = all_picks()
     # QQQ and DIA track the Nasdaq 100 and the Dow for the "Market today" box.
     tickers = sorted({p["ticker"].upper() for p in picks if p.get("ticker")} | {"SPY", "QQQ", "DIA"})
     dates = [dt.date.fromisoformat(p["entryDate"]) for p in picks if p.get("entryDate")]

@@ -3,13 +3,13 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { writeBrief } from "../src/brief.js";
 import { briefJobs, mergeBrief } from "../src/jobs.js";
+import { allPicks } from "./picks.mjs";
 
 const NEWS = new URL("../../data/news.json", import.meta.url);
-const PORTFOLIO = new URL("../../data/portfolio.json", import.meta.url);
 const apiKey = process.env.ANTHROPIC_API_KEY;
 if (!apiKey) throw new Error("ANTHROPIC_API_KEY is not set");
 const news = JSON.parse(readFileSync(NEWS, "utf8"));
-const picks = JSON.parse(readFileSync(PORTFOLIO, "utf8")).picks || [];
+const picks = allPicks();
 
 const jobs = briefJobs(news, picks);
 

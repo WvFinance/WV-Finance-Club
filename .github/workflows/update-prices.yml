@@ -5,7 +5,7 @@ on:
     - cron: "30 21 * * 1-5"   # weekdays after the market closes (4:30pm Eastern in winter)
   push:
     branches: [main]
-    paths: [data/portfolio.json, scripts/update_prices.py, .github/workflows/update-prices.yml]
+    paths: [data/portfolio.json, data/portfolios/**, data/schools.json, scripts/update_prices.py, .github/workflows/update-prices.yml]
   workflow_dispatch:
 
 permissions:

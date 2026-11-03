@@ -1,4 +1,4 @@
-// Trading game: $50,000 of pretend money, real prices, a club leaderboard.
+// Trading game: $50,000 of pretend money, real prices, one leaderboard for the whole district.
 // The My Portfolio tab shows the same game stocks and waiting orders, without the order form.
 // Prices and trades are handled by the database (supabase/paper-trading.sql), so nobody can send in a fake price.
 (function(){
@@ -132,7 +132,7 @@ function renderBoard(){
   const box=$("#pt-board");
   if(!G.board.length){box.replaceChildren(el("p",{class:"meta",text:"Loading…"}));return;}
   box.replaceChildren(el("ol",{class:"ptboard"},G.board.slice(0,25).map(r=>el("li",{class:r.me?"me":""},
-    el("span",{class:"r",text:"#"+r.rank}),el("span",{class:"n",text:r.name+(r.me?" (you)":"")}),
+    el("span",{class:"r",text:"#"+r.rank}),el("span",{class:"n",text:r.name+(r.me?" (you)":"")},r.school?el("small",{class:"sc",text:r.school}):null),
     el("span",{class:"g "+cls(+r.gain_pct),text:fmtPct(+r.gain_pct)}),el("span",{class:"v",text:fmt$(r.value)})))));
 }
 
