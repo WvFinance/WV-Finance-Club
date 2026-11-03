@@ -133,47 +133,41 @@
   },
   {
    "bear": [
-    "Profit of $1.89 per share and sales of $201.9 billion were slightly below what analysts expected.",
-    "Over the past 12 months, Amazon spent $42.4 billion more cash than it brought in, mostly because of AI spending.",
-    "Amazon plans to spend about $220 billion on buildings and equipment this year."
+    "Profit of $1.89 per share was below the $1.96 analysts expected.",
+    "Over the past 12 months, Amazon spent $42.4 billion more cash than it brought in, mostly on AI.",
+    "Amazon plans to spend about $220 billion on buildings and equipment this year and says spending will be much higher in 2027."
    ],
    "bull": [
-    "AWS grew 39%, its fastest pace in nearly five years.",
-    "The stock recovered most of an early 7% drop and closed down only 1.4% on Friday.",
-    "Operating income (profit from its main business) jumped to $28.1 billion from $17.4 billion a year earlier."
+    "Phillip Securities upgraded the stock to Buy and raised its price target to $330.",
+    "AWS grew 39% to $46 billion, and Amazon has $578 billion in signed AWS contracts not yet billed.",
+    "Amazon's CEO expects AWS to grow more than 40% in both 2027 and 2028."
    ],
-   "headline": "Amazon recovers most of its early drop after missing profit expectations",
+   "headline": "Amazon jumps about 5% after an analyst upgrade praises its fast-growing cloud",
    "nextEvent": "",
-   "sentiment": "neutral",
+   "sentiment": "bullish",
    "sources": [
     {
-     "title": "Stock Market Today October 30, 2026: Tech Stocks Fall as Intel Has Its Worst Day in Decades",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-october-30-2026",
-     "outlet": "StockTitan",
-     "date": "Oct 30, 2026"
-    },
-    {
-     "title": "Stock Market Today, Oct. 29: Amazon Falls on Q3 Earnings Report and Capex Concerns",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/10/29/stock-market-today-oct-29-amazon-falls-on-q3-earnings-report-and-capex-concerns/",
+     "title": "Why Amazon Stock Rallied Monday Morning",
+     "url": "https://www.fool.com/investing/2026/11/02/why-amazon-stock-rallied-monday-morning/",
      "outlet": "The Motley Fool",
-     "date": "Oct 29, 2026"
+     "date": "Nov 2, 2026"
     },
     {
-     "title": "Amazon Q3 Earnings: AWS Grows 39%, Fastest Pace in Nearly 5 Years",
-     "url": "https://en.shiftdelete.net/amazon-q3-earnings/",
-     "outlet": "ShiftDelete.Net",
-     "date": "Oct 29, 2026"
+     "title": "Amazon Climbs 5% as Upgrade Fuels Post-Earnings Rebound on AWS Strength; Walmart Rises 2%, Alphabet Edges Higher",
+     "url": "https://247wallst.com/investing/2026/11/02/amazon-climbs-5-as-upgrade-fuels-post-earnings-rebound-on-aws-strength-walmart-rises-2-alphabet-edges-higher/",
+     "outlet": "24/7 Wall St.",
+     "date": "Nov 2, 2026"
     },
     {
-     "title": "Week Ahead: US Midterms, Apple Earnings and October Jobs",
-     "url": "https://www.heygotrade.com/en/news/weekly-economic-outlook-2026-11-02/",
-     "outlet": "Gotrade",
+     "title": "Amazon Stock Rises as Phillip Securities Upgrades to Buy, Raises Target to $330",
+     "url": "https://thecryptobasic.com/2026/11/02/amazon-stock-rises-as-phillip-securities-upgrades-to-buy-raises-target-to-330/",
+     "outlet": "The Crypto Basic",
      "date": "Nov 2, 2026"
     }
    ],
-   "summary": "On October 29, Amazon reported sales of $201.9 billion and profit of $1.89 per share, both slightly below what analysts expected. Its cloud business, AWS, grew 39%, its fastest growth in nearly five years. The stock fell about 7% early on Friday, October 30, but recovered most of that and closed down just 1.4%. Investors are weighing strong cloud growth against Amazon's huge spending on AI, which has made its cash flow negative over the past year.",
+   "summary": "On Monday, November 2, Amazon's stock rose about 5% to around $252 after Phillip Securities upgraded it to Buy and raised its price target (its guess of what the stock could be worth) to $330. The firm pointed to Amazon's cloud business, AWS, which grew 39% last quarter to $46 billion, its fastest pace in nearly five years. The jump won back much of the drop after Amazon's October 29 earnings, when profit came in a little below what analysts expected. Investors are still weighing that cloud growth against Amazon's huge spending on AI.",
    "ticker": "AMZN",
-   "updatedAt": "2026-11-02T11:40:32.167Z",
+   "updatedAt": "2026-11-03T11:39:33.981Z",
    "symbol": "NASDAQ:AMZN",
    "name": "Amazon"
   },
