@@ -37,18 +37,20 @@ const S={livePx:{},schools:[],school:null,picks:[],briefs:[],quotes:{},prices:{d
 try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="string");}catch(e){S.watch=[];}
 
 /* ---------- Tabs ---------- */
-const TABS=["portfolio","mine","trade","search","news","ideas","staff"].filter(t=>document.getElementById(t));const rendered={};
-const PVIEWS=["overview","positions","sectors","history","classnews","schools"];let S_view="overview";
+const TABS=["portfolio","mine","trade","search","news","district","ideas","staff"].filter(t=>document.getElementById(t));const rendered={};
+const PVIEWS=["overview","positions","sectors","history","classnews"];let S_view="overview";
 function showTab(name,push){
+  if(name==="schools")name="district";
   if(PVIEWS.includes(name)){S_view=name;name="portfolio";}else if(name==="portfolio")S_view="overview";
   if(!TABS.includes(name)||$("#tab-"+name).hidden){name="portfolio";}
   if(name==="portfolio"){for(const v of PVIEWS)$("#pv-"+v).hidden=v!==S_view;
-    document.querySelectorAll("#pf-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===S_view));renderBreakdown();if(S_view==="classnews")renderClassFeed();if(S_view==="schools")renderSchools();}
+    document.querySelectorAll("#pf-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===S_view));renderBreakdown();if(S_view==="classnews")renderClassFeed();}
   for(const t of TABS){$("#"+t).hidden=t!==name;$("#tab-"+t).setAttribute("aria-selected",String(t===name));}
   if(push){try{history.replaceState(null,"","#"+(name==="portfolio"&&S_view!=="overview"?S_view:name))}catch(e){}}
   if(name==="search"&&rendered.search!==S.tk+tvTheme())renderSearch();
   if(name==="news")renderNewsFeed();
   if(name==="ideas")loadIdeas();
+  if(name==="district")renderSchools();
   document.dispatchEvent(new CustomEvent("wvfc:tab",{detail:name}));
   window.scrollTo({top:0});
 }
