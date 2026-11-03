@@ -372,6 +372,7 @@ function visibleBriefs(){return S.briefs.filter(b=>b.market).sort((a,b)=>(a.orde
 function briefForSymbol(sym){const t=bare(sym);return visibleBriefs().find(b=>bare(b.symbol||b.ticker)===t||b.ticker===t)||null;}
 // Two news boards share this code: the News tab (market, crypto and our stocks)
 // and "News for our stocks" under Class Portfolio (only our stocks). ids starting with "c-" are the second one.
+const secOf=tk=>{const p=S.picks.find(x=>x.ticker===tk);return p&&p.sector||"";};
 const classBriefs=()=>S.briefs.filter(b=>!b.market&&inPortfolio(b.ticker)).sort((a,b)=>a.ticker.localeCompare(b.ticker));
 function newsBoard(cls){
   const id=x=>$("#"+(cls?"c-":"")+x),key=cls?"classTk":"newsTk";
@@ -387,12 +388,12 @@ function newsBoard(cls){
   const mk=list.filter(n=>n.market).length,sk=list.length-mk;const label=t=>el("div",{class:"eyebrow",style:"margin:6px 2px 0",text:t});
   // Groups: the market (S&P 500, Nasdaq), crypto (Bitcoin, Ethereum), then the club's stocks.
   list.forEach((n,i)=>{const prev=list[i-1];if(!cls){if(i===0&&mk&&!n.crypto)nl.append(label("The market"));if(n.crypto&&!(prev&&prev.crypto))nl.append(label("Crypto"));if(i===mk&&sk)nl.append(label("Class portfolio"));}
-    nl.append(el("button",{class:"nitem","aria-current":String(n.ticker===S[key]),onclick:()=>{S[key]=n.ticker;newsBoard(cls);cls?renderClassFeed():renderNewsFeed();if(innerWidth<820)br.scrollIntoView({behavior:"smooth",block:"start"});}},el("span",{class:"t",text:n.market?n.name:n.ticker}),sentiPill(n.sentiment),el("span",{class:"h",text:n.headline||""})));});
+    nl.append(el("button",{class:"nitem","aria-current":String(n.ticker===S[key]),onclick:()=>{S[key]=n.ticker;newsBoard(cls);cls?renderClassFeed():renderNewsFeed();if(innerWidth<820)br.scrollIntoView({behavior:"smooth",block:"start"});}},el("span",{class:"t"},n.market?n.name:n.ticker,cls&&secOf(n.ticker)?el("span",{class:"sec",text:" · "+secOf(n.ticker)}):null),sentiPill(n.sentiment),el("span",{class:"h",text:n.headline||""})));});
   if(!cls&&!sk){nl.append(label("Class portfolio"),el("div",{class:"notice",text:S.picks.length?"Briefs for our picks are on the way.":"Briefs for our stocks show up here once they're in the Class Portfolio."}));}
   if(cls){const missing=S.picks.filter(p=>!list.some(b=>b.ticker===p.ticker)).map(p=>p.ticker);if(missing.length)nl.append(el("div",{class:"notice",text:`No brief yet for ${missing.join(", ")}.`}));}
   const n=list.find(x=>x.ticker===S[key]);
   br.replaceChildren(...[
-    el("div",{class:"sechead"},el("div",{},el("div",{class:"eyebrow",text:n.market?`${n.crypto?"Crypto":"Market"} brief · ${n.name}`:`${n.ticker} · ${n.name||""}`}),el("h3",{text:n.headline||""})),sentiPill(n.sentiment)),
+    el("div",{class:"sechead"},el("div",{},el("div",{class:"eyebrow",text:n.market?`${n.crypto?"Crypto":"Market"} brief · ${n.name}`:[n.ticker,n.name,cls&&secOf(n.ticker)].filter(Boolean).join(" · ")}),el("h3",{text:n.headline||""})),sentiPill(n.sentiment)),
     el("p",{class:"lede",text:n.summary||""}),
     el("div",{class:"sides"},el("div",{class:"side-col bull"},el("h4",{text:"What the bulls say"}),el("ul",{},(n.bull||[]).map(x=>el("li",{text:x})))),el("div",{class:"side-col bear"},el("h4",{text:"What the bears say"}),el("ul",{},(n.bear||[]).map(x=>el("li",{text:x}))))),
     n.nextEvent?el("div",{class:"notice"},el("b",{text:"Coming up: "}),n.nextEvent):null,
