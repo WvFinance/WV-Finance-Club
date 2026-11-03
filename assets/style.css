@@ -11,6 +11,19 @@
   --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
   --r:10px;
 }
+/* Neuqua Valley: navy blue and yellow. */
+html[data-school="nvhs"]{
+  --bg:#060d1c; --surface:#0d1830; --surface-2:#142243; --ink-2:#b1bad0; --muted:#8590ab; --line:#22325a;
+  --brand-2:#ffcd2e; --green:#ffc72c; --on-green:#0b1d3f;
+  --mast:#0b1f4a; --band:#08152f; --band-ink-2:#a9b4cc;
+  --gold:#ffc72c; --gold-soft:#2c2610; --on-gold:#0b1d3f;
+}
+/* Metea Valley: white, black and yellow. White masthead, black page. */
+html[data-school="mvhs"]{
+  --brand-2:#f5c400; --green:#f5c400; --on-green:#111111;
+  --mast:#ffffff; --gold:#f5c400; --gold-soft:#2e2808; --on-gold:#111111;
+}
+html[data-school="mvhs"] .mast{--band-ink:#111111; --band-ink-2:#555551}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
