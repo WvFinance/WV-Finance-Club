@@ -59,7 +59,7 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
     <button class="tab" role="tab" id="tab-trade" aria-controls="trade" aria-selected="false" data-tab="trade">Paper Trading</button>
     <button class="tab" role="tab" id="tab-search" aria-controls="search" aria-selected="false" data-tab="search">Search</button>
     <button class="tab" role="tab" id="tab-news" aria-controls="news" aria-selected="false" data-tab="news">News<span class="count" id="cnt-news"></span></button>
-    <button class="tab" role="tab" id="tab-district" aria-controls="district" aria-selected="false" data-tab="district"><span class="tlong">District </span>Leaderboard</button>
+    <button class="tab hasmenu" role="tab" id="tab-district" aria-controls="district" aria-selected="false" aria-haspopup="menu" aria-expanded="false" data-tab="district">District<span class="caret" aria-hidden="true"></span></button>
     <button class="tab" role="tab" id="tab-ideas" aria-controls="ideas" aria-selected="false" data-tab="ideas">Suggestions</button>
     <button class="tab" role="tab" id="tab-staff" aria-controls="staff" aria-selected="false" data-tab="staff" hidden>Students</button>
   </div>
@@ -69,6 +69,10 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
     <button role="menuitem" data-view="sectors">What we own by sector</button>
     <button role="menuitem" data-view="history">Club vs S&amp;P 500</button>
     <button role="menuitem" data-view="classnews">News</button>
+  </div>
+  <div class="tabmenu" id="dist-menu" role="menu" hidden>
+    <button role="menuitem" data-view="dschools">District Leaderboard</button>
+    <button role="menuitem" data-view="dpeople">District Individual Leaderboard</button>
   </div>
 </nav>
 
@@ -198,7 +202,7 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
         <div class="ptrow ptgo"><button class="btn primary" type="submit" id="pt-go">Buy now</button></div>
         <p class="ptmsg" id="pt-msg" role="alert"></p>
       </form>
-      <div class="panel"><h3 class="h3">District leaderboard</h3><div id="pt-board"></div></div>
+      <div class="panel"><h3 class="h3">Class Leaderboard</h3><div id="pt-board"></div></div>
     </div>
     <div class="panel" id="pt-orders" hidden></div>
     <div class="panel" id="pt-hold"></div>
@@ -264,8 +268,14 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
 <!-- SUGGESTIONS -->
 <!-- DISTRICT LEADERBOARD -->
 <section role="tabpanel" id="district" aria-labelledby="tab-district" hidden>
+ <div class="pview" id="dv-dschools">
   <div class="sechead"><div><h2>District Leaderboard</h2><p class="sub">Every school's Class Portfolio, ranked by how much it has gained, in %, since its first pick.</p></div></div>
   <div class="panel" id="schools-body"></div>
+ </div>
+ <div class="pview" id="dv-dpeople" hidden>
+  <div class="sechead"><div><h2>District Individual Leaderboard</h2><p class="sub">Every Paper Trading player in the district, ranked by how much their $50,000 has grown, in %.</p></div></div>
+  <div class="panel" id="dpeople-body"></div>
+ </div>
 </section>
 
 <section role="tabpanel" id="ideas" aria-labelledby="tab-ideas" hidden>
@@ -329,10 +339,10 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="config.js?v=2026103102"></script>
-<script src="assets/app.js?v=2026110360"></script>
+<script src="assets/app.js?v=2026110370"></script>
 <script src="assets/vendor/supabase-2.118.0.js"></script>
 <script src="assets/account.js?v=2026110340"></script>
-<script src="assets/paper.js?v=2026110340"></script>
+<script src="assets/paper.js?v=2026110370"></script>
 <script src="assets/staff.js?v=2026110340"></script>
 </body>
 </html>
