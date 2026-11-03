@@ -39,29 +39,37 @@ try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="stri
 /* ---------- Tabs ---------- */
 const TABS=["portfolio","mine","trade","search","news","district","ideas","staff"].filter(t=>document.getElementById(t));const rendered={};
 const PVIEWS=["overview","positions","sectors","history","classnews"];let S_view="overview";
+const DVIEWS=["dschools","dpeople"];let D_view="dschools";
 function showTab(name,push){
-  if(name==="schools")name="district";
+  if(name==="schools")name="dschools";
+  if(DVIEWS.includes(name)){D_view=name;name="district";}else if(name==="district")D_view="dschools";
   if(PVIEWS.includes(name)){S_view=name;name="portfolio";}else if(name==="portfolio")S_view="overview";
   if(!TABS.includes(name)||$("#tab-"+name).hidden){name="portfolio";}
   if(name==="portfolio"){for(const v of PVIEWS)$("#pv-"+v).hidden=v!==S_view;
     document.querySelectorAll("#pf-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===S_view));renderBreakdown();if(S_view==="classnews")renderClassFeed();}
   for(const t of TABS){$("#"+t).hidden=t!==name;$("#tab-"+t).setAttribute("aria-selected",String(t===name));}
-  if(push){try{history.replaceState(null,"","#"+(name==="portfolio"&&S_view!=="overview"?S_view:name))}catch(e){}}
+  if(name==="district"){for(const v of DVIEWS)$("#dv-"+v).hidden=v!==D_view;
+    document.querySelectorAll("#dist-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===D_view));}
+  if(push){try{history.replaceState(null,"","#"+(name==="portfolio"&&S_view!=="overview"?S_view:name==="district"&&D_view!=="dschools"?D_view:name))}catch(e){}}
   if(name==="search"&&rendered.search!==S.tk+tvTheme())renderSearch();
   if(name==="news")renderNewsFeed();
   if(name==="ideas")loadIdeas();
-  if(name==="district")renderSchools();
+  if(name==="district"&&D_view==="dschools")renderSchools();
+  if(name==="district"&&D_view==="dpeople")document.dispatchEvent(new CustomEvent("wvfc:dpeople"));
   document.dispatchEvent(new CustomEvent("wvfc:tab",{detail:name}));
   window.scrollTo({top:0});
 }
 document.querySelectorAll(".tab:not(.hasmenu)").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.tab,true)));
-const pfTab=$("#tab-portfolio"),pfMenu=$("#pf-menu");
-function setMenu(open){pfMenu.hidden=!open;pfTab.setAttribute("aria-expanded",String(open));
-  if(open){const r=pfTab.getBoundingClientRect(),n=pfTab.closest("nav").getBoundingClientRect();pfMenu.style.left=Math.max(8,r.left-n.left)+"px";}}
-pfTab.addEventListener("click",e=>{e.stopPropagation();setMenu(pfMenu.hidden);});
-pfMenu.addEventListener("click",e=>{const b=e.target.closest("[data-view]");if(!b)return;setMenu(false);showTab(b.dataset.view,true);});
-document.addEventListener("click",e=>{if(!pfMenu.hidden&&!pfMenu.contains(e.target))setMenu(false);});
-document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!pfMenu.hidden){setMenu(false);pfTab.focus();}});
+// Tabs with a drop-down menu: Class Portfolio and District.
+const menus=[["#tab-portfolio","#pf-menu"],["#tab-district","#dist-menu"]].map(([t,m])=>({tab:$(t),menu:$(m)})).filter(x=>x.tab&&x.menu);
+function setMenu(open,which){for(const m of menus){const on=open&&m===which;m.menu.hidden=!on;m.tab.setAttribute("aria-expanded",String(on));
+  if(on){const r=m.tab.getBoundingClientRect(),n=m.tab.closest("nav").getBoundingClientRect();m.menu.style.left=Math.max(8,Math.min(r.left-n.left,n.width-m.menu.offsetWidth-8))+"px";}}}
+for(const m of menus){
+  m.tab.addEventListener("click",e=>{e.stopPropagation();setMenu(m.menu.hidden,m);});
+  m.menu.addEventListener("click",e=>{const b=e.target.closest("[data-view]");if(!b)return;setMenu(false);showTab(b.dataset.view,true);});
+}
+document.addEventListener("click",e=>{if(menus.some(m=>!m.menu.hidden&&!m.menu.contains(e.target)))setMenu(false);});
+document.addEventListener("keydown",e=>{const m=menus.find(m=>!m.menu.hidden);if(e.key==="Escape"&&m){setMenu(false);m.tab.focus();}});
 window.addEventListener("resize",()=>setMenu(false));
 window.addEventListener("hashchange",()=>showTab(location.hash.slice(1)));
 

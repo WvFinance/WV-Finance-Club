@@ -16,7 +16,7 @@ if(!$("#trade"))return;
 let db=null,user=null,loaded=false,busy=false;
 const G={acct:null,pos:[],prices:{},trades:[],board:[],orders:[]};
 const onGame=()=>!$("#trade").hidden||!!$("#mine")&&!$("#mine").hidden;
-function signedIn(d){if(db)return;db=d.db;user=d.user;if(onGame())load();}
+function signedIn(d){if(db)return;db=d.db;user=d.user;if(onGame())load();if($("#dv-dpeople")&&!$("#dv-dpeople").hidden&&!$("#district").hidden)renderDistrictPeople();}
 document.addEventListener("wvfc:login",e=>signedIn(e.detail));
 if(window.WVFC_SESSION)signedIn(window.WVFC_SESSION);
 document.addEventListener("wvfc:tab",e=>{if((e.detail==="trade"||e.detail==="mine")&&db&&!loaded)load();});
@@ -79,7 +79,7 @@ function renderTiles(box){
   const me=G.board.find(r=>r.me);
   const tile=(label,val,note,k)=>el("div",{class:"tile"},el("div",{class:"eyebrow",text:label}),el("div",{class:"v "+(k||""),text:val}),el("div",{class:"n",text:note}));
   (box||$("#pt-tiles")).replaceChildren(tile("Account value",fmt$(value),G.pos.some(p=>p.shares<0)?"Cash plus stocks, minus shorts":"Cash plus stocks"),tile("Total gain",signed$(gain),fmtPct(gain/START)+" since you started",cls(gain)),
-    tile("Cash to spend",money(+G.acct.cash),"Pretend money"),tile("Your rank",me?"#"+me.rank:"–",me?`out of ${G.board.length} players`:"Loading…"));
+    tile("Cash to spend",money(+G.acct.cash),"Pretend money"),tile("Your class rank",me?"#"+(classBoard().find(r=>r.me)||me).rank:"–",me?`out of ${classBoard().length} players at your school`:"Loading…"));
 }
 function orderText(o){
   const n=`${+o.shares} ${o.symbol}`;
@@ -131,13 +131,34 @@ function renderTrades(){
     el("span",{text:`${+t.shares} ${t.symbol} at ${fmt$(t.price)} = ${fmt$(t.total)}`+(t.how&&t.how!=="market"?(t.how==="auto"?" (bought back automatically: the price doubled)":` (${KIND[t.how].toLowerCase()} order)`):"")}),
     el("span",{class:"o",text:when(t.at)})))));
 }
+// Class Leaderboard: only players from your school, ranked among themselves.
+function classBoard(){
+  const me=G.board.find(r=>r.me);if(!me)return G.board;
+  const mine=G.board.filter(r=>r.school===me.school);
+  return mine.map(r=>({...r,rank:1+mine.filter(o=>+o.value>+r.value).length}));
+}
+function boardList(rows,showSchool){
+  return el("ol",{class:"ptboard"},rows.map(r=>el("li",{class:r.me?"me":""},
+    el("span",{class:"r",text:"#"+r.rank}),el("span",{class:"n",text:r.name+(r.me?" (you)":"")},showSchool&&r.school?el("small",{class:"sc",text:r.school}):null),
+    el("span",{class:"g "+cls(+r.gain_pct),text:fmtPct(+r.gain_pct)}),el("span",{class:"v",text:fmt$(r.value)}))));
+}
 function renderBoard(){
   const box=$("#pt-board");
   if(!G.board.length){box.replaceChildren(el("p",{class:"meta",text:"Loading…"}));return;}
-  box.replaceChildren(el("ol",{class:"ptboard"},G.board.slice(0,25).map(r=>el("li",{class:r.me?"me":""},
-    el("span",{class:"r",text:"#"+r.rank}),el("span",{class:"n",text:r.name+(r.me?" (you)":"")},r.school?el("small",{class:"sc",text:r.school}):null),
-    el("span",{class:"g "+cls(+r.gain_pct),text:fmtPct(+r.gain_pct)}),el("span",{class:"v",text:fmt$(r.value)})))));
+  box.replaceChildren(boardList(classBoard().slice(0,25),false));
 }
+// District Individual Leaderboard (District tab): every player in the district.
+async function renderDistrictPeople(){
+  const box=$("#dpeople-body");if(!box)return;
+  if(!db){box.replaceChildren(el("p",{class:"meta",text:"Log in to see the leaderboard."}));return;}
+  if(!G.board.length)box.replaceChildren(el("p",{class:"meta",text:"Loading…"}));
+  const b=await db.rpc("paper_board");
+  if(b.error&&!G.board.length){box.replaceChildren(el("p",{class:"meta",text:"The leaderboard couldn't be loaded. Try again in a minute."}));return;}
+  if(b.data)G.board=b.data;
+  box.replaceChildren(G.board.length?boardList(G.board.slice(0,50),true):el("p",{class:"meta",text:"No one is playing Paper Trading yet."}),
+    el("p",{class:"meta",style:"margin-top:12px",text:"Everyone starts with $50,000 of pretend money. Showing the top 50."}));
+}
+document.addEventListener("wvfc:dpeople",()=>renderDistrictPeople());
 
 /* ---------- Order form ---------- */
 const symIn=$("#pt-sym"),qtyIn=$("#pt-qty"),kindIn=$("#pt-kind"),msg=$("#pt-msg");
