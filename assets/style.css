@@ -270,11 +270,14 @@ table.pos th{padding:10px 12px}
 /* Password screen */
 html:not(.unlocked) body>*:not(#gate):not(script){display:none!important}
 html.unlocked #gate{display:none}
-#gate{position:fixed;inset:0;z-index:50;background:#000;display:grid;place-items:center;padding:24px}
-#gate-form{display:grid;justify-items:center;gap:28px;width:min(360px,100%)}
+#gate{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:24px 16px;overflow:auto;isolation:isolate;background:radial-gradient(60% 50% at 12% 8%,rgba(31,122,67,.30),transparent 70%),radial-gradient(50% 45% at 92% 96%,rgba(217,169,67,.16),transparent 70%),#000}
+#gate::before{content:"";position:fixed;left:0;right:0;bottom:0;height:46vh;z-index:-1;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 400' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='f' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%231f7a43' stop-opacity='.35'/%3E%3Cstop offset='1' stop-color='%231f7a43' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 330 L90 310 L160 322 L240 270 L320 288 L410 232 L480 250 L560 200 L650 226 L730 168 L810 186 L890 132 L980 150 L1060 98 L1150 120 L1230 70 L1320 84 L1440 30 L1440 400 L0 400Z' fill='url(%23f)'/%3E%3Cpath d='M0 330 L90 310 L160 322 L240 270 L320 288 L410 232 L480 250 L560 200 L650 226 L730 168 L810 186 L890 132 L980 150 L1060 98 L1150 120 L1230 70 L1320 84 L1440 30' fill='none' stroke='%236cc58a' stroke-opacity='.55' stroke-width='2.5' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") bottom/100% 100% no-repeat}
+#gate::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%)}
+#gate-form{display:grid;justify-items:center;gap:28px;width:min(400px,100%);box-sizing:border-box;padding:28px 16px;border-radius:24px;background:rgba(12,12,12,.78);border:1px solid rgba(255,255,255,.08);border-top:2px solid var(--gold);box-shadow:0 24px 70px rgba(0,0,0,.65),0 0 0 1px rgba(31,122,67,.12);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+@media (min-width:900px){#gate-form{width:560px;padding:44px 48px;gap:20px!important}#gate-form .school-logos{gap:20px;margin-bottom:8px}#gate-form .school-logos img{height:112px}#gate-form .school-logos img.wide{height:96px}#gate-form h2{font-size:34px}#gate-form input{font-size:18px;padding:16px 24px}#gate-form .btn{font-size:18px;padding:15px 24px}.authswitch{font-size:15px}}
 .school-logos{display:flex;align-items:center;justify-content:center;gap:clamp(10px,4vw,16px);width:100%;justify-self:stretch}
-.school-logos img{height:clamp(56px,19vw,88px);width:auto;max-width:none;display:block;margin:0}
-.school-logos img.wide{height:clamp(48px,16.5vw,76px)}
+.school-logos img{height:clamp(48px,18vw,88px);width:auto;max-width:none;display:block;margin:0}
+.school-logos img.wide{height:clamp(42px,15.6vw,76px)}
 #gate-pass{width:100%;box-sizing:border-box;background:var(--surface);border:1px solid var(--line);border-radius:999px;color:var(--ink);font:inherit;font-size:17px;padding:14px 22px;text-align:center;outline:none}
 #gate-pass:focus{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 25%,transparent)}
 #gate-msg{margin:-12px 0 0;min-height:1.4em;color:var(--down);font-size:14px}
