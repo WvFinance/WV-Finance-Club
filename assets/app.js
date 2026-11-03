@@ -530,6 +530,7 @@ async function renderSchools(){
 function showBrand(sc){
   const club=sc.club||"WV Finance Club",logo=sc.logo||"assets/logo.png";
   $(".brand h1").textContent=club;document.title=club;
+  document.documentElement.dataset.school=sc.id;try{localStorage.setItem("wvfc.theme",sc.id);}catch(e){}
   const img=$(".crest");img.src=logo;img.alt=sc.name+" logo";img.classList.toggle("wide",!!sc.wideLogo);
 }
 
