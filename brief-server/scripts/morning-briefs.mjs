@@ -12,11 +12,11 @@ import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { SYSTEM, parseBrief } from "../src/brief-format.js";
 import { briefJobs, mergeBrief } from "../src/jobs.js";
+import { allPicks } from "./picks.mjs";
 
 const NEWS = new URL("../../data/news.json", import.meta.url);
-const PORTFOLIO = new URL("../../data/portfolio.json", import.meta.url);
 const news = JSON.parse(readFileSync(NEWS, "utf8"));
-const picks = JSON.parse(readFileSync(PORTFOLIO, "utf8")).picks || [];
+const picks = allPicks();
 const jobs = briefJobs(news, picks);
 const [mode, dir] = process.argv.slice(2);
 

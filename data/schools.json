@@ -1,0 +1,8 @@
+{
+  "note": "Every school on the site. Each school's sign-up code lives in Supabase (supabase/district.sql), never here.",
+  "schools": [
+    { "id": "wvhs", "name": "Waubonsie Valley", "portfolio": "data/portfolio.json" },
+    { "id": "nvhs", "name": "Neuqua Valley", "portfolio": "data/portfolios/nvhs.json" },
+    { "id": "mvhs", "name": "Metea Valley", "portfolio": "data/portfolios/mvhs.json" }
+  ]
+}

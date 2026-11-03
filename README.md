@@ -24,7 +24,9 @@ The Waubonsie Valley Finance Club's website: our class portfolio, stock research
 | `assets/style.css` | Colors and layout (black, white, green and gold) |
 | `assets/app.js` | Everything the page does |
 | `config.js` | Settings, including the optional Finnhub key |
-| `data/portfolio.json` | The club's picks |
+| `data/portfolio.json` | Waubonsie's Class Portfolio picks |
+| `data/schools.json` | Every school on the site and where its Class Portfolio file is (Neuqua and Metea are in `data/portfolios/`) |
+| `supabase/district.sql` | School sign-up codes (checked by the database), each member's school, and the district leaderboard |
 | `data/news.json` | Claude's news briefs |
 | `data/prices.json` | Daily closing prices, updated automatically |
 | `scripts/update_prices.py`, `.github/workflows/update-prices.yml` | The robot that refreshes `prices.json` every weekday after the market closes |
