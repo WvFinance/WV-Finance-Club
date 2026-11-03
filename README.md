@@ -56,17 +56,17 @@ Every weekday after the market closes, a GitHub Action saves the day's closing p
 
 Charts, search and headlines come from TradingView's free widgets and need no account. The dollar values on the portfolio tab use [Finnhub](https://finnhub.io/register): create a free account, copy the API key, and put it in `config.js`. A free key allows 60 lookups a minute, which is plenty for the club.
 
-## Member accounts (test page)
+## Member accounts
 
-`beta.html` is a test copy of the site where each member logs in with their own email and password instead of the club password. It adds a **My Portfolio** tab: members upload the positions file from Fidelity or Schwab, check what was found, and save it to their account. Their Search watchlist is saved to their account too, so it follows them to any device. The live `index.html` doesn't change.
+Each member logs in with their own email and password (the club password is needed once, to make an account). Their Search watchlist is saved to their account, so it follows them to any device. The **My Portfolio** tab shows the stocks, shorts and waiting orders they have in the trading game below. Only they can see it.
 
-Logins and data are stored in [Supabase](https://supabase.com). `supabase/setup.sql` creates the tables and the rules that let each member see only their own data; run it once in Supabase's SQL Editor. The project address and publishable key are in `config.js` (the publishable key is meant to be public). Code: `assets/account.js`.
+Logins and data are stored in [Supabase](https://supabase.com). `supabase/setup.sql` creates the tables and the rules that let each member see only their own data; run it once in Supabase's SQL Editor (its `holdings` table held the old Fidelity/Schwab uploads and is no longer used by the site). The project address and publishable key are in `config.js` (the publishable key is meant to be public). Code: `assets/account.js`.
 
 ## Trading game
 
 The **Paper Trading** tab is a practice game. Each member who joins gets $50,000 of pretend money to buy and sell real stocks at the real price, and a leaderboard ranks everyone by % gain. Trades only go through while the market is open (weekdays 8:30am to 3pm Chicago time; market holidays aren't counted).
 
-Prices come from [Finnhub](https://finnhub.io). The database looks them up itself, so nobody can send in a fake price, and the Finnhub key is kept in Supabase's Vault, not in the website. `supabase/paper-trading.sql` sets it all up: put the Finnhub key near the top, then run it once in Supabase's SQL Editor. A scheduled job keeps the prices of owned stocks fresh during market hours. Code: `assets/paper.js`.
+Prices come from [Finnhub](https://finnhub.io). The database looks them up itself, so nobody can send in a fake price, and the Finnhub key is kept in Supabase's Vault, not in the website. `supabase/paper-trading.sql` sets it all up: put the Finnhub key near the top, then run it once in Supabase's SQL Editor (its `holdings` table held the old Fidelity/Schwab uploads and is no longer used by the site). A scheduled job keeps the prices of owned stocks fresh during market hours. Code: `assets/paper.js`.
 
 ### Order types
 
