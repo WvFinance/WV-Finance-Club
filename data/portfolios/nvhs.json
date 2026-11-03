@@ -1,4 +1,101 @@
 {
   "updated": "2026-11-03",
-  "picks": []
+  "test": true,
+  "picks": [
+    {
+      "ticker": "AAPL",
+      "symbol": "NASDAQ:AAPL",
+      "name": "Apple",
+      "sector": "Tech",
+      "entryDate": "2026-07-01",
+      "entryPrice": 294.38,
+      "invested": 1000,
+      "shares": 3.397,
+      "pitchedBy": "Test student",
+      "thesis": "TEST PICK: fake data to try out the site.",
+      "debate": {
+        "opponent": "MSFT",
+        "votesFor": 15,
+        "votesAgainst": 10,
+        "date": "2026-07-01"
+      },
+      "spyEntryPrice": 745.76
+    },
+    {
+      "ticker": "JPM",
+      "symbol": "NYSE:JPM",
+      "name": "JPMorgan Chase",
+      "sector": "Banks",
+      "entryDate": "2026-07-15",
+      "entryPrice": 346.91,
+      "invested": 1000,
+      "shares": 2.8826,
+      "pitchedBy": "Test student",
+      "thesis": "TEST PICK: fake data to try out the site.",
+      "debate": {
+        "opponent": "BAC",
+        "votesFor": 16,
+        "votesAgainst": 10,
+        "date": "2026-07-15"
+      },
+      "spyEntryPrice": 754.81
+    },
+    {
+      "ticker": "XOM",
+      "symbol": "NYSE:XOM",
+      "name": "Exxon Mobil",
+      "sector": "Energy",
+      "entryDate": "2026-08-17",
+      "entryPrice": 161.46,
+      "invested": 1000,
+      "shares": 6.1935,
+      "pitchedBy": "Test student",
+      "thesis": "TEST PICK: fake data to try out the site.",
+      "debate": {
+        "opponent": "CVX",
+        "votesFor": 18,
+        "votesAgainst": 9,
+        "date": "2026-08-17"
+      },
+      "spyEntryPrice": 772.67
+    },
+    {
+      "ticker": "JNJ",
+      "symbol": "NYSE:JNJ",
+      "name": "Johnson & Johnson",
+      "sector": "Health",
+      "entryDate": "2026-09-01",
+      "entryPrice": 271.19,
+      "invested": 1000,
+      "shares": 3.6875,
+      "pitchedBy": "Test student",
+      "thesis": "TEST PICK: fake data to try out the site.",
+      "debate": {
+        "opponent": "PFE",
+        "votesFor": 19,
+        "votesAgainst": 8,
+        "date": "2026-09-01"
+      },
+      "spyEntryPrice": 761.78
+    },
+    {
+      "ticker": "AMZN",
+      "symbol": "NASDAQ:AMZN",
+      "name": "Amazon",
+      "sector": "Shopping",
+      "entryDate": "2026-09-15",
+      "entryPrice": 248.42,
+      "invested": 1000,
+      "shares": 4.0254,
+      "pitchedBy": "Test student",
+      "thesis": "TEST PICK: fake data to try out the site.",
+      "debate": {
+        "opponent": "WMT",
+        "votesFor": 20,
+        "votesAgainst": 8,
+        "date": "2026-09-15"
+      },
+      "spyEntryPrice": 757.39
+    }
+  ]
 }
