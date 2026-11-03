@@ -455,3 +455,8 @@ select.ptinp{appearance:none;cursor:pointer;padding-right:34px;background-image:
 .stmail{display:block;font-size:12px;color:var(--muted);font-weight:400}
 .stsym{font-family:var(--f-mono);margin-right:6px}
 .sttable td{vertical-align:top}
+.stbuy{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px;align-items:end}
+.stbuy .wide{grid-column:1/-1}
+@media (max-width:760px){.stbuy{grid-template-columns:1fr 1fr}}
+.btn.small.sell{border-color:var(--down);color:var(--down)}
+#st-class .ptlist .up{color:var(--up)}#st-class .ptlist .down{color:var(--down)}

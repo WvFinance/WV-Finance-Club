@@ -6,6 +6,7 @@ Writes data/prices.json, which the site uses for current values and the
 import datetime as dt
 import json
 import pathlib
+import re
 import time
 import urllib.request
 
@@ -43,8 +44,29 @@ def all_picks():
     return picks
 
 
+def site_picks():
+    """Stocks teachers bought on the website (saved in Supabase, see supabase/class-portfolio.sql).
+
+    Uses the site's public key from config.js; the database only answers with tickers and first buy dates.
+    """
+    cfg = (ROOT / "config.js").read_text()
+    url = re.search(r'supabaseUrl:\s*"([^"]+)"', cfg)
+    key = re.search(r'supabaseKey:\s*"([^"]+)"', cfg)
+    if not url or not key:
+        return []
+    req = urllib.request.Request(url.group(1).rstrip("/") + "/rest/v1/rpc/class_tickers", data=b"{}", method="POST",
+                                 headers={**UA, "apikey": key.group(1), "Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            rows = json.load(r)
+    except Exception as e:  # not set up yet, or Supabase is down: just use the files
+        print(f"Could not read stocks bought on the site: {e}")
+        return []
+    return [{"ticker": x["ticker"], "entryDate": x["first_date"]} for x in rows if x.get("ticker") and x.get("first_date")]
+
+
 def main():
-    picks = all_picks()
+    picks = all_picks() + site_picks()
     # QQQ and DIA track the Nasdaq 100 and the Dow for the "Market today" box.
     tickers = sorted({p["ticker"].upper() for p in picks if p.get("ticker")} | {"SPY", "QQQ", "DIA"})
     dates = [dt.date.fromisoformat(p["entryDate"]) for p in picks if p.get("entryDate")]

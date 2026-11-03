@@ -33,7 +33,7 @@ function tv(container,name,config){
 }
 
 /* ---------- State ---------- */
-const S={schools:[],school:null,picks:[],briefs:[],quotes:{},prices:{dates:[],closes:{}},tk:(store.get("wvfc.tk")||"NVDA"),newsTk:null,classTk:null,watch:[]};
+const S={livePx:{},schools:[],school:null,picks:[],briefs:[],quotes:{},prices:{dates:[],closes:{}},tk:(store.get("wvfc.tk")||"NVDA"),newsTk:null,classTk:null,watch:[]};
 try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="string");}catch(e){S.watch=[];}
 
 /* ---------- Tabs ---------- */
@@ -82,7 +82,8 @@ function renderTape(){
 // Live Finnhub quote when a key is set, otherwise the latest daily close from data/prices.json.
 function lastClose(tk){const c=S.prices.closes&&S.prices.closes[tk];if(!c)return null;for(let i=c.length-1;i>=0;i--)if(c[i]!=null)return c[i];return null;}
 function closeOn(tk,date){const c=S.prices.closes&&S.prices.closes[tk],d=S.prices.dates||[];if(!c)return null;let v=null;for(let i=0;i<d.length&&d[i]<=date;i++)if(c[i]!=null)v=c[i];return v;}
-function priceOf(tk){const q=S.quotes[tk];return q?q.c:lastClose(tk);}
+// Last close from the daily price file; for a stock a teacher just bought, the database's latest price until the file has it.
+function priceOf(tk){const q=S.quotes[tk];if(q)return q.c;const c=lastClose(tk);return c!=null?c:(S.livePx[tk]!=null?S.livePx[tk]:null);}
 function spyEntry(p){return p.spyEntryPrice||closeOn("SPY",p.entryDate);}
 function calc(p){
   const cur=priceOf(p.ticker),spyNow=priceOf("SPY");if(cur==null)return null;const q=S.quotes[p.ticker];
@@ -357,7 +358,7 @@ function saveWatch(){store.set("wvfc.watch",JSON.stringify(S.watch));if(window.W
 // Lets the account page (beta.html) load a saved watchlist and open stocks.
 // account.js tells us the member's school once they're logged in; boot() waits for it.
 let schoolSet;const schoolReady=new Promise(r=>{schoolSet=r;});
-window.WVFC_APP={setSchool(id){schoolSet(id);},setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},prices:()=>S.prices};
+window.WVFC_APP={setSchool(id){schoolSet(id);},setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},prices:()=>S.prices,refreshPicks:()=>refreshPicks(),picks:()=>S.picks,classRows:()=>classRows(),calc:p=>calc(p)};
 function renderWatch(){
   const box=$("#wl");box.replaceChildren();const on=S.watch.some(w=>bare(w)===bare(S.tk));
   $("#wl-toggle").textContent=on?"On watchlist ✓":"Add to watchlist";
@@ -465,8 +466,28 @@ darkMQ.addEventListener&&darkMQ.addEventListener("change",()=>{rendered.search=n
 // data/schools.json lists every school and where its Class Portfolio file is.
 const OK_PICK=p=>p&&p.ticker&&p.entryPrice>0&&p.entryDate;
 const DEFAULT_SCHOOLS=[{id:"wvhs",name:"Waubonsie Valley",portfolio:"data/portfolio.json"}];
-const pfCache={};
-function schoolPicks(sc){if(!pfCache[sc.portfolio])pfCache[sc.portfolio]=loadJSON(sc.portfolio).then(j=>(j.picks||[]).filter(OK_PICK)).catch(()=>[]);return pfCache[sc.portfolio];}
+// A school's Class Portfolio = the stocks in its website file, plus what teachers bought on the site
+// (saved in the database, supabase/class-portfolio.sql), minus what teachers sold.
+let pfCache={},classDB=null;
+const CLASS_COLS="id,school_id,ticker,symbol,name,sector,entry_date,entry_price,invested,shares,spy_entry_price,pitched_by,thesis,from_file,bought_at,sold_at,sold_price";
+function classRows(){
+  if(classDB)return classDB;const ses=window.WVFC_SESSION;if(!ses)return Promise.resolve([]);
+  classDB=Promise.all([ses.db.from("class_picks").select(CLASS_COLS).order("bought_at"),ses.db.rpc("class_prices")]).then(([r,px])=>{
+    for(const x of (px&&px.data)||[])S.livePx[x.symbol]=+x.price;return r.error?[]:(r.data||[]);}).catch(()=>[]);
+  return classDB;
+}
+const dbPick=r=>({ticker:r.ticker,symbol:r.symbol||r.ticker,name:r.name||r.ticker,sector:r.sector||"",entryDate:r.entry_date,entryPrice:+r.entry_price,
+  invested:+r.invested,shares:+r.shares,spyEntryPrice:r.spy_entry_price?+r.spy_entry_price:undefined,pitchedBy:r.pitched_by||"",thesis:r.thesis||"",dbId:r.id});
+function schoolPicks(sc){
+  if(!pfCache[sc.id])pfCache[sc.id]=Promise.all([loadJSON(sc.portfolio).then(j=>j.picks||[]).catch(()=>[]),classRows()]).then(([file,rows])=>{
+    rows=rows.filter(r=>r.school_id===sc.id);
+    const soldFile=new Set(rows.filter(r=>r.from_file).map(r=>r.ticker+"|"+r.entry_date));
+    return file.filter(p=>!soldFile.has(String(p.ticker||"").toUpperCase()+"|"+p.entryDate))
+      .concat(rows.filter(r=>!r.from_file&&!r.sold_at).map(dbPick)).filter(OK_PICK);});
+  return pfCache[sc.id];
+}
+// After a teacher buys or sells: load the Class Portfolio again and redraw it.
+async function refreshPicks(){pfCache={};classDB=null;if(!S.school)return;S.picks=await schoolPicks(S.school);rendered.classnews=null;renderTape();renderPortfolio();renderNews();}
 // One school's Class Portfolio as a whole: money in, worth now, and the same money in the S&P 500.
 function schoolTotals(picks){
   let inv=0,val=0,spy=0,priced=0,spyOK=true;
