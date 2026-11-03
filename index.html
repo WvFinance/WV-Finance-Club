@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=2026110310">
+<link rel="stylesheet" href="assets/style.css?v=2026110320">
 <script>
 // Old club password, only used until supabase/district.sql has been run. After that, each school's code
 // (like wvhs01) is checked by the database itself, so it can't be skipped.
@@ -44,6 +44,7 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
       <div><h1>WV Finance Club</h1><p><span id="school-name">Waubonsie Valley</span> · Portfolio · Research · News</p></div>
     </a>
     <div class="datanote">
+      <label class="schoolpick" id="school-pick-wrap" hidden><span>Viewing</span><select id="school-pick" aria-label="Which school to view"></select></label>
       <span class="chip asof" id="news-asof">News briefs</span>
     </div>
   </div>
@@ -59,6 +60,7 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
     <button class="tab" role="tab" id="tab-search" aria-controls="search" aria-selected="false" data-tab="search">Search</button>
     <button class="tab" role="tab" id="tab-news" aria-controls="news" aria-selected="false" data-tab="news">News<span class="count" id="cnt-news"></span></button>
     <button class="tab" role="tab" id="tab-ideas" aria-controls="ideas" aria-selected="false" data-tab="ideas">Suggestions</button>
+    <button class="tab" role="tab" id="tab-staff" aria-controls="staff" aria-selected="false" data-tab="staff" hidden>Students</button>
   </div>
   <div class="tabmenu" id="pf-menu" role="menu" hidden>
     <button role="menuitem" data-view="overview">Overview</button>
@@ -132,7 +134,7 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
   <div class="sechead">
     <div>
       <h2>My Portfolio</h2>
-      <p class="sub">The stocks you own in the Paper Trading game. Only you can see this page.</p>
+      <p class="sub">The stocks you own in the Paper Trading game. Other students can't see this page. Your teacher can.</p>
     </div>
     <button class="btn primary" type="button" id="mine-trade" hidden>Go to Paper Trading</button>
   </div>
@@ -291,6 +293,27 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
   </div>
 </section>
 
+<!-- TEACHER AND ADMIN VIEW (only shows for teacher and admin accounts; the database checks this too) -->
+<section role="tabpanel" id="staff" aria-labelledby="tab-staff" hidden>
+  <div class="sechead">
+    <div>
+      <h2>Students</h2>
+      <p class="sub" id="st-sub">What your students are buying in Paper Trading. View only.</p>
+    </div>
+  </div>
+  <p class="meta" id="st-loading">Only teacher accounts can see this page.</p>
+  <div id="st-body" hidden>
+    <div class="strow">
+      <select class="ptinp" id="st-school" aria-label="School" hidden></select>
+      <input class="ptinp" id="st-find" type="search" placeholder="Find a student by name or email" aria-label="Find a student">
+    </div>
+    <div class="tiles" id="st-tiles"></div>
+    <div class="panel" id="st-detail" hidden></div>
+    <div class="panel" id="st-list"></div>
+    <div class="panel" id="st-teachers" hidden></div>
+  </div>
+</section>
+
 </div>
 </main>
 
@@ -303,9 +326,10 @@ try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="config.js?v=2026103102"></script>
-<script src="assets/app.js?v=2026110307"></script>
+<script src="assets/app.js?v=2026110320"></script>
 <script src="assets/vendor/supabase-2.118.0.js"></script>
-<script src="assets/account.js?v=2026110307"></script>
+<script src="assets/account.js?v=2026110320"></script>
 <script src="assets/paper.js?v=2026110307"></script>
+<script src="assets/staff.js?v=2026110320"></script>
 </body>
 </html>
