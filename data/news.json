@@ -1,94 +1,88 @@
 {
- "updated": "2026-11-03",
+ "updated": "2026-11-04",
  "briefs": [
   {
    "bear": [
-    "Apple, one of the biggest companies in the index, fell after a weak profit margin forecast and lower-than-expected sales in China.",
-    "Palantir and Shopify fell after their reports, and Gartner dropped about 17% even after beating expectations.",
-    "Oil prices climbed back near $100 a barrel on Middle East tension, which can raise costs for companies and shoppers."
+    "Analysts expect more pressure for rules on AI, which could slow spending on data centers.",
+    "Futures fell as much as 1.4% overnight before recovering, showing how jumpy investors are.",
+    "Fights over the government's borrowing limit and spending are expected next year."
    ],
    "bull": [
-    "Chip stocks rebounded, and AMD jumped about 7% after hours when its data center sales nearly doubled from a year earlier.",
-    "Pfizer raised its forecast for the year after a better-than-expected quarter.",
-    "JPMorgan said a likely election result would probably move the S&P 500 very little, and history suggests elections matter for stocks only for a few months."
+    "Futures recovered from an early drop and pointed higher, with Dow futures up about 0.8% to 1.3%.",
+    "Some analysts said a split government could ease worries about long political fights and keep big policy changes in check.",
+    "Interest rates on long-term government bonds fell, with the 10-year Treasury yield dipping to about 4.92%."
    ],
-   "headline": "S&P 500 edges up 0.4% as chip stocks bounce back on Election Day",
+   "headline": "S&P 500 futures rise after Democrats win control of Congress in the midterms",
    "market": true,
    "name": "S&P 500",
-   "nextEvent": "The October jobs report comes out on Friday, November 6, 2026",
+   "nextEvent": "The October jobs report on November 6, 2026",
    "order": 1,
    "sentiment": "neutral",
    "sources": [
     {
-     "title": "Stock market today: Dow slips, S&P and Nasdaq gain as chip stocks rally, focus shifts to midterm elections",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-3-dow-sp-500-nasdaq-midterms-amd-earnings-141143244.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 3, 2026"
+     "title": "Stock Market Today, Nov. 4: Futures Rise After Democrats Sweep Midterm Elections",
+     "url": "https://www.tipranks.com/news/stock-market-today-nov-4-futures-rise-after-democrats-sweep-midterm-elections",
+     "outlet": "TipRanks",
+     "date": "Nov 4, 2026"
     },
     {
-     "title": "Stock Market Today (Nov. 3, 2026): Nasdaq, Russell 2000 finish higher in homestretch of U.S. midterm election",
-     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-03-2026",
-     "outlet": "TheStreet",
-     "date": "Nov 3, 2026"
+     "title": "US stock futures rise as investors assess Democrats' midterm sweep",
+     "url": "https://www.freedom969.com/business/us-stock-futures-rise-as-investors-assess-democrats-midterm-sweep",
+     "outlet": "Freedom 96.9 (Reuters)",
+     "date": "Nov 4, 2026"
     },
     {
-     "title": "03 November 2026 Market Close & Major Financial Headlines: Nasdaq Leads as Technology Shares Recover; Dow Falls",
-     "url": "https://econcurrents.substack.com/p/03-november-2026-market-close-and",
-     "outlet": "EconCurrents",
-     "date": "Nov 3, 2026"
+     "title": "Analysts react to US midterm election results",
+     "url": "https://www.investing.com/news/economy-news/analysts-react-to-us-midterm-election-results-4997173",
+     "outlet": "Investing.com (Reuters)",
+     "date": "Nov 4, 2026"
     }
    ],
-   "summary": "The S&P 500 rose about 0.4% on Tuesday, November 3, to about 7,569, after falling on Monday. Chip makers like AMD, Nvidia and Micron bounced back, but Apple fell after warning its profit margins (how much it keeps from each sale) could shrink, and Palantir and Shopify also dropped after their reports. Investors were also watching the US midterm elections, with results starting to come in Tuesday night. Over the last two weeks, worries about big AI spending and a rough October for tech stocks have kept the market shaky.",
+   "summary": "In the November 3 midterm elections, Democrats won control of both the Senate and the House. Stock futures (early bets on where stocks will open) first fell overnight, then turned higher, with S&P 500 futures up about 0.4% to 0.9% early on November 4. Many analysts said the result was largely expected, and some said a split government could mean fewer big policy changes. The main worry is that Congress may push for tougher rules on AI and data centers, which have powered much of the market's gains.",
    "ticker": "SP500",
-   "updatedAt": "2026-11-03T23:10:37.073Z",
+   "updatedAt": "2026-11-04T11:39:52.303Z",
    "symbol": "AMEX:SPY"
   },
   {
    "bear": [
-    "Apple fell after warning its profit margins could shrink, and its sales in China missed expectations.",
-    "Palantir fell even after beating expectations, because new contract deals slowed down.",
-    "Tech stocks are still well below their highs after a rough October, and investors worry AI spending is growing faster than profits."
+    "Analysts expect Democrats to push for more rules on AI, which could slow the AI building boom.",
+    "Data center companies such as CoreWeave and Nebius fell before the open on those worries.",
+    "The Nasdaq-100 entered a correction on Monday, and one group of AI stocks is down more than 24% from its peak."
    ],
    "bull": [
-    "Chip stocks bounced back, with AMD up about 3.7% during the day and Intel up about 2.5%.",
-    "AMD's boss said demand for its AI chips keeps getting stronger and growth should speed up next quarter.",
-    "Bloom Energy jumped about 12% after a big bank, Barclays, raised its view on the stock."
+    "AMD beat expectations, with sales of $13.4 billion, and its stock jumped about 5% to 6% after hours.",
+    "Amazon, Microsoft and Meta traded higher before the market opened.",
+    "Many analysts said the election result was largely expected and already priced into stocks."
    ],
-   "headline": "Nasdaq rises 0.8% as chip stocks recover, and AMD soars after its report",
+   "headline": "Tech futures swing after the midterms as AI rules become a new worry",
    "market": true,
    "name": "Nasdaq",
-   "nextEvent": "The October jobs report comes out on Friday, November 6, 2026",
+   "nextEvent": "The October jobs report on November 6, 2026",
    "order": 2,
    "sentiment": "neutral",
    "sources": [
     {
-     "title": "Stock market today: Dow slips, S&P and Nasdaq gain as chip stocks rally, focus shifts to midterm elections",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-3-dow-sp-500-nasdaq-midterms-amd-earnings-141143244.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 3, 2026"
+     "title": "US stock futures rise as investors assess Democrats' midterm sweep",
+     "url": "https://www.freedom969.com/business/us-stock-futures-rise-as-investors-assess-democrats-midterm-sweep",
+     "outlet": "Freedom 96.9 (Reuters)",
+     "date": "Nov 4, 2026"
     },
     {
-     "title": "Stock Market Today (Nov. 3, 2026): Nasdaq, Russell 2000 finish higher in homestretch of U.S. midterm election",
-     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-03-2026",
-     "outlet": "TheStreet",
-     "date": "Nov 3, 2026"
+     "title": "Stock Market Today, Nov. 4: Futures Rise After Democrats Sweep Midterm Elections",
+     "url": "https://www.tipranks.com/news/stock-market-today-nov-4-futures-rise-after-democrats-sweep-midterm-elections",
+     "outlet": "TipRanks",
+     "date": "Nov 4, 2026"
     },
     {
-     "title": "03 November 2026 Market Close & Major Financial Headlines: Nasdaq Leads as Technology Shares Recover; Dow Falls",
-     "url": "https://econcurrents.substack.com/p/03-november-2026-market-close-and",
-     "outlet": "EconCurrents",
-     "date": "Nov 3, 2026"
-    },
-    {
-     "title": "Crypto & Finance market report, Tuesday, November 3, 2026",
-     "url": "https://tedpillows.substack.com/p/crypto-and-finance-market-report-46c",
-     "outlet": "Ted Pillows (Substack)",
-     "date": "Nov 3, 2026"
+     "title": "Analysts react to US midterm election results",
+     "url": "https://www.investing.com/news/economy-news/analysts-react-to-us-midterm-election-results-4997173",
+     "outlet": "Investing.com (Reuters)",
+     "date": "Nov 4, 2026"
     }
    ],
-   "summary": "The Nasdaq rose about 0.8% on Tuesday, November 3, to about 25,372, bouncing back after a 1.1% drop on Monday. Chip makers like AMD, Nvidia, Micron and Intel led the gains, and after the close AMD jumped about 7% when its data center sales grew 97% from a year earlier. Apple and Palantir held the index back after their reports. On Monday the Nasdaq-100 (the 100 biggest Nasdaq companies) fell into a correction, which means 10% or more below its recent high.",
+   "summary": "After Democrats won control of both the Senate and the House on November 3, Nasdaq-100 futures (early bets on where stocks will open) fell as much as 2.4% overnight before recovering. Analysts said the biggest risk for tech is tougher rules on AI and data centers, and some data center stocks fell before the market opened. Chipmaker AMD rose about 5% to 6% after beating expectations and forecasting faster growth in 2027. The Nasdaq-100 had already fallen into a correction (a drop of 10% or more from its high) on Monday.",
    "ticker": "NASDAQ",
-   "updatedAt": "2026-11-03T23:10:37.073Z",
+   "updatedAt": "2026-11-04T11:39:52.294Z",
    "symbol": "NASDAQ:QQQ"
   },
   {
