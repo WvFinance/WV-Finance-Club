@@ -3,86 +3,98 @@
  "briefs": [
   {
    "bear": [
-    "Analysts expect more pressure for rules on AI, which could slow spending on data centers.",
-    "Futures fell as much as 1.4% overnight before recovering, showing how jumpy investors are.",
-    "Fights over the government's borrowing limit and spending are expected next year."
+    "Oil fell more than 8%, and energy was the worst part of the market as companies like Exxon dropped.",
+    "Companies that build AI data centers fell sharply on fears that Congress will add new limits.",
+    "Some stocks crashed on bad news, like FIS, which dropped about 24% after cutting its profit forecast."
    ],
    "bull": [
-    "Futures recovered from an early drop and pointed higher, with Dow futures up about 0.8% to 1.3%.",
-    "Some analysts said a split government could ease worries about long political fights and keep big policy changes in check.",
-    "Interest rates on long-term government bonds fell, with the 10-year Treasury yield dipping to about 4.92%."
+    "The S&P 500 gained about 120 points as the end of election uncertainty lifted most stocks.",
+    "Interest rates on 10-year government bonds fell to about 4.89%, which can make stocks look more attractive.",
+    "A fear gauge for stocks (the VIX) dropped about 20%, showing investors felt calmer."
    ],
-   "headline": "S&P 500 futures rise after Democrats win control of Congress in the midterms",
+   "headline": "S&P 500 climbs 1.6% as stocks rally after Democrats win Congress",
    "market": true,
    "name": "S&P 500",
-   "nextEvent": "The October jobs report on November 6, 2026",
+   "nextEvent": "The October jobs report on Friday, November 6, 2026",
    "order": 1,
-   "sentiment": "neutral",
+   "sentiment": "bullish",
    "sources": [
     {
-     "title": "Stock Market Today, Nov. 4: Futures Rise After Democrats Sweep Midterm Elections",
-     "url": "https://www.tipranks.com/news/stock-market-today-nov-4-futures-rise-after-democrats-sweep-midterm-elections",
-     "outlet": "TipRanks",
+     "title": "Stock Market Today (Nov. 4, 2026): Stocks rise, oil collapses after Dems sweep midterm elections",
+     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-04-2026",
+     "outlet": "TheStreet",
      "date": "Nov 4, 2026"
     },
     {
-     "title": "US stock futures rise as investors assess Democrats' midterm sweep",
-     "url": "https://www.freedom969.com/business/us-stock-futures-rise-as-investors-assess-democrats-midterm-sweep",
-     "outlet": "Freedom 96.9 (Reuters)",
+     "title": "Stock Market Today, Nov. 4: Dow Surges 3% in Biggest Post-Midterm Rally in 44 Years",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-4-221001197.html",
+     "outlet": "Yahoo Finance (Motley Fool)",
      "date": "Nov 4, 2026"
     },
     {
-     "title": "Analysts react to US midterm election results",
-     "url": "https://www.investing.com/news/economy-news/analysts-react-to-us-midterm-election-results-4997173",
-     "outlet": "Investing.com (Reuters)",
+     "title": "Dow Jumps After the Midterms in the Stock Market Today, November 4",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-4-2026",
+     "outlet": "StockTitan",
+     "date": "Nov 4, 2026"
+    },
+    {
+     "title": "Stock Market News for Nov 4, 2026",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-news-nov-4-132500586.html",
+     "outlet": "Yahoo Finance (Zacks)",
      "date": "Nov 4, 2026"
     }
    ],
-   "summary": "In the November 3 midterm elections, Democrats won control of both the Senate and the House. Stock futures (early bets on where stocks will open) first fell overnight, then turned higher, with S&P 500 futures up about 0.4% to 0.9% early on November 4. Many analysts said the result was largely expected, and some said a split government could mean fewer big policy changes. The main worry is that Congress may push for tougher rules on AI and data centers, which have powered much of the market's gains.",
+   "summary": "On Wednesday, November 4, the S&P 500 rose about 1.6% to 7,688.62 after Democrats won control of both the House and Senate in the November 3 midterm elections. Many investors were relieved the vote was over, and some said a split government means fewer big surprise changes in laws. Big tech stocks like Amazon, Microsoft and Apple jumped 6% to 7%, while oil prices fell about 8% and dragged energy stocks lower. The day before, the S&P 500 had risen 0.4% as chip stocks bounced back.",
    "ticker": "SP500",
-   "updatedAt": "2026-11-04T11:39:52.303Z",
+   "updatedAt": "2026-11-04T23:04:52.953Z",
    "symbol": "AMEX:SPY"
   },
   {
    "bear": [
-    "Analysts expect Democrats to push for more rules on AI, which could slow the AI building boom.",
-    "Data center companies such as CoreWeave and Nebius fell before the open on those worries.",
-    "The Nasdaq-100 entered a correction on Monday, and one group of AI stocks is down more than 24% from its peak."
+    "AI data-center builders like Hut 8 and Sterling Infrastructure fell more than 20% on fears of new limits.",
+    "Nvidia fell about 1.6% during the day while most big tech stocks rose.",
+    "The Nasdaq-100 is still in a correction after falling more than 10% from its October record."
    ],
    "bull": [
-    "AMD beat expectations, with sales of $13.4 billion, and its stock jumped about 5% to 6% after hours.",
-    "Amazon, Microsoft and Meta traded higher before the market opened.",
-    "Many analysts said the election result was largely expected and already priced into stocks."
+    "Amazon, Microsoft and Apple each jumped about 6% to 7%, lifting the whole index.",
+    "Chip stocks rebounded on Tuesday, with a chip-stock index up 3% and Nvidia up 2.3%.",
+    "Many investors were glad the election was over, which removed a big question mark."
    ],
-   "headline": "Tech futures swing after the midterms as AI rules become a new worry",
+   "headline": "Nasdaq rises 1.4% as big tech jumps but AI data-center stocks sink",
    "market": true,
    "name": "Nasdaq",
-   "nextEvent": "The October jobs report on November 6, 2026",
+   "nextEvent": "The October jobs report on Friday, November 6, 2026",
    "order": 2,
    "sentiment": "neutral",
    "sources": [
     {
-     "title": "US stock futures rise as investors assess Democrats' midterm sweep",
-     "url": "https://www.freedom969.com/business/us-stock-futures-rise-as-investors-assess-democrats-midterm-sweep",
-     "outlet": "Freedom 96.9 (Reuters)",
+     "title": "Dow Jumps After the Midterms in the Stock Market Today, November 4",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-4-2026",
+     "outlet": "StockTitan",
      "date": "Nov 4, 2026"
     },
     {
-     "title": "Stock Market Today, Nov. 4: Futures Rise After Democrats Sweep Midterm Elections",
-     "url": "https://www.tipranks.com/news/stock-market-today-nov-4-futures-rise-after-democrats-sweep-midterm-elections",
-     "outlet": "TipRanks",
+     "title": "Stock Market Today (Nov. 4, 2026): Stocks rise, oil collapses after Dems sweep midterm elections",
+     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-04-2026",
+     "outlet": "TheStreet",
      "date": "Nov 4, 2026"
     },
     {
-     "title": "Analysts react to US midterm election results",
-     "url": "https://www.investing.com/news/economy-news/analysts-react-to-us-midterm-election-results-4997173",
-     "outlet": "Investing.com (Reuters)",
+     "title": "Stock Market Today, Nov. 4: Dow Surges 3% in Biggest Post-Midterm Rally in 44 Years",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-4-221001197.html",
+     "outlet": "Yahoo Finance (Motley Fool)",
+     "date": "Nov 4, 2026"
+    },
+    {
+     "title": "Stock Market News for Nov 4, 2026",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-news-nov-4-132500586.html",
+     "outlet": "Yahoo Finance (Zacks)",
      "date": "Nov 4, 2026"
     }
    ],
-   "summary": "After Democrats won control of both the Senate and the House on November 3, Nasdaq-100 futures (early bets on where stocks will open) fell as much as 2.4% overnight before recovering. Analysts said the biggest risk for tech is tougher rules on AI and data centers, and some data center stocks fell before the market opened. Chipmaker AMD rose about 5% to 6% after beating expectations and forecasting faster growth in 2027. The Nasdaq-100 had already fallen into a correction (a drop of 10% or more from its high) on Monday.",
+   "summary": "On Wednesday, November 4, the Nasdaq rose about 1.4% to 25,736.51 after Democrats won control of Congress and the election uncertainty faded. Amazon rose about 7%, Microsoft about 7% and Apple about 6%, but Nvidia slipped and companies that build AI data centers fell hard on worries about new rules. On Monday, the Nasdaq-100 had closed more than 10% below its October 6 record, which is called a correction. On Tuesday, chip stocks bounced back and the Nasdaq rose 0.8%.",
    "ticker": "NASDAQ",
-   "updatedAt": "2026-11-04T11:39:52.294Z",
+   "updatedAt": "2026-11-04T23:04:52.953Z",
    "symbol": "NASDAQ:QQQ"
   },
   {
@@ -605,47 +617,47 @@
    "crypto": true,
    "order": 3,
    "symbol": "COINBASE:BTCUSD",
-   "sentiment": "bearish",
-   "headline": "Bitcoin stays near $77,000 as fund outflows and Binance withdrawals continue",
-   "summary": "Bitcoin traded around $76,300 to $78,250 on Tuesday, November 3, and was down about 3% by midday at around $77,600. Bitcoin funds that trade like stocks (ETFs) lost about $399 million on Monday, their second day in a row of money leaving. Customers have now pulled a net $4.72 billion from Binance, the biggest crypto exchange, since it reopened after hackers stole about $6.3 billion on October 29. Traders also expected bigger price swings around the US midterm elections.",
+   "sentiment": "neutral",
+   "headline": "Bitcoin bounces back near $80,000 after a midterm election-night dip",
+   "summary": "Bitcoin fell to about $75,600 on election night, its lowest since mid-September, as results showed Democrats winning Congress. By Wednesday afternoon, November 4, it had climbed back to about $80,100, up about 3% on the day. Part of the jump came from a short squeeze, when traders who bet on a fall had to buy back, with about $560 million of those bets wiped out. Money is still leaving bitcoin funds that trade like stocks (ETFs), with about $1.16 billion pulled out over three days.",
    "bull": [
-    "Binance says it has replaced about 95% of the stolen money, and it reopened more withdrawals on Tuesday.",
-    "Binance posted a new proof that its customers' coins are backed at least one-for-one.",
-    "Bitcoin bounced back from its low near $76,300 and stayed above a key level traders watch."
+    "Bitcoin rose about 7% from its election-night low in roughly 12 hours.",
+    "Traders bought far more options that pay off if the price rises than ones that pay off if it falls.",
+    "Some analysts said bitcoin stayed above a key price traders watch, around $75,700 to $77,700."
    ],
    "bear": [
-    "BlackRock's bitcoin fund lost $405 million on Monday, its biggest one-day outflow since June.",
-    "A fear gauge for crypto (the Fear and Greed index) dropped, showing investors are nervous.",
-    "New hacks hit other exchanges, like about $40 million taken from Brazil's Mercado Bitcoin."
+    "Bitcoin ETFs lost money for three days in a row, about $1.16 billion in total.",
+    "Analysts say a Democratic Congress makes a crypto law Trump wanted, the CLARITY Act, much harder to pass.",
+    "Bitcoin is still about 36% below its all-time high of about $126,000."
    ],
-   "nextEvent": "The October jobs report comes out on Friday, November 6, 2026",
+   "nextEvent": "The October jobs report on Friday, November 6, 2026",
    "sources": [
     {
-     "title": "Bitcoin steadies after dip to $76,300 as ETF outflows and midterm elections weigh on crypto",
-     "url": "https://www.coindesk.com/markets/2026/11/03/bitcoin-steadies-after-dip-to-usd76-300-as-etf-outflows-and-midterm-elections-weigh-on-crypto",
+     "title": "Bitcoin Price Holds Near $80,000 as Democratic Sweep Sparks Short Squeeze",
+     "url": "https://bitcoinmagazine.com/markets/bitcoin-price-holds-near-80000-short",
+     "outlet": "Bitcoin Magazine",
+     "date": "Nov 4, 2026"
+    },
+    {
+     "title": "Bitcoin rises to $78,300 in V-shaped comeback as midterm election uncertainty fades",
+     "url": "https://www.coindesk.com/markets/2026/11/04/bitcoin-knocks-on-usd78-000-in-v-shaped-comeback-as-midterm-uncertainty-fades",
      "outlet": "CoinDesk",
-     "date": "Nov 3, 2026"
+     "date": "Nov 4, 2026"
     },
     {
-     "title": "Crypto & Finance market report, Tuesday, November 3, 2026",
-     "url": "https://tedpillows.substack.com/p/crypto-and-finance-market-report-46c",
-     "outlet": "Ted Pillows (Substack)",
-     "date": "Nov 3, 2026"
+     "title": "Bitcoin price reclaims $78K after U.S. midterm selloff: Is the bottom in?",
+     "url": "https://crypto.news/bitcoin-price-reclaims-78000-us-midterm-election/",
+     "outlet": "crypto.news",
+     "date": "Nov 4, 2026"
     },
     {
-     "title": "Stock market today: Dow slips, S&P and Nasdaq gain as chip stocks rally, focus shifts to midterm elections",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-3-dow-sp-500-nasdaq-midterms-amd-earnings-141143244.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 3, 2026"
-    },
-    {
-     "title": "Bitcoin and Ether Outlook: How the Binance Hack is Affecting Prices",
-     "url": "https://www.analyticsinsight.net/cryptocurrency-analytics-insight/bitcoin-and-ether-outlook-how-the-binance-hack-is-affecting-prices",
-     "outlet": "Analytics Insight",
-     "date": "Nov 2, 2026"
+     "title": "Crypto market outlook after US midterms, will Bitcoin reclaim $80,000?",
+     "url": "https://crypto.news/crypto-market-outlook-after-us-midterms-will-bitcoin-reclaim-80000",
+     "outlet": "crypto.news",
+     "date": "Nov 4, 2026"
     }
    ],
-   "updatedAt": "2026-11-03T23:10:37.070Z"
+   "updatedAt": "2026-11-04T23:04:52.952Z"
   },
   {
    "ticker": "ETH",
@@ -654,72 +666,78 @@
    "crypto": true,
    "order": 4,
    "symbol": "COINBASE:ETHUSD",
-   "sentiment": "bearish",
-   "headline": "Ethereum holds near $2,290 as traders brace for more swings",
-   "summary": "Ethereum (ETH) traded around $2,290 on Tuesday, November 3, up about 0.6% early in the day, after dipping below $2,200 during the sell-off that followed the $6.3 billion Binance hack. Ethereum funds that trade like stocks (ETFs) lost about $482 million over the last five trading days. Many traders bought options that pay off if the price falls (called puts), with the most popular betting on a drop to $1,900 by Friday. Binance reopened withdrawals for stablecoins (coins tied to the US dollar) on the Ethereum network first on Tuesday.",
+   "sentiment": "neutral",
+   "headline": "Ethereum jumps above $2,400 and beats bitcoin after the midterms",
+   "summary": "Ethereum (ETH) fell to about $2,227 on election night, then climbed to about $2,425 by Wednesday evening, November 4, a gain of about 5.7% in a day. That was faster than bitcoin, which rose about 3.5%. Still, money keeps leaving Ethereum funds that trade like stocks (ETFs), with seven days in a row of outflows and about $1.65 billion pulled out since October 5. Many traders are still buying options that pay off if the price falls (called puts).",
    "bull": [
-    "Ethereum did a little better than Bitcoin, and its price compared with Bitcoin edged up.",
-    "Binance says it has replaced about 95% of the stolen money and is reopening withdrawals step by step.",
-    "Ethereum bounced back from below $2,200 and stayed above that level, which traders watch closely."
+    "Ethereum rose about 8% from its election-night low in about 12 hours.",
+    "Ethereum gained compared with bitcoin, with the ETH-to-BTC price ratio up about 2.2%.",
+    "A crypto fear gauge (the Fear and Greed index) rose from 26 to 34, showing a little less fear."
    ],
    "bear": [
-    "Money kept leaving Ethereum funds, with about $482 million pulled out in five trading days.",
-    "Traders are betting on drops: the six most-traded Ethereum options were all bets that the price will fall.",
-    "Hackers could sell stolen coins through Ethereum-based markets, which could push the price down."
+    "Ethereum ETFs lost money for seven days in a row, including about $85 million on Tuesday.",
+    "The average ETF buyer paid about $3,200, so many are sitting on losses and may sell if the price rises.",
+    "Four of the six most-traded Ethereum options were bets that the price will fall."
    ],
-   "nextEvent": "The October jobs report comes out on Friday, November 6, 2026",
+   "nextEvent": "The October jobs report on Friday, November 6, 2026",
    "sources": [
     {
-     "title": "Bitcoin steadies after dip to $76,300 as ETF outflows and midterm elections weigh on crypto",
-     "url": "https://www.coindesk.com/markets/2026/11/03/bitcoin-steadies-after-dip-to-usd76-300-as-etf-outflows-and-midterm-elections-weigh-on-crypto",
+     "title": "Ethereum price jumps above $2,400: why Ether is outpacing Bitcoin after the US midterms",
+     "url": "https://cryptoticker.io/en/ethereum-price-above-2400-after-midterms/",
+     "outlet": "CryptoTicker",
+     "date": "Nov 4, 2026"
+    },
+    {
+     "title": "Ether ETF buyers sit at an average of $3,200: the Ethereum price levels that count until then",
+     "url": "https://cryptoticker.io/en/ethereum-price-prediction-etf-cost-basis-4-november-2026/",
+     "outlet": "CryptoTicker",
+     "date": "Nov 4, 2026"
+    },
+    {
+     "title": "Markets Today - November 4, 2026",
+     "url": "https://nexo.com/blog/markets-today-november-4",
+     "outlet": "Nexo",
+     "date": "Nov 4, 2026"
+    },
+    {
+     "title": "Bitcoin rises to $78,300 in V-shaped comeback as midterm election uncertainty fades",
+     "url": "https://www.coindesk.com/markets/2026/11/04/bitcoin-knocks-on-usd78-000-in-v-shaped-comeback-as-midterm-uncertainty-fades",
      "outlet": "CoinDesk",
-     "date": "Nov 3, 2026"
-    },
-    {
-     "title": "Crypto & Finance market report, Tuesday, November 3, 2026",
-     "url": "https://tedpillows.substack.com/p/crypto-and-finance-market-report-46c",
-     "outlet": "Ted Pillows (Substack)",
-     "date": "Nov 3, 2026"
-    },
-    {
-     "title": "Bitcoin and Ether Outlook: How the Binance Hack is Affecting Prices",
-     "url": "https://www.analyticsinsight.net/cryptocurrency-analytics-insight/bitcoin-and-ether-outlook-how-the-binance-hack-is-affecting-prices",
-     "outlet": "Analytics Insight",
-     "date": "Nov 2, 2026"
-    },
-    {
-     "title": "Bitcoin and Ethereum Price Predictions for Today (November 3)",
-     "url": "https://captainaltcoin.com/bitcoin-and-ethereum-price-predictions-for-today-november-3/",
-     "outlet": "CaptainAltcoin",
-     "date": "Nov 2, 2026"
+     "date": "Nov 4, 2026"
     }
    ],
-   "updatedAt": "2026-11-03T23:10:37.073Z"
+   "updatedAt": "2026-11-04T23:04:52.953Z"
   }
  ],
  "market": {
-  "date": "2026-11-03",
-  "why": "On Tuesday, November 3, chip stocks bounced back after Monday's drop, which lifted the Nasdaq about 0.8% and the S&P 500 a little. AMD rose about 3.7% before its earnings report, then jumped about 7% more after hours when sales from its data center chips nearly doubled. The Dow slipped because Apple fell after warning its profit margins (how much it keeps from each sale) could shrink, while voters headed to the polls for the midterm elections.",
+  "date": "2026-11-04",
+  "why": "On Wednesday, November 4, stocks jumped after Democrats won control of both the House and Senate, which ended the election guessing game. The Dow gained about 1,570 points, its best day after a midterm in 44 years, led by big jumps in Amazon, Microsoft and Apple. Oil fell about 8%, which hurt energy stocks like Exxon, while companies that build AI data centers sank on fears of new limits from Congress.",
   "sources": [
    {
-    "title": "Stock market today: Dow slips, S&P and Nasdaq gain as chip stocks rally, focus shifts to midterm elections",
-    "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-3-dow-sp-500-nasdaq-midterms-amd-earnings-141143244.html",
-    "outlet": "Yahoo Finance",
-    "date": "Nov 3, 2026"
-   },
-   {
-    "title": "Stock Market Today (Nov. 3, 2026): Nasdaq, Russell 2000 finish higher in homestretch of U.S. midterm election",
-    "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-03-2026",
+    "title": "Stock Market Today (Nov. 4, 2026): Stocks rise, oil collapses after Dems sweep midterm elections",
+    "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-04-2026",
     "outlet": "TheStreet",
-    "date": "Nov 3, 2026"
+    "date": "Nov 4, 2026"
    },
    {
-    "title": "03 November 2026 Market Close & Major Financial Headlines: Nasdaq Leads as Technology Shares Recover; Dow Falls",
-    "url": "https://econcurrents.substack.com/p/03-november-2026-market-close-and",
-    "outlet": "EconCurrents",
-    "date": "Nov 3, 2026"
+    "title": "Stock Market Today, Nov. 4: Dow Surges 3% in Biggest Post-Midterm Rally in 44 Years",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-4-221001197.html",
+    "outlet": "Yahoo Finance (Motley Fool)",
+    "date": "Nov 4, 2026"
+   },
+   {
+    "title": "Dow Jumps After the Midterms in the Stock Market Today, November 4",
+    "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-4-2026",
+    "outlet": "StockTitan",
+    "date": "Nov 4, 2026"
+   },
+   {
+    "title": "Global Markets Close — November 4, 2026",
+    "url": "https://strategitz.substack.com/p/global-markets-close-november-4-2026",
+    "outlet": "Strategitz",
+    "date": "Nov 4, 2026"
    }
   ],
-  "updatedAt": "2026-11-03T23:10:36.961Z"
+  "updatedAt": "2026-11-04T23:04:22.325Z"
  }
 }
