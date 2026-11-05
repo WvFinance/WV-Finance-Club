@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04",
+ "updated": "2026-11-05",
  "briefs": [
   {
    "bear": [
@@ -99,159 +99,123 @@
   },
   {
    "bear": [
-    "Apple expects its gross margin (profit per dollar of sales) to fall to 45% to 46% next quarter, from 47.9%, partly because memory chips cost more.",
-    "iPad sales fell 10% and wearables like the Apple Watch fell 8%.",
-    "The stock fell 1.8% on Monday and dropped further in trading after the report."
+    "The jump came just days after the stock fell for three straight days following its earnings report.",
+    "Investors are moving money quickly between groups of stocks, which can make big swings in both directions.",
+    "At a record high, the stock may have less room for good surprises."
    ],
    "bull": [
-    "Sales of $114.5 billion and profit of $2.10 per share both beat what analysts expected.",
-    "iPhone sales rose 17% to $57.6 billion, and sales in China grew about 21%.",
-    "Apple expects sales to grow 7% to 10% in the October to December quarter, and it has more iPhone Duo orders than it can make right now."
+    "The stock hit a record high of $354.33 on November 4.",
+    "Analysts said a split government makes big new tax changes or tech rules that could hurt Apple less likely.",
+    "If data center building slows, prices for the memory chips Apple uses could cool."
    ],
-   "headline": "Apple beats sales and profit guesses, but its stock slips on a weaker profit forecast",
-   "nextEvent": "Apple pays its next dividend of $0.27 per share on November 16, 2026",
-   "sentiment": "neutral",
+   "headline": "Apple jumps about 5% to a record as investors cheer the midterm results",
+   "nextEvent": "",
+   "sentiment": "bullish",
    "sources": [
     {
-     "title": "Apple Reports 4Q 2026 Results: $30.7B Profit on $114.5B Revenue",
-     "url": "https://www.macrumors.com/2026/11/02/apple-4q-2026-earnings/",
-     "outlet": "MacRumors",
-     "date": "Nov 2, 2026"
-    },
-    {
-     "title": "Stock Market Today (Nov. 2, 2026): Apple falls after posting slower earnings growth; S&P 500 falls ahead of U.S. midterms",
-     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-02-2026",
-     "outlet": "TheStreet",
-     "date": "Nov 2, 2026"
-    },
-    {
-     "title": "Tech Stocks Pulled the Nasdaq Lower in the Stock Market Today, November 2, 2026, as Oil Tumbled",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-2-2026",
+     "title": "The Dow Soared in the Stock Market Today, November 4, 2026, After Democrats Won Congress and Oil Fell",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-4-2026",
      "outlet": "StockTitan",
-     "date": "Nov 2, 2026"
+     "date": "Nov 4, 2026"
     },
     {
-     "title": "AI Return Doubts Weigh on Nasdaq, Index Falls Over 1%; Memory and Optical Communications Stocks Slump",
-     "url": "https://finance.biggo.com/news/345f3228-1d14-4f62-bca9-0c4446b03f49",
-     "outlet": "BigGo Finance",
-     "date": "Nov 3, 2026"
+     "title": "Amazon Rallies 7%, Apple and Microsoft Climb 5% as Big Tech Leads Post-Election Rebound",
+     "url": "https://247wallst.com/investing/2026/11/04/amazon-rallies-7-apple-and-microsoft-climb-5-as-big-tech-leads-post-election-rebound/",
+     "outlet": "24/7 Wall St.",
+     "date": "Nov 4, 2026"
+    },
+    {
+     "title": "U.S. stocks surge on expected two years of Washington DC gridlock; Apple jumps more than 6% to record territory",
+     "url": "https://macdailynews.com/2026/11/04/u-s-stocks-surge-on-expected-two-years-of-washington-dc-gridlock-apple-jumps-more-than-6-to-record-territory/",
+     "outlet": "MacDailyNews",
+     "date": "Nov 4, 2026"
     }
    ],
-   "summary": "On November 2, Apple said sales for July to September rose 12% to a record $114.5 billion, and profit was $2.10 per share. Both beat what analysts expected ($113.5 billion and $2.00). iPhone sales grew 17% and Mac sales grew 24%, but iPad sales fell 10%. The stock fell 1.8% during the day and slipped further after the report, because Apple expects its profit per dollar of sales to drop next quarter as memory chips get more expensive.",
+   "summary": "On November 4, Apple's stock rose about 5.3%, reaching a record high of $354.33 during the day and ending a three-day losing streak. Investors bought big tech after Democrats won control of Congress, expecting a split government to make big new tax or tech rules less likely. An analyst at Evercore ISI said Apple depends on iPhone sales, prices and services rather than data center building, so possible limits on new data centers may not hurt it. Slower data center building could even ease the price of memory chips that Apple buys for its devices.",
    "ticker": "AAPL",
-   "updatedAt": "2026-11-03T06:28:45.127Z",
+   "updatedAt": "2026-11-05T11:40:17.947Z",
    "symbol": "NASDAQ:AAPL",
    "name": "Apple"
   },
   {
    "bear": [
-    "Profit of $1.89 per share was below the $1.96 analysts expected.",
+    "Profit per share of $1.89 last quarter was below the $1.96 analysts expected.",
     "Over the past 12 months, Amazon spent $42.4 billion more cash than it brought in, mostly on AI.",
-    "Amazon plans to spend about $220 billion on buildings and equipment this year and says spending will be much higher in 2027."
+    "The stock is still below its 52-week high of $287.20."
    ],
    "bull": [
-    "Phillip Securities upgraded the stock to Buy and raised its price target to $330.",
-    "AWS grew 39% to $46 billion, and Amazon has $578 billion in signed AWS contracts not yet billed.",
-    "Amazon's CEO expects AWS to grow more than 40% in both 2027 and 2028."
+    "The stock closed up 6.1% at $266.03, on more than twice its usual trading volume.",
+    "AWS grew 39% last quarter, and Amazon has $578 billion in signed cloud contracts not yet billed.",
+    "Pauses on new data centers could help big companies that already own many, like Amazon."
    ],
-   "headline": "Amazon jumps about 5% after an analyst upgrade praises its fast-growing cloud",
+   "headline": "Amazon jumps 6% after the midterms as investors take a new look at its cloud",
    "nextEvent": "",
    "sentiment": "bullish",
    "sources": [
     {
-     "title": "Why Amazon Stock Rallied Monday Morning",
-     "url": "https://www.fool.com/investing/2026/11/02/why-amazon-stock-rallied-monday-morning/",
+     "title": "Stock Market Today, Nov. 4: Amazon Jumps 6% From New Perspective on AWS Growth and AI Strategy Following Election Results",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/04/stock-market-today-nov-4-amazon-jumps-6-from-new-perspective-on-aws-growth-and-ai-strategy-following-election-results/",
      "outlet": "The Motley Fool",
-     "date": "Nov 2, 2026"
+     "date": "Nov 4, 2026"
     },
     {
-     "title": "Amazon Climbs 5% as Upgrade Fuels Post-Earnings Rebound on AWS Strength; Walmart Rises 2%, Alphabet Edges Higher",
-     "url": "https://247wallst.com/investing/2026/11/02/amazon-climbs-5-as-upgrade-fuels-post-earnings-rebound-on-aws-strength-walmart-rises-2-alphabet-edges-higher/",
+     "title": "Amazon Rallies 7%, Apple and Microsoft Climb 5% as Big Tech Leads Post-Election Rebound",
+     "url": "https://247wallst.com/investing/2026/11/04/amazon-rallies-7-apple-and-microsoft-climb-5-as-big-tech-leads-post-election-rebound/",
      "outlet": "24/7 Wall St.",
-     "date": "Nov 2, 2026"
+     "date": "Nov 4, 2026"
     },
     {
-     "title": "Amazon Stock Rises as Phillip Securities Upgrades to Buy, Raises Target to $330",
-     "url": "https://thecryptobasic.com/2026/11/02/amazon-stock-rises-as-phillip-securities-upgrades-to-buy-raises-target-to-330/",
-     "outlet": "The Crypto Basic",
-     "date": "Nov 2, 2026"
+     "title": "The Dow Soared in the Stock Market Today, November 4, 2026, After Democrats Won Congress and Oil Fell",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-4-2026",
+     "outlet": "StockTitan",
+     "date": "Nov 4, 2026"
     }
    ],
-   "summary": "On Monday, November 2, Amazon's stock rose about 5% to around $252 after Phillip Securities upgraded it to Buy and raised its price target (its guess of what the stock could be worth) to $330. The firm pointed to Amazon's cloud business, AWS, which grew 39% last quarter to $46 billion, its fastest pace in nearly five years. The jump won back much of the drop after Amazon's October 29 earnings, when profit came in a little below what analysts expected. Investors are still weighing that cloud growth against Amazon's huge spending on AI.",
+   "summary": "On November 4, Amazon's stock rose 6.1% to $266.03, its second big gain in three days. Investors took a fresh look at its October 29 results, when its cloud business AWS grew 39% to $46 billion. A Goldman Sachs economist said Democratic wins in states and cities could lead to short pauses on building new data centers, which could hurt smaller AI companies but help giants like Amazon that already have lots of data centers. Amazon still faces worries about its huge AI spending.",
    "ticker": "AMZN",
-   "updatedAt": "2026-11-03T11:39:33.981Z",
+   "updatedAt": "2026-11-05T11:40:17.952Z",
    "symbol": "NASDAQ:AMZN",
    "name": "Amazon"
   },
   {
    "bear": [
-    "The bank brought in less money and less profit than experts expected, its first miss in about three years.",
-    "Its costs grew 12%, faster than the 8% growth in the money it brought in, and the bank's money chief said some company deals are being 'delayed.'",
-    "CEO Jamie Dimon warned that rising costs to borrow money could cause trouble, and the bank is buying back fewer of its own shares."
+    "Profit of $5.75 per share last quarter fell short of the $5.94 analysts expected.",
+    "JPMorgan raised its forecast for expenses to $108.6 billion.",
+    "The bank trimmed its plans to buy back its own shares."
    ],
    "bull": [
-    "Profit was still huge at $15.3 billion, which is 6% more than a year earlier.",
-    "Money from its trading desk, where it buys and sells stocks and bonds for clients, hit a new high, and its stock trading business grew 49%.",
-    "The bank added about 650,000 new checking accounts, and the bank Barclays raised its guess for JPMorgan's share price to $425."
+    "The stock rose about 3.7% on November 4 as investors bought large banks.",
+    "JPMorgan raised its forecast for how much it will earn from loans this year.",
+    "On November 2, UBS raised its price target (its guess of what the stock could be worth) to $400 from $395."
    ],
-   "headline": "JPMorgan earns $15.3 billion but falls short of Wall Street's guesses",
+   "headline": "JPMorgan rises about 3.7% as investors move money into big banks",
    "nextEvent": "Next earnings report (when the bank shares its results): January 14, 2027",
-   "sentiment": "neutral",
+   "sentiment": "bullish",
    "sources": [
     {
-     "title": "Bank earnings takeaways: Here's how JPMorgan, Goldman, Wells Fargo and Citi performed in Q3",
-     "url": "https://www.cnbc.com/2026/10/13/bank-earnings-live-updates.html",
-     "outlet": "CNBC",
-     "date": "Oct 13, 2026"
+     "title": "JPMorgan Chase & Co Stock (JPM) Moved Up by 3.72% on Nov 4: What Signal Does It Send?",
+     "url": "https://www.tradingkey.com/news/market-movers/262274726-market-movers-jpm-20261104",
+     "outlet": "TradingKey",
+     "date": "Nov 4, 2026"
     },
     {
-     "title": "A Rare Double Miss From JPMorgan",
-     "url": "https://seekingalpha.com/article/4953722-a-rare-double-miss-from-jpmorgan",
-     "outlet": "Seeking Alpha",
-     "date": "Oct 13, 2026"
+     "title": "JPMorgan Chase & Co. (NYSE:JPM) Stock Price Up 1.1% After Analyst Upgrade",
+     "url": "https://www.marketbeat.com/instant-alerts/price-jpmorgan-chase-co-nyse-jpm-stock-price-up-11-after-analyst-upgrade-2026-11-02/",
+     "outlet": "MarketBeat",
+     "date": "Nov 2, 2026"
     },
     {
-     "title": "JPMorgan Chase & Co. Q3 Earnings Call Highlights",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/jpmorgan-chase-co-q3-earnings-160304160.html",
-     "outlet": "Yahoo Finance",
-     "date": "Oct 13, 2026"
-    },
-    {
-     "title": "JPM Q3 2026 Earnings: EPS Miss & Key Numbers",
-     "url": "https://www.allinvestview.com/earnings/JPM/q3-2026/",
-     "outlet": "AllInvestView",
-     "date": "Oct 14, 2026"
-    },
-    {
-     "title": "JPMorgan (JPM) Stock: Can 330 Support Hold After A Rare Third-Quarter Earnings Miss?",
-     "url": "https://www.capitalstreetfx.com/trade-idea/jpmorgan-jpm-trade-idea-13-10-2026/",
-     "outlet": "CapitalStreetFX",
-     "date": "Oct 13, 2026"
-    },
-    {
-     "title": "JPMorgan CEO sends stern warning on the next credit cycle",
-     "url": "https://www.thestreet.com/latest-news/jpmorgan-ceo-sends-a-stern-warning-on-the-next-credit-cycle",
-     "outlet": "TheStreet",
-     "date": "Oct 13, 2026"
-    },
-    {
-     "title": "JPMorgan Chase (NYSE:JPM) stock climbs as quarterly trading revenue hits fresh high",
-     "url": "https://kalkinemedia.com/us/stocks/financial/what-is-drawing-attention-toward-jpmorgan-chase-nysejpm-today",
-     "outlet": "Kalkine Media",
-     "date": "Oct 22, 2026"
-    },
-    {
-     "title": "JPMorgan Chase stock: Barclays lifts target for JPMorgan Chase stock to USD 425",
-     "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/jpmorgan-chase-stock-barclays-lifts-target-for-jpmorgan-chase-stock-to/70399634",
-     "outlet": "AD HOC NEWS",
-     "date": "Oct 23, 2026"
+     "title": "The Dow Soared in the Stock Market Today, November 4, 2026, After Democrats Won Congress and Oil Fell",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-4-2026",
+     "outlet": "StockTitan",
+     "date": "Nov 4, 2026"
     }
    ],
-   "summary": "On October 13, JPMorgan, the biggest U.S. bank, said it made $15.3 billion in profit last quarter. That came to $5.57 for each share, and the money it brought in rose 8% to $50.9 billion. Even so, both numbers came in below what experts had predicted. That kind of miss is rare for this bank, and the shares dropped about 3% before regular trading started that morning. The bank said the miss came from a $658 million loss on investments it sold and a slowdown in its business of helping companies make big deals. Later that same morning the stock was up again, and by October 21 it sat at about $335.",
+   "summary": "On November 4, JPMorgan's stock rose about 3.7% as investors moved money out of pricey tech stocks and into big banks after the midterm elections. Bank of America rose about 3.9% the same day. JPMorgan recently raised its forecast for net interest income (the money it earns from loans minus what it pays on deposits). Its October 13 results showed profit of $5.75 per share, below the $5.94 analysts expected.",
    "ticker": "JPM",
-   "updatedAt": "2026-10-25T01:47:53.796Z",
+   "updatedAt": "2026-11-05T11:40:17.952Z",
    "symbol": "NYSE:JPM",
-   "name": "JPMorgan Chase & Co."
+   "name": "JPMorgan Chase"
   },
   {
    "bear": [
