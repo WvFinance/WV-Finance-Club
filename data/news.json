@@ -3,98 +3,110 @@
  "briefs": [
   {
    "bear": [
-    "Oil fell more than 8%, and energy was the worst part of the market as companies like Exxon dropped.",
-    "Companies that build AI data centers fell sharply on fears that Congress will add new limits.",
-    "Some stocks crashed on bad news, like FIS, which dropped about 24% after cutting its profit forecast."
+    "Chip stocks crashed, with a chip-stock index down about 12% in one day.",
+    "The VIX fear gauge jumped to about 28, its highest since March 31.",
+    "Traders see about a 70% chance the Fed will raise interest rates in December, which usually hurts stocks."
    ],
    "bull": [
-    "The S&P 500 gained about 120 points as the end of election uncertainty lifted most stocks.",
-    "Interest rates on 10-year government bonds fell to about 4.89%, which can make stocks look more attractive.",
-    "A fear gauge for stocks (the VIX) dropped about 20%, showing investors felt calmer."
+    "Fewer people applied for unemployment help last week, about 189,000, a sign the job market is still strong.",
+    "Interest rates on 10-year government bonds fell to about 4.84%, which can make stocks look more attractive.",
+    "Some stocks still rose, like CDW, up about 13%, and Booking, up about 10%."
    ],
-   "headline": "S&P 500 climbs 1.6% as stocks rally after Democrats win Congress",
+   "headline": "S&P 500 drops 4.4% in its worst day since April 2025 as AI chip stocks crash",
    "market": true,
    "name": "S&P 500",
    "nextEvent": "The October jobs report on Friday, November 6, 2026",
    "order": 1,
-   "sentiment": "bullish",
+   "sentiment": "bearish",
    "sources": [
+    {
+     "title": "Stock market today: Dow plunges 1,800 points, Nasdaq enters correction in AI trade meltdown",
+     "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-plunge-chip-stocks-melt-down-193726491.html",
+     "outlet": "Yahoo Finance",
+     "date": "Nov 5, 2026"
+    },
+    {
+     "title": "The Stock Market Today, November 5, Closes Sharply Lower as the AI Chip Selloff Spreads",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-5-2026",
+     "outlet": "StockTitan",
+     "date": "Nov 5, 2026"
+    },
+    {
+     "title": "A wipeout for AI stocks sends Wall Street tumbling, and the S&P 500 drops more than 3%",
+     "url": "https://spectrumlocalnews.com/us/snplus/business/2026/11/05/stock-market-ai-chip-selloff",
+     "outlet": "Spectrum News (AP)",
+     "date": "Nov 5, 2026"
+    },
+    {
+     "title": "Wall Street Close: Nasdaq Sinks 5.52% and S&P 500 Falls 4.36% as AI Stocks Slide",
+     "url": "https://journalarta.com/en/2026/11/06/wall-street-close-nasdaq-sinks-5-52-and-sp-500-falls-4-36-as-ai-stocks-slide/",
+     "outlet": "JournalArta",
+     "date": "Nov 5, 2026"
+    },
     {
      "title": "Stock Market Today (Nov. 4, 2026): Stocks rise, oil collapses after Dems sweep midterm elections",
      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-04-2026",
      "outlet": "TheStreet",
      "date": "Nov 4, 2026"
-    },
-    {
-     "title": "Stock Market Today, Nov. 4: Dow Surges 3% in Biggest Post-Midterm Rally in 44 Years",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-4-221001197.html",
-     "outlet": "Yahoo Finance (Motley Fool)",
-     "date": "Nov 4, 2026"
-    },
-    {
-     "title": "Dow Jumps After the Midterms in the Stock Market Today, November 4",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-4-2026",
-     "outlet": "StockTitan",
-     "date": "Nov 4, 2026"
-    },
-    {
-     "title": "Stock Market News for Nov 4, 2026",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-news-nov-4-132500586.html",
-     "outlet": "Yahoo Finance (Zacks)",
-     "date": "Nov 4, 2026"
     }
    ],
-   "summary": "On Wednesday, November 4, the S&P 500 rose about 1.6% to 7,688.62 after Democrats won control of both the House and Senate in the November 3 midterm elections. Many investors were relieved the vote was over, and some said a split government means fewer big surprise changes in laws. Big tech stocks like Amazon, Microsoft and Apple jumped 6% to 7%, while oil prices fell about 8% and dragged energy stocks lower. The day before, the S&P 500 had risen 0.4% as chip stocks bounced back.",
+   "summary": "On Thursday, November 5, the S&P 500 fell about 4.4% to 7,353.73, its worst day since April 2025. Investors sold AI and chip companies on fears that the new Democratic Congress could slow the building of AI data centers, and some big funds sold to lock in this year's gains. Chip makers like Micron and AMD fell about 17%, while a stock-market fear gauge (the VIX) jumped about 70%. Just the day before, the S&P 500 had risen about 1.6% after the midterm elections.",
    "ticker": "SP500",
-   "updatedAt": "2026-11-04T23:04:52.953Z",
+   "updatedAt": "2026-11-05T23:02:49.304Z",
    "symbol": "AMEX:SPY"
   },
   {
    "bear": [
-    "AI data-center builders like Hut 8 and Sterling Infrastructure fell more than 20% on fears of new limits.",
-    "Nvidia fell about 1.6% during the day while most big tech stocks rose.",
-    "The Nasdaq-100 is still in a correction after falling more than 10% from its October record."
+    "Micron, AMD and Marvell each fell more than 16% in one day.",
+    "Nvidia fell about 9% and is now below where it started the year.",
+    "The Nasdaq dropped below its 200-day average, a long-term trend line many traders watch."
    ],
    "bull": [
-    "Amazon, Microsoft and Apple each jumped about 6% to 7%, lifting the whole index.",
-    "Chip stocks rebounded on Tuesday, with a chip-stock index up 3% and Nvidia up 2.3%.",
-    "Many investors were glad the election was over, which removed a big question mark."
+    "AMD's CEO Lisa Su said the market can be a little short-sighted about AI demand.",
+    "One expert said much of the selling came from big funds locking in this year's gains, not from bad company news.",
+    "Amazon, Microsoft and Apple each jumped about 6% to 7% on Wednesday, showing buyers can return fast."
    ],
-   "headline": "Nasdaq rises 1.4% as big tech jumps but AI data-center stocks sink",
+   "headline": "Nasdaq plunges 5.5% into a correction as chip stocks melt down",
    "market": true,
    "name": "Nasdaq",
    "nextEvent": "The October jobs report on Friday, November 6, 2026",
    "order": 2,
-   "sentiment": "neutral",
+   "sentiment": "bearish",
    "sources": [
     {
-     "title": "Dow Jumps After the Midterms in the Stock Market Today, November 4",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-4-2026",
+     "title": "Stock market today: Dow plunges 1,800 points, Nasdaq enters correction in AI trade meltdown",
+     "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-plunge-chip-stocks-melt-down-193726491.html",
+     "outlet": "Yahoo Finance",
+     "date": "Nov 5, 2026"
+    },
+    {
+     "title": "The Stock Market Today, November 5, Closes Sharply Lower as the AI Chip Selloff Spreads",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-5-2026",
      "outlet": "StockTitan",
-     "date": "Nov 4, 2026"
+     "date": "Nov 5, 2026"
+    },
+    {
+     "title": "Wall Street Close: Nasdaq Sinks 5.52% and S&P 500 Falls 4.36% as AI Stocks Slide",
+     "url": "https://journalarta.com/en/2026/11/06/wall-street-close-nasdaq-sinks-5-52-and-sp-500-falls-4-36-as-ai-stocks-slide/",
+     "outlet": "JournalArta",
+     "date": "Nov 5, 2026"
+    },
+    {
+     "title": "A wipeout for AI stocks sends Wall Street tumbling, and the S&P 500 drops more than 3%",
+     "url": "https://spectrumlocalnews.com/us/snplus/business/2026/11/05/stock-market-ai-chip-selloff",
+     "outlet": "Spectrum News (AP)",
+     "date": "Nov 5, 2026"
     },
     {
      "title": "Stock Market Today (Nov. 4, 2026): Stocks rise, oil collapses after Dems sweep midterm elections",
      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-04-2026",
      "outlet": "TheStreet",
      "date": "Nov 4, 2026"
-    },
-    {
-     "title": "Stock Market Today, Nov. 4: Dow Surges 3% in Biggest Post-Midterm Rally in 44 Years",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-4-221001197.html",
-     "outlet": "Yahoo Finance (Motley Fool)",
-     "date": "Nov 4, 2026"
-    },
-    {
-     "title": "Stock Market News for Nov 4, 2026",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-news-nov-4-132500586.html",
-     "outlet": "Yahoo Finance (Zacks)",
-     "date": "Nov 4, 2026"
     }
    ],
-   "summary": "On Wednesday, November 4, the Nasdaq rose about 1.4% to 25,736.51 after Democrats won control of Congress and the election uncertainty faded. Amazon rose about 7%, Microsoft about 7% and Apple about 6%, but Nvidia slipped and companies that build AI data centers fell hard on worries about new rules. On Monday, the Nasdaq-100 had closed more than 10% below its October 6 record, which is called a correction. On Tuesday, chip stocks bounced back and the Nasdaq rose 0.8%.",
+   "summary": "On Thursday, November 5, the Nasdaq fell about 5.5%, or 1,421 points, to 24,315, its biggest one-day drop in 19 months. It closed more than 10% below last month's record, which is called a correction. Investors worried the new Democratic Congress could slow spending on AI data centers, so Micron and AMD fell about 17% and Nvidia fell about 9%. On Wednesday, the Nasdaq had risen about 1.4% as Amazon, Microsoft and Apple jumped after the elections.",
    "ticker": "NASDAQ",
-   "updatedAt": "2026-11-04T23:04:52.953Z",
+   "updatedAt": "2026-11-05T23:02:49.304Z",
    "symbol": "NASDAQ:QQQ"
   },
   {
@@ -581,47 +593,53 @@
    "crypto": true,
    "order": 3,
    "symbol": "COINBASE:BTCUSD",
-   "sentiment": "neutral",
-   "headline": "Bitcoin bounces back near $80,000 after a midterm election-night dip",
-   "summary": "Bitcoin fell to about $75,600 on election night, its lowest since mid-September, as results showed Democrats winning Congress. By Wednesday afternoon, November 4, it had climbed back to about $80,100, up about 3% on the day. Part of the jump came from a short squeeze, when traders who bet on a fall had to buy back, with about $560 million of those bets wiped out. Money is still leaving bitcoin funds that trade like stocks (ETFs), with about $1.16 billion pulled out over three days.",
+   "sentiment": "bearish",
+   "headline": "Bitcoin slides back near $76,000 as the AI stock selloff spreads to crypto",
+   "summary": "Early on Thursday, November 5, bitcoin was about $80,200, up about 2% from the day before. But as the stock market crashed on worries about AI and chip companies, bitcoin fell about 5.5% to around $75,900 by the end of the day. That is close to its election-night low of about $75,600 from Tuesday. Bitcoin is about 7% lower than a month ago and about 40% below its all-time high of about $126,000 from October 2025.",
    "bull": [
-    "Bitcoin rose about 7% from its election-night low in roughly 12 hours.",
-    "Traders bought far more options that pay off if the price rises than ones that pay off if it falls.",
-    "Some analysts said bitcoin stayed above a key price traders watch, around $75,700 to $77,700."
+    "Bitcoin climbed above $80,000 early Thursday after bouncing back from its election-night dip.",
+    "Interest rates on government bonds fell, which can help riskier things like crypto.",
+    "Bitcoin is still holding near its election-night low instead of falling far below it."
    ],
    "bear": [
-    "Bitcoin ETFs lost money for three days in a row, about $1.16 billion in total.",
-    "Analysts say a Democratic Congress makes a crypto law Trump wanted, the CLARITY Act, much harder to pass.",
-    "Bitcoin is still about 36% below its all-time high of about $126,000."
+    "Bitcoin fell about 5.5% in one day as investors sold risky things along with tech stocks.",
+    "Crypto exchange Binance was hacked for about $6.3 billion last week, which shakes trust.",
+    "Bitcoin is about 22% lower than a year ago and about 40% below its record high."
    ],
    "nextEvent": "The October jobs report on Friday, November 6, 2026",
    "sources": [
     {
-     "title": "Bitcoin Price Holds Near $80,000 as Democratic Sweep Sparks Short Squeeze",
-     "url": "https://bitcoinmagazine.com/markets/bitcoin-price-holds-near-80000-short",
-     "outlet": "Bitcoin Magazine",
-     "date": "Nov 4, 2026"
+     "title": "Current price of Bitcoin for November 5, 2026",
+     "url": "https://fortune.com/article/price-of-bitcoin-11-05-2026/",
+     "outlet": "Fortune",
+     "date": "Nov 5, 2026"
     },
     {
-     "title": "Bitcoin rises to $78,300 in V-shaped comeback as midterm election uncertainty fades",
-     "url": "https://www.coindesk.com/markets/2026/11/04/bitcoin-knocks-on-usd78-000-in-v-shaped-comeback-as-midterm-uncertainty-fades",
-     "outlet": "CoinDesk",
-     "date": "Nov 4, 2026"
+     "title": "Bitcoin and crypto prices on November 5, 2026",
+     "url": "https://finfly.news/en/crypto/crypto-prices-2026-11-05",
+     "outlet": "FinFly.news",
+     "date": "Nov 5, 2026"
     },
     {
-     "title": "Bitcoin price reclaims $78K after U.S. midterm selloff: Is the bottom in?",
-     "url": "https://crypto.news/bitcoin-price-reclaims-78000-us-midterm-election/",
-     "outlet": "crypto.news",
-     "date": "Nov 4, 2026"
+     "title": "Stock market today: Dow plunges 1,800 points, Nasdaq enters correction in AI trade meltdown",
+     "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-plunge-chip-stocks-melt-down-193726491.html",
+     "outlet": "Yahoo Finance",
+     "date": "Nov 5, 2026"
     },
     {
-     "title": "Crypto market outlook after US midterms, will Bitcoin reclaim $80,000?",
-     "url": "https://crypto.news/crypto-market-outlook-after-us-midterms-will-bitcoin-reclaim-80000",
-     "outlet": "crypto.news",
-     "date": "Nov 4, 2026"
+     "title": "Wall Street Close: Nasdaq Sinks 5.52% and S&P 500 Falls 4.36% as AI Stocks Slide",
+     "url": "https://journalarta.com/en/2026/11/06/wall-street-close-nasdaq-sinks-5-52-and-sp-500-falls-4-36-as-ai-stocks-slide/",
+     "outlet": "JournalArta",
+     "date": "Nov 5, 2026"
+    },
+    {
+     "title": "Ethereum Price Prediction: ETH Jumps After Election Selloff, but $2,500 Resistance Remains a Challenge",
+     "url": "https://coinpaper.com/38377/ethereum-price-prediction-eth-jumps-after-election-selloff-but-2-500-resistance-remains-a-challenge",
+     "outlet": "Coinpaper",
+     "date": "Nov 5, 2026"
     }
    ],
-   "updatedAt": "2026-11-04T23:04:52.952Z"
+   "updatedAt": "2026-11-05T23:02:49.303Z"
   },
   {
    "ticker": "ETH",
@@ -630,78 +648,78 @@
    "crypto": true,
    "order": 4,
    "symbol": "COINBASE:ETHUSD",
-   "sentiment": "neutral",
-   "headline": "Ethereum jumps above $2,400 and beats bitcoin after the midterms",
-   "summary": "Ethereum (ETH) fell to about $2,227 on election night, then climbed to about $2,425 by Wednesday evening, November 4, a gain of about 5.7% in a day. That was faster than bitcoin, which rose about 3.5%. Still, money keeps leaving Ethereum funds that trade like stocks (ETFs), with seven days in a row of outflows and about $1.65 billion pulled out since October 5. Many traders are still buying options that pay off if the price falls (called puts).",
+   "sentiment": "bearish",
+   "headline": "Ethereum drops about 7% to near $2,240 after a short-lived jump",
+   "summary": "Ethereum (ETH) started Thursday, November 5, at about $2,418, up about 3.7% from the day before. Later in the day it fell about 7.5% to around $2,244 as stocks and crypto both sold off. On Wednesday, Ethereum funds that trade like stocks (ETFs) took in about $53 million, ending seven days in a row of money leaving. Ethereum is still about 11% lower than a month ago.",
    "bull": [
-    "Ethereum rose about 8% from its election-night low in about 12 hours.",
-    "Ethereum gained compared with bitcoin, with the ETH-to-BTC price ratio up about 2.2%.",
-    "A crypto fear gauge (the Fear and Greed index) rose from 26 to 34, showing a little less fear."
+    "Ethereum ETFs took in about $53 million on Wednesday, ending a seven-day losing streak.",
+    "Lower interest rates on government bonds and a weaker dollar helped risky things like crypto earlier this week.",
+    "Some well-known traders still see ETH climbing toward $2,800 to $3,000 if it holds its recent lows."
    ],
    "bear": [
-    "Ethereum ETFs lost money for seven days in a row, including about $85 million on Tuesday.",
-    "The average ETF buyer paid about $3,200, so many are sitting on losses and may sell if the price rises.",
-    "Four of the six most-traded Ethereum options were bets that the price will fall."
+    "Ethereum fell about 7.5% in one day as tech stocks crashed.",
+    "About $1.61 billion left Ethereum ETFs in October.",
+    "ETH is about 11% lower than a month ago and about 29% lower than a year ago."
    ],
    "nextEvent": "The October jobs report on Friday, November 6, 2026",
    "sources": [
     {
-     "title": "Ethereum price jumps above $2,400: why Ether is outpacing Bitcoin after the US midterms",
-     "url": "https://cryptoticker.io/en/ethereum-price-above-2400-after-midterms/",
-     "outlet": "CryptoTicker",
-     "date": "Nov 4, 2026"
+     "title": "Current price of Ethereum for November 5, 2026",
+     "url": "https://fortune.com/article/price-of-ethereum-11-05-2026/",
+     "outlet": "Fortune",
+     "date": "Nov 5, 2026"
     },
     {
-     "title": "Ether ETF buyers sit at an average of $3,200: the Ethereum price levels that count until then",
-     "url": "https://cryptoticker.io/en/ethereum-price-prediction-etf-cost-basis-4-november-2026/",
-     "outlet": "CryptoTicker",
-     "date": "Nov 4, 2026"
+     "title": "Ethereum Price Prediction: ETH Jumps After Election Selloff, but $2,500 Resistance Remains a Challenge",
+     "url": "https://coinpaper.com/38377/ethereum-price-prediction-eth-jumps-after-election-selloff-but-2-500-resistance-remains-a-challenge",
+     "outlet": "Coinpaper",
+     "date": "Nov 5, 2026"
     },
     {
-     "title": "Markets Today - November 4, 2026",
-     "url": "https://nexo.com/blog/markets-today-november-4",
-     "outlet": "Nexo",
-     "date": "Nov 4, 2026"
+     "title": "Ethereum price outlook for November: Can ETH hit $2,800?",
+     "url": "https://crypto.news/ethereum-price-outlook-november-2026/",
+     "outlet": "crypto.news",
+     "date": "Nov 5, 2026"
     },
     {
-     "title": "Bitcoin rises to $78,300 in V-shaped comeback as midterm election uncertainty fades",
-     "url": "https://www.coindesk.com/markets/2026/11/04/bitcoin-knocks-on-usd78-000-in-v-shaped-comeback-as-midterm-uncertainty-fades",
-     "outlet": "CoinDesk",
-     "date": "Nov 4, 2026"
+     "title": "Bitcoin and crypto prices on November 5, 2026",
+     "url": "https://finfly.news/en/crypto/crypto-prices-2026-11-05",
+     "outlet": "FinFly.news",
+     "date": "Nov 5, 2026"
     }
    ],
-   "updatedAt": "2026-11-04T23:04:52.953Z"
+   "updatedAt": "2026-11-05T23:02:49.304Z"
   }
  ],
  "market": {
-  "date": "2026-11-04",
-  "why": "On Wednesday, November 4, stocks jumped after Democrats won control of both the House and Senate, which ended the election guessing game. The Dow gained about 1,570 points, its best day after a midterm in 44 years, led by big jumps in Amazon, Microsoft and Apple. Oil fell about 8%, which hurt energy stocks like Exxon, while companies that build AI data centers sank on fears of new limits from Congress.",
+  "date": "2026-11-05",
+  "why": "On Thursday, November 5, stocks had their worst day since April 2025 as investors rushed to sell AI and computer-chip companies. Many worried the new Democratic Congress could slow the building of AI data centers, so chip makers Micron and AMD fell about 17% and Nvidia dropped about 9%. The Nasdaq ended more than 10% below its record, which is called a correction, and the Dow lost about 1,830 points, giving back all of Wednesday's big gain.",
   "sources": [
    {
-    "title": "Stock Market Today (Nov. 4, 2026): Stocks rise, oil collapses after Dems sweep midterm elections",
-    "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-04-2026",
-    "outlet": "TheStreet",
-    "date": "Nov 4, 2026"
+    "title": "Stock market today: Dow plunges 1,800 points, Nasdaq enters correction in AI trade meltdown",
+    "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-plunge-chip-stocks-melt-down-193726491.html",
+    "outlet": "Yahoo Finance",
+    "date": "Nov 5, 2026"
    },
    {
-    "title": "Stock Market Today, Nov. 4: Dow Surges 3% in Biggest Post-Midterm Rally in 44 Years",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-4-221001197.html",
-    "outlet": "Yahoo Finance (Motley Fool)",
-    "date": "Nov 4, 2026"
-   },
-   {
-    "title": "Dow Jumps After the Midterms in the Stock Market Today, November 4",
-    "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-4-2026",
+    "title": "The Stock Market Today, November 5, Closes Sharply Lower as the AI Chip Selloff Spreads",
+    "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-5-2026",
     "outlet": "StockTitan",
-    "date": "Nov 4, 2026"
+    "date": "Nov 5, 2026"
    },
    {
-    "title": "Global Markets Close — November 4, 2026",
-    "url": "https://strategitz.substack.com/p/global-markets-close-november-4-2026",
-    "outlet": "Strategitz",
-    "date": "Nov 4, 2026"
+    "title": "A wipeout for AI stocks sends Wall Street tumbling, and the S&P 500 drops more than 3%",
+    "url": "https://spectrumlocalnews.com/us/snplus/business/2026/11/05/stock-market-ai-chip-selloff",
+    "outlet": "Spectrum News (AP)",
+    "date": "Nov 5, 2026"
+   },
+   {
+    "title": "Wall Street Close: Nasdaq Sinks 5.52% and S&P 500 Falls 4.36% as AI Stocks Slide",
+    "url": "https://journalarta.com/en/2026/11/06/wall-street-close-nasdaq-sinks-5-52-and-sp-500-falls-4-36-as-ai-stocks-slide/",
+    "outlet": "JournalArta",
+    "date": "Nov 5, 2026"
    }
   ],
-  "updatedAt": "2026-11-04T23:04:22.325Z"
+  "updatedAt": "2026-11-05T23:02:49.224Z"
  }
 }
