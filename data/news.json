@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05",
+ "updated": "2026-11-06",
  "briefs": [
   {
    "bear": [
@@ -151,41 +151,41 @@
   },
   {
    "bear": [
-    "Profit per share of $1.89 last quarter was below the $1.96 analysts expected.",
-    "Over the past 12 months, Amazon spent $42.4 billion more cash than it brought in, mostly on AI.",
-    "The stock is still below its 52-week high of $287.20."
+    "Investors worry new rules could slow data center building, which AWS depends on.",
+    "Amazon spent $42.4 billion more cash than it brought in over the past 12 months, mostly on AI.",
+    "Higher borrowing costs make paying for AI buildouts more expensive."
    ],
    "bull": [
-    "The stock closed up 6.1% at $266.03, on more than twice its usual trading volume.",
-    "AWS grew 39% last quarter, and Amazon has $578 billion in signed cloud contracts not yet billed.",
-    "Pauses on new data centers could help big companies that already own many, like Amazon."
+    "A new deal gives Prime members free restaurant delivery through Uber Eats, which could make Prime more valuable.",
+    "Amazon's stock fell much less than chip stocks like Nvidia, which dropped about 9%.",
+    "AWS grew 39% last quarter to $46 billion."
    ],
-   "headline": "Amazon jumps 6% after the midterms as investors take a new look at its cloud",
+   "headline": "Amazon slips 2% as a big tech selloff erases its gain from a new Uber deal",
    "nextEvent": "",
-   "sentiment": "bullish",
+   "sentiment": "neutral",
    "sources": [
     {
-     "title": "Stock Market Today, Nov. 4: Amazon Jumps 6% From New Perspective on AWS Growth and AI Strategy Following Election Results",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/04/stock-market-today-nov-4-amazon-jumps-6-from-new-perspective-on-aws-growth-and-ai-strategy-following-election-results/",
+     "title": "Stock Market Today, Nov. 5: Amazon Shares Slide as Technology Selloff Erases Early Gains",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/05/stock-market-today-nov-5-amazon-shares-slide-as-technology-selloff-erases-early-gains/",
      "outlet": "The Motley Fool",
-     "date": "Nov 4, 2026"
+     "date": "Nov 5, 2026"
     },
     {
-     "title": "Amazon Rallies 7%, Apple and Microsoft Climb 5% as Big Tech Leads Post-Election Rebound",
-     "url": "https://247wallst.com/investing/2026/11/04/amazon-rallies-7-apple-and-microsoft-climb-5-as-big-tech-leads-post-election-rebound/",
-     "outlet": "24/7 Wall St.",
-     "date": "Nov 4, 2026"
-    },
-    {
-     "title": "The Dow Soared in the Stock Market Today, November 4, 2026, After Democrats Won Congress and Oil Fell",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-4-2026",
+     "title": "The Stock Market Today, November 5, 2026, Closed Sharply Lower as the AI Chip Selloff Spread",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-5-2026",
      "outlet": "StockTitan",
-     "date": "Nov 4, 2026"
+     "date": "Nov 5, 2026"
+    },
+    {
+     "title": "S&P 500 drops 4.4% in worst day since 2025 as AI chips slide",
+     "url": "https://spectrumlocalnews.com/us/snplus/business/2026/11/05/stock-market-ai-chip-selloff",
+     "outlet": "Spectrum News (AP)",
+     "date": "Nov 5, 2026"
     }
    ],
-   "summary": "On November 4, Amazon's stock rose 6.1% to $266.03, its second big gain in three days. Investors took a fresh look at its October 29 results, when its cloud business AWS grew 39% to $46 billion. A Goldman Sachs economist said Democratic wins in states and cities could lead to short pauses on building new data centers, which could hurt smaller AI companies but help giants like Amazon that already have lots of data centers. Amazon still faces worries about its huge AI spending.",
+   "summary": "On November 5, Amazon's stock fell 2.2% to $260.21, giving back part of its 6% jump the day before. It rose early after Amazon announced a deal giving Prime members free restaurant delivery through Uber Eats, but the gains faded as AI and tech stocks crashed and the S&P 500 fell 4.4%. Investors worry that the new Democratic Congress could push for tighter AI rules or pauses on new data centers, which could affect Amazon's cloud business, AWS. Still, AWS grew 39% last quarter, its fastest pace in nearly five years.",
    "ticker": "AMZN",
-   "updatedAt": "2026-11-05T11:40:17.952Z",
+   "updatedAt": "2026-11-06T11:39:46.760Z",
    "symbol": "NASDAQ:AMZN",
    "name": "Amazon"
   },
