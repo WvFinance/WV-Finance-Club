@@ -12,6 +12,9 @@ const fmtPct=(v,d=1)=>(v>=0?"+":"−")+Math.abs(v*100).toFixed(d)+"%";
 const fmtShares=v=>v.toLocaleString("en-US",{maximumFractionDigits:4});
 const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const fmtStamp=s=>{const d=new Date(s);return isNaN(d)?s:d.toLocaleString("en-US",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});};
+// "Checked Nov 9 · no new news since Nov 5" when the morning check found nothing new, else "Updated Nov 9".
+const briefWhen=n=>{if(!n.updatedAt)return "Updated recently";const c=n.checkedAt&&n.checkedAt.slice(0,10)>n.updatedAt.slice(0,10)?n.checkedAt:null;
+  return c?`Checked ${fmtDate(c)} · no new news since ${fmtDate(n.updatedAt).replace(/, \d{4}$/,"")}`:`Updated ${fmtDate(n.updatedAt)}`;};
 const fmtDate=s=>{const[y,m,d]=s.slice(0,10).split("-").map(Number);return MON[m-1]+" "+d+", "+y;};
 const cls=v=>v>0.0005?"up":v<-0.0005?"down":"flat";
 const arrow=v=>v>0.0005?"▲":v<-0.0005?"▼":"■";
@@ -438,7 +441,7 @@ function newsBoard(cls){
     el("div",{class:"sides"},el("div",{class:"side-col bull"},el("h4",{text:"What the bulls say"}),el("ul",{},(n.bull||[]).map(x=>el("li",{text:x})))),el("div",{class:"side-col bear"},el("h4",{text:"What the bears say"}),el("ul",{},(n.bear||[]).map(x=>el("li",{text:x}))))),
     n.nextEvent?el("div",{class:"notice"},el("b",{text:"Coming up: "}),n.nextEvent):null,
     el("details",{class:"drop srcdrop"},el("summary",{},el("span",{text:`Sources (${(n.sources||[]).length})`})),el("ul",{class:"sources"},(n.sources||[]).map(s=>el("li",{},el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer",text:s.title}),el("span",{class:"o",text:[s.outlet,s.date].filter(Boolean).join(" · ")}))))),
-    el("div",{class:"meta",text:`Updated ${n.updatedAt?fmtDate(n.updatedAt):"recently"}`}),
+    el("div",{class:"meta",text:briefWhen(n)}),
     el("div",{},el("button",{class:"btn small",text:`Open ${n.market?n.name:n.ticker} chart →`,onclick:()=>{openStock(n.symbol||n.ticker);showTab("search",true);}}))].filter(Boolean));
 }
 function renderNews(){
@@ -534,7 +537,7 @@ function renderSearchBrief(){
     el("div",{class:"sechead"},el("div",{},el("div",{class:"eyebrow",text:`News brief · ${n.market?n.name:n.ticker}`}),el("h3",{text:n.headline||""})),sentiPill(n.sentiment)),
     el("p",{class:"lede",text:n.summary||""}),
     el("div",{class:"sides"},el("div",{class:"side-col bull"},el("h4",{text:"What the bulls say"}),el("ul",{},(n.bull||[]).map(x=>el("li",{text:x})))),el("div",{class:"side-col bear"},el("h4",{text:"What the bears say"}),el("ul",{},(n.bear||[]).map(x=>el("li",{text:x}))))),
-    el("div",{class:"meta",text:`From ${(n.sources||[]).length} ${(n.sources||[]).length===1?"article":"articles"} · updated ${n.updatedAt?fmtDate(n.updatedAt):"recently"}`}),
+    el("div",{class:"meta",text:`From ${(n.sources||[]).length} ${(n.sources||[]).length===1?"article":"articles"} · ${briefWhen(n).replace(/^./,c=>c.toLowerCase())}`}),
     inNews?el("div",{},el("button",{class:"btn small",text:"Sources and full brief →",onclick:()=>{S.newsTk=n.ticker;renderNews();showTab("news",true);}})):el("details",{class:"drop srcdrop"},el("summary",{},el("span",{text:`Sources (${(n.sources||[]).length})`})),el("ul",{class:"sources"},(n.sources||[]).map(s=>el("li",{},el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer",text:s.title}),el("span",{class:"o",text:[s.outlet,s.date].filter(Boolean).join(" · ")})))))].filter(Boolean));
 }
 
