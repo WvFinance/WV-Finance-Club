@@ -42,11 +42,13 @@ const PVIEWS=["overview","positions","sectors","history","classnews","ideas"];le
 const DVIEWS=["dschools","dpeople","dweek"];let D_view="dschools";
 function showTab(name,push){
   if(name==="schools")name="dschools";
+  // "Just me" accounts: Home is My Portfolio, Leaderboard is the everyone list. No class or school pages.
+  if(S.individual){if(name==="portfolio"||PVIEWS.includes(name)||name==="home")name="mine";if(name==="district"||DVIEWS.includes(name))name="dpeople";}
   if(DVIEWS.includes(name)){D_view=name;name="district";}else if(name==="district")D_view="dschools";
   if(PVIEWS.includes(name)){S_view=name;name="portfolio";}else if(name==="portfolio")S_view="overview";
   // Search has no tab button: the search bar at the top opens it.
   const tb=n=>$("#tab-"+n);
-  if(!TABS.includes(name)||(tb(name)&&tb(name).hidden)){name="portfolio";}
+  if(!TABS.includes(name)||(tb(name)&&tb(name).hidden)){name=S.individual?"mine":"portfolio";}
   if(name==="portfolio"){for(const v of PVIEWS)$("#pv-"+v).hidden=v!==S_view;
     document.querySelectorAll("#pf-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===S_view));renderBreakdown();if(S_view==="classnews")renderClassFeed();if(S_view==="ideas")loadIdeas();}
   for(const t of TABS){$("#"+t).hidden=t!==name;if(tb(t))tb(t).setAttribute("aria-selected",String(t===name));}
@@ -378,7 +380,7 @@ function saveWatch(){store.set("wvfc.watch",JSON.stringify(S.watch));if(window.W
 // Lets the account page (beta.html) load a saved watchlist and open stocks.
 // account.js tells us the member's school once they're logged in; boot() waits for it.
 let schoolSet;const schoolReady=new Promise(r=>{schoolSet=r;});
-window.WVFC_APP={setSchool(id){schoolSet(id);},setMine(list){const m=[...new Set(list.map(bare))];if(S.mine&&m.join()===S.mine.join())return;S.mine=m;rendered.news=null;renderNews();loadEarnings();if(!$("#news").hidden)renderNewsFeed();},setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},prices:()=>S.prices,refreshPicks:()=>refreshPicks(),picks:()=>S.picks,classRows:()=>classRows(),calc:p=>calc(p)};
+window.WVFC_APP={setSchool(id){schoolSet(id);},setMine(list){const m=[...new Set(list.map(bare))];if(S.mine&&m.join()===S.mine.join())return;S.mine=m;rendered.news=null;renderNews();renderHomeNews();loadEarnings();if(!$("#news").hidden)renderNewsFeed();},setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},prices:()=>S.prices,refreshPicks:()=>refreshPicks(),picks:()=>S.picks,classRows:()=>classRows(),calc:p=>calc(p)};
 function renderWatch(){
   const box=$("#wl");box.replaceChildren();const on=S.watch.some(w=>bare(w)===bare(S.tk));
   $("#wl-toggle").textContent=on?"On watchlist ✓":"Add to watchlist";
@@ -578,12 +580,53 @@ async function renderSchools(){
     el("p",{class:"meta",style:"margin-top:12px",text:"Ranked by % gain, so a school with fewer picks can still win. Prices are the latest daily closes."}));
 }
 
-// Header name and logo follow the school (an admin's "Viewing" school too).
+// The header always says Simple Street. Class members see their club's name under it and their school's colors.
 function showBrand(sc){
-  const club=sc.club||"WV Finance Club",logo=sc.logo||"assets/logo.png";
-  $(".brand h1").textContent=club;document.title=club;
-  document.documentElement.dataset.school=sc.id;try{localStorage.setItem("wvfc.theme",sc.id);}catch(e){}
-  const img=$(".crest");img.src=logo;img.alt=sc.name+" logo";img.classList.toggle("wide",!!sc.wideLogo);
+  document.title="Simple Street";
+  const id=S.individual?"me":sc.id;
+  document.documentElement.dataset.school=id;try{localStorage.setItem("wvfc.theme",id);}catch(e){}
+  $("#school-name").textContent=S.individual?"":(sc.club||sc.name);
+  $("#brand-link").setAttribute("href",S.individual?"#mine":"#portfolio");
+}
+
+// The strip across the top of the log in screen: how the market did on the last trading day.
+function renderGateTick(){
+  const box=$("#gate-tick");if(!box)return;
+  const list=[["^GSPC","S&P 500"],["^IXIC","Nasdaq"],["^DJI","Dow"],["AAPL"],["AMZN"],["JPM"],["XOM"],["JNJ"]];
+  box.replaceChildren(...list.map(([tk,name])=>{const v=moveOver(tk,1);if(v==null)return null;
+    return el("span",{},(name||tk)+" ",el("b",{class:cls(v),text:fmtPct(v,2)}));}).filter(Boolean));
+}
+
+/* ---------- "Just me" accounts (supabase/individual.sql) ---------- */
+// Tabs become Home · Paper Trading · News · Leaderboard.
+function setupIndividual(){
+  $("#tab-portfolio").hidden=true;
+  $("#tab-mine").textContent="Home";
+  const old=$("#tab-district"),lb=old.cloneNode(false);
+  lb.classList.remove("hasmenu");lb.removeAttribute("aria-haspopup");lb.removeAttribute("aria-expanded");lb.textContent="Leaderboard";
+  lb.addEventListener("click",()=>showTab("dpeople",true));old.replaceWith(lb);
+  const h=new Date().getHours(),hi=h<12?"Good morning":h<17?"Good afternoon":"Good evening";
+  const first=String(window.WVFC_NAME||"").split(/\s+/)[0];
+  $("#mine-title").textContent=first?`${hi}, ${first}`:hi;
+  $("#mine-sub").textContent="Here's how your pretend money is doing. Only you can see this page.";
+  $("#dpeople-title").textContent="Leaderboard";
+  $("#dpeople-sub").textContent="Everyone playing Paper Trading on Simple Street, ranked by how much their $50,000 has grown, in %.";
+  $("#pt-board-title").textContent="Leaderboard";
+  $("#join-class").hidden=false;
+  renderHomeNews();
+}
+// Home: the news briefs for the stocks you own, newest market brief first.
+function renderHomeNews(){
+  const box=$("#mine-news");if(!S.individual||!box)return;box.hidden=false;
+  const mine=S.mine||[],market=S.briefs.find(b=>b.market&&b.ticker==="SP500");
+  const own=S.briefs.filter(b=>!b.market&&mine.includes(b.ticker));
+  const why=t=>{const m=String(t||"").match(/^.*?[.!?](\s|$)/);return m?m[0].trim():String(t||"");};
+  const item=(b,label)=>el("li",{},el("button",{type:"button",onclick:()=>{S.newsTk=b.ticker;renderNews();showTab("news",true);}},
+    el("span",{class:"hh"},el("span",{class:"tkp",text:label}),b.headline||""),el("span",{class:"hw",text:why(b.summary)})));
+  const rows=[market&&item(market,"Market"),...own.map(b=>item(b,b.ticker))].filter(Boolean);
+  box.replaceChildren(el("h3",{class:"h3",text:"News for your stocks"}),
+    el("p",{class:"meta",text:mine.length?(own.length?"Plain-English briefs for what you own. Tap one to read it all.":`No briefs yet for ${mine.join(", ")}. The market brief is below.`):"Buy a stock in Paper Trading and its news shows up here."}),
+    rows.length?el("ul",{class:"homenews"},rows):"");
 }
 
 async function boot(){
@@ -591,18 +634,20 @@ async function boot(){
   const [sl,nw,px,mc]=await Promise.allSettled([loadJSON("data/schools.json"),loadJSON("data/news.json"),loadJSON("data/prices.json"),loadJSON("data/market-calendar.json")]);
   if(mc.status==="fulfilled")S.marketCal=mc.value.events||[];
   if(px.status==="fulfilled"&&px.value&&px.value.closes)S.prices=px.value;
+  renderGateTick();
   S.schools=sl.status==="fulfilled"&&sl.value.schools&&sl.value.schools.length?sl.value.schools:DEFAULT_SCHOOLS;
   // Wait for the login to say which school this is (a page with no login shows the log in box anyway).
   const sid=await Promise.race([schoolReady,new Promise(r=>setTimeout(()=>r(null),10000))]);
+  S.individual=sid==="me";
   S.school=S.schools.find(sc=>sc.id===sid)||S.schools[0];
-  $("#school-name").textContent=S.school.name;
   showBrand(S.school);
-  S.picks=await schoolPicks(S.school);
+  S.picks=S.individual?[]:await schoolPicks(S.school);
   if(nw.status==="fulfilled"){S.briefs=nw.value.briefs||[];S.marketRecap=nw.value.market||null;if(nw.value.updated)$("#news-asof").textContent="News briefs updated "+fmtDate(nw.value.updated);}
   S.loaded=true;renderTape();renderPortfolio();renderNews();
+  if(S.individual)setupIndividual();
   const fromWidget=new URLSearchParams(location.search).get("tvwidgetsymbol");
   if(fromWidget){try{history.replaceState(null,"",location.pathname+"#search")}catch(e){}openStock(fromWidget.toUpperCase());}
-  showTab(location.hash.slice(1)||"portfolio");
+  showTab(location.hash.slice(1)||(S.individual?"mine":"portfolio"));
   if(S.picks.length&&CFG.finnhubKey){await Promise.all(S.picks.map(p=>quote(p.ticker)).concat([quote("SPY")]));renderTiles();renderCompare();renderPicks();renderBreakdown();}
 }
 boot();

@@ -45,7 +45,7 @@ async function load(){
   $("#pt-loading").hidden=true;
   if(error){$("#pt-loading").hidden=false;$("#pt-loading").textContent="The game couldn't be loaded. Try again in a minute.";
     mineShow("error");if($("#mine"))$("#mine-loading").textContent="Your stocks couldn't be loaded. Try again in a minute.";loaded=false;return;}
-  if(!acct){window.WVFC_APP&&window.WVFC_APP.setMine&&window.WVFC_APP.setMine([]);$("#pt-game").hidden=true;$("#pt-join").hidden=false;mineShow("join");if(!$("#pt-name").value)$("#pt-name").value=(user.email||"").split("@")[0].slice(0,30);return;}
+  if(!acct){window.WVFC_APP&&window.WVFC_APP.setMine&&window.WVFC_APP.setMine([]);$("#pt-game").hidden=true;$("#pt-join").hidden=false;mineShow("join");if(!$("#pt-name").value)$("#pt-name").value=(String(user.user_metadata&&user.user_metadata.name||"").trim()||(user.email||"").split("@")[0]).slice(0,30);return;}
   G.acct=acct;$("#pt-join").hidden=true;$("#pt-game").hidden=false;mineShow("game");
   const[pos,tr,od]=await Promise.all([db.from("paper_positions").select("*"),db.from("paper_trades").select("*").order("at",{ascending:false}).limit(1000),
     db.from("paper_orders").select("*").order("created_at",{ascending:false}).limit(40)]);
@@ -82,7 +82,8 @@ function renderTiles(box){
   const me=G.board.find(r=>r.me);
   const tile=(label,val,note,k)=>el("div",{class:"tile"},el("div",{class:"eyebrow",text:label}),el("div",{class:"v "+(k||""),text:val}),el("div",{class:"n",text:note}));
   (box||$("#pt-tiles")).replaceChildren(tile("Account value",fmt$(value),G.pos.some(p=>p.shares<0)?"Cash plus stocks, minus shorts":"Cash plus stocks"),tile("Total gain",signed$(gain),fmtPct(gain/START)+" since you started",cls(gain)),
-    tile("Cash to spend",money(+G.acct.cash),"Pretend money"),tile("Your class rank",me?"#"+(classBoard().find(r=>r.me)||me).rank:"–",me?`out of ${classBoard().length} players at your school`:"Loading…"));
+    tile("Cash to spend",money(+G.acct.cash),"Pretend money"),window.WVFC_INDIVIDUAL?tile("Your rank",me?"#"+me.rank:"–",me?`out of ${G.board.length}${G.board.length>=100?"+":""} players`:G.board.length?"Make a trade to get ranked":"Loading…"):
+      tile("Your class rank",me?"#"+(classBoard().find(r=>r.me)||me).rank:"–",me?`out of ${classBoard().length} players at your school`:"Loading…"));
 }
 function orderText(o){
   const n=`${+o.shares} ${o.symbol}`;
@@ -146,7 +147,7 @@ function renderTrades(){
 }
 // Class Leaderboard: only players from your school, ranked among themselves.
 function classBoard(){
-  const me=G.board.find(r=>r.me);if(!me)return G.board;
+  const me=G.board.find(r=>r.me);if(!me||window.WVFC_INDIVIDUAL)return G.board;
   const mine=G.board.filter(r=>r.school===me.school);
   return mine.map(r=>({...r,rank:1+mine.filter(o=>+o.value>+r.value).length}));
 }
