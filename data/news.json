@@ -3,98 +3,98 @@
  "briefs": [
   {
    "bear": [
-    "The S&P 500 fell 2.7% this week, its worst week since June.",
-    "Traders now see a better than 65% chance the Fed raises interest rates in December, which usually hurts stocks.",
-    "Some investors worry new rules from Congress could slow spending on AI, a big driver of recent gains."
+    "Nvidia, one of the biggest companies in the index, fell about 4% after its board started a review of its CEO.",
+    "Citi strategists cut their view on US stocks to neutral, meaning they no longer expect them to beat other markets.",
+    "The 10-year Treasury rate rose to about 4.88%, and a strong jobs report raised the chance the Fed raises interest rates in December."
    ],
    "bull": [
-    "Big chip stocks won back over a third of Thursday's losses on average, with AMD up 11%.",
-    "Employers added 165,000 jobs in October, almost three times more than the 59,000 expected.",
-    "Airbnb jumped about 12% after raising its sales outlook and announcing a plan to buy back up to $12 billion of its own shares."
+    "Every part of the S&P 500 went up on Monday, led by industrial companies, up about 4.6%.",
+    "Oil fell to about $88 a barrel, which can lower costs for companies and shoppers.",
+    "Analysts at Morgan Stanley and UBS said last week's selloff went too far."
    ],
-   "headline": "S&P 500 inches up 0.3% after its worst day since 2025 but falls 2.7% for the week",
+   "headline": "S&P 500 jumps 2.35% as oil prices fall and chip stocks bounce back",
    "market": true,
    "name": "S&P 500",
-   "nextEvent": "The Federal Reserve's next interest rate decision on December 9, 2026",
+   "nextEvent": "October inflation report (CPI) on Tuesday, November 10, 2026",
    "order": 1,
-   "sentiment": "neutral",
+   "sentiment": "bullish",
    "sources": [
+    {
+     "title": "Stock Market Today, Nov. 9: Markets Rally as Semiconductor Gains Lift Nasdaq",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/09/stock-market-today-nov-9-markets-rally-as-semiconductor-gains-lift-nasdaq/",
+     "outlet": "The Motley Fool",
+     "date": "Nov 9, 2026"
+    },
+    {
+     "title": "Stock Market Today (Nov. 9, 2026): Nasdaq rises 3% as oil slides, AI rout pauses",
+     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-09-202",
+     "outlet": "TheStreet",
+     "date": "Nov 9, 2026"
+    },
+    {
+     "title": "Why Is the Stock Market Up Today, 11/9/26?",
+     "url": "https://www.tipranks.com/news/u-s-stocks-rebound-as-oil-prices-fall-and-nvidia-sinks",
+     "outlet": "TipRanks",
+     "date": "Nov 9, 2026"
+    },
     {
      "title": "Stock market today: Nasdaq and S&P 500 rebound, Dow slips to cap bruising week for AI stocks",
      "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-6-dow-sp-500-nasdaq-jobs-report-earnings-135953863.html",
      "outlet": "Yahoo Finance",
      "date": "Nov 6, 2026"
-    },
-    {
-     "title": "Stock Market Today (Nov. 6, 2026): Nasdaq, S&P 500 rise to end week after AI rout",
-     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-06-2026",
-     "outlet": "TheStreet",
-     "date": "Nov 6, 2026"
-    },
-    {
-     "title": "Chip Stocks Bounce Back in the Stock Market Today, November 6, a Day After Their Selloff",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-6-2026",
-     "outlet": "StockTitan",
-     "date": "Nov 6, 2026"
-    },
-    {
-     "title": "How major US stock indexes fared Friday 11/6/2026",
-     "url": "https://au.finance.yahoo.com/news/major-us-stock-indexes-fared-212037857.html",
-     "outlet": "Associated Press",
-     "date": "Nov 6, 2026"
     }
    ],
-   "summary": "On Friday, November 6, the S&P 500 rose 0.3% to about 7,377 as chip stocks won back some of Thursday's losses. On Thursday it fell about 4.4%, its worst day since April 2025, on worries that the new Democratic Congress could bring tougher rules for AI data centers. Friday's jobs report was much stronger than expected, with 165,000 new jobs. Even so, the S&P 500 lost 2.7% this week, its worst week since June, though it is still up about 7.8% this year.",
+   "summary": "On Monday, November 9, the S&P 500 rose 2.35% to about 7,550, winning back much of the ground it lost in its worst week since April 2025. Oil fell about 3% after President Trump said more attacks on Iran were unlikely if talks keep going, and every part of the market closed higher. Chip stocks led the way, while Nvidia fell about 4% after its board started a review of reports about its CEO. Last week's drop came after the midterm elections, when investors worried about tougher rules for AI.",
    "ticker": "SP500",
-   "updatedAt": "2026-11-06T23:03:55.570Z",
+   "updatedAt": "2026-11-09T23:24:52.996Z",
    "symbol": "AMEX:SPY"
   },
   {
    "bear": [
-    "The Nasdaq is in a correction after falling more than 10% from its high.",
-    "Chip stocks on average won back only about a third of Thursday's losses.",
-    "A strong jobs report raised the chance of a Fed rate hike in December, which tends to hurt fast-growing tech stocks."
+    "Nvidia lost about $240 billion in value at one point on Monday after its board started a review of its CEO.",
+    "Last week the Nasdaq had its worst week in months after worries about tougher AI rules from the new Congress.",
+    "A higher chance of a Fed rate hike in December could hurt fast-growing tech stocks."
    ],
    "bull": [
-    "AMD rose 11%, Intel about 8% and Micron about 5% on Friday after Thursday's crash.",
-    "Cloudflare jumped about 10% after its sales grew 39% last quarter.",
-    "President Trump said he fully backs building out AI, which could calm some worries."
+    "AMD rose about 12% and Broadcom about 8 to 9% as chip stocks bounced back.",
+    "Cloudflare rose nearly 10% and Tesla more than 5% after news about its robotaxi plans.",
+    "Oil prices fell about 3%, which eased worries about higher costs."
    ],
-   "headline": "Nasdaq bounces 1.1% as chip stocks recover, but still drops 3.4% for the week",
+   "headline": "Nasdaq jumps 2.74% as chip stocks rally, even as Nvidia falls about 4%",
    "market": true,
    "name": "Nasdaq",
-   "nextEvent": "The Federal Reserve's next interest rate decision on December 9, 2026",
+   "nextEvent": "Nvidia's quarterly earnings report on Tuesday, November 17, 2026",
    "order": 2,
-   "sentiment": "neutral",
+   "sentiment": "bullish",
    "sources": [
     {
-     "title": "Chip Stocks Bounce Back in the Stock Market Today, November 6, a Day After Their Selloff",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-6-2026",
+     "title": "Nvidia Falls in the Stock Market Today, November 9, on Its Board's Investigation as Other Tech Stocks Rally",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-9-2026",
      "outlet": "StockTitan",
-     "date": "Nov 6, 2026"
+     "date": "Nov 9, 2026"
     },
     {
-     "title": "Stock market today: Nasdaq and S&P 500 rebound, Dow slips to cap bruising week for AI stocks",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-6-dow-sp-500-nasdaq-jobs-report-earnings-135953863.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 6, 2026"
+     "title": "Stock Market Today, Nov. 9: Markets Rally as Semiconductor Gains Lift Nasdaq",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/09/stock-market-today-nov-9-markets-rally-as-semiconductor-gains-lift-nasdaq/",
+     "outlet": "The Motley Fool",
+     "date": "Nov 9, 2026"
     },
     {
-     "title": "Stock Market Today (Nov. 6, 2026): Nasdaq, S&P 500 rise to end week after AI rout",
-     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-06-2026",
+     "title": "Why Is the Stock Market Up Today, 11/9/26?",
+     "url": "https://www.tipranks.com/news/u-s-stocks-rebound-as-oil-prices-fall-and-nvidia-sinks",
+     "outlet": "TipRanks",
+     "date": "Nov 9, 2026"
+    },
+    {
+     "title": "Stock Market Today (Nov. 9, 2026): Nasdaq rises 3% as oil slides, AI rout pauses",
+     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-09-202",
      "outlet": "TheStreet",
-     "date": "Nov 6, 2026"
-    },
-    {
-     "title": "How major US stock indexes fared Friday 11/6/2026",
-     "url": "https://au.finance.yahoo.com/news/major-us-stock-indexes-fared-212037857.html",
-     "outlet": "Associated Press",
-     "date": "Nov 6, 2026"
+     "date": "Nov 9, 2026"
     }
    ],
-   "summary": "On Friday, November 6, the Nasdaq rose about 1.1% to 24,579 as chip makers bounced back. On Thursday it fell about 5.5% and entered a correction, meaning it dropped more than 10% from its high, as fears about AI rules from the new Democratic Congress hit chip stocks hard. A chip-stock index fell 12% that day and Nvidia dropped about 9%. For the week, the Nasdaq lost about 3.4%.",
+   "summary": "On Monday, November 9, the Nasdaq rose 2.74% to about 25,253, bouncing back after last week's big drop in AI and chip stocks. AMD jumped about 12% and Broadcom about 8 to 9%, and a group of chip stocks rose almost 7%. Nvidia went the other way, falling about 4% after its board started a review of reports about its CEO, Jensen Huang. Falling oil prices also helped, as worries about more fighting with Iran eased.",
    "ticker": "NASDAQ",
-   "updatedAt": "2026-11-06T23:03:55.570Z",
+   "updatedAt": "2026-11-09T23:24:52.996Z",
    "symbol": "NASDAQ:QQQ"
   },
   {
@@ -582,46 +582,46 @@
    "order": 3,
    "symbol": "COINBASE:BTCUSD",
    "sentiment": "bearish",
-   "headline": "Bitcoin falls about 5% to near $76,000, its lowest level in about 11 weeks",
-   "summary": "On Friday, November 6, bitcoin was about $76,000, down about 5% from $80,200 a day earlier. It dropped as AI and chip stocks crashed on Thursday and investors sold risky things, and more than $1 billion of crypto bets made with borrowed money were forced to close. Bitcoin is about 11% lower than a month ago and about 25% lower than a year ago. It is about 40% below its record high of about $126,000 from October 2025.",
+   "headline": "Bitcoin stays near $75,000 and misses out on the big stock market rally",
+   "summary": "On Monday, November 9, bitcoin was about $74,800, after briefly falling below $74,000 over the weekend for the first time in weeks. It barely moved while the Nasdaq jumped almost 3%, as investors kept pulling money out of bitcoin funds. Bitcoin is about 9% lower than a month ago, about 29% lower than a year ago, and about 40% below its record high of about $126,000 from October 2025. About $1.2 billion of crypto bets made with borrowed money were forced to close.",
    "bull": [
-    "Tech stocks bounced back on Friday, which could help crypto since they often move together.",
-    "Bitcoin is still worth about $1.3 trillion in total, far bigger than any other crypto.",
-    "Some analysts called Thursday's selloff an overreaction to the midterm election results."
+    "The company Strategy bought about 1,000 more bitcoin last week and now holds over 850,000.",
+    "US regulators sent new crypto rules to the White House for review, which could make the rules clearer.",
+    "Bitcoin is still worth about $1.3 trillion, far more than any other crypto."
    ],
    "bear": [
-    "Bitcoin fell about 5% in one day and hit its lowest level in about 11 weeks.",
-    "More than $1 billion of crypto bets made with borrowed money were wiped out, adding to the selling.",
-    "Bitcoin funds traded on the stock market saw money pulled out as investors cut risk."
+    "Bitcoin funds traded on the stock market lost about $1.28 billion last week, the most since late June.",
+    "About $1.2 billion of crypto bets made with borrowed money were wiped out, adding to the selling.",
+    "A popular fear-and-greed score for crypto is at 29, showing investors are scared."
    ],
-   "nextEvent": "The Federal Reserve's next interest rate decision on December 9, 2026",
+   "nextEvent": "October inflation report (CPI) on Tuesday, November 10, 2026",
    "sources": [
     {
-     "title": "Current price of Bitcoin for November 6, 2026",
-     "url": "https://fortune.com/article/price-of-bitcoin-11-06-2026/",
+     "title": "Crypto Market Today, Nov. 9: Bitcoin and Ethereum Lag as Nasdaq Surges Nearly 3%",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/09/crypto-market-today-nov-9-bitcoin-and-ethereum-lag-as-nasdaq-surges-nearly-3/",
+     "outlet": "The Motley Fool",
+     "date": "Nov 9, 2026"
+    },
+    {
+     "title": "Current price of Bitcoin for November 9, 2026",
+     "url": "https://fortune.com/article/price-of-bitcoin-11-09-2026/",
      "outlet": "Fortune",
-     "date": "Nov 6, 2026"
+     "date": "Nov 9, 2026"
     },
     {
-     "title": "Bitcoin Price Today: $76,023.87 After 5.1% Drop",
-     "url": "https://tech-insider.org/bitcoin-price-today-november-6-2026-76023-87-after-5-1-percent-drop/",
-     "outlet": "Tech Insider",
-     "date": "Nov 6, 2026"
+     "title": "Bitcoin Price Struggles Below $75K as $1.2B in Crypto Bets Get Wiped Out",
+     "url": "https://news.bitcoin.com/market-updates/bitcoin-price-struggles-below-75k-1-2b-crypto-bets-wiped-out/",
+     "outlet": "Bitcoin.com News",
+     "date": "Nov 9, 2026"
     },
     {
-     "title": "Why is Ethereum price down today, November 6?",
-     "url": "https://crypto.news/why-is-ethereum-price-down-today-eth-etf-liquidations",
-     "outlet": "crypto.news",
-     "date": "Nov 6, 2026"
-    },
-    {
-     "title": "Stock Market Today (Nov. 6, 2026): Nasdaq, S&P 500 rise to end week after AI rout",
-     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-06-2026",
-     "outlet": "TheStreet",
-     "date": "Nov 6, 2026"
+     "title": "Crypto Daily Market Report – November 9, 2026",
+     "url": "https://www.kucoin.com/news/articles/crypto-daily-market-report-november-9-2026",
+     "outlet": "KuCoin News",
+     "date": "Nov 9, 2026"
     }
    ],
-   "updatedAt": "2026-11-06T23:03:55.566Z"
+   "updatedAt": "2026-11-09T23:24:52.995Z"
   },
   {
    "ticker": "ETH",
@@ -631,77 +631,77 @@
    "order": 4,
    "symbol": "COINBASE:ETHUSD",
    "sentiment": "bearish",
-   "headline": "Ether drops about 8% to near $2,230 as investors pull money from ether funds",
-   "summary": "On Friday, November 6, ether was about $2,230, down about 8% in a day and its lowest level since mid-August. It fell as AI and chip stocks crashed on Thursday and about $210 million of ether bets made with borrowed money were forced to close. Ether funds traded on the stock market have seen money pulled out on most days this month, including almost $100 million on November 5. Ether is about 17% below its high from the past month.",
+   "headline": "Ether slips to about $2,130 as money keeps leaving ether funds",
+   "summary": "On Monday, November 9, ether was about $2,130, after falling about 5% over the weekend and dipping as low as $2,060. It is down about 5% for the week and missed out on Monday's big stock market rally. Investors pulled about $365 million out of ether funds last week, and over $500 million of ether bets made with borrowed money were forced to close. Ether is now less than half its record high of about $4,950.",
    "bull": [
-    "Ether is still above its 200-day average price of about $2,160, a level many traders watch.",
-    "Tech stocks bounced back on Friday, which could help crypto too.",
-    "Since they started, ether funds have still taken in about $12 billion more than investors pulled out."
+    "A record 32% of all ether is now locked up in staking, where owners earn rewards for helping run the network.",
+    "Big holders like BitMine keep buying, and the amount of ether sitting on exchanges has dropped.",
+    "US regulators sent new crypto rules to the White House for review, which could make the rules clearer."
    ],
    "bear": [
-    "Ether fell about 8% in one day to its lowest level since mid-August.",
-    "Ether funds lost almost $100 million on November 5 after seven straight days of outflows in late October and early November.",
-    "A popular fear-and-greed score for crypto dropped to 28, showing investors are scared."
+    "Investors pulled about $365 million out of ether funds last week.",
+    "Over $500 million of ether bets made with borrowed money were wiped out, more than any other crypto.",
+    "A popular fear-and-greed score for crypto is at 29, showing investors are scared."
    ],
-   "nextEvent": "The Federal Reserve's next interest rate decision on December 9, 2026",
+   "nextEvent": "October inflation report (CPI) on Tuesday, November 10, 2026",
    "sources": [
     {
-     "title": "Why is Ethereum price down today, November 6?",
-     "url": "https://crypto.news/why-is-ethereum-price-down-today-eth-etf-liquidations",
-     "outlet": "crypto.news",
-     "date": "Nov 6, 2026"
+     "title": "Crypto Market Today, Nov. 9: Bitcoin and Ethereum Lag as Nasdaq Surges Nearly 3%",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/09/crypto-market-today-nov-9-bitcoin-and-ethereum-lag-as-nasdaq-surges-nearly-3/",
+     "outlet": "The Motley Fool",
+     "date": "Nov 9, 2026"
     },
     {
-     "title": "Ethereum Price Falls 7.9 Percent to $2,237 After Seven Days of ETF Outflows",
-     "url": "https://cryptoticker.io/en/ethereum-price-crash-7-9-percent-etf-outflows/",
-     "outlet": "CryptoTicker",
-     "date": "Nov 6, 2026"
+     "title": "Bitcoin Price Struggles Below $75K as $1.2B in Crypto Bets Get Wiped Out",
+     "url": "https://news.bitcoin.com/market-updates/bitcoin-price-struggles-below-75k-1-2b-crypto-bets-wiped-out/",
+     "outlet": "Bitcoin.com News",
+     "date": "Nov 9, 2026"
     },
     {
-     "title": "Current price of Bitcoin for November 6, 2026",
-     "url": "https://fortune.com/article/price-of-bitcoin-11-06-2026/",
-     "outlet": "Fortune",
-     "date": "Nov 6, 2026"
+     "title": "Crypto Daily Market Report – November 9, 2026",
+     "url": "https://www.kucoin.com/news/articles/crypto-daily-market-report-november-9-2026",
+     "outlet": "KuCoin News",
+     "date": "Nov 9, 2026"
     },
     {
-     "title": "Bitcoin Price Today: $76,023.87 After 5.1% Drop",
-     "url": "https://tech-insider.org/bitcoin-price-today-november-6-2026-76023-87-after-5-1-percent-drop/",
-     "outlet": "Tech Insider",
+     "title": "Ethereum ($2,230) Tests Its 200-Day Line After the Post-Election Rally Fails at $2,447",
+     "url": "https://www.tradingnews.com/news/ethereum-2230-usd-tests-its-200-day-line-after-a-post-election-rally",
+     "outlet": "TradingNEWS",
      "date": "Nov 6, 2026"
     }
    ],
-   "updatedAt": "2026-11-06T23:03:55.570Z"
+   "updatedAt": "2026-11-09T23:24:52.995Z"
   }
  ],
  "market": {
-  "date": "2026-11-06",
-  "why": "On Friday, November 6, chip stocks bounced back after Thursday's big drop, when worries that the new Democratic Congress could make tougher rules for AI data centers wiped out about $3 trillion in stock value. AMD jumped 11% and Nvidia rose almost 3%, lifting the Nasdaq and S&P 500, while the Dow slipped. A strong jobs report (165,000 new jobs vs. about 59,000 expected) also raised the chance the Fed raises interest rates in December.",
+  "date": "2026-11-09",
+  "why": "On Monday, November 9, stocks bounced back from last week's AI selloff, with the Dow jumping about 1,100 points. Oil fell about 3% to near $88 a barrel after President Trump said more attacks on Iran were unlikely if talks keep going, and chip stocks like AMD (up about 12%) and Broadcom led the Nasdaq higher. Nvidia fell about 4% after its board started a review of reports about its CEO, Jensen Huang.",
   "sources": [
    {
-    "title": "Stock market today: Nasdaq and S&P 500 rebound, Dow slips to cap bruising week for AI stocks",
-    "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-6-dow-sp-500-nasdaq-jobs-report-earnings-135953863.html",
-    "outlet": "Yahoo Finance",
-    "date": "Nov 6, 2026"
+    "title": "Stock Market Today, Nov. 9: Markets Rally as Semiconductor Gains Lift Nasdaq",
+    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/09/stock-market-today-nov-9-markets-rally-as-semiconductor-gains-lift-nasdaq/",
+    "outlet": "The Motley Fool",
+    "date": "Nov 9, 2026"
    },
    {
-    "title": "Stock Market Today (Nov. 6, 2026): Nasdaq, S&P 500 rise to end week after AI rout",
-    "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-06-2026",
+    "title": "Stock Market Today (Nov. 9, 2026): Nasdaq rises 3% as oil slides, AI rout pauses",
+    "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-09-202",
     "outlet": "TheStreet",
-    "date": "Nov 6, 2026"
+    "date": "Nov 9, 2026"
    },
    {
-    "title": "Chip Stocks Bounce Back in the Stock Market Today, November 6, a Day After Their Selloff",
-    "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-6-2026",
+    "title": "Why Is the Stock Market Up Today, 11/9/26?",
+    "url": "https://www.tipranks.com/news/u-s-stocks-rebound-as-oil-prices-fall-and-nvidia-sinks",
+    "outlet": "TipRanks",
+    "date": "Nov 9, 2026"
+   },
+   {
+    "title": "Nvidia Falls in the Stock Market Today, November 9, on Its Board's Investigation as Other Tech Stocks Rally",
+    "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-9-2026",
     "outlet": "StockTitan",
-    "date": "Nov 6, 2026"
-   },
-   {
-    "title": "How major US stock indexes fared Friday 11/6/2026",
-    "url": "https://au.finance.yahoo.com/news/major-us-stock-indexes-fared-212037857.html",
-    "outlet": "Associated Press",
-    "date": "Nov 6, 2026"
+    "date": "Nov 9, 2026"
    }
   ],
-  "updatedAt": "2026-11-06T23:03:14.838Z"
+  "updatedAt": "2026-11-09T23:24:19.825Z"
  }
 }
