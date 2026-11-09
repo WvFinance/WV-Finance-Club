@@ -4,11 +4,14 @@
 //   node scripts/morning-briefs.mjs rules        the brief instructions (the same ones the API refresh uses)
 //   node scripts/morning-briefs.mjs list         every brief to check, with when it was last written
 //   node scripts/morning-briefs.mjs save <dir>   checks <dir>/<TICKER>.json files and puts them into data/news.json
+//                                                Before noon (Chicago) it also marks every brief as checked today,
+//                                                so a skipped brief (no new news) shows today's date on the site.
+//   node scripts/morning-briefs.mjs checked      marks every brief as checked for news today (no rewrite)
 //   node scripts/morning-briefs.mjs recap <file> checks the after-close market recap (the "Why" on the Portfolio tab)
 //                                                and puts it into data/news.json as "market"
 //
 // Run from brief-server/. Needs no packages.
-import { readFileSync, writeFileSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { SYSTEM, parseBrief } from "../src/brief-format.js";
 import { briefJobs, mergeBrief } from "../src/jobs.js";
@@ -19,6 +22,20 @@ const news = JSON.parse(readFileSync(NEWS, "utf8"));
 const picks = allPicks();
 const jobs = briefJobs(news, picks);
 const [mode, dir] = process.argv.slice(2);
+
+// "checkedAt" = the last time someone looked for news about this stock. When there was no new news the brief
+// is left alone (its updatedAt stays old), but the site shows "Checked <today> · no new news since <updatedAt>".
+function markAllChecked() {
+  const now = new Date().toISOString();
+  let n = 0;
+  for (const j of jobs) {
+    const b = news.briefs.find(x => x.ticker === j.ticker);
+    if (b) { b.checkedAt = now; n++; }
+  }
+  return n;
+}
+// The morning task checks every brief; the evening task only rewrites the market ones.
+const chicagoHour = Number(new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", hour: "numeric", hourCycle: "h23" }).format(new Date()));
 
 if (mode === "rules") {
   console.log(SYSTEM);
@@ -32,7 +49,9 @@ if (mode === "rules") {
 } else if (mode === "save") {
   if (!dir) throw new Error("Use: save <folder with TICKER.json files>");
   let saved = 0, bad = 0;
-  for (const f of readdirSync(dir).filter(f => f.endsWith(".json"))) {
+  // No folder (every brief skipped as no new news) is fine: the briefs still get marked as checked below.
+  const files = existsSync(dir) ? readdirSync(dir).filter(f => f.endsWith(".json")) : [];
+  for (const f of files) {
     const ticker = f.slice(0, -5).toUpperCase();
     const job = jobs.find(j => j.ticker === ticker);
     try {
@@ -50,12 +69,18 @@ if (mode === "rules") {
       console.log(`${ticker}: NOT saved (${e.message}). Fix the file and run save again.`);
     }
   }
-  if (saved) {
+  const checked = chicagoHour < 12 ? markAllChecked() : 0;
+  if (saved || checked) {
     news.updated = new Date().toISOString().slice(0, 10);
     writeFileSync(NEWS, JSON.stringify(news, null, 1) + "\n");
   }
-  console.log(`Saved ${saved} briefs, ${bad} need fixing.`);
+  console.log(`Saved ${saved} briefs, ${bad} need fixing.${checked ? ` Marked ${checked} briefs as checked today.` : ""}`);
   if (bad) process.exit(1);
+} else if (mode === "checked") {
+  const n = markAllChecked();
+  news.updated = new Date().toISOString().slice(0, 10);
+  writeFileSync(NEWS, JSON.stringify(news, null, 1) + "\n");
+  console.log(`Marked ${n} briefs as checked today.`);
 } else if (mode === "recap") {
   // The evening task writes { date, why, sources } after the market closes. The date must be the newest
   // day in data/prices.json, so the "Why" always matches the % moves shown next to it.
@@ -76,6 +101,6 @@ if (mode === "rules") {
   writeFileSync(NEWS, JSON.stringify(news, null, 1) + "\n");
   console.log(`Recap saved for ${r.date}: ${why}`);
 } else {
-  console.error("Use: rules, list, save <dir> or recap <file>");
+  console.error("Use: rules, list, save <dir>, checked or recap <file>");
   process.exit(1);
 }

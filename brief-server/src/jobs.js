@@ -29,7 +29,7 @@ export function mergeBrief(news, job, b) {
   const next = { ...job.base };
   for (const k of FRESH) next[k] = b[k];
   if (!next.market && b.name) next.name = b.name;
-  next.updatedAt = new Date().toISOString();
+  next.updatedAt = next.checkedAt = new Date().toISOString();
   const i = news.briefs.findIndex(x => x.ticker === job.ticker);
   if (i >= 0) news.briefs[i] = next; else news.briefs.push(next);
 }

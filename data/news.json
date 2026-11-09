@@ -47,7 +47,8 @@
    "summary": "On Monday, November 9, the S&P 500 rose 2.35% to about 7,550, winning back much of the ground it lost in its worst week since April 2025. Oil fell about 3% after President Trump said more attacks on Iran were unlikely if talks keep going, and every part of the market closed higher. Chip stocks led the way, while Nvidia fell about 4% after its board started a review of reports about its CEO. Last week's drop came after the midterm elections, when investors worried about tougher rules for AI.",
    "ticker": "SP500",
    "updatedAt": "2026-11-09T23:24:52.996Z",
-   "symbol": "AMEX:SPY"
+   "symbol": "AMEX:SPY",
+   "checkedAt": "2026-11-09T23:24:52.996Z"
   },
   {
    "bear": [
@@ -95,7 +96,8 @@
    "summary": "On Monday, November 9, the Nasdaq rose 2.74% to about 25,253, bouncing back after last week's big drop in AI and chip stocks. AMD jumped about 12% and Broadcom about 8 to 9%, and a group of chip stocks rose almost 7%. Nvidia went the other way, falling about 4% after its board started a review of reports about its CEO, Jensen Huang. Falling oil prices also helped, as worries about more fighting with Iran eased.",
    "ticker": "NASDAQ",
    "updatedAt": "2026-11-09T23:24:52.996Z",
-   "symbol": "NASDAQ:QQQ"
+   "symbol": "NASDAQ:QQQ",
+   "checkedAt": "2026-11-09T23:24:52.996Z"
   },
   {
    "bear": [
@@ -135,7 +137,8 @@
    "ticker": "AAPL",
    "updatedAt": "2026-11-09T11:39:55.630Z",
    "symbol": "NASDAQ:AAPL",
-   "name": "Apple"
+   "name": "Apple",
+   "checkedAt": "2026-11-09T11:39:55.630Z"
   },
   {
    "bear": [
@@ -175,7 +178,8 @@
    "ticker": "AMZN",
    "updatedAt": "2026-11-06T11:39:46.760Z",
    "symbol": "NASDAQ:AMZN",
-   "name": "Amazon"
+   "name": "Amazon",
+   "checkedAt": "2026-11-09T11:39:55.630Z"
   },
   {
    "bear": [
@@ -215,7 +219,8 @@
    "ticker": "JPM",
    "updatedAt": "2026-11-05T11:40:17.952Z",
    "symbol": "NYSE:JPM",
-   "name": "JPMorgan Chase"
+   "name": "JPMorgan Chase",
+   "checkedAt": "2026-11-09T11:39:55.630Z"
   },
   {
    "bear": [
@@ -388,7 +393,8 @@
     }
    ],
    "updatedAt": "2026-11-03T06:28:45.129Z",
-   "name": "Exxon Mobil"
+   "name": "Exxon Mobil",
+   "checkedAt": "2026-11-09T11:39:55.630Z"
   },
   {
    "ticker": "JNJ",
@@ -452,7 +458,8 @@
     }
    ],
    "updatedAt": "2026-10-25T01:52:16.369Z",
-   "name": "Johnson & Johnson"
+   "name": "Johnson & Johnson",
+   "checkedAt": "2026-11-09T11:39:55.630Z"
   },
   {
    "ticker": "KO",
@@ -621,7 +628,8 @@
      "date": "Nov 9, 2026"
     }
    ],
-   "updatedAt": "2026-11-09T23:24:52.995Z"
+   "updatedAt": "2026-11-09T23:24:52.995Z",
+   "checkedAt": "2026-11-09T23:24:52.995Z"
   },
   {
    "ticker": "ETH",
@@ -670,7 +678,8 @@
      "date": "Nov 6, 2026"
     }
    ],
-   "updatedAt": "2026-11-09T23:24:52.995Z"
+   "updatedAt": "2026-11-09T23:24:52.995Z",
+   "checkedAt": "2026-11-09T23:24:52.995Z"
   }
  ],
  "market": {
