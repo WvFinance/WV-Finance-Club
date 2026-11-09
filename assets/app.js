@@ -259,7 +259,7 @@ function renderBreakdown(){
 /* ---------- Market today, upcoming events and weekly recap ---------- */
 // The real indexes (the numbers on the news); their index funds fill in if an index is missing.
 const MKT=[["^GSPC","SPY","S&P 500"],["^IXIC","QQQ","Nasdaq"],["^DJI","DIA","Dow"]];
-function moveOver(tk,back){const d=S.prices.dates||[];if(d.length<=back)return null;const a=closeOn(tk,d[d.length-1]),b=closeOn(tk,d[d.length-1-back]);return a!=null&&b?a/b-1:null;}
+function moveOver(tk,back,end){const d=S.prices.dates||[];const e=end==null?d.length-1:end;if(e-back<0)return null;const a=closeOn(tk,d[e]),b=closeOn(tk,d[e-back]);return a!=null&&b?a/b-1:null;}
 function marketDay(){const d=S.prices.dates||[];const last=d[d.length-1];if(!last)return null;
   const isToday=last===new Date().toLocaleDateString("en-CA",{timeZone:"America/New_York"});
   return{last,label:isToday?"Market today":"Market on "+new Date(last+"T12:00:00").toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"})};}
@@ -272,17 +272,24 @@ function plainWhy(rows,avg){
   return what+" The full reason why is added after the market closes, a little after 5pm Chicago time.";
 }
 function renderMarket(){
-  const box=$("#market"),md=marketDay();const rows=MKT.map(([ix,fund,name])=>{const c=(S.prices.closes||{})[ix];const a=c&&c[c.length-1]!=null&&c[c.length-2]!=null?moveOver(ix,1):null;return{name,r:a!=null?a:moveOver(fund,1)};}).filter(x=>x.r!=null);
+  const box=$("#market");let md=marketDay();
+  const dayRows=end=>MKT.map(([ix,fund,name])=>{const c=(S.prices.closes||{})[ix],e=end==null?(S.prices.dates||[]).length-1:end;const r=c&&c[e]!=null&&c[e-1]!=null?moveOver(ix,1,end):null;return{name,r:r!=null?r:moveOver(fund,1,end)};}).filter(x=>x.r!=null);
+  let rows=dayRows();
   if(!md||!rows.length){box.hidden=true;return;}
   // The "why" comes from the after-close market recap written for this exact day.
   // If that's missing, use the S&P 500 brief, but only if it was written after this day's close
   // (a brief written that morning would still be about the day before).
+  // Otherwise keep showing the last day that has a finished recap (its numbers and its why) until today's is ready.
   const mr=S.marketRecap;const sp=S.briefs.find(b=>b.ticker==="SP500");
   const spFresh=sp&&sp.headline&&sp.updatedAt&&new Date(sp.updatedAt)>=new Date(md.last+"T21:00:00Z")&&(new Date(sp.updatedAt)-new Date(md.last+"T21:00:00Z"))<3*864e5;
-  const avg=rows.reduce((s,x)=>s+x.r,0)/rows.length;
-  const why=mr&&mr.date===md.last&&mr.why?mr.why
-    :spFresh?((sp.summary||"").split(/(?<=[.!?])\s+(?=[A-Z])/).slice(0,3).join(" ")||sp.headline)
-    :plainWhy(rows,avg);
+  let why;
+  if(mr&&mr.date===md.last&&mr.why)why=mr.why;
+  else if(spFresh)why=(sp.summary||"").split(/(?<=[.!?])\s+(?=[A-Z])/).slice(0,3).join(" ")||sp.headline;
+  else{
+    const i=mr&&mr.why?(S.prices.dates||[]).indexOf(mr.date):-1,prev=i>0?dayRows(i):[];
+    if(prev.length){rows=prev;why=mr.why;md={last:mr.date,label:"Market on "+new Date(mr.date+"T12:00:00").toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"})};}
+    else why=plainWhy(rows,rows.reduce((t,x)=>t+x.r,0)/rows.length);
+  }
   box.replaceChildren(el("div",{class:"eyebrow",text:md.label}),
     el("div",{class:"mkrow"},rows.map(x=>el("div",{class:"mk"},el("span",{text:x.name}),el("b",{class:cls(x.r),text:fmtPct(x.r,2)})))),
     el("p",{class:"mkwhy"},el("b",{text:"Why: "}),why));
