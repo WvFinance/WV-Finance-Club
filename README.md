@@ -28,6 +28,7 @@ The Waubonsie Valley Finance Club's website: our class portfolio, stock research
 | `data/schools.json` | Every school on the site and where its Class Portfolio file is (Neuqua and Metea are in `data/portfolios/`) |
 | `supabase/district.sql` | School sign-up codes (checked by the database), each member's school, and the district leaderboard |
 | `supabase/individual.sql` | Simple Street "Just me" accounts: sign up without a class code, and join a class later from the Home page |
+| `supabase/home-extras.sql` | Home page extras: saves each account's value every weekday (money-over-time chart), invite links and the friends leaderboard |
 | `supabase/weekly-challenge.sql` | Weekly school-vs-school challenge: saves each Paper Trading account's value every Monday and ranks schools by average % gain |
 | `data/news.json` | Claude's news briefs |
 | `data/prices.json` | Daily closing prices, updated automatically |

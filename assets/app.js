@@ -589,12 +589,13 @@ function showBrand(sc){
   $("#brand-link").setAttribute("href",S.individual?"#mine":"#portfolio");
 }
 
-// The strip across the top of the log in screen: how the market did on the last trading day.
+// The strip across the top of the log in screen: the same moving ticker as inside the site.
 function renderGateTick(){
-  const box=$("#gate-tick");if(!box)return;
-  const list=[["^GSPC","S&P 500"],["^IXIC","Nasdaq"],["^DJI","Dow"],["AAPL"],["AMZN"],["JPM"],["XOM"],["JNJ"]];
-  box.replaceChildren(...list.map(([tk,name])=>{const v=moveOver(tk,1);if(v==null)return null;
-    return el("span",{},(name||tk)+" ",el("b",{class:cls(v),text:fmtPct(v,2)}));}).filter(Boolean));
+  const box=$("#gate-tick");if(!box||box.dataset.done)return;box.dataset.done="1";
+  if(document.documentElement.classList.contains("unlocked"))return;
+  const syms=[{proName:"FOREXCOM:SPXUSD",title:"S&P 500"},{proName:"FOREXCOM:NSXUSD",title:"Nasdaq 100"},{proName:"FOREXCOM:DJI",title:"Dow 30"},{proName:"COINBASE:BTCUSD",title:"Bitcoin"},{proName:"COINBASE:ETHUSD",title:"Ethereum"},
+    {proName:"NASDAQ:AAPL",title:"AAPL"},{proName:"NASDAQ:AMZN",title:"AMZN"},{proName:"NYSE:JPM",title:"JPM"},{proName:"NYSE:XOM",title:"XOM"},{proName:"NYSE:JNJ",title:"JNJ"}];
+  tv(box,"ticker-tape",{symbols:syms,showSymbolLogo:true,isTransparent:true,displayMode:"regular",colorTheme:"dark",largeChartUrl:SELF});
 }
 
 /* ---------- "Just me" accounts (supabase/individual.sql) ---------- */

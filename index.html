@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=2026110901">
+<link rel="stylesheet" href="assets/style.css?v=2026110902">
 <script>
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
@@ -201,7 +201,9 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
   </div>
   <div id="mine-game" hidden>
     <div class="tiles" id="mine-tiles"></div>
+    <div class="panel" id="mine-chart" hidden></div>
     <div class="panel" id="mine-hold"></div>
+    <div class="panel" id="mine-friends" hidden></div>
     <div class="panel" id="mine-orders" hidden></div>
   </div>
   <div class="panel" id="mine-news" hidden></div>
@@ -374,10 +376,10 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="config.js?v=2026103102"></script>
-<script src="assets/app.js?v=2026110901"></script>
+<script src="assets/app.js?v=2026110902"></script>
 <script src="assets/vendor/supabase-2.118.0.js"></script>
-<script src="assets/account.js?v=2026110901"></script>
-<script src="assets/paper.js?v=2026110901"></script>
+<script src="assets/account.js?v=2026110902"></script>
+<script src="assets/paper.js?v=2026110902"></script>
 <script src="assets/staff.js?v=2026110340"></script>
 </body>
 </html>

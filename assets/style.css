@@ -292,7 +292,8 @@ table.pos th{padding:10px 12px}
 html:not(.unlocked) body>*:not(#gate):not(script){display:none!important}
 html.unlocked #gate{display:none}
 #gate{position:fixed;inset:0;z-index:50;overflow:auto;display:flex;flex-direction:column;background:#0b0b0b;color:#f2f2f2;font-family:var(--f-body)}
-.gtick{flex:none;background:#0f2a19;border-bottom:1px solid #1d3a27;color:#d6e6da;font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;padding:9px 0;min-height:38px}
+.gtick{flex:none;background:#000;border-bottom:1px solid #1f2420;min-height:46px}
+.gtick .tradingview-widget-container{width:100%}
 .gtick span{margin:0 16px}.gtick b{font-weight:500}.gtick .up{color:#3ddc84}.gtick .down{color:#ff7a6b}
 .gmain{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 16px 24px}
 .gbrand{width:min(380px,88vw);text-align:center}
@@ -551,3 +552,6 @@ footer .chip.asof{border-color:var(--line);color:var(--ink-2)}
 #join-msg:empty{display:none}
 .jcrow .inp{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;font-size:16px;padding:10px 14px}
 #gate .authswitch{margin-top:16px}
+.chartleg{display:flex;gap:16px;color:var(--muted);font-size:13px;margin:4px 0 8px}.chartleg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.invitebtn{margin-top:14px;width:100%;justify-content:center;text-align:center;background:#e2bd3f;border-color:#e2bd3f;color:#111;font-weight:600}
+.invitebtn:hover{background:#ecc955}
