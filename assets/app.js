@@ -595,7 +595,8 @@ function renderGateTick(){
   if(document.documentElement.classList.contains("unlocked"))return;
   const syms=[{proName:"FOREXCOM:SPXUSD",title:"S&P 500"},{proName:"FOREXCOM:NSXUSD",title:"Nasdaq 100"},{proName:"FOREXCOM:DJI",title:"Dow 30"},{proName:"COINBASE:BTCUSD",title:"Bitcoin"},{proName:"COINBASE:ETHUSD",title:"Ethereum"},
     {proName:"NASDAQ:AAPL",title:"AAPL"},{proName:"NASDAQ:AMZN",title:"AMZN"},{proName:"NYSE:JPM",title:"JPM"},{proName:"NYSE:XOM",title:"XOM"},{proName:"NYSE:JNJ",title:"JNJ"}];
-  tv(box,"ticker-tape",{symbols:syms,showSymbolLogo:true,isTransparent:true,displayMode:"regular",colorTheme:"dark",largeChartUrl:SELF});
+  // "compact" is TradingView's own short version (no shrinking, which breaks it on iPhone Safari).
+  tv(box,"ticker-tape",{symbols:syms,showSymbolLogo:false,isTransparent:true,displayMode:"compact",colorTheme:"dark",largeChartUrl:SELF});
 }
 
 /* ---------- "Just me" accounts (supabase/individual.sql) ---------- */

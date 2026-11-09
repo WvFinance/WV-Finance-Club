@@ -292,7 +292,7 @@ table.pos th{padding:10px 12px}
 html:not(.unlocked) body>*:not(#gate):not(script){display:none!important}
 html.unlocked #gate{display:none}
 #gate{position:fixed;inset:0;z-index:50;overflow:auto;display:flex;flex-direction:column;background:#0b0b0b;color:#f2f2f2;font-family:var(--f-body)}
-.gtick{flex:none;background:#000;border-bottom:1px solid #1f2420;min-height:46px}
+.gtick{flex:none;background:#000;border-bottom:1px solid #1f2420;min-height:28px}
 .gtick .tradingview-widget-container{width:100%}
 .gtick span{margin:0 16px}.gtick b{font-weight:500}.gtick .up{color:#3ddc84}.gtick .down{color:#ff7a6b}
 .gmain{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 16px 24px}
