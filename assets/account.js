@@ -10,6 +10,10 @@ const msg=$("#gate-msg");
 
 if(!window.supabase||!CFG.supabaseUrl||!CFG.supabaseKey){root.classList.remove("unlocked");msg.textContent="Logins aren't set up yet.";return;}
 const db=window.supabase.createClient(CFG.supabaseUrl,CFG.supabaseKey);
+// An invite link (?invite=code) is kept until the visitor logs in or signs up, then makes them friends.
+try{const inv=new URLSearchParams(location.search).get("invite");
+  if(inv&&/^[a-z0-9]{4,16}$/i.test(inv)){localStorage.setItem("ss.invite",inv.toLowerCase());history.replaceState(null,"",location.pathname+location.hash);}}catch(e){}
+const pendingInvite=()=>{try{return localStorage.getItem("ss.invite");}catch(e){return null;}};
 let user=null;
 
 /* ---------- Log in and create account ---------- */
@@ -90,12 +94,26 @@ document.addEventListener("click",async e=>{
 
 async function start(){
   let session=null;try{({data:{session}}=await db.auth.getSession());}catch(e){}
-  if(!session){root.classList.remove("unlocked");setMode("login");$("#auth-email").focus();return;}
+  if(!session){root.classList.remove("unlocked");
+    if(pendingInvite()){kind="me";document.querySelectorAll(".gchoice").forEach(x=>x.setAttribute("aria-checked",String(x.dataset.kind==="me")));setMode("choose");
+      $("#g-choose .gsub").textContent="A friend invited you! How do you want to use Simple Street?";}
+    else{setMode("login");$("#auth-email").focus();}return;}
   user=session.user;root.classList.add("unlocked");
+  acceptInvite();
   window.WVFC_ROLE_READY=loadSchool();loadWatch();
   // The trading game (paper.js) may load after this runs, so it can also read WVFC_SESSION.
   window.WVFC_SESSION={db,user};
   document.dispatchEvent(new CustomEvent("wvfc:login",{detail:{db,user}}));
+}
+
+async function acceptInvite(){
+  const c=pendingInvite();if(!c)return;
+  const{data,error}=await db.rpc("accept_invite",{c});
+  // If the friends feature isn't set up yet, keep the invite and try again next time.
+  if(error&&/function|schema cache|does not exist/i.test(error.message||""))return;
+  try{localStorage.removeItem("ss.invite");}catch(e){}
+  if(error){toast(error.message);return;}
+  if(data)toast(`You and ${data} are now friends on Simple Street!`);
 }
 
 /* ---------- Which school the member belongs to ---------- */

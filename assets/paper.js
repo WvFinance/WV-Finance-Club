@@ -55,6 +55,7 @@ async function load(){
   await Promise.all(G.pos.map(p=>quote(p.symbol).catch(()=>null)));
   const b=await db.rpc("paper_board");G.board=b.data||[];
   renderAll();
+  loadExtras();
 }
 async function quote(sym){const{data,error}=await db.rpc("paper_quote",{sym});if(error)throw error;G.prices[data.symbol]=data;return data;}
 
@@ -76,7 +77,68 @@ const when=t=>new Date(t).toLocaleString("en-US",{month:"short",day:"numeric",ho
 // Tells the News tab which stocks this member owns, so it shows their news.
 function shareMine(){window.WVFC_APP&&window.WVFC_APP.setMine&&window.WVFC_APP.setMine(G.pos.map(p=>p.symbol));}
 function renderAll(){shareMine();renderTiles();renderOrders();renderTrades();renderBoard();renderEst();renderMine();}
-function renderMine(){if(!$("#mine"))return;renderTiles($("#mine-tiles"));renderHold($("#mine-hold"),true);renderOrders($("#mine-orders"),true);}
+function renderMine(){if(!$("#mine"))return;renderTiles($("#mine-tiles"));renderHold($("#mine-hold"),true);renderOrders($("#mine-orders"),true);renderChart();renderFriends();}
+
+/* ---------- Home: money over time and the friends leaderboard (supabase/home-extras.sql) ---------- */
+G.daily=null;G.friends=null;G.invite=null;G.extrasOff=false;
+async function loadExtras(){
+  if(!$("#mine-chart"))return;
+  const[d,f,c]=await Promise.all([db.from("paper_daily").select("day,value").order("day"),db.rpc("friends_board"),db.rpc("my_invite_code")]);
+  // Before home-extras.sql is run these don't exist yet, so the two panels stay hidden.
+  if(d.error&&f.error){G.extrasOff=true;renderChart();renderFriends();return;}
+  G.daily=d.error?[]:(d.data||[]);G.friends=f.error?null:(f.data||[]);G.invite=c.error?null:c.data;
+  renderChart();renderFriends();
+}
+const SVGNS="http://www.w3.org/2000/svg";
+const sv=(tag,attrs={})=>{const e=document.createElementNS(SVGNS,tag);for(const[k,v]of Object.entries(attrs))e.setAttribute(k,v);return e;};
+const chiDay=t=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/Chicago"}).format(t?new Date(t):new Date());
+function spyOn(day){const P=window.WVFC_APP&&window.WVFC_APP.prices&&window.WVFC_APP.prices();if(!P||!P.closes||!P.closes.SPY)return null;
+  const c=P.closes.SPY,d=P.dates||[];let v=null;for(let i=0;i<d.length&&d[i]<=day;i++)if(c[i]!=null)v=c[i];return v;}
+function renderChart(){
+  const box=$("#mine-chart");if(!box||!G.acct)return;
+  if(G.extrasOff||!G.daily){box.hidden=true;return;}box.hidden=false;
+  const start=chiDay(G.acct.started_at||G.acct.created_at),today=chiDay();
+  const now=+G.acct.cash+G.pos.reduce((s,p)=>s+priceOf(p)*p.shares,0);
+  const pts=[{day:start,v:START}].concat(G.daily.filter(r=>r.day>start&&r.day<today).map(r=>({day:r.day,v:+r.value})),[{day:today,v:now}]);
+  if(pts.length>1&&pts[pts.length-1].day===pts[0].day)pts.shift();
+  const s0=spyOn(start);
+  const spy=s0?pts.map(p=>{const c=spyOn(p.day);return c?START*c/s0:null;}):[];
+  const pct=v=>v/START-1;
+  const all=pts.map(p=>pct(p.v)).concat(spy.filter(x=>x!=null).map(pct),[0]);
+  let lo=Math.min(...all),hi=Math.max(...all);const pad=Math.max((hi-lo)*.15,.01);lo-=pad;hi+=pad;
+  const W=Math.round(Math.max(300,Math.min(760,(box.clientWidth||760)-36))),H=W<500?200:220,L=48,R=10,T=10,B=26,n=pts.length;
+  const x=i=>L+(n<2?0:(W-L-R)*i/(n-1)),y=v=>T+(H-T-B)*(1-(pct(v)-lo)/(hi-lo));
+  const svg=sv("svg",{viewBox:`0 0 ${W} ${H}`,width:"100%",role:"img","aria-label":"Your account value over time compared with the S&P 500"});
+  const step=(hi-lo)/4;for(let i=0;i<=4;i++){const v=lo+step*i,yy=T+(H-T-B)*(1-i/4);
+    svg.append(sv("line",{x1:L,x2:W-R,y1:yy,y2:yy,stroke:"var(--line)","stroke-width":1}));
+    const t=sv("text",{x:L-8,y:yy+4,"text-anchor":"end","font-size":11,fill:"var(--muted)","font-family":"var(--f-mono)"});t.textContent=(v>=0?"+":"")+(v*100).toFixed(1)+"%";svg.append(t);}
+  const line=(vals,color,w)=>{const d=vals.map((v,i)=>v==null?null:`${x(i).toFixed(1)} ${y(v).toFixed(1)}`).filter(Boolean);if(d.length<2)return;svg.append(sv("path",{d:"M"+d.join(" L"),fill:"none",stroke:color,"stroke-width":w,"stroke-linejoin":"round","stroke-linecap":"round"}));};
+  line(spy,"#8a8a86",2);line(pts.map(p=>p.v),"var(--gold)",3);
+  const lab=(i,a)=>{const t=sv("text",{x:x(i),y:H-6,"text-anchor":a,"font-size":11,fill:"var(--muted)","font-family":"var(--f-mono)"});const[yy,m,dd]=pts[i].day.split("-").map(Number);t.textContent=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][m-1]+" "+dd;svg.append(t);};
+  lab(0,"start");if(n>1)lab(n-1,"end");
+  const ab=v=>Math.abs(v*100).toFixed(2)+"%";const g=pct(now),sp=spy.length&&spy[spy.length-1]!=null?pct(spy[spy.length-1]):null;
+  box.replaceChildren(el("h3",{class:"h3",text:"Your money over time"}),
+    el("p",{class:"meta",text:sp==null?`You're ${g>=0?"up":"down"} ${ab(g)} since you started.`:`You're ${g>=0?"up":"down"} ${ab(g)} since you started. The same money in the S&P 500 would be ${sp>=0?"up":"down"} ${ab(sp)}.`}),
+    el("div",{class:"chartleg"},el("span",{},el("i",{style:"background:var(--gold)"}),"You"),sp==null?"":el("span",{},el("i",{style:"background:#8a8a86"}),"Same money in the S&P 500")),
+    svg,G.daily.length<2?el("p",{class:"meta",text:"Your account value is saved every weekday after the market closes, so this line fills in a little more each day."}):"");
+}
+function renderFriends(){
+  const box=$("#mine-friends");if(!box||!G.acct)return;
+  if(G.extrasOff||!G.friends){box.hidden=true;return;}box.hidden=false;
+  const link=G.invite?location.origin+location.pathname+"?invite="+G.invite:"";
+  const rows=G.friends;
+  box.replaceChildren(el("h3",{class:"h3",text:"Friends leaderboard"}),
+    el("p",{class:"meta",text:rows.length>1?"You and your friends, ranked by how much your $50,000 has grown.":"Invite friends with your link. When they sign up, you'll see each other here."}),
+    rows.length?el("ol",{class:"ptboard"},rows.map(r=>el("li",{class:r.me?"me":""},el("span",{class:"r",text:"#"+r.rank}),el("span",{class:"n",text:r.name+(r.me?" (you)":"")}),
+      el("span",{class:"g "+cls(+r.gain_pct),text:fmtPct(+r.gain_pct)}),el("span",{class:"v",text:fmt$(r.value)})))):"",
+    link?el("button",{type:"button",class:"btn invitebtn",text:"Invite a friend",onclick:()=>shareInvite(link)}):"");
+}
+async function shareInvite(link){
+  const text="Practice investing with me on Simple Street. We each get $50,000 of pretend money to see who grows it the most.";
+  try{if(navigator.share){await navigator.share({title:"Simple Street",text,url:link});return;}}catch(e){if(e&&e.name==="AbortError")return;}
+  try{await navigator.clipboard.writeText(link);toast("Invite link copied. Send it to a friend!");}
+  catch(e){window.prompt("Copy your invite link:",link);}
+}
 function renderTiles(box){
   const stocks=G.pos.reduce((s,p)=>s+priceOf(p)*p.shares,0),value=+G.acct.cash+stocks,gain=value-START;
   const me=G.board.find(r=>r.me);
