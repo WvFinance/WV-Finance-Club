@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-06",
+ "updated": "2026-11-09",
  "briefs": [
   {
    "bear": [
@@ -99,41 +99,41 @@
   },
   {
    "bear": [
-    "The jump came just days after the stock fell for three straight days following its earnings report.",
-    "Investors are moving money quickly between groups of stocks, which can make big swings in both directions.",
-    "At a record high, the stock may have less room for good surprises."
+    "The stock fell 1.5% on November 5 and slipped again the next day, after reaching a record.",
+    "Apple now has about $80 billion in debt before this new sale, and the new bonds pay up to 5.35% interest.",
+    "Apple said it is no longer aiming to keep its cash and debt equal, which could mean more borrowing ahead."
    ],
    "bull": [
-    "The stock hit a record high of $354.33 on November 4.",
-    "Analysts said a split government makes big new tax changes or tech rules that could hurt Apple less likely.",
-    "If data center building slows, prices for the memory chips Apple uses could cool."
+    "Investors wanted to lend Apple about $31 billion, more than four times the $7.5 billion it borrowed, a sign of strong trust in the company.",
+    "Apple ended its year with $136.9 billion in cash and investments.",
+    "In its last year, Apple returned $85.8 billion to shareholders by buying back shares, plus $15.7 billion in dividends."
    ],
-   "headline": "Apple jumps about 5% to a record as investors cheer the midterm results",
+   "headline": "Apple slips from its record and borrows $7.5 billion as tech stocks sell off",
    "nextEvent": "",
-   "sentiment": "bullish",
+   "sentiment": "neutral",
    "sources": [
     {
-     "title": "The Dow Soared in the Stock Market Today, November 4, 2026, After Democrats Won Congress and Oil Fell",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-4-2026",
-     "outlet": "StockTitan",
-     "date": "Nov 4, 2026"
+     "title": "Apple Reportedly Set To Raise $7.5B From Bond Offering Amid Market Selloff",
+     "url": "https://stocktwits.com/news-articles/markets/equity/apple-reportedly-set-to-raise-7-5-b-from-bond-offering-amid-market-selloff/cNG1HDrR948",
+     "outlet": "Stocktwits",
+     "date": "Nov 5, 2026"
     },
     {
-     "title": "Amazon Rallies 7%, Apple and Microsoft Climb 5% as Big Tech Leads Post-Election Rebound",
-     "url": "https://247wallst.com/investing/2026/11/04/amazon-rallies-7-apple-and-microsoft-climb-5-as-big-tech-leads-post-election-rebound/",
+     "title": "Apple Is Borrowing $7.5 Billion, Its First Bond Sale Since 2025",
+     "url": "https://247wallst.com/investing/2026/11/06/apple-is-borrowing-7-5-billion-its-first-bond-sale-since-2025/",
      "outlet": "24/7 Wall St.",
-     "date": "Nov 4, 2026"
+     "date": "Nov 6, 2026"
     },
     {
-     "title": "U.S. stocks surge on expected two years of Washington DC gridlock; Apple jumps more than 6% to record territory",
-     "url": "https://macdailynews.com/2026/11/04/u-s-stocks-surge-on-expected-two-years-of-washington-dc-gridlock-apple-jumps-more-than-6-to-record-territory/",
-     "outlet": "MacDailyNews",
-     "date": "Nov 4, 2026"
+     "title": "Apple (AAPL) Stock Price, News and Analysis",
+     "url": "https://www.heygotrade.com/en/us-stock/aapl/",
+     "outlet": "Gotrade",
+     "date": "Nov 6, 2026"
     }
    ],
-   "summary": "On November 4, Apple's stock rose about 5.3%, reaching a record high of $354.33 during the day and ending a three-day losing streak. Investors bought big tech after Democrats won control of Congress, expecting a split government to make big new tax or tech rules less likely. An analyst at Evercore ISI said Apple depends on iPhone sales, prices and services rather than data center building, so possible limits on new data centers may not hurt it. Slower data center building could even ease the price of memory chips that Apple buys for its devices.",
+   "summary": "After hitting a record high on November 4, Apple's stock fell 1.5% to $344.17 on November 5, when the S&P 500 had its worst day since April 2025. That same day, Apple sold $7.5 billion of bonds (loans from investors that Apple pays back with interest), its first since May 2025, and investors offered to lend about $31 billion, more than four times what it asked for. Apple said the money can go toward things like buying back its own shares and paying dividends. The stock is still up about 27% this year.",
    "ticker": "AAPL",
-   "updatedAt": "2026-11-05T11:40:17.947Z",
+   "updatedAt": "2026-11-09T11:39:55.630Z",
    "symbol": "NASDAQ:AAPL",
    "name": "Apple"
   },
