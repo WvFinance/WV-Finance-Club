@@ -24,9 +24,15 @@ html[data-school="mvhs"]{
   --mast:#ffffff; --gold:#f5c400; --gold-soft:#2e2808; --on-gold:#111111;
 }
 html[data-school="mvhs"] .mast{--band-ink:#111111; --band-ink-2:#555551}
-/* Simple Street "Just me" accounts: dark header. */
-html[data-school="me"]{--mast:#0f120f}
-html[data-school="me"] .mast{border-bottom:1px solid #1f2420}
+/* Simple Street "Just me" accounts: Midnight Blue (navy with a bright blue accent). */
+html[data-school="me"]{
+  --bg:#070d1f; --surface:#0e1830; --surface-2:#15223f; --ink-2:#b4bdd3; --muted:#8792ad; --line:#22305a;
+  --brand-2:#7fb0ff; --green:#2f7bff; --on-green:#ffffff;
+  --mast:#0b1530; --band:#070d1f; --band-ink-2:#a9b4cc;
+  --gold:#7fb0ff; --gold-soft:#16264a; --on-gold:#07122b;
+}
+html[data-school="me"] .mast{border-bottom:1px solid #1c2a52}
+html[data-school="me"] .bmotto{color:#7fb0ff}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
@@ -41,7 +47,9 @@ a{color:var(--brand-2)}
 .mast{background:var(--mast);color:var(--band-ink)}
 .mast .wrap{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding-block:20px 16px}
 .brand{display:flex;align-items:center;gap:14px;color:inherit;text-decoration:none}
-.brand .ssign{width:200px;flex:none}
+.brand .ssmark{width:48px;height:48px;flex:none}
+.sswm{font-family:"Inter Tight",var(--f-display);font-weight:900;letter-spacing:-.04em;line-height:.95}
+.brand .sswm{font-size:26px;color:var(--band-ink)}
 .brandtxt{display:flex;flex-direction:column;gap:2px}
 .bmotto{color:var(--band-ink-2);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
 #school-name{color:var(--band-ink);font-family:var(--f-display);font-weight:700;font-size:15px}
@@ -291,54 +299,56 @@ table.pos th{padding:10px 12px}
 /* Log in and sign up screen (Simple Street, dark) */
 html:not(.unlocked) body>*:not(#gate):not(script){display:none!important}
 html.unlocked #gate{display:none}
-#gate{position:fixed;inset:0;z-index:50;overflow:auto;display:flex;flex-direction:column;background:#0b0b0b;color:#f2f2f2;font-family:var(--f-body)}
-.gtick{flex:none;background:#000;border-bottom:1px solid #1f2420;min-height:46px}
+#gate{position:fixed;inset:0;z-index:50;overflow:auto;display:flex;flex-direction:column;background:radial-gradient(70% 60% at 50% 30%,#13224a,#0b1530 70%);color:#f2f2f2;font-family:var(--f-body)}
+.gtick{flex:none;background:#070d1f;border-bottom:1px solid #1c2a52;min-height:46px}
 .gtick .tradingview-widget-container{width:100%}
 .gtick span{margin:0 16px}.gtick b{font-weight:500}.gtick .up{color:#3ddc84}.gtick .down{color:#ff7a6b}
 .gmain{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 16px 24px}
-.gbrand{width:min(380px,88vw);text-align:center}
+.gbrand{display:flex;align-items:center;justify-content:center;gap:22px}
+.gbrand .ssmark{width:118px;height:118px;flex:none}
+.gbrand .sswm{font-size:52px;color:#fff}
 .ssign{display:block;width:100%;height:auto}
-.gmotto{margin:14px 0 0;color:#e2bd3f;font-size:13px;font-weight:600;letter-spacing:.26em;text-transform:uppercase}
-.gcard{margin-top:30px;width:min(420px,100%);background:#151715;border:1px solid #262a27;border-radius:18px;padding:28px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.gmotto{margin:12px 0 0;color:#7fb0ff;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase}
+.gcard{margin-top:30px;width:min(420px,100%);background:#111d3a;border:1px solid #24345e;border-radius:18px;padding:28px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
 .gcard.wide{width:min(580px,100%)}
 #g-fields{display:grid;gap:8px}
 .gcard h2{font-family:var(--f-display);font-weight:800;font-size:26px;margin:0 0 6px}
-.gcard label{display:grid;gap:6px;font-size:13px;font-weight:600;color:#a9b1ac;margin-top:4px}
-.gcard input{width:100%;font:inherit;font-size:16px;padding:13px 15px;border-radius:10px;border:1.5px solid #2c312d;background:#0d0f0e;color:#fff;outline:none}
-.gcard input:focus{border-color:#25904a;box-shadow:0 0 0 3px rgba(37,144,74,.25)}
-.gbtn{appearance:none;border:0;border-radius:10px;padding:14px;width:100%;margin-top:12px;background:#1f7a3e;color:#fff;font:600 16px var(--f-body);cursor:pointer}
-.gbtn:hover{background:#25904a}.gbtn:disabled{opacity:.6;cursor:default}
-.gsub{color:#9aa39e;margin:0 0 18px;font-size:15px}
+.gcard label{display:grid;gap:6px;font-size:13px;font-weight:600;color:#a6b1cc;margin-top:4px}
+.gcard input{width:100%;font:inherit;font-size:16px;padding:13px 15px;border-radius:10px;border:1.5px solid #2a3a66;background:#0a1328;color:#fff;outline:none}
+.gcard input:focus{border-color:#2f7bff;box-shadow:0 0 0 3px rgba(47,123,255,.3)}
+.gbtn{appearance:none;border:0;border-radius:10px;padding:14px;width:100%;margin-top:12px;background:#2f7bff;color:#fff;font:600 16px var(--f-body);cursor:pointer}
+.gbtn:hover{background:#4a8dff}.gbtn:disabled{opacity:.6;cursor:default}
+.gsub{color:#9aa6c2;margin:0 0 18px;font-size:15px}
 .gchoices{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.gchoice{appearance:none;text-align:left;font:inherit;color:inherit;background:#0d0f0e;border:1.5px solid #2c312d;border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:7px;cursor:pointer}
-.gchoice[aria-checked="true"]{border-color:#25904a;box-shadow:0 0 0 3px rgba(37,144,74,.25)}
+.gchoice{appearance:none;text-align:left;font:inherit;color:inherit;background:#0a1328;border:1.5px solid #2a3a66;border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:7px;cursor:pointer}
+.gchoice[aria-checked="true"]{border-color:#2f7bff;box-shadow:0 0 0 3px rgba(47,123,255,.3)}
 .gchoice b{font-family:var(--f-display);font-weight:800;font-size:19px;margin-top:4px}
-.gchoice .gd{color:#a9b1ac;font-size:14px;line-height:1.45}
-.gchoice ul{margin:2px 0 0;padding:0;list-style:none;font-size:13px;color:#cfd6d2;display:grid;gap:4px}
-.gchoice li::before{content:"✓ ";color:#3ddc84;font-weight:700}
-.gic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:#16351f}.gic.gold{background:#3a3112}
-.gback{appearance:none;border:0;background:none;color:#9aa39e;font:inherit;font-size:14px;padding:0;cursor:pointer;justify-self:start}
+.gchoice .gd{color:#a6b1cc;font-size:14px;line-height:1.45}
+.gchoice ul{margin:2px 0 0;padding:0;list-style:none;font-size:13px;color:#cfd7ea;display:grid;gap:4px}
+.gchoice li::before{content:"✓ ";color:#7fb0ff;font-weight:700}
+.gic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:#16264a}.gic.gold{background:#3a3112}
+.gback{appearance:none;border:0;background:none;color:#9aa6c2;font:inherit;font-size:14px;padding:0;cursor:pointer;justify-self:start}
 .gback:hover{color:#fff}
 .gtag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#e2bd3f;background:#2a2410;border-radius:999px;padding:5px 11px;margin:4px 0 6px}
-.gtag.g{color:#3ddc84;background:#12301d}
-.gfound{background:#12301d;border:1px solid #1f5a33;color:#c9f2d8;border-radius:10px;padding:9px 12px;font-size:14px}
+.gtag.g{color:#7fb0ff;background:#16264a}
+.gfound{background:#16264a;border:1px solid #2a4a8a;color:#d6e4ff;border-radius:10px;padding:9px 12px;font-size:14px}
 .gfound.bad{background:#2d1517;border-color:#5a2427;color:#ffc9c4}
-.ghint{color:#7d8681;font-size:13px;margin:4px 0 0;text-align:center}
+.ghint{color:#7f8aa6;font-size:13px;margin:4px 0 0;text-align:center}
 #gate-msg{margin:10px 0 0;min-height:1.2em;color:#ff8a7d;font-size:14px;text-align:center}
 #gate-msg:empty{display:none}
-.authswitch{text-align:center;color:#9aa39e;font-size:14px;margin:14px 0 0}
-.authswitch .linkbtn{color:#e2bd3f;font-weight:600;text-decoration:underline}
-.gfoot{flex:none;text-align:center;color:#6f7772;font-size:13px;margin:0;padding:16px}
+.authswitch{text-align:center;color:#9aa6c2;font-size:14px;margin:14px 0 0}
+.authswitch .linkbtn{color:#7fb0ff;font-weight:600;text-decoration:underline}
+.gfoot{flex:none;text-align:center;color:#6f7a96;font-size:13px;margin:0;padding:16px}
 #gate-form.shake{animation:shake .35s}
-@media (max-width:600px){.gchoices{grid-template-columns:1fr}.gcard{padding:22px}.gmain{padding-top:28px}}
+@media (max-width:600px){.gbrand{gap:16px}.gbrand .ssmark{width:84px;height:84px}.gbrand .sswm{font-size:38px}.gchoices{grid-template-columns:1fr}.gcard{padding:22px}.gmain{padding-top:28px}}
 @keyframes shake{25%{translate:-8px}50%{translate:8px}75%{translate:-4px}}
 
 /* Log Out button, top right of the header */
 .mast .wrap{position:relative}
 .logout{appearance:none;cursor:pointer;border:1px solid var(--gold);background:var(--gold);color:var(--on-gold);border-radius:999px;padding:5px 14px;font-family:var(--f-body);font-size:13px;font-weight:600;letter-spacing:.02em;line-height:1.3}
 .logout:hover{background:color-mix(in srgb,var(--gold) 85%,#fff);border-color:color-mix(in srgb,var(--gold) 85%,#fff)}
-@media (max-width:600px){.brand .ssign{width:150px}.brand{gap:10px}.bmotto{font-size:10px;letter-spacing:.14em}#school-name{font-size:13px}}
-@media (max-width:359px){.brand .ssign{width:124px}}
+@media (max-width:600px){.brand .ssmark{width:40px;height:40px}.brand .sswm{font-size:22px}.brand{gap:10px}.bmotto{font-size:10px;letter-spacing:.14em}#school-name{font-size:13px}}
+@media (max-width:359px){.brand .ssmark{width:34px;height:34px}.brand .sswm{font-size:19px}}
 /* Ticker tape: full width at TradingView's normal size. Shrinking it (zoom or scale) breaks it on iPhone Safari,
    and setting color-scheme on the iframe makes Safari paint it white, so neither is used. */
 .tape .tradingview-widget-container{width:100%}
@@ -555,3 +565,5 @@ footer .chip.asof{border-color:var(--line);color:var(--ink-2)}
 .chartleg{display:flex;gap:16px;color:var(--muted);font-size:13px;margin:4px 0 8px}.chartleg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 .invitebtn{margin-top:14px;width:100%;justify-content:center;text-align:center;background:#e2bd3f;border-color:#e2bd3f;color:#111;font-weight:600}
 .invitebtn:hover{background:#ecc955}
+html[data-school="me"] .invitebtn{background:#2f7bff;border-color:#2f7bff;color:#fff}
+html[data-school="me"] .joinclass{background:linear-gradient(90deg,#16264a,var(--surface));border-color:#2a4a8a}
