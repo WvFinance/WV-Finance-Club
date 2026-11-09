@@ -13,44 +13,72 @@ const db=window.supabase.createClient(CFG.supabaseUrl,CFG.supabaseKey);
 let user=null;
 
 /* ---------- Log in and create account ---------- */
-let mode="login";
-function setMode(m){mode=m;const login=m==="login";
-  $("#auth-title").textContent=login?"Log in":"Create an account";
+// Steps: "login", "choose" (Join a class or Just me), then "class" or "me" (the sign-up form).
+let mode="login",kind="class";
+const card=$("#gate-form");
+function setMode(m){mode=m;const login=m==="login",choose=m==="choose",signup=m==="class"||m==="me";
+  $("#g-choose").hidden=!choose;$("#g-fields").hidden=choose;card.classList.toggle("wide",choose);
+  $("#g-back").hidden=!signup;
+  const tag=$("#g-tag");tag.hidden=!signup;tag.textContent=m==="class"?"Join a class":"Just me";tag.classList.toggle("g",m==="class");
+  $("#auth-title").textContent=login?"Log in":m==="class"?"Join your class":"Start investing on your own";
   $("#auth-go").textContent=login?"Log in":"Create account";
+  $("#l-club").hidden=m!=="class";$("#g-found").hidden=true;$("#l-name").hidden=!signup;
+  $("#l-email").textContent=m==="class"?"School email":"Email";
+  $("#auth-email").placeholder=m==="class"?"you@school.org":"you@email.com";
+  $("#auth-pass").setAttribute("autocomplete",login?"current-password":"new-password");
+  $("#auth-pass").placeholder=login?"Your password":"At least 8 characters";
+  const hint=$("#g-hint");hint.hidden=!signup;hint.textContent=m==="class"?"Don't have a code? Ask your teacher or club leader.":"Joining a class later? You can add a class code anytime from your Home page.";
   $("#auth-q").textContent=login?"New here?":"Already have an account?";
   $("#auth-switch").textContent=login?"Create an account":"Log in";
-  $("#auth-pass").setAttribute("autocomplete",login?"current-password":"new-password");
-  $("#auth-pass").placeholder=login?"Password":"Make a password (8 or more characters)";
-  $("#auth-club").hidden=login;$("#auth-club").required=!login;
-  msg.textContent="";}
-$("#auth-switch").addEventListener("click",()=>setMode(mode==="login"?"signup":"login"));
+  msg.textContent="";
+  if(m==="class")$("#auth-club").focus();else if(m==="me")$("#auth-name").focus();}
+$("#auth-switch").addEventListener("click",()=>setMode(mode==="login"?"choose":"login"));
+$("#g-back").addEventListener("click",()=>setMode("choose"));
+document.querySelectorAll(".gchoice").forEach(b=>b.addEventListener("click",()=>{kind=b.dataset.kind;
+  document.querySelectorAll(".gchoice").forEach(x=>x.setAttribute("aria-checked",String(x===b)));}));
+document.querySelectorAll(".gchoice").forEach(b=>b.addEventListener("dblclick",()=>setMode(kind)));
+$("#g-continue").addEventListener("click",()=>setMode(kind));
 const AUTH_ERR=[[/invalid login credentials/i,"That email and password don't match. Try again."],[/already registered|already been registered/i,"That email already has an account. Log in instead."],
   [/email not confirmed/i,"Confirm your email first. Check your inbox for the link."],[/password should be|weak password/i,"Pick a longer password, at least 8 characters."],
-  [/rate limit|too many/i,"Too many tries. Wait a minute and try again."],[/club password|school code/,"That's not a school code. Ask your club leader for it."],[/database error saving new user/i,"That school code or email wasn't accepted. Check both and try again."],[/fetch|network/i,"Couldn't reach the login server. Check your internet and try again."]];
-// New accounts need their school's code (like wvhs01). This first look only gives a clear message;
-// the real check happens inside the database (supabase/district.sql).
+  [/rate limit|too many/i,"Too many tries. Wait a minute and try again."],[/club password|school code|class code/,"That's not a class code. Ask your teacher or club leader for it."],[/database error saving new user/i,"That class code or email wasn't accepted. Check both and try again."],[/fetch|network/i,"Couldn't reach the login server. Check your internet and try again."]];
+// New class accounts need their school's code (like wvhs01). This first look only gives a clear message;
+// the real check happens inside the database (supabase/district.sql and supabase/individual.sql).
 async function checkSchool(code,email){
-  if(!code)throw new Error("school code");
+  if(!code)throw new Error("class code");
   const{data,error}=await db.rpc("school_for_code",{c:code});
   if(error)throw error;
-  const s=data&&data[0];if(!s)throw new Error("school code");
+  const s=data&&data[0];if(!s)throw new Error("class code");
   const dom=String(s.email_domain||"").replace(/^@/,"").toLowerCase();
-  if(dom&&!email.toLowerCase().endsWith("@"+dom))throw new Error(`Use your ${s.name} school email (it ends in @${dom}).`);
+  if(email&&dom&&!email.toLowerCase().endsWith("@"+dom))throw new Error(`Use your ${s.name} school email (it ends in @${dom}).`);
+  return s;
 }
+// Shows which club a code belongs to while it's typed.
+let codeT=null;
+$("#auth-club").addEventListener("input",()=>{clearTimeout(codeT);const f=$("#g-found"),code=$("#auth-club").value.trim().toLowerCase();
+  if(code.length<4){f.hidden=true;return;}
+  codeT=setTimeout(async()=>{try{const s=await checkSchool(code,"");f.textContent="✓ "+s.name;f.className="gfound";}catch(e){f.textContent="That's not a class code yet. Check it with your teacher.";f.className="gfound bad";}f.hidden=false;},350);});
 const authErr=e=>{const m=String(e&&e.message||e);const hit=AUTH_ERR.find(([r])=>r.test(m));return hit?hit[1]:m;};
-$("#gate-form").addEventListener("submit",async e=>{e.preventDefault();
-  const email=$("#auth-email").value.trim(),password=$("#auth-pass").value,go=$("#auth-go");
-  go.disabled=true;msg.textContent="";
+card.addEventListener("submit",async e=>{e.preventDefault();
+  if(mode==="choose")return setMode(kind);
+  const email=$("#auth-email").value.trim(),password=$("#auth-pass").value,name=$("#auth-name").value.trim(),go=$("#auth-go");
+  msg.textContent="";
+  const need=!email||!/^\S+@\S+\.\S+$/.test(email)?"Type your email.":password.length<8?(mode==="login"?"Type your password.":"Pick a password with at least 8 characters."):
+    mode!=="login"&&!name?"Type your name.":mode==="class"&&!$("#auth-club").value.trim()?"Type your class code.":"";
+  if(need){msg.textContent=need;return;}
+  go.disabled=true;
   try{
-    const code=$("#auth-club").value.trim().toLowerCase();
-    if(mode==="signup")await checkSchool(code,email);
-    // The database checks the school code again when the account is made, so this check can't be skipped.
-    const r=mode==="login"?await db.auth.signInWithPassword({email,password}):await db.auth.signUp({email,password,options:{data:{school_code:code}}});
-    if(r.error)throw r.error;
+    let r;
+    if(mode==="login")r=await db.auth.signInWithPassword({email,password});
+    else if(mode==="class"){const code=$("#auth-club").value.trim().toLowerCase();await checkSchool(code,email);
+      // The database checks the class code again when the account is made, so this check can't be skipped.
+      r=await db.auth.signUp({email,password,options:{data:{school_code:code,name}}});}
+    else r=await db.auth.signUp({email,password,options:{data:{account:"individual",name}}});
+    if(r.error){if(mode==="me"&&/class code|school code|database error/i.test(r.error.message||""))throw new Error("Just me accounts aren't turned on yet. Try again soon, or join with a class code.");throw r.error;}
     if(!r.data.session){setMode("login");msg.textContent="Account made. Check your email for the confirm link, then log in.";return;}
+    try{localStorage.removeItem("wvfc.theme");}catch(e){}
     // Reload so the charts draw at full size.
     location.reload();
-  }catch(err){msg.textContent=authErr(err);$("#gate-form").classList.remove("shake");void $("#gate-form").offsetWidth;$("#gate-form").classList.add("shake");}
+  }catch(err){msg.textContent=authErr(err);card.classList.remove("shake");void card.offsetWidth;card.classList.add("shake");}
   finally{go.disabled=false;}
 });
 document.addEventListener("click",async e=>{
@@ -75,8 +103,11 @@ async function start(){
 // Teachers and the admin also get the Students tab (staff.js). The admin can switch to view any school.
 async function loadSchool(){
   let school="wvhs",role="student";
-  try{const{data,error}=await db.from("profiles").select("school_id,role").maybeSingle();if(!error&&data){if(data.school_id)school=data.school_id;if(data.role)role=data.role;}}catch(e){}
-  window.WVFC_ROLE=role;
+  // A profile with no school is a "Just me" account (supabase/individual.sql).
+  try{const{data,error}=await db.from("profiles").select("school_id,role").maybeSingle();if(!error&&data){school=data.school_id||"me";if(data.role)role=data.role;}}catch(e){}
+  window.WVFC_ROLE=role;window.WVFC_INDIVIDUAL=school==="me"&&role!=="admin";
+  window.WVFC_NAME=String(user.user_metadata&&user.user_metadata.name||"").trim();
+  if(school==="me"&&role==="admin")school="wvhs";
   if(role==="admin")school=await adminSchoolPick(school);
   if(role==="teacher"){$("#tab-mine").hidden=true;$("#tab-trade").textContent="Class Trading";}
   if(role==="teacher"||role==="admin"){$("#tab-staff").hidden=role!=="admin";
@@ -95,6 +126,16 @@ async function adminSchoolPick(own){
   $("#school-pick-wrap").hidden=false;
   return pick;
 }
+
+/* ---------- Join a class later (Home page of a Just me account) ---------- */
+$("#join-class").addEventListener("submit",async e=>{e.preventDefault();
+  const code=$("#join-code").value.trim(),jm=$("#join-msg"),b=$("#join-go");jm.textContent="";
+  if(!code){jm.textContent="Type your class code.";return;}
+  b.disabled=true;
+  try{const{data,error}=await db.rpc("join_class",{c:code});if(error)throw error;
+    toast(`You joined ${data}!`);try{localStorage.removeItem("wvfc.theme");}catch(e){}setTimeout(()=>location.reload(),900);}
+  catch(err){jm.textContent=String(err&&err.message||err);b.disabled=false;}
+});
 
 /* ---------- Watchlist saved to the account ---------- */
 let savedWatch=new Set();
