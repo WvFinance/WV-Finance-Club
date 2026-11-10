@@ -360,7 +360,7 @@ function renderDrops(){
   const sym=S.tk,theme=tvTheme();
   const fin=$("#drop-fin"),feed=$("#drop-feed");
   if(fin.open&&rendered.fin!==sym){rendered.fin=sym;tv($("#tv-fin"),"financials",{symbol:sym,colorTheme:theme,isTransparent:true,largeChartUrl:SELF,displayMode:"regular",width:"100%",height:"100%"});}
-  if(feed.open&&rendered.feed!==sym){rendered.feed=sym;tv($("#tv-feed"),"timeline",{feedMode:"symbol",symbol:sym,colorTheme:theme,isTransparent:true,displayMode:"regular",width:"100%",height:"100%"});}
+  if(feed.open&&rendered.feed!==sym){rendered.feed=sym;recentNews($("#tv-feed"),newsKey(sym),()=>tv($("#tv-feed"),"timeline",{feedMode:"symbol",symbol:sym,colorTheme:theme,isTransparent:true,displayMode:"regular",width:"100%",height:"100%"}));}
 }
 $("#drop-fin").addEventListener("toggle",renderDrops);$("#drop-feed").addEventListener("toggle",renderDrops);
 function renderQuick(){
@@ -506,16 +506,37 @@ function renderUpcoming(){
         r.tk&&visibleBriefs().some(b=>b.ticker===r.tk)?el("button",{type:"button",class:"btn small",text:`Read the ${r.tk} brief`,onclick:()=>{S.newsTk=r.tk;newsBoard(false);renderNewsFeed();$("#brief").scrollIntoView({behavior:"smooth",block:"start"});}}):null)))),
     ...(more?[more]:[]));
 }
+// Headlines from only the last 7 days (supabase/recent-news.sql, from Finnhub). TradingView's news box
+// can show years-old stories, so it's only used if that list can't load (for example before the SQL is run).
+function newsKey(sym,crypto){const raw=String(sym||"").toUpperCase();
+  if(crypto||/^(COINBASE|BINANCE|BITSTAMP|KRAKEN|CRYPTO|BITFINEX):/.test(raw))return "CRYPTO";
+  if(!raw||/^(FOREXCOM|TVC|SP|INDEX|CBOE|DJ|OANDA|FX|FX_IDC):/.test(raw))return "MARKET";
+  return bare(raw);}
+function ago(t){const m=Math.max(1,Math.round((Date.now()/1000-t)/60));
+  if(m<60)return m+" min ago";const h=Math.round(m/60);if(h<24)return h+(h===1?" hour ago":" hours ago");const d=Math.round(h/24);return d+(d===1?" day ago":" days ago");}
+async function recentNews(box,key,fallback){
+  const n=(box._rn=(box._rn||0)+1);const ss=window.WVFC_SESSION;
+  if(!ss||!ss.db){box.classList.remove("rn");fallback();return;}
+  box.classList.add("rn");box.replaceChildren(el("p",{class:"meta rn-msg",text:"Loading the latest news…"}));
+  let data=null,error=null;try{({data,error}=await ss.db.rpc("recent_news",{sym:key}));}catch(e){error=e;}
+  if(box._rn!==n)return;
+  if(error||!Array.isArray(data)){box.classList.remove("rn");fallback();return;}
+  if(!data.length){box.replaceChildren(el("p",{class:"meta rn-msg",text:"No news in the last 7 days."}));return;}
+  box.replaceChildren(el("ul",{class:"rnews"},data.map(x=>el("li",{},
+    el("a",{href:x.url,target:"_blank",rel:"noopener noreferrer",text:x.headline}),
+    el("span",{class:"o",text:[x.source,x.time?ago(x.time):""].filter(Boolean).join(" · ")})))),
+    el("p",{class:"meta rn-foot",text:"Only news from the last 7 days."}));
+}
 function renderNewsFeed(){
   const n=visibleBriefs().find(x=>x.ticker===S.newsTk);const key=(n?n.ticker:"mkt")+tvTheme();if(rendered.news===key)return;rendered.news=key;
   const theme=tvTheme();
-  if(n&&(!n.market||n.crypto)){$("#feed-label").textContent=`Live headlines · ${n.crypto?n.name:n.ticker}`;tv($("#tv-newsfeed"),"timeline",{feedMode:"symbol",symbol:n.symbol||n.ticker,colorTheme:theme,isTransparent:true,displayMode:"regular",width:"100%",height:"100%"});}
-  else{$("#feed-label").textContent="Live headlines · US stock market";tv($("#tv-newsfeed"),"timeline",{feedMode:"market",market:"stock",colorTheme:theme,isTransparent:true,displayMode:"regular",width:"100%",height:"100%"});}
+  if(n&&(!n.market||n.crypto)){$("#feed-label").textContent=`Live headlines · ${n.crypto?"Crypto":n.ticker}`;recentNews($("#tv-newsfeed"),newsKey(n.symbol||n.ticker,n.crypto),()=>tv($("#tv-newsfeed"),"timeline",{feedMode:"symbol",symbol:n.symbol||n.ticker,colorTheme:theme,isTransparent:true,displayMode:"regular",width:"100%",height:"100%"}));}
+  else{$("#feed-label").textContent="Live headlines · US stock market";recentNews($("#tv-newsfeed"),"MARKET",()=>tv($("#tv-newsfeed"),"timeline",{feedMode:"market",market:"stock",colorTheme:theme,isTransparent:true,displayMode:"regular",width:"100%",height:"100%"}));}
 }
 function renderClassFeed(){
   const n=classBriefs().find(x=>x.ticker===S.classTk);if(!n)return;const key=n.ticker+tvTheme();if(rendered.classnews===key)return;rendered.classnews=key;
   $("#c-feed-label").textContent=`Live headlines · ${n.ticker}`;
-  tv($("#c-tv-newsfeed"),"timeline",{feedMode:"symbol",symbol:n.symbol||n.ticker,colorTheme:tvTheme(),isTransparent:true,displayMode:"regular",width:"100%",height:"100%"});
+  recentNews($("#c-tv-newsfeed"),newsKey(n.symbol||n.ticker,n.crypto),()=>tv($("#c-tv-newsfeed"),"timeline",{feedMode:"symbol",symbol:n.symbol||n.ticker,colorTheme:tvTheme(),isTransparent:true,displayMode:"regular",width:"100%",height:"100%"}));
 }
 // On Search, show the club's brief for the stock whenever one exists, even if it isn't in the portfolio.
 function anyBriefFor(sym){const t=bare(sym);return S.briefs.find(b=>bare(b.symbol||b.ticker)===t||b.ticker===t)||null;}
