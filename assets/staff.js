@@ -36,7 +36,7 @@ if(window.WVFC_STAFF)start(window.WVFC_STAFF);
 document.addEventListener("wvfc:tab",e=>{if(ST&&!loaded&&e.detail===(ST.role==="admin"?"staff":"trade"))load();});
 
 async function load(){
-  loaded=true;$("#st-loading").hidden=false;$("#st-loading").textContent="Loading students…";
+  loaded=true;if(ST.role==="admin")loadAdmin();$("#st-loading").hidden=false;$("#st-loading").textContent="Loading students…";
   const{data,error}=await ST.db.rpc("staff_students");
   if(error){loaded=false;$("#st-loading").textContent=/staff_students|schema cache/i.test(error.message||"")?"This page isn't set up yet. Run supabase/teachers.sql in Supabase first.":errText(error);return;}
   people=data||[];
@@ -211,6 +211,68 @@ document.addEventListener("wvfc:classtrade",e=>{const{sym,side}=e.detail||{};if(
       (row||box).scrollIntoView({behavior:"smooth",block:"center"});if(row){row.classList.add("flash");setTimeout(()=>row.classList.remove("flash"),2000);}return;}
     inp.value=sym;box.scrollIntoView({behavior:"smooth",block:"start"});$("#cb-amt").focus({preventScroll:true});};
   go();});
+/* ---------- Admin only: who's using the site, and is everything working (supabase/usage.sql) ---------- */
+const chiDay=(d=new Date())=>d.toLocaleDateString("en-CA",{timeZone:"America/Chicago"});
+const dayName=s=>{if(!s)return"never";const[y,m,d]=String(s).slice(0,10).split("-").map(Number);return new Date(y,m-1,d).toLocaleDateString("en-US",{month:"short",day:"numeric"});};
+const ago=t=>{if(!t)return"never";const m=Math.round((Date.now()-new Date(t))/6e4);return m<60?m+" min ago":m<1440?Math.round(m/60)+" hr ago":(m<2880?"1 day ago":Math.round(m/1440)+" days ago");};
+// The last weekday that should have a closing price by now (prices are saved about 4pm Chicago).
+function lastTradingDay(){const now=new Date(),t=new Date(now.toLocaleString("en-US",{timeZone:"America/Chicago"}));
+  if(t.getHours()<17)t.setDate(t.getDate()-1);while(t.getDay()===0||t.getDay()===6)t.setDate(t.getDate()-1);
+  return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0");}
+async function getJSON(u){try{const r=await fetch(u,{cache:"no-cache"});return r.ok?await r.json():null;}catch(e){return null;}}
+const tick=(ok,label,note)=>el("li",{class:"hrow"},el("span",{class:"hdot "+(ok===true?"ok":ok===false?"bad":"warn"),"aria-label":ok===true?"Working":ok===false?"Needs a look":"Check"}),
+  el("span",{},el("b",{text:label}),el("small",{text:note})));
+async function loadAdmin(){
+  $("#adm").hidden=false;
+  $("#adm-usage").replaceChildren(el("h3",{class:"h3",text:"Who's using Simple Street"}),el("p",{class:"meta",text:"Loading…"}));
+  $("#adm-health").replaceChildren(el("h3",{class:"h3",text:"Site health"}),el("p",{class:"meta",text:"Checking…"}));
+  const[u,st,prices,news,owned]=await Promise.all([ST.db.rpc("admin_usage"),ST.db.rpc("admin_status"),getJSON("data/prices.json"),getJSON("data/news.json"),getJSON("data/owned.json")]);
+  renderUsage(u);renderHealth(st,prices,news,owned);
+}
+function renderUsage(u){
+  const box=$("#adm-usage"),head=el("h3",{class:"h3",text:"Who's using Simple Street"});
+  if(u.error){box.replaceChildren(head,el("p",{class:"meta",text:/admin_usage|schema cache/i.test(u.error.message||"")?"Not turned on yet. Run supabase/usage.sql in Supabase's SQL Editor once.":errText(u.error)}));return;}
+  const d=u.data||{},w=(d.weeks||[])[0]||{};
+  const tile=(label,val,note)=>el("div",{class:"tile"},el("div",{class:"eyebrow",text:label}),el("div",{class:"v",text:String(val)}),el("div",{class:"n",text:note}));
+  const td=(t,k)=>el("td",{class:k||"",text:String(t)});
+  box.replaceChildren(head,
+    el("p",{class:"meta",text:"One person with a class and a personal account counts once. Visits are counted from "+dayName(d.visits_since||chiDay())+"; trades and sign-ups go further back."}),
+    el("div",{class:"tiles"},tile("People",d.people||0,"With an account"),tile("Visited",w.visitors||0,"This week"),tile("Traded",w.traders||0,"This week"),tile("New",w.new_people||0,"Joined this week")),
+    el("h4",{class:"admh",text:"By school, this week"}),
+    el("div",{class:"tablewrap"},el("table",{class:"pos"},el("thead",{},el("tr",{},["School","People","Playing","Visited","Traded"].map((t,i)=>el("th",{class:i?"num":"",text:t})))),
+      el("tbody",{},(d.schools||[]).map(s=>el("tr",{},td(s.school),td(s.people,"num"),td(s.playing,"num"),td(s.visitors,"num"),td(s.traders,"num")))))),
+    el("h4",{class:"admh",text:"Week by week"}),
+    el("div",{class:"tablewrap"},el("table",{class:"pos"},el("thead",{},el("tr",{},["Week of","Visited","New","Traded","Trades"].map((t,i)=>el("th",{class:i?"num":"",text:t})))),
+      el("tbody",{},(d.weeks||[]).map(r=>el("tr",{},td(dayName(r.wk)),td(r.visitors,"num"),td(r.new_people,"num"),td(r.traders,"num"),td(r.trades,"num")))))));
+}
+function renderHealth(st,prices,news,owned){
+  const items=[],today=chiDay(),want=lastTradingDay();
+  const last=prices&&prices.dates?prices.dates.at(-1):null;
+  items.push(tick(last?last>=want:false,"Closing prices",last?"Newest day: "+dayName(last)+(last>=want?"":" (expected "+dayName(want)+")"):"Couldn't read data/prices.json"));
+  const rec=news&&news.market&&news.market.date;
+  items.push(tick(!rec?false:rec>=want?true:rec>=(last||want)?null:false,"Market recap (the Why)",rec?"Last written for "+dayName(rec)+". Runs at 5pm on weekdays.":"No recap found"));
+  const briefs=news&&Array.isArray(news.briefs)?news.briefs:[];
+  const checked=briefs.map(b=>b.checkedAt||b.updatedAt).filter(Boolean).sort().at(-1);
+  const wd=new Date(new Date().toLocaleString("en-US",{timeZone:"America/Chicago"}));const morningDue=wd.getDay()>0&&wd.getDay()<6&&wd.getHours()>=7;
+  const checkedDay=checked?chiDay(new Date(checked)):null;
+  items.push(tick(!checked?false:checkedDay===today||!morningDue?true:null,"Morning news check",checked?"Last check: "+dayName(checkedDay)+". Runs at 5:38am on weekdays.":"No briefs found"));
+  const old=briefs.filter(b=>b.updatedAt&&(Date.now()-new Date(b.updatedAt))>8*864e5).length;
+  items.push(tick(old?null:true,"Brief freshness",briefs.length+" briefs, "+(old?old+" not rewritten in over a week (the Friday rewrite should fix these)":"all rewritten in the last week")));
+  items.push(tick(owned&&owned.tickers?true:null,"Owned stocks list",owned&&owned.tickers?owned.tickers.length+(owned.tickers.length===1?" stock":" stocks")+" owned in the game, saved with the closing prices":"Not saved yet (needs owned-stocks.sql)"));
+  const box=$("#adm-health"),head=el("h3",{class:"h3",text:"Site health"});
+  const parts=[head,el("p",{class:"meta",text:"Green is working, yellow is worth a check, red needs fixing."}),el("h4",{class:"admh",text:"Data the robots save"}),el("ul",{class:"hlist"},items)];
+  if(st.error){parts.push(el("p",{class:"meta",text:/admin_status|schema cache/i.test(st.error.message||"")?"Database checks aren't turned on yet. Run supabase/usage.sql in Supabase's SQL Editor once.":errText(st.error)}));box.replaceChildren(...parts);return;}
+  const s=st.data||{};
+  const marketOpen=wd.getDay()>0&&wd.getDay()<6&&(wd.getHours()*60+wd.getMinutes())>=510&&(wd.getHours()*60+wd.getMinutes())<900;
+  const live=[tick(s.prices_at?(!marketOpen||(Date.now()-new Date(s.prices_at))<20*6e4):null,"Game prices",s.prices_at?"Last updated "+ago(s.prices_at)+(marketOpen?"":" (market closed)"):"No prices saved yet"),
+    tick(s.daily_last?s.daily_last>=want:null,"Daily account values",s.daily_last?"Last saved for "+dayName(s.daily_last):"Not saved yet"),
+    tick(s.news_at?true:null,"Headlines",s.news_at?"Last fetched "+ago(s.news_at):"None fetched yet")];
+  const jobs=(s.jobs||[]).map(j=>tick(!j.active?false:j.last_status==="failed"?false:j.last_status?true:null,"Timer: "+j.name,(j.active?"On":"Off")+" · last run "+ago(j.last_run)+(j.last_status?" · "+(j.last_status==="succeeded"?"worked":j.last_status):"")));
+  const files=(s.files||[]).map(f=>tick(f.on,f.file,f.on?"Run":"Not run yet: paste it into Supabase's SQL Editor and press Run"));
+  parts.push(el("h4",{class:"admh",text:"Inside the database"}),el("ul",{class:"hlist"},live,jobs),
+    el("h4",{class:"admh",text:"Setup files"}),el("ul",{class:"hlist cols"},files));
+  box.replaceChildren(...parts);
+}
 $("#st-school").addEventListener("change",()=>{$("#st-detail").hidden=true;render();});
 $("#st-find").addEventListener("input",()=>{renderTiles();renderList();});
 })();

@@ -145,6 +145,7 @@ async function loadSchool(){
   // A profile with no school is a "Just me" account (supabase/individual.sql).
   try{const{data,error}=await db.from("profiles").select("school_id,role").maybeSingle();if(!error&&data){school=data.school_id||"me";if(data.role)role=data.role;}}catch(e){}
   window.WVFC_ROLE=role;window.WVFC_INDIVIDUAL=school==="me"&&role!=="admin";
+  logVisit();
   window.WVFC_NAME=String(user.user_metadata&&user.user_metadata.name||"").trim();
   if(school==="me"&&role==="admin")school="wvhs";
   if(role==="admin")school=await adminSchoolPick(school);
@@ -155,6 +156,9 @@ async function loadSchool(){
   window.WVFC_APP&&window.WVFC_APP.setSchool(school);
   return role;
 }
+// Counts this account as a visitor today, once a day (supabase/usage.sql). Only the day is saved, for the admin's weekly users count.
+function logVisit(){try{const k="ss.visit."+user.id,t=new Date().toLocaleDateString("en-CA",{timeZone:"America/Chicago"});
+  if(localStorage.getItem(k)===t)return;db.rpc("log_visit").then(r=>{if(!r.error)try{localStorage.setItem(k,t);}catch(e){}},()=>{});}catch(e){}}
 // Admin only: a "Viewing" menu at the top to look at any school as if logged in there.
 async function adminSchoolPick(own){
   let schools=[];try{const r=await fetch("data/schools.json",{cache:"no-cache"});schools=(await r.json()).schools||[];}catch(e){}
