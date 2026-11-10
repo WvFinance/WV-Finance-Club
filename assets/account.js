@@ -9,7 +9,13 @@ const root=document.documentElement;
 const msg=$("#gate-msg");
 
 if(!window.supabase||!CFG.supabaseUrl||!CFG.supabaseKey){root.classList.remove("unlocked");msg.textContent="Logins aren't set up yet.";return;}
-const db=window.supabase.createClient(CFG.supabaseUrl,CFG.supabaseKey);
+// Two logins can live in this browser: the main one (the email and password people type) and, if they made one,
+// their second account (class or personal, supabase/two-accounts.sql). The page logs in to the second one for them.
+const dbMain=window.supabase.createClient(CFG.supabaseUrl,CFG.supabaseKey);
+const dbSecond=window.supabase.createClient(CFG.supabaseUrl,CFG.supabaseKey,{auth:{storageKey:"ss-second-auth"}});
+let db=dbMain;
+const getActive=()=>{try{return localStorage.getItem("ss.active");}catch(e){return null;}};
+const setActive=a=>{try{if(a)localStorage.setItem("ss.active",a);else localStorage.removeItem("ss.active");localStorage.removeItem("wvfc.theme");}catch(e){}};
 // An invite link (?invite=code) is kept until the visitor logs in or signs up, then makes them friends.
 try{const inv=new URLSearchParams(location.search).get("invite");
   if(inv&&/^[a-z0-9]{4,16}$/i.test(inv)){localStorage.setItem("ss.invite",inv.toLowerCase());history.replaceState(null,"",location.pathname+location.hash);}}catch(e){}
@@ -42,9 +48,9 @@ document.querySelectorAll(".gchoice").forEach(b=>b.addEventListener("click",()=>
   document.querySelectorAll(".gchoice").forEach(x=>x.setAttribute("aria-checked",String(x===b)));}));
 document.querySelectorAll(".gchoice").forEach(b=>b.addEventListener("dblclick",()=>setMode(kind)));
 $("#g-continue").addEventListener("click",()=>setMode(kind));
-const AUTH_ERR=[[/invalid login credentials/i,"That email and password don't match. Try again."],[/already registered|already been registered/i,"That email already has an account. Log in instead."],
+const AUTH_ERR=[[/invalid login credentials/i,"That email and password don't match. Try again."],
   [/email not confirmed/i,"Confirm your email first. Check your inbox for the link."],[/password should be|weak password/i,"Pick a longer password, at least 8 characters."],
-  [/rate limit|too many/i,"Too many tries. Wait a minute and try again."],[/club password|school code|class code/,"That's not a class code. Ask your teacher or club leader for it."],[/database error saving new user/i,"That class code or email wasn't accepted. Check both and try again."],[/fetch|network/i,"Couldn't reach the login server. Check your internet and try again."]];
+  [/already registered|already been registered/i,"That email already has an account. Log in, then add your other account from the Class / Personal switcher at the top."],[/rate limit|too many/i,"Too many tries. Wait a minute and try again."],[/club password|school code|class code/,"That's not a class code. Ask your teacher or club leader for it."],[/database error saving new user/i,"That class code or email wasn't accepted. Check both and try again."],[/fetch|network/i,"Couldn't reach the login server. Check your internet and try again."]];
 // New class accounts need their school's code (like wvhs01). This first look only gives a clear message;
 // the real check happens inside the database (supabase/district.sql and supabase/individual.sql).
 async function checkSchool(code,email){
@@ -72,6 +78,8 @@ card.addEventListener("submit",async e=>{e.preventDefault();
   go.disabled=true;
   try{
     let r;
+    // A new login always opens its main account, and forgets any second account saved in this browser.
+    setActive(null);try{await dbSecond.auth.signOut({scope:"local"});}catch(e){}
     if(mode==="login")r=await db.auth.signInWithPassword({email,password});
     else if(mode==="class"){const code=$("#auth-club").value.trim().toLowerCase();await checkSchool(code,email);
       // The database checks the class code again when the account is made, so this check can't be skipped.
@@ -88,8 +96,10 @@ card.addEventListener("submit",async e=>{e.preventDefault();
 document.addEventListener("click",async e=>{
   if(!e.target.closest("#logout"))return;
   e.stopImmediatePropagation();
-  try{await db.auth.signOut();}catch(err){}
-  location.reload();
+  setActive(null);
+  try{await dbSecond.auth.signOut({scope:"local"});}catch(err){}
+  try{await dbMain.auth.signOut();}catch(err){}
+  location.replace(location.pathname);
 },true);
 
 async function start(){
@@ -99,6 +109,14 @@ async function start(){
       $("#g-choose .gsub").textContent="A friend invited you! How do you want to use Simple Street?";}
     else{setMode("login");$("#auth-email").focus();}return;}
   user=session.user;root.classList.add("unlocked");
+  // Open the second account if that's the one picked last, and it really belongs to this login.
+  window.WVFC_LINK_READY=dbMain.rpc("linked_account").then(({data,error})=>error?null:data,()=>null);
+  if(getActive()==="second"){
+    let sec=null;try{({data:{session:sec}}=await dbSecond.auth.getSession());}catch(e){}
+    const link=await window.WVFC_LINK_READY;
+    if(sec&&link&&link.main&&link.other_id===sec.user.id){db=dbSecond;user=sec.user;}
+    else setActive(null);
+  }
   acceptInvite();
   window.WVFC_ROLE_READY=loadSchool();loadWatch();
   // The trading game (paper.js) may load after this runs, so it can also read WVFC_SESSION.
@@ -121,6 +139,9 @@ async function acceptInvite(){
 // Teachers and the admin also get the Students tab (staff.js). The admin can switch to view any school.
 async function loadSchool(){
   let school="wvhs",role="student";
+  const link=await window.WVFC_LINK_READY;
+  // Seen from the second account, "me" and "other" swap.
+  window.WVFC_LINK=!link?null:db===dbSecond?{...link,me:link.other,other:link.me,second:true}:{...link,second:false};
   // A profile with no school is a "Just me" account (supabase/individual.sql).
   try{const{data,error}=await db.from("profiles").select("school_id,role").maybeSingle();if(!error&&data){school=data.school_id||"me";if(data.role)role=data.role;}}catch(e){}
   window.WVFC_ROLE=role;window.WVFC_INDIVIDUAL=school==="me"&&role!=="admin";
@@ -130,6 +151,7 @@ async function loadSchool(){
   if(role==="teacher"){$("#tab-mine").hidden=true;$("#tab-trade").textContent="Class Trading";}
   if(role==="teacher"||role==="admin"){$("#tab-staff").hidden=role!=="admin";
     window.WVFC_STAFF={db,role,school};document.dispatchEvent(new CustomEvent("wvfc:staff",{detail:window.WVFC_STAFF}));}
+  setupSwitch();
   window.WVFC_APP&&window.WVFC_APP.setSchool(school);
   return role;
 }
@@ -145,12 +167,62 @@ async function adminSchoolPick(own){
   return pick;
 }
 
+/* ---------- Class / Personal switcher (supabase/two-accounts.sql) ---------- */
+// One email, two accounts: the one they log in with, and a second one of the other kind with its own
+// $50,000, stocks and friends. Hidden until two-accounts.sql has been run.
+const KIND_NAME={class:"class",personal:"personal"};
+function setupSwitch(){
+  const L=window.WVFC_LINK,box=$("#acct-switch");if(!L)return;
+  box.querySelectorAll("button").forEach(b=>{const k=b.dataset.acct,here=k===L.me;
+    b.setAttribute("aria-pressed",String(here));
+    const has=here||k===L.other;b.classList.toggle("add",!has);
+    b.textContent=(has?"":"+ ")+(k==="class"?"Class":"Personal");
+    b.title=here?`You're in your ${KIND_NAME[k]} account`:has?`Switch to your ${KIND_NAME[k]} account`:`Add a ${KIND_NAME[k]} account`;
+    b.onclick=()=>{if(here)return;if(has)switchTo(k).catch(err=>toast(String(err&&err.message||err)));else openAdd(k);};});
+  box.hidden=false;
+  // Personal Home: "Join a class" now adds a class account and keeps the personal one.
+  if(L.other)$("#join-class").hidden=true,$("#join-class").dataset.off="1";
+  else $("#join-text").textContent="Add your class code to make a class account too. It has its own $50,000 and your school's leaderboard. Your personal account stays the same, and you can switch between them at the top.";
+}
+async function switchTo(kind){
+  const L=window.WVFC_LINK;
+  if(L.second){setActive("main");location.replace(location.pathname);return;}
+  let sec=null;try{({data:{session:sec}}=await dbSecond.auth.getSession());}catch(e){}
+  if(!(sec&&sec.user.id===L.other_id)){
+    const{data,error}=await dbMain.rpc("second_account_key");if(error)throw error;
+    const r=await dbSecond.auth.signInWithPassword({email:data.email,password:data.password});if(r.error)throw r.error;}
+  setActive("second");location.replace(location.pathname);
+}
+async function addSecond(kind,code){
+  const{data,error}=await dbMain.rpc("add_second_account",{kind,code:code||null,display_name:window.WVFC_NAME||null});
+  if(error)throw error;
+  const r=await dbSecond.auth.signInWithPassword({email:data.email,password:data.password});if(r.error)throw r.error;
+  toast(kind==="class"?`Your ${data.school||"class"} account is ready!`:"Your personal account is ready!");
+  setActive("second");setTimeout(()=>location.replace(location.pathname),900);
+}
+let addKind="personal";
+function openAdd(kind){addKind=kind;const f=$("#acct-pop");
+  $("#ap-title").textContent=kind==="class"?"Add a class account":"Add a personal account";
+  $("#ap-text").textContent=kind==="class"?"Type the class code from your teacher or club leader. Your class account gets its own $50,000 and your school's leaderboard. Your personal account stays the same.":
+    "Your personal account gets its own $50,000 to practice with, its own stocks and the public leaderboard. Your class account stays the same, and you can switch between them here anytime.";
+  $("#ap-code").hidden=kind!=="class";$("#ap-msg").textContent="";f.hidden=false;
+  (kind==="class"?$("#ap-code"):$("#ap-go")).focus();}
+$("#ap-cancel").addEventListener("click",()=>{$("#acct-pop").hidden=true;});
+$("#acct-pop").addEventListener("submit",async e=>{e.preventDefault();
+  const code=$("#ap-code").value.trim(),m=$("#ap-msg"),b=$("#ap-go");m.textContent="";
+  if(addKind==="class"&&!code){m.textContent="Type your class code.";return;}
+  b.disabled=true;try{await addSecond(addKind,code);}catch(err){m.textContent=String(err&&err.message||err);b.disabled=false;}
+});
+
 /* ---------- Join a class later (Home page of a Just me account) ---------- */
 $("#join-class").addEventListener("submit",async e=>{e.preventDefault();
   const code=$("#join-code").value.trim(),jm=$("#join-msg"),b=$("#join-go");jm.textContent="";
   if(!code){jm.textContent="Type your class code.";return;}
   b.disabled=true;
-  try{const{data,error}=await db.rpc("join_class",{c:code});if(error)throw error;
+  try{
+    // With two accounts turned on, this makes a separate class account. Before that, the personal account joins the class.
+    if(window.WVFC_LINK){await addSecond("class",code);return;}
+    const{data,error}=await db.rpc("join_class",{c:code});if(error)throw error;
     toast(`You joined ${data}!`);try{localStorage.removeItem("wvfc.theme");}catch(e){}setTimeout(()=>location.reload(),900);}
   catch(err){jm.textContent=String(err&&err.message||err);b.disabled=false;}
 });

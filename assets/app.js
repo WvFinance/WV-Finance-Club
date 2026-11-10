@@ -624,7 +624,7 @@ function setupIndividual(){
   $("#dpeople-title").textContent="Leaderboard";
   $("#dpeople-sub").textContent="Everyone playing Paper Trading on Simple Street, ranked by how much their $50,000 has grown, in %.";
   $("#pt-board-title").textContent="Leaderboard";
-  $("#join-class").hidden=false;
+  $("#join-class").hidden=!!$("#join-class").dataset.off;
   renderHomeNews();
 }
 // Home: the news briefs for the stocks you own, newest market brief first.
