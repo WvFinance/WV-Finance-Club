@@ -89,11 +89,24 @@ async function quote(tk){
 }
 
 /* ---------- Ticker tape ---------- */
+// TradingView's tape only scrolls when it has more names than fit across the screen, and it measures
+// the screen only once, when it loads. So: always give it plenty of names, and build it again once it's on screen.
+const TAPE_FILL=["NASDAQ:AAPL","NASDAQ:NVDA","NASDAQ:MSFT","NASDAQ:AMZN","NASDAQ:GOOGL","NASDAQ:META","NASDAQ:TSLA","NYSE:JPM","NYSE:XOM","NYSE:JNJ","NASDAQ:COST","NYSE:KO"];
+let tapeKey="",tapeWaiting=false;
 function renderTape(){
+  const box=$("#tape");if(!box)return;
+  const own=S.individual?(S.mine||[]):S.picks.filter(p=>!["BTC","ETH"].includes(p.ticker)).map(p=>p.symbol||p.ticker);
+  const seen=new Set(),stocks=[];
+  for(const sym of own.concat(TAPE_FILL)){const t=bare(sym);if(t&&!seen.has(t)){seen.add(t);stocks.push(sym);}}
   const syms=[{proName:"FOREXCOM:SPXUSD",title:"S&P 500"},{proName:"FOREXCOM:NSXUSD",title:"Nasdaq 100"},{proName:"FOREXCOM:DJI",title:"Dow 30"},{proName:"COINBASE:BTCUSD",title:"Bitcoin"},{proName:"COINBASE:ETHUSD",title:"Ethereum"}]
-    .concat(S.picks.filter(p=>!["BTC","ETH"].includes(p.ticker)).map(p=>({proName:p.symbol||p.ticker,title:p.ticker})));
-  tv($("#tape"),"ticker-tape",{symbols:syms,showSymbolLogo:true,isTransparent:true,displayMode:"regular",colorTheme:"dark",largeChartUrl:SELF});
+    .concat(stocks.slice(0,Math.max(12,own.length)).map(sym=>({proName:sym,title:bare(sym)})));
+  // Hidden (still on the log in screen)? Wait until it shows, or it loads with no width and never moves.
+  if(!box.offsetWidth){tapeWaiting=true;return;}
+  const key=syms.map(x=>x.proName).join();if(key===tapeKey&&box.querySelector("iframe"))return;
+  tapeKey=key;tapeWaiting=false;
+  tv(box,"ticker-tape",{symbols:syms,showSymbolLogo:true,isTransparent:true,displayMode:"regular",colorTheme:"dark",largeChartUrl:SELF});
 }
+new MutationObserver(()=>{if(tapeWaiting&&S.loaded)requestAnimationFrame(renderTape);}).observe(document.documentElement,{attributes:true,attributeFilter:["class"]});
 
 /* ---------- Portfolio ---------- */
 // Live Finnhub quote when a key is set, otherwise the latest daily close from data/prices.json.
@@ -390,7 +403,7 @@ function saveWatch(){store.set("wvfc.watch",JSON.stringify(S.watch));if(window.W
 // Lets the account page (beta.html) load a saved watchlist and open stocks.
 // account.js tells us the member's school once they're logged in; boot() waits for it.
 let schoolSet;const schoolReady=new Promise(r=>{schoolSet=r;});
-window.WVFC_APP={setSchool(id){schoolSet(id);},setMine(list){const m=[...new Set(list.map(bare))];if(S.mine&&m.join()===S.mine.join())return;S.mine=m;rendered.news=null;renderNews();renderHomeNews();loadEarnings();if(!$("#news").hidden)renderNewsFeed();},setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},prices:()=>S.prices,refreshPicks:()=>refreshPicks(),picks:()=>S.picks,classRows:()=>classRows(),calc:p=>calc(p)};
+window.WVFC_APP={setSchool(id){schoolSet(id);},setMine(list){const m=[...new Set(list.map(bare))];if(S.mine&&m.join()===S.mine.join())return;S.mine=m;rendered.news=null;if(S.loaded)renderTape();renderNews();renderHomeNews();loadEarnings();if(!$("#news").hidden)renderNewsFeed();},setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},prices:()=>S.prices,refreshPicks:()=>refreshPicks(),picks:()=>S.picks,classRows:()=>classRows(),calc:p=>calc(p)};
 function renderWatch(){
   const box=$("#wl");box.replaceChildren();const on=S.watch.some(w=>bare(w)===bare(S.tk));
   $("#wl-toggle").textContent=on?"On watchlist ✓":"Add to watchlist";
@@ -604,7 +617,8 @@ function renderGateTick(){
   const box=$("#gate-tick");if(!box||box.dataset.done)return;box.dataset.done="1";
   if(document.documentElement.classList.contains("unlocked"))return;
   const syms=[{proName:"FOREXCOM:SPXUSD",title:"S&P 500"},{proName:"FOREXCOM:NSXUSD",title:"Nasdaq 100"},{proName:"FOREXCOM:DJI",title:"Dow 30"},{proName:"COINBASE:BTCUSD",title:"Bitcoin"},{proName:"COINBASE:ETHUSD",title:"Ethereum"},
-    {proName:"NASDAQ:AAPL",title:"AAPL"},{proName:"NASDAQ:AMZN",title:"AMZN"},{proName:"NYSE:JPM",title:"JPM"},{proName:"NYSE:XOM",title:"XOM"},{proName:"NYSE:JNJ",title:"JNJ"}];
+    {proName:"NASDAQ:AAPL",title:"AAPL"},{proName:"NASDAQ:AMZN",title:"AMZN"},{proName:"NYSE:JPM",title:"JPM"},{proName:"NYSE:XOM",title:"XOM"},{proName:"NYSE:JNJ",title:"JNJ"},
+    {proName:"NASDAQ:NVDA",title:"NVDA"},{proName:"NASDAQ:MSFT",title:"MSFT"},{proName:"NASDAQ:GOOGL",title:"GOOGL"},{proName:"NASDAQ:META",title:"META"},{proName:"NASDAQ:TSLA",title:"TSLA"},{proName:"NASDAQ:COST",title:"COST"}];
   // "regular" keeps each name to the left of its numbers, like the ticker inside the site.
   tv(box,"ticker-tape",{symbols:syms,showSymbolLogo:true,isTransparent:true,displayMode:"regular",colorTheme:"dark",largeChartUrl:SELF});
 }
