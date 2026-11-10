@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Privacy and Terms · Simple Street</title>
+<meta name="description" content="What Simple Street saves about you, who can see it, and the rules for using the site.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@900&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#0b1530;--card:#111d3d;--line:#22305a;--ink:#e8edf8;--soft:#a9b4cf;--blue:#2f7bff;--sky:#7fb0ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+a{color:var(--sky)}
+.wrap{max-width:760px;margin:0 auto;padding:24px 16px 48px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);margin-bottom:24px}
+.brand svg{width:44px;height:44px;flex:none}
+.brand b{font:900 22px/1.05 "Inter Tight",sans-serif}
+h1{font-size:30px;line-height:1.2;margin:0 0 6px}
+.date{color:var(--soft);margin:0 0 24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin:0 0 20px}
+.card.key{border-color:var(--blue)}
+h2{font-size:20px;margin:0 0 10px}
+p{margin:0 0 12px}
+ul{margin:0 0 12px;padding-left:22px}
+li{margin:0 0 6px}
+p:last-child,ul:last-child{margin-bottom:0}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-top:1px solid var(--line)}
+th{color:var(--soft);font-weight:600;border-top:0}
+.back{display:inline-block;margin-top:8px;font-weight:600}
+@media (max-width:560px){h1{font-size:26px}.card{padding:16px}th,td{padding:8px 6px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="brand" href="./" aria-label="Simple Street home"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="23" fill="#2f7bff"/><g transform="translate(4 7) scale(.9)"><path d="M27 74 C36 82 66 82 66 66 C66 51 34 55 34 39 C34 28 44 25 52 25 C60 25 65 22 70.5 16.5" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="round"/><path d="M84 3 L81.5 29 L58 5.5 Z" fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></g></svg><b>Simple<br>Street</b></a>
+
+  <h1>Privacy and Terms</h1>
+  <p class="date">Last updated November 10, 2026</p>
+
+  <section class="card key">
+    <h2>The short version</h2>
+    <ul>
+      <li>We only save what the site needs to work: your email, your name, your school (if you joined a class), and what you do in the trading game.</li>
+      <li>We never sell your information, never show ads, and never share it with advertisers.</li>
+      <li>All money on Simple Street is pretend. You can't buy real stocks or lose real money here.</li>
+      <li>Nothing on Simple Street is financial advice.</li>
+      <li>You can ask us to delete your account and everything in it at any time.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>What we save about you</h2>
+    <table>
+      <thead><tr><th>What</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Email and password</td><td>So you can log in. Your password is scrambled (hashed) by our login service, so nobody, including us, can read it.</td></tr>
+        <tr><td>Your name</td><td>Shown on leaderboards and to your teacher. You can use a first name and last initial.</td></tr>
+        <tr><td>Your school and class code</td><td>Only if you join a class. It puts you on your school's leaderboard and Class Portfolio.</td></tr>
+        <tr><td>Your trading game activity</td><td>Your pretend cash, the stocks you own, your trades and waiting orders, and your account value each day.</td></tr>
+        <tr><td>Your watchlist</td><td>The stocks you chose to follow.</td></tr>
+        <tr><td>Friends and invite links</td><td>Only if you use them, to show your friends leaderboard.</td></tr>
+        <tr><td>Suggestions and votes</td><td>Ideas sent in the Submit Suggestion box. These are not tied to your name.</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px">We don't ask for your address, phone number, birthday, photos, or any real bank or brokerage account.</p>
+  </section>
+
+  <section class="card">
+    <h2>Who can see it</h2>
+    <ul>
+      <li><b>You</b> can see everything in your own account.</li>
+      <li><b>Other students and players</b> only see your leaderboard name and your % gain. They can't see what you own or what you traded.</li>
+      <li><b>Your teacher</b> can see the trading game accounts of students at their own school, so they can help and grade. Teachers can't see other schools.</li>
+      <li><b>Site admins</b> (the students who run Simple Street) can see accounts so they can fix problems and keep the site safe.</li>
+    </ul>
+    <p>These rules are built into the database, not just the web page, so they can't be skipped by changing the page.</p>
+  </section>
+
+  <section class="card">
+    <h2>Services we use</h2>
+    <p>Simple Street runs on a few outside services. Each one only gets what it needs to do its job.</p>
+    <ul>
+      <li><b>Supabase</b> stores logins and the trading game.</li>
+      <li><b>GitHub Pages</b> hosts the website.</li>
+      <li><b>Cloudflare</b> runs our news brief server and the Suggestions box. It counts requests per internet address for one day to stop spam.</li>
+      <li><b>Finnhub</b> and <b>TradingView</b> provide prices, charts and headlines. TradingView's charts load from TradingView's own site.</li>
+      <li><b>Google Gemini</b> writes news briefs when you search a stock. It only receives the stock and news articles, never your name or email.</li>
+    </ul>
+    <p>Your browser also remembers a few settings on your own device, like staying logged in, your last color theme, and an invite link you opened.</p>
+  </section>
+
+  <section class="card">
+    <h2>Students and parents</h2>
+    <p>Simple Street is made for high school students and adults. If you are under 13, please don't make an account. Parents and guardians can ask us what is saved about their student, or ask us to delete it, using the email below.</p>
+    <p>When a school or district uses Simple Street, we follow the school's student data rules and will sign the data agreement the school needs.</p>
+  </section>
+
+  <section class="card">
+    <h2>Deleting your account</h2>
+    <p>Email us from the address you signed up with and ask us to delete your account. We'll delete your login and your game account, trades, watchlist and friends within 30 days.</p>
+  </section>
+
+  <section class="card">
+    <h2>Rules for using Simple Street</h2>
+    <ul>
+      <li><b>For education only.</b> Briefs, prices and leaderboards are for learning. Nothing here tells you to buy or sell a real investment.</li>
+      <li><b>AI-written briefs can be wrong.</b> Check the sources linked in each brief before you trust it.</li>
+      <li><b>Prices can be late or wrong.</b> They come from free services and may be delayed.</li>
+      <li><b>Be fair.</b> Use one class account and one personal account, don't try to break or trick the game, and keep leaderboard names respectful. We may remove accounts that don't follow these rules.</li>
+      <li><b>No guarantees.</b> The site is free and is offered as it is. It may change or go offline.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Questions</h2>
+    <p>Email <a href="mailto:warrior.financec@gmail.com">warrior.financec@gmail.com</a>. If we change this page in a way that matters, we'll update the date at the top and tell users on the site.</p>
+  </section>
+
+  <a class="back" href="./">← Back to Simple Street</a>
+</main>
+</body>
+</html>

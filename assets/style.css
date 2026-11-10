@@ -339,6 +339,7 @@ html.unlocked #gate{display:none}
 .authswitch{text-align:center;color:#9aa6c2;font-size:14px;margin:14px 0 0}
 .authswitch .linkbtn{color:#7fb0ff;font-weight:600;text-decoration:underline}
 .gfoot{flex:none;text-align:center;color:#6f7a96;font-size:13px;margin:0;padding:16px}
+.gfoot a{color:#7fb0ff}
 #gate-form.shake{animation:shake .35s}
 @media (max-width:600px){.gbrand{gap:16px}.gbrand .ssmark{width:84px;height:84px}.gbrand .sswm{font-size:38px}.gchoices{grid-template-columns:1fr}.gcard{padding:22px}.gmain{padding-top:28px}}
 @keyframes shake{25%{translate:-8px}50%{translate:8px}75%{translate:-4px}}
