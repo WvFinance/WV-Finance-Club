@@ -597,3 +597,17 @@ html[data-school="me"] .joinclass{background:linear-gradient(90deg,#16264a,var(-
 @media (max-width:600px){.tradebar .tb-btns{width:100%}.tradebar .tb-btns .btn{flex:1}}
 tr.flash td{background:var(--down-soft);transition:background .4s}
 .tradebar .btn:disabled{opacity:.45;cursor:not-allowed}
+/* Our own moving ticker (top of the site and the log in screen) */
+.mtape{overflow:hidden;width:100%;white-space:nowrap;-webkit-mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent)}
+.mt-track{display:inline-flex;will-change:transform;animation:mtscroll 60s linear infinite}
+@keyframes mtscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mt-set{display:inline-flex;flex:none}
+.mt-item{appearance:none;background:none;border:0;cursor:pointer;display:inline-flex;align-items:baseline;gap:8px;padding:10px 20px;font:inherit;font-size:14px;color:var(--band-ink,#e8edf7);line-height:1.2}
+.mt-item[hidden]{display:none}
+.mt-item b{font-weight:700}
+.mt-item .mt-px{opacity:.85;font-variant-numeric:tabular-nums}
+.mt-item .mt-ch{font-variant-numeric:tabular-nums;font-weight:600}
+.mt-item .mt-ch.up{color:#3ddc84}.mt-item .mt-ch.down{color:#ff7a6b}.mt-item .mt-ch.flat{opacity:.7}
+.gtick .mtape span{margin:0}
+.gtick .mt-item{color:#e8edf7;padding:13px 20px}
+#gate-tick .mt-item{cursor:default}

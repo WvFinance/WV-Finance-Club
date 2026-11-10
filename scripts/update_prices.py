@@ -73,12 +73,16 @@ def main():
     # The real indexes for the "Market today" box, so its numbers match the news:
     # ^GSPC = S&P 500, ^IXIC = Nasdaq Composite, ^DJI = Dow Jones.
     tickers += ["^GSPC", "^IXIC", "^DJI"]
+    # Popular stocks and crypto for the moving ticker across the top of the site (assets/app.js TAPE_FILL).
+    tape = ["AAPL", "NVDA", "MSFT", "AMZN", "GOOGL", "META", "TSLA", "JPM", "XOM", "JNJ", "COST", "KO", "BTC", "ETH"]
+    tickers += [t for t in tape if t not in tickers]
     dates = [dt.date.fromisoformat(p["entryDate"]) for p in picks if p.get("entryDate")]
     # Start a few days before the first pick so the chart has a starting close.
     start = (min(dates) if dates else dt.date.today() - dt.timedelta(days=365)) - dt.timedelta(days=7)
 
     # Crypto picks name their Yahoo symbol, like {"ticker": "BTC", "yahoo": "BTC-USD"}.
-    yahoo = {p["ticker"].upper(): p["yahoo"] for p in picks if p.get("ticker") and p.get("yahoo")}
+    yahoo = {"BTC": "BTC-USD", "ETH": "ETH-USD"}
+    yahoo.update({p["ticker"].upper(): p["yahoo"] for p in picks if p.get("ticker") and p.get("yahoo")})
 
     series, failed = {}, []
     for t in tickers:
