@@ -612,3 +612,16 @@ tr.flash td{background:var(--down-soft);transition:background .4s}
 .gtick .mtape span{margin:0}
 .gtick .mt-item{color:#e8edf7;padding:13px 20px}
 #gate-tick .mt-item{cursor:default}
+
+/* Admin: usage and site health (staff.js) */
+#adm{display:grid;gap:16px;margin-bottom:16px}
+#adm .tiles{margin:12px 0 4px}
+.admh{font-size:15px;margin:18px 0 8px}
+.hlist{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.hlist.cols{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.hrow{display:flex;gap:10px;align-items:flex-start}
+.hrow b{display:block;font-weight:600}
+.hrow small{display:block;color:var(--ink-2);font-size:13px}
+.hdot{flex:none;width:10px;height:10px;border-radius:50%;margin-top:7px;background:#d6a400}
+.hdot.ok{background:var(--up)}.hdot.bad{background:var(--down)}
+@media (max-width:640px){#adm .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
