@@ -232,7 +232,9 @@ async function renderDistrictPeople(){
   const b=await db.rpc("paper_board");
   if(b.error&&!G.board.length){box.replaceChildren(el("p",{class:"meta",text:"The leaderboard couldn't be loaded. Try again in a minute."}));return;}
   if(b.data)G.board=b.data;
-  box.replaceChildren(G.board.length?boardList(G.board.slice(0,50),true):el("p",{class:"meta",text:"No one is playing Paper Trading yet."}),
+  // Class accounts only: personal ("Just me") accounts have no school and stay off the district board.
+  const rows=window.WVFC_INDIVIDUAL?G.board:G.board.filter(r=>r.school).map((r,_,all)=>({...r,rank:1+all.filter(o=>+o.value>+r.value).length}));
+  box.replaceChildren(rows.length?boardList(rows.slice(0,50),true):el("p",{class:"meta",text:"No one is playing Paper Trading yet."}),
     el("p",{class:"meta",style:"margin-top:12px",text:"Everyone starts with $50,000 of pretend money. Showing the top 50."}));
 }
 document.addEventListener("wvfc:dpeople",()=>renderDistrictPeople());
