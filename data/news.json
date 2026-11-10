@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "briefs": [
   {
    "bear": [
@@ -48,7 +48,7 @@
    "ticker": "SP500",
    "updatedAt": "2026-11-09T23:24:52.996Z",
    "symbol": "AMEX:SPY",
-   "checkedAt": "2026-11-09T23:24:52.996Z"
+   "checkedAt": "2026-11-10T11:39:32.080Z"
   },
   {
    "bear": [
@@ -97,7 +97,7 @@
    "ticker": "NASDAQ",
    "updatedAt": "2026-11-09T23:24:52.996Z",
    "symbol": "NASDAQ:QQQ",
-   "checkedAt": "2026-11-09T23:24:52.996Z"
+   "checkedAt": "2026-11-10T11:39:32.080Z"
   },
   {
    "bear": [
@@ -138,48 +138,48 @@
    "updatedAt": "2026-11-09T11:39:55.630Z",
    "symbol": "NASDAQ:AAPL",
    "name": "Apple",
-   "checkedAt": "2026-11-09T11:39:55.630Z"
+   "checkedAt": "2026-11-10T11:39:32.080Z"
   },
   {
    "bear": [
-    "Investors worry new rules could slow data center building, which AWS depends on.",
-    "Amazon spent $42.4 billion more cash than it brought in over the past 12 months, mostly on AI.",
-    "Higher borrowing costs make paying for AI buildouts more expensive."
+    "Amazon said it will spend even more on buildings and equipment in 2027.",
+    "Over the past 12 months, Amazon spent $42.4 billion more cash than it brought in, mostly on AI.",
+    "The stock fell about 2% just days earlier during a big tech selloff, showing how quickly it can swing."
    ],
    "bull": [
-    "A new deal gives Prime members free restaurant delivery through Uber Eats, which could make Prime more valuable.",
-    "Amazon's stock fell much less than chip stocks like Nvidia, which dropped about 9%.",
-    "AWS grew 39% last quarter to $46 billion."
+    "JPMorgan kept Amazon as one of its two favorite internet stocks, along with Meta.",
+    "AWS grew 39% last quarter, its fastest pace in nearly five years, and Amazon expects more than 40% growth in 2027 and 2028.",
+    "A new deal gives Prime members free restaurant delivery through Uber Eats."
    ],
-   "headline": "Amazon slips 2% as a big tech selloff erases its gain from a new Uber deal",
+   "headline": "Amazon rises as JPMorgan names it a top internet stock pick",
    "nextEvent": "",
-   "sentiment": "neutral",
+   "sentiment": "bullish",
    "sources": [
+    {
+     "title": "Why is Amazon stock rallying today?",
+     "url": "https://investing.com/news/stock-market-news/why-is-amazon-stock-rallying-today-93CH-5012665",
+     "outlet": "Investing.com",
+     "date": "Nov 9, 2026"
+    },
+    {
+     "title": "The Stock Market Today, November 9, 2026, Closed Higher as Nvidia Fell on Its Board's Investigation",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-9-2026",
+     "outlet": "StockTitan",
+     "date": "Nov 9, 2026"
+    },
     {
      "title": "Stock Market Today, Nov. 5: Amazon Shares Slide as Technology Selloff Erases Early Gains",
      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/05/stock-market-today-nov-5-amazon-shares-slide-as-technology-selloff-erases-early-gains/",
      "outlet": "The Motley Fool",
      "date": "Nov 5, 2026"
-    },
-    {
-     "title": "The Stock Market Today, November 5, 2026, Closed Sharply Lower as the AI Chip Selloff Spread",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-5-2026",
-     "outlet": "StockTitan",
-     "date": "Nov 5, 2026"
-    },
-    {
-     "title": "S&P 500 drops 4.4% in worst day since 2025 as AI chips slide",
-     "url": "https://spectrumlocalnews.com/us/snplus/business/2026/11/05/stock-market-ai-chip-selloff",
-     "outlet": "Spectrum News (AP)",
-     "date": "Nov 5, 2026"
     }
    ],
-   "summary": "On November 5, Amazon's stock fell 2.2% to $260.21, giving back part of its 6% jump the day before. It rose early after Amazon announced a deal giving Prime members free restaurant delivery through Uber Eats, but the gains faded as AI and tech stocks crashed and the S&P 500 fell 4.4%. Investors worry that the new Democratic Congress could push for tighter AI rules or pauses on new data centers, which could affect Amazon's cloud business, AWS. Still, AWS grew 39% last quarter, its fastest pace in nearly five years.",
+   "summary": "On November 9, Amazon's stock rose about 3% to 5% in morning trading, to around $267, as the whole market rallied and the S&P 500 had its best day since April. JPMorgan kept Amazon as one of its two favorite internet stocks, pointing to its cloud business AWS, which grew 39% last quarter and has $578 billion in signed contracts not yet billed. An analyst also said big tech's huge spending on AI may peak in 2027, earlier than he expected. The stock is moving back toward its 52-week high of $287.20.",
    "ticker": "AMZN",
-   "updatedAt": "2026-11-06T11:39:46.760Z",
+   "updatedAt": "2026-11-10T11:39:32.077Z",
    "symbol": "NASDAQ:AMZN",
    "name": "Amazon",
-   "checkedAt": "2026-11-09T11:39:55.630Z"
+   "checkedAt": "2026-11-10T11:39:32.080Z"
   },
   {
    "bear": [
@@ -220,7 +220,7 @@
    "updatedAt": "2026-11-05T11:40:17.952Z",
    "symbol": "NYSE:JPM",
    "name": "JPMorgan Chase",
-   "checkedAt": "2026-11-09T11:39:55.630Z"
+   "checkedAt": "2026-11-10T11:39:32.080Z"
   },
   {
    "bear": [
@@ -353,37 +353,31 @@
    "ticker": "XOM",
    "symbol": "NYSE:XOM",
    "sentiment": "neutral",
-   "headline": "Exxon falls 4% as oil prices drop on hopes for US-Iran peace talks",
-   "summary": "On Monday, November 2, Exxon's stock fell about 4% after oil prices plunged more than 7%, on hopes that the US and Iran may restart peace talks. Lower oil prices usually mean less profit for oil companies like Exxon. This came just after strong results on October 30, when Exxon earned $4.23 per share, beating the $4.08 analysts expected, thanks to big profits from refining (turning oil into fuels like diesel). Exxon also raised its quarterly dividend to $1.07 per share.",
+   "headline": "Exxon slips as oil prices drop to their lowest level since August",
+   "summary": "On November 9, Brent crude oil fell about 5.9% to its lowest level since August 31, after President Trump said new strikes on Iran were unlikely if talks make progress. Exxon's stock held up fairly well, slipping about 0.3% to around $165 while other energy stocks were sold. Oil is now about 22% below its October 30 high of $118 a barrel. Exxon's recent results were strong, with $4.23 in profit per share last quarter and plans to buy back $20 billion of its own shares in 2027.",
    "bull": [
-    "Profit of $4.23 per share beat what analysts expected, and was up from $3.52 the quarter before.",
-    "Refining profit roughly doubled from the quarter before because the world is short of diesel.",
-    "Exxon raised its quarterly dividend (cash paid to shareholders) to $1.07 per share and plans $20 billion of share buybacks in 2027."
+    "Exxon earned $4.23 per share last quarter, up from $3.52 the quarter before.",
+    "It plans to buy back $20 billion of its own shares in 2027, about 3% of the company.",
+    "It cut its debt by nearly $11 billion this year."
    ],
    "bear": [
-    "The stock fell about 4% on November 2 as oil prices dropped more than 7%.",
-    "Peace talks between the US and Iran could keep pushing oil prices down.",
-    "Profit from pumping oil and gas already fell about 20% last quarter because of lower oil prices."
+    "Oil prices dropped sharply, and lower oil prices usually mean lower profits for Exxon.",
+    "Last quarter's strong cash came when oil prices were much higher than now.",
+    "OPEC countries pumped more oil in October, which could keep prices lower."
    ],
    "nextEvent": "Exxon's next dividend of $1.07 per share is paid on December 10, 2026",
    "sources": [
     {
-     "title": "Tech Stocks Pulled the Nasdaq Lower in the Stock Market Today, November 2, 2026, as Oil Tumbled",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-2-2026",
-     "outlet": "StockTitan",
-     "date": "Nov 2, 2026"
+     "title": "Exxon Mobil Stocks Move Lower 0.31% as Crude Slides Toward $87",
+     "url": "https://www.gurufocus.com/news/9185623/exxon-mobil-stocks-move-lower-031-as-crude-slides-toward-87",
+     "outlet": "GuruFocus",
+     "date": "Nov 9, 2026"
     },
     {
-     "title": "AI Return Doubts Weigh on Nasdaq, Index Falls Over 1%; Memory and Optical Communications Stocks Slump",
-     "url": "https://finance.biggo.com/news/345f3228-1d14-4f62-bca9-0c4446b03f49",
-     "outlet": "BigGo Finance",
-     "date": "Nov 3, 2026"
-    },
-    {
-     "title": "ExxonMobil beats third-quarter profit estimates on refining boom",
-     "url": "https://www.globalbankingandfinance.com/exxonmobil-beats-third-quarter-profit-estimates-refining/",
-     "outlet": "Global Banking & Finance Review (Reuters)",
-     "date": "Oct 30, 2026"
+     "title": "Oil falls as Trump downplays prospect of escalation with Iran",
+     "url": "https://1027wbow.com/2026/11/09/oil-falls-as-trump-downplays-prospect-of-escalation-with-iran/",
+     "outlet": "102.7 WBOW (Reuters)",
+     "date": "Nov 9, 2026"
     },
     {
      "title": "ExxonMobil Announces Third-Quarter 2026 Results",
@@ -392,9 +386,9 @@
      "date": "Oct 30, 2026"
     }
    ],
-   "updatedAt": "2026-11-03T06:28:45.129Z",
+   "updatedAt": "2026-11-10T11:39:32.080Z",
    "name": "Exxon Mobil",
-   "checkedAt": "2026-11-09T11:39:55.630Z"
+   "checkedAt": "2026-11-10T11:39:32.080Z"
   },
   {
    "ticker": "JNJ",
@@ -459,7 +453,7 @@
    ],
    "updatedAt": "2026-10-25T01:52:16.369Z",
    "name": "Johnson & Johnson",
-   "checkedAt": "2026-11-09T11:39:55.630Z"
+   "checkedAt": "2026-11-10T11:39:32.080Z"
   },
   {
    "ticker": "KO",
@@ -629,7 +623,7 @@
     }
    ],
    "updatedAt": "2026-11-09T23:24:52.995Z",
-   "checkedAt": "2026-11-09T23:24:52.995Z"
+   "checkedAt": "2026-11-10T11:39:32.080Z"
   },
   {
    "ticker": "ETH",
@@ -679,7 +673,7 @@
     }
    ],
    "updatedAt": "2026-11-09T23:24:52.995Z",
-   "checkedAt": "2026-11-09T23:24:52.995Z"
+   "checkedAt": "2026-11-10T11:39:32.080Z"
   }
  ],
  "market": {
