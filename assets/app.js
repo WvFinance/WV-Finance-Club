@@ -537,7 +537,7 @@ function renderUpcoming(){
         r.tk&&visibleBriefs().some(b=>b.ticker===r.tk)?el("button",{type:"button",class:"btn small",text:`Read the ${r.tk} brief`,onclick:()=>{S.newsTk=r.tk;newsBoard(false);renderNewsFeed();$("#brief").scrollIntoView({behavior:"smooth",block:"start"});}}):null)))),
     ...(more?[more]:[]));
 }
-// Headlines from only the last 7 days (supabase/recent-news.sql, from Finnhub). TradingView's news box
+// Headlines from only the last 30 days (supabase/recent-news.sql, from Finnhub). TradingView's news box
 // can show years-old stories, so it's only used if that list can't load (for example before the SQL is run).
 function newsKey(sym,crypto){const raw=String(sym||"").toUpperCase();
   if(crypto||/^(COINBASE|BINANCE|BITSTAMP|KRAKEN|CRYPTO|BITFINEX):/.test(raw))return "CRYPTO";
@@ -552,11 +552,11 @@ async function recentNews(box,key,fallback){
   let data=null,error=null;try{({data,error}=await ss.db.rpc("recent_news",{sym:key}));}catch(e){error=e;}
   if(box._rn!==n)return;
   if(error||!Array.isArray(data)){box.classList.remove("rn");fallback();return;}
-  if(!data.length){box.replaceChildren(el("p",{class:"meta rn-msg",text:"No news in the last 7 days."}));return;}
+  if(!data.length){box.replaceChildren(el("p",{class:"meta rn-msg",text:"No news in the last 30 days."}));return;}
   box.replaceChildren(el("ul",{class:"rnews"},data.map(x=>el("li",{},
     el("a",{href:x.url,target:"_blank",rel:"noopener noreferrer",text:x.headline}),
     el("span",{class:"o",text:[x.source,x.time?ago(x.time):""].filter(Boolean).join(" · ")})))),
-    el("p",{class:"meta rn-foot",text:"Only news from the last 7 days."}));
+    el("p",{class:"meta rn-foot",text:"Only news from the last 30 days."}));
 }
 function renderNewsFeed(){
   const n=visibleBriefs().find(x=>x.ticker===S.newsTk);const key=(n?n.ticker:"mkt")+tvTheme();if(rendered.news===key)return;rendered.news=key;
