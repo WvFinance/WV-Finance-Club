@@ -257,7 +257,7 @@ function renderHealth(st,prices,news,owned){
   const checkedDay=checked?chiDay(new Date(checked)):null;
   items.push(tick(!checked?false:checkedDay===today||!morningDue?true:null,"Morning news check",checked?"Last check: "+dayName(checkedDay)+". Runs at 5:38am on weekdays.":"No briefs found"));
   const old=briefs.filter(b=>b.updatedAt&&(Date.now()-new Date(b.updatedAt))>8*864e5).length;
-  items.push(tick(old?null:true,"Brief freshness",briefs.length+" briefs, "+(old?old+" not rewritten in over a week (the Friday rewrite should fix these)":"all rewritten in the last week")));
+  items.push(tick(old?null:true,"Brief freshness",briefs.length+" briefs, "+(old?old+" not rewritten in over a week. If a stock is no longer in a portfolio or owned in the game, ask Claude to remove its brief":"all rewritten in the last week")));
   items.push(tick(owned&&owned.tickers?true:null,"Owned stocks list",owned&&owned.tickers?owned.tickers.length+(owned.tickers.length===1?" stock":" stocks")+" owned in the game, saved with the closing prices":"Not saved yet (needs owned-stocks.sql)"));
   const box=$("#adm-health"),head=el("h3",{class:"h3",text:"Site health"});
   const parts=[head,el("p",{class:"meta",text:"Green is working, yellow is worth a check, red needs fixing."}),el("h4",{class:"admh",text:"Data the robots save"}),el("ul",{class:"hlist"},items)];
