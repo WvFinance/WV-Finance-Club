@@ -421,6 +421,7 @@ html.unlocked #gate{display:none}
 .kindpick span{display:inline-block;padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:14px;font-weight:600;color:var(--ink-2);cursor:pointer}
 .kindpick input:checked+span{background:var(--green);border-color:var(--green);color:var(--on-green)}
 .kindpick input:focus-visible+span{outline:2px solid var(--gold);outline-offset:2px}
+.ideaform .kindpick input{width:1px;height:1px;margin:0;padding:0}
 .ideaform input,.ideaform textarea,#leader-form input{width:100%;min-width:0;background:var(--surface-2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:9px 12px;font:inherit;font-size:15px}
 .ideaform textarea{resize:vertical}
 .ideaact{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
