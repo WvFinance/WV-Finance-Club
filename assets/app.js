@@ -89,24 +89,45 @@ async function quote(tk){
 }
 
 /* ---------- Ticker tape ---------- */
-// TradingView's tape only scrolls when it has more names than fit across the screen, and it measures
-// the screen only once, when it loads. So: always give it plenty of names, and build it again once it's on screen.
-const TAPE_FILL=["NASDAQ:AAPL","NASDAQ:NVDA","NASDAQ:MSFT","NASDAQ:AMZN","NASDAQ:GOOGL","NASDAQ:META","NASDAQ:TSLA","NYSE:JPM","NYSE:XOM","NYSE:JNJ","NASDAQ:COST","NYSE:KO"];
-let tapeKey="",tapeWaiting=false;
-function renderTape(){
-  const box=$("#tape");if(!box)return;
-  const own=S.individual?(S.mine||[]):S.picks.filter(p=>!["BTC","ETH"].includes(p.ticker)).map(p=>p.symbol||p.ticker);
-  const seen=new Set(),stocks=[];
-  for(const sym of own.concat(TAPE_FILL)){const t=bare(sym);if(t&&!seen.has(t)){seen.add(t);stocks.push(sym);}}
-  const syms=[{proName:"FOREXCOM:SPXUSD",title:"S&P 500"},{proName:"FOREXCOM:NSXUSD",title:"Nasdaq 100"},{proName:"FOREXCOM:DJI",title:"Dow 30"},{proName:"COINBASE:BTCUSD",title:"Bitcoin"},{proName:"COINBASE:ETHUSD",title:"Ethereum"}]
-    .concat(stocks.slice(0,Math.max(12,own.length)).map(sym=>({proName:sym,title:bare(sym)})));
-  // Hidden (still on the log in screen)? Wait until it shows, or it loads with no width and never moves.
-  if(!box.offsetWidth){tapeWaiting=true;return;}
-  const key=syms.map(x=>x.proName).join();if(key===tapeKey&&box.querySelector("iframe"))return;
-  tapeKey=key;tapeWaiting=false;
-  tv(box,"ticker-tape",{symbols:syms,showSymbolLogo:true,isTransparent:true,displayMode:"regular",colorTheme:"dark",largeChartUrl:SELF});
+// Our own moving ticker (TradingView's tape often sat still). Index and crypto numbers are the last
+// daily close from data/prices.json; stock prices are live from Paper Trading's price lookup once you're
+// logged in, and the last close before that.
+const TAPE_IDX=[["^GSPC","S&P 500","FOREXCOM:SPXUSD"],["^IXIC","Nasdaq","NASDAQ:IXIC"],["^DJI","Dow","FOREXCOM:DJI"],["BTC","Bitcoin","COINBASE:BTCUSD"],["ETH","Ethereum","COINBASE:ETHUSD"]];
+const TAPE_FILL=["AAPL","NVDA","MSFT","AMZN","GOOGL","META","TSLA","JPM","XOM","JNJ","COST","KO"];
+const tapeLive={};
+function lastTwo(tk){const c=S.prices.closes&&S.prices.closes[tk];if(!c)return null;let last=null,prev=null;
+  for(let i=c.length-1;i>=0;i--){if(c[i]==null)continue;if(last==null)last=c[i];else{prev=c[i];break;}}
+  return last==null?null:{price:last,chg:prev?last/prev-1:null};}
+function tapeNum(tk){const q=tapeLive[tk];if(q&&q.price>0)return{price:+q.price,chg:q.prev_close>0?q.price/q.prev_close-1:null};return lastTwo(tk);}
+function tapeStocks(){const own=S.individual?(S.mine||[]):S.picks.filter(p=>!["BTC","ETH"].includes(p.ticker)).map(p=>p.ticker);
+  return [...new Set(own.concat(TAPE_FILL).map(bare))].slice(0,Math.max(12,own.length));}
+function tapeItem(tk,label,sym){const it=el("button",{type:"button",class:"mt-item","data-tk":tk,onclick:()=>{if(!document.documentElement.classList.contains("unlocked"))return;openStock(sym);showTab("search",true);}},
+    el("b",{text:label}),el("span",{class:"mt-px"}),el("span",{class:"mt-ch"}));fillTapeItem(it);return it;}
+function fillTapeItem(it){const n=tapeNum(it.dataset.tk);if(!n){it.hidden=true;return;}it.hidden=false;
+  it.querySelector(".mt-px").textContent=n.price.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+  const ch=it.querySelector(".mt-ch");ch.textContent=n.chg==null?"":fmtPct(n.chg,2);ch.className="mt-ch "+(n.chg==null?"":cls(n.chg));}
+function buildTape(box,stocks){
+  if(!box)return;const items=()=>TAPE_IDX.map(([tk,l,sym])=>tapeItem(tk,l,sym)).concat(stocks.map(t=>tapeItem(t,t,t)));
+  // Two copies side by side; sliding left by one copy's width loops with no jump.
+  const track=el("div",{class:"mt-track"},el("div",{class:"mt-set"},items()),el("div",{class:"mt-set","aria-hidden":"true"},items()));
+  box.replaceChildren(el("div",{class:"mtape"},track));
+  requestAnimationFrame(()=>{const w=track.firstChild.scrollWidth||1200;track.style.animationDuration=Math.max(20,Math.round(w/50))+"s";});
 }
-new MutationObserver(()=>{if(tapeWaiting&&S.loaded)requestAnimationFrame(renderTape);}).observe(document.documentElement,{attributes:true,attributeFilter:["class"]});
+let tapeKey="";
+function renderTape(){
+  const stocks=tapeStocks(),key=stocks.join();
+  if(key!==tapeKey||!$("#tape .mtape")){tapeKey=key;buildTape($("#tape"),stocks);}
+  liveTape(stocks);
+}
+// Live stock prices (at most a minute old) for the ticker, every 2 minutes while the page is open.
+let tapeTimer=null;
+async function liveTape(stocks){
+  const ss=window.WVFC_SESSION;if(!ss||!ss.db)return;
+  await Promise.all(stocks.map(async t=>{try{const{data,error}=await ss.db.rpc("paper_quote",{sym:t});if(!error&&data&&data.price>0)tapeLive[t]=data;}catch(e){}}));
+  document.querySelectorAll("#tape .mt-item").forEach(fillTapeItem);
+  clearTimeout(tapeTimer);tapeTimer=setTimeout(()=>{if(!document.hidden)liveTape(tapeStocks());else tapeTimer=null;},120000);
+}
+document.addEventListener("visibilitychange",()=>{if(!document.hidden&&!tapeTimer&&S.loaded)liveTape(tapeStocks());});
 
 /* ---------- Portfolio ---------- */
 // Live Finnhub quote when a key is set, otherwise the latest daily close from data/prices.json.
@@ -637,12 +658,7 @@ function showBrand(sc){
 // The strip across the top of the log in screen: the same moving ticker as inside the site.
 function renderGateTick(){
   const box=$("#gate-tick");if(!box||box.dataset.done)return;box.dataset.done="1";
-  if(document.documentElement.classList.contains("unlocked"))return;
-  const syms=[{proName:"FOREXCOM:SPXUSD",title:"S&P 500"},{proName:"FOREXCOM:NSXUSD",title:"Nasdaq 100"},{proName:"FOREXCOM:DJI",title:"Dow 30"},{proName:"COINBASE:BTCUSD",title:"Bitcoin"},{proName:"COINBASE:ETHUSD",title:"Ethereum"},
-    {proName:"NASDAQ:AAPL",title:"AAPL"},{proName:"NASDAQ:AMZN",title:"AMZN"},{proName:"NYSE:JPM",title:"JPM"},{proName:"NYSE:XOM",title:"XOM"},{proName:"NYSE:JNJ",title:"JNJ"},
-    {proName:"NASDAQ:NVDA",title:"NVDA"},{proName:"NASDAQ:MSFT",title:"MSFT"},{proName:"NASDAQ:GOOGL",title:"GOOGL"},{proName:"NASDAQ:META",title:"META"},{proName:"NASDAQ:TSLA",title:"TSLA"},{proName:"NASDAQ:COST",title:"COST"}];
-  // "regular" keeps each name to the left of its numbers, like the ticker inside the site.
-  tv(box,"ticker-tape",{symbols:syms,showSymbolLogo:true,isTransparent:true,displayMode:"regular",colorTheme:"dark",largeChartUrl:SELF});
+  buildTape(box,TAPE_FILL);
 }
 
 /* ---------- "Just me" accounts (supabase/individual.sql) ---------- */
