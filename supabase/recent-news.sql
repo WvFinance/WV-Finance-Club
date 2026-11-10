@@ -18,7 +18,7 @@ create or replace function public.recent_news(sym text) returns jsonb
 language plpgsql security definer set search_path = public, extensions as $$
 declare
   s text := upper(trim(coalesce(sym, '')));
-  key text;
+  api_key text;
   url text;
   c public.news_cache;
   res record;
@@ -30,14 +30,14 @@ begin
   if s !~ '^[A-Z][A-Z0-9.\-]{0,9}$' then return '[]'; end if;
   select * into c from public.news_cache where news_cache.key = s;
   if c.key is null or c.fetched_at < now() - interval '15 minutes' then
-    select decrypted_secret into key from vault.decrypted_secrets where name = 'finnhub_key' limit 1;
-    if key is not null then
+    select decrypted_secret into api_key from vault.decrypted_secrets where name = 'finnhub_key' limit 1;
+    if api_key is not null then
       url := case s
         when 'MARKET' then 'https://finnhub.io/api/v1/news?category=general'
         when 'CRYPTO' then 'https://finnhub.io/api/v1/news?category=crypto'
         else 'https://finnhub.io/api/v1/company-news?symbol=' || s || '&from=' || (current_date - 30) || '&to=' || current_date end;
       begin
-        select * into res from extensions.http_get(url || '&token=' || key);
+        select * into res from extensions.http_get(url || '&token=' || api_key);
         if res.status = 200 then
           select coalesce(jsonb_agg(x order by (x->>'time')::bigint desc), '[]') into got from (
             select jsonb_build_object('headline', e->>'headline', 'source', e->>'source', 'url', e->>'url', 'time', (e->>'datetime')::bigint) x
