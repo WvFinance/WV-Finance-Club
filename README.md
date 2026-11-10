@@ -32,6 +32,8 @@ The Waubonsie Valley Finance Club's website: our class portfolio, stock research
 | `supabase/two-accounts.sql` | One email, two accounts: a class account and a personal account, each with its own Paper Trading money. Switch with Class / Personal at the top |
 | `supabase/home-extras.sql` | Home page extras: saves each account's value every weekday (money-over-time chart), invite links and the friends leaderboard |
 | `supabase/weekly-challenge.sql` | Weekly school-vs-school challenge: saves each Paper Trading account's value every Monday and ranks schools by average % gain |
+| `supabase/usage.sql` | Admin only: counts visitors each day (only the day, per account) for the weekly users table, and checks which setup files are run and how fresh the data is. Shown at the top of the Students tab |
+| `privacy.html` | The Privacy and Terms page |
 | `data/news.json` | Claude's news briefs |
 | `data/prices.json` | Daily closing prices, updated automatically |
 | `scripts/update_prices.py`, `.github/workflows/update-prices.yml` | The robot that refreshes `prices.json` every weekday after the market closes |
