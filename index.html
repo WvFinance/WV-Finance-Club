@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@900&family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=2026111002">
+<link rel="stylesheet" href="assets/style.css?v=2026111004">
 <script>
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
@@ -286,6 +286,10 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
     <div class="quick" id="quick"></div>
   </div>
   <div class="panel symbolinfo" id="tv-info"></div>
+  <div class="panel tradebar" id="s-trade" hidden>
+    <div class="tb-text"><div class="eyebrow" id="s-trade-title">Paper Trading</div><div class="meta" id="s-trade-own"></div></div>
+    <div class="tb-btns"><button class="btn primary" type="button" id="s-buy">Buy</button><button class="btn sell" type="button" id="s-sell">Sell</button></div>
+  </div>
   <div class="stock">
     <div class="panel chartpanel"><div class="tvbox chart" id="tv-chart"></div></div>
     <div class="side">
@@ -384,10 +388,10 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="config.js?v=2026103102"></script>
-<script src="assets/app.js?v=2026111003"></script>
+<script src="assets/app.js?v=2026111004"></script>
 <script src="assets/vendor/supabase-2.118.0.js"></script>
 <script src="assets/account.js?v=2026111001"></script>
-<script src="assets/paper.js?v=2026110902"></script>
-<script src="assets/staff.js?v=2026110340"></script>
+<script src="assets/paper.js?v=2026111004"></script>
+<script src="assets/staff.js?v=2026111004"></script>
 </body>
 </html>

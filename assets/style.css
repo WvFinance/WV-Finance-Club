@@ -588,3 +588,12 @@ html[data-school="me"] .joinclass{background:linear-gradient(90deg,#16264a,var(-
 .rnews a:hover{text-decoration:underline}
 .rnews .o{display:block;margin-top:4px;color:var(--muted);font-size:13px}
 .rn-msg{padding:12px 0}.rn-foot{margin:10px 0 0;font-size:12px}
+
+/* Buy / Sell bar on the stock search page */
+.tradebar{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;padding:14px 18px}
+.tradebar .meta{margin:2px 0 0}
+.tradebar .tb-btns{display:flex;gap:10px}
+.tradebar .tb-btns .btn{min-width:96px}
+@media (max-width:600px){.tradebar .tb-btns{width:100%}.tradebar .tb-btns .btn{flex:1}}
+tr.flash td{background:var(--down-soft);transition:background .4s}
+.tradebar .btn:disabled{opacity:.45;cursor:not-allowed}
