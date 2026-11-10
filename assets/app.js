@@ -694,7 +694,7 @@ function setupIndividual(){
   const h=new Date().getHours(),hi=h<12?"Good morning":h<17?"Good afternoon":"Good evening";
   const first=String(window.WVFC_NAME||"").split(/\s+/)[0];
   $("#mine-title").textContent=first?`${hi}, ${first}`:hi;
-  $("#mine-sub").textContent="Here's how your pretend money is doing. Only you can see this page.";
+  
   $("#dpeople-title").textContent="Leaderboard";
   $("#dpeople-sub").textContent="Everyone playing Paper Trading on Simple Street, ranked by how much their $50,000 has grown, in %.";
   $("#pt-board-title").textContent="Leaderboard";
