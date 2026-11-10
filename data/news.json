@@ -3,101 +3,113 @@
  "briefs": [
   {
    "bear": [
-    "Nvidia, one of the biggest companies in the index, fell about 4% after its board started a review of its CEO.",
-    "Citi strategists cut their view on US stocks to neutral, meaning they no longer expect them to beat other markets.",
-    "The 10-year Treasury rate rose to about 4.88%, and a strong jobs report raised the chance the Fed raises interest rates in December."
+    "Core prices rose 0.3% for the third straight month, more than experts expected.",
+    "Fed officials Waller and Logan said more rate hikes are needed, and higher rates make borrowing more expensive for companies and families.",
+    "The 10-year Treasury rate rose above 5% from 4.88% on Monday, which can pull money away from stocks."
    ],
    "bull": [
-    "Every part of the S&P 500 went up on Monday, led by industrial companies, up about 4.6%.",
-    "Oil fell to about $88 a barrel, which can lower costs for companies and shoppers.",
-    "Analysts at Morgan Stanley and UBS said last week's selloff went too far."
+    "On Monday the S&P 500 jumped about 2.3%, its biggest one-day gain since April, so Tuesday gave back only a small part of it.",
+    "Brent oil fell to about $92 a barrel, down from over $112 at the start of the month, after President Trump said the Iran war is nearly over.",
+    "Gas prices fell below $4 a gallon for the first time since July, which leaves shoppers more money to spend."
    ],
-   "headline": "S&P 500 jumps 2.35% as oil prices fall and chip stocks bounce back",
+   "headline": "S&P 500 dips 0.4% as hot inflation raises odds of a Fed rate hike",
    "market": true,
    "name": "S&P 500",
-   "nextEvent": "October inflation report (CPI) on Tuesday, November 10, 2026",
+   "nextEvent": "October producer price report (PPI) on Friday, November 13, 2026",
    "order": 1,
-   "sentiment": "bullish",
+   "sentiment": "bearish",
    "sources": [
+    {
+     "title": "THE CLOSING BELL: US stocks fall after a discouraging update on inflation",
+     "url": "https://www.cmg-plus.com/2026/11/10/the-closing-bell-us-stocks-fall-after-a-discouraging-update-on-inflation/",
+     "outlet": "Associated Press (via CMG Plus)",
+     "date": "Nov 10, 2026"
+    },
+    {
+     "title": "The Stock Market Today, November 10, 2026, Closed Lower on the Day BLS Data Show Core Prices Rising Again",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-10-2026",
+     "outlet": "StockTitan",
+     "date": "Nov 10, 2026"
+    },
+    {
+     "title": "Crypto & Finance market report, Tuesday, November 10, 2026",
+     "url": "https://tedpillows.substack.com/p/crypto-and-finance-market-report-f2c",
+     "outlet": "Ted Pillows",
+     "date": "Nov 10, 2026"
+    },
+    {
+     "title": "Crypto Daily Market Report – November 10, 2026",
+     "url": "https://www.kucoin.com/news/articles/crypto-daily-market-report-november-10-2026",
+     "outlet": "KuCoin News",
+     "date": "Nov 10, 2026"
+    },
     {
      "title": "Stock Market Today, Nov. 9: Markets Rally as Semiconductor Gains Lift Nasdaq",
      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/09/stock-market-today-nov-9-markets-rally-as-semiconductor-gains-lift-nasdaq/",
      "outlet": "The Motley Fool",
      "date": "Nov 9, 2026"
-    },
-    {
-     "title": "Stock Market Today (Nov. 9, 2026): Nasdaq rises 3% as oil slides, AI rout pauses",
-     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-09-202",
-     "outlet": "TheStreet",
-     "date": "Nov 9, 2026"
-    },
-    {
-     "title": "Why Is the Stock Market Up Today, 11/9/26?",
-     "url": "https://www.tipranks.com/news/u-s-stocks-rebound-as-oil-prices-fall-and-nvidia-sinks",
-     "outlet": "TipRanks",
-     "date": "Nov 9, 2026"
-    },
-    {
-     "title": "Stock market today: Nasdaq and S&P 500 rebound, Dow slips to cap bruising week for AI stocks",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-6-dow-sp-500-nasdaq-jobs-report-earnings-135953863.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 6, 2026"
     }
    ],
-   "summary": "On Monday, November 9, the S&P 500 rose 2.35% to about 7,550, winning back much of the ground it lost in its worst week since April 2025. Oil fell about 3% after President Trump said more attacks on Iran were unlikely if talks keep going, and every part of the market closed higher. Chip stocks led the way, while Nvidia fell about 4% after its board started a review of reports about its CEO. Last week's drop came after the midterm elections, when investors worried about tougher rules for AI.",
+   "summary": "On Tuesday, November 10, the S&P 500 fell about 0.4% after October's inflation report showed prices rising faster than expected. Core prices, which leave out food and gas, rose 0.3% for the third month in a row, and Fed Governor Waller said a big half-point rate hike in December should be considered. Nvidia fell about 6% and was the biggest drag on the index. The dip came one day after the S&P 500's biggest gain since April, when falling oil prices and a chip-stock bounce lifted every part of the market.",
    "ticker": "SP500",
-   "updatedAt": "2026-11-09T23:24:52.996Z",
+   "updatedAt": "2026-11-10T23:03:47.990Z",
    "symbol": "AMEX:SPY",
-   "checkedAt": "2026-11-10T11:39:32.080Z"
+   "checkedAt": "2026-11-10T23:03:47.990Z"
   },
   {
    "bear": [
-    "Nvidia lost about $240 billion in value at one point on Monday after its board started a review of its CEO.",
-    "Last week the Nasdaq had its worst week in months after worries about tougher AI rules from the new Congress.",
-    "A higher chance of a Fed rate hike in December could hurt fast-growing tech stocks."
+    "Nvidia, one of the biggest Nasdaq companies, fell about 6% and has slid for about five weeks.",
+    "Microsoft fell about 3% during the day after Anthropic announced work tools that could compete with Office.",
+    "Fed officials hinted at a bigger-than-usual rate hike in December, and higher rates often hurt tech stocks the most."
    ],
    "bull": [
-    "AMD rose about 12% and Broadcom about 8 to 9% as chip stocks bounced back.",
-    "Cloudflare rose nearly 10% and Tesla more than 5% after news about its robotaxi plans.",
-    "Oil prices fell about 3%, which eased worries about higher costs."
+    "The Nasdaq jumped about 2.7% on Monday, so Tuesday's dip erased only part of that gain.",
+    "AMD held about flat on Tuesday even as other chip stocks fell.",
+    "Anthropic, the maker of the Claude AI assistant, filed to sell stock at a value of about $1.3 trillion, showing big interest in AI companies."
    ],
-   "headline": "Nasdaq jumps 2.74% as chip stocks rally, even as Nvidia falls about 4%",
+   "headline": "Nasdaq falls 0.7% as Nvidia drops about 6% and rate hike worries grow",
    "market": true,
    "name": "Nasdaq",
    "nextEvent": "Nvidia's quarterly earnings report on Tuesday, November 17, 2026",
    "order": 2,
-   "sentiment": "bullish",
+   "sentiment": "bearish",
    "sources": [
     {
-     "title": "Nvidia Falls in the Stock Market Today, November 9, on Its Board's Investigation as Other Tech Stocks Rally",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-9-2026",
+     "title": "The Stock Market Today, November 10, 2026, Closed Lower on the Day BLS Data Show Core Prices Rising Again",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-10-2026",
      "outlet": "StockTitan",
-     "date": "Nov 9, 2026"
+     "date": "Nov 10, 2026"
+    },
+    {
+     "title": "THE CLOSING BELL: US stocks fall after a discouraging update on inflation",
+     "url": "https://www.cmg-plus.com/2026/11/10/the-closing-bell-us-stocks-fall-after-a-discouraging-update-on-inflation/",
+     "outlet": "Associated Press (via CMG Plus)",
+     "date": "Nov 10, 2026"
+    },
+    {
+     "title": "Crypto & Finance market report, Tuesday, November 10, 2026",
+     "url": "https://tedpillows.substack.com/p/crypto-and-finance-market-report-f2c",
+     "outlet": "Ted Pillows",
+     "date": "Nov 10, 2026"
+    },
+    {
+     "title": "Crypto Daily Market Report – November 10, 2026",
+     "url": "https://www.kucoin.com/news/articles/crypto-daily-market-report-november-10-2026",
+     "outlet": "KuCoin News",
+     "date": "Nov 10, 2026"
     },
     {
      "title": "Stock Market Today, Nov. 9: Markets Rally as Semiconductor Gains Lift Nasdaq",
      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/09/stock-market-today-nov-9-markets-rally-as-semiconductor-gains-lift-nasdaq/",
      "outlet": "The Motley Fool",
      "date": "Nov 9, 2026"
-    },
-    {
-     "title": "Why Is the Stock Market Up Today, 11/9/26?",
-     "url": "https://www.tipranks.com/news/u-s-stocks-rebound-as-oil-prices-fall-and-nvidia-sinks",
-     "outlet": "TipRanks",
-     "date": "Nov 9, 2026"
-    },
-    {
-     "title": "Stock Market Today (Nov. 9, 2026): Nasdaq rises 3% as oil slides, AI rout pauses",
-     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-09-202",
-     "outlet": "TheStreet",
-     "date": "Nov 9, 2026"
     }
    ],
-   "summary": "On Monday, November 9, the Nasdaq rose 2.74% to about 25,253, bouncing back after last week's big drop in AI and chip stocks. AMD jumped about 12% and Broadcom about 8 to 9%, and a group of chip stocks rose almost 7%. Nvidia went the other way, falling about 4% after its board started a review of reports about its CEO, Jensen Huang. Falling oil prices also helped, as worries about more fighting with Iran eased.",
+   "summary": "On Tuesday, November 10, the Nasdaq fell about 0.7%, more than the S&P 500 and the Dow. Nvidia dropped about 6% as its board's investigation into CEO Jensen Huang continued, and its value briefly fell below $4 trillion. A hotter-than-expected inflation report raised the chance the Fed hikes interest rates in December, which tends to hurt fast-growing tech stocks. On Monday the Nasdaq had jumped about 2.7% as chip stocks like AMD bounced back from a rough week for AI stocks.",
    "ticker": "NASDAQ",
-   "updatedAt": "2026-11-09T23:24:52.996Z",
+   "updatedAt": "2026-11-10T23:03:47.990Z",
    "symbol": "NASDAQ:QQQ",
-   "checkedAt": "2026-11-10T11:39:32.080Z"
+   "checkedAt": "2026-11-10T23:03:47.990Z"
   },
   {
    "bear": [
@@ -336,47 +348,47 @@
    "order": 3,
    "symbol": "COINBASE:BTCUSD",
    "sentiment": "bearish",
-   "headline": "Bitcoin stays near $75,000 and misses out on the big stock market rally",
-   "summary": "On Monday, November 9, bitcoin was about $74,800, after briefly falling below $74,000 over the weekend for the first time in weeks. It barely moved while the Nasdaq jumped almost 3%, as investors kept pulling money out of bitcoin funds. Bitcoin is about 9% lower than a month ago, about 29% lower than a year ago, and about 40% below its record high of about $126,000 from October 2025. About $1.2 billion of crypto bets made with borrowed money were forced to close.",
+   "headline": "Bitcoin drops to about $73,000, its lowest since August, after hot inflation data",
+   "summary": "On Tuesday, November 10, bitcoin fell about 2.6% to around $73,200 and dipped to about $72,900, its lowest price since August 20. A hotter-than-expected inflation report pushed up interest rates and the US dollar, which tends to hurt bitcoin. Investors also kept pulling money out of bitcoin funds, taking out about $1.08 billion over the five trading days through Monday. A popular fear-and-greed score for crypto sits at 32, in the \"fear\" zone.",
    "bull": [
-    "The company Strategy bought about 1,000 more bitcoin last week and now holds over 850,000.",
-    "US regulators sent new crypto rules to the White House for review, which could make the rules clearer.",
-    "Bitcoin is still worth about $1.3 trillion, far more than any other crypto."
+    "The company Strategy bought about 1,036 more bitcoin last week and now holds about 850,000.",
+    "Bitcoin is still worth about $1.3 trillion and makes up nearly 60% of the whole crypto market.",
+    "An NYSE-linked platform plans to use crypto technology to trade tokenized stocks and funds, a sign of growing interest from big firms."
    ],
    "bear": [
-    "Bitcoin funds traded on the stock market lost about $1.28 billion last week, the most since late June.",
-    "About $1.2 billion of crypto bets made with borrowed money were wiped out, adding to the selling.",
-    "A popular fear-and-greed score for crypto is at 29, showing investors are scared."
+    "Bitcoin funds traded on the stock market lost about $1.08 billion over five trading days.",
+    "Traders now expect the Fed to raise interest rates in December, which usually hurts riskier things like crypto.",
+    "Some traders say that if bitcoin closes below its August low near $73,000, it could fall toward $70,000."
    ],
-   "nextEvent": "October inflation report (CPI) on Tuesday, November 10, 2026",
+   "nextEvent": "October producer price report (PPI) on Friday, November 13, 2026",
    "sources": [
+    {
+     "title": "Crypto & Finance market report, Tuesday, November 10, 2026",
+     "url": "https://tedpillows.substack.com/p/crypto-and-finance-market-report-f2c",
+     "outlet": "Ted Pillows",
+     "date": "Nov 10, 2026"
+    },
+    {
+     "title": "Crypto Daily Market Report – November 10, 2026",
+     "url": "https://www.kucoin.com/news/articles/crypto-daily-market-report-november-10-2026",
+     "outlet": "KuCoin News",
+     "date": "Nov 10, 2026"
+    },
+    {
+     "title": "Crypto News Nov 10: BTC Falls, Market Cautious Ahead of US CPI Report",
+     "url": "https://www.coingabbar.com/en/crypto-news-nov-10-btc-eth-dacity-cpi-report-fed-rate-hike",
+     "outlet": "Coin Gabbar",
+     "date": "Nov 10, 2026"
+    },
     {
      "title": "Crypto Market Today, Nov. 9: Bitcoin and Ethereum Lag as Nasdaq Surges Nearly 3%",
      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/09/crypto-market-today-nov-9-bitcoin-and-ethereum-lag-as-nasdaq-surges-nearly-3/",
      "outlet": "The Motley Fool",
      "date": "Nov 9, 2026"
-    },
-    {
-     "title": "Current price of Bitcoin for November 9, 2026",
-     "url": "https://fortune.com/article/price-of-bitcoin-11-09-2026/",
-     "outlet": "Fortune",
-     "date": "Nov 9, 2026"
-    },
-    {
-     "title": "Bitcoin Price Struggles Below $75K as $1.2B in Crypto Bets Get Wiped Out",
-     "url": "https://news.bitcoin.com/market-updates/bitcoin-price-struggles-below-75k-1-2b-crypto-bets-wiped-out/",
-     "outlet": "Bitcoin.com News",
-     "date": "Nov 9, 2026"
-    },
-    {
-     "title": "Crypto Daily Market Report – November 9, 2026",
-     "url": "https://www.kucoin.com/news/articles/crypto-daily-market-report-november-9-2026",
-     "outlet": "KuCoin News",
-     "date": "Nov 9, 2026"
     }
    ],
-   "updatedAt": "2026-11-09T23:24:52.995Z",
-   "checkedAt": "2026-11-10T11:39:32.080Z"
+   "updatedAt": "2026-11-10T23:03:47.989Z",
+   "checkedAt": "2026-11-10T23:03:47.989Z"
   },
   {
    "ticker": "ETH",
@@ -386,78 +398,72 @@
    "order": 4,
    "symbol": "COINBASE:ETHUSD",
    "sentiment": "bearish",
-   "headline": "Ether slips to about $2,130 as money keeps leaving ether funds",
-   "summary": "On Monday, November 9, ether was about $2,130, after falling about 5% over the weekend and dipping as low as $2,060. It is down about 5% for the week and missed out on Monday's big stock market rally. Investors pulled about $365 million out of ether funds last week, and over $500 million of ether bets made with borrowed money were forced to close. Ether is now less than half its record high of about $4,950.",
+   "headline": "Ether falls about 5% to near $2,030 as money keeps leaving ether funds",
+   "summary": "On Tuesday, November 10, ether fell about 5.2% to around $2,030, doing worse than bitcoin. A hotter-than-expected inflation report raised the odds of a Fed rate hike, which hurt crypto prices. Ether funds lost about $185 million on Monday, their worst day of November so far, and about $410 million over five trading days. Ether is about 16% lower than a month ago and about 41% lower than a year ago.",
    "bull": [
-    "A record 32% of all ether is now locked up in staking, where owners earn rewards for helping run the network.",
-    "Big holders like BitMine keep buying, and the amount of ether sitting on exchanges has dropped.",
-    "US regulators sent new crypto rules to the White House for review, which could make the rules clearer."
+    "The company BitMine bought another 9,587 ether and now owns about 6.07 million, about 5% of all ether.",
+    "BitMine has locked up about 86% of its ether in staking, where owners earn rewards for helping run the network.",
+    "Some experts say ether is close to \"oversold,\" meaning it has dropped so fast that a bounce is possible."
    ],
    "bear": [
-    "Investors pulled about $365 million out of ether funds last week.",
-    "Over $500 million of ether bets made with borrowed money were wiped out, more than any other crypto.",
-    "A popular fear-and-greed score for crypto is at 29, showing investors are scared."
+    "Ether funds lost about $410 million over five trading days, led by BlackRock's fund.",
+    "Ether is weaker than bitcoin, with the ether-to-bitcoin price ratio falling to 0.0277 from 0.0285.",
+    "Traders expect the Fed to raise interest rates in December, which usually hurts riskier things like crypto."
    ],
-   "nextEvent": "October inflation report (CPI) on Tuesday, November 10, 2026",
+   "nextEvent": "October producer price report (PPI) on Friday, November 13, 2026",
    "sources": [
     {
-     "title": "Crypto Market Today, Nov. 9: Bitcoin and Ethereum Lag as Nasdaq Surges Nearly 3%",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/09/crypto-market-today-nov-9-bitcoin-and-ethereum-lag-as-nasdaq-surges-nearly-3/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 9, 2026"
+     "title": "Crypto & Finance market report, Tuesday, November 10, 2026",
+     "url": "https://tedpillows.substack.com/p/crypto-and-finance-market-report-f2c",
+     "outlet": "Ted Pillows",
+     "date": "Nov 10, 2026"
     },
     {
-     "title": "Bitcoin Price Struggles Below $75K as $1.2B in Crypto Bets Get Wiped Out",
-     "url": "https://news.bitcoin.com/market-updates/bitcoin-price-struggles-below-75k-1-2b-crypto-bets-wiped-out/",
-     "outlet": "Bitcoin.com News",
-     "date": "Nov 9, 2026"
+     "title": "Ethereum price falls despite BitMine buying another 9,587 ETH",
+     "url": "https://crypto.news/why-is-ethereum-price-down-today-november-10-2026/",
+     "outlet": "crypto.news",
+     "date": "Nov 10, 2026"
     },
     {
-     "title": "Crypto Daily Market Report – November 9, 2026",
-     "url": "https://www.kucoin.com/news/articles/crypto-daily-market-report-november-9-2026",
-     "outlet": "KuCoin News",
-     "date": "Nov 9, 2026"
+     "title": "Current price of Ethereum for November 10, 2026",
+     "url": "https://fortune.com/article/price-of-ethereum-11-10-2026",
+     "outlet": "Fortune",
+     "date": "Nov 10, 2026"
     },
     {
-     "title": "Ethereum ($2,230) Tests Its 200-Day Line After the Post-Election Rally Fails at $2,447",
-     "url": "https://www.tradingnews.com/news/ethereum-2230-usd-tests-its-200-day-line-after-a-post-election-rally",
-     "outlet": "TradingNEWS",
-     "date": "Nov 6, 2026"
+     "title": "Crypto News Nov 10: BTC Falls, Market Cautious Ahead of US CPI Report",
+     "url": "https://www.coingabbar.com/en/crypto-news-nov-10-btc-eth-dacity-cpi-report-fed-rate-hike",
+     "outlet": "Coin Gabbar",
+     "date": "Nov 10, 2026"
     }
    ],
-   "updatedAt": "2026-11-09T23:24:52.995Z",
-   "checkedAt": "2026-11-10T11:39:32.080Z"
+   "updatedAt": "2026-11-10T23:03:47.990Z",
+   "checkedAt": "2026-11-10T23:03:47.990Z"
   }
  ],
  "market": {
-  "date": "2026-11-09",
-  "why": "On Monday, November 9, stocks bounced back from last week's AI selloff, with the Dow jumping about 1,100 points. Oil fell about 3% to near $88 a barrel after President Trump said more attacks on Iran were unlikely if talks keep going, and chip stocks like AMD (up about 12%) and Broadcom led the Nasdaq higher. Nvidia fell about 4% after its board started a review of reports about its CEO, Jensen Huang.",
+  "date": "2026-11-10",
+  "why": "On Tuesday, November 10, stocks slipped after a report showed prices rising faster than expected, with core prices (not counting food and gas) up 0.3% in October for the third month in a row. Fed officials said they may need to raise interest rates in December, maybe by a big half point, and the 10-year Treasury rate topped 5%. Nvidia fell about 6% as its board looks into its CEO, dragging the Nasdaq down most.",
   "sources": [
    {
-    "title": "Stock Market Today, Nov. 9: Markets Rally as Semiconductor Gains Lift Nasdaq",
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/09/stock-market-today-nov-9-markets-rally-as-semiconductor-gains-lift-nasdaq/",
-    "outlet": "The Motley Fool",
-    "date": "Nov 9, 2026"
+    "title": "THE CLOSING BELL: US stocks fall after a discouraging update on inflation",
+    "url": "https://www.cmg-plus.com/2026/11/10/the-closing-bell-us-stocks-fall-after-a-discouraging-update-on-inflation/",
+    "outlet": "Associated Press (via CMG Plus)",
+    "date": "Nov 10, 2026"
    },
    {
-    "title": "Stock Market Today (Nov. 9, 2026): Nasdaq rises 3% as oil slides, AI rout pauses",
-    "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-09-202",
-    "outlet": "TheStreet",
-    "date": "Nov 9, 2026"
-   },
-   {
-    "title": "Why Is the Stock Market Up Today, 11/9/26?",
-    "url": "https://www.tipranks.com/news/u-s-stocks-rebound-as-oil-prices-fall-and-nvidia-sinks",
-    "outlet": "TipRanks",
-    "date": "Nov 9, 2026"
-   },
-   {
-    "title": "Nvidia Falls in the Stock Market Today, November 9, on Its Board's Investigation as Other Tech Stocks Rally",
-    "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-9-2026",
+    "title": "The Stock Market Today, November 10, 2026, Closed Lower on the Day BLS Data Show Core Prices Rising Again",
+    "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-10-2026",
     "outlet": "StockTitan",
-    "date": "Nov 9, 2026"
+    "date": "Nov 10, 2026"
+   },
+   {
+    "title": "Crypto & Finance market report, Tuesday, November 10, 2026",
+    "url": "https://tedpillows.substack.com/p/crypto-and-finance-market-report-f2c",
+    "outlet": "Ted Pillows",
+    "date": "Nov 10, 2026"
    }
   ],
-  "updatedAt": "2026-11-09T23:24:19.825Z"
+  "updatedAt": "2026-11-10T23:03:47.944Z"
  }
 }
