@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@900&family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=2026110911">
+<link rel="stylesheet" href="assets/style.css?v=2026111001">
 <script>
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
@@ -66,6 +66,9 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
       <div class="brandtxt"><h1 class="sswm">Simple Street</h1><span class="bmotto">Wall Street Simplified</span></div><span id="school-name"></span>
     </a>
     <div class="datanote">
+      <div class="acctsw" id="acct-switch" role="group" aria-label="Switch account" hidden>
+        <button type="button" data-acct="class">Class</button><button type="button" data-acct="personal">Personal</button>
+      </div>
       <label class="schoolpick" id="school-pick-wrap" hidden><span>Viewing</span><select id="school-pick" aria-label="Which school to view"></select></label>
     </div>
     <form class="searchbar topsearch" id="searchform" role="search">
@@ -75,6 +78,11 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
       <button class="btn primary" type="submit">Search</button>
     </form>
   </div>
+  <form class="wrap acctpop" id="acct-pop" hidden>
+    <div><h3 class="h3" id="ap-title">Add a personal account</h3><p class="meta" id="ap-text"></p></div>
+    <div class="jcrow"><input class="inp" id="ap-code" type="text" placeholder="Class code, like wvhs01" aria-label="Class code" autocomplete="off" autocapitalize="none" spellcheck="false" hidden><button class="btn primary" type="submit" id="ap-go">Make it</button><button class="btn" type="button" id="ap-cancel">Cancel</button></div>
+    <p class="meta" id="ap-msg" role="alert"></p>
+  </form>
 </header>
 
 <div class="tape" id="tape" aria-label="Market ticker"></div>
@@ -208,7 +216,7 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
   </div>
   <div class="panel" id="mine-news" hidden></div>
   <form class="panel joinclass" id="join-class" hidden>
-    <div><h3 class="h3">Part of a club or class?</h3><p class="meta">Add your class code to join your school's leaderboard and class portfolio.</p></div>
+    <div><h3 class="h3">Part of a club or class?</h3><p class="meta" id="join-text">Add your class code to join your school's leaderboard and class portfolio.</p></div>
     <div class="jcrow"><input class="inp" id="join-code" type="text" placeholder="Class code, like wvhs01" aria-label="Class code" autocomplete="off" autocapitalize="none" spellcheck="false"><button class="btn primary" type="submit" id="join-go">Join a class</button></div>
     <p class="meta" id="join-msg" role="alert"></p>
   </form>
@@ -376,9 +384,9 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="config.js?v=2026103102"></script>
-<script src="assets/app.js?v=2026110906"></script>
+<script src="assets/app.js?v=2026111001"></script>
 <script src="assets/vendor/supabase-2.118.0.js"></script>
-<script src="assets/account.js?v=2026110902"></script>
+<script src="assets/account.js?v=2026111001"></script>
 <script src="assets/paper.js?v=2026110902"></script>
 <script src="assets/staff.js?v=2026110340"></script>
 </body>
