@@ -14,6 +14,7 @@ import urllib.request
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SCHOOLS = ROOT / "data" / "schools.json"
 OUT = ROOT / "data" / "prices.json"
+OWNED = ROOT / "data" / "owned.json"
 UA = {"User-Agent": "Mozilla/5.0 (WV Finance Club price updater)"}
 
 
@@ -66,7 +67,31 @@ def site_picks():
     return [{"ticker": x["ticker"], "entryDate": x["first_date"]} for x in rows if x.get("ticker") and x.get("first_date")]
 
 
+def save_owned():
+    """Stocks people own in Paper Trading (supabase/owned-stocks.sql: tickers and owner counts only, never names).
+
+    Saved to data/owned.json so the free morning brief routine writes briefs for them too.
+    """
+    cfg = (ROOT / "config.js").read_text()
+    url = re.search(r'supabaseUrl:\s*"([^"]+)"', cfg)
+    key = re.search(r'supabaseKey:\s*"([^"]+)"', cfg)
+    if not url or not key:
+        return
+    req = urllib.request.Request(url.group(1).rstrip("/") + "/rest/v1/rpc/owned_tickers", data=b"{}", method="POST",
+                                 headers={**UA, "apikey": key.group(1), "Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            rows = json.load(r)
+    except Exception as e:  # not set up yet, or Supabase is down: keep the old file
+        print(f"Could not read owned stocks: {e}")
+        return
+    owned = [{"ticker": x["ticker"], "owners": x["owners"]} for x in rows if x.get("ticker")]
+    OWNED.write_text(json.dumps({"tickers": owned}, indent=1) + "\n")
+    print(f"Owned stocks: {', '.join(o['ticker'] for o in owned) or 'none'}")
+
+
 def main():
+    save_owned()
     picks = all_picks() + site_picks()
     # QQQ and DIA track the Nasdaq 100 and the Dow for the "Market today" box.
     tickers = sorted({p["ticker"].upper() for p in picks if p.get("ticker")} | {"SPY", "QQQ", "DIA"})

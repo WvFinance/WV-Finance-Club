@@ -26,9 +26,11 @@ jobs:
       - run: python scripts/update_prices.py
       - name: Save the new prices
         run: |
-          if git diff --quiet -- data/prices.json; then echo "No change"; exit 0; fi
+          git add -N data/owned.json 2>/dev/null || true
+          if git diff --quiet -- data/prices.json data/owned.json; then echo "No change"; exit 0; fi
           git config user.name "wvfc-price-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/prices.json
+          if [ -f data/owned.json ]; then git add data/owned.json; fi
           git commit -m "Update closing prices"
           git push

@@ -425,7 +425,7 @@ function saveWatch(){store.set("wvfc.watch",JSON.stringify(S.watch));if(window.W
 // Lets the account page (beta.html) load a saved watchlist and open stocks.
 // account.js tells us the member's school once they're logged in; boot() waits for it.
 let schoolSet;const schoolReady=new Promise(r=>{schoolSet=r;});
-window.WVFC_APP={setSchool(id){schoolSet(id);},setMine(list){const m=[...new Set(list.map(bare))];if(S.mine&&m.join()===S.mine.join())return;S.mine=m;rendered.news=null;if(S.loaded)renderTape();renderNews();renderHomeNews();loadEarnings();if(!$("#news").hidden)renderNewsFeed();},setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},tk:()=>bare(S.tk),prices:()=>S.prices,refreshPicks:()=>refreshPicks(),picks:()=>S.picks,classRows:()=>classRows(),calc:p=>calc(p)};
+window.WVFC_APP={setSchool(id){schoolSet(id);},setMine(list){const m=[...new Set(list.map(bare))];if(S.mine&&m.join()===S.mine.join())return;S.mine=m;rendered.news=null;if(S.loaded)renderTape();renderNews();renderHomeNews();loadMineBriefs();loadEarnings();if(!$("#news").hidden)renderNewsFeed();},setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},tk:()=>bare(S.tk),prices:()=>S.prices,refreshPicks:()=>refreshPicks(),picks:()=>S.picks,classRows:()=>classRows(),calc:p=>calc(p)};
 function renderWatch(){
   const box=$("#wl");box.replaceChildren();const on=S.watch.some(w=>bare(w)===bare(S.tk));
   $("#wl-toggle").textContent=on?"On watchlist ✓":"Add to watchlist";
@@ -441,7 +441,16 @@ const inPortfolio=tk=>S.picks.some(p=>p.ticker===tk);
 // News tab: the market, crypto, then the stocks in the member's own Paper Trading account (My Portfolio).
 // The Class Portfolio's stocks have their own News view under the Class Portfolio menu.
 const inMine=tk=>(S.mine||[]).includes(tk);
-function visibleBriefs(){return S.briefs.filter(b=>b.market).sort((a,b)=>(a.order||0)-(b.order||0)).concat(S.briefs.filter(b=>!b.market&&inMine(b.ticker)&&!S.briefs.some(m=>m.market&&m.ticker===b.ticker)).sort((a,b)=>a.ticker.localeCompare(b.ticker)));}
+// A stock you own with no brief in news.json gets one written on the spot by the brief server (kept there for a day).
+const liveMine=()=>(S.mine||[]).filter(t=>!S.briefs.some(b=>b.ticker===t)).map(t=>liveBriefs[t]).filter(b=>b&&!b.loading&&!b.error&&b.ticker);
+const mineBriefs=()=>S.briefs.filter(b=>!b.market&&inMine(b.ticker)&&!S.briefs.some(m=>m.market&&m.ticker===b.ticker)).concat(liveMine());
+function visibleBriefs(){return S.briefs.filter(b=>b.market).sort((a,b)=>(a.order||0)-(b.order||0)).concat(mineBriefs().sort((a,b)=>a.ticker.localeCompare(b.ticker)));}
+function loadMineBriefs(){if(!S.loaded||!CFG.briefApi)return;
+  (S.mine||[]).filter(t=>!S.briefs.some(b=>b.ticker===t)&&!liveBriefs[t]).slice(0,8).forEach(t=>loadLiveBrief(t));}
+// "No brief yet" for owned stocks still missing one, or "Writing…" while the brief server works on it.
+function mineMissingNote(have){const mine=S.mine||[],miss=mine.filter(t=>!have.some(b=>b.ticker===t));if(!miss.length)return "";
+  const busy=miss.filter(t=>liveBriefs[t]&&liveBriefs[t].loading),none=miss.filter(t=>!busy.includes(t));
+  return [busy.length?`Writing a brief for ${busy.join(", ")}… this takes about 20 seconds.`:"",none.length?`No brief yet for ${none.join(", ")}.`:""].filter(Boolean).join(" ");}
 function briefForSymbol(sym){const t=bare(sym);return visibleBriefs().find(b=>bare(b.symbol||b.ticker)===t||b.ticker===t)||null;}
 // Two news boards share this code: the News tab (market, crypto and My Portfolio stocks)
 // and "News" under the Class Portfolio menu (only our stocks). ids starting with "c-" are the second one.
@@ -467,7 +476,7 @@ function newsBoard(cls){
   if(!cls){const mine=S.mine||[],missing=mine.filter(t=>!list.some(b=>b.ticker===t));
     if(!sk)nl.append(label("My portfolio"));
     if(!mine.length)nl.append(el("div",{class:"notice",text:S.mine?"Buy a stock in Paper Trading and its news shows up here.":"Log in and buy stocks in Paper Trading to see their news here."}));
-    else if(missing.length)nl.append(el("div",{class:"notice",text:`No brief yet for ${missing.join(", ")}.`}));}
+    else if(missing.length)nl.append(el("div",{class:"notice",text:mineMissingNote(list)}));}
   if(cls){const missing=S.picks.filter(p=>!list.some(b=>b.ticker===p.ticker)).map(p=>p.ticker);if(missing.length)nl.append(el("div",{class:"notice",text:`No brief yet for ${missing.join(", ")}.`}));}
   const n=list.find(x=>x.ticker===S[key]);
   br.replaceChildren(...[
@@ -572,6 +581,7 @@ async function loadLiveBrief(sym){
   if(r){let b=null;try{b=await r.json();}catch(e){}
     liveBriefs[t]=r.ok&&b?b:{error:(b&&b.error)||"The brief couldn't be written right now. Try again in a minute."};}
   if(bare(S.tk)===t)renderSearchBrief();
+  if(inMine(t)){rendered.news=null;renderNews();renderHomeNews();}
 }
 // The 3 newest articles behind the current stock's brief, shown above the headlines dropdown.
 function renderLatest3(n){
@@ -683,13 +693,13 @@ function setupIndividual(){
 function renderHomeNews(){
   const box=$("#mine-news");if(!S.individual||!box)return;box.hidden=false;
   const mine=S.mine||[],market=S.briefs.find(b=>b.market&&b.ticker==="SP500");
-  const own=S.briefs.filter(b=>!b.market&&mine.includes(b.ticker));
+  const own=mineBriefs();
   const why=t=>{const m=String(t||"").match(/^.*?[.!?](\s|$)/);return m?m[0].trim():String(t||"");};
   const item=(b,label)=>el("li",{},el("button",{type:"button",onclick:()=>{S.newsTk=b.ticker;renderNews();showTab("news",true);}},
     el("span",{class:"hh"},el("span",{class:"tkp",text:label}),b.headline||""),el("span",{class:"hw",text:why(b.summary)})));
   const rows=[market&&item(market,"Market"),...own.map(b=>item(b,b.ticker))].filter(Boolean);
   box.replaceChildren(el("h3",{class:"h3",text:"News for your stocks"}),
-    el("p",{class:"meta",text:mine.length?(own.length?"Plain-English briefs for what you own. Tap one to read it all.":`No briefs yet for ${mine.join(", ")}. The market brief is below.`):"Buy a stock in Paper Trading and its news shows up here."}),
+    el("p",{class:"meta",text:mine.length?[own.length?"Plain-English briefs for what you own. Tap one to read it all.":"",mineMissingNote(own)].filter(Boolean).join(" "):"Buy a stock in Paper Trading and its news shows up here."}),
     rows.length?el("ul",{class:"homenews"},rows):"");
 }
 
@@ -709,6 +719,7 @@ async function boot(){
   if(nw.status==="fulfilled"){S.briefs=nw.value.briefs||[];S.marketRecap=nw.value.market||null;if(nw.value.updated)$("#news-asof").textContent="News briefs updated "+fmtDate(nw.value.updated);}
   S.loaded=true;renderTape();renderPortfolio();renderNews();
   if(S.individual)setupIndividual();
+  loadMineBriefs();
   const fromWidget=new URLSearchParams(location.search).get("tvwidgetsymbol");
   if(fromWidget){try{history.replaceState(null,"",location.pathname+"#search")}catch(e){}openStock(fromWidget.toUpperCase());}
   showTab(location.hash.slice(1)||(S.individual?"mine":"portfolio"));

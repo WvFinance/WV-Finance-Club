@@ -3,6 +3,7 @@
 //
 //   node scripts/morning-briefs.mjs rules        the brief instructions (the same ones the API refresh uses)
 //   node scripts/morning-briefs.mjs list         every brief to check, with when it was last written
+//                                                (the market, every Class Portfolio stock, and stocks people own in Paper Trading)
 //   node scripts/morning-briefs.mjs save <dir>   checks <dir>/<TICKER>.json files and puts them into data/news.json
 //                                                Before noon (Chicago) it also marks every brief as checked today,
 //                                                so a skipped brief (no new news) shows today's date on the site.
@@ -19,9 +20,25 @@ import { allPicks } from "./picks.mjs";
 
 const NEWS = new URL("../../data/news.json", import.meta.url);
 const news = JSON.parse(readFileSync(NEWS, "utf8"));
+const [mode, dir] = process.argv.slice(2);
 const picks = allPicks();
 const jobs = briefJobs(news, picks);
-const [mode, dir] = process.argv.slice(2);
+
+// Stocks people own in Paper Trading get briefs too. data/owned.json is saved every weekday by the
+// "Update prices" workflow (supabase/owned-stocks.sql: tickers and owner counts only, most-owned first, at most 40).
+function ownedTickers() {
+  try {
+    const f = new URL("../../data/owned.json", import.meta.url);
+    if (!existsSync(f)) return [];
+    return (JSON.parse(readFileSync(f, "utf8")).tickers || []).filter(x => x && /^[A-Z][A-Z0-9.\-]{0,9}$/.test(x.ticker));
+  } catch (e) { return []; }
+}
+const MARKET_TICKERS = new Set(jobs.map(j => j.ticker));
+for (const o of ownedTickers()) {
+  if (MARKET_TICKERS.has(o.ticker) || jobs.some(j => j.ticker === o.ticker)) continue;
+  jobs.push({ ticker: o.ticker, subject: `${o.ticker} (owned by ${o.owners} Paper Trading ${o.owners === 1 ? "player" : "players"})`,
+    base: news.briefs.find(b => b.ticker === o.ticker) || { ticker: o.ticker, symbol: o.ticker } });
+}
 
 // "checkedAt" = the last time someone looked for news about this stock. When there was no new news the brief
 // is left alone (its updatedAt stays old), but the site shows "Checked <today> · no new news since <updatedAt>".
