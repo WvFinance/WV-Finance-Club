@@ -542,7 +542,12 @@ function renderUpcoming(){
 function newsKey(sym,crypto){const raw=String(sym||"").toUpperCase();
   if(crypto||/^(COINBASE|BINANCE|BITSTAMP|KRAKEN|CRYPTO|BITFINEX):/.test(raw))return "CRYPTO";
   if(!raw||/^(FOREXCOM|TVC|SP|INDEX|CBOE|DJ|OANDA|FX|FX_IDC):/.test(raw))return "MARKET";
-  return bare(raw);}
+  const t=bare(raw);
+  // Crypto searched without an exchange, like ETHUSD, BTCUSDT or BTC-USD.
+  if(/^(BTC|ETH|SOL|XRP|DOGE|ADA|LTC|BNB|AVAX|DOT|LINK|SHIB|MATIC|TRX)(-?USDT?|-?USDC)?$/.test(t))return "CRYPTO";
+  // Market indexes and the funds that follow them.
+  if(/^(SPX|SPY|NDX|IXIC|QQQ|DJI|DIA|VOO|IVV|VTI|IWM|RUT)$/.test(t))return "MARKET";
+  return t;}
 function ago(t){const m=Math.max(1,Math.round((Date.now()/1000-t)/60));
   if(m<60)return m+" min ago";const h=Math.round(m/60);if(h<24)return h+(h===1?" hour ago":" hours ago");const d=Math.round(h/24);return d+(d===1?" day ago":" days ago");}
 async function recentNews(box,key,fallback){
@@ -552,8 +557,15 @@ async function recentNews(box,key,fallback){
   let data=null,error=null;try{({data,error}=await ss.db.rpc("recent_news",{sym:key}));}catch(e){error=e;}
   if(box._rn!==n)return;
   if(error||!Array.isArray(data)){box.classList.remove("rn");fallback();return;}
+  // Nothing about this one lately (small companies, funds): show market news, and say so.
+  let note=null;
+  if(!data.length&&key!=="MARKET"){
+    let more=null;try{({data:more}=await ss.db.rpc("recent_news",{sym:"MARKET"}));}catch(e){}
+    if(box._rn!==n)return;
+    if(Array.isArray(more)&&more.length){data=more;note=el("p",{class:"meta rn-msg",text:`No news about ${key==="CRYPTO"?"crypto":key} in the last 30 days, so here's general market news.`});}
+  }
   if(!data.length){box.replaceChildren(el("p",{class:"meta rn-msg",text:"No news in the last 30 days."}));return;}
-  box.replaceChildren(el("ul",{class:"rnews"},data.map(x=>el("li",{},
+  box.replaceChildren(...(note?[note]:[]),el("ul",{class:"rnews"},data.map(x=>el("li",{},
     el("a",{href:x.url,target:"_blank",rel:"noopener noreferrer",text:x.headline}),
     el("span",{class:"o",text:[x.source,x.time?ago(x.time):""].filter(Boolean).join(" · ")})))),
     el("p",{class:"meta rn-foot",text:"Only news from the last 30 days."}));
