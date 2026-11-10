@@ -201,6 +201,16 @@ async function sell(p,b,m){
   finally{classBusy=false;}
 }
 
+
+// Buy / Sell buttons on the stock search page (paper.js) bring a teacher here with the ticker filled in.
+document.addEventListener("wvfc:classtrade",e=>{const{sym,side}=e.detail||{};if(!sym||!ST)return;
+  $(ST.role==="admin"?"#tab-staff":"#tab-trade").click();
+  let tries=0;const go=()=>{const box=$("#st-class"),inp=$("#cb-sym");
+    if(!inp){if(++tries<50)setTimeout(go,100);return;}
+    if(side==="sell"){const row=[...box.querySelectorAll("tbody tr")].find(r=>(r.querySelector(".stsym")||{}).textContent===sym);
+      (row||box).scrollIntoView({behavior:"smooth",block:"center"});if(row){row.classList.add("flash");setTimeout(()=>row.classList.remove("flash"),2000);}return;}
+    inp.value=sym;box.scrollIntoView({behavior:"smooth",block:"start"});$("#cb-amt").focus({preventScroll:true});};
+  go();});
 $("#st-school").addEventListener("change",()=>{$("#st-detail").hidden=true;render();});
 $("#st-find").addEventListener("input",()=>{renderTiles();renderList();});
 })();

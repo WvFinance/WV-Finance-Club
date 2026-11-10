@@ -16,11 +16,11 @@ if(!$("#trade"))return;
 let db=null,user=null,loaded=false,busy=false;
 const G={acct:null,pos:[],prices:{},trades:[],board:[],orders:[]};
 // The News tab needs the game too: it shows news for the stocks you own.
-const onGame=()=>!$("#trade").hidden||!!$("#mine")&&!$("#mine").hidden||!!$("#news")&&!$("#news").hidden;
-function signedIn(d){if(db)return;db=d.db;user=d.user;if(onGame())load();if($("#dv-dpeople")&&!$("#dv-dpeople").hidden&&!$("#district").hidden)renderDistrictPeople();loadChallenge();}
+const onGame=()=>!$("#trade").hidden||!$("#search").hidden||!!$("#mine")&&!$("#mine").hidden||!!$("#news")&&!$("#news").hidden;
+function signedIn(d){if(db)return;db=d.db;user=d.user;renderTradeBar();if(onGame())load();if($("#dv-dpeople")&&!$("#dv-dpeople").hidden&&!$("#district").hidden)renderDistrictPeople();loadChallenge();}
 document.addEventListener("wvfc:login",e=>signedIn(e.detail));
 if(window.WVFC_SESSION)signedIn(window.WVFC_SESSION);
-document.addEventListener("wvfc:tab",e=>{if((e.detail==="trade"||e.detail==="mine"||e.detail==="news")&&db&&!loaded)load();});
+document.addEventListener("wvfc:tab",e=>{if((e.detail==="trade"||e.detail==="search"||e.detail==="mine"||e.detail==="news")&&db&&!loaded)load();});
 const goTrade=()=>$("#tab-trade").click();
 if($("#mine")){$("#mine-trade").addEventListener("click",goTrade);$("#mine-join-go").addEventListener("click",goTrade);}
 function mineShow(which){if(!$("#mine"))return;$("#mine-loading").hidden=which!=="loading"&&which!=="error";$("#mine-join").hidden=which!=="join";$("#mine-game").hidden=which!=="game";$("#mine-trade").hidden=which!=="game";}
@@ -51,6 +51,7 @@ async function load(){
     db.from("paper_orders").select("*").order("created_at",{ascending:false}).limit(40)]);
   G.pos=pos.data||[];G.trades=tr.data||[];G.orders=od.error?[]:(od.data||[]);
   renderAll();
+  if(pendingFill){const[s,sd]=pendingFill;pendingFill=null;if(!$("#trade").hidden)fill(s,"",sd);}
   // Fresh prices for what they own, then the leaderboard.
   await Promise.all(G.pos.map(p=>quote(p.symbol).catch(()=>null)));
   const b=await db.rpc("paper_board");G.board=b.data||[];
@@ -76,7 +77,7 @@ const KIND={market:"Market",limit:"Limit",stop:"Stop",stop_limit:"Stop-limit",tr
 const when=t=>new Date(t).toLocaleString("en-US",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});
 // Tells the News tab which stocks this member owns, so it shows their news.
 function shareMine(){window.WVFC_APP&&window.WVFC_APP.setMine&&window.WVFC_APP.setMine(G.pos.map(p=>p.symbol));}
-function renderAll(){shareMine();renderTiles();renderOrders();renderTrades();renderBoard();renderEst();renderMine();}
+function renderAll(){shareMine();renderTradeBar();renderTiles();renderOrders();renderTrades();renderBoard();renderEst();renderMine();}
 function renderMine(){if(!$("#mine"))return;renderTiles($("#mine-tiles"));renderHold($("#mine-hold"),true);renderOrders($("#mine-orders"),true);renderChart();renderFriends();}
 
 /* ---------- Home: money over time and the friends leaderboard (supabase/home-extras.sql) ---------- */
@@ -353,5 +354,31 @@ $("#pt-form").addEventListener("submit",async e=>{e.preventDefault();
   catch(e){msg.textContent=errText(e);}
   finally{busy=false;b.disabled=false;b.textContent=label;}
 });
+
+/* ---------- Buy / Sell bar on the stock search page ---------- */
+// Teachers trade for the Class Portfolio (staff.js), everyone else uses this game's order form.
+function classTrader(){return window.WVFC_ROLE==="teacher";}
+function searchSym(){return window.WVFC_APP&&window.WVFC_APP.tk?window.WVFC_APP.tk():"";}
+function renderTradeBar(){const bar=$("#s-trade");if(!bar)return;const sym=searchSym();
+  if(!sym||!db){bar.hidden=true;return;}bar.hidden=false;
+  const own=$("#s-trade-own"),sell=$("#s-sell");
+  if(classTrader()){$("#s-trade-title").textContent="Class Portfolio";
+    const app=window.WVFC_APP,has=app&&app.picks&&app.picks().some(p=>String(p.ticker).toUpperCase()===sym);
+    own.textContent=has?`The class owns ${sym}.`:`The class doesn't own ${sym} yet.`;sell.disabled=!has;return;}
+  $("#s-trade-title").textContent="Paper Trading";
+  if(!loaded||!G.acct){own.textContent=`Practice buying and selling ${sym} with pretend money.`;sell.disabled=false;return;}
+  const p=G.pos.find(x=>x.symbol===sym),n=p?+p.shares:0;
+  own.textContent=n>0?`You own ${n} share${n===1?"":"s"} of ${sym}.`:n<0?`You're shorting ${-n} share${n===-1?"":"s"} of ${sym}.`:`You don't own any ${sym} yet.`;
+  sell.disabled=!(n>0);sell.title=n>0?"":`You can only sell stock you own.`;
+}
+let pendingFill=null;
+function tradeFromSearch(sd){const sym=searchSym();if(!sym)return;
+  if(classTrader()){document.dispatchEvent(new CustomEvent("wvfc:classtrade",{detail:{sym,side:sd}}));return;}
+  goTrade();if(db&&G.acct)fill(sym,"",sd);else{symIn.value=sym;pendingFill=[sym,sd];}
+  setTimeout(()=>{if(!qtyIn.closest("[hidden]"))qtyIn.focus({preventScroll:true});},400);}
+$("#s-buy").addEventListener("click",()=>tradeFromSearch("buy"));
+$("#s-sell").addEventListener("click",()=>tradeFromSearch("sell"));
+document.addEventListener("wvfc:stock",renderTradeBar);
+document.addEventListener("wvfc:tab",e=>{if(e.detail==="search")renderTradeBar();});
 setInterval(()=>{if(loaded&&!$("#trade").hidden)renderMarket();},60000);
 })();
