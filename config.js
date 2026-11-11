@@ -11,3 +11,10 @@ window.WVFC_CONFIG = {
   supabaseUrl: "https://imjzgwjmsixavhioswno.supabase.co",
   supabaseKey: "sb_publishable_yQmY1yE334rgqliGw2WnKQ_x4THAasd"
 };
+
+// On our own address (simplestreet.com.co), send logins, trades and briefs through
+// simplestreet.com.co/api, so school web filters only need to allow that one name.
+if (/(^|\.)simplestreet\.com\.co$/.test(location.hostname)) {
+  window.WVFC_CONFIG.briefApi = location.origin + "/api";
+  window.WVFC_CONFIG.supabaseUrl = location.origin + "/api/sb";
+}
