@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10",
+ "updated": "2026-11-11",
  "briefs": [
   {
    "bear": [
@@ -54,7 +54,7 @@
    "ticker": "SP500",
    "updatedAt": "2026-11-10T23:03:47.990Z",
    "symbol": "AMEX:SPY",
-   "checkedAt": "2026-11-10T23:03:47.990Z"
+   "checkedAt": "2026-11-11T11:42:02.122Z"
   },
   {
    "bear": [
@@ -109,48 +109,48 @@
    "ticker": "NASDAQ",
    "updatedAt": "2026-11-10T23:03:47.990Z",
    "symbol": "NASDAQ:QQQ",
-   "checkedAt": "2026-11-10T23:03:47.990Z"
+   "checkedAt": "2026-11-11T11:42:02.122Z"
   },
   {
    "bear": [
-    "The stock fell 1.5% on November 5 and slipped again the next day, after reaching a record.",
-    "Apple now has about $80 billion in debt before this new sale, and the new bonds pay up to 5.35% interest.",
-    "Apple said it is no longer aiming to keep its cash and debt equal, which could mean more borrowing ahead."
+    "Apple expects its profit margin (the share of sales it keeps as profit) to drop to 45-46% from 47.9%, mostly because memory chips cost more.",
+    "Sales in Greater China were $17.54 billion, below the $18.75 billion experts expected.",
+    "The stock now trades above the average expert price target of about $341, so a lot of good news is already in the price."
    ],
    "bull": [
-    "Investors wanted to lend Apple about $31 billion, more than four times the $7.5 billion it borrowed, a sign of strong trust in the company.",
-    "Apple ended its year with $136.9 billion in cash and investments.",
-    "In its last year, Apple returned $85.8 billion to shareholders by buying back shares, plus $15.7 billion in dividends."
+    "Apple hit a record close of $350.69 on November 9 and is now worth about $5.1 trillion.",
+    "September-quarter sales hit a record $114.5 billion, with iPhone sales up 17% and Mac sales up 24%.",
+    "Apple Intelligence was registered for use in China, and Apple plans its first Chinese AI features in December."
    ],
-   "headline": "Apple slips from its record and borrows $7.5 billion as tech stocks sell off",
-   "nextEvent": "",
-   "sentiment": "neutral",
+   "headline": "Apple closes above $350 for the first time, now worth over $5 trillion",
+   "nextEvent": "Apple pays its $0.27 per share dividend on November 16, 2026 (to owners of record on November 12)",
+   "sentiment": "bullish",
    "sources": [
     {
-     "title": "Apple Reportedly Set To Raise $7.5B From Bond Offering Amid Market Selloff",
-     "url": "https://stocktwits.com/news-articles/markets/equity/apple-reportedly-set-to-raise-7-5-b-from-bond-offering-amid-market-selloff/cNG1HDrR948",
-     "outlet": "Stocktwits",
-     "date": "Nov 5, 2026"
-    },
-    {
-     "title": "Apple Is Borrowing $7.5 Billion, Its First Bond Sale Since 2025",
-     "url": "https://247wallst.com/investing/2026/11/06/apple-is-borrowing-7-5-billion-its-first-bond-sale-since-2025/",
+     "title": "Apple Is Above $5 Trillion After Its First-Ever Close Above $350",
+     "url": "https://247wallst.com/investing/2026/11/10/apple-is-above-5-trillion-after-its-first-ever-close-above-350/",
      "outlet": "24/7 Wall St.",
-     "date": "Nov 6, 2026"
+     "date": "Nov 10, 2026"
     },
     {
-     "title": "Apple (AAPL) Stock Price, News and Analysis",
-     "url": "https://www.heygotrade.com/en/us-stock/aapl/",
+     "title": "Apple Stock (AAPL) Falls 1.9% on Gross Margin Guidance (Nov 3)",
+     "url": "https://www.heygotrade.com/en/news/apple-aapl-stock-news-november-4-2026/",
      "outlet": "Gotrade",
-     "date": "Nov 6, 2026"
+     "date": "Nov 4, 2026"
+    },
+    {
+     "title": "Apple stock drops nearly 3% after hours following Q4 2026 results",
+     "url": "https://9to5mac.com/2026/11/02/apple-stock-drops-nearly-3-after-hours-following-q4-2026-results/",
+     "outlet": "9to5Mac",
+     "date": "Nov 2, 2026"
     }
    ],
-   "summary": "After hitting a record high on November 4, Apple's stock fell 1.5% to $344.17 on November 5, when the S&P 500 had its worst day since April 2025. That same day, Apple sold $7.5 billion of bonds (loans from investors that Apple pays back with interest), its first since May 2025, and investors offered to lend about $31 billion, more than four times what it asked for. Apple said the money can go toward things like buying back its own shares and paying dividends. The stock is still up about 27% this year.",
+   "summary": "On November 9, Apple's stock rose 2.4% to a record close of $350.69, making the company worth about $5.1 trillion, more than Nvidia or Microsoft. It happened on the S&P 500's best day since April, and China's internet regulator also listed Apple Intelligence (Apple's AI features) as approved for iPads and Macs in China. This came after a dip in early November: Apple reported record September-quarter sales of $114.5 billion, up 12%, on November 2, but the stock fell about 1.9% on November 3 because Apple expects lower profit margins. Apple said rising prices for memory chips will squeeze its profits in the holiday quarter.",
    "ticker": "AAPL",
-   "updatedAt": "2026-11-09T11:39:55.630Z",
+   "updatedAt": "2026-11-11T11:42:02.120Z",
    "symbol": "NASDAQ:AAPL",
    "name": "Apple",
-   "checkedAt": "2026-11-10T11:39:32.080Z"
+   "checkedAt": "2026-11-11T11:42:02.122Z"
   },
   {
    "bear": [
@@ -191,7 +191,7 @@
    "updatedAt": "2026-11-10T11:39:32.077Z",
    "symbol": "NASDAQ:AMZN",
    "name": "Amazon",
-   "checkedAt": "2026-11-10T11:39:32.080Z"
+   "checkedAt": "2026-11-11T11:42:02.122Z"
   },
   {
    "bear": [
@@ -232,36 +232,48 @@
    "updatedAt": "2026-11-05T11:40:17.952Z",
    "symbol": "NYSE:JPM",
    "name": "JPMorgan Chase",
-   "checkedAt": "2026-11-10T11:39:32.080Z"
+   "checkedAt": "2026-11-11T11:42:02.122Z"
   },
   {
    "ticker": "XOM",
    "symbol": "NYSE:XOM",
    "sentiment": "neutral",
-   "headline": "Exxon slips as oil prices drop to their lowest level since August",
-   "summary": "On November 9, Brent crude oil fell about 5.9% to its lowest level since August 31, after President Trump said new strikes on Iran were unlikely if talks make progress. Exxon's stock held up fairly well, slipping about 0.3% to around $165 while other energy stocks were sold. Oil is now about 22% below its October 30 high of $118 a barrel. Exxon's recent results were strong, with $4.23 in profit per share last quarter and plans to buy back $20 billion of its own shares in 2027.",
+   "headline": "Exxon signs a first-step deal to look at returning to Venezuela",
+   "summary": "On November 9, Exxon signed a memorandum of understanding (a non-binding first agreement) with Venezuela's state oil company PDVSA to study new oil projects there. Venezuela took over Exxon's oil projects in 2007, and Exxon was awarded $1.6 billion plus interest in 2014, but that fight is still not settled. Exxon called the deal a meaningful first step but said it needs stable rules and good returns before it invests, and a final contract would still be needed. The same day, oil prices fell about 6% to their lowest since August, and Exxon's stock slipped about 0.3% to around $165.",
    "bull": [
+    "Venezuela has some of the biggest oil reserves in the world, and the deal could open a door to new oil for Exxon.",
     "Exxon earned $4.23 per share last quarter, up from $3.52 the quarter before.",
-    "It plans to buy back $20 billion of its own shares in 2027, about 3% of the company.",
-    "It cut its debt by nearly $11 billion this year."
+    "It plans to buy back $20 billion of its own shares in 2027, about 3% of the company."
    ],
    "bear": [
-    "Oil prices dropped sharply, and lower oil prices usually mean lower profits for Exxon.",
-    "Last quarter's strong cash came when oil prices were much higher than now.",
-    "OPEC countries pumped more oil in October, which could keep prices lower."
+    "The Venezuela deal is not binding, and Exxon has not said which projects it might invest in.",
+    "Venezuela still has not paid the $1.6 billion award from when it took Exxon's projects in 2007.",
+    "Oil prices dropped about 22% from their October 30 high, and lower oil prices usually mean lower profits for Exxon."
    ],
    "nextEvent": "Exxon's next dividend of $1.07 per share is paid on December 10, 2026",
    "sources": [
     {
-     "title": "Exxon Mobil Stocks Move Lower 0.31% as Crude Slides Toward $87",
-     "url": "https://www.gurufocus.com/news/9185623/exxon-mobil-stocks-move-lower-031-as-crude-slides-toward-87",
-     "outlet": "GuruFocus",
+     "title": "Exxon Mobil Signs MoU With Venezuela to Evaluate Oil Investment Opportunities",
+     "url": "https://www.marketscreener.com/news/exxon-mobil-signs-mou-with-venezuela-to-evaluate-oil-investment-opportunities-ce785edada8ef42d",
+     "outlet": "MarketScreener (MT Newswires)",
+     "date": "Nov 10, 2026"
+    },
+    {
+     "title": "ExxonMobil Takes First Step Toward Venezuela Oil Return",
+     "url": "https://www.marinelink.com/news/exxonmobil-takes-first-step-toward-544247",
+     "outlet": "MarineLink (Reuters)",
+     "date": "Nov 10, 2026"
+    },
+    {
+     "title": "Exxon signs preliminary agreement with Venezuela to evaluate oil opportunities",
+     "url": "https://boereport.com/2026/11/09/exxon-signs-preliminary-agreement-with-venezuela-to-evaluate-oil-opportunities/",
+     "outlet": "BOE Report (Reuters)",
      "date": "Nov 9, 2026"
     },
     {
-     "title": "Oil falls as Trump downplays prospect of escalation with Iran",
-     "url": "https://1027wbow.com/2026/11/09/oil-falls-as-trump-downplays-prospect-of-escalation-with-iran/",
-     "outlet": "102.7 WBOW (Reuters)",
+     "title": "Exxon Mobil Stocks Move Lower 0.31% as Crude Slides Toward $87",
+     "url": "https://www.gurufocus.com/news/9185623/exxon-mobil-stocks-move-lower-031-as-crude-slides-toward-87",
+     "outlet": "GuruFocus",
      "date": "Nov 9, 2026"
     },
     {
@@ -271,74 +283,50 @@
      "date": "Oct 30, 2026"
     }
    ],
-   "updatedAt": "2026-11-10T11:39:32.080Z",
+   "updatedAt": "2026-11-11T11:42:02.122Z",
    "name": "Exxon Mobil",
-   "checkedAt": "2026-11-10T11:39:32.080Z"
+   "checkedAt": "2026-11-11T11:42:02.122Z"
   },
   {
    "ticker": "JNJ",
    "symbol": "NYSE:JNJ",
    "sentiment": "bullish",
-   "headline": "J&J shares rise on strong drug sales and good results from medical tests",
-   "summary": "Johnson & Johnson reported its July-to-September results on October 13. Sales were $25.4 billion, up 5.9% from a year earlier, and profit per share beat what experts expected. The company also raised its sales forecast for 2026. On October 22 the stock rose 3.48% after good real-world results for its heart-rhythm devices, and because investors moved money into steady healthcare companies on a day when the wider market fell.",
+   "headline": "J&J climbs to a new high on heart pump and cancer drug news",
+   "summary": "Johnson & Johnson makes medicines and medical devices. Its stock jumped about 3.5% on November 4 after good test results for its Impella heart pump and early cancer drug results, rose 1.4% to about $276 on November 6, and closed at a new 52-week high on November 9. The FDA (the US agency that approves medicines) also gave a fast-track approval to its cancer drug Rybrevant Faspro for head and neck cancer. The stock is up about 51% over the past year, even though profit over the last 12 months fell about 36%, partly because of about $7 billion in one-time costs for talc lawsuits and two company purchases.",
    "bull": [
-    "J&J's medicine business grew about 8%, helped by strong sales of its cancer drugs and Tremfya, a drug for immune diseases.",
-    "An experimental prostate cancer pill, taken once a day, shrank or cleared tumors in many patients in an early test. The results were shared on October 24.",
-    "Most experts who follow the stock rate it positively, and Wells Fargo raised its guess for where the price could go to $287."
+    "New heart pump and cancer drug test results pushed the stock up about 3.5% on November 4.",
+    "The FDA gave early approval to Rybrevant Faspro for head and neck cancer, where 42% of patients in a test responded.",
+    "Medicine sales grew about 7.7% last quarter to $16.76 billion, and psoriasis drug Tremfya grew 68%."
    ],
    "bear": [
-    "J&J's profit by strict accounting rules fell sharply because of about $7 billion in one-time costs. Most of that came from a proposed deal to settle lawsuits over talc baby powder, plus costs of buying companies.",
-    "The medical device business grew only about 2.5%, held back by weak sales outside the US and at its Abiomed heart-pump unit.",
-    "Erste Group lowered its rating to 'hold' (meaning wait and see) because the stock already looks expensive compared with how much the company earns. Even after this week's gain, the stock is down about 5% over the past month."
+    "J&J still faces about 70,000 lawsuits claiming its talc baby powder caused cancer, and a proposed $5.5 billion settlement still needs most people suing to agree.",
+    "Patents (rules that block copycat drugs) end soon on some drugs, putting about $4 billion of 2027 sales at risk.",
+    "The stock now costs about 42 times its yearly profit, much higher than the 18 times of a year ago, so a lot of good news is already in the price."
    ],
-   "nextEvent": "",
+   "nextEvent": "J&J pays its next dividend of $1.34 per share on December 8, 2026 (to owners of record on November 24)",
    "sources": [
     {
-     "title": "Why is Johnson & Johnson stock rallying today?",
-     "url": "https://www.investing.com/news/stock-market-news/why-is-johnson--johnson-stock-rallying-today-93CH-4966908",
-     "outlet": "Investing.com",
-     "date": "Oct 22, 2026"
+     "title": "What Usually Comes After A New High In Johnson & Johnson Stock?",
+     "url": "https://www.trefis.com/stock/jnj/articles/624058/what-usually-comes-after-a-new-high-in-johnson-johnson-stock/2026-11-10",
+     "outlet": "Trefis",
+     "date": "Nov 10, 2026"
     },
     {
-     "title": "Johnson & Johnson Stock (JNJ) Moved Up by 3.48% on Oct 22: Facts Behind the Movement",
-     "url": "https://www.tradingkey.com/news/market-movers/262232841-market-movers-jnj-20261022",
+     "title": "Johnson & Johnson (NYSE:JNJ) Stock Jumps 1.4% – Here's What Happened",
+     "url": "https://www.thestockobserver.com/2026/11/06/johnson-johnson-nysejnj-stock-jumps-1-4-heres-what-happened.html",
+     "outlet": "Stock Observer",
+     "date": "Nov 6, 2026"
+    },
+    {
+     "title": "Johnson & Johnson Stock (JNJ) Moved Up by 3.54% on Nov 4: A Full Analysis",
+     "url": "https://www.tradingkey.com/news/market-movers/262274958-market-movers-jnj-20261104",
      "outlet": "TradingKey",
-     "date": "Oct 22, 2026"
-    },
-    {
-     "title": "JNJ Stock Has a New Growth Story, but One Business Needs to Catch Up",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/jnj-stock-growth-story-one-130029721.html",
-     "outlet": "24/7 Wall St. (via Yahoo Finance)",
-     "date": "Oct 22, 2026"
-    },
-    {
-     "title": "Erste Group downgrades Johnson & Johnson stock rating to hold",
-     "url": "https://www.investing.com/news/analyst-ratings/erste-group-downgrades-johnson--johnson-stock-rating-to-hold-93CH-4962432",
-     "outlet": "Investing.com",
-     "date": "Oct 21, 2026"
-    },
-    {
-     "title": "Johnson & Johnson raises 2026 sales outlook. Johnson & Johnson stock is unchanged",
-     "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/johnson-und-johnson-raises-2026-sales-outlook-johnson-und-johnson-stock-is-unchanged/70398112",
-     "outlet": "AD HOC NEWS",
-     "date": "Oct 23, 2026"
-    },
-    {
-     "title": "Johnson & Johnson's prostate cancer drug shrinks tumors in early-stage trial",
-     "url": "https://www.investing.com/news/stock-market-news/johnson--johnsons-prostate-cancer-drug-shrinks-tumors-in-earlystage-trial-4970719",
-     "outlet": "Reuters (via Investing.com)",
-     "date": "Oct 24, 2026"
-    },
-    {
-     "title": "Johnson & Johnson (NYSE:JNJ) Stock Now Rated \"Moderate Buy\" by Wall Street Analysts",
-     "url": "https://www.marketbeat.com/instant-alerts/consensus-johnson-johnson-nyse-jnj-stock-now-rated-moderate-buy-by-wall-street-analysts-2026-10-24/",
-     "outlet": "MarketBeat",
-     "date": "Oct 24, 2026"
+     "date": "Nov 4, 2026"
     }
    ],
-   "updatedAt": "2026-10-25T01:52:16.369Z",
+   "updatedAt": "2026-11-11T11:42:02.122Z",
    "name": "Johnson & Johnson",
-   "checkedAt": "2026-11-10T11:39:32.080Z"
+   "checkedAt": "2026-11-11T11:42:02.122Z"
   },
   {
    "ticker": "BTC",
@@ -388,7 +376,7 @@
     }
    ],
    "updatedAt": "2026-11-10T23:03:47.989Z",
-   "checkedAt": "2026-11-10T23:03:47.989Z"
+   "checkedAt": "2026-11-11T11:42:02.122Z"
   },
   {
    "ticker": "ETH",
@@ -438,7 +426,48 @@
     }
    ],
    "updatedAt": "2026-11-10T23:03:47.990Z",
-   "checkedAt": "2026-11-10T23:03:47.990Z"
+   "checkedAt": "2026-11-11T11:42:02.122Z"
+  },
+  {
+   "ticker": "MGM",
+   "symbol": "MGM",
+   "sentiment": "neutral",
+   "headline": "MGM bounces back from a weak summer as a big shareholder buys $52 million more",
+   "summary": "MGM Resorts runs casinos and hotels in Las Vegas, other US cities and Macau in China. Its results for July to September, shared on October 28, were weak: total sales of $4.2 billion slipped 1%, and its Las Vegas profit fell 12% because hotel room prices were lower. But the stock jumped about 4% on October 29 because the company said October business in Las Vegas bounced back, and a big shareholder, Barry Diller's group, agreed to cap its stake at 29.9%. After the results, funds run by MGM board member Keith Meister bought about $51.7 million of shares around $29 to $30 each, raising their stake by about 33%.",
+   "bull": [
+    "MGM's CEO said Las Vegas business bounced back in October after a slow summer.",
+    "MGM China had record sales of $1.1 billion, up 5%, and its biggest share ever of the Macau market at 17.1%.",
+    "A board member's funds bought about $51.7 million of stock, a sign that insiders believe in the company."
+   ],
+   "bear": [
+    "Las Vegas Strip profit fell 12% from a year ago because hotel rooms sold for lower prices.",
+    "MGM lost 11 cents per share last quarter on an adjusted basis (ignoring one-time items), compared with a 24 cent profit a year earlier.",
+    "The stock is down about 22% this year and about 44% below its May high of $50.69."
+   ],
+   "nextEvent": "The Formula 1 Las Vegas Grand Prix, a big weekend for MGM's Las Vegas hotels, runs November 19-21, 2026",
+   "sources": [
+    {
+     "title": "Corvex Funds Boost MGM Position 32.6% With About $51.7 Million in Purchases",
+     "url": "https://www.tokenpost.com/news/investing/52406",
+     "outlet": "TokenPost",
+     "date": "Nov 9, 2026"
+    },
+    {
+     "title": "MGM Resorts International Reports Q3 2026 Financial Results",
+     "url": "https://lodgingmagazine.com/mgm-resorts-international-reports-q3-2026-financial-results/",
+     "outlet": "LODGING Magazine",
+     "date": "Oct 30, 2026"
+    },
+    {
+     "title": "Why MGM Resorts (MGM) stock is up today",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/why-mgm-resorts-mgm-stock-220419076.html",
+     "outlet": "Yahoo Finance (StockStory)",
+     "date": "Oct 29, 2026"
+    }
+   ],
+   "name": "MGM Resorts International",
+   "checkedAt": "2026-11-11T11:42:02.122Z",
+   "updatedAt": "2026-11-11T11:42:02.122Z"
   }
  ],
  "market": {
