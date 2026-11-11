@@ -521,9 +521,9 @@ select.ptinp{appearance:none;cursor:pointer;padding-right:34px;background-image:
 .strow{display:flex;flex-wrap:wrap;gap:12px}
 .strow select.ptinp{flex:0 1 220px}
 .strow input.ptinp{flex:1 1 240px}
-#st-body{min-width:0;display:grid;gap:16px}
-#st-body>*{min-width:0}
-#st-detail .tiles{margin:12px 0 4px}
+#st-body,#us-body{min-width:0;display:grid;gap:16px}
+#st-body>*,#us-body>*{min-width:0}
+#st-detail .tiles,#us-detail .tiles{margin:12px 0 4px}
 .stmail{display:block;font-size:12px;color:var(--muted);font-weight:400}
 .stsym{font-family:var(--f-mono);margin-right:6px}
 .sttable td{vertical-align:top}

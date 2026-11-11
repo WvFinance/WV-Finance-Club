@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@900&family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=2026111009">
+<link rel="stylesheet" href="assets/style.css?v=2026111101">
 <script>
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
@@ -95,6 +95,7 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
     <button class="tab" role="tab" id="tab-news" aria-controls="news" aria-selected="false" data-tab="news">News<span class="count" id="cnt-news"></span></button>
     <button class="tab hasmenu" role="tab" id="tab-district" aria-controls="district" aria-selected="false" aria-haspopup="menu" aria-expanded="false" data-tab="district">District<span class="caret" aria-hidden="true"></span></button>
     <button class="tab" role="tab" id="tab-staff" aria-controls="staff" aria-selected="false" data-tab="staff" hidden>Students</button>
+    <button class="tab" role="tab" id="tab-users" aria-controls="users" aria-selected="false" data-tab="users" hidden>Users</button>
   </div>
   <div class="tabmenu" id="pf-menu" role="menu" hidden>
     <button role="menuitem" data-view="overview">Overview</button>
@@ -366,12 +367,31 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
     <div class="panel" id="st-class" hidden></div>
     <div class="strow">
       <select class="ptinp" id="st-school" aria-label="School" hidden></select>
-      <input class="ptinp" id="st-find" type="search" placeholder="Find someone by name or email" aria-label="Find someone">
+      <input class="ptinp" id="st-find" type="search" placeholder="Find a student by name or email" aria-label="Find a student">
     </div>
     <div class="tiles" id="st-tiles"></div>
     <div class="panel" id="st-detail" hidden></div>
     <div class="panel" id="st-list"></div>
     <div class="panel" id="st-teachers" hidden></div>
+  </div>
+</section>
+
+<!-- USERS (admin only, on the admin's personal account): every personal account. The database checks this too. -->
+<section role="tabpanel" id="users" aria-labelledby="tab-users" hidden>
+  <div class="sechead">
+    <div>
+      <h2>Users</h2>
+      <p class="sub">Everyone with a personal account: people who signed up with "Just me" or added a personal account. View only. Only you can see this tab.</p>
+    </div>
+  </div>
+  <p class="meta" id="us-loading">Loading users…</p>
+  <div id="us-body" hidden>
+    <div class="strow">
+      <input class="ptinp" id="us-find" type="search" placeholder="Find someone by name or email" aria-label="Find someone">
+    </div>
+    <div class="tiles" id="us-tiles"></div>
+    <div class="panel" id="us-detail" hidden></div>
+    <div class="panel" id="us-list"></div>
   </div>
 </section>
 
@@ -392,10 +412,11 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="config.js?v=2026103102"></script>
-<script src="assets/app.js?v=2026111008"></script>
+<script src="assets/app.js?v=2026111101"></script>
 <script src="assets/vendor/supabase-2.118.0.js"></script>
-<script src="assets/account.js?v=2026111002"></script>
+<script src="assets/account.js?v=2026111101"></script>
 <script src="assets/paper.js?v=2026111005"></script>
 <script src="assets/staff.js?v=2026111101"></script>
+<script src="assets/users.js?v=2026111101"></script>
 </body>
 </html>

@@ -152,6 +152,9 @@ async function loadSchool(){
   if(role==="teacher"){$("#tab-mine").hidden=true;$("#tab-trade").textContent="Class Trading";}
   if(role==="teacher"||role==="admin"){$("#tab-staff").hidden=role!=="admin";
     window.WVFC_STAFF={db,role,school};document.dispatchEvent(new CustomEvent("wvfc:staff",{detail:window.WVFC_STAFF}));}
+  // The admin's personal account gets a Users tab with every personal account (users.js, supabase/personal-users.sql).
+  if(window.WVFC_INDIVIDUAL)db.rpc("users_admin").then(({data})=>{if(data!==true)return;$("#tab-users").hidden=false;
+    window.WVFC_USERS={db};document.dispatchEvent(new CustomEvent("wvfc:users",{detail:window.WVFC_USERS}));},()=>{});
   setupSwitch();
   window.WVFC_APP&&window.WVFC_APP.setSchool(school);
   return role;
