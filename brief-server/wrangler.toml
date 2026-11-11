@@ -10,7 +10,9 @@ binding = "BRIEFS"
 id = "REPLACE_WITH_KV_ID"
 
 [vars]
-ALLOWED_ORIGIN = "https://wvfinance.github.io"
+ALLOWED_ORIGIN = "https://wvfinance.github.io,https://simplestreet.com.co,https://www.simplestreet.com.co"
+# Logins and trades are passed on to this Supabase project (see src/proxy.js).
+SUPABASE_URL = "https://imjzgwjmsixavhioswno.supabase.co"
 # Most new briefs the server will write in one day. Saved briefs don't count.
 DAILY_LIMIT = "40"
 # Most new briefs one internet address can ask for in a day (a whole school shares one address).
