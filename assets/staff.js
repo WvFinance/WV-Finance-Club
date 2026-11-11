@@ -51,7 +51,8 @@ async function load(){
   }
   render();
 }
-const students=()=>people.filter(p=>p.role!=="teacher"&&p.role!=="admin");
+// Personal accounts (no school) are on their own Users tab (users.js), seen from the admin's personal account.
+const students=()=>people.filter(p=>p.role!=="teacher"&&p.role!=="admin"&&(p.school_id||ST.role!=="admin"));
 function shown(){
   const school=ST.role==="admin"?$("#st-school").value:"all",q=$("#st-find").value.trim().toLowerCase();
   return students().filter(p=>(school==="all"||p.school_id===school)&&(!q||(p.name||"").toLowerCase().includes(q)||(p.email||"").toLowerCase().includes(q)));
