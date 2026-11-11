@@ -8,7 +8,7 @@ The Waubonsie Valley Finance Club's website: our class portfolio, stock research
 
 - **Class Portfolio**: every stock the club owns, what we paid, how many shares, what it's worth now, and how it compares with putting the same money in the S&P 500.
 - **Search**: look up any stock with TradingView's live candlestick chart, quote, key financials and latest headlines. Members can keep a personal watchlist on their own device.
-- **News**: Claude's Bullish/Neutral/Bearish briefs for the S&P 500, the Nasdaq and every stock in the portfolio, with links to the sources, plus a live headline feed.
+- **News**: Claude's Bullish/Neutral/Bearish briefs for the S&P 500, the Nasdaq, the Dow, the Russell 2000, Bitcoin, Ethereum and every stock in the portfolio, with links to the sources, plus a live headline feed.
 
 ## How a stock gets into the portfolio
 
