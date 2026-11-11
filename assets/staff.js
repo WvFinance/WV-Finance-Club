@@ -46,7 +46,8 @@ async function load(){
     try{const r=await fetch("data/schools.json",{cache:"no-cache"});for(const s of (await r.json()).schools||[])seen.set(s.id,s.name);}catch(e){}
     schools=[...seen].map(([id,name])=>({id,name}));
     const sel=$("#st-school");sel.hidden=false;
-    sel.replaceChildren(el("option",{value:"all",text:"All schools"}),...schools.map(s=>el("option",{value:s.id,text:s.name})));
+    const solo=students().filter(p=>!p.school_id).length;
+    sel.replaceChildren(el("option",{value:"all",text:"Everyone"}),el("option",{value:"personal",text:`Personal accounts (${solo})`}),...schools.map(s=>el("option",{value:s.id,text:s.name})));
     sel.value=schools.some(s=>s.id===ST.school)?ST.school:"all";
   }
   render();
@@ -54,29 +55,33 @@ async function load(){
 const students=()=>people.filter(p=>p.role!=="teacher"&&p.role!=="admin");
 function shown(){
   const school=ST.role==="admin"?$("#st-school").value:"all",q=$("#st-find").value.trim().toLowerCase();
-  return students().filter(p=>(school==="all"||p.school_id===school)&&(!q||(p.name||"").toLowerCase().includes(q)||(p.email||"").toLowerCase().includes(q)));
+  return students().filter(p=>(school==="all"||(school==="personal"?!p.school_id:p.school_id===school))&&(!q||(p.name||"").toLowerCase().includes(q)||(p.email||"").toLowerCase().includes(q)));
 }
 function render(){renderClass();renderTiles();renderList();renderTeachers();}
+// Personal accounts ("Just me" sign-ups and second accounts from the Class/Personal switcher) have no school.
+const solo=()=>ST.role==="admin"&&$("#st-school").value==="personal";
+const placeOf=p=>p.school||(p.school_id?"–":"Personal");
 function renderTiles(){
-  const list=shown(),play=list.filter(p=>p.joined);
+  const who=solo()?"People":"Students",list=shown(),play=list.filter(p=>p.joined);
   const avg=play.length?play.reduce((s,p)=>s+(+p.gain_pct),0)/play.length:null;
   const tile=(label,val,note,k)=>el("div",{class:"tile"},el("div",{class:"eyebrow",text:label}),el("div",{class:"v "+(k||""),text:val}),el("div",{class:"n",text:note}));
-  $("#st-tiles").replaceChildren(tile("Students",String(list.length),"With an account"),tile("Playing",String(play.length),"Joined Paper Trading"),
-    tile("Trades made",String(list.reduce((s,p)=>s+(p.trades||0),0)),"By these students"),tile("Average gain",avg==null?"–":fmtPct(avg),"Of students playing",avg==null?"":cls(avg)));
+  $("#st-tiles").replaceChildren(tile(who,String(list.length),"With an account"),tile("Playing",String(play.length),"Joined Paper Trading"),
+    tile("Trades made",String(list.reduce((s,p)=>s+(p.trades||0),0)),solo()?"By these accounts":"By these students"),tile("Average gain",avg==null?"–":fmtPct(avg),solo()?"Of those playing":"Of students playing",avg==null?"":cls(avg)));
 }
 function renderList(){
   const list=shown().sort((a,b)=>(b.joined-a.joined)||((+b.gain_pct||0)-(+a.gain_pct||0)));
   const all=ST.role==="admin"&&$("#st-school").value==="all";
   const box=$("#st-list");
-  if(!list.length){box.replaceChildren(el("h3",{class:"h3",text:"Students"}),el("p",{class:"meta",text:students().length?"No students match.":"No students have made an account yet."}));return;}
-  const cols=["Student"].concat(all?["School"]:[],["Account value","Gain %","Stocks","Trades","Waiting orders","Last trade"]);
+  const title=solo()?"Personal accounts":all?"Everyone":ST.role==="admin"?"Students":"Your students";
+  if(!list.length){box.replaceChildren(el("h3",{class:"h3",text:title}),el("p",{class:"meta",text:solo()?"Nobody has made a personal account yet.":students().length?"No students match.":"No students have made an account yet."}));return;}
+  const cols=[solo()?"Name":"Student"].concat(all?["School"]:[],["Account value","Gain %","Stocks","Trades","Waiting orders","Last trade"]);
   const td=(t,k)=>el("td",{class:k||"",text:t});
-  box.replaceChildren(el("h3",{class:"h3",text:ST.role==="admin"?"Students":"Your students"}),el("p",{class:"meta",text:"Tap a student to see their stocks, trades and orders."}),
+  box.replaceChildren(el("h3",{class:"h3",text:title}),el("p",{class:"meta",text:solo()?"People who signed up with \"Just me\" or added a personal account. Tap a name to see their stocks, trades and orders.":"Tap a name to see their stocks, trades and orders."}),
     el("div",{class:"tablewrap"},el("table",{class:"pos sttable"},
       el("thead",{},el("tr",{},cols.map((t,i)=>el("th",{class:i>(all?1:0)?"num":"",text:t})))),
       el("tbody",{},list.map(p=>el("tr",{},
         el("td",{},el("button",{type:"button",class:"linkbtn",text:p.name||p.email,onclick:()=>openStudent(p)}),p.name?el("small",{class:"stmail",text:p.email}):""),
-        all?td(p.school||"–"):"",
+        all?td(placeOf(p)):"",
         td(p.joined?fmt$(p.value):"Not playing yet","num"),td(p.joined?fmtPct(+p.gain_pct):"–","num "+(p.joined?cls(+p.gain_pct):"")),
         td(String(p.stocks),"num"),td(String(p.trades),"num"),td(String(p.open_orders),"num"),td(when(p.last_trade),"num")))))));
 }
@@ -89,9 +94,9 @@ async function openStudent(p){
   const{data,error}=await ST.db.rpc("staff_student",{target:p.user_id});
   if(error){box.replaceChildren(el("p",{class:"meta",text:errText(error)}));return;}
   const pos=(data.positions||[]).map(x=>{const px=x.price!=null?+x.price:+x.cost/+x.shares,value=px*x.shares,gain=value-x.cost;return{...x,px,value,gain,gp:gain/Math.abs(x.cost)};}).sort((a,b)=>Math.abs(b.value)-Math.abs(a.value));
-  const head=el("div",{class:"sechead"},el("div",{},el("h3",{class:"h3",text:p.name||p.email}),el("p",{class:"meta",text:[p.email,p.school].filter(Boolean).join(" · ")})),
+  const head=el("div",{class:"sechead"},el("div",{},el("h3",{class:"h3",text:p.name||p.email}),el("p",{class:"meta",text:[p.email,ST.role==="admin"?placeOf(p):p.school].filter(Boolean).join(" · ")})),
     el("button",{type:"button",class:"btn small",text:"Close",onclick:()=>{box.hidden=true;}}));
-  if(!p.joined){box.replaceChildren(head,el("p",{class:"meta",text:"This student hasn't joined Paper Trading yet."}));return;}
+  if(!p.joined){box.replaceChildren(head,el("p",{class:"meta",text:p.school_id?"This student hasn't joined Paper Trading yet.":"This account hasn't started Paper Trading yet."}));return;}
   const tile=(label,val,note,k)=>el("div",{class:"tile"},el("div",{class:"eyebrow",text:label}),el("div",{class:"v "+(k||""),text:val}),el("div",{class:"n",text:note}));
   const gain=+p.value-50000;
   const td=(t,k)=>el("td",{class:k||"",text:t});
