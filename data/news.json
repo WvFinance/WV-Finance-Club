@@ -3,113 +3,89 @@
  "briefs": [
   {
    "bear": [
-    "Core prices rose 0.3% for the third straight month, more than experts expected.",
-    "Fed officials Waller and Logan said more rate hikes are needed, and higher rates make borrowing more expensive for companies and families.",
-    "The 10-year Treasury rate rose above 5% from 4.88% on Monday, which can pull money away from stocks."
+    "Tuesday's report showed prices rising faster than expected, so a December Fed rate hike looks almost certain.",
+    "The 10-year Treasury rate climbed back to about 5% on Tuesday, which can pull money away from stocks.",
+    "Health care, everyday goods and real estate stocks fell on Wednesday, so not every part of the market joined in."
    ],
    "bull": [
-    "On Monday the S&P 500 jumped about 2.3%, its biggest one-day gain since April, so Tuesday gave back only a small part of it.",
-    "Brent oil fell to about $92 a barrel, down from over $112 at the start of the month, after President Trump said the Iran war is nearly over.",
-    "Gas prices fell below $4 a gallon for the first time since July, which leaves shoppers more money to spend."
+    "Tech stocks rose about 3% as a group, pulling the whole index higher.",
+    "CoreWeave's sales of $3.66 billion beat expectations, a good sign for AI spending.",
+    "Apple rose about 2% to a record and is now worth about $5.16 trillion."
    ],
-   "headline": "S&P 500 dips 0.4% as hot inflation raises odds of a Fed rate hike",
+   "headline": "S&P 500 jumps 1.3% as tech stocks bounce back on Wednesday",
    "market": true,
    "name": "S&P 500",
    "nextEvent": "October producer price report (PPI) on Friday, November 13, 2026",
    "order": 1,
-   "sentiment": "bearish",
+   "sentiment": "bullish",
    "sources": [
     {
-     "title": "THE CLOSING BELL: US stocks fall after a discouraging update on inflation",
-     "url": "https://www.cmg-plus.com/2026/11/10/the-closing-bell-us-stocks-fall-after-a-discouraging-update-on-inflation/",
-     "outlet": "Associated Press (via CMG Plus)",
-     "date": "Nov 10, 2026"
+     "title": "Stock Market Today (Nov. 11, 2026): Nasdaq, S&P 500 gain after CoreWeave earnings beat; Apple hits new record",
+     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-11-2026",
+     "outlet": "TheStreet",
+     "date": "Nov 11, 2026"
     },
     {
-     "title": "The Stock Market Today, November 10, 2026, Closed Lower on the Day BLS Data Show Core Prices Rising Again",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-10-2026",
-     "outlet": "StockTitan",
-     "date": "Nov 10, 2026"
+     "title": "S&P 500 Closes Up 1.3% as Tech Pulls the Market Higher",
+     "url": "https://247wallst.com/cards/tech-did-the-heavy-lifting-again-the-nasdaq-s-1-55-close-m-gspc-market-bell-01m766s5wqxj8egm37q8ks13gp",
+     "outlet": "24/7 Wall St.",
+     "date": "Nov 11, 2026"
     },
     {
-     "title": "Crypto & Finance market report, Tuesday, November 10, 2026",
-     "url": "https://tedpillows.substack.com/p/crypto-and-finance-market-report-f2c",
-     "outlet": "Ted Pillows",
-     "date": "Nov 10, 2026"
-    },
-    {
-     "title": "Crypto Daily Market Report – November 10, 2026",
-     "url": "https://www.kucoin.com/news/articles/crypto-daily-market-report-november-10-2026",
-     "outlet": "KuCoin News",
-     "date": "Nov 10, 2026"
-    },
-    {
-     "title": "Stock Market Today, Nov. 9: Markets Rally as Semiconductor Gains Lift Nasdaq",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/09/stock-market-today-nov-9-markets-rally-as-semiconductor-gains-lift-nasdaq/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 9, 2026"
+     "title": "Market Review: November 11, 2026",
+     "url": "https://investrade.com/market-review-november-11-2026/",
+     "outlet": "Investrade",
+     "date": "Nov 11, 2026"
     }
    ],
-   "summary": "On Tuesday, November 10, the S&P 500 fell about 0.4% after October's inflation report showed prices rising faster than expected. Core prices, which leave out food and gas, rose 0.3% for the third month in a row, and Fed Governor Waller said a big half-point rate hike in December should be considered. Nvidia fell about 6% and was the biggest drag on the index. The dip came one day after the S&P 500's biggest gain since April, when falling oil prices and a chip-stock bounce lifted every part of the market.",
+   "summary": "On Wednesday, November 11, the S&P 500 rose about 1.3% to around 7,619, winning back more than Tuesday's loss. Tech stocks led, with AI cloud company CoreWeave up about 24% after strong results and Apple hitting a record high. The day before, stocks fell after a report showed prices rising faster than expected, which raised the chance the Fed raises interest rates in December. Over the past two weeks, the market has swung up and down as investors watch inflation and interest rates.",
    "ticker": "SP500",
-   "updatedAt": "2026-11-10T23:03:47.990Z",
+   "updatedAt": "2026-11-11T23:07:08.861Z",
    "symbol": "AMEX:SPY",
-   "checkedAt": "2026-11-11T11:42:02.122Z"
+   "checkedAt": "2026-11-11T23:07:08.861Z"
   },
   {
    "bear": [
-    "Nvidia, one of the biggest Nasdaq companies, fell about 6% and has slid for about five weeks.",
-    "Microsoft fell about 3% during the day after Anthropic announced work tools that could compete with Office.",
-    "Fed officials hinted at a bigger-than-usual rate hike in December, and higher rates often hurt tech stocks the most."
+    "Baird cut its Nvidia price target to $200 from $500, and Morgan Stanley dropped it as a top pick.",
+    "Nvidia's board is investigating reports involving its CEO, which adds uncertainty.",
+    "Higher interest rates often hurt tech stocks the most, and a December Fed hike looks likely."
    ],
    "bull": [
-    "The Nasdaq jumped about 2.7% on Monday, so Tuesday's dip erased only part of that gain.",
-    "AMD held about flat on Tuesday even as other chip stocks fell.",
-    "Anthropic, the maker of the Claude AI assistant, filed to sell stock at a value of about $1.3 trillion, showing big interest in AI companies."
+    "CoreWeave raised its full-year sales goal to $13 billion to $13.3 billion, showing strong AI demand.",
+    "Nvidia bounced about 5% after two days of heavy selling.",
+    "Arm and Dell each rose about 12%, and Apple hit a new record."
    ],
-   "headline": "Nasdaq falls 0.7% as Nvidia drops about 6% and rate hike worries grow",
+   "headline": "Nasdaq leads with a 1.6% gain as Nvidia and AI stocks rebound",
    "market": true,
    "name": "Nasdaq",
    "nextEvent": "Nvidia's quarterly earnings report on Tuesday, November 17, 2026",
    "order": 2,
-   "sentiment": "bearish",
+   "sentiment": "bullish",
    "sources": [
     {
-     "title": "The Stock Market Today, November 10, 2026, Closed Lower on the Day BLS Data Show Core Prices Rising Again",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-10-2026",
-     "outlet": "StockTitan",
-     "date": "Nov 10, 2026"
+     "title": "Stock Market Today (Nov. 11, 2026): Nasdaq, S&P 500 gain after CoreWeave earnings beat; Apple hits new record",
+     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-11-2026",
+     "outlet": "TheStreet",
+     "date": "Nov 11, 2026"
     },
     {
-     "title": "THE CLOSING BELL: US stocks fall after a discouraging update on inflation",
-     "url": "https://www.cmg-plus.com/2026/11/10/the-closing-bell-us-stocks-fall-after-a-discouraging-update-on-inflation/",
-     "outlet": "Associated Press (via CMG Plus)",
-     "date": "Nov 10, 2026"
+     "title": "S&P 500 Closes Up 1.3% as Tech Pulls the Market Higher",
+     "url": "https://247wallst.com/cards/tech-did-the-heavy-lifting-again-the-nasdaq-s-1-55-close-m-gspc-market-bell-01m766s5wqxj8egm37q8ks13gp",
+     "outlet": "24/7 Wall St.",
+     "date": "Nov 11, 2026"
     },
     {
-     "title": "Crypto & Finance market report, Tuesday, November 10, 2026",
-     "url": "https://tedpillows.substack.com/p/crypto-and-finance-market-report-f2c",
-     "outlet": "Ted Pillows",
-     "date": "Nov 10, 2026"
-    },
-    {
-     "title": "Crypto Daily Market Report – November 10, 2026",
-     "url": "https://www.kucoin.com/news/articles/crypto-daily-market-report-november-10-2026",
-     "outlet": "KuCoin News",
-     "date": "Nov 10, 2026"
-    },
-    {
-     "title": "Stock Market Today, Nov. 9: Markets Rally as Semiconductor Gains Lift Nasdaq",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/09/stock-market-today-nov-9-markets-rally-as-semiconductor-gains-lift-nasdaq/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 9, 2026"
+     "title": "Market Review: November 11, 2026",
+     "url": "https://investrade.com/market-review-november-11-2026/",
+     "outlet": "Investrade",
+     "date": "Nov 11, 2026"
     }
    ],
-   "summary": "On Tuesday, November 10, the Nasdaq fell about 0.7%, more than the S&P 500 and the Dow. Nvidia dropped about 6% as its board's investigation into CEO Jensen Huang continued, and its value briefly fell below $4 trillion. A hotter-than-expected inflation report raised the chance the Fed hikes interest rates in December, which tends to hurt fast-growing tech stocks. On Monday the Nasdaq had jumped about 2.7% as chip stocks like AMD bounced back from a rough week for AI stocks.",
+   "summary": "On Wednesday, November 11, the Nasdaq rose about 1.6% to around 25,466, the biggest gain of the major indexes. Nvidia rose about 5% after a two-day drop that had wiped out more than $430 billion of its value, and CoreWeave jumped about 24% after beating sales forecasts. Memory chip makers like SanDisk (up about 13%) and computer maker Dell (up about 12%) also climbed. On Tuesday, the Nasdaq fell after a hot inflation report raised worries about higher interest rates.",
    "ticker": "NASDAQ",
-   "updatedAt": "2026-11-10T23:03:47.990Z",
+   "updatedAt": "2026-11-11T23:07:08.861Z",
    "symbol": "NASDAQ:QQQ",
-   "checkedAt": "2026-11-11T11:42:02.122Z"
+   "checkedAt": "2026-11-11T23:07:08.861Z"
   },
   {
    "bear": [
@@ -336,47 +312,47 @@
    "order": 5,
    "symbol": "COINBASE:BTCUSD",
    "sentiment": "bearish",
-   "headline": "Bitcoin drops to about $73,000, its lowest since August, after hot inflation data",
-   "summary": "On Tuesday, November 10, bitcoin fell about 2.6% to around $73,200 and dipped to about $72,900, its lowest price since August 20. A hotter-than-expected inflation report pushed up interest rates and the US dollar, which tends to hurt bitcoin. Investors also kept pulling money out of bitcoin funds, taking out about $1.08 billion over the five trading days through Monday. A popular fear-and-greed score for crypto sits at 32, in the \"fear\" zone.",
+   "headline": "Bitcoin steadies near $74,000 after touching a three-month low",
+   "summary": "On Wednesday, November 11, bitcoin traded around $73,800 to $74,500 after touching its lowest price in about three months overnight. It is down about 12% from a month ago and about 29% from a year ago. A hot inflation report on Tuesday raised the odds of a Fed rate hike in December, which tends to hurt riskier things like crypto. Bitcoin funds have also kept losing money, with about $1.48 billion pulled out so far in November.",
    "bull": [
-    "The company Strategy bought about 1,036 more bitcoin last week and now holds about 850,000.",
-    "Bitcoin is still worth about $1.3 trillion and makes up nearly 60% of the whole crypto market.",
-    "An NYSE-linked platform plans to use crypto technology to trade tokenized stocks and funds, a sign of growing interest from big firms."
+    "Bitcoin bounced back late Wednesday, up about 1.2% from a day earlier.",
+    "Bitcoin's share of the whole crypto market rose toward 61%, showing it is holding up better than other coins.",
+    "Some experts say getting back above $78,000 to $80,000 would make a recovery look stronger."
    ],
    "bear": [
-    "Bitcoin funds traded on the stock market lost about $1.08 billion over five trading days.",
-    "Traders now expect the Fed to raise interest rates in December, which usually hurts riskier things like crypto.",
-    "Some traders say that if bitcoin closes below its August low near $73,000, it could fall toward $70,000."
+    "Bitcoin funds lost about $1.48 billion over six November trading days.",
+    "Miner MARA sold about 13,600 bitcoin over six weeks and plans to sell more.",
+    "A crypto fear-and-greed score sat at 31, in the \"fear\" zone, and experts call $73,000 a key level to watch."
    ],
    "nextEvent": "October producer price report (PPI) on Friday, November 13, 2026",
    "sources": [
     {
-     "title": "Crypto & Finance market report, Tuesday, November 10, 2026",
-     "url": "https://tedpillows.substack.com/p/crypto-and-finance-market-report-f2c",
-     "outlet": "Ted Pillows",
-     "date": "Nov 10, 2026"
+     "title": "Current price of Bitcoin for November 11, 2026",
+     "url": "https://fortune.com/article/price-of-bitcoin-11-11-2026/",
+     "outlet": "Fortune",
+     "date": "Nov 11, 2026"
     },
     {
-     "title": "Crypto Daily Market Report – November 10, 2026",
-     "url": "https://www.kucoin.com/news/articles/crypto-daily-market-report-november-10-2026",
-     "outlet": "KuCoin News",
-     "date": "Nov 10, 2026"
+     "title": "Markets Today - November 11, 2026",
+     "url": "https://nexo.com/blog/markets-today-november-11",
+     "outlet": "Nexo",
+     "date": "Nov 11, 2026"
     },
     {
-     "title": "Crypto News Nov 10: BTC Falls, Market Cautious Ahead of US CPI Report",
-     "url": "https://www.coingabbar.com/en/crypto-news-nov-10-btc-eth-dacity-cpi-report-fed-rate-hike",
-     "outlet": "Coin Gabbar",
-     "date": "Nov 10, 2026"
+     "title": "Crypto Roundup — Key Highlights Date: November 11, 2026",
+     "url": "https://www.kucoin.com/news/insight/BTC/6af4a925777a44000755191a",
+     "outlet": "KuCoin",
+     "date": "Nov 11, 2026"
     },
     {
-     "title": "Crypto Market Today, Nov. 9: Bitcoin and Ethereum Lag as Nasdaq Surges Nearly 3%",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/09/crypto-market-today-nov-9-bitcoin-and-ethereum-lag-as-nasdaq-surges-nearly-3/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 9, 2026"
+     "title": "Bitcoin (BTC) News Today: Why BTC Is Down – 11 November 2026",
+     "url": "https://coinstats.app/ai/a/latest-news-for-bitcoin",
+     "outlet": "CoinStats",
+     "date": "Nov 11, 2026"
     }
    ],
-   "updatedAt": "2026-11-10T23:03:47.989Z",
-   "checkedAt": "2026-11-11T11:42:02.122Z"
+   "updatedAt": "2026-11-11T23:07:08.859Z",
+   "checkedAt": "2026-11-11T23:07:08.859Z"
   },
   {
    "ticker": "ETH",
@@ -386,47 +362,41 @@
    "order": 6,
    "symbol": "COINBASE:ETHUSD",
    "sentiment": "bearish",
-   "headline": "Ether falls about 5% to near $2,030 as money keeps leaving ether funds",
-   "summary": "On Tuesday, November 10, ether fell about 5.2% to around $2,030, doing worse than bitcoin. A hotter-than-expected inflation report raised the odds of a Fed rate hike, which hurt crypto prices. Ether funds lost about $185 million on Monday, their worst day of November so far, and about $410 million over five trading days. Ether is about 16% lower than a month ago and about 41% lower than a year ago.",
+   "headline": "Ether hovers near $2,050 to $2,090 as money keeps leaving ether funds",
+   "summary": "On Wednesday, November 11, ether traded around $2,050 to $2,090, after falling about 5% on Tuesday. It is about 18% lower than a month ago and about 40% lower than a year ago. Ether funds have lost about $550 million so far in November, led by BlackRock's fund. A hot inflation report raised the chance of a Fed rate hike in December, which tends to hurt crypto prices.",
    "bull": [
-    "The company BitMine bought another 9,587 ether and now owns about 6.07 million, about 5% of all ether.",
-    "BitMine has locked up about 86% of its ether in staking, where owners earn rewards for helping run the network.",
-    "Some experts say ether is close to \"oversold,\" meaning it has dropped so fast that a bounce is possible."
+    "Ether rose about 1.5% to 2% late Wednesday from a day earlier.",
+    "The company BitMine bought about 9,500 more ether last week and owns about 6 million.",
+    "About 1 million ether is waiting to be staked, where owners lock it up to help run the network and earn rewards."
    ],
    "bear": [
-    "Ether funds lost about $410 million over five trading days, led by BlackRock's fund.",
-    "Ether is weaker than bitcoin, with the ether-to-bitcoin price ratio falling to 0.0277 from 0.0285.",
-    "Traders expect the Fed to raise interest rates in December, which usually hurts riskier things like crypto."
+    "Ether funds lost about $550 million in November through Monday.",
+    "BitMine says it will stop buying soon, since it is within about 35,000 ether of its own limit.",
+    "Ether is down about 40% from a year ago, doing worse than bitcoin."
    ],
    "nextEvent": "October producer price report (PPI) on Friday, November 13, 2026",
    "sources": [
     {
-     "title": "Crypto & Finance market report, Tuesday, November 10, 2026",
-     "url": "https://tedpillows.substack.com/p/crypto-and-finance-market-report-f2c",
-     "outlet": "Ted Pillows",
-     "date": "Nov 10, 2026"
-    },
-    {
-     "title": "Ethereum price falls despite BitMine buying another 9,587 ETH",
-     "url": "https://crypto.news/why-is-ethereum-price-down-today-november-10-2026/",
-     "outlet": "crypto.news",
-     "date": "Nov 10, 2026"
-    },
-    {
-     "title": "Current price of Ethereum for November 10, 2026",
-     "url": "https://fortune.com/article/price-of-ethereum-11-10-2026",
+     "title": "Current price of Ethereum for November 11, 2026",
+     "url": "https://fortune.com/article/price-of-ethereum-11-11-2026/",
      "outlet": "Fortune",
-     "date": "Nov 10, 2026"
+     "date": "Nov 11, 2026"
     },
     {
-     "title": "Crypto News Nov 10: BTC Falls, Market Cautious Ahead of US CPI Report",
-     "url": "https://www.coingabbar.com/en/crypto-news-nov-10-btc-eth-dacity-cpi-report-fed-rate-hike",
-     "outlet": "Coin Gabbar",
-     "date": "Nov 10, 2026"
+     "title": "Markets Today - November 11, 2026",
+     "url": "https://nexo.com/blog/markets-today-november-11",
+     "outlet": "Nexo",
+     "date": "Nov 11, 2026"
+    },
+    {
+     "title": "Crypto Roundup — Key Highlights Date: November 11, 2026",
+     "url": "https://www.kucoin.com/news/insight/BTC/6af4a925777a44000755191a",
+     "outlet": "KuCoin",
+     "date": "Nov 11, 2026"
     }
    ],
-   "updatedAt": "2026-11-10T23:03:47.990Z",
-   "checkedAt": "2026-11-11T11:42:02.122Z"
+   "updatedAt": "2026-11-11T23:07:08.861Z",
+   "checkedAt": "2026-11-11T23:07:08.861Z"
   },
   {
    "ticker": "MGM",
@@ -476,19 +446,19 @@
    "order": 3,
    "symbol": "AMEX:DIA",
    "sentiment": "neutral",
-   "headline": "Dow rises 0.5% on Wednesday after a dip on hot inflation news",
-   "summary": "On Wednesday, November 11, the Dow rose about 0.5% to around 52,486, a smaller gain than the S&P 500 and the Nasdaq. Apple, one of the 30 big companies in the Dow, hit a new record high and is now worth about $5.16 trillion. The day before, the Dow fell about 0.3% after a report showed prices rising faster than expected, which raised the chance the Federal Reserve raises interest rates in December. Higher interest rates make borrowing more expensive for companies and families.",
+   "headline": "Dow gains 0.5% as Apple hits a record, but trails the tech-heavy Nasdaq",
+   "summary": "On Wednesday, November 11, the Dow rose about 0.5% to around 52,486. The Dow tracks 30 big, well-known companies, so it gained less than the Nasdaq, which has more tech stocks. Apple, one of the 30, rose about 2% to a record high, but health care and everyday goods companies, which are a big part of the Dow, fell. The day before, the Dow slipped after a hot inflation report raised the chance of a Fed rate hike.",
    "bull": [
-    "The Dow gained about 0.5% on Wednesday, winning back Tuesday's loss.",
-    "Apple rose about 2% to a new record, up about 31% this year.",
-    "Tech stocks bounced back after strong results from AI company CoreWeave lifted the mood."
+    "Apple rose about 2% to a record and is up about 31% this year.",
+    "The Dow won back Tuesday's loss with a gain of about 255 points.",
+    "Industrial companies, a big part of the Dow, rose as a group."
    ],
    "bear": [
-    "Core prices (not counting food and gas) rose 0.3% in October for the third month in a row, more than hoped.",
-    "Fed officials Waller and Logan said more rate hikes may be needed, and a December hike now looks almost certain to traders.",
-    "The 10-year Treasury rate closed above 5% on Tuesday, which can pull money away from stocks."
+    "Health care stocks fell about 0.8% early in the day, holding the Dow back.",
+    "Prices are rising faster than hoped, and a December Fed rate hike looks almost certain.",
+    "Higher interest rates make borrowing more expensive for big companies and their customers."
    ],
-   "nextEvent": "Nvidia's quarterly earnings report on Tuesday, November 17, 2026",
+   "nextEvent": "October producer price report (PPI) on Friday, November 13, 2026",
    "sources": [
     {
      "title": "Stock Market Today (Nov. 11, 2026): Nasdaq, S&P 500 gain after CoreWeave earnings beat; Apple hits new record",
@@ -497,26 +467,20 @@
      "date": "Nov 11, 2026"
     },
     {
-     "title": "Stock Market Today, November 11, 2026: Nasdaq Leads Veterans Day Rally as AI Shares Rebound",
-     "url": "https://vistapglobal.com/stock-market-today-november-11-2026-nasdaq-leads-veterans-day-rally-as-ai-shares-rebound-ant-be-cost-crwv-eprx-googl-modd-nvda-ser-spcx/",
-     "outlet": "Vista Partners",
+     "title": "Market Review: November 11, 2026",
+     "url": "https://investrade.com/market-review-november-11-2026/",
+     "outlet": "Investrade",
      "date": "Nov 11, 2026"
     },
     {
-     "title": "THE CLOSING BELL: US stocks fall after a discouraging update on inflation",
-     "url": "https://www.cmg-plus.com/2026/11/10/the-closing-bell-us-stocks-fall-after-a-discouraging-update-on-inflation/",
-     "outlet": "Associated Press (via CMG Plus)",
-     "date": "Nov 10, 2026"
-    },
-    {
-     "title": "The Stock Market Today, November 10, 2026, Closed Lower on the Day BLS Data Show Core Prices Rising Again",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-10-2026",
-     "outlet": "StockTitan",
-     "date": "Nov 10, 2026"
+     "title": "S&P 500 Closes Up 1.3% as Tech Pulls the Market Higher",
+     "url": "https://247wallst.com/cards/tech-did-the-heavy-lifting-again-the-nasdaq-s-1-55-close-m-gspc-market-bell-01m766s5wqxj8egm37q8ks13gp",
+     "outlet": "24/7 Wall St.",
+     "date": "Nov 11, 2026"
     }
    ],
-   "checkedAt": "2026-11-11T22:36:31.673Z",
-   "updatedAt": "2026-11-11T22:36:31.673Z"
+   "checkedAt": "2026-11-11T23:07:08.861Z",
+   "updatedAt": "2026-11-11T23:07:08.861Z"
   },
   {
    "ticker": "RUT",
@@ -525,19 +489,19 @@
    "order": 4,
    "symbol": "AMEX:IWM",
    "sentiment": "neutral",
-   "headline": "Small companies join Wednesday's rally as the Russell 2000 gains 0.9%",
-   "summary": "On Wednesday, November 11, the Russell 2000, which tracks about 2,000 smaller US companies, rose about 0.9% to around 2,846. It started the day down about 0.7% but turned higher as tech, energy and factory stocks gained. The day before, stocks fell after a report showed prices rising faster than expected, and the 10-year Treasury rate climbed above 5%. Smaller companies often borrow more, so higher interest rates can hit them harder than big companies.",
+   "headline": "Small companies rise 0.9% as the Russell 2000 joins Wednesday's rally",
+   "summary": "On Wednesday, November 11, the Russell 2000, which tracks about 2,000 smaller US companies, rose about 0.9% to around 2,846. It gained more than the Dow but less than the S&P 500 and Nasdaq, as small tech, energy and factory stocks helped. Smaller companies often borrow more money, so they can be hurt more when interest rates rise. Tuesday's hot inflation report pushed the 2-year Treasury rate up about 0.2 points to 4.75%, a worry for these companies.",
    "bull": [
-    "The Russell 2000 gained about 0.9% on Wednesday, more than the Dow.",
-    "Small-company stocks in tech, energy and industry led the comeback during the day.",
-    "Some small companies jumped on Tuesday, like Ameresco up about 23% and ZipRecruiter up about 54%."
+    "The Russell 2000 gained about 0.9%, beating the Dow's 0.5% rise.",
+    "Energy and industrial stocks, common among smaller companies, rose on the day.",
+    "Oil prices near $87 a barrel are well below the $100+ seen before the election, which helps many smaller businesses."
    ],
    "bear": [
-    "Core prices rose 0.3% in October for the third month in a row, raising the odds of a Fed rate hike in December.",
-    "Higher interest rates make loans more expensive, which hurts smaller companies that borrow a lot.",
-    "Homebuilders like Lennar and D.R. Horton fell 3% to 4% on Tuesday as mortgage rates looked set to stay high."
+    "A December Fed rate hike looks almost certain, and higher rates make loans more expensive for small companies.",
+    "The 2-year Treasury rate jumped to 4.75% on Tuesday, a sign borrowing costs are rising.",
+    "A fear-and-greed gauge of investor mood sat at 37, in the \"fear\" zone."
    ],
-   "nextEvent": "The Federal Reserve's December meeting, where it may raise interest rates",
+   "nextEvent": "The Federal Reserve's next interest rate decision on December 9, 2026",
    "sources": [
     {
      "title": "Stock Market Today (Nov. 11, 2026): Nasdaq, S&P 500 gain after CoreWeave earnings beat; Apple hits new record",
@@ -546,51 +510,45 @@
      "date": "Nov 11, 2026"
     },
     {
-     "title": "Stock Market Today, November 11, 2026: Nasdaq Leads Veterans Day Rally as AI Shares Rebound",
-     "url": "https://vistapglobal.com/stock-market-today-november-11-2026-nasdaq-leads-veterans-day-rally-as-ai-shares-rebound-ant-be-cost-crwv-eprx-googl-modd-nvda-ser-spcx/",
-     "outlet": "Vista Partners",
+     "title": "Market Review: November 11, 2026",
+     "url": "https://investrade.com/market-review-november-11-2026/",
+     "outlet": "Investrade",
      "date": "Nov 11, 2026"
     },
     {
-     "title": "The Stock Market Today, November 10, 2026, Closed Lower on the Day BLS Data Show Core Prices Rising Again",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-10-2026",
-     "outlet": "StockTitan",
-     "date": "Nov 10, 2026"
-    },
-    {
-     "title": "THE CLOSING BELL: US stocks fall after a discouraging update on inflation",
-     "url": "https://www.cmg-plus.com/2026/11/10/the-closing-bell-us-stocks-fall-after-a-discouraging-update-on-inflation/",
-     "outlet": "Associated Press (via CMG Plus)",
-     "date": "Nov 10, 2026"
+     "title": "S&P 500 Closes Up 1.3% as Tech Pulls the Market Higher",
+     "url": "https://247wallst.com/cards/tech-did-the-heavy-lifting-again-the-nasdaq-s-1-55-close-m-gspc-market-bell-01m766s5wqxj8egm37q8ks13gp",
+     "outlet": "24/7 Wall St.",
+     "date": "Nov 11, 2026"
     }
    ],
-   "checkedAt": "2026-11-11T22:36:31.675Z",
-   "updatedAt": "2026-11-11T22:36:31.675Z"
+   "checkedAt": "2026-11-11T23:07:08.861Z",
+   "updatedAt": "2026-11-11T23:07:08.861Z"
   }
  ],
  "market": {
-  "date": "2026-11-10",
-  "why": "On Tuesday, November 10, stocks slipped after a report showed prices rising faster than expected, with core prices (not counting food and gas) up 0.3% in October for the third month in a row. Fed officials said they may need to raise interest rates in December, maybe by a big half point, and the 10-year Treasury rate topped 5%. Nvidia fell about 6% as its board looks into its CEO, dragging the Nasdaq down most.",
+  "date": "2026-11-11",
+  "why": "On Wednesday, November 11, stocks bounced back as tech companies led the way. AI cloud company CoreWeave jumped about 24% after strong sales, Nvidia rose about 5% after two bad days, and Apple hit a record high, which lifted the Nasdaq most. The Dow, with its 30 big companies, and the Russell 2000 of smaller companies gained less, as worries about a possible Fed interest rate hike in December stayed in the background.",
   "sources": [
    {
-    "title": "THE CLOSING BELL: US stocks fall after a discouraging update on inflation",
-    "url": "https://www.cmg-plus.com/2026/11/10/the-closing-bell-us-stocks-fall-after-a-discouraging-update-on-inflation/",
-    "outlet": "Associated Press (via CMG Plus)",
-    "date": "Nov 10, 2026"
+    "title": "Stock Market Today (Nov. 11, 2026): Nasdaq, S&P 500 gain after CoreWeave earnings beat; Apple hits new record",
+    "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-11-2026",
+    "outlet": "TheStreet",
+    "date": "Nov 11, 2026"
    },
    {
-    "title": "The Stock Market Today, November 10, 2026, Closed Lower on the Day BLS Data Show Core Prices Rising Again",
-    "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-10-2026",
-    "outlet": "StockTitan",
-    "date": "Nov 10, 2026"
+    "title": "S&P 500 Closes Up 1.3% as Tech Pulls the Market Higher",
+    "url": "https://247wallst.com/cards/tech-did-the-heavy-lifting-again-the-nasdaq-s-1-55-close-m-gspc-market-bell-01m766s5wqxj8egm37q8ks13gp",
+    "outlet": "24/7 Wall St.",
+    "date": "Nov 11, 2026"
    },
    {
-    "title": "Crypto & Finance market report, Tuesday, November 10, 2026",
-    "url": "https://tedpillows.substack.com/p/crypto-and-finance-market-report-f2c",
-    "outlet": "Ted Pillows",
-    "date": "Nov 10, 2026"
+    "title": "Market Review: November 11, 2026",
+    "url": "https://investrade.com/market-review-november-11-2026/",
+    "outlet": "Investrade",
+    "date": "Nov 11, 2026"
    }
   ],
-  "updatedAt": "2026-11-10T23:03:47.944Z"
+  "updatedAt": "2026-11-11T23:06:38.833Z"
  }
 }
