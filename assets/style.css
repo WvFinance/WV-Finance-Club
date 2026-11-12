@@ -673,3 +673,7 @@ tr.flash td{background:var(--down-soft);transition:background .4s}
 .fdmost li{grid-template-columns:44px minmax(0,1fr) auto}
 .ptlabel .opt{font-weight:400;color:var(--muted)}
 @media (max-width:600px){.fdcard{grid-template-columns:36px minmax(0,1fr);gap:10px;padding:14px}.fdav{width:36px;height:36px;font-size:12px}}
+/* News tab: a long line (like a long "coming up" event in Upcoming) must not stretch the left column under the brief. */
+.news-left,.nlist,.upcoming,.uplist{grid-template-columns:minmax(0,1fr)}
+.uprow summary{overflow:hidden}
+.nitem .h{overflow-wrap:anywhere}
