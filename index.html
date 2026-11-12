@@ -6,8 +6,15 @@
 <title>Simple Street</title>
 <meta name="description" content="Simple Street: Wall Street simplified. Paper trading, stock research and plain-English news briefs, on your own or with your class.">
 <link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b1530">
+<link rel="apple-touch-icon" href="assets/app/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Simple Street">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="assets/fonts.css?v=2026111201">
-<link rel="stylesheet" href="assets/style.css?v=2026111202">
+<link rel="stylesheet" href="assets/style.css?v=2026111301">
 <script>
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
@@ -448,5 +455,9 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
 <script src="assets/feed.js?v=2026111201"></script>
 <script src="assets/staff.js?v=2026111101"></script>
 <script src="assets/users.js?v=2026111101"></script>
+<script>
+// Lets phones and Chromebooks install Simple Street as an app.
+if("serviceWorker" in navigator&&location.protocol==="https:")addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+</script>
 </body>
 </html>
