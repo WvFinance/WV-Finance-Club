@@ -3,7 +3,8 @@
 // which reads the official House and Senate filings. Bargo's terms let us show it to our users with a
 // visible "Data via Bargo" link and cache it for speed, but not store or republish the raw records,
 // so it is only kept in this server's short-lived cache, never saved to the repository.
-// Optional secret BARGO_API_KEY raises the free limit (100 rows a call without a key).
+// Needs the secret BARGO_API_KEY (a free key from bargo.ai/free-apis/dash). Without a key Bargo counts
+// calls by internet address, and this server shares its addresses with other Cloudflare sites, so it gets "429 too many".
 const SRC = "https://www.bargo.ai/free-apis/congress/v1/trades";
 const FRESH = 6 * 60 * 60;          // ask Bargo again after 6 hours
 const KEEP = 3 * 24 * 60 * 60;      // if Bargo is down, keep showing the last list for up to 3 days

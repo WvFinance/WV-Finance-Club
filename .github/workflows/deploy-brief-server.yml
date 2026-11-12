@@ -20,6 +20,7 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       SUGGEST_ADMIN: ${{ secrets.SUGGEST_ADMIN }}   # optional: the Suggestions tab leader password
+      BARGO_API_KEY: ${{ secrets.BARGO_API_KEY }}   # free key from bargo.ai/free-apis/dash: Congress trades on the Feed page
     steps:
       - uses: actions/checkout@v5
       - name: Check secrets
@@ -68,6 +69,9 @@ jobs:
       - name: Save the Suggestions leader password as a Cloudflare secret
         if: env.SKIP != '1' && env.SUGGEST_ADMIN != ''
         run: printf '%s' "$SUGGEST_ADMIN" | npx wrangler secret put SUGGEST_ADMIN
+      - name: Save the Bargo key (Congress trades) as a Cloudflare secret
+        if: env.SKIP != '1' && env.BARGO_API_KEY != ''
+        run: printf '%s' "$BARGO_API_KEY" | npx wrangler secret put BARGO_API_KEY
       - name: Remove the old Claude key from Cloudflare
         if: env.SKIP != '1'
         run: yes | npx wrangler secret delete ANTHROPIC_API_KEY || true
