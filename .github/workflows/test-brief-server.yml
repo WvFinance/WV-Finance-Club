@@ -29,3 +29,9 @@ jobs:
         run: |
           r=$(curl -sS -m 60 "https://wvfc-brief-server.wvfinance.workers.dev/news-check?symbol=${{ inputs.symbol }}")
           echo "$r"; echo "::notice title=News feeds::$r"
+      - name: Check the Congress trades for the Feed page
+        if: always()
+        run: |
+          code=$(curl -sS -m 60 -o congress.json -w '%{http_code}' -H "Origin: https://wvfinance.github.io" "https://wvfc-brief-server.wvfinance.workers.dev/congress")
+          r=$(node -e 'const j=JSON.parse(require("fs").readFileSync("congress.json","utf8"));const t=j.trades||[];console.log(j.error?"Error: "+j.error+(j.reason?" ("+j.reason+")":""):`${t.length} trades, newest reported ${t.map(x=>x.reported).sort().pop()}, checked ${j.checked}${j.stale?" (old copy)":""}`)' 2>/dev/null || echo "Unreadable reply")
+          echo "HTTP $code: $r"; echo "::notice title=Congress trades::HTTP $code: $r"

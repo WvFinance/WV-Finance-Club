@@ -5,6 +5,7 @@ import { writeBrief } from "./gemini.js";
 import { checkFeeds } from "./news.js";
 import { handleSuggest } from "./suggest.js";
 import { handleSupabase } from "./proxy.js";
+import { handleCongress } from "./congress.js";
 
 const DAY = 24 * 60 * 60;
 
@@ -49,6 +50,8 @@ export default {
     if (request.method === "OPTIONS") return new Response(null, { headers });
     const suggest = await handleSuggest(request, env, url, json, headers);
     if (suggest) return suggest;
+    const congress = await handleCongress(request, env, url, json, headers);
+    if (congress) return congress;
     if (url.pathname === "/news-check") {
       // Test page for the Test brief server workflow. No AI, but it calls the SEC and the
       // news sites, so it's capped per day to keep the server in good standing with them.

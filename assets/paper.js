@@ -319,6 +319,7 @@ function formChanged(){
   $("#pt-stop-box").hidden=!(k==="stop"||k==="stop_limit");
   $("#pt-limit-box").hidden=!(k==="limit"||k==="stop_limit");
   $("#pt-trail-box").hidden=k!=="trailing_stop";
+  $("#pt-why-box").hidden=k!=="market";
   $("#pt-help").textContent=help();
   const go=$("#pt-go");go.textContent=k==="market"?SIDE[side()]+" now":"Place "+KIND[k].toLowerCase()+" order";
   go.className="btn "+(side()==="sell"||side()==="short"?"sell":"primary");
@@ -349,7 +350,10 @@ $("#pt-form").addEventListener("submit",async e=>{e.preventDefault();
   busy=true;const b=$("#pt-go"),label=b.textContent;b.disabled=true;b.textContent="…";
   try{
     if(k==="market"){const{data,error}=await db.rpc("paper_trade",{sym,side:sd,qty});if(error)throw error;
-      toast(`${DID[data.side]} ${+data.shares} ${data.symbol} at ${fmt$(data.price)}`);}
+      toast(`${DID[data.side]} ${+data.shares} ${data.symbol} at ${fmt$(data.price)}`);
+      // The reason goes on the Feed (supabase/feed.sql). If that isn't set up yet, the trade still counts.
+      const why=$("#pt-why").value.trim();if(why&&data.id){await db.rpc("feed_set_why",{tid:data.id,txt:why});}
+      $("#pt-why").value="";document.dispatchEvent(new CustomEvent("wvfc:traded"));}
     else{const{data,error}=await db.rpc("paper_place_order",args);if(error)throw error;
       toast(data.status==="filled"?`Your ${KIND[k].toLowerCase()} order went through right away`:data.status==="failed"?`Your order didn't go through: ${data.note}`:`Order placed. It will wait until ${data.symbol} reaches your price.`);}
     qtyIn.value="";$("#pt-limit").value="";$("#pt-stop").value="";$("#pt-trail").value="";$("#pt-est").textContent="";await load();}
@@ -374,11 +378,13 @@ function renderTradeBar(){const bar=$("#s-trade");if(!bar)return;const sym=searc
   sell.disabled=!(n>0);sell.title=n>0?"":`You can only sell stock you own.`;
 }
 let pendingFill=null;
-function tradeFromSearch(sd){const sym=searchSym();if(!sym)return;
+function tradeFromSearch(sd,s){const sym=s||searchSym();if(!sym)return;
   if(classTrader()){document.dispatchEvent(new CustomEvent("wvfc:classtrade",{detail:{sym,side:sd}}));return;}
   goTrade();if(db&&G.acct)fill(sym,"",sd);else{symIn.value=sym;pendingFill=[sym,sd];}
   setTimeout(()=>{if(!qtyIn.closest("[hidden]"))qtyIn.focus({preventScroll:true});},400);}
 $("#s-buy").addEventListener("click",()=>tradeFromSearch("buy"));
+// The Feed's "Practice-buy" button opens the order form with that stock filled in.
+window.WVFC_PAPER={trade:(sym,sd)=>tradeFromSearch(sd||"buy",sym)};
 $("#s-sell").addEventListener("click",()=>tradeFromSearch("sell"));
 document.addEventListener("wvfc:stock",renderTradeBar);
 document.addEventListener("wvfc:tab",e=>{if(e.detail==="search")renderTradeBar();});
