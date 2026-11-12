@@ -677,3 +677,5 @@ tr.flash td{background:var(--down-soft);transition:background .4s}
 .news-left,.nlist,.upcoming,.uplist{grid-template-columns:minmax(0,1fr)}
 .uprow summary{overflow:hidden}
 .nitem .h{overflow-wrap:anywhere}
+/* Installed app: keep the phone's status bar area navy so the clock and battery stay readable */
+@media (display-mode:standalone){body::before{content:"";position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:#0b1530;z-index:1000}}
