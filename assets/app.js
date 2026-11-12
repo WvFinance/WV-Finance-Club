@@ -40,7 +40,7 @@ const S={livePx:{},schools:[],school:null,picks:[],briefs:[],quotes:{},prices:{d
 try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="string");}catch(e){S.watch=[];}
 
 /* ---------- Tabs ---------- */
-const TABS=["portfolio","mine","trade","search","news","district","staff","users"].filter(t=>document.getElementById(t));const rendered={};
+const TABS=["portfolio","mine","feed","trade","search","news","district","staff","users"].filter(t=>document.getElementById(t));const rendered={};
 const PVIEWS=["overview","positions","sectors","history","classnews","ideas"];let S_view="overview";
 const DVIEWS=["dschools","dpeople","dweek"];let D_view="dschools";
 function showTab(name,push){
@@ -92,7 +92,7 @@ async function quote(tk){
 // Our own moving ticker (TradingView's tape often sat still). Index and crypto numbers are the last
 // daily close from data/prices.json; stock prices are live from Paper Trading's price lookup once you're
 // logged in, and the last close before that.
-const TAPE_IDX=[["^GSPC","S&P 500","FOREXCOM:SPXUSD"],["^IXIC","Nasdaq","NASDAQ:IXIC"],["^DJI","Dow","FOREXCOM:DJI"],["BTC","Bitcoin","COINBASE:BTCUSD"],["ETH","Ethereum","COINBASE:ETHUSD"]];
+const TAPE_IDX=[["^GSPC","S&P 500","FOREXCOM:SPXUSD"],["^IXIC","Nasdaq","NASDAQ:IXIC"],["^DJI","Dow","FOREXCOM:DJI"],["^RUT","Russell 2000","TVC:RUT"],["BTC","Bitcoin","COINBASE:BTCUSD"],["ETH","Ethereum","COINBASE:ETHUSD"]];
 const TAPE_FILL=["AAPL","NVDA","MSFT","AMZN","GOOGL","META","TSLA","JPM","XOM","JNJ","COST","KO"];
 const tapeLive={};
 function lastTwo(tk){const c=S.prices.closes&&S.prices.closes[tk];if(!c)return null;let last=null,prev=null;
@@ -295,7 +295,7 @@ function renderBreakdown(){
 }
 /* ---------- Market today, upcoming events and weekly recap ---------- */
 // The real indexes (the numbers on the news); their index funds fill in if an index is missing.
-const MKT=[["^GSPC","SPY","S&P 500"],["^IXIC","QQQ","Nasdaq"],["^DJI","DIA","Dow"]];
+const MKT=[["^GSPC","SPY","S&P 500"],["^IXIC","QQQ","Nasdaq"],["^DJI","DIA","Dow"],["^RUT","IWM","Russell 2000"]];
 function moveOver(tk,back,end){const d=S.prices.dates||[];const e=end==null?d.length-1:end;if(e-back<0)return null;const a=closeOn(tk,d[e]),b=closeOn(tk,d[e-back]);return a!=null&&b?a/b-1:null;}
 function marketDay(){const d=S.prices.dates||[];const last=d[d.length-1];if(!last)return null;
   const isToday=last===new Date().toLocaleDateString("en-CA",{timeZone:"America/New_York"});
@@ -469,7 +469,7 @@ function newsBoard(cls){
   id("news-legend").replaceChildren(...["bullish","neutral","bearish"].map(k=>el("span",{},el("i",{style:`background:var(--${k==="bullish"?"up":k==="bearish"?"down":"flat"})`}),`${SENT[k][0]} ${counts[k]}`)));
   if(!S[key]||!list.some(n=>n.ticker===S[key]))S[key]=list[0].ticker;
   const mk=list.filter(n=>n.market).length,sk=list.length-mk;const label=t=>el("div",{class:"eyebrow",style:"margin:6px 2px 0",text:t});
-  // Groups: the market (S&P 500, Nasdaq), crypto (Bitcoin, Ethereum), then the member's own stocks.
+  // Groups: the market (S&P 500, Nasdaq, Dow, Russell 2000), crypto (Bitcoin, Ethereum), then the member's own stocks.
   list.forEach((n,i)=>{const prev=list[i-1];if(!cls){if(i===0&&mk&&!n.crypto)nl.append(label("The market"));if(n.crypto&&!(prev&&prev.crypto))nl.append(label("Crypto"));if(i===mk&&sk)nl.append(label("My portfolio"));}
     else if(i===0||secOf(n.ticker)!==secOf(prev.ticker))nl.append(label(secOf(n.ticker)||"Other"));
     nl.append(el("button",{class:"nitem","aria-current":String(n.ticker===S[key]),onclick:()=>{S[key]=n.ticker;newsBoard(cls);cls?renderClassFeed():renderNewsFeed();if(innerWidth<820)br.scrollIntoView({behavior:"smooth",block:"start"});}},el("span",{class:"t",text:n.market?n.name:n.ticker}),sentiPill(n.sentiment),el("span",{class:"h",text:n.headline||""})));});

@@ -93,11 +93,11 @@ def save_owned():
 def main():
     save_owned()
     picks = all_picks() + site_picks()
-    # QQQ and DIA track the Nasdaq 100 and the Dow for the "Market today" box.
-    tickers = sorted({p["ticker"].upper() for p in picks if p.get("ticker")} | {"SPY", "QQQ", "DIA"})
+    # QQQ, DIA and IWM track the Nasdaq 100, the Dow and the Russell 2000 for the "Market today" box.
+    tickers = sorted({p["ticker"].upper() for p in picks if p.get("ticker")} | {"SPY", "QQQ", "DIA", "IWM"})
     # The real indexes for the "Market today" box, so its numbers match the news:
-    # ^GSPC = S&P 500, ^IXIC = Nasdaq Composite, ^DJI = Dow Jones.
-    tickers += ["^GSPC", "^IXIC", "^DJI"]
+    # ^GSPC = S&P 500, ^IXIC = Nasdaq Composite, ^DJI = Dow Jones, ^RUT = Russell 2000 (smaller companies).
+    tickers += ["^GSPC", "^IXIC", "^DJI", "^RUT"]
     # Popular stocks and crypto for the moving ticker across the top of the site (assets/app.js TAPE_FILL).
     tape = ["AAPL", "NVDA", "MSFT", "AMZN", "GOOGL", "META", "TSLA", "JPM", "XOM", "JNJ", "COST", "KO", "BTC", "ETH"]
     tickers += [t for t in tape if t not in tickers]

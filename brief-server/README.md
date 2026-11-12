@@ -33,4 +33,4 @@ The API key lives only in Cloudflare's secret storage. Never put it in this repo
 
 ## Daily portfolio briefs
 
-The S&P 500, Nasdaq and portfolio stock briefs in `data/news.json` are written for free every weekday morning by a scheduled Claude task, using `scripts/morning-briefs.mjs`. `scripts/refresh-news.mjs` is an old paid backup: the **Refresh news briefs** workflow runs it only when started by hand, and it needs an `ANTHROPIC_API_KEY` secret (Claude API, about 55 cents a brief).
+The S&P 500, Nasdaq, Dow, Russell 2000 and portfolio stock briefs in `data/news.json` are written for free every weekday morning by a scheduled Claude task, using `scripts/morning-briefs.mjs`. `scripts/refresh-news.mjs` is an old paid backup: the **Refresh news briefs** workflow runs it only when started by hand, and it needs an `ANTHROPIC_API_KEY` secret (Claude API, about 55 cents a brief).

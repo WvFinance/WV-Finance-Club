@@ -7,7 +7,7 @@
 <meta name="description" content="Simple Street: Wall Street simplified. Paper trading, stock research and plain-English news briefs, on your own or with your class.">
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="stylesheet" href="assets/fonts.css?v=2026111201">
-<link rel="stylesheet" href="assets/style.css?v=2026111101">
+<link rel="stylesheet" href="assets/style.css?v=2026111202">
 <script>
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
@@ -92,6 +92,7 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
     <button class="tab" role="tab" id="tab-mine" aria-controls="mine" aria-selected="false" data-tab="mine">My Portfolio</button>
     <button class="tab" role="tab" id="tab-trade" aria-controls="trade" aria-selected="false" data-tab="trade">Paper Trading</button>
     <button class="tab" role="tab" id="tab-news" aria-controls="news" aria-selected="false" data-tab="news">News<span class="count" id="cnt-news"></span></button>
+    <button class="tab" role="tab" id="tab-feed" aria-controls="feed" aria-selected="false" data-tab="feed">Feed</button>
     <button class="tab hasmenu" role="tab" id="tab-district" aria-controls="district" aria-selected="false" aria-haspopup="menu" aria-expanded="false" data-tab="district">District<span class="caret" aria-hidden="true"></span></button>
     <button class="tab" role="tab" id="tab-staff" aria-controls="staff" aria-selected="false" data-tab="staff" hidden>Students</button>
     <button class="tab" role="tab" id="tab-users" aria-controls="users" aria-selected="false" data-tab="users" hidden>Users</button>
@@ -208,9 +209,11 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
   </div>
   <div id="mine-game" hidden>
     <div class="tiles" id="mine-tiles"></div>
-    <div class="panel" id="mine-chart" hidden></div>
+    <div class="minerow">
+      <div class="panel" id="mine-chart" hidden></div>
+      <div class="panel" id="mine-friends" hidden></div>
+    </div>
     <div class="panel" id="mine-hold"></div>
-    <div class="panel" id="mine-friends" hidden></div>
     <div class="panel" id="mine-orders" hidden></div>
   </div>
   <div class="panel" id="mine-news" hidden></div>
@@ -219,6 +222,31 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
     <div class="jcrow"><input class="inp" id="join-code" type="text" placeholder="Class code, like wvhs01" aria-label="Class code" autocomplete="off" autocapitalize="none" spellcheck="false"><button class="btn primary" type="submit" id="join-go">Join a class</button></div>
     <p class="meta" id="join-msg" role="alert"></p>
   </form>
+</section>
+
+<!-- FEED -->
+<section role="tabpanel" id="feed" aria-labelledby="tab-feed" hidden>
+  <div class="sechead">
+    <div>
+      <h2>Feed</h2>
+      <p class="sub">Trades from your friends and from members of Congress, in one place. <span class="fdcredit">Congress data via <a href="https://www.bargo.ai" target="_blank" rel="noopener">Bargo</a></span></p>
+    </div>
+  </div>
+  <div class="fdgrid">
+    <div>
+      <div class="fdchips" aria-label="Show">
+        <button type="button" class="fdchip on" data-f="all">All</button>
+        <button type="button" class="fdchip" data-f="friends">Friends</button>
+        <button type="button" class="fdchip" data-f="congress">Congress</button>
+        <button type="button" class="fdchip" data-f="following">Following</button>
+      </div>
+      <div id="fd-list" aria-live="polite"><p class="meta">Loading the feed…</p></div>
+    </div>
+    <aside class="fdside">
+      <div class="panel" id="fd-follow"></div>
+      <div class="panel" id="fd-most"></div>
+    </aside>
+  </div>
 </section>
 
 <!-- TRADING GAME -->
@@ -268,6 +296,8 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
           <div id="pt-limit-box" hidden><label class="ptlabel" for="pt-limit">Limit price ($)</label><input class="ptinp" id="pt-limit" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="Like 175.00"></div>
           <div id="pt-trail-box" hidden><label class="ptlabel" for="pt-trail">Trail (%)</label><input class="ptinp" id="pt-trail" type="number" min="1" max="50" step="0.5" inputmode="decimal" placeholder="Like 10"></div>
         </div>
+        <div id="pt-why-box"><label class="ptlabel" for="pt-why">Why? <span class="opt">(optional, your friends see this on the Feed)</span></label>
+        <input class="ptinp" id="pt-why" maxlength="140" placeholder="Like: their new phone is selling well"></div>
         <p class="meta" id="pt-est"></p>
         <div class="ptrow ptgo"><button class="btn primary" type="submit" id="pt-go">Buy now</button></div>
         <p class="ptmsg" id="pt-msg" role="alert"></p>
@@ -411,10 +441,11 @@ try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dat
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="config.js?v=2026111201"></script>
-<script src="assets/app.js?v=2026111101"></script>
+<script src="assets/app.js?v=2026111201"></script>
 <script src="assets/vendor/supabase-2.118.0.js"></script>
 <script src="assets/account.js?v=2026111101"></script>
-<script src="assets/paper.js?v=2026111005"></script>
+<script src="assets/paper.js?v=2026111201"></script>
+<script src="assets/feed.js?v=2026111201"></script>
 <script src="assets/staff.js?v=2026111101"></script>
 <script src="assets/users.js?v=2026111101"></script>
 </body>
