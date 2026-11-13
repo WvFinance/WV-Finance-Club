@@ -20,6 +20,10 @@ WORDING (very important): readers are high school students, so write at about a 
 - Round big numbers: "$11.5 billion", not "$11,512,000,000".
 - Say who said something when it matters ("analysts at Barclays", "the company").
 
+NEWEST FIRST (very important): start the headline and summary with the newest news in the articles,
+and give its date. Older news comes after, only as background. Never lead with a price move from days ago
+when newer articles exist.
+
 DETAIL (very important): be specific, never vague. Pack in the real facts from the articles.
 - The summary is 4 to 6 short sentences. Give the stock's price or move with a percent, the dates things happened,
   the key numbers (sales, profit, how many units, how much money), and what is coming up next.
