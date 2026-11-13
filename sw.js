@@ -2,8 +2,8 @@
 // shows the last saved copy of the page if the internet drops.
 // It always asks the network first, so updates show up right away.
 // It never touches logins, trades or the news server (/api), or other sites.
-const CACHE = "ss-app-v1";
-const SHELL = ["./", "index.html", "manifest.webmanifest", "assets/logo.png", "assets/app/icon-192.png"];
+const CACHE = "ss-app-v2";
+const SHELL = ["./", "index.html", "manifest.webmanifest", "assets/app/favicon-32.png", "assets/app/icon-192.png"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).catch(() => {}));
