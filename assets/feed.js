@@ -89,25 +89,8 @@ function sinceTag(tk,d){const v=since(tk,d);if(v==null)return"";
   return el("span",{class:"fdsince "+c,title:`How much ${tk}'s price changed from the day this trade was reported to the latest close`,
     text:`${tk} ${v>=0.05?"▲":v<=-0.05?"▼":""} ${Math.abs(v).toFixed(1)}% since reported`.replace("  "," ")});}
 
-/* ---------- "What this means": one plain sentence per card, from simple rules (no AI) ---------- */
-const meaning=txt=>el("p",{class:"fdmean"},el("b",{text:"What this means: "}),txt);
-const BIG_SALE=5e6;   // insider sales under this are usually routine, so they're hidden unless you ask
-function congressMeaning(t){
-  const old=t.traded?` This trade happened ${age(t.traded)} ago, because Congress can wait up to 45 days to report.`:"";
-  const small=/^\$?1,?001\b/.test(t.range||"")?" It's a small trade, under $15,000.":"";
-  return t.side==="buy"?`${first(t.member)} put their own money into ${t.ticker}.${small}${old}`
-    :`${first(t.member)} sold ${t.ticker}. That can mean they think it will drop, or they just wanted the cash.${small}${old}`;
-}
-function insiderMeaning(t){
-  const co=String(t.company||t.ticker).replace(/\s*\(The\)$/i,"");
-  if(t.side==="buy")return`${first(t.name)} works at ${co} and bought more of its stock with their own money. Insiders buy mostly for one reason: they think the price will go up.`;
-  if(+t.value>=BIG_SALE)return`This is a big sale. Insiders often sell for normal reasons, like paying taxes or buying a house, but a sale this size is worth a look.`;
-  return`Insiders sell for normal reasons all the time, like paying taxes, so a small sale like this usually isn't news.`;
-}
-function fundMeaning(t,m){
-  const what={new:`started buying ${m.company}, a brand new stock for them`,more:`bought more ${m.company}`,less:`sold some of its ${m.company}`,sold:`sold all of its ${m.company}`}[m.move]||`changed its ${m.company} shares`;
-  return`${t.fund}'s biggest move was that it ${what}. These moves are from months ago, so the fund may have changed its mind since.`;
-}
+// Insider sales under this are usually routine, so they're hidden unless you ask.
+const BIG_SALE=5e6;
 // Dollars a fund moved in or out of one stock, to show the biggest moves first.
 const moved=m=>m.move==="new"||m.move==="sold"||m.pct==null||!(1+m.pct>0)?+m.value||0:(+m.value||0)*Math.abs(m.pct)/(1+m.pct);
 
@@ -166,7 +149,6 @@ function congressCard(t){
         t.range?el("span",{class:"fdrange",text:t.range.replace(/\s*-\s*/," to ")}):"",yoursTag(t.ticker)),
       t.traded?el("p",{class:"fdwhen2",text:`Traded ${short(t.traded)}${gap==null?"":gap<=0?", reported the same day":`, reported ${plural(gap,"day")} later`}`}):"",
       sinceTag(t.ticker,t.reported),
-      meaning(congressMeaning(t)),
       el("div",{class:"fdbtns"},
         el("button",{type:"button",class:"btn small",text:"See "+t.ticker,onclick:()=>openStock(t.ticker)}),
         el("button",{type:"button",class:"btn small",text:"Buy Now",title:`Buy ${t.ticker} in Paper Trading`,onclick:()=>practice(t.ticker)}),
@@ -195,7 +177,6 @@ function insiderCard(t){
         t.value?el("span",{class:"fdrange",text:about(t.value)}):"",yoursTag(t.ticker)),
       t.traded?el("p",{class:"fdwhen2",text:`Traded ${short(t.traded)}${gap==null?"":gap<=0?", reported the same day":`, reported ${plural(gap,"day")} later`}`}):"",
       sinceTag(t.ticker,t.reported),
-      meaning(insiderMeaning(t)),
       stockBtns(t.ticker)));
 }
 const MOVE={new:["buy","New buy"],more:["buy","Bought more"],less:["sell","Sold some"],sold:["sell","Sold all"]};
@@ -214,7 +195,6 @@ function fundGroup(moves,max){
         return el("li",{},el("span",{class:"pttag "+k,text:label}),
           el("span",{class:"fdmv"},m.ticker?el("button",{type:"button",class:"linkbtn sym",text:m.ticker,title:`Open ${m.ticker} on Search`,onclick:()=>openStock(m.ticker)}):"",
             el("span",{class:"fdrange",text:`${m.company} · ${about(m.value)}${pct}`}),yoursTag(m.ticker),sinceTag(m.ticker,m.reported)));})),
-      meaning(fundMeaning(t,moves[0])),
       el("p",{class:"fdwhen2",text:`From the 3 months that ended ${short(t.asof)}${more>0?` · ${more} more ${more===1?"move":"moves"} in Big investors`:""}`})));
 }
 
