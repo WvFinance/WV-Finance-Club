@@ -680,20 +680,38 @@ tr.flash td{background:var(--down-soft);transition:background .4s}
 /* Installed app: keep the phone's status bar area navy so the clock and battery stay readable */
 @media (display-mode:standalone){body::before{content:"";position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:#0b1530;z-index:1000}}
 
-/* Opening animation: logo draws itself, then fades into the page (about 3 seconds, once per visit). */
-#intro{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;background:radial-gradient(70% 60% at 50% 40%,#13224a,#0b1530 70%);cursor:pointer;animation:ifade .5s ease 2.6s forwards}
+/* Opening animation: a glowing stock chart shoots up, the logo bursts in and draws itself,
+   then the screen zooms into the site (about 4 seconds, once per visit, tap to skip). */
+#intro{position:fixed;inset:0;z-index:200;overflow:hidden;display:flex;align-items:center;justify-content:center;background:radial-gradient(70% 60% at 50% 45%,#13224a,#0b1530 70%,#070d1f);cursor:pointer;animation:iout .6s cubic-bezier(.5,0,.8,.4) 3.55s forwards}
 html.nointro #intro{display:none}
 #intro.igo{animation:ifade .3s ease forwards}
-#intro .iin{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px}
-#intro .imark{width:120px;height:120px;opacity:0;transform:scale(.6);animation:ipop .5s cubic-bezier(.2,.9,.3,1.3) .1s forwards}
-#intro .is{stroke-dasharray:1;stroke-dashoffset:1;animation:idraw .8s ease-in-out .45s forwards}
-#intro .ia{opacity:0;transform-box:fill-box;transform-origin:30% 70%;transform:scale(0);animation:iarrow .35s cubic-bezier(.2,.9,.3,1.5) 1.15s forwards}
-#intro .iname{margin-top:28px;font-size:44px;color:#fff;opacity:0;transform:translateY(12px);animation:iup .5s ease 1.4s forwards}
-#intro .imotto{margin:14px 0 0;color:#7fb0ff;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;font-family:var(--f-body);opacity:0;animation:iup .5s ease 1.8s forwards}
-#intro .iskip{position:absolute;bottom:max(24px,env(safe-area-inset-bottom));left:0;right:0;margin:0;text-align:center;color:#8a97b8;font-size:12px;font-family:var(--f-body);opacity:0;animation:iup .4s ease .8s forwards}
-@keyframes ipop{to{opacity:1;transform:scale(1)}}
+#intro .ichart{position:absolute;inset:0;width:100%;height:100%;animation:idim .6s ease 1.5s forwards}
+#intro .igrid line{stroke:#7fb0ff;stroke-opacity:.08;stroke-width:1;vector-effect:non-scaling-stroke;opacity:0;animation:iin .5s ease forwards}
+#intro .iline{fill:none;stroke:#7fd4ff;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 6px #2f9bff) drop-shadow(0 0 16px #2f7bff);animation:idraw 1.2s cubic-bezier(.55,.05,.7,.4) .15s forwards}
+#intro .iarea{opacity:0;animation:iin .7s ease 1.1s forwards}
+#intro .ichips{position:absolute;inset:0;pointer-events:none}
+#intro .ichip{position:absolute;padding:6px 10px;border:1px solid rgba(127,176,255,.25);border-radius:999px;background:rgba(19,34,74,.7);color:#cfe0ff;font:600 12px var(--f-body);letter-spacing:.04em;white-space:nowrap;opacity:0;animation:ichip 2.4s ease-out var(--t) forwards}
+#intro .ichip b{color:#3ddc97}
+#intro .iin{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px}
+#intro .imark{position:relative;width:120px;height:120px;opacity:0;transform:scale(0) rotate(-12deg);filter:drop-shadow(0 0 0 rgba(47,123,255,0));animation:iburst .6s cubic-bezier(.2,.9,.3,1.4) 1.3s forwards}
+#intro .iring{position:absolute;top:60px;left:50%;width:120px;height:120px;margin:-60px 0 0 -60px;border:2px solid #7fd4ff;border-radius:30px;opacity:0;animation:iring .9s ease-out 1.35s forwards}
+#intro .iring.r2{animation-delay:1.55s}
+#intro .is{stroke-dasharray:1;stroke-dashoffset:1;animation:idraw .6s ease-in-out 1.6s forwards}
+#intro .ia{opacity:0;transform-box:fill-box;transform-origin:30% 70%;transform:translate(-30%,30%) scale(0);animation:iarrow .35s cubic-bezier(.2,.9,.3,1.6) 2.1s forwards}
+#intro .iname{margin-top:28px;font-size:44px;color:#fff;display:flex}
+#intro .iname span{display:inline-block;opacity:0;transform:translateY(18px);filter:blur(6px);animation:iletter .45s cubic-bezier(.2,.8,.3,1.2) calc(2.15s + var(--d)*.04s) forwards}
+#intro .imotto{margin:14px 0 0;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;font-family:var(--f-body);color:transparent;background:linear-gradient(90deg,#7fb0ff 0 40%,#fff 50%,#7fb0ff 60% 100%) 100% 0/250% 100%;-webkit-background-clip:text;background-clip:text;opacity:0;animation:iin .4s ease 2.7s forwards,ishine 1s ease 2.8s forwards}
+#intro .iskip{position:absolute;bottom:max(24px,env(safe-area-inset-bottom));left:0;right:0;margin:0;text-align:center;color:#8a97b8;font-size:12px;font-family:var(--f-body);opacity:0;animation:iin .4s ease .8s forwards}
+@keyframes iin{to{opacity:1}}
 @keyframes idraw{to{stroke-dashoffset:0}}
-@keyframes iarrow{to{opacity:1;transform:scale(1)}}
-@keyframes iup{to{opacity:1;transform:none}}
+@keyframes idim{to{opacity:.3}}
+@keyframes ichip{0%{opacity:0;transform:translateY(20px) scale(.9)}25%{opacity:1;transform:translateY(0) scale(1)}70%{opacity:.8}100%{opacity:0;transform:translateY(-40px)}}
+@keyframes iburst{0%{opacity:0;transform:scale(0) rotate(-12deg)}60%{opacity:1;transform:scale(1.15) rotate(3deg)}100%{opacity:1;transform:scale(1) rotate(0);filter:drop-shadow(0 0 28px rgba(47,123,255,.7))}}
+@keyframes iring{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(2.6)}}
+@keyframes iarrow{to{opacity:1;transform:none}}
+@keyframes iletter{to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes ishine{to{background-position:0 0}}
+@keyframes iout{to{opacity:0;visibility:hidden;transform:scale(1.25)}}
 @keyframes ifade{to{opacity:0;visibility:hidden}}
-@media (max-width:600px){#intro .imark{width:96px;height:96px}#intro .iname{font-size:36px;margin-top:22px}}
+@media (max-width:600px){#intro .imark{width:96px;height:96px}#intro .iring{top:48px;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:24px}#intro .iname{font-size:36px;margin-top:22px}#intro .ichip{font-size:11px;padding:5px 9px}}
+@media (prefers-reduced-motion:reduce){#intro{display:none}}

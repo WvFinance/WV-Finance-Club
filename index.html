@@ -14,7 +14,7 @@
 <meta name="apple-mobile-web-app-title" content="Simple Street">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="assets/fonts.css?v=2026111201">
-<link rel="stylesheet" href="assets/style.css?v=2026111302">
+<link rel="stylesheet" href="assets/style.css?v=2026111303">
 <script>
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
@@ -27,9 +27,17 @@ try{if(sessionStorage.getItem("ss.intro")||matchMedia("(prefers-reduced-motion: 
 <body>
 
 <div id="intro" aria-hidden="true">
+  <svg class="ichart" viewBox="0 0 1000 600" preserveAspectRatio="none">
+    <defs><linearGradient id="ifill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f7bff" stop-opacity=".35"/><stop offset="1" stop-color="#2f7bff" stop-opacity="0"/></linearGradient></defs>
+    <g class="igrid"><line x1="0" x2="1000" y1="100" y2="100"/><line x1="0" x2="1000" y1="200" y2="200"/><line x1="0" x2="1000" y1="300" y2="300"/><line x1="0" x2="1000" y1="400" y2="400"/><line x1="0" x2="1000" y1="500" y2="500"/></g>
+    <path class="iarea" d="M0 540 L80 515 L140 545 L210 460 L270 485 L340 400 L400 430 L470 335 L530 360 L600 265 L660 290 L730 190 L800 215 L880 110 L1000 30 L1000 600 L0 600 Z" fill="url(#ifill)"/>
+    <path class="iline" pathLength="1" vector-effect="non-scaling-stroke" d="M0 540 L80 515 L140 545 L210 460 L270 485 L340 400 L400 430 L470 335 L530 360 L600 265 L660 290 L730 190 L800 215 L880 110 L1000 30"/>
+  </svg>
+  <div class="ichips"><span class="ichip" style="left:8%;top:72%;--t:0.3s">AAPL <b>▲</b></span><span class="ichip" style="left:72%;top:78%;--t:0.5s">JPM <b>▲</b></span><span class="ichip" style="left:14%;top:30%;--t:0.75s">XOM <b>▲</b></span><span class="ichip" style="left:74%;top:22%;--t:0.6s">AMZN <b>▲</b></span><span class="ichip" style="left:44%;top:86%;--t:0.9s">JNJ <b>▲</b></span><span class="ichip" style="left:76%;top:48%;--t:0.4s">NVDA <b>▲</b></span><span class="ichip" style="left:4%;top:52%;--t:1.0s">MSFT <b>▲</b></span></div>
   <div class="iin">
+    <div class="iring"></div><div class="iring r2"></div>
     <svg class="imark" viewBox="0 0 100 100"><rect class="itile" width="100" height="100" rx="23" fill="#2f7bff"/><g transform="translate(4 7) scale(.9)"><path class="is" pathLength="1" d="M27 74 C36 82 66 82 66 66 C66 51 34 55 34 39 C34 28 44 25 52 25 C60 25 65 22 70.5 16.5" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="round"/><path class="ia" d="M84 3 L81.5 29 L58 5.5 Z" fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></g></svg>
-    <div class="iname sswm">Simple Street</div>
+    <div class="iname sswm"><span style="--d:0">S</span><span style="--d:1">i</span><span style="--d:2">m</span><span style="--d:3">p</span><span style="--d:4">l</span><span style="--d:5">e</span><span style="--d:6">&nbsp;</span><span style="--d:7">S</span><span style="--d:8">t</span><span style="--d:9">r</span><span style="--d:10">e</span><span style="--d:11">e</span><span style="--d:12">t</span></div>
     <p class="imotto">Wall Street Simplified</p>
   </div>
   <p class="iskip">Tap to skip</p>
@@ -37,9 +45,10 @@ try{if(sessionStorage.getItem("ss.intro")||matchMedia("(prefers-reduced-motion: 
 <script>
 (function(){var el=document.getElementById("intro");if(!el)return;var done=function(){el.remove();};
 if(document.documentElement.classList.contains("nointro")){done();return;}
-el.addEventListener("click",function(){el.classList.add("igo");setTimeout(done,300);});
-addEventListener("keydown",function k(){removeEventListener("keydown",k);el.classList.add("igo");setTimeout(done,300);});
-setTimeout(done,3200);})();
+var skip=function(){el.classList.add("igo");setTimeout(done,350);};
+el.addEventListener("click",skip);
+addEventListener("keydown",function k(){removeEventListener("keydown",k);skip();});
+setTimeout(done,4300);})();
 </script>
 
 <div id="gate" role="dialog" aria-label="Log in">
