@@ -3,65 +3,65 @@
  "briefs": [
   {
    "bear": [
-    "Nvidia, one of the biggest companies in the index, fell about 4.3% after its CEO quit.",
-    "The 10-year Treasury rate rose to about 5.1%, which can pull money away from stocks.",
-    "A December Fed rate hike still looks likely after prices rose 0.4% in October."
+    "Chip stocks fell hard, with AMD down about 9% to 11% and Broadcom about 6%.",
+    "The 10-year Treasury rate hit about 5.17%, which can pull money away from stocks.",
+    "Traders see a 100% chance of a Fed rate hike in December, and about a 15% chance of a bigger one."
    ],
    "bull": [
-    "Stocks recovered from a drop of about 1% at the open to finish only slightly lower.",
-    "AMD rose about 5.9% and Broadcom about 5.5% as investors bought other chip makers.",
-    "Cisco raised its sales forecast after hours, and Applied Materials reported record quarterly sales of $10.41 billion."
+    "October producer prices rose 0.3%, a little cooler than the 0.4% experts expected.",
+    "Stocks opened higher on Friday, with the S&P 500 up about 0.35% early.",
+    "Applied Materials reported a strong quarter and raised its forecast, and its stock is up 48% this year."
    ],
-   "headline": "S&P 500 dips 0.4% after Nvidia's CEO Jensen Huang suddenly resigns",
+   "headline": "S&P 500 falls about 0.8% by midday Friday as chip stocks slide again",
    "market": true,
    "name": "S&P 500",
-   "nextEvent": "October producer price report (PPI) on Friday, November 13, 2026",
+   "nextEvent": "Nvidia's quarterly earnings report on Tuesday, November 17, 2026",
    "order": 1,
-   "sentiment": "neutral",
+   "sentiment": "bearish",
    "sources": [
     {
-     "title": "How major US stock indexes fared Thursday 11/12/2026",
-     "url": "https://krmg.com/2026/11/12/how-major-us-stock-indexes-fared-thursday-11-12-2026/",
-     "outlet": "Associated Press (via KRMG)",
-     "date": "Nov 12, 2026"
+     "title": "Stock market today: Nasdaq leads Dow, S&P 500 lower as chip stock sell-off accelerates",
+     "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-13-dow-sp-500-nasdaq-nvidia-ppi-141451558.html",
+     "outlet": "Yahoo Finance",
+     "date": "Nov 13, 2026"
     },
     {
-     "title": "Stocks Closed Slightly Lower in the Stock Market Today, November 12, 2026, and Nvidia Said CEO Jensen Huang Resigned",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-12-2026",
-     "outlet": "Stock Titan",
-     "date": "Nov 12, 2026"
+     "title": "Stock Market Today (Nov. 13, 2026): Dow rises on Nvidia CEO resignation, cooler inflation data",
+     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-13-2026",
+     "outlet": "TheStreet",
+     "date": "Nov 13, 2026"
     },
     {
-     "title": "Stock Market Today, November 12, 2026: Stocks Fall as Treasury Yields Hit 5.10%, Oil Rises and Nvidia Faces Leadership Reset",
-     "url": "https://vistapglobal.com/stock-market-today-november-12-2026-stocks-fall-as-treasury-yields-hit-5-10-oil-rises-and-nvidia-faces-leadership-reset-amd-crwv-eprx-googl-modd-msft-nvda-ser-spcx-ttek-ual/",
-     "outlet": "Vista Partners",
-     "date": "Nov 12, 2026"
+     "title": "Stocks Up as PPI Cools, Nvidia Attempts Rebound",
+     "url": "https://www.schwab.com/learn/story/stock-market-update-open",
+     "outlet": "Charles Schwab",
+     "date": "Nov 13, 2026"
     },
     {
-     "title": "Stock Market Today, Nov. 12: Nebius Group Sinks Nearly 17% After Lowering 2026 Outlook",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/12/stock-market-today-nov-12-nebius-group-sinks-nearly-17-after-lowering-2026-outlook/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 12, 2026"
+     "title": "Stock Market Today, Nov. 13: U.S. Stocks Wobble Ahead of PPI Data",
+     "url": "https://www.tipranks.com/news/stock-market-today-nov-13-u-s-stocks-wobble-ahead-of-ppi-data",
+     "outlet": "TipRanks",
+     "date": "Nov 13, 2026"
     }
    ],
-   "summary": "On Thursday, November 12, the S&P 500 fell about 0.4% to around 7,592 after Nvidia said CEO Jensen Huang resigned right away. Stocks opened about 1% lower but won back most of the drop as Nvidia cut its loss and other chip makers like AMD and Broadcom rose. The 10-year Treasury rate climbed to about 5.1%, and oil rose after President Trump said he no longer wants a deal with Iran. Even after Thursday, the S&P 500 is up about 2.9% this week and about 10.9% this year.",
+   "summary": "Around midday on Friday, November 13, the S&P 500 was down about 0.8% to around 7,529, after a small gain at the open. A report showed prices that businesses pay rose 0.3% in October, a bit less than the 0.4% expected, but chip stocks like AMD and Broadcom sold off and pulled the market lower. The 10-year Treasury rate touched about 5.17%, its highest since October, and traders fully expect a Fed rate hike in December. On Thursday the S&P 500 slipped 0.4% after Nvidia's CEO Jensen Huang resigned, but it was still up about 2.9% for the week going into Friday.",
    "ticker": "SP500",
-   "updatedAt": "2026-11-12T23:04:42.238Z",
+   "updatedAt": "2026-11-13T18:06:29.286Z",
    "symbol": "AMEX:SPY",
-   "checkedAt": "2026-11-13T11:40:09.739Z"
+   "checkedAt": "2026-11-13T18:06:29.286Z"
   },
   {
    "bear": [
-    "Nvidia's surprise leadership change adds uncertainty right before its earnings report.",
-    "Nebius lowered its 2026 sales outlook because new data centers are taking longer to build.",
-    "Nvidia closed about 31% below its record high from October 6."
+    "AMD, Broadcom, Intel, Micron and Sandisk all fell about 5% to 11%.",
+    "Nvidia is heading for a total value below $4 trillion for the week.",
+    "A big group of chip stocks is down about 29% from its June peak."
    ],
    "bull": [
-    "AMD rose about 5.9% and Broadcom about 5.5%, showing some investors moved into other chip stocks.",
-    "Nvidia won back more than half of its early loss by the close.",
-    "The Nasdaq is still up about 3.2% this week, after Wednesday's 1.6% jump."
+    "Nvidia rose about 2% before the market opened, showing some buyers stepped in early.",
+    "One analyst noted Nvidia now trades at a low price compared to its expected profits.",
+    "The Nasdaq was still up about 3.2% for the week going into Friday."
    ],
-   "headline": "Nasdaq slips 0.4% as Nvidia tumbles after CEO Jensen Huang quits",
+   "headline": "Nasdaq drops about 1.4% by midday as the chip stock sell-off speeds up",
    "market": true,
    "name": "Nasdaq",
    "nextEvent": "Nvidia's quarterly earnings report on Tuesday, November 17, 2026",
@@ -69,35 +69,35 @@
    "sentiment": "bearish",
    "sources": [
     {
-     "title": "Stocks Closed Slightly Lower in the Stock Market Today, November 12, 2026, and Nvidia Said CEO Jensen Huang Resigned",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-12-2026",
-     "outlet": "Stock Titan",
-     "date": "Nov 12, 2026"
+     "title": "Stock market today: Nasdaq leads Dow, S&P 500 lower as chip stock sell-off accelerates",
+     "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-13-dow-sp-500-nasdaq-nvidia-ppi-141451558.html",
+     "outlet": "Yahoo Finance",
+     "date": "Nov 13, 2026"
     },
     {
-     "title": "Stock Market Today, Nov. 12: Nebius Group Sinks Nearly 17% After Lowering 2026 Outlook",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/12/stock-market-today-nov-12-nebius-group-sinks-nearly-17-after-lowering-2026-outlook/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 12, 2026"
+     "title": "Stock Market Today (Nov. 13, 2026): Dow rises on Nvidia CEO resignation, cooler inflation data",
+     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-13-2026",
+     "outlet": "TheStreet",
+     "date": "Nov 13, 2026"
     },
     {
-     "title": "How major US stock indexes fared Thursday 11/12/2026",
-     "url": "https://krmg.com/2026/11/12/how-major-us-stock-indexes-fared-thursday-11-12-2026/",
-     "outlet": "Associated Press (via KRMG)",
-     "date": "Nov 12, 2026"
+     "title": "Stocks Up as PPI Cools, Nvidia Attempts Rebound",
+     "url": "https://www.schwab.com/learn/story/stock-market-update-open",
+     "outlet": "Charles Schwab",
+     "date": "Nov 13, 2026"
     },
     {
-     "title": "Stock Market Today, November 12, 2026 : Nvidia Stock Tumbles After Jensen Huang Exit; AI Shares Face Leadership Shock",
-     "url": "https://eurasiabusinessnews.com/2026/11/12/stock-market-today-november-12-2026-nvidia-stock-tumbles-after-jensen-huang-exit-ai-shares-face-leadership-shock",
-     "outlet": "Eurasia Business News",
-     "date": "Nov 12, 2026"
+     "title": "Stock Market Today, Nov. 13: U.S. Stocks Wobble Ahead of PPI Data",
+     "url": "https://www.tipranks.com/news/stock-market-today-nov-13-u-s-stocks-wobble-ahead-of-ppi-data",
+     "outlet": "TipRanks",
+     "date": "Nov 13, 2026"
     }
    ],
-   "summary": "On Thursday, November 12, the Nasdaq fell about 0.4% to around 25,366 after Nvidia said CEO Jensen Huang resigned, effective right away. Nvidia dropped as much as 14% early but closed down about 4.3% at $166.19, and its finance chief Colette Kress is now acting CEO. AI cloud companies fell harder, with Nebius down about 17% after cutting its 2026 sales outlook and CoreWeave down about 7%. Chip makers AMD and Broadcom rose about 6%, which helped the Nasdaq stay close to even.",
+   "summary": "Around midday on Friday, November 13, the Nasdaq was down about 1.4% to around 25,016, the biggest drop of the major indexes. Chip makers led the fall, with AMD down about 9% to 11%, Broadcom about 6%, and Sandisk about 9%. Nvidia was down about 3% to around $161, a day after CEO Jensen Huang resigned and finance chief Colette Kress became acting CEO. Nvidia is down about 11% this week, and investors are waiting for its earnings report on Tuesday.",
    "ticker": "NASDAQ",
-   "updatedAt": "2026-11-12T23:04:42.237Z",
+   "updatedAt": "2026-11-13T18:06:29.286Z",
    "symbol": "NASDAQ:QQQ",
-   "checkedAt": "2026-11-13T11:40:09.739Z"
+   "checkedAt": "2026-11-13T18:06:29.286Z"
   },
   {
    "bear": [
@@ -330,47 +330,47 @@
    "order": 5,
    "symbol": "COINBASE:BTCUSD",
    "sentiment": "bearish",
-   "headline": "Bitcoin falls to about $71,300, its lowest price since August",
-   "summary": "On Thursday, November 12, bitcoin fell about 3% to 4% to around $71,300, its lowest price since August. The drop came as Nvidia's stock tumbled after CEO Jensen Huang resigned, which made investors more nervous about riskier things like tech stocks and crypto. Bitcoin is down about 13% from a month ago and about 28% from a year ago. Higher interest rates, with the 10-year Treasury rate near 5.1%, have also weighed on crypto.",
+   "headline": "Bitcoin drops below $70,000 to its lowest price since August",
+   "summary": "On Friday, November 13, bitcoin fell below $70,000, dipping as low as about $67,900 overnight before trading near $69,000 to $69,700. It was down about 4% to 7% over 24 hours, as tech stocks fell and traders expect the Fed to raise interest rates in December. More than $1.3 billion of borrowed crypto bets were forced to close, and bitcoin funds have kept losing money. A crypto fear-and-greed score dropped to 20, in the \"extreme fear\" zone.",
    "bull": [
-    "Stocks recovered most of their early losses on Thursday, which could calm crypto investors.",
-    "Bitcoin is still worth about $1.3 trillion in total, far more than any other coin.",
-    "Bitcoin has held up better than many coins, with about 59.5% of the whole crypto market."
+    "Bitcoin bounced back above $69,000 after dipping near $67,900 overnight.",
+    "Some traders are watching whether bitcoin holds near $68,000 as a key level.",
+    "October producer prices came in a bit cooler than expected on Friday."
    ],
    "bear": [
-    "Bitcoin hit its lowest price since August, down about 9% in a week.",
-    "A crypto fear-and-greed score sat at 28, in the \"fear\" zone.",
-    "Bitcoin is about $28,000 lower than a year ago, down about 28%."
+    "Over $1.3 billion in crypto bets were wiped out in a day, about $677 million of them on bitcoin.",
+    "US bitcoin funds lost about $1.44 billion over five trading days.",
+    "The fear-and-greed score fell to 20, its lowest since July."
    ],
-   "nextEvent": "October producer price report (PPI) on Friday, November 13, 2026",
+   "nextEvent": "Nvidia's quarterly earnings report on Tuesday, November 17, 2026",
    "sources": [
+    {
+     "title": "Crypto news, November 13: bitcoin down 6%, over $1.3 billion liquidated",
+     "url": "https://cryptoticker.io/en/crypto-news-bitcoin-crash-liquidations-etf-outflows-november-13-2026/",
+     "outlet": "CryptoTicker",
+     "date": "Nov 13, 2026"
+    },
+    {
+     "title": "Why is Crypto Dropping Today? November 13, 2026",
+     "url": "https://coincentral.com/why-is-crypto-dropping-today-november-13-2026",
+     "outlet": "CoinCentral",
+     "date": "Nov 13, 2026"
+    },
+    {
+     "title": "Crypto News Nov 13: Bitcoin, Ethereum, DeFi Slips Ahead of US PPI Data",
+     "url": "https://www.coingabbar.com/en/crypto-news-nov-13-bitcoin-eth-price-fear-index-us-ppi-data",
+     "outlet": "Coin Gabbar",
+     "date": "Nov 13, 2026"
+    },
     {
      "title": "Bitcoin plunges to $71k as Jensen Huang abruptly resigns sending Nvidia into $2 trillion wipeout",
      "url": "https://cryptoslate.com/bitcoin-plunges-to-71k-as-jensen-huang-abruptly-resigns-sending-nvidia-into-2-trillion-wipeout/",
      "outlet": "CryptoSlate",
      "date": "Nov 12, 2026"
-    },
-    {
-     "title": "Bitcoin Tumbles to $71K as Jensen Huang Exit Triggers Nvidia Sell-Off",
-     "url": "https://crypto-economy.com/bitcoin-tumbles-to-71k-as-jensen-huang-exit-triggers-nvidia-sell-off/",
-     "outlet": "Crypto Economy",
-     "date": "Nov 12, 2026"
-    },
-    {
-     "title": "Current price of Bitcoin for November 12, 2026",
-     "url": "https://fortune.com/article/price-of-bitcoin-11-12-2026/",
-     "outlet": "Fortune",
-     "date": "Nov 12, 2026"
-    },
-    {
-     "title": "Stock Market Today, November 12, 2026: Stocks Fall as Treasury Yields Hit 5.10%, Oil Rises and Nvidia Faces Leadership Reset",
-     "url": "https://vistapglobal.com/stock-market-today-november-12-2026-stocks-fall-as-treasury-yields-hit-5-10-oil-rises-and-nvidia-faces-leadership-reset-amd-crwv-eprx-googl-modd-msft-nvda-ser-spcx-ttek-ual/",
-     "outlet": "Vista Partners",
-     "date": "Nov 12, 2026"
     }
    ],
-   "updatedAt": "2026-11-12T23:04:42.236Z",
-   "checkedAt": "2026-11-13T11:40:09.739Z"
+   "updatedAt": "2026-11-13T18:06:29.282Z",
+   "checkedAt": "2026-11-13T18:06:29.282Z"
   },
   {
    "ticker": "ETH",
@@ -380,47 +380,47 @@
    "order": 6,
    "symbol": "COINBASE:ETHUSD",
    "sentiment": "bearish",
-   "headline": "Ether slips under $2,000 for the first time since August",
-   "summary": "On Thursday, November 12, ether fell about 2.5% to around $1,990 to $2,000, its lowest price since August. It dropped along with bitcoin as Nvidia's CEO resignation made investors pull back from riskier things. Ether is about 20% lower than a month ago and about 40% lower than a year ago. Ether funds have been losing money for weeks, with about $365 million pulled out in the first week of November alone.",
+   "headline": "Ether falls to about $1,958 as money keeps leaving ether funds",
+   "summary": "On Friday, November 13, ether traded around $1,920 to $1,975, down about 2% to 6% over 24 hours and about 12% over the past week. It fell along with the whole crypto market rather than on news of its own, as tech stocks dropped and a December Fed rate hike looks likely. US ether funds have lost about $696 million so far in November. More people are also asking to unstake their ether, with about 270,000 ether waiting to leave, up from about 4,300 on November 6.",
    "bull": [
-    "The company BitMine owns about 6 million ether, almost 5% of all ether.",
-    "BitMine has staked about 5.2 million ether, locking it up to help run the network and earn rewards.",
-    "Ether fell a bit less than bitcoin on Thursday, about 2.5% versus about 3% to 4%."
+    "Ether held up better than bitcoin on Friday, and the ether-to-bitcoin price rose about 1.7%.",
+    "About 920,000 ether is still waiting to be staked, more than the amount waiting to leave.",
+    "Experts see support around $1,905, Friday's low, if prices keep falling."
    ],
    "bear": [
-    "Ether funds had their sixth straight week of money leaving in early November.",
-    "BitMine is close to its own 5% limit, so its big buying may stop soon.",
-    "Ether is down about 40% from a year ago, doing worse than bitcoin."
+    "US ether funds lost about $696 million in November, including $145 million on November 11.",
+    "About 270,000 ether is waiting to be unstaked, which could mean more selling.",
+    "Ether is about 22% lower than a month ago and far below its $4,946 record."
    ],
-   "nextEvent": "October producer price report (PPI) on Friday, November 13, 2026",
+   "nextEvent": "Nvidia's quarterly earnings report on Tuesday, November 17, 2026",
    "sources": [
     {
-     "title": "Bitcoin plunges to $71k as Jensen Huang abruptly resigns sending Nvidia into $2 trillion wipeout",
-     "url": "https://cryptoslate.com/bitcoin-plunges-to-71k-as-jensen-huang-abruptly-resigns-sending-nvidia-into-2-trillion-wipeout/",
-     "outlet": "CryptoSlate",
-     "date": "Nov 12, 2026"
+     "title": "Ethereum price at $1,958: exit queue grows to 269,951 ETH as ETF outflows reach $696 million",
+     "url": "https://cryptoticker.io/en/ethereum-price-1958-dollars-staking-exit-queue-november-13-2026/",
+     "outlet": "CryptoTicker",
+     "date": "Nov 13, 2026"
     },
     {
-     "title": "Bitcoin Tumbles to $71K as Jensen Huang Exit Triggers Nvidia Sell-Off",
-     "url": "https://crypto-economy.com/bitcoin-tumbles-to-71k-as-jensen-huang-exit-triggers-nvidia-sell-off/",
-     "outlet": "Crypto Economy",
-     "date": "Nov 12, 2026"
+     "title": "Crypto news, November 13: bitcoin down 6%, over $1.3 billion liquidated",
+     "url": "https://cryptoticker.io/en/crypto-news-bitcoin-crash-liquidations-etf-outflows-november-13-2026/",
+     "outlet": "CryptoTicker",
+     "date": "Nov 13, 2026"
     },
     {
-     "title": "Current price of Ethereum for November 12, 2026",
-     "url": "https://fortune.com/article/price-of-ethereum-11-12-2026/",
-     "outlet": "Fortune",
-     "date": "Nov 12, 2026"
+     "title": "Why is Crypto Dropping Today? November 13, 2026",
+     "url": "https://coincentral.com/why-is-crypto-dropping-today-november-13-2026",
+     "outlet": "CoinCentral",
+     "date": "Nov 13, 2026"
     },
     {
-     "title": "Ethereum ($2,132) Breaks $2,170 Floor as Bitmine Nears 5% Cap — $2K Support in Play",
-     "url": "https://www.tradingnews.com/news/ethereum-2132-usd-breaks-2170-usd-floor-as-bitmine-never-5-percent-cap",
-     "outlet": "TradingNEWS",
-     "date": "Nov 9, 2026"
+     "title": "Crypto News Nov 13: Bitcoin, Ethereum, DeFi Slips Ahead of US PPI Data",
+     "url": "https://www.coingabbar.com/en/crypto-news-nov-13-bitcoin-eth-price-fear-index-us-ppi-data",
+     "outlet": "Coin Gabbar",
+     "date": "Nov 13, 2026"
     }
    ],
-   "updatedAt": "2026-11-12T23:04:42.237Z",
-   "checkedAt": "2026-11-13T11:40:09.739Z"
+   "updatedAt": "2026-11-13T18:06:29.286Z",
+   "checkedAt": "2026-11-13T18:06:29.286Z"
   },
   {
    "ticker": "MGM",
@@ -470,47 +470,47 @@
    "order": 3,
    "symbol": "AMEX:DIA",
    "sentiment": "neutral",
-   "headline": "Dow slips 189 points as Nvidia falls, but the 30-stock index holds up",
-   "summary": "On Thursday, November 12, the Dow fell about 0.4%, or 189 points, to around 52,297. Nvidia, one of the Dow's 30 big companies, fell about 4.3% after CEO Jensen Huang resigned, which weighed on the index. Other Dow members held up better, like McDonald's, which rose about 1.7% early in the day. The Dow is still up about 2% this week and about 8.8% this year.",
+   "headline": "Dow holds up better, down about 0.2% midday as chip stocks fall",
+   "summary": "Around midday on Friday, November 13, the Dow was down about 0.2% to around 52,180, a smaller drop than the S&P 500 and Nasdaq. The Dow tracks 30 big companies and has fewer chip stocks, so the chip sell-off hurt it less. Dow member Nvidia was down about 3%, and Cisco fell about 3% early even after a strong quarter, because its profit margins came in lower. The Dow rose about 0.4% at the open after a cooler-than-expected producer price report.",
    "bull": [
-    "Dow member Cisco raised its sales forecast after reporting $18.5 billion in quarterly sales and rose after hours.",
-    "McDonald's rose about 1.7% early, showing steady companies held up on a rough day for tech.",
-    "The Dow is up about 1,011 points this week, even after Thursday's dip."
+    "The Dow fell much less than the Nasdaq, as steady companies held up.",
+    "October producer prices rose 0.3%, a bit less than the 0.4% expected.",
+    "The Dow was up about 2% for the week going into Friday."
    ],
    "bear": [
-    "Nvidia, a Dow member, fell about 4.3% after its CEO quit, adding uncertainty.",
-    "The 10-year Treasury rate rose to about 5.1%, making borrowing more expensive for big companies and their customers.",
-    "Weekly unemployment claims rose by 9,000 to 200,000, a bit more than expected."
+    "Dow member Nvidia fell about 3% and is down about 11% this week.",
+    "Cisco dropped about 3% early as its profit margin shrank and analysts cut targets.",
+    "Microsoft, another Dow member, slipped about 1.4% after an outage hit Outlook and Teams."
    ],
-   "nextEvent": "October producer price report (PPI) on Friday, November 13, 2026",
+   "nextEvent": "Nvidia's quarterly earnings report on Tuesday, November 17, 2026",
    "sources": [
+    {
+     "title": "Stock market today: Nasdaq leads Dow, S&P 500 lower as chip stock sell-off accelerates",
+     "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-13-dow-sp-500-nasdaq-nvidia-ppi-141451558.html",
+     "outlet": "Yahoo Finance",
+     "date": "Nov 13, 2026"
+    },
+    {
+     "title": "Stock Market Today (Nov. 13, 2026): Dow rises on Nvidia CEO resignation, cooler inflation data",
+     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-13-2026",
+     "outlet": "TheStreet",
+     "date": "Nov 13, 2026"
+    },
+    {
+     "title": "Stocks Up as PPI Cools, Nvidia Attempts Rebound",
+     "url": "https://www.schwab.com/learn/story/stock-market-update-open",
+     "outlet": "Charles Schwab",
+     "date": "Nov 13, 2026"
+    },
     {
      "title": "How major US stock indexes fared Thursday 11/12/2026",
      "url": "https://krmg.com/2026/11/12/how-major-us-stock-indexes-fared-thursday-11-12-2026/",
      "outlet": "Associated Press (via KRMG)",
      "date": "Nov 12, 2026"
-    },
-    {
-     "title": "Stocks Closed Slightly Lower in the Stock Market Today, November 12, 2026, and Nvidia Said CEO Jensen Huang Resigned",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-12-2026",
-     "outlet": "Stock Titan",
-     "date": "Nov 12, 2026"
-    },
-    {
-     "title": "Stock Market Today, November 12, 2026: Stocks Fall as Treasury Yields Hit 5.10%, Oil Rises and Nvidia Faces Leadership Reset",
-     "url": "https://vistapglobal.com/stock-market-today-november-12-2026-stocks-fall-as-treasury-yields-hit-5-10-oil-rises-and-nvidia-faces-leadership-reset-amd-crwv-eprx-googl-modd-msft-nvda-ser-spcx-ttek-ual/",
-     "outlet": "Vista Partners",
-     "date": "Nov 12, 2026"
-    },
-    {
-     "title": "Stock Market Today, November 12, 2026 : Nvidia Stock Tumbles After Jensen Huang Exit; AI Shares Face Leadership Shock",
-     "url": "https://eurasiabusinessnews.com/2026/11/12/stock-market-today-november-12-2026-nvidia-stock-tumbles-after-jensen-huang-exit-ai-shares-face-leadership-shock",
-     "outlet": "Eurasia Business News",
-     "date": "Nov 12, 2026"
     }
    ],
-   "checkedAt": "2026-11-13T11:40:09.739Z",
-   "updatedAt": "2026-11-12T23:04:42.237Z"
+   "checkedAt": "2026-11-13T18:06:29.285Z",
+   "updatedAt": "2026-11-13T18:06:29.285Z"
   },
   {
    "ticker": "RUT",
@@ -519,47 +519,47 @@
    "order": 4,
    "symbol": "AMEX:IWM",
    "sentiment": "bearish",
-   "headline": "Small companies drop 1.7% as the Russell 2000 falls the most on Thursday",
-   "summary": "On Thursday, November 12, the Russell 2000, which tracks about 2,000 smaller US companies, fell about 1.7%, or 47 points, to around 2,799. That was a bigger drop than the S&P 500, Nasdaq and Dow, which each fell about 0.4%. The 10-year Treasury rate rose to about 5.1%, and smaller companies often borrow more, so higher rates can hurt them more. The index is still up about 1.6% this week and about 12.8% this year, the best of the four big indexes.",
+   "headline": "Small companies slip about 0.6% midday after Thursday's 1.7% drop",
+   "summary": "Around midday on Friday, November 13, the Russell 2000, which tracks about 2,000 smaller US companies, was down about 0.6% to around 2,782. That follows a 1.7% drop on Thursday, when it fell more than the other big indexes. Smaller companies often borrow more money, so they are hurt when interest rates rise, and the 10-year Treasury rate touched about 5.17% on Friday. Traders fully expect the Fed to raise rates in December.",
    "bull": [
-    "The Russell 2000 is up about 12.8% this year, more than the S&P 500, Nasdaq or Dow.",
-    "Even after Thursday's drop, small companies are up about 1.6% for the week.",
-    "Smaller companies were less tied to Nvidia's surprise CEO change than big tech stocks."
+    "On Friday, small companies fell less than the Nasdaq, which was down about 1.4%.",
+    "October producer prices rose 0.3%, a little cooler than the 0.4% expected.",
+    "The Russell 2000 is up about 12.8% this year, more than the other big indexes."
    ],
    "bear": [
-    "The 10-year Treasury rate rose about 0.1 points to 5.1%, making loans more costly for small companies.",
-    "Prices rose 0.4% in October, which keeps a December Fed rate hike likely.",
-    "Oil rose about 2.6% to around $88.75 a barrel after President Trump said he no longer needs an Iran deal, raising costs for many businesses."
+    "The 10-year Treasury rate hit about 5.17%, its highest since October, raising borrowing costs.",
+    "Traders see a 100% chance of a Fed rate hike at the December 8-9 meeting.",
+    "Producer prices are up 6.5% from a year ago, the most since November 2022."
    ],
    "nextEvent": "The Federal Reserve's next interest rate decision on December 9, 2026",
    "sources": [
+    {
+     "title": "Stock market today: Nasdaq leads Dow, S&P 500 lower as chip stock sell-off accelerates",
+     "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-13-dow-sp-500-nasdaq-nvidia-ppi-141451558.html",
+     "outlet": "Yahoo Finance",
+     "date": "Nov 13, 2026"
+    },
+    {
+     "title": "Stock Market Today (Nov. 13, 2026): Dow rises on Nvidia CEO resignation, cooler inflation data",
+     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-13-2026",
+     "outlet": "TheStreet",
+     "date": "Nov 13, 2026"
+    },
+    {
+     "title": "Stocks Up as PPI Cools, Nvidia Attempts Rebound",
+     "url": "https://www.schwab.com/learn/story/stock-market-update-open",
+     "outlet": "Charles Schwab",
+     "date": "Nov 13, 2026"
+    },
     {
      "title": "How major US stock indexes fared Thursday 11/12/2026",
      "url": "https://krmg.com/2026/11/12/how-major-us-stock-indexes-fared-thursday-11-12-2026/",
      "outlet": "Associated Press (via KRMG)",
      "date": "Nov 12, 2026"
-    },
-    {
-     "title": "Stock Market Today, November 12, 2026: Stocks Fall as Treasury Yields Hit 5.10%, Oil Rises and Nvidia Faces Leadership Reset",
-     "url": "https://vistapglobal.com/stock-market-today-november-12-2026-stocks-fall-as-treasury-yields-hit-5-10-oil-rises-and-nvidia-faces-leadership-reset-amd-crwv-eprx-googl-modd-msft-nvda-ser-spcx-ttek-ual/",
-     "outlet": "Vista Partners",
-     "date": "Nov 12, 2026"
-    },
-    {
-     "title": "Stocks Closed Slightly Lower in the Stock Market Today, November 12, 2026, and Nvidia Said CEO Jensen Huang Resigned",
-     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-12-2026",
-     "outlet": "Stock Titan",
-     "date": "Nov 12, 2026"
-    },
-    {
-     "title": "Stock Market Today, Nov. 12: Nebius Group Sinks Nearly 17% After Lowering 2026 Outlook",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/12/stock-market-today-nov-12-nebius-group-sinks-nearly-17-after-lowering-2026-outlook/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 12, 2026"
     }
    ],
-   "checkedAt": "2026-11-13T11:40:09.739Z",
-   "updatedAt": "2026-11-12T23:04:42.238Z"
+   "checkedAt": "2026-11-13T18:06:29.286Z",
+   "updatedAt": "2026-11-13T18:06:29.286Z"
   }
  ],
  "market": {
