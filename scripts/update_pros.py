@@ -311,6 +311,26 @@ def value_scale(holdings):
     return 1000 if prices[len(prices) // 2] < 2 else 1
 
 
+def moved_reports(cik, notice, fund):
+    """The 13F-HR reports of the filer a 13F-NT notice points to (it names who reports the holdings now)."""
+    base = f"https://www.sec.gov/Archives/edgar/data/{cik}/{notice['accessionNumber'].replace('-', '')}/"
+    root = strip_ns(ET.fromstring(get(base + "primary_doc.xml")))
+    out = []
+    for m in root.iter("otherManager"):
+        other = re.sub(r"\D", "", text(m, "cik"))
+        print(f"{fund}: notice for {notice.get('reportDate')} says holdings are reported by '{text(m, 'name')}' (SEC number {other or 'not given'}, file {text(m, 'form13FFileNumber')})")
+        if not other or int(other) == cik:
+            continue
+        sub = get_json(f"https://data.sec.gov/submissions/CIK{int(other):010d}.json")
+        found = [f for f in recent_filings(sub) if f["form"] == "13F-HR"]
+        for f in found:
+            f["cik"] = int(other)
+        print(f"{fund}: '{sub.get('name')}' has {len(found)} reports, newest "
+              + (f"for {found[0].get('reportDate')} filed {found[0]['filingDate']}" if found else "none"))
+        out += found
+    return out
+
+
 def fund_moves(names):
     rows = []
     for cik, must, fund, person in FUNDS:
@@ -324,7 +344,17 @@ def fund_moves(names):
             reps = [f for f in filings if f["form"] == "13F-HR"]
             print(f"{fund}: SEC name '{sec_name}'. Newest 13F filings: "
                   + ", ".join(f"{f['form']} for {f.get('reportDate')} filed {f['filingDate']}" for f in filings if f["form"].startswith("13F"))[:400])
+            for f in reps:
+                f["cik"] = cik
+            # A "13F-NT" notice means another SEC filer now reports this fund's holdings. Follow it there.
+            nts = [f for f in filings if f["form"] == "13F-NT"]
+            if nts and (not reps or nts[0]["filingDate"] > reps[0]["filingDate"]):
+                try:
+                    reps = moved_reports(cik, nts[0], fund) + reps
+                except Exception as e:  # noqa: BLE001
+                    print(f"{fund}: couldn't follow its notice to the new filer ({e})")
             # One report per quarter, newest first (an amended report is a different form and is ignored).
+            reps.sort(key=lambda f: (f.get("reportDate") or "", f["filingDate"]), reverse=True)
             seen, quarters = set(), []
             for f in reps:
                 if f.get("reportDate") and f["reportDate"] not in seen:
@@ -337,8 +367,8 @@ def fund_moves(names):
             if (TODAY - dt.date.fromisoformat(new["filingDate"])).days > FUND_STALE_DAYS:
                 print(f"{fund}: newest report is from {new['filingDate']}, too old, skipped")
                 continue
-            now, base = info_table(cik, new["accessionNumber"])
-            before, _ = info_table(cik, old["accessionNumber"])
+            now, base = info_table(new["cik"], new["accessionNumber"])
+            before, _ = info_table(old["cik"], old["accessionNumber"])
         except Exception as e:  # noqa: BLE001
             print(f"{fund}: couldn't load ({e})")
             continue
