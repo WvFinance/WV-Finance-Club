@@ -18,8 +18,9 @@ import xml.etree.ElementTree as ET
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "pros.json"
-# The SEC asks for a User-Agent with contact details.
-UA = {"User-Agent": "WV Finance Club site wvfinance@users.noreply.github.com"}
+# The SEC asks for a User-Agent with contact details, and turns away ones it doesn't accept (403).
+# This is the club's public contact address, the same one the brief server gives the SEC (brief-server/src/sec.js).
+UA = {"User-Agent": "WV Finance Club brief server warrior.financec@gmail.com", "Accept-Encoding": "identity"}
 TODAY = dt.date.today()
 
 # Well-known companies to watch for insider trades. Owned Paper Trading stocks are added to this.
@@ -59,9 +60,15 @@ def get(url, tries=3):
             with urllib.request.urlopen(req, timeout=60) as r:
                 return r.read()
         except Exception as e:  # noqa: BLE001
+            why = ""
+            if hasattr(e, "read"):
+                try:
+                    why = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", e.read(3000).decode("utf-8", "replace")))[:400]
+                except Exception:  # noqa: BLE001
+                    pass
+            print(f"  failed {url}: {e} {why}", flush=True)
             if i == tries - 1:
                 raise
-            print(f"  retry {url}: {e}", file=sys.stderr)
             time.sleep(2 + 3 * i)
 
 
