@@ -2069,6 +2069,18 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/"
   },
   {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Fox",
+   "ticker": "FOXA",
+   "move": "new",
+   "value": 144623000,
+   "pct": null,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
+  },
+  {
    "fund": "Appaloosa",
    "person": "David Tepper's fund",
    "company": "Alibaba Group Holding Limited",
@@ -2105,6 +2117,30 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/"
   },
   {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Alphabet",
+   "ticker": "GOOGL",
+   "move": "new",
+   "value": 120184000,
+   "pct": null,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Amazon.com",
+   "ticker": "AMZN",
+   "move": "more",
+   "value": 118169023,
+   "pct": 10.825,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
+  },
+  {
    "fund": "Appaloosa",
    "person": "David Tepper's fund",
    "company": "CoreWeave",
@@ -2115,6 +2151,18 @@
    "asof": "2026-06-30",
    "reported": "2026-08-14",
    "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "CDW",
+   "ticker": "CDW",
+   "move": "new",
+   "value": 104629000,
+   "pct": null,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
   },
   {
    "fund": "Bridgewater Associates",
@@ -2177,6 +2225,18 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
   },
   {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Roku",
+   "ticker": "ROKU",
+   "move": "less",
+   "value": 78204789,
+   "pct": -0.755,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
+  },
+  {
    "fund": "Bridgewater Associates",
    "person": "the fund Ray Dalio started",
    "company": "Applovin",
@@ -2187,6 +2247,18 @@
    "asof": "2026-06-30",
    "reported": "2026-08-14",
    "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "United Airlines Holdings",
+   "ticker": "UAL",
+   "move": "more",
+   "value": 72387362,
+   "pct": 2.028,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
   },
   {
    "fund": "Bridgewater Associates",
@@ -2201,6 +2273,30 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
   },
   {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Seagate Technology Hldngs Pl",
+   "ticker": "",
+   "move": "more",
+   "value": 68804500,
+   "pct": 1.406,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Alcoa",
+   "ticker": "AA",
+   "move": "less",
+   "value": 68184186,
+   "pct": -0.876,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
+  },
+  {
    "fund": "Bridgewater Associates",
    "person": "the fund Ray Dalio started",
    "company": "Cisco Systems",
@@ -2213,6 +2309,42 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
   },
   {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Woodward",
+   "ticker": "WWD",
+   "move": "less",
+   "value": 61331823,
+   "pct": -0.682,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Broadcom",
+   "ticker": "AVGO",
+   "move": "sold",
+   "value": 60650000,
+   "pct": -1.0,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Option Care Health",
+   "ticker": "OPCH",
+   "move": "sold",
+   "value": 50301000,
+   "pct": -1.0,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
+  },
+  {
    "fund": "Appaloosa",
    "person": "David Tepper's fund",
    "company": "Whirlpool",
@@ -2223,6 +2355,18 @@
    "asof": "2026-06-30",
    "reported": "2026-08-14",
    "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Figure Technology Solutio",
+   "ticker": "",
+   "move": "sold",
+   "value": 39057000,
+   "pct": -1.0,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
   },
   {
    "fund": "Bridgewater Associates",
