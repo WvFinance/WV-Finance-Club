@@ -82,7 +82,7 @@ async function askGemini(apiKey, model, prompt) {
 }
 
 // Turns Gemini's reply into a finished brief, or throws if anything is missing.
-export function checkBrief(text, articles) {
+export function checkBrief(text, articles, { needTwoOutlets = true } = {}) {
   const start = text.indexOf("{"), end = text.lastIndexOf("}");
   if (start < 0 || end < start) throw new Error("no JSON in reply");
   const b = JSON.parse(text.slice(start, end + 1));
@@ -94,7 +94,10 @@ export function checkBrief(text, articles) {
   const sources = picked.map(n => articles[n - 1]).map(a => ({ title: a.title, url: a.url, outlet: a.outlet, date: a.date }));
   const outlets = new Set(sources.map(s => s.outlet));
   const outletsAvailable = new Set(articles.map(a => a.outlet)).size;
-  if (sources.length < 3 || outlets.size < Math.min(2, outletsAvailable)) throw new Error(`used ${sources.length} articles from ${outlets.size} outlets`);
+  if (sources.length < 3) throw new Error(`used ${sources.length} articles from ${outlets.size} outlets`);
+  // Two outlets are wanted, but when nearly all the news comes from one site (Google News is
+  // sometimes down) the second try accepts one outlet instead of showing no brief at all.
+  if (needTwoOutlets && outlets.size < Math.min(2, outletsAvailable)) throw new Error(`used ${sources.length} articles from ${outlets.size} outlets`);
   return {
     name: String(b.name || ""),
     sentiment: b.sentiment,
@@ -135,7 +138,9 @@ export async function writeBrief(apiKey, symbol, model, { beforeAI } = {}) {
   let lastError;
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
-      const brief = explainJargon(await simplify(apiKey, model, prompt, articles, checkBrief(await askGemini(apiKey, model, prompt), articles)));
+      // The second try tells Gemini what went wrong the first time.
+      const ask = attempt && /^used /.test(lastError?.message || "") ? `${prompt}\n\nYour last answer was rejected (${lastError.message}). Use at least 3 articles, from 2 different outlets if you can.` : prompt;
+      const brief = explainJargon(await simplify(apiKey, model, prompt, articles, checkBrief(await askGemini(apiKey, model, ask), articles, { needTwoOutlets: attempt === 0 })));
       // Education only: a brief that still gives buy/sell advice after the rewrite is never shown.
       if (givesAdvice(brief)) throw new Error("brief gives buy/sell advice");
       delete brief.sourceNumbers;
