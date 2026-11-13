@@ -169,7 +169,7 @@ function congressCard(t){
       meaning(congressMeaning(t)),
       el("div",{class:"fdbtns"},
         el("button",{type:"button",class:"btn small",text:"See "+t.ticker,onclick:()=>openStock(t.ticker)}),
-        el("button",{type:"button",class:"btn small",text:"Practice-buy "+t.ticker,onclick:()=>practice(t.ticker)}),
+        el("button",{type:"button",class:"btn small",text:"Buy Now",title:`Buy ${t.ticker} in Paper Trading`,onclick:()=>practice(t.ticker)}),
         el("button",{type:"button",class:"btn small"+(on?" fdon":""),text:on?"Following":"Follow",onclick:e=>follow(t.member,e.currentTarget)}))));
 }
 
@@ -181,7 +181,7 @@ function about(v){v=+v;if(!(v>0))return"";
   return`about $${Math.round(v)}`;}
 const stockBtns=(tk,extra)=>el("div",{class:"fdbtns"},
   tk?el("button",{type:"button",class:"btn small",text:"See "+tk,onclick:()=>openStock(tk)}):"",
-  tk?el("button",{type:"button",class:"btn small",text:"Practice-buy "+tk,onclick:()=>practice(tk)}):"",extra||"");
+  tk?el("button",{type:"button",class:"btn small",text:"Buy Now",title:`Buy ${tk} in Paper Trading`,onclick:()=>practice(tk)}):"",extra||"");
 function insiderCard(t){
   const gap=t.traded&&t.reported?Math.round((day(t.reported)-day(t.traded))/86400000):null;
   const n=+t.shares;
