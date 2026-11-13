@@ -3,6 +3,66 @@
  "source": "SEC EDGAR (Form 4 and Form 13F)",
  "insiders": [
   {
+   "name": "Nancy Quan",
+   "role": "Executive Vice President",
+   "company": "Coca-Cola Company (The)",
+   "ticker": "KO",
+   "side": "sell",
+   "shares": 15000,
+   "value": 1470000,
+   "traded": "2026-11-12",
+   "reported": "2026-11-13",
+   "url": "https://www.sec.gov/Archives/edgar/data/21344/000002134426000173/xslF345X06/form4.xml"
+  },
+  {
+   "name": "George Sarah Catherine",
+   "role": "Executive Vice President",
+   "company": "Costco Wholesale",
+   "ticker": "COST",
+   "side": "sell",
+   "shares": 756,
+   "value": 829065,
+   "traded": "2026-11-12",
+   "reported": "2026-11-13",
+   "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000138/xslF345X06/form4.xml"
+  },
+  {
+   "name": "Gustav Soderstrom",
+   "role": "Co-Chief Executive Officer",
+   "company": "Spotify Technology",
+   "ticker": "SPOT",
+   "side": "sell",
+   "shares": 20910,
+   "value": 12532914,
+   "traded": "2026-11-11",
+   "reported": "2026-11-13",
+   "url": "https://www.sec.gov/Archives/edgar/data/1639920/000114036126043772/xslF345X06/form4.xml"
+  },
+  {
+   "name": "Nora Denzel",
+   "role": "Board member",
+   "company": "Advanced Micro Devices",
+   "ticker": "AMD",
+   "side": "sell",
+   "shares": 9000,
+   "value": 5083920,
+   "traded": "2026-11-11",
+   "reported": "2026-11-13",
+   "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000193/xslF345X06/wk-form4_1794604616.xml"
+  },
+  {
+   "name": "Booth Thomas Ryder",
+   "role": "Chief Technology & Eng Ofr",
+   "company": "Chevron",
+   "ticker": "CVX",
+   "side": "sell",
+   "shares": 6000,
+   "value": 1272822,
+   "traded": "2026-11-11",
+   "reported": "2026-11-13",
+   "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000204/xslF345X06/form4.xml"
+  },
+  {
    "name": "Ronan Harris",
    "role": "Chief Commercial Officer",
    "company": "Snap",
@@ -1889,42 +1949,6 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/"
   },
   {
-   "fund": "Pershing Square",
-   "person": "Bill Ackman's fund",
-   "company": "Uber Technologies",
-   "ticker": "UBER",
-   "move": "new",
-   "value": 2476978592,
-   "pct": null,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
-  },
-  {
-   "fund": "Pershing Square",
-   "person": "Bill Ackman's fund",
-   "company": "Brookfield Corporation Class A Limited Voting Shar",
-   "ticker": "BN",
-   "move": "new",
-   "value": 2448117792,
-   "pct": null,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
-  },
-  {
-   "fund": "Pershing Square",
-   "person": "Bill Ackman's fund",
-   "company": "Microsoft",
-   "ticker": "MSFT",
-   "move": "new",
-   "value": 2315234425,
-   "pct": null,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
-  },
-  {
    "fund": "Berkshire Hathaway",
    "person": "Warren Buffett's company",
    "company": "Delta Air Lines",
@@ -1951,11 +1975,35 @@
   {
    "fund": "Pershing Square",
    "person": "Bill Ackman's fund",
-   "company": "Howard Hughes Holdings",
-   "ticker": "HHH",
-   "move": "more",
-   "value": 1347734055,
-   "pct": 2.095,
+   "company": "Visa",
+   "ticker": "V",
+   "move": "new",
+   "value": 1122065552,
+   "pct": null,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
+  },
+  {
+   "fund": "Pershing Square",
+   "person": "Bill Ackman's fund",
+   "company": "Mastercard Incorporated",
+   "ticker": "",
+   "move": "new",
+   "value": 1091218186,
+   "pct": null,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
+  },
+  {
+   "fund": "Pershing Square",
+   "person": "Bill Ackman's fund",
+   "company": "S&P Global",
+   "ticker": "SPGI",
+   "move": "new",
+   "value": 1056088305,
+   "pct": null,
    "asof": "2026-06-30",
    "reported": "2026-08-14",
    "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
@@ -1995,6 +2043,30 @@
    "asof": "2026-06-30",
    "reported": "2026-08-14",
    "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
+  },
+  {
+   "fund": "Pershing Square",
+   "person": "Bill Ackman's fund",
+   "company": "Amazon.com",
+   "ticker": "AMZN",
+   "move": "less",
+   "value": 688355474,
+   "pct": -0.252,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
+  },
+  {
+   "fund": "Pershing Square",
+   "person": "Bill Ackman's fund",
+   "company": "Howard Hughes Holdings",
+   "ticker": "HHH",
+   "move": "more",
+   "value": 643410000,
+   "pct": 0.477,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
   },
   {
    "fund": "Berkshire Hathaway",
@@ -2043,6 +2115,18 @@
    "asof": "2026-06-30",
    "reported": "2026-08-14",
    "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/"
+  },
+  {
+   "fund": "Pershing Square",
+   "person": "Bill Ackman's fund",
+   "company": "Meta Platforms",
+   "ticker": "META",
+   "move": "more",
+   "value": 301473371,
+   "pct": 0.201,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
   },
   {
    "fund": "Berkshire Hathaway",
@@ -2223,6 +2307,18 @@
    "asof": "2026-06-30",
    "reported": "2026-08-14",
    "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
+  },
+  {
+   "fund": "Pershing Square",
+   "person": "Bill Ackman's fund",
+   "company": "Alphabet",
+   "ticker": "GOOGL",
+   "move": "sold",
+   "value": 98731763,
+   "pct": -1.0,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
   },
   {
    "fund": "Appaloosa",
