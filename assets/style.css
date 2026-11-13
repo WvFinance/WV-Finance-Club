@@ -684,8 +684,6 @@ tr.flash td{background:var(--down-soft);transition:background .4s}
 .fdsince{justify-self:start;font-size:13px;font-weight:600;border-radius:999px;padding:3px 10px;white-space:nowrap}
 .fdsince.up{background:var(--up-soft);color:var(--up)}.fdsince.down{background:var(--down-soft);color:var(--down)}.fdsince.flat{background:var(--flat-soft);color:var(--flat)}
 .fdmoves .fdsince{padding:1px 8px;font-size:12px}
-.fdmean{margin:0;background:var(--bg);border-left:3px solid var(--gold);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--ink-2)}
-.fdmean b{color:var(--ink);font-weight:600}
 .fdmoresells{justify-self:start}
 .tab .fddot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--down);margin-left:6px;vertical-align:4px}
 @media (max-width:600px){.fdcard{grid-template-columns:36px minmax(0,1fr);gap:10px;padding:14px}.fdav{width:36px;height:36px;font-size:12px}}
