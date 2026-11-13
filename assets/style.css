@@ -297,7 +297,7 @@ table.pos th{padding:10px 12px}
 .latestlist .o{font-size:12px;color:var(--muted);font-family:var(--f-mono)}
 
 /* Log in and sign up screen (Simple Street, dark) */
-html:not(.unlocked) body>*:not(#gate):not(script){display:none!important}
+html:not(.unlocked) body>*:not(#gate):not(#intro):not(script){display:none!important}
 html.unlocked #gate{display:none}
 #gate{position:fixed;inset:0;z-index:50;overflow:auto;display:flex;flex-direction:column;background:radial-gradient(70% 60% at 50% 30%,#13224a,#0b1530 70%);color:#f2f2f2;font-family:var(--f-body)}
 .gtick{flex:none;background:#070d1f;border-bottom:1px solid #1c2a52;min-height:46px}
@@ -679,3 +679,46 @@ tr.flash td{background:var(--down-soft);transition:background .4s}
 .nitem .h{overflow-wrap:anywhere}
 /* Installed app: keep the phone's status bar area navy so the clock and battery stay readable */
 @media (display-mode:standalone){body::before{content:"";position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:#0b1530;z-index:1000}}
+
+/* Opening animation "Ticker tunnel": rows of stock prices race across, squeeze into a glowing line,
+   then "Wall Street Simplified" appears, then the logo snaps out and the name slides open (about 5 seconds, once per visit, tap to skip).
+   Only transform and opacity move, so the browser's graphics chip does the work and it stays smooth. */
+#intro{position:fixed;inset:0;z-index:200;overflow:hidden;display:flex;align-items:center;justify-content:center;background:radial-gradient(70% 60% at 50% 45%,#13224a,#0b1530 70%,#070d1f);cursor:pointer;animation:iout .55s cubic-bezier(.5,0,.8,.4) 4.8s forwards;will-change:opacity,transform}
+html.nointro #intro{display:none}
+#intro.igo{animation:ifade .3s ease forwards}
+#intro .irows{position:absolute;inset:-2vh 0;display:flex;flex-direction:column;justify-content:space-between;transform-origin:50% 50%;animation:isquash .55s cubic-bezier(.7,0,.9,.5) 1.3s forwards;will-change:transform,opacity}
+#intro .irow{white-space:nowrap;opacity:0;animation:iin .3s ease calc(var(--i)*.035s) forwards}
+#intro .itrack{display:inline-flex;width:max-content;gap:28px;animation:islide 1.9s linear forwards;will-change:transform}
+#intro .irow.r .itrack{animation-name:islide2}
+#intro .itrack span{flex:none;font:700 clamp(14px,2.2vw,24px) var(--f-body);color:#cfe0ff;opacity:.85}
+#intro .itrack b{color:#3ddc97;font-weight:600}
+#intro .itrack b.dn{color:#ff6b6b}
+#intro .iflash{position:absolute;left:0;right:0;top:50%;height:4px;margin-top:-2px;background:#7fd4ff;box-shadow:0 0 18px 6px rgba(47,123,255,.8);opacity:0;transform:scaleX(0);animation:iline .55s ease 1.75s forwards;will-change:transform,opacity}
+#intro .iwords{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;animation:iwout .35s ease-in 3.25s forwards;will-change:transform,opacity}
+#intro .iw1{font-size:64px;color:#fff;opacity:0;transform:translateY(24px);animation:islidein .5s cubic-bezier(.2,.8,.2,1) 2.1s forwards;will-change:transform,opacity}
+#intro .iw2m{overflow:hidden;margin-top:6px;padding:0 4px 6px}
+#intro .iw2{font-size:64px;color:#7fd4ff;transform:translateY(135%);animation:islidein .5s cubic-bezier(.2,.8,.2,1) 2.45s forwards;will-change:transform}
+@keyframes iwout{to{opacity:0;transform:scale(.85)}}
+#intro .ilock{position:relative;display:flex;align-items:center}
+#intro .imk{position:relative;z-index:2;width:118px;height:118px;flex:none;opacity:0;transform:translateX(var(--shift,0)) scale(.3);animation:ipop .45s cubic-bezier(.2,.9,.3,1.4) 3.45s forwards,islidein .6s cubic-bezier(.2,.8,.2,1) 4.05s forwards;will-change:transform,opacity}
+#intro .iglow{position:absolute;inset:0;border-radius:27px;box-shadow:0 0 34px 6px rgba(47,123,255,.55)}
+#intro .imark{position:relative;display:block;width:100%;height:100%}
+#intro .is{stroke-dasharray:1;stroke-dashoffset:1;animation:idraw .5s ease 3.65s forwards}
+#intro .ia{opacity:0;animation:iin .2s ease 4.05s forwards}
+#intro .itxt{margin-left:22px;overflow:hidden}
+#intro .itxti{transform:translateX(-105%);animation:islidein .6s cubic-bezier(.2,.8,.2,1) 4.1s forwards;will-change:transform}
+#intro .sswm{font-size:52px;color:#fff;white-space:nowrap}
+#intro .imotto{margin:12px 0 0;color:#7fb0ff;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;font-family:var(--f-body);white-space:nowrap}
+#intro .iskip{position:absolute;bottom:max(24px,env(safe-area-inset-bottom));left:0;right:0;margin:0;text-align:center;color:#8a97b8;font-size:12px;font-family:var(--f-body);opacity:0;animation:iin .4s ease .8s forwards}
+@keyframes iin{to{opacity:1}}
+@keyframes idraw{to{stroke-dashoffset:0}}
+@keyframes islide{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+@keyframes islide2{from{transform:translate3d(-50%,0,0)}to{transform:translate3d(0,0,0)}}
+@keyframes isquash{to{transform:scaleY(0);opacity:0}}
+@keyframes iline{0%{opacity:1;transform:scaleX(0)}50%{opacity:1;transform:scaleX(1)}100%{opacity:0;transform:scaleX(1) scaleY(25)}}
+@keyframes ipop{to{opacity:1;transform:translateX(var(--shift,0)) scale(1)}}
+@keyframes islidein{to{opacity:1;transform:none}}
+@keyframes iout{to{opacity:0;visibility:hidden;transform:scale(1.15)}}
+@keyframes ifade{to{opacity:0;visibility:hidden}}
+@media (max-width:600px){#intro .iw1,#intro .iw2{font-size:44px}#intro .imk{width:84px;height:84px}#intro .iglow{border-radius:19px}#intro .itxt{margin-left:14px}#intro .sswm{font-size:38px}#intro .imotto{font-size:9px;letter-spacing:.2em}}
+@media (prefers-reduced-motion:reduce){#intro{display:none}}
