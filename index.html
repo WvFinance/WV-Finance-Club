@@ -14,15 +14,33 @@
 <meta name="apple-mobile-web-app-title" content="Simple Street">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="assets/fonts.css?v=2026111201">
-<link rel="stylesheet" href="assets/style.css?v=2026111301">
+<link rel="stylesheet" href="assets/style.css?v=2026111302">
 <script>
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
 // Use the last school colors right away (app.js sets the real school after login).
 try{const t=localStorage.getItem("wvfc.theme");if(t)document.documentElement.dataset.school=t;}catch(e){}
+// Opening animation: play it once per visit, and never for people who turn off motion.
+try{if(sessionStorage.getItem("ss.intro")||matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("nointro");else sessionStorage.setItem("ss.intro","1");}catch(e){document.documentElement.classList.add("nointro");}
 </script>
 </head>
 <body>
+
+<div id="intro" aria-hidden="true">
+  <div class="iin">
+    <svg class="imark" viewBox="0 0 100 100"><rect class="itile" width="100" height="100" rx="23" fill="#2f7bff"/><g transform="translate(4 7) scale(.9)"><path class="is" pathLength="1" d="M27 74 C36 82 66 82 66 66 C66 51 34 55 34 39 C34 28 44 25 52 25 C60 25 65 22 70.5 16.5" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="round"/><path class="ia" d="M84 3 L81.5 29 L58 5.5 Z" fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></g></svg>
+    <div class="iname sswm">Simple Street</div>
+    <p class="imotto">Wall Street Simplified</p>
+  </div>
+  <p class="iskip">Tap to skip</p>
+</div>
+<script>
+(function(){var el=document.getElementById("intro");if(!el)return;var done=function(){el.remove();};
+if(document.documentElement.classList.contains("nointro")){done();return;}
+el.addEventListener("click",function(){el.classList.add("igo");setTimeout(done,300);});
+addEventListener("keydown",function k(){removeEventListener("keydown",k);el.classList.add("igo");setTimeout(done,300);});
+setTimeout(done,3200);})();
+</script>
 
 <div id="gate" role="dialog" aria-label="Log in">
   <div class="gtick" id="gate-tick" aria-label="The market"></div>
