@@ -24,6 +24,17 @@ jobs:
           words=$(node --input-type=module -e 'import { gradeLevel, unexplainedJargon } from "./brief-server/src/wording.js"; import fs from "fs"; const b = JSON.parse(fs.readFileSync("brief.json", "utf8")); if (b.summary) { const t = [b.summary, ...b.bull, ...b.bear].join(" "); const j = unexplainedJargon([b.headline, t].join(" ")); console.log(`Reading level: grade ${gradeLevel(t).toFixed(1)}. Unexplained jargon: ${j.length ? j.join(", ") : "none"}.`); }' 2>/dev/null)
           [ -n "$words" ] && echo "::notice title=Wording::$words"
           if [ "$code" = 200 ]; then echo "::notice title=Brief OK::$msg"; else echo "::error title=HTTP $code::$msg"; exit 1; fi
+      - name: Check the brief through simplestreet.com.co
+        if: always()
+        run: |
+          # The site asks for briefs at simplestreet.com.co/api. The brief above is saved for a day,
+          # so this just reads it back (free) and proves the website's address reaches the server.
+          code=$(curl -sS -m 60 -o site.json -w '%{http_code}' -H "Origin: https://simplestreet.com.co" -D site-headers.txt \
+            "https://simplestreet.com.co/api/brief?symbol=${{ inputs.symbol }}")
+          allow=$(grep -i '^access-control-allow-origin' site-headers.txt | tr -d '\r' | cut -d' ' -f2)
+          msg=$(node -e 'const b=JSON.parse(require("fs").readFileSync("site.json","utf8"));console.log(b.error?"Error: "+b.error:b.headline)' 2>/dev/null || echo "Not a brief (the /api route may be broken)")
+          echo "HTTP $code, allowed origin: $allow: $msg"
+          if [ "$code" = 200 ] && [ "$allow" = "https://simplestreet.com.co" ]; then echo "::notice title=simplestreet.com.co OK::$msg"; else echo "::error title=simplestreet.com.co HTTP $code (origin $allow)::$msg"; exit 1; fi
       - name: Check the news feeds
         if: always()
         run: |

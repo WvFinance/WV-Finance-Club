@@ -144,6 +144,8 @@ export async function writeBrief(apiKey, symbol, model, { beforeAI } = {}) {
       if (e instanceof BriefError) throw e;
       lastError = e;
       console.warn(symbol, "attempt", attempt + 1, "failed:", e.message);
+      // Gemini is sometimes busy for a moment (error 500/503); wait a bit before trying again.
+      if (attempt === 0 && /^Gemini 5\d\d/.test(e.message || "")) await new Promise(r => setTimeout(r, 4000));
     }
   }
   throw lastError;
