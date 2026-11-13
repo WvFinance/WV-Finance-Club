@@ -107,7 +107,19 @@ def recent_filings(sub):
 def nice_person(name):
     """'COOK TIMOTHY D' -> 'Timothy D Cook'. Company-like names are only tidied."""
     name = re.sub(r"\s+", " ", name.strip())
-    if not name or name != name.upper():
+    if not name:
+        return name
+    if name != name.upper():
+        # Mixed case: the SEC usually stores "Harris Ronan" or "Jones Teresa A." (last name first).
+        # Only turn around the clear cases; "Mark A Nelson" and three full words are left alone.
+        w = name.split()
+        initial = lambda x: len(x.rstrip(".")) == 1  # noqa: E731
+        if re.search(r"\b(LLC|L\.?P\.?|Inc|Corp|Trust|Fund|Partners|Capital|Holdings|Ltd|Group|Foundation|Management)\b", name, re.I):
+            return name
+        if len(w) == 2 and not initial(w[0]) and not initial(w[1]):
+            return f"{w[1]} {w[0]}"
+        if len(w) == 3 and initial(w[2]) and not initial(w[1]):
+            return f"{w[1]} {w[2]} {w[0]}"
         return name
     words = name.split()
     if re.search(r"\b(LLC|L\.?P\.?|INC|CORP|TRUST|FUND|PARTNERS|CAPITAL|HOLDINGS|LTD|CO|GROUP|FOUNDATION|MANAGEMENT)\b\.?", name):
@@ -199,7 +211,7 @@ def insiders(tickers, by_ticker):
             for side, o in p["sides"].items():
                 if not p["name"]:
                     continue
-                rows.append({"name": p["name"], "role": p["role"], "company": company_name(company), "ticker": tk, "side": side,
+                rows.append({"name": p["name"], "role": p["role"], "company": company_for(tk, company), "ticker": tk, "side": side,
                              "shares": round(o["shares"]), "value": round(o["value"]), "traded": o["traded"], "reported": f["filingDate"],
                              "url": base + f["primaryDocument"]})
                 found += 1
@@ -208,9 +220,26 @@ def insiders(tickers, by_ticker):
     return rows[:KEEP_INSIDERS]
 
 
+def site_names():
+    """Ticker -> the company name the site's search bar uses (data/stocks.json)."""
+    try:
+        return {row[0].upper(): row[1] for row in json.loads((ROOT / "data" / "stocks.json").read_text())["stocks"]}
+    except Exception:  # noqa: BLE001
+        return {}
+
+
+SITE = site_names()
+
+
+def company_for(ticker, fallback):
+    return company_name(SITE.get(ticker) or fallback)
+
+
 def company_name(n):
     """'APPLE INC' -> 'Apple'. Good enough for a short label."""
-    n = re.sub(r"[.,]", "", n.strip())
+    n = re.sub(r"\s*/[A-Za-z]{2,3}/?\s*$", "", n.strip())
+    n = re.sub(r"\s+(Class [A-C]|Common Stock)$", "", n, flags=re.I)
+    n = re.sub(r"(?<!\w\.\w)[.,](?!\w)", "", n)
     n = re.sub(r"\s+(/[A-Z]{2}/?|INC|CORP|CORPORATION|CO|COMPANY|LTD|PLC|HOLDINGS|GROUP|N\.?V\.?|S\.?A\.?|CLASS [A-C]|COM|NEW)$", "", n, flags=re.I)
     n = re.sub(r"\s+(/[A-Z]{2}/?|INC|CORP|CORPORATION|CO|COMPANY|LTD|PLC)$", "", n, flags=re.I)
     if n == n.upper() and len(n) > 4:
@@ -321,12 +350,20 @@ def fund_moves(names):
                 moves["sold"].append((b["value"] * old_scale, b, -1.0))
         n = 0
         for kind, lst in moves.items():
-            lst.sort(key=lambda x: x[0], reverse=True)
-            for value, h, ch in lst[:MOVES_PER_KIND]:
+            merged = {}
+            for value, h, ch in lst:
+                tk, title = names.get(name_key(h["name"]), ("", h["name"]))
+                key = tk or name_key(h["name"])
+                if key in merged:
+                    m = merged[key]
+                    merged[key] = (m[0] + value, m[1], m[2] if value < m[0] else ch, tk, title)
+                else:
+                    merged[key] = (value, h, ch, tk, title)
+            lst = sorted(merged.values(), key=lambda x: x[0], reverse=True)
+            for value, h, ch, tk, title in lst[:MOVES_PER_KIND]:
                 if value < 1e6:
                     continue
-                tk, title = names.get(name_key(h["name"]), ("", h["name"]))
-                rows.append({"fund": fund, "person": person, "company": company_name(title), "ticker": tk,
+                rows.append({"fund": fund, "person": person, "company": company_for(tk, title), "ticker": tk,
                              "move": kind, "value": round(value), "pct": None if ch is None else round(ch, 3),
                              "asof": new["reportDate"], "reported": new["filingDate"], "url": base})
                 n += 1

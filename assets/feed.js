@@ -152,7 +152,7 @@ function insiderCard(t){
 const MOVE={new:["buy","New buy"],more:["buy","Bought more"],less:["sell","Sold some"],sold:["sell","Sold all"]};
 function fundCard(t){
   const on=F.follows.has(t.fund),[k,label]=MOVE[t.move]||["wait",t.move];
-  const pct=t.pct!=null&&t.move!=="sold"?` (${Math.abs(Math.round(t.pct*100))}% ${t.pct>0?"more":"fewer"} shares)`:"";
+  const pct=t.pct==null||t.move==="sold"?"":t.pct>=20?" (many times more shares)":t.pct>=1.5?` (about ${Math.round(1+t.pct)} times as many shares)`:` (${Math.abs(Math.round(t.pct*100))}% ${t.pct>0?"more":"fewer"} shares)`;
   const who=String(t.person||"");
   return el("article",{class:"fdcard"},
     el("div",{class:"fdav fund",text:initials(t.fund)}),
