@@ -331,6 +331,18 @@ def moved_reports(cik, notice, fund):
     return out
 
 
+def quarter_table(filings):
+    """One quarter's holdings from one or more filers' reports. A stock in two reports counts once (the bigger one)."""
+    out, first = {}, None
+    for f in filings:
+        table, base = info_table(f["cik"], f["accessionNumber"])
+        first = first or base
+        for cusip, h in table.items():
+            if cusip not in out or h["shares"] > out[cusip]["shares"]:
+                out[cusip] = h
+    return out, first
+
+
 def fund_moves(names):
     rows = []
     for cik, must, fund, person in FUNDS:
@@ -355,11 +367,18 @@ def fund_moves(names):
                     print(f"{fund}: couldn't follow its notice to the new filer ({e})")
             # One report per quarter, newest first (an amended report is a different form and is ignored).
             reps.sort(key=lambda f: (f.get("reportDate") or "", f["filingDate"]), reverse=True)
-            seen, quarters = set(), []
+            # When holdings moved to another filer, both filers can have a report for the same quarter
+            # (each with part of the holdings), so a quarter keeps the newest report from each filer.
+            seen, quarters, parts = set(), [], {}
             for f in reps:
-                if f.get("reportDate") and f["reportDate"] not in seen:
-                    seen.add(f["reportDate"])
+                q = f.get("reportDate")
+                if not q:
+                    continue
+                if q not in seen:
+                    seen.add(q)
                     quarters.append(f)
+                if f["cik"] not in [x["cik"] for x in parts.setdefault(q, [])]:
+                    parts[q].append(f)
             if len(quarters) < 2:
                 print(f"{fund}: fewer than 2 reports, skipped")
                 continue
@@ -367,8 +386,8 @@ def fund_moves(names):
             if (TODAY - dt.date.fromisoformat(new["filingDate"])).days > FUND_STALE_DAYS:
                 print(f"{fund}: newest report is from {new['filingDate']}, too old, skipped")
                 continue
-            now, base = info_table(new["cik"], new["accessionNumber"])
-            before, _ = info_table(old["cik"], old["accessionNumber"])
+            now, base = quarter_table(parts[new["reportDate"]])
+            before, _ = quarter_table(parts[old["reportDate"]])
         except Exception as e:  # noqa: BLE001
             print(f"{fund}: couldn't load ({e})")
             continue
