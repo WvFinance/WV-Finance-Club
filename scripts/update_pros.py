@@ -5,6 +5,9 @@ Writes data/pros.json from the SEC's free EDGAR site (public records, no key nee
     for a list of well-known companies plus the stocks members own in Paper Trading (data/owned.json).
   * funds: what famous investors' funds bought and sold last quarter (Form 13F, reported every 3 months,
     up to 45 days after the quarter ends). Compares each fund's newest report with the one before it.
+  * prices: each stock's closing price on the day a trade was reported and its newest close (free Yahoo Finance
+    daily closes, like scripts/update_prices.py), so the Feed can say "up 6% since this was reported". Covers
+    Congress trades too (read from the brief server's /congress); only prices are saved, never Congress records.
 Runs in GitHub Actions on weekday evenings (see .github/workflows/update-pros.yml).
 """
 import datetime as dt
@@ -433,6 +436,66 @@ def fund_moves(names):
     return rows
 
 
+YAHOO_UA = {"User-Agent": "Mozilla/5.0 (WV Finance Club feed updater)"}
+CONGRESS_URLS = ["https://wvfc-brief-server.wvfinance.workers.dev/congress", "https://simplestreet.com.co/api/congress"]
+
+
+def yahoo_closes(ticker, start):
+    """{YYYY-MM-DD: close} from Yahoo Finance's free chart endpoint (BRK.B is BRK-B there)."""
+    p1 = int(dt.datetime.combine(start, dt.time()).replace(tzinfo=dt.timezone.utc).timestamp())
+    url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker.replace('.', '-')}"
+           f"?period1={p1}&period2={int(time.time()) + 86400}&interval=1d")
+    with urllib.request.urlopen(urllib.request.Request(url, headers=YAHOO_UA), timeout=30) as r:
+        res = json.load(r)["chart"]["result"][0]
+    tz = dt.timezone(dt.timedelta(seconds=res["meta"].get("gmtoffset", 0)))
+    out = {}
+    for ts, c in zip(res.get("timestamp", []), res["indicators"]["quote"][0]["close"]):
+        if c is not None:
+            out[dt.datetime.fromtimestamp(ts, tz).date().isoformat()] = round(c, 2)
+    return out
+
+
+def congress_pairs():
+    """(ticker, reported day) for the Congress trades the Feed shows. Only these two fields are kept."""
+    for url in CONGRESS_URLS:
+        try:
+            req = urllib.request.Request(url, headers={**YAHOO_UA, "Accept": "application/json"})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                trades = json.load(r).get("trades", [])
+            return [(t["ticker"], t["reported"]) for t in trades if t.get("ticker") and t.get("reported")]
+        except Exception as e:  # noqa: BLE001
+            print(f"Congress trades not read from {url}: {e}")
+    return []
+
+
+def since_prices(pairs):
+    """{ticker: {"now": newest close, "day": its date, "on": {reported day: close that day or the next trading day}}}"""
+    want = {}
+    for tk, d in pairs:
+        if tk and re.fullmatch(r"\d{4}-\d{2}-\d{2}", d or "") and re.fullmatch(r"[A-Z][A-Z0-9.\-]{0,9}", tk):
+            want.setdefault(tk, set()).add(d)
+    out = {}
+    for tk, days in sorted(want.items()):
+        try:
+            closes = yahoo_closes(tk, dt.date.fromisoformat(min(days)) - dt.timedelta(days=5))
+        except Exception as e:  # noqa: BLE001
+            print(f"  no prices for {tk}: {e}")
+            continue
+        time.sleep(0.25)
+        if not closes:
+            continue
+        dates = sorted(closes)
+        on = {}
+        for d in days:
+            nxt = next((x for x in dates if x >= d), None)
+            if nxt and nxt != dates[-1]:   # reported today: nothing to compare yet
+                on[d] = closes[nxt]
+        if on:
+            out[tk] = {"now": closes[dates[-1]], "day": dates[-1], "on": on}
+    print(f"Prices for {len(out)} of {len(want)} stocks")
+    return out
+
+
 def main():
     listed = list(get_json("https://www.sec.gov/files/company_tickers.json").values())
     by_ticker = {}
@@ -467,7 +530,10 @@ def main():
     if not ins and not funds:
         sys.exit("Nothing found at all. Not saving.")
     same = old.get("insiders") == ins and old.get("funds") == funds
-    data = {"updated": old.get("updated") if same else TODAY.isoformat(), "source": "SEC EDGAR (Form 4 and Form 13F)", "insiders": ins, "funds": funds}
+    pairs = [(t.get("ticker"), t.get("reported")) for t in ins + funds] + congress_pairs()
+    prices = since_prices(pairs) or old.get("prices", {})
+    data = {"updated": old.get("updated") if same else TODAY.isoformat(), "source": "SEC EDGAR (Form 4 and Form 13F)",
+            "insiders": ins, "funds": funds, "prices": prices}
     OUT.write_text(json.dumps(data, indent=1) + "\n")
 
 

@@ -407,7 +407,7 @@ function tradeFromSearch(sd,s){const sym=s||searchSym();if(!sym)return;
   goTrade();if(db&&G.acct)fill(sym,"",sd);else{symIn.value=sym;pendingFill=[sym,sd];}
   setTimeout(()=>{if(!qtyIn.closest("[hidden]"))qtyIn.focus({preventScroll:true});},400);}
 $("#s-buy").addEventListener("click",()=>tradeFromSearch("buy"));
-// The Feed's "Practice-buy" button opens the order form with that stock filled in.
+// The Feed's "Buy Now" button opens the order form with that stock filled in.
 window.WVFC_PAPER={trade:(sym,sd)=>tradeFromSearch(sd||"buy",sym)};
 $("#s-sell").addEventListener("click",()=>tradeFromSearch("sell"));
 document.addEventListener("wvfc:stock",renderTradeBar);

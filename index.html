@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-title" content="Simple Street">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="assets/fonts.css?v=2026111201">
-<link rel="stylesheet" href="assets/style.css?v=2026111402">
+<link rel="stylesheet" href="assets/style.css?v=2026111403">
 <script>
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
@@ -307,7 +307,7 @@ setTimeout(done,5400);})();
   <div class="sechead">
     <div>
       <h2>Feed</h2>
-      <p class="sub">Trades from your friends, members of Congress, company insiders and big investors, in one place. <span class="fdcredit">Congress data via <a href="https://www.bargo.ai" target="_blank" rel="noopener">Bargo</a></span></p>
+      <p class="sub">Trades from your friends, members of Congress, company insiders and big investors, with trades in your stocks first. <span class="fdcredit">Congress data via <a href="https://www.bargo.ai" target="_blank" rel="noopener">Bargo</a></span></p>
     </div>
   </div>
   <div class="fdgrid">
@@ -319,6 +319,7 @@ setTimeout(done,5400);})();
       </div>
       <div class="fdchips" aria-label="Show">
         <button type="button" class="fdchip on" data-f="all">All</button>
+        <button type="button" class="fdchip" data-f="mine">Your stocks</button>
         <button type="button" class="fdchip" data-f="friends">Friends</button>
         <button type="button" class="fdchip" data-f="congress">Congress</button>
         <button type="button" class="fdchip" data-f="insiders">Insiders</button>
@@ -526,11 +527,11 @@ setTimeout(done,5400);})();
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="config.js?v=2026111201"></script>
-<script src="assets/app.js?v=2026111401"></script>
+<script src="assets/app.js?v=2026111402"></script>
 <script src="assets/vendor/supabase-2.118.0.js"></script>
 <script src="assets/account.js?v=2026111101"></script>
 <script src="assets/paper.js?v=2026111401"></script>
-<script src="assets/feed.js?v=2026111304"></script>
+<script src="assets/feed.js?v=2026111402"></script>
 <script src="assets/staff.js?v=2026111101"></script>
 <script src="assets/users.js?v=2026111101"></script>
 <script>
