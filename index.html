@@ -14,7 +14,7 @@
 <meta name="apple-mobile-web-app-title" content="Simple Street">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="assets/fonts.css?v=2026111201">
-<link rel="stylesheet" href="assets/style.css?v=2026111307">
+<link rel="stylesheet" href="assets/style.css?v=2026111301">
 <script>
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
@@ -280,7 +280,7 @@ setTimeout(done,5400);})();
   <div class="sechead">
     <div>
       <h2>Feed</h2>
-      <p class="sub">Trades from your friends and from members of Congress, in one place. <span class="fdcredit">Congress data via <a href="https://www.bargo.ai" target="_blank" rel="noopener">Bargo</a></span></p>
+      <p class="sub">Trades from your friends, members of Congress, company insiders and big investors, in one place. <span class="fdcredit">Congress data via <a href="https://www.bargo.ai" target="_blank" rel="noopener">Bargo</a></span></p>
     </div>
   </div>
   <div class="fdgrid">
@@ -289,6 +289,8 @@ setTimeout(done,5400);})();
         <button type="button" class="fdchip on" data-f="all">All</button>
         <button type="button" class="fdchip" data-f="friends">Friends</button>
         <button type="button" class="fdchip" data-f="congress">Congress</button>
+        <button type="button" class="fdchip" data-f="insiders">Insiders</button>
+        <button type="button" class="fdchip" data-f="funds">Big investors</button>
         <button type="button" class="fdchip" data-f="following">Following</button>
       </div>
       <div id="fd-list" aria-live="polite"><p class="meta">Loading the feed…</p></div>
@@ -496,7 +498,7 @@ setTimeout(done,5400);})();
 <script src="assets/vendor/supabase-2.118.0.js"></script>
 <script src="assets/account.js?v=2026111101"></script>
 <script src="assets/paper.js?v=2026111201"></script>
-<script src="assets/feed.js?v=2026111201"></script>
+<script src="assets/feed.js?v=2026111301"></script>
 <script src="assets/staff.js?v=2026111101"></script>
 <script src="assets/users.js?v=2026111101"></script>
 <script>

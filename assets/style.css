@@ -722,3 +722,7 @@ html.nointro #intro{display:none}
 @keyframes ifade{to{opacity:0;visibility:hidden}}
 @media (max-width:600px){#intro .iw1,#intro .iw2{font-size:44px}#intro .imk{width:84px;height:84px}#intro .iglow{border-radius:19px}#intro .itxt{margin-left:14px}#intro .sswm{font-size:38px}#intro .imotto{font-size:9px;letter-spacing:.2em}}
 @media (prefers-reduced-motion:reduce){#intro{display:none}}
+.fdav.ins{background:color-mix(in srgb,#33b884 18%,transparent);color:#4fcf9c}
+.fdav.fund{background:color-mix(in srgb,#b38cff 20%,transparent);color:#c3a6ff}
+.fdgov.ins{color:#4fcf9c;background:color-mix(in srgb,#33b884 16%,transparent)}
+.fdgov.fund{color:#c3a6ff;background:color-mix(in srgb,#b38cff 18%,transparent)}
