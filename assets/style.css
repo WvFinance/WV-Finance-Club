@@ -692,6 +692,7 @@ html.nointro #intro{display:none}
 #intro .irow.r .itrack{animation-name:islide2}
 #intro .itrack span{flex:none;font:700 clamp(14px,2.2vw,24px) var(--f-body);color:#cfe0ff;opacity:.85}
 #intro .itrack b{color:#3ddc97;font-weight:600}
+#intro .itrack b.dn{color:#ff6b6b}
 #intro .iflash{position:absolute;left:0;right:0;top:50%;height:4px;margin-top:-2px;background:#7fd4ff;box-shadow:0 0 18px 6px rgba(47,123,255,.8);opacity:0;transform:scaleX(0);animation:iline .55s ease 1.75s forwards;will-change:transform,opacity}
 #intro .iwords{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;animation:iwout .35s ease-in 3.25s forwards;will-change:transform,opacity}
 #intro .iw1{font-size:64px;color:#fff;opacity:0;transform:translateY(24px);animation:islidein .5s cubic-bezier(.2,.8,.2,1) 2.1s forwards;will-change:transform,opacity}
