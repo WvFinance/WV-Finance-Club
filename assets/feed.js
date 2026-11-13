@@ -125,14 +125,26 @@ async function editWhy(t){
 /* ---------- A person's page: every trade we have for one member of Congress, insider or big investor ---------- */
 // Their name on any card is a button that opens it.
 function personBtn(label,kind,name){return el("button",{type:"button",class:"linkbtn fdperson",text:label,title:`See all of ${name}'s trades`,onclick:()=>openPerson(kind,name)});}
-function openPerson(kind,name){person={kind,name};render();const f=$("#feed");window.scrollTo({top:f?f.offsetTop-10:0});}
+// A member's full list (last 3 months) comes from the brief server; the feed itself only has the newest reports.
+const MEMBER={};
+async function loadMember(name){
+  if(!API||MEMBER[name])return;
+  MEMBER[name]={loading:true};
+  try{const r=await fetch(API+"/congress/member?name="+encodeURIComponent(name));const j=await r.json();
+    if(!r.ok||!Array.isArray(j.trades))throw 0;MEMBER[name]={trades:j.trades.filter(t=>t.member===name)};}
+  catch(e){MEMBER[name]={error:true};}
+  if(person&&person.name===name)render();
+}
+function openPerson(kind,name){person={kind,name};if(kind==="congress")loadMember(name);render();const f=$("#feed");window.scrollTo({top:f?f.offsetTop-10:0});}
 function closePerson(){person=null;render();}
 function personView(){
   const{kind,name}=person,pros=F.pros||{insiders:[],funds:[]};
   let rows=[],head,sub,cards,note;
-  if(kind==="congress"){rows=(F.congress||[]).filter(t=>t.member===name).sort(byDay("reported"));const t=rows[0];
+  if(kind==="congress"){
+    const m=MEMBER[name]||{},seen=new Set(),id=t=>[t.ticker,t.side,t.traded,t.reported,t.range].join("|");
+    rows=[...(F.congress||[]).filter(t=>t.member===name),...(m.trades||[])].filter(t=>!seen.has(id(t))&&seen.add(id(t))).sort(byDay("reported"));const t=rows[0];
     head=[el("span",{class:"fdgov",text:"Congress"})];sub=t?where(t):"";cards=rows.map(congressCard);
-    note="From the latest Congress reports. Members of Congress must report trades within 45 days.";}
+    note=m.loading?"Loading all of their trades…":m.error?"Showing their newest trades. The rest couldn't be loaded right now.":"Their trades from the last 3 months. Members of Congress must report trades within 45 days.";}
   else if(kind==="insider"){rows=pros.insiders.filter(t=>t.name===name).sort(byDay("reported"));const t=rows[0];
     head=[el("span",{class:"fdgov ins",text:"Insider"})];sub=t?`${t.role} at ${t.company}`:"";cards=rows.map(insiderCard);
     note="Buys and sales from the last 45 days of SEC reports.";}

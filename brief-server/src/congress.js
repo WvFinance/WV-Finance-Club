@@ -6,7 +6,11 @@
 // Needs the secret BARGO_API_KEY (a free key from bargo.ai/free-apis/dash). Without a key Bargo counts
 // calls by internet address, and this server shares its addresses with other Cloudflare sites, so it gets "429 too many".
 const SRC = "https://www.bargo.ai/free-apis/congress/v1/trades";
-const FRESH = 6 * 60 * 60;          // ask Bargo again after 6 hours
+// Bargo's free key allows 1,000 rows a day. The main list is 250 rows, so asking every 12 hours uses 500,
+// which leaves room for one member's trades at a time (/congress/member, 50 rows, kept for a day).
+const FRESH = 12 * 60 * 60;         // ask Bargo again after 12 hours
+const MEMBER_ROWS = 50;
+const MEMBER_FRESH = 24 * 60 * 60;
 const KEEP = 3 * 24 * 60 * 60;      // if Bargo is down, keep showing the last list for up to 3 days
 
 const clean = (s, n) => (typeof s === "string" ? s.trim().slice(0, n) : "");
@@ -38,7 +42,33 @@ async function fromBargo(env) {
   return { trades, checked: new Date().toISOString() };
 }
 
+// GET /congress/member?name=Nancy%20Pelosi: one member's trades from the last 3 months (Bargo keeps 3 months).
+async function memberTrades(env, url, json, headers) {
+  const name = clean(url.searchParams.get("name") || "", 80);
+  if (name.length < 2) return json({ error: "Which member?" }, 400, headers);
+  const key = "congress:m:" + name.toLowerCase();
+  const saved = await env.BRIEFS.get(key, "json");
+  if (saved) return json(saved, 200, headers);
+  if (await env.BRIEFS.get("congress:mfail")) return json({ error: "More trades couldn't be loaded right now. Try again later." }, 502, headers);
+  try {
+    const k = env.BARGO_API_KEY;
+    const r = await fetch(`${SRC}?member=${encodeURIComponent(name)}&limit=${MEMBER_ROWS}`,
+      { headers: { Accept: "application/json", ...(k ? { "X-Api-Key": k } : {}) } });
+    if (!r.ok) throw new Error("Bargo answered " + r.status);
+    const j = await r.json();
+    const trades = (Array.isArray(j.trades) ? j.trades : []).map(shape)
+      .filter((t) => t.member && t.ticker && /^[A-Z][A-Z0-9.\-]{0,9}$/.test(t.ticker) && (t.side === "buy" || t.side === "sell"));
+    const out = { trades, checked: new Date().toISOString() };
+    await env.BRIEFS.put(key, JSON.stringify(out), { expirationTtl: MEMBER_FRESH });
+    return json(out, 200, headers);
+  } catch (e) {
+    await env.BRIEFS.put("congress:mfail", "1", { expirationTtl: 30 * 60 });
+    return json({ error: "More trades couldn't be loaded right now. Try again later.", reason: String(e.message || e) }, 502, headers);
+  }
+}
+
 export async function handleCongress(request, env, url, json, headers) {
+  if (url.pathname === "/congress/member" && request.method === "GET") return memberTrades(env, url, json, headers);
   if (url.pathname !== "/congress") return null;
   if (request.method !== "GET") return json({ error: "not found" }, 404, headers);
   const saved = await env.BRIEFS.get("congress", "json");
