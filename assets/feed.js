@@ -9,7 +9,7 @@ const el=(tag,attrs={},...kids)=>{const e=document.createElement(tag);for(const[
 function toast(msg){const t=$("#toast");if(!t)return;t.textContent=msg;t.classList.add("show");clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove("show"),2600);}
 const errText=e=>String(e&&e.message||e||"Something went wrong. Try again.");
 
-let db=null,loaded=false,filter="all";
+let db=null,loaded=false,filter="all",query="";
 const F={pros:null,friends:null,friendsOff:false,congress:null,congressErr:"",follows:new Set(),followsOff:false};
 const API=String(window.WVFC_CONFIG&&window.WVFC_CONFIG.briefApi||"").replace(/\/$/,"");
 
@@ -119,7 +119,7 @@ function congressCard(t){
       el("div",{class:"fdtrade"},el("span",{class:"pttag "+t.side,text:t.side==="buy"?"Bought":"Sold"}),
         el("button",{type:"button",class:"linkbtn sym",text:t.ticker,title:`Open ${t.ticker} on Search`,onclick:()=>openStock(t.ticker)}),
         t.range?el("span",{class:"fdrange",text:t.range.replace(/\s*-\s*/," to ")}):""),
-      t.traded?el("p",{class:"fdnote",text:`Traded ${short(t.traded)}${gap==null?"":gap<=0?", reported the same day":`, reported ${short(t.reported)} (${plural(gap,"day")} later)`}. Members of Congress must report their trades within 45 days, and only give a dollar range.`}):"",
+      t.traded?el("p",{class:"fdwhen2",text:`Traded ${short(t.traded)}${gap==null?"":gap<=0?", reported the same day":`, reported ${plural(gap,"day")} later`}`}):"",
       el("div",{class:"fdbtns"},
         el("button",{type:"button",class:"btn small",text:"See "+t.ticker,onclick:()=>openStock(t.ticker)}),
         el("button",{type:"button",class:"btn small",text:"Practice-buy "+t.ticker,onclick:()=>practice(t.ticker)}),
@@ -146,50 +146,78 @@ function insiderCard(t){
       el("div",{class:"fdtrade"},el("span",{class:"pttag "+t.side,text:`${t.side==="buy"?"Bought":"Sold"} ${n.toLocaleString("en-US")} share${n===1?"":"s"}`}),
         el("button",{type:"button",class:"linkbtn sym",text:t.ticker,title:`Open ${t.ticker} on Search`,onclick:()=>openStock(t.ticker)}),
         t.value?el("span",{class:"fdrange",text:about(t.value)}):""),
-      el("p",{class:"fdnote",text:`Traded ${short(t.traded)}${gap==null?"":gap<=0?", reported the same day":`, reported ${short(t.reported)} (${plural(gap,"day")} later)`}. An insider works at the company or sits on its board, and must report trades in its stock within 2 business days.${t.side==="sell"?" Insiders sell for many reasons, like paying taxes, so a sale alone doesn't mean bad news.":""}`}),
+      t.traded?el("p",{class:"fdwhen2",text:`Traded ${short(t.traded)}${gap==null?"":gap<=0?", reported the same day":`, reported ${plural(gap,"day")} later`}`}):"",
       stockBtns(t.ticker)));
 }
 const MOVE={new:["buy","New buy"],more:["buy","Bought more"],less:["sell","Sold some"],sold:["sell","Sold all"]};
-function fundCard(t){
-  const on=F.follows.has(t.fund),[k,label]=MOVE[t.move]||["wait",t.move];
-  const pct=t.pct==null||t.move==="sold"?"":t.pct>=20?" (many times more shares)":t.pct>=1.5?` (about ${Math.round(1+t.pct)} times as many shares)`:` (${Math.abs(Math.round(t.pct*100))}% ${t.pct>0?"more":"fewer"} shares)`;
-  const who=String(t.person||"");
+// One card per big investor, with its moves as short rows inside.
+function fundGroup(moves,max){
+  const t=moves[0],on=F.follows.has(t.fund),who=String(t.person||"");
+  const rows=max?moves.slice(0,max):moves,more=moves.length-rows.length;
   return el("article",{class:"fdcard"},
     el("div",{class:"fdav fund",text:initials(t.fund)}),
     el("div",{class:"fdbody"},
-      el("div",{class:"fdtop"},el("div",{},el("div",{class:"fdname"},t.fund," ",el("span",{class:"fdgov fund",text:"Big investor"})),el("div",{class:"fdwho",text:who.charAt(0).toUpperCase()+who.slice(1)})),
-        el("div",{class:"fdwhen",text:t.reported?"Reported "+short(t.reported):""})),
-      el("div",{class:"fdtrade"},el("span",{class:"pttag "+k,text:label}),
-        t.ticker?el("button",{type:"button",class:"linkbtn sym",text:t.ticker,title:`Open ${t.ticker} on Search`,onclick:()=>openStock(t.ticker)}):"",
-        el("span",{class:"fdrange",text:`${t.company} · ${about(t.value)}${pct}`})),
-      el("p",{class:"fdnote",text:`From the 3 months that ended ${short(t.asof)}. Big funds only report what they own every 3 months, up to 45 days late, so this is old news by the time you see it.`}),
-      stockBtns(t.ticker,el("button",{type:"button",class:"btn small"+(on?" fdon":""),text:on?"Following":"Follow",onclick:e=>follow(t.fund,e.currentTarget)}))));
+      el("div",{class:"fdtop"},el("div",{},el("div",{class:"fdname",text:t.fund}),el("div",{class:"fdwho",text:who.charAt(0).toUpperCase()+who.slice(1)})),
+        el("button",{type:"button",class:"btn small"+(on?" fdon":""),text:on?"Following":"Follow",onclick:e=>follow(t.fund,e.currentTarget)})),
+      el("ul",{class:"fdmoves"},rows.map(m=>{const[k,label]=MOVE[m.move]||["wait",m.move];
+        const pct=m.pct==null||m.move==="sold"||m.move==="new"?"":m.pct>=20?", many times more shares":m.pct>=1.5?`, about ${Math.round(1+m.pct)} times as many shares`:`, ${Math.abs(Math.round(m.pct*100))}% ${m.pct>0?"more":"fewer"} shares`;
+        return el("li",{},el("span",{class:"pttag "+k,text:label}),
+          el("span",{class:"fdmv"},m.ticker?el("button",{type:"button",class:"linkbtn sym",text:m.ticker,title:`Open ${m.ticker} on Search`,onclick:()=>openStock(m.ticker)}):"",
+            el("span",{class:"fdrange",text:`${m.company} · ${about(m.value)}${pct}`})));})),
+      el("p",{class:"fdwhen2",text:`From the 3 months that ended ${short(t.asof)}${more>0?` · ${more} more ${more===1?"move":"moves"} in Big investors`:""}`})));
 }
 
 /* ---------- The page ---------- */
 function emptyMsg(text,btn){return el("div",{class:"panel fdempty"},el("p",{class:"meta",text}),btn||"");}
+const GROUPS=[
+  ["friends","Friends","What you and your friends traded in Paper Trading."],
+  ["congress","Congress","Members of Congress must report their trades within 45 days, and only give a dollar range."],
+  ["insiders","Insiders","People who work at a company or sit on its board. Insiders sell for many reasons, like paying taxes, so a sale alone doesn't mean bad news."],
+  ["funds","Big investors","Big funds only report what they own every 3 months, up to 45 days late, so this is old news by the time you see it."]];
+// Search: a stock ticker, company or person's name. Every word typed has to match.
+const hit=(...f)=>{if(!query)return true;const h=f.filter(Boolean).join(" ").toLowerCase();return query.split(/\s+/).every(w=>h.includes(w));};
+const byDay=k=>(a,b)=>(+day(b[k]||b.traded)||0)-(+day(a[k]||a.traded)||0);
+// The cards for one group, newest first. max = how many to show (0 = all of them).
+function groupCards(key,max,onlyFollowed){
+  const pros=F.pros||{insiders:[],funds:[]};
+  const cut=a=>max?a.slice(0,max):a.slice(0,80);
+  if(key==="friends"){const a=(F.friends||[]).filter(t=>hit(t.symbol,t.me?"you":"",t.name));return{n:a.length,cards:cut(a).map(friendCard)};}
+  if(key==="congress"){const a=(F.congress||[]).filter(t=>(!onlyFollowed||F.follows.has(t.member))&&hit(t.ticker,t.member)).sort(byDay("reported"));return{n:a.length,cards:cut(a).map(congressCard)};}
+  if(key==="insiders"){const a=pros.insiders.filter(t=>hit(t.ticker,t.name,t.company,t.role)).sort(byDay("reported"));return{n:a.length,cards:cut(a).map(insiderCard)};}
+  const by=new Map();for(const t of pros.funds){if(onlyFollowed&&!F.follows.has(t.fund))continue;if(!by.has(t.fund))by.set(t.fund,[]);by.get(t.fund).push(t);}
+  // A fund's name matches: show all its moves. Otherwise keep only the moves for the stock searched.
+  if(query)for(const[k,m]of[...by]){if(hit(k,m[0].person))continue;const keep=m.filter(t=>hit(t.ticker,t.company));if(keep.length)by.set(k,keep);else by.delete(k);}
+  const a=[...by.values()].sort((x,y)=>(+day(y[0].reported)||0)-(+day(x[0].reported)||0));
+  return{n:a.length,cards:cut(a).map(m=>fundGroup(m,max?3:0))};
+}
+function emptyFor(key){
+  if(key==="friends")return F.friends==null?emptyMsg("Loading…"):F.friendsOff?emptyMsg("Friends' trades aren't turned on yet. Check back soon."):
+    emptyMsg("No trades from you or your friends in the last 30 days. Make a trade in Paper Trading, or invite a friend from Home.",
+      el("button",{type:"button",class:"btn primary",text:"Go to Paper Trading",onclick:()=>$("#tab-trade").click()}));
+  if(key==="congress")return emptyMsg(F.congressErr||(F.congress==null?"Loading Congress trades…":"No Congress trades to show right now."));
+  return emptyMsg(F.pros==null?"Loading…":key==="insiders"?"No insider trades to show yet. The list updates every weekday evening.":"No big investor moves to show yet. The list updates every weekday evening.");
+}
+function section(key,title,sub,max,onlyFollowed){
+  const{n,cards}=groupCards(key,max,onlyFollowed);
+  if((onlyFollowed||query)&&!n)return null;
+  const more=max&&n>cards.length;
+  return el("section",{class:"fdsec"},
+    el("div",{class:"fdsechead"},el("h3",{class:"h3",text:title}),
+      more?el("button",{type:"button",class:"linkbtn",text:"See all",onclick:()=>{filter=key;render();window.scrollTo({top:0});}}):""),
+    el("p",{class:"meta fdsecsub",text:sub}),
+    cards.length?cards:emptyFor(key));
+}
 function renderList(){
   const box=$("#fd-list");
-  const fr=F.friends,cg=F.congress;
-  const pros=F.pros||{insiders:[],funds:[]};
-  if(fr==null&&cg==null&&F.pros==null){box.replaceChildren(el("p",{class:"meta",text:"Loading the feed…"}));return;}
-  const items=[];
-  if(filter==="all"||filter==="friends")for(const t of fr||[])items.push({at:+new Date(t.at),card:()=>friendCard(t)});
-  if(filter==="all"||filter==="congress"||filter==="following")
-    for(const t of cg||[])if(filter!=="following"||F.follows.has(t.member))items.push({at:+day(t.reported||t.traded)||0,card:()=>congressCard(t)});
-  if(filter==="all"||filter==="insiders")for(const t of pros.insiders)items.push({at:+day(t.reported||t.traded)||0,card:()=>insiderCard(t)});
-  if(filter==="all"||filter==="funds"||filter==="following")
-    for(const t of pros.funds)if(filter!=="following"||F.follows.has(t.fund))items.push({at:+day(t.reported)||0,card:()=>fundCard(t)});
-  items.sort((a,b)=>b.at-a.at);
-  const out=items.slice(0,80).map(i=>i.card());
-  if(!out.length){
-    if(filter==="following")out.push(emptyMsg(F.follows.size?"The people you follow haven't reported any trades lately.":"Tap Follow on a member of Congress or a big investor and their trades will show up here."));
-    else if(filter==="friends"&&F.friendsOff)out.push(emptyMsg("Friends' trades aren't turned on yet. Check back soon."));
-    else if(filter==="friends"||filter==="all")out.push(emptyMsg("No trades from you or your friends in the last 30 days. Make a trade in Paper Trading, or invite a friend from Home.",
-      el("button",{type:"button",class:"btn primary",text:"Go to Paper Trading",onclick:()=>$("#tab-trade").click()})));
-    else if(filter==="insiders"||filter==="funds")out.push(emptyMsg(F.pros==null?"Loading…":filter==="insiders"?"No insider trades to show yet. The list updates every weekday evening.":"No big investor moves to show yet. The list updates every weekday evening."));
-    else out.push(emptyMsg(F.congressErr||(cg==null?"Loading Congress trades…":"No Congress trades to show right now.")));
-  }else if((filter==="congress"||filter==="all")&&F.congressErr)out.push(el("p",{class:"meta",text:F.congressErr}));
+  if(F.friends==null&&F.congress==null&&F.pros==null){box.replaceChildren(el("p",{class:"meta",text:"Loading the feed…"}));return;}
+  let out;
+  if(filter==="all")out=GROUPS.map(([k,t,s])=>section(k,t,s,3)).filter(Boolean);
+  else if(filter==="following"){
+    out=GROUPS.filter(g=>g[0]==="congress"||g[0]==="funds").map(([k,t,s])=>section(k,t,s,0,true)).filter(Boolean);
+    if(!out.length)out=[emptyMsg(F.follows.size?"The people you follow haven't reported any trades lately.":"Tap Follow on a member of Congress or a big investor and their trades will show up here.")];
+  }else out=GROUPS.filter(g=>g[0]===filter).map(([k,t,s])=>section(k,t,s,0)).filter(Boolean);
+  if(query&&!out.length)out=[emptyMsg(`Nothing matches "${$("#fd-q").value.trim()}" here. Try a ticker like AAPL, a company, or a person's name.`,
+    el("button",{type:"button",class:"btn",text:"Clear search",onclick:()=>setQuery("")}))];
   box.replaceChildren(...out);
 }
 function renderSide(){
@@ -221,5 +249,9 @@ function render(){
   document.querySelectorAll("#feed .fdchip").forEach(b=>{const on=b.dataset.f===filter;b.classList.toggle("on",on);b.setAttribute("aria-pressed",String(on));});
   renderList();renderSide();
 }
+function setQuery(v){const q=$("#fd-q");if(q.value!==v)q.value=v;query=v.trim().toLowerCase();$("#fd-qx").hidden=!v;render();}
+$("#fd-q").addEventListener("input",e=>setQuery(e.target.value));
+$("#fd-q").addEventListener("keydown",e=>{if(e.key==="Escape")setQuery("");});
+$("#fd-qx").addEventListener("click",()=>{setQuery("");$("#fd-q").focus();});
 document.querySelectorAll("#feed .fdchip").forEach(b=>b.addEventListener("click",()=>{filter=b.dataset.f;render();}));
 })();
