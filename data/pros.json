@@ -3,7 +3,7 @@
  "source": "SEC EDGAR (Form 4 and Form 13F)",
  "insiders": [
   {
-   "name": "Harris Ronan",
+   "name": "Ronan Harris",
    "role": "Chief Commercial Officer",
    "company": "Snap",
    "ticker": "SNAP",
@@ -15,9 +15,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1564408/000215623226000006/xslF345X06/ownership.xml"
   },
   {
-   "name": "Jones Teresa A.",
+   "name": "Teresa A. Jones",
    "role": "Executive Vice President",
-   "company": "Costco Wholesale Corp /new",
+   "company": "Costco Wholesale",
    "ticker": "COST",
    "side": "sell",
    "shares": 900,
@@ -27,9 +27,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000136/xslF345X06/form4.xml"
   },
   {
-   "name": "Banner Jonathan",
+   "name": "Jonathan Banner",
    "role": "EVP - Chief Impact Officer",
-   "company": "Mcdonalds",
+   "company": "McDonald's",
    "ticker": "MCD",
    "side": "sell",
    "shares": 750,
@@ -63,7 +63,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000202/xslF345X06/form4.xml"
   },
   {
-   "name": "Numoto Takeshi",
+   "name": "Takeshi Numoto",
    "role": "EVP, Chief Marketing Officer",
    "company": "Microsoft",
    "ticker": "MSFT",
@@ -75,9 +75,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/789019/000078901926000234/xslF345X06/form4.xml"
   },
   {
-   "name": "Fabara Paul D",
+   "name": "Paul D Fabara",
    "role": "Chief Risk & Client Svcs Ofc",
-   "company": "VISA",
+   "company": "Visa",
    "ticker": "V",
    "side": "sell",
    "shares": 3401,
@@ -87,7 +87,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316126000140/xslF345X06/form4.xml"
   },
   {
-   "name": "Newstead Jennifer",
+   "name": "Jennifer Newstead",
    "role": "SVP, GC and Government Affairs",
    "company": "Apple",
    "ticker": "AAPL",
@@ -99,7 +99,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126043484/xslF345X06/form4.xml"
   },
   {
-   "name": "Olivan Javier",
+   "name": "Javier Olivan",
    "role": "Chief Operating Officer",
    "company": "Meta Platforms",
    "ticker": "META",
@@ -113,7 +113,7 @@
   {
    "name": "Raymond David Christopher",
    "role": "EVP, Pres. & CEO, BGS",
-   "company": "Boeing",
+   "company": "Boeing Company (The)",
    "ticker": "BA",
    "side": "sell",
    "shares": 2994,
@@ -123,7 +123,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/12927/000122520826008886/xslF345X06/doc4.xml"
   },
   {
-   "name": "Reinstra Mark",
+   "name": "Mark Reinstra",
    "role": "Chief Legal Off. & Corp. Sec.",
    "company": "Roblox",
    "ticker": "RBLX",
@@ -135,7 +135,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1315098/000131509826000199/xslF345X06/wk-form4_1794518494.xml"
   },
   {
-   "name": "Blecharczyk Nathan",
+   "name": "Nathan Blecharczyk",
    "role": "Chief Strategy Officer",
    "company": "Airbnb",
    "ticker": "ABNB",
@@ -147,7 +147,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312526455964/xslF345X06/ownership.xml"
   },
   {
-   "name": "Murphy Robert C.",
+   "name": "Robert C. Murphy",
    "role": "Chief Technology Officer",
    "company": "Snap",
    "ticker": "SNAP",
@@ -159,7 +159,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1564408/000169932226000018/xslF345X06/ownership.xml"
   },
   {
-   "name": "Hood Amy",
+   "name": "Amy Hood",
    "role": "EVP, Chief Financial Officer",
    "company": "Microsoft",
    "ticker": "MSFT",
@@ -171,7 +171,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/789019/000078901926000232/xslF345X06/form4.xml"
   },
   {
-   "name": "Peters Gregory K",
+   "name": "Gregory K Peters",
    "role": "Co-CEO",
    "company": "Netflix",
    "ticker": "NFLX",
@@ -185,7 +185,7 @@
   {
    "name": "Julie B Rottenberg",
    "role": "General Counsel",
-   "company": "VISA",
+   "company": "Visa",
    "ticker": "V",
    "side": "sell",
    "shares": 1867,
@@ -209,7 +209,7 @@
   {
    "name": "Alain Bellemare",
    "role": "EVP & Pres. - International",
-   "company": "Delta AIR Lines",
+   "company": "Delta Air Lines",
    "ticker": "DAL",
    "side": "sell",
    "shares": 28000,
@@ -221,7 +221,7 @@
   {
    "name": "Nancy Quan",
    "role": "Executive Vice President",
-   "company": "Coca Cola",
+   "company": "Coca-Cola Company (The)",
    "ticker": "KO",
    "side": "sell",
    "shares": 20585,
@@ -243,9 +243,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/829224/000082922426000158/xslF345X06/form4.xml"
   },
   {
-   "name": "Gutierrez Horacio E",
+   "name": "Horacio E Gutierrez",
    "role": "Sevp, Cl&gao",
-   "company": "Walt Disney",
+   "company": "Walt Disney Company (The)",
    "ticker": "DIS",
    "side": "sell",
    "shares": 20552,
@@ -255,9 +255,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1744489/000162828026071797/xslF345X06/wk-form4_1794004318.xml"
   },
   {
-   "name": "Carter Peter W",
+   "name": "Peter W Carter",
    "role": "President",
-   "company": "Delta AIR Lines",
+   "company": "Delta Air Lines",
    "ticker": "DAL",
    "side": "sell",
    "shares": 44950,
@@ -267,7 +267,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/27904/000168316826008387/xslF345X06/ownership.xml"
   },
   {
-   "name": "Harvey Rory",
+   "name": "Rory Harvey",
    "role": "Executive Vice President",
    "company": "General Motors",
    "ticker": "GM",
@@ -279,9 +279,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1467858/000197679526000014/xslF345X06/wk-form4_1794000729.xml"
   },
   {
-   "name": "Taneja Rajat",
+   "name": "Rajat Taneja",
    "role": "President, Technology",
-   "company": "VISA",
+   "company": "Visa",
    "ticker": "V",
    "side": "sell",
    "shares": 34417,
@@ -317,7 +317,7 @@
   {
    "name": "Brent Woodford",
    "role": "EVP, Control, Fin Plan & Tax",
-   "company": "Walt Disney",
+   "company": "Walt Disney Company (The)",
    "ticker": "DIS",
    "side": "sell",
    "shares": 3618,
@@ -339,7 +339,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1783879/000170556026000027/xslF345X06/wk-form4_1793914247.xml"
   },
   {
-   "name": "Newstead Jennifer",
+   "name": "Jennifer Newstead",
    "role": "SVP, GC and Government Affairs",
    "company": "Apple",
    "ticker": "AAPL",
@@ -363,7 +363,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528026000312/xslF345X06/wk-form4_1793835249.xml"
   },
   {
-   "name": "Baszucki Gregory",
+   "name": "Gregory Baszucki",
    "role": "Board member",
    "company": "Roblox",
    "ticker": "RBLX",
@@ -375,7 +375,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1315098/000131509826000197/xslF345X06/wk-form4_1793826877.xml"
   },
   {
-   "name": "Andreessen Marc L",
+   "name": "Marc L Andreessen",
    "role": "Board member",
    "company": "Meta Platforms",
    "ticker": "META",
@@ -399,9 +399,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000195/xslF345X06/form4.xml"
   },
   {
-   "name": "Perez Beatriz R",
+   "name": "Beatriz R Perez",
    "role": "Executive Vice President",
-   "company": "Coca Cola",
+   "company": "Coca-Cola Company (The)",
    "ticker": "KO",
    "side": "sell",
    "shares": 67548,
@@ -423,7 +423,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000198/xslF345X06/form4.xml"
   },
   {
-   "name": "Olivan Javier",
+   "name": "Javier Olivan",
    "role": "Chief Operating Officer",
    "company": "Meta Platforms",
    "ticker": "META",
@@ -435,7 +435,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1326801/000095010326016962/xslF345X06/ownership.xml"
   },
   {
-   "name": "Bazzano Dara",
+   "name": "Dara Bazzano",
    "role": "Chief Accounting Officer",
    "company": "Robinhood Markets",
    "ticker": "HOOD",
@@ -447,7 +447,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1783879/000170711226000008/xslF345X06/wk-form4_1793827889.xml"
   },
   {
-   "name": "Bernstein David C",
+   "name": "David C Bernstein",
    "role": "Chief Accounting Officer",
    "company": "Airbnb",
    "ticker": "ABNB",
@@ -471,9 +471,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1321655/000184024426000023/xslF345X06/wk-form4_1793845563.xml"
   },
   {
-   "name": "Herrington Douglas J",
+   "name": "Douglas J Herrington",
    "role": "CEO Worldwide Amazon Stores",
-   "company": "Amazon COM",
+   "company": "Amazon.com",
    "ticker": "AMZN",
    "side": "sell",
    "shares": 1000,
@@ -483,7 +483,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1018724/000193600626000028/xslF345X06/wk-form4_1793831214.xml"
   },
   {
-   "name": "Meister Keith A.",
+   "name": "Keith A. Meister",
    "role": "Board member",
    "company": "MGM Resorts International",
    "ticker": "MGM",
@@ -495,9 +495,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/789570/000101143826000643/xslF345X06/form4.xml"
   },
   {
-   "name": "Taneja Rajat",
+   "name": "Rajat Taneja",
    "role": "President, Technology",
-   "company": "VISA",
+   "company": "Visa",
    "ticker": "V",
    "side": "sell",
    "shares": 34418,
@@ -507,9 +507,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316126000130/xslF345X06/form4.xml"
   },
   {
-   "name": "Hakim Anat",
+   "name": "Anat Hakim",
    "role": "EVP, GC & Secretary",
-   "company": "ELI Lilly &",
+   "company": "Eli Lilly and",
    "ticker": "LLY",
    "side": "sell",
    "shares": 5000,
@@ -519,9 +519,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/59478/000168555626000008/xslF345X06/wk-form4_1793740481.xml"
   },
   {
-   "name": "Ling Hai",
+   "name": "Hai Ling",
    "role": "Chief Financial Officer",
-   "company": "Mastercard",
+   "company": "Mastercard Incorporated",
    "ticker": "MA",
    "side": "sell",
    "shares": 8635,
@@ -533,7 +533,7 @@
   {
    "name": "Ryan McInerney",
    "role": "Chief Executive Officer",
-   "company": "VISA",
+   "company": "Visa",
    "ticker": "V",
    "side": "sell",
    "shares": 5875,
@@ -545,7 +545,7 @@
   {
    "name": "Brent Woodford",
    "role": "EVP, Control, Fin Plan & Tax",
-   "company": "Walt Disney",
+   "company": "Walt Disney Company (The)",
    "ticker": "DIS",
    "side": "sell",
    "shares": 6474,
@@ -555,7 +555,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1744489/000162828026069657/xslF345X06/wk-form4_1793745065.xml"
   },
   {
-   "name": "Bartlett Daniel J",
+   "name": "Daniel J Bartlett",
    "role": "Executive Vice President",
    "company": "Walmart",
    "ticker": "WMT",
@@ -567,7 +567,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/104169/000157929926000028/xslF345X06/wk-form4_1793741841.xml"
   },
   {
-   "name": "Kumar Suresh",
+   "name": "Suresh Kumar",
    "role": "Chief Technology Officer",
    "company": "Walmart",
    "ticker": "WMT",
@@ -579,9 +579,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/104169/000178119826000008/xslF345X06/wk-form4_1793741833.xml"
   },
   {
-   "name": "Buckley Mortimer J",
+   "name": "Mortimer J Buckley",
    "role": "Board member",
-   "company": "Boeing",
+   "company": "Boeing Company (The)",
    "ticker": "BA",
    "side": "buy",
    "shares": 5820,
@@ -593,7 +593,7 @@
   {
    "name": "Steven M Mollenkopf",
    "role": "Board member",
-   "company": "Boeing",
+   "company": "Boeing Company (The)",
    "ticker": "BA",
    "side": "buy",
    "shares": 2950,
@@ -605,7 +605,7 @@
   {
    "name": "Lloyd Carney",
    "role": "Board member",
-   "company": "VISA",
+   "company": "Visa",
    "ticker": "V",
    "side": "sell",
    "shares": 605,
@@ -615,9 +615,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316126000128/xslF345X06/form4.xml"
   },
   {
-   "name": "Bastian Edward H",
+   "name": "Edward H Bastian",
    "role": "Chief Executive Officer",
-   "company": "Delta AIR Lines",
+   "company": "Delta Air Lines",
    "ticker": "DAL",
    "side": "sell",
    "shares": 50000,
@@ -651,7 +651,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1783879/000095010326016560/xslF345X06/ownership.xml"
   },
   {
-   "name": "Keller Frank",
+   "name": "Frank Keller",
    "role": "Pres., Checkout Sol. & PayPal",
    "company": "PayPal Holdings",
    "ticker": "PYPL",
@@ -665,7 +665,7 @@
   {
    "name": "Ericka T Leslie",
    "role": "Chief Administrative Officer",
-   "company": "Goldman Sachs Group",
+   "company": "Goldman Sachs Group Inc (The)",
    "ticker": "GS",
    "side": "sell",
    "shares": 250,
@@ -675,7 +675,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/886982/000191038826000015/xslF345X06/wk-form4_1793304242.xml"
   },
   {
-   "name": "Newstead Jennifer",
+   "name": "Jennifer Newstead",
    "role": "SVP, GC and Government Affairs",
    "company": "Apple",
    "ticker": "AAPL",
@@ -689,7 +689,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "sell",
    "shares": 3070,
@@ -701,7 +701,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "buy",
    "shares": 3070,
@@ -723,7 +723,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000173/xslF345X06/wk-form4_1793305809.xml"
   },
   {
-   "name": "Blecharczyk Nathan",
+   "name": "Nathan Blecharczyk",
    "role": "Chief Strategy Officer",
    "company": "Airbnb",
    "ticker": "ABNB",
@@ -735,7 +735,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312526436212/xslF345X06/ownership.xml"
   },
   {
-   "name": "Olivan Javier",
+   "name": "Javier Olivan",
    "role": "Chief Operating Officer",
    "company": "Meta Platforms",
    "ticker": "META",
@@ -747,7 +747,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1326801/000095010326016313/xslF345X06/ownership.xml"
   },
   {
-   "name": "Alford Peggy",
+   "name": "Peggy Alford",
    "role": "Board member",
    "company": "Meta Platforms",
    "ticker": "META",
@@ -761,7 +761,7 @@
   {
    "name": "David M Solomon",
    "role": "Chairman of the Board and CEO",
-   "company": "Goldman Sachs Group",
+   "company": "Goldman Sachs Group Inc (The)",
    "ticker": "GS",
    "side": "sell",
    "shares": 12000,
@@ -797,7 +797,7 @@
   {
    "name": "Ericka T Leslie",
    "role": "Chief Administrative Officer",
-   "company": "Goldman Sachs Group",
+   "company": "Goldman Sachs Group Inc (The)",
    "ticker": "GS",
    "side": "sell",
    "shares": 250,
@@ -807,7 +807,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/886982/000191038826000012/xslF345X06/wk-form4_1793045148.xml"
   },
   {
-   "name": "Bhatt Baiju",
+   "name": "Baiju Bhatt",
    "role": "Board member",
    "company": "Robinhood Markets",
    "ticker": "HOOD",
@@ -819,9 +819,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1783879/000187091426000029/xslF345X06/wk-form4_1792787586.xml"
   },
   {
-   "name": "Laguarta Ramon",
+   "name": "Ramon Laguarta",
    "role": "Chairman and CEO",
-   "company": "Pepsico",
+   "company": "PepsiCo",
    "ticker": "PEP",
    "side": "sell",
    "shares": 30000,
@@ -833,7 +833,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "buy",
    "shares": 12170,
@@ -845,7 +845,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "sell",
    "shares": 4846,
@@ -867,7 +867,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000157/xslF345X06/wk-form4_1792788591.xml"
   },
   {
-   "name": "Newstead Jennifer",
+   "name": "Jennifer Newstead",
    "role": "SVP, GC and Government Affairs",
    "company": "Apple",
    "ticker": "AAPL",
@@ -879,7 +879,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126040540/xslF345X06/form4.xml"
   },
   {
-   "name": "Keough Kelli",
+   "name": "Kelli Keough",
    "role": "Evp, Gbul, Sips",
    "company": "SoFi Technologies",
    "ticker": "SOFI",
@@ -905,7 +905,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "sell",
    "shares": 200,
@@ -917,7 +917,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "buy",
    "shares": 200,
@@ -929,7 +929,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "sell",
    "shares": 183,
@@ -941,7 +941,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "buy",
    "shares": 183,
@@ -953,7 +953,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "buy",
    "shares": 100,
@@ -965,7 +965,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "sell",
    "shares": 100,
@@ -977,7 +977,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "buy",
    "shares": 111,
@@ -989,7 +989,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "sell",
    "shares": 111,
@@ -1001,7 +1001,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "sell",
    "shares": 105,
@@ -1013,7 +1013,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "sell",
    "shares": 92,
@@ -1025,7 +1025,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "buy",
    "shares": 92,
@@ -1037,7 +1037,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "buy",
    "shares": 105,
@@ -1059,7 +1059,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000194/xslF345X06/form4.xml"
   },
   {
-   "name": "Olivan Javier",
+   "name": "Javier Olivan",
    "role": "Chief Operating Officer",
    "company": "Meta Platforms",
    "ticker": "META",
@@ -1071,7 +1071,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1326801/000095010326015980/xslF345X06/ownership.xml"
   },
   {
-   "name": "Harris Ronan",
+   "name": "Ronan Harris",
    "role": "Chief Commercial Officer",
    "company": "Snap",
    "ticker": "SNAP",
@@ -1083,9 +1083,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1564408/000215623226000003/xslF345X06/ownership.xml"
   },
   {
-   "name": "Ling Hai",
+   "name": "Hai Ling",
    "role": "Chief Financial Officer",
-   "company": "Mastercard",
+   "company": "Mastercard Incorporated",
    "ticker": "MA",
    "side": "sell",
    "shares": 4317,
@@ -1095,7 +1095,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1141391/000114139126000118/xslF345X06/wk-form4_1792440656.xml"
   },
   {
-   "name": "Parekh Kevan",
+   "name": "Kevan Parekh",
    "role": "Senior Vice President, CFO",
    "company": "Apple",
    "ticker": "AAPL",
@@ -1107,7 +1107,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126040126/xslF345X06/form4.xml"
   },
   {
-   "name": "Borders Ben",
+   "name": "Ben Borders",
    "role": "Principal Accounting Officer",
    "company": "Apple",
    "ticker": "AAPL",
@@ -1121,7 +1121,7 @@
   {
    "name": "Brent Woodford",
    "role": "EVP, Control, Fin Plan & Tax",
-   "company": "Walt Disney",
+   "company": "Walt Disney Company (The)",
    "ticker": "DIS",
    "side": "sell",
    "shares": 2856,
@@ -1155,7 +1155,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000184/xslF345X06/wk-form4_1792441001.xml"
   },
   {
-   "name": "Moore Alexander D.",
+   "name": "Alexander D. Moore",
    "role": "Board member",
    "company": "Palantir Technologies",
    "ticker": "PLTR",
@@ -1167,7 +1167,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1321655/000182395226000024/xslF345X06/wk-form4_1792454773.xml"
   },
   {
-   "name": "Bernstein David C",
+   "name": "David C Bernstein",
    "role": "Chief Accounting Officer",
    "company": "Airbnb",
    "ticker": "ABNB",
@@ -1179,7 +1179,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312526425482/xslF345X06/ownership.xml"
   },
   {
-   "name": "Furner John R.",
+   "name": "John R. Furner",
    "role": "President & CEO",
    "company": "Walmart",
    "ticker": "WMT",
@@ -1205,7 +1205,7 @@
   {
    "name": "Robert C Pohlad",
    "role": "Board member",
-   "company": "Pepsico",
+   "company": "PepsiCo",
    "ticker": "PEP",
    "side": "buy",
    "shares": 184646,
@@ -1215,7 +1215,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/77476/000106127226000004/xslF345X06/wk-form4_1792180971.xml"
   },
   {
-   "name": "Watkins Latriece",
+   "name": "Latriece Watkins",
    "role": "Executive Vice President",
    "company": "Walmart",
    "ticker": "WMT",
@@ -1229,7 +1229,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "buy",
    "shares": 2000,
@@ -1241,7 +1241,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "sell",
    "shares": 2000,
@@ -1263,7 +1263,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000153/xslF345X06/wk-form4_1792096397.xml"
   },
   {
-   "name": "Newstead Jennifer",
+   "name": "Jennifer Newstead",
    "role": "SVP, GC and Government Affairs",
    "company": "Apple",
    "ticker": "AAPL",
@@ -1275,7 +1275,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126039785/xslF345X06/form4.xml"
   },
   {
-   "name": "Hood Amy",
+   "name": "Amy Hood",
    "role": "EVP, Chief Financial Officer",
    "company": "Microsoft",
    "ticker": "MSFT",
@@ -1289,7 +1289,7 @@
   {
    "name": "Wilcox William Richard",
    "role": "Executive Vice President",
-   "company": "Costco Wholesale Corp /new",
+   "company": "Costco Wholesale",
    "ticker": "COST",
    "side": "sell",
    "shares": 1100,
@@ -1299,7 +1299,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000098/xslF345X06/form4.xml"
   },
   {
-   "name": "Soderstrom Gustav",
+   "name": "Gustav Soderstrom",
    "role": "Co-Chief Executive Officer",
    "company": "Spotify Technology",
    "ticker": "SPOT",
@@ -1311,7 +1311,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1639920/000114036126039594/xslF345X06/form4.xml"
   },
   {
-   "name": "Blecharczyk Nathan",
+   "name": "Nathan Blecharczyk",
    "role": "Chief Strategy Officer",
    "company": "Airbnb",
    "ticker": "ABNB",
@@ -1323,7 +1323,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312526421722/xslF345X06/ownership.xml"
   },
   {
-   "name": "Olivan Javier",
+   "name": "Javier Olivan",
    "role": "Chief Operating Officer",
    "company": "Meta Platforms",
    "ticker": "META",
@@ -1335,7 +1335,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1326801/000095010326015598/xslF345X06/ownership.xml"
   },
   {
-   "name": "Woersching Eric H.",
+   "name": "Eric H. Woersching",
    "role": "Board member",
    "company": "Palantir Technologies",
    "ticker": "PLTR",
@@ -1349,7 +1349,7 @@
   {
    "name": "Julius Genachowski",
    "role": "Board member",
-   "company": "Mastercard",
+   "company": "Mastercard Incorporated",
    "ticker": "MA",
    "side": "sell",
    "shares": 741,
@@ -1373,7 +1373,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "buy",
    "shares": 2000,
@@ -1385,7 +1385,7 @@
   {
    "name": "Bank Of America Corp /de/",
    "role": "Big shareholder (10% or more)",
-   "company": "Bank Of America",
+   "company": "Bank of America",
    "ticker": "BAC",
    "side": "sell",
    "shares": 2000,
@@ -1395,7 +1395,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/70858/000007085826000478/xslF345X06/primary_doc.xml"
   },
   {
-   "name": "Taylor Ryan D.",
+   "name": "Ryan D. Taylor",
    "role": "See Remarks",
    "company": "Palantir Technologies",
    "ticker": "PLTR",
@@ -1421,7 +1421,7 @@
   {
    "name": "Brent Woodford",
    "role": "EVP, Control, Fin Plan & Tax",
-   "company": "Walt Disney",
+   "company": "Walt Disney Company (The)",
    "ticker": "DIS",
    "side": "sell",
    "shares": 3618,
@@ -1443,7 +1443,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000149/xslF345X06/wk-form4_1791580113.xml"
   },
   {
-   "name": "Newstead Jennifer",
+   "name": "Jennifer Newstead",
    "role": "SVP, GC and Government Affairs",
    "company": "Apple",
    "ticker": "AAPL",
@@ -1467,7 +1467,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1783879/000178387926000142/xslF345X06/wk-form4_1791405193.xml"
   },
   {
-   "name": "Tenev Vladimir",
+   "name": "Vladimir Tenev",
    "role": "Chief Executive Officer",
    "company": "Robinhood Markets",
    "ticker": "HOOD",
@@ -1479,7 +1479,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1783879/000187100626000012/xslF345X06/wk-form4_1791405206.xml"
   },
   {
-   "name": "Olivan Javier",
+   "name": "Javier Olivan",
    "role": "Chief Operating Officer",
    "company": "Meta Platforms",
    "ticker": "META",
@@ -1515,7 +1515,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/829224/000082922426000147/xslF345X06/form4.xml"
   },
   {
-   "name": "Reinstra Mark",
+   "name": "Mark Reinstra",
    "role": "Chief Legal Off. & Corp. Sec.",
    "company": "Roblox",
    "ticker": "RBLX",
@@ -1551,7 +1551,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126038672/xslF345X06/form4.xml"
   },
   {
-   "name": "Ternus John",
+   "name": "John Ternus",
    "role": "CEO",
    "company": "Apple",
    "ticker": "AAPL",
@@ -1563,7 +1563,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126038669/xslF345X06/form4.xml"
   },
   {
-   "name": "Andreessen Marc L",
+   "name": "Marc L Andreessen",
    "role": "Board member",
    "company": "Coinbase Global",
    "ticker": "COIN",
@@ -1587,9 +1587,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1321655/000184024426000018/xslF345X06/wk-form4_1791244812.xml"
   },
   {
-   "name": "Herrington Douglas J",
+   "name": "Douglas J Herrington",
    "role": "CEO Worldwide Amazon Stores",
-   "company": "Amazon COM",
+   "company": "Amazon.com",
    "ticker": "AMZN",
    "side": "sell",
    "shares": 1000,
@@ -1601,7 +1601,7 @@
   {
    "name": "Ryan McInerney",
    "role": "Chief Executive Officer",
-   "company": "VISA",
+   "company": "Visa",
    "ticker": "V",
    "side": "sell",
    "shares": 5875,
@@ -1611,7 +1611,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316126000123/xslF345X06/form4.xml"
   },
   {
-   "name": "Baszucki Gregory",
+   "name": "Gregory Baszucki",
    "role": "Board member",
    "company": "Roblox",
    "ticker": "RBLX",
@@ -1623,7 +1623,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1315098/000131509826000186/xslF345X06/wk-form4_1790978110.xml"
   },
   {
-   "name": "Bartlett Daniel J",
+   "name": "Daniel J Bartlett",
    "role": "Executive Vice President",
    "company": "Walmart",
    "ticker": "WMT",
@@ -1637,7 +1637,7 @@
   {
    "name": "Michael John Callahan",
    "role": "Chief Administrative Officer",
-   "company": "Rivian Automotive Inc / DE",
+   "company": "Rivian Automotive",
    "ticker": "RIVN",
    "side": "sell",
    "shares": 15000,
@@ -1671,7 +1671,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1341439/000134143926000099/xslF345X06/form4.xml"
   },
   {
-   "name": "Newstead Jennifer",
+   "name": "Jennifer Newstead",
    "role": "SVP, GC and Government Affairs",
    "company": "Apple",
    "ticker": "AAPL",
@@ -1683,9 +1683,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126038307/xslF345X06/form4.xml"
   },
   {
-   "name": "Adamo Claudine",
+   "name": "Claudine Adamo",
    "role": "Executive Vice President",
-   "company": "Costco Wholesale Corp /new",
+   "company": "Costco Wholesale",
    "ticker": "COST",
    "side": "sell",
    "shares": 2200,
@@ -1695,9 +1695,9 @@
    "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000088/xslF345X06/form4.xml"
   },
   {
-   "name": "Frates Caton",
+   "name": "Caton Frates",
    "role": "Sr. Executive Vice President",
-   "company": "Costco Wholesale Corp /new",
+   "company": "Costco Wholesale",
    "ticker": "COST",
    "side": "sell",
    "shares": 801,
@@ -1707,7 +1707,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000090/xslF345X06/form4.xml"
   },
   {
-   "name": "Blecharczyk Nathan",
+   "name": "Nathan Blecharczyk",
    "role": "Chief Strategy Officer",
    "company": "Airbnb",
    "ticker": "ABNB",
@@ -1719,7 +1719,7 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312526409120/xslF345X06/ownership.xml"
   },
   {
-   "name": "Olivan Javier",
+   "name": "Javier Olivan",
    "role": "Chief Operating Officer",
    "company": "Meta Platforms",
    "ticker": "META",
@@ -1867,7 +1867,7 @@
   {
    "fund": "ARK Invest",
    "person": "Cathie Wood's fund",
-   "company": "Teva Pharmaceutical Industries",
+   "company": "Teva Pharmaceutical Industries Limited",
    "ticker": "TEVA",
    "move": "sold",
    "value": 2325964,
@@ -1882,7 +1882,7 @@
    "company": "Alphabet",
    "ticker": "GOOGL",
    "move": "more",
-   "value": 8770349040,
+   "value": 17110074056,
    "pct": 0.452,
    "asof": "2026-06-30",
    "reported": "2026-08-14",
@@ -1891,19 +1891,7 @@
   {
    "fund": "Berkshire Hathaway",
    "person": "Warren Buffett's company",
-   "company": "Alphabet",
-   "ticker": "GOOGL",
-   "move": "more",
-   "value": 8339725016,
-   "pct": 6.583,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/"
-  },
-  {
-   "fund": "Berkshire Hathaway",
-   "person": "Warren Buffett's company",
-   "company": "Delta AIR Lines",
+   "company": "Delta Air Lines",
    "ticker": "DAL",
    "move": "more",
    "value": 1640037551,
@@ -1927,7 +1915,7 @@
   {
    "fund": "Berkshire Hathaway",
    "person": "Warren Buffett's company",
-   "company": "Capital ONE Financial",
+   "company": "Capital One Financial",
    "ticker": "COF",
    "move": "less",
    "value": 832573000,
@@ -1963,7 +1951,7 @@
   {
    "fund": "Berkshire Hathaway",
    "person": "Warren Buffett's company",
-   "company": "Kroger",
+   "company": "Kroger Company (The)",
    "ticker": "KR",
    "move": "less",
    "value": 610830000,
@@ -1975,7 +1963,7 @@
   {
    "fund": "Bridgewater Associates",
    "person": "the fund Ray Dalio started",
-   "company": "Amazon COM",
+   "company": "Amazon.com",
    "ticker": "AMZN",
    "move": "less",
    "value": 563252239,
@@ -2009,6 +1997,18 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/"
   },
   {
+   "fund": "Berkshire Hathaway",
+   "person": "Warren Buffett's company",
+   "company": "Lennar",
+   "ticker": "LEN",
+   "move": "more",
+   "value": 277924164,
+   "pct": 0.298,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/"
+  },
+  {
    "fund": "Bridgewater Associates",
    "person": "the fund Ray Dalio started",
    "company": "Vanguard Index FDS",
@@ -2035,7 +2035,7 @@
   {
    "fund": "Appaloosa",
    "person": "David Tepper's fund",
-   "company": "Boeing",
+   "company": "Boeing Company (The)",
    "ticker": "BA",
    "move": "new",
    "value": 173176000,
@@ -2059,7 +2059,7 @@
   {
    "fund": "Appaloosa",
    "person": "David Tepper's fund",
-   "company": "Corning",
+   "company": "Corning Incorporated",
    "ticker": "GLW",
    "move": "sold",
    "value": 153578115,
@@ -2071,7 +2071,7 @@
   {
    "fund": "Appaloosa",
    "person": "David Tepper's fund",
-   "company": "Alibaba Group Holding",
+   "company": "Alibaba Group Holding Limited",
    "ticker": "BABA",
    "move": "less",
    "value": 140610700,
@@ -2119,7 +2119,7 @@
   {
    "fund": "Bridgewater Associates",
    "person": "the fund Ray Dalio started",
-   "company": "PG&E",
+   "company": "Pacific Gas & Electric",
    "ticker": "PCG",
    "move": "more",
    "value": 99352090,
@@ -2167,7 +2167,7 @@
   {
    "fund": "Bridgewater Associates",
    "person": "the fund Ray Dalio started",
-   "company": "Eversource Energy",
+   "company": "Eversource Energy (D/B/A)",
    "ticker": "ES",
    "move": "new",
    "value": 86372768,
@@ -2179,7 +2179,7 @@
   {
    "fund": "Bridgewater Associates",
    "person": "the fund Ray Dalio started",
-   "company": "AppLovin",
+   "company": "Applovin",
    "ticker": "APP",
    "move": "new",
    "value": 75533748,
@@ -2266,7 +2266,7 @@
    "company": "Alphabet",
    "ticker": "GOOGL",
    "move": "less",
-   "value": 1678746308,
+   "value": 1864487359,
    "pct": -0.949,
    "asof": "2026-03-31",
    "reported": "2026-05-15",
@@ -2280,18 +2280,6 @@
    "move": "sold",
    "value": 869983734,
    "pct": -1.0,
-   "asof": "2026-03-31",
-   "reported": "2026-05-15",
-   "url": "https://www.sec.gov/Archives/edgar/data/1336528/000117266126002336/"
-  },
-  {
-   "fund": "Pershing Square",
-   "person": "Bill Ackman's fund",
-   "company": "Alphabet",
-   "ticker": "GOOGL",
-   "move": "less",
-   "value": 185741052,
-   "pct": -0.952,
    "asof": "2026-03-31",
    "reported": "2026-05-15",
    "url": "https://www.sec.gov/Archives/edgar/data/1336528/000117266126002336/"
