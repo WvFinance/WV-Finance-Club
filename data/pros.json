@@ -1889,6 +1889,42 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/"
   },
   {
+   "fund": "Pershing Square",
+   "person": "Bill Ackman's fund",
+   "company": "Uber Technologies",
+   "ticker": "UBER",
+   "move": "new",
+   "value": 2476978592,
+   "pct": null,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
+  },
+  {
+   "fund": "Pershing Square",
+   "person": "Bill Ackman's fund",
+   "company": "Brookfield Corporation Class A Limited Voting Shar",
+   "ticker": "BN",
+   "move": "new",
+   "value": 2448117792,
+   "pct": null,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
+  },
+  {
+   "fund": "Pershing Square",
+   "person": "Bill Ackman's fund",
+   "company": "Microsoft",
+   "ticker": "MSFT",
+   "move": "new",
+   "value": 2315234425,
+   "pct": null,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
+  },
+  {
    "fund": "Berkshire Hathaway",
    "person": "Warren Buffett's company",
    "company": "Delta Air Lines",
@@ -1911,6 +1947,18 @@
    "asof": "2026-06-30",
    "reported": "2026-08-14",
    "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
+  },
+  {
+   "fund": "Pershing Square",
+   "person": "Bill Ackman's fund",
+   "company": "Howard Hughes Holdings",
+   "ticker": "HHH",
+   "move": "more",
+   "value": 1347734055,
+   "pct": 2.095,
+   "asof": "2026-06-30",
+   "reported": "2026-08-14",
+   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
   },
   {
    "fund": "Berkshire Hathaway",
@@ -2391,42 +2439,6 @@
    "asof": "2026-06-30",
    "reported": "2026-08-14",
    "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
-  },
-  {
-   "fund": "Pershing Square",
-   "person": "Bill Ackman's fund",
-   "company": "Microsoft",
-   "ticker": "MSFT",
-   "move": "new",
-   "value": 2092970053,
-   "pct": null,
-   "asof": "2026-03-31",
-   "reported": "2026-05-15",
-   "url": "https://www.sec.gov/Archives/edgar/data/1336528/000117266126002336/"
-  },
-  {
-   "fund": "Pershing Square",
-   "person": "Bill Ackman's fund",
-   "company": "Alphabet",
-   "ticker": "GOOGL",
-   "move": "less",
-   "value": 1864487359,
-   "pct": -0.949,
-   "asof": "2026-03-31",
-   "reported": "2026-05-15",
-   "url": "https://www.sec.gov/Archives/edgar/data/1336528/000117266126002336/"
-  },
-  {
-   "fund": "Pershing Square",
-   "person": "Bill Ackman's fund",
-   "company": "Hilton Worldwide Holdings",
-   "ticker": "HLT",
-   "move": "sold",
-   "value": 869983734,
-   "pct": -1.0,
-   "asof": "2026-03-31",
-   "reported": "2026-05-15",
-   "url": "https://www.sec.gov/Archives/edgar/data/1336528/000117266126002336/"
   }
  ]
 }
