@@ -78,7 +78,30 @@ const when=t=>new Date(t).toLocaleString("en-US",{month:"short",day:"numeric",ho
 // Tells the News tab which stocks this member owns, so it shows their news.
 function shareMine(){window.WVFC_APP&&window.WVFC_APP.setMine&&window.WVFC_APP.setMine(G.pos.map(p=>p.symbol));}
 function renderAll(){shareMine();renderTradeBar();renderTiles();renderOrders();renderTrades();renderBoard();renderEst();renderMine();}
-function renderMine(){if(!$("#mine"))return;renderTiles($("#mine-tiles"));renderHold($("#mine-hold"),true);renderOrders($("#mine-orders"),true);renderChart();renderFriends();}
+function renderMine(){if(!$("#mine"))return;renderTiles($("#mine-tiles"));renderHold($("#mine-hold"),true);renderOrders($("#mine-orders"),true);renderChart();renderFriends();renderMineView();}
+
+/* ---------- Personal Home drop-down views (My stocks, by sector, vs S&P 500, My trades) ---------- */
+let mView="mine";
+document.addEventListener("wvfc:mview",e=>{mView=e.detail;renderMineView();});
+const joinFirst=()=>el("p",{class:"meta",text:"Join Paper Trading first. Once you buy stocks, they show up here."});
+function renderMineView(){
+  if(!$("#mine")||$("#mine").hidden)return;
+  if(mView==="mystocks"&&!G.acct)$("#mine-stocks-box").replaceChildren(el("div",{class:"panel"},joinFirst()));
+  if(mView==="mysectors")renderMineSectors();
+  if(mView==="myhistory"){const b=$("#mine-hist");if(!G.acct)b.replaceChildren(joinFirst());else renderChart(b,true);}
+  if(mView==="mytrades"){const b=$("#mine-trades");if(!G.acct)b.replaceChildren(joinFirst());else renderTrades(b,true);}
+}
+let secAsk=0;
+async function renderMineSectors(){
+  const box=$("#mine-sec");if(!box)return;
+  if(!G.acct){box.replaceChildren(joinFirst());return;}
+  const app=window.WVFC_APP;if(!app||!app.sectorPie)return;
+  const ask=++secAsk,sec=await app.sectorsFor(G.pos.map(p=>p.symbol));if(ask!==secAsk)return;
+  const by={};for(const p of G.pos){const k=sec[p.symbol]||"Other";by[k]=(by[k]||0)+Math.abs(priceOf(p)*p.shares);}
+  const cash=+G.acct.cash;
+  app.sectorPie(box,by,"The pie fills in once you buy a stock in Paper Trading. Each slice is a type of business, like Tech or Banks.","What I own by sector",
+    G.pos.length?el("p",{class:"meta",style:"margin-top:14px",text:`Plus ${money(cash)} in cash that isn't in a stock yet.`+(Object.keys(by).includes("Funds")?" Funds hold lots of companies at once.":"")}):null);
+}
 
 /* ---------- Home: money over time and the friends leaderboard (supabase/home-extras.sql) ---------- */
 G.daily=null;G.friends=null;G.invite=null;G.extrasOff=false;
@@ -86,17 +109,18 @@ async function loadExtras(){
   if(!$("#mine-chart"))return;
   const[d,f,c]=await Promise.all([db.from("paper_daily").select("day,value").order("day"),db.rpc("friends_board"),db.rpc("my_invite_code")]);
   // Before home-extras.sql is run these don't exist yet, so the two panels stay hidden.
-  if(d.error&&f.error){G.extrasOff=true;renderChart();renderFriends();return;}
+  if(d.error&&f.error){G.extrasOff=true;renderChart();renderFriends();renderMineView();return;}
   G.daily=d.error?[]:(d.data||[]);G.friends=f.error?null:(f.data||[]);G.invite=c.error?null:c.data;
-  renderChart();renderFriends();
+  renderChart();renderFriends();renderMineView();
 }
 const SVGNS="http://www.w3.org/2000/svg";
 const sv=(tag,attrs={})=>{const e=document.createElementNS(SVGNS,tag);for(const[k,v]of Object.entries(attrs))e.setAttribute(k,v);return e;};
 const chiDay=t=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/Chicago"}).format(t?new Date(t):new Date());
 function spyOn(day){const P=window.WVFC_APP&&window.WVFC_APP.prices&&window.WVFC_APP.prices();if(!P||!P.closes||!P.closes.SPY)return null;
   const c=P.closes.SPY,d=P.dates||[];let v=null;for(let i=0;i<d.length&&d[i]<=day;i++)if(c[i]!=null)v=c[i];return v;}
-function renderChart(){
-  const box=$("#mine-chart");if(!box||!G.acct)return;
+function renderChart(box,big){
+  box=box||$("#mine-chart");if(!box||!G.acct)return;
+  if(big&&(G.extrasOff||!G.daily)){box.replaceChildren(el("p",{class:"meta",text:G.extrasOff?"This chart isn't turned on yet.":"Loading…"}));return;}
   if(G.extrasOff||!G.daily){box.hidden=true;return;}box.hidden=false;
   const start=chiDay(G.acct.started_at||G.acct.created_at),today=chiDay();
   const now=+G.acct.cash+G.pos.reduce((s,p)=>s+priceOf(p)*p.shares,0);
@@ -107,7 +131,7 @@ function renderChart(){
   const pct=v=>v/START-1;
   const all=pts.map(p=>pct(p.v)).concat(spy.filter(x=>x!=null).map(pct),[0]);
   let lo=Math.min(...all),hi=Math.max(...all);const pad=Math.max((hi-lo)*.15,.01);lo-=pad;hi+=pad;
-  const W=Math.round(Math.max(300,Math.min(760,(box.clientWidth||760)-36))),H=W<500?200:220,L=48,R=10,T=10,B=26,n=pts.length;
+  const W=Math.round(Math.max(300,Math.min(760,(box.clientWidth||760)-36))),H=big?(W<500?240:300):(W<500?200:220),L=48,R=10,T=10,B=26,n=pts.length;
   const x=i=>L+(n<2?0:(W-L-R)*i/(n-1)),y=v=>T+(H-T-B)*(1-(pct(v)-lo)/(hi-lo));
   const svg=sv("svg",{viewBox:`0 0 ${W} ${H}`,width:"100%",role:"img","aria-label":"Your account value over time compared with the S&P 500"});
   const step=(hi-lo)/4;for(let i=0;i<=4;i++){const v=lo+step*i,yy=T+(H-T-B)*(1-i/4);
@@ -118,7 +142,7 @@ function renderChart(){
   const lab=(i,a)=>{const t=sv("text",{x:x(i),y:H-6,"text-anchor":a,"font-size":11,fill:"var(--muted)","font-family":"var(--f-mono)"});const[yy,m,dd]=pts[i].day.split("-").map(Number);t.textContent=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][m-1]+" "+dd;svg.append(t);};
   lab(0,"start");if(n>1)lab(n-1,"end");
   const ab=v=>Math.abs(v*100).toFixed(2)+"%";const g=pct(now),sp=spy.length&&spy[spy.length-1]!=null?pct(spy[spy.length-1]):null;
-  box.replaceChildren(el("h3",{class:"h3",text:"Your money over time"}),
+  box.replaceChildren(big?"":el("h3",{class:"h3",text:"Your money over time"}),
     el("p",{class:"meta",text:sp==null?`You're ${g>=0?"up":"down"} ${ab(g)} since you started.`:`You're ${g>=0?"up":"down"} ${ab(g)} since you started. The same money in the S&P 500 would be ${sp>=0?"up":"down"} ${ab(sp)}.`}),
     el("div",{class:"chartleg"},el("span",{},el("i",{style:"background:var(--gold)"}),"You"),sp==null?"":el("span",{},el("i",{style:"background:#8a8a86"}),"Same money in the S&P 500")),
     svg,G.daily.length<2?el("p",{class:"meta",text:"Your account value is saved every weekday after the market closes, so this line fills in a little more each day."}):"");
@@ -192,9 +216,9 @@ function renderHold(box,mine){
 }
 // Order History: every trade this member has made, newest first.
 let histAll=false;
-function renderTrades(){
-  const box=$("#pt-trades");
-  if(!G.trades.length){box.replaceChildren(el("h3",{class:"h3",text:"Order History"}),el("p",{class:"meta",text:"You haven't made any trades yet. Type a ticker above and place an order. Every trade you make will be saved here."}));return;}
+function renderTrades(box,mine){
+  box=box||$("#pt-trades");const title=mine?"":el("h3",{class:"h3",text:"Order History"});
+  if(!G.trades.length){box.replaceChildren(title,el("p",{class:"meta",text:mine?"You haven't made any trades yet. Go to Paper Trading to buy your first stock. Every trade you make will be saved here.":"You haven't made any trades yet. Type a ticker above and place an order. Every trade you make will be saved here."}));return;}
   const list=histAll?G.trades:G.trades.slice(0,25);
   const td=(t,k)=>el("td",{class:k||"",text:t});
   const head=el("thead",{},el("tr",{},["Date","Action","Stock","Shares","Price","Total","Order type"].map((t,i)=>el("th",{class:i>=3&&i<=5?"num":"",text:t}))));
@@ -203,10 +227,10 @@ function renderTrades(){
     el("td",{},el("button",{type:"button",class:"linkbtn sym",text:t.symbol,title:`Open ${t.symbol} on Search`,onclick:()=>window.WVFC_APP&&window.WVFC_APP.openStock(t.symbol)})),
     td(String(+t.shares),"num"),td(fmt$(t.price),"num"),td(fmt$(t.total),"num"),
     td(t.how==="auto"?"Automatic (price doubled)":(KIND[t.how]||"Market")))));
-  box.replaceChildren(el("h3",{class:"h3",text:"Order History"}),
-    el("p",{class:"meta",text:`Every trade you've made, newest first. ${G.trades.length} trade${G.trades.length===1?"":"s"} so far.`}),
+  box.replaceChildren(title,
+    el("p",{class:"meta",text:`${mine?"":"Every trade you've made, newest first. "}${G.trades.length} trade${G.trades.length===1?"":"s"} so far.`}),
     el("div",{class:"tablewrap"},el("table",{class:"pos"},head,body)),
-    G.trades.length>25?el("button",{type:"button",class:"btn small",style:"margin-top:12px",text:histAll?"Show fewer":`Show all ${G.trades.length}`,onclick:()=>{histAll=!histAll;renderTrades();}}):"");
+    G.trades.length>25?el("button",{type:"button",class:"btn small",style:"margin-top:12px",text:histAll?"Show fewer":`Show all ${G.trades.length}`,onclick:()=>{histAll=!histAll;renderTrades();renderMineView();}}):"");
 }
 // Class Leaderboard: only players from your school, ranked among themselves.
 function classBoard(){

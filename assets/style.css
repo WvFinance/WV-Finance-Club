@@ -463,7 +463,7 @@ html.unlocked #gate{display:none}
 #mine-join .meta{margin:6px 0 14px}
 
 /* Trading game */
-#pt-game,#mine-game{min-width:0}
+#pt-game,#mine-game,#mine-stocks-box{min-width:0}
 #pt-tiles{margin-bottom:16px}
 .ptmain{margin-bottom:16px}
 .ptjoin .meta{margin:6px 0 14px}

@@ -43,27 +43,33 @@ try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="stri
 const TABS=["portfolio","mine","feed","trade","search","news","district","staff","users"].filter(t=>document.getElementById(t));const rendered={};
 const PVIEWS=["overview","positions","sectors","history","classnews","ideas"];let S_view="overview";
 const DVIEWS=["dschools","dpeople","dweek"];let D_view="dschools";
+// Personal Home (My Portfolio) drop-down: "mine" is the overview, the rest are views of your own Paper Trading stocks (paper.js draws them).
+const MVIEWS=["mine","mystocks","mysectors","myhistory","mytrades"];let M_view="mine";
 function showTab(name,push){
   if(name==="schools")name="dschools";
   // "Just me" accounts: Home is My Portfolio, Leaderboard is the everyone list. No class or school pages.
   if(S.individual){if(name==="portfolio"||PVIEWS.includes(name)||name==="home")name="mine";if(name==="district"||DVIEWS.includes(name))name="dpeople";}
   if(DVIEWS.includes(name)){D_view=name;name="district";}else if(name==="district")D_view="dschools";
   if(PVIEWS.includes(name)){S_view=name;name="portfolio";}else if(name==="portfolio")S_view="overview";
+  if(MVIEWS.includes(name)){M_view=name;name="mine";}
   // Search has no tab button: the search bar at the top opens it.
   const tb=n=>$("#tab-"+n);
   if(!TABS.includes(name)||(tb(name)&&tb(name).hidden)){name=S.individual?"mine":"portfolio";}
   if(name==="portfolio"){for(const v of PVIEWS)$("#pv-"+v).hidden=v!==S_view;
     document.querySelectorAll("#pf-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===S_view));renderBreakdown();if(S_view==="classnews")renderClassFeed();if(S_view==="ideas")loadIdeas();}
   for(const t of TABS){$("#"+t).hidden=t!==name;if(tb(t))tb(t).setAttribute("aria-selected",String(t===name));}
+  if(name==="mine"){for(const v of MVIEWS)$("#mv-"+v).hidden=v!==M_view;
+    document.querySelectorAll("#mine-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===M_view));}
   if(name==="district"){for(const v of DVIEWS)$("#dv-"+v).hidden=v!==D_view;
     document.querySelectorAll("#dist-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===D_view));}
-  if(push){try{history.replaceState(null,"","#"+(name==="portfolio"&&S_view!=="overview"?S_view:name==="district"&&D_view!=="dschools"?D_view:name))}catch(e){}}
+  if(push){try{history.replaceState(null,"","#"+(name==="portfolio"&&S_view!=="overview"?S_view:name==="district"&&D_view!=="dschools"?D_view:name==="mine"?M_view:name))}catch(e){}}
   if(name==="search"&&rendered.search!==S.tk+tvTheme())renderSearch();
   if(name==="news")renderNewsFeed();
   if(name==="district"&&D_view==="dschools")renderSchools();
   if(name==="district"&&D_view==="dpeople")document.dispatchEvent(new CustomEvent("wvfc:dpeople"));
   if(name==="district"&&D_view==="dweek")document.dispatchEvent(new CustomEvent("wvfc:dweek"));
   document.dispatchEvent(new CustomEvent("wvfc:tab",{detail:name}));
+  if(name==="mine")document.dispatchEvent(new CustomEvent("wvfc:mview",{detail:M_view}));
   window.scrollTo({top:0});
 }
 document.querySelectorAll(".tab:not(.hasmenu)").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.tab,true)));
@@ -71,10 +77,11 @@ document.querySelectorAll(".tab:not(.hasmenu)").forEach(b=>b.addEventListener("c
 const menus=[["#tab-portfolio","#pf-menu"],["#tab-district","#dist-menu"]].map(([t,m])=>({tab:$(t),menu:$(m)})).filter(x=>x.tab&&x.menu);
 function setMenu(open,which){for(const m of menus){const on=open&&m===which;m.menu.hidden=!on;m.tab.setAttribute("aria-expanded",String(on));
   if(on){const r=m.tab.getBoundingClientRect(),n=m.tab.closest("nav").getBoundingClientRect();m.menu.style.left=Math.max(8,Math.min(r.left-n.left,n.width-m.menu.offsetWidth-8))+"px";}}}
-for(const m of menus){
+function addMenu(m){
   m.tab.addEventListener("click",e=>{e.stopPropagation();setMenu(m.menu.hidden,m);});
   m.menu.addEventListener("click",e=>{const b=e.target.closest("[data-view]");if(!b)return;setMenu(false);showTab(b.dataset.view,true);});
 }
+menus.forEach(addMenu);
 document.addEventListener("click",e=>{if(menus.some(m=>!m.menu.hidden&&!m.menu.contains(e.target)))setMenu(false);});
 document.addEventListener("keydown",e=>{const m=menus.find(m=>!m.menu.hidden);if(e.key==="Escape"&&m){setMenu(false);m.tab.focus();}});
 window.addEventListener("resize",()=>setMenu(false));
@@ -230,11 +237,15 @@ function renderPositions(){
 function renderSectors(){
   const box=$("#sec-body");const by={};
   for(const p of S.picks){const c=calc(p);const v=c&&c.value!=null?c.value:(p.invested||0);if(v>0)by[p.sector||"Other"]=(by[p.sector||"Other"]||0)+v;}
-  let parts=Object.entries(by).sort((a,b)=>b[1]-a[1]);
-  if(!parts.length){box.replaceChildren(emptyNote("The pie fills in once the club owns a stock. Each slice is a type of business, like Tech or Banks."));return;}
+  sectorPie(box,by,"The pie fills in once the club owns a stock. Each slice is a type of business, like Tech or Banks.","What we own by sector");
+}
+// A donut of money by sector, biggest slice first. Used by the Class Portfolio and the personal Home (paper.js).
+function sectorPie(box,by,empty,label,extra){
+  let parts=Object.entries(by).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]);
+  if(!parts.length){box.replaceChildren(emptyNote(empty));return;}
   if(parts.length>8){const rest=parts.slice(7).reduce((s,x)=>s+x[1],0);parts=parts.slice(0,7).concat([["Other",rest]]);}
   const total=parts.reduce((s,x)=>s+x[1],0);const R=90,r0=56,C=110;
-  const svg=sv("svg",{viewBox:"0 0 220 220",class:"donut",role:"img","aria-label":"What we own by sector"});
+  const svg=sv("svg",{viewBox:"0 0 220 220",class:"donut",role:"img","aria-label":label});
   let a=-Math.PI/2;
   parts.forEach(([name,v],i)=>{const frac=v/total;const col=SECTOR_COLORS[i%SECTOR_COLORS.length];
     if(frac>=0.9999){svg.append(sv("circle",{cx:C,cy:C,r:(R+r0)/2,fill:"none",stroke:col,"stroke-width":R-r0}));}
@@ -244,8 +255,18 @@ function renderSectors(){
   const mid=sv("text",{x:C,y:C-2,"text-anchor":"middle",class:"donut-n"});mid.textContent=String(parts.length);
   const sub=sv("text",{x:C,y:C+18,"text-anchor":"middle",class:"donut-s"});sub.textContent=parts.length===1?"sector":"sectors";svg.append(mid,sub);
   const legend=el("ul",{class:"seclegend"},parts.map(([name,v],i)=>el("li",{},el("i",{style:`background:${SECTOR_COLORS[i%SECTOR_COLORS.length]}`}),el("span",{text:name}),el("b",{text:Math.round(v/total*100)+"%"}),el("span",{class:"meta",text:fmt0(v)}))));
-  box.replaceChildren(el("div",{class:"secwrap"},svg,legend));
+  box.replaceChildren(el("div",{class:"secwrap"},svg,legend),extra||"");
 }
+// Sector for any ticker: data/sectors.json (S&P 500 and popular stocks), "Funds" for ETFs (no exchange in data/stocks.json), else "Other".
+let sectorMap=null;
+async function sectorsFor(tks){
+  if(!sectorMap)sectorMap=loadJSON("data/sectors.json").then(j=>j.sectors||{}).catch(()=>({}));
+  const [map]=await Promise.all([sectorMap,loadStocks()]);
+  const out={};for(const t of tks){const b=bare(t);const st=(stockList||[]).find(x=>x.t===b);
+    out[t]=map[b]||(st&&st.i>=0&&st.sym===b?"Funds":"Other");}
+  return out;
+}
+function stockName(t){const b=bare(t),st=(stockList||[]).find(x=>x.t===b);return st?st.n:"";}
 function historySeries(){
   const d=S.prices.dates||[],cl=S.prices.closes||{};if(!d.length||!cl.SPY)return null;
   const picks=S.picks.filter(p=>cl[p.ticker]&&p.entryDate);if(!picks.length)return null;
@@ -425,7 +446,7 @@ function saveWatch(){store.set("wvfc.watch",JSON.stringify(S.watch));if(window.W
 // Lets the account page (beta.html) load a saved watchlist and open stocks.
 // account.js tells us the member's school once they're logged in; boot() waits for it.
 let schoolSet;const schoolReady=new Promise(r=>{schoolSet=r;});
-window.WVFC_APP={setSchool(id){schoolSet(id);},setMine(list){const m=[...new Set(list.map(bare))];if(S.mine&&m.join()===S.mine.join())return;S.mine=m;rendered.news=null;if(S.loaded)renderTape();renderNews();renderHomeNews();loadMineBriefs();loadEarnings();if(!$("#news").hidden)renderNewsFeed();},setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},tk:()=>bare(S.tk),prices:()=>S.prices,refreshPicks:()=>refreshPicks(),picks:()=>S.picks,classRows:()=>classRows(),calc:p=>calc(p)};
+window.WVFC_APP={setSchool(id){schoolSet(id);},setMine(list){const m=[...new Set(list.map(bare))];if(S.mine&&m.join()===S.mine.join())return;S.mine=m;rendered.news=null;if(S.loaded)renderTape();renderNews();renderHomeNews();loadMineBriefs();loadEarnings();if(!$("#news").hidden)renderNewsFeed();},setWatch(list){S.watch=list;store.set("wvfc.watch",JSON.stringify(list));renderWatch();},openStock(sym){openStock(sym);showTab("search",true);},tk:()=>bare(S.tk),prices:()=>S.prices,refreshPicks:()=>refreshPicks(),sectorPie:(...a)=>sectorPie(...a),sectorsFor:t=>sectorsFor(t),stockName:t=>stockName(t),picks:()=>S.picks,classRows:()=>classRows(),calc:p=>calc(p)};
 function renderWatch(){
   const box=$("#wl");box.replaceChildren();const on=S.watch.some(w=>bare(w)===bare(S.tk));
   $("#wl-toggle").textContent=on?"On watchlist ✓":"Add to watchlist";
@@ -687,7 +708,12 @@ function renderGateTick(){
 // Tabs become Home · Paper Trading · News · Leaderboard.
 function setupIndividual(){
   $("#tab-portfolio").hidden=true;
-  $("#tab-mine").textContent="Home";
+  // Home gets a drop-down like the Class Portfolio. The stocks table and waiting orders move to "My stocks".
+  const home=$("#tab-mine").cloneNode(false);
+  home.classList.add("hasmenu");home.setAttribute("aria-haspopup","menu");home.setAttribute("aria-expanded","false");
+  home.replaceChildren("Home",el("span",{class:"caret","aria-hidden":"true"}));$("#tab-mine").replaceWith(home);
+  const hm={tab:home,menu:$("#mine-menu")};menus.push(hm);addMenu(hm);
+  $("#mine-stocks-box").append($("#mine-hold"),$("#mine-orders"));
   const old=$("#tab-district"),lb=old.cloneNode(false);
   lb.classList.remove("hasmenu");lb.removeAttribute("aria-haspopup");lb.removeAttribute("aria-expanded");lb.textContent="Leaderboard";
   lb.addEventListener("click",()=>showTab("dpeople",true));old.replaceWith(lb);
