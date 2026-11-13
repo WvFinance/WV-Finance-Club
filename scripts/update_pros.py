@@ -302,6 +302,15 @@ def info_table(cik, acc):
     raise ValueError("no holdings table found")
 
 
+def value_scale(holdings):
+    """1 when values are in dollars, 1000 when the fund still writes them in thousands of dollars (the rule
+    before 2023). Told apart by the typical price of one share: real prices are far above $2."""
+    prices = sorted(h["value"] / h["shares"] for h in holdings.values() if h["shares"] > 0 and h["value"] > 0)
+    if not prices:
+        return 1
+    return 1000 if prices[len(prices) // 2] < 2 else 1
+
+
 def fund_moves(names):
     rows = []
     for cik, must, fund, person in FUNDS:
@@ -311,7 +320,10 @@ def fund_moves(names):
             if must not in sec_name:
                 print(f"{fund}: SEC number {cik} is '{sec_name}', skipped")
                 continue
-            reps = [f for f in recent_filings(sub) if f["form"] == "13F-HR"]
+            filings = recent_filings(sub)
+            reps = [f for f in filings if f["form"] == "13F-HR"]
+            print(f"{fund}: SEC name '{sec_name}'. Newest 13F filings: "
+                  + ", ".join(f"{f['form']} for {f.get('reportDate')} filed {f['filingDate']}" for f in filings if f["form"].startswith("13F"))[:400])
             # One report per quarter, newest first (an amended report is a different form and is ignored).
             seen, quarters = set(), []
             for f in reps:
@@ -330,8 +342,7 @@ def fund_moves(names):
         except Exception as e:  # noqa: BLE001
             print(f"{fund}: couldn't load ({e})")
             continue
-        # Before 2023 values were in thousands of dollars. A fund this size never holds under $1 million in total.
-        scale = 1000 if sum(h["value"] for h in now.values()) < 1e6 else 1
+        scale = value_scale(now)
         moves = {"new": [], "sold": [], "more": [], "less": []}
         for cusip, h in now.items():
             b = before.get(cusip)
@@ -344,7 +355,7 @@ def fund_moves(names):
                     moves["more"].append(((h["shares"] - b["shares"]) * per, h, ch))
                 elif ch <= -0.2:
                     moves["less"].append(((b["shares"] - h["shares"]) * per, h, ch))
-        old_scale = 1000 if sum(h["value"] for h in before.values()) < 1e6 else 1
+        old_scale = value_scale(before)
         for cusip, b in before.items():
             if cusip not in now and b["shares"] > 0:
                 moves["sold"].append((b["value"] * old_scale, b, -1.0))
@@ -367,7 +378,8 @@ def fund_moves(names):
                              "move": kind, "value": round(value), "pct": None if ch is None else round(ch, 3),
                              "asof": new["reportDate"], "reported": new["filingDate"], "url": base})
                 n += 1
-        print(f"{fund}: report for {new['reportDate']} filed {new['filingDate']}, {len(now)} holdings, {n} moves kept")
+        print(f"{fund}: report for {new['reportDate']} filed {new['filingDate']}, {len(now)} holdings (before: {len(before)}), "
+              f"values x{scale}, found " + ", ".join(f"{len(v)} {k}" for k, v in moves.items()) + f", {n} moves kept")
     rows.sort(key=lambda r: (r["reported"], r["value"]), reverse=True)
     return rows
 
