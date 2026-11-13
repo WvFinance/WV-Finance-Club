@@ -95,8 +95,9 @@ const BIG_SALE=5e6;
 const moved=m=>m.move==="new"||m.move==="sold"||m.pct==null||!(1+m.pct>0)?+m.value||0:(+m.value||0)*Math.abs(m.pct)/(1+m.pct);
 
 /* ---------- Buttons ---------- */
-const openStock=s=>window.WVFC_APP&&window.WVFC_APP.openStock(s);
-const practice=s=>window.WVFC_PAPER&&window.WVFC_PAPER.trade(s,"buy");
+// Both leave the Feed, so they close a person's box first.
+const openStock=s=>{if(person){person=null;render();}window.WVFC_APP&&window.WVFC_APP.openStock(s);};
+const practice=s=>{if(person){person=null;render();}window.WVFC_PAPER&&window.WVFC_PAPER.trade(s,"buy");};
 async function follow(m,btn){
   if(F.followsOff){toast("Following isn't set up yet.");return;}
   btn.disabled=true;
@@ -135,8 +136,19 @@ async function loadMember(name){
   catch(e){MEMBER[name]={error:true};}
   if(person&&person.name===name)render();
 }
-function openPerson(kind,name){person={kind,name};if(kind==="congress")loadMember(name);render();const f=$("#feed");window.scrollTo({top:f?f.offsetTop-10:0});}
+function openPerson(kind,name){person={kind,name};if(kind==="congress")loadMember(name);render();const x=$("#fd-modal .fdx");if(x)x.focus();}
 function closePerson(){person=null;render();}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&person)closePerson();});
+// The person's trades pop up in a box over the feed, with an × in the top right corner.
+function renderModal(){
+  let m=$("#fd-modal");
+  if(!person){if(m)m.remove();document.documentElement.classList.remove("fdlock");return;}
+  const keep=m?m.querySelector(".fdmbox").scrollTop:0;
+  if(!m){m=el("div",{id:"fd-modal",class:"fdmodal",onclick:e=>{if(e.target===m)closePerson();}});document.body.append(m);}
+  const box=el("div",{class:"fdmbox",role:"dialog","aria-modal":"true","aria-label":person.name+"'s trades"},
+    el("button",{type:"button",class:"fdx","aria-label":"Close",text:"×",onclick:closePerson}),...personView());
+  m.replaceChildren(box);box.scrollTop=keep;document.documentElement.classList.add("fdlock");
+}
 function personView(){
   const{kind,name}=person,pros=F.pros||{insiders:[],funds:[]};
   let rows=[],head,sub,cards,note;
@@ -155,13 +167,13 @@ function personView(){
   const canFollow=kind!=="insider",on=F.follows.has(name);
   const stocks=[...new Set(rows.map(t=>t.ticker).filter(Boolean))];
   return[
-    el("button",{type:"button",class:"linkbtn fdback",text:"← Back to the feed",onclick:closePerson}),
-    el("section",{class:"panel fdprofile"},
+    el("section",{class:"fdprofile"},
       el("div",{class:"fdav big "+(kind==="congress"?"gov":kind==="insider"?"ins":"fund"),text:initials(name)}),
       el("div",{class:"fdpmain"},
         el("h3",{class:"h3"},name," ",head),
         sub?el("div",{class:"fdwho",text:sub}):"",
         el("div",{class:"fdpstats"},
+          el("span",{class:"fdrange3",text:kind==="insider"?"Last 45 days":"Last 3 months"}),
           el("span",{},el("b",{text:String(rows.length)})," ",rows.length===1?"trade":"trades"),
           el("span",{class:"up"},el("b",{text:String(buys)})," ",buys===1?"buy":"buys"),
           el("span",{class:"down"},el("b",{text:String(sells)})," ",sells===1?"sale":"sales"),
@@ -315,7 +327,6 @@ function renderList(){
   const box=$("#fd-list");
   if(F.friends==null&&F.congress==null&&F.pros==null){box.replaceChildren(el("p",{class:"meta",text:"Loading the feed…"}));return;}
   let out;
-  if(person){box.replaceChildren(...personView());return;}
   if(filter==="all")out=GROUPS.map(([k,t,s])=>section(k,t,s,3)).filter(Boolean);
   else if(filter==="following"){
     out=GROUPS.filter(g=>g[0]==="congress"||g[0]==="funds").map(([k,t,s])=>section(k,t,s,0,true)).filter(Boolean);
@@ -352,7 +363,7 @@ function renderSide(){
 }
 function render(){
   document.querySelectorAll("#feed .fdchip").forEach(b=>{const on=b.dataset.f===filter;b.classList.toggle("on",on);b.setAttribute("aria-pressed",String(on));});
-  renderList();renderSide();
+  renderList();renderSide();renderModal();
   if($("#feed").hidden)newDot();
 }
 
