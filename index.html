@@ -14,7 +14,7 @@
 <meta name="apple-mobile-web-app-title" content="Simple Street">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="assets/fonts.css?v=2026111201">
-<link rel="stylesheet" href="assets/style.css?v=2026111309">
+<link rel="stylesheet" href="assets/style.css?v=2026111310">
 <script>
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
@@ -285,6 +285,11 @@ setTimeout(done,5400);})();
   </div>
   <div class="fdgrid">
     <div>
+      <div class="fdsearch" role="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input type="search" id="fd-q" placeholder="Search a stock or person, like AAPL or Pelosi" aria-label="Search the feed" autocomplete="off" spellcheck="false">
+        <button type="button" id="fd-qx" class="fdqx" aria-label="Clear search" hidden>×</button>
+      </div>
       <div class="fdchips" aria-label="Show">
         <button type="button" class="fdchip on" data-f="all">All</button>
         <button type="button" class="fdchip" data-f="friends">Friends</button>
@@ -498,7 +503,7 @@ setTimeout(done,5400);})();
 <script src="assets/vendor/supabase-2.118.0.js"></script>
 <script src="assets/account.js?v=2026111101"></script>
 <script src="assets/paper.js?v=2026111201"></script>
-<script src="assets/feed.js?v=2026111303"></script>
+<script src="assets/feed.js?v=2026111304"></script>
 <script src="assets/staff.js?v=2026111101"></script>
 <script src="assets/users.js?v=2026111101"></script>
 <script>

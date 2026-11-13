@@ -639,6 +639,14 @@ tr.flash td{background:var(--down-soft);transition:background .4s}
 .fdgrid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:20px;align-items:start}
 @media (max-width:900px){.fdgrid{grid-template-columns:minmax(0,1fr)}}
 .fdside{display:grid;gap:20px}
+.fdsearch{position:relative;display:flex;align-items:center;margin-bottom:14px}
+.fdsearch svg{position:absolute;left:13px;width:18px;height:18px;color:var(--muted);pointer-events:none}
+.fdsearch input{width:100%;min-width:0;appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 40px 10px 40px;font:inherit;font-size:15px}
+.fdsearch input::placeholder{color:var(--muted)}
+.fdsearch input:focus{outline:none;border-color:var(--gold)}
+.fdsearch input::-webkit-search-cancel-button{display:none}
+.fdqx{position:absolute;right:6px;appearance:none;border:0;background:none;color:var(--muted);font-size:22px;line-height:1;width:32px;height:32px;border-radius:50%;cursor:pointer}
+.fdqx:hover{color:var(--ink);background:var(--surface-2)}
 .fdchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
 .fdchip{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 16px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
 .fdchip.on{background:var(--gold);border-color:var(--gold);color:var(--on-gold)}

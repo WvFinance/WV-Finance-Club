@@ -9,7 +9,7 @@ const el=(tag,attrs={},...kids)=>{const e=document.createElement(tag);for(const[
 function toast(msg){const t=$("#toast");if(!t)return;t.textContent=msg;t.classList.add("show");clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove("show"),2600);}
 const errText=e=>String(e&&e.message||e||"Something went wrong. Try again.");
 
-let db=null,loaded=false,filter="all";
+let db=null,loaded=false,filter="all",query="";
 const F={pros:null,friends:null,friendsOff:false,congress:null,congressErr:"",follows:new Set(),followsOff:false};
 const API=String(window.WVFC_CONFIG&&window.WVFC_CONFIG.briefApi||"").replace(/\/$/,"");
 
@@ -174,15 +174,19 @@ const GROUPS=[
   ["congress","Congress","Members of Congress must report their trades within 45 days, and only give a dollar range."],
   ["insiders","Insiders","People who work at a company or sit on its board. Insiders sell for many reasons, like paying taxes, so a sale alone doesn't mean bad news."],
   ["funds","Big investors","Big funds only report what they own every 3 months, up to 45 days late, so this is old news by the time you see it."]];
+// Search: a stock ticker, company or person's name. Every word typed has to match.
+const hit=(...f)=>{if(!query)return true;const h=f.filter(Boolean).join(" ").toLowerCase();return query.split(/\s+/).every(w=>h.includes(w));};
 const byDay=k=>(a,b)=>(+day(b[k]||b.traded)||0)-(+day(a[k]||a.traded)||0);
 // The cards for one group, newest first. max = how many to show (0 = all of them).
 function groupCards(key,max,onlyFollowed){
   const pros=F.pros||{insiders:[],funds:[]};
   const cut=a=>max?a.slice(0,max):a.slice(0,80);
-  if(key==="friends"){const a=F.friends||[];return{n:a.length,cards:cut(a).map(friendCard)};}
-  if(key==="congress"){const a=(F.congress||[]).filter(t=>!onlyFollowed||F.follows.has(t.member)).sort(byDay("reported"));return{n:a.length,cards:cut(a).map(congressCard)};}
-  if(key==="insiders"){const a=[...pros.insiders].sort(byDay("reported"));return{n:a.length,cards:cut(a).map(insiderCard)};}
+  if(key==="friends"){const a=(F.friends||[]).filter(t=>hit(t.symbol,t.me?"you":"",t.name));return{n:a.length,cards:cut(a).map(friendCard)};}
+  if(key==="congress"){const a=(F.congress||[]).filter(t=>(!onlyFollowed||F.follows.has(t.member))&&hit(t.ticker,t.member)).sort(byDay("reported"));return{n:a.length,cards:cut(a).map(congressCard)};}
+  if(key==="insiders"){const a=pros.insiders.filter(t=>hit(t.ticker,t.name,t.company,t.role)).sort(byDay("reported"));return{n:a.length,cards:cut(a).map(insiderCard)};}
   const by=new Map();for(const t of pros.funds){if(onlyFollowed&&!F.follows.has(t.fund))continue;if(!by.has(t.fund))by.set(t.fund,[]);by.get(t.fund).push(t);}
+  // A fund's name matches: show all its moves. Otherwise keep only the moves for the stock searched.
+  if(query)for(const[k,m]of[...by]){if(hit(k,m[0].person))continue;const keep=m.filter(t=>hit(t.ticker,t.company));if(keep.length)by.set(k,keep);else by.delete(k);}
   const a=[...by.values()].sort((x,y)=>(+day(y[0].reported)||0)-(+day(x[0].reported)||0));
   return{n:a.length,cards:cut(a).map(m=>fundGroup(m,max?3:0))};
 }
@@ -195,7 +199,7 @@ function emptyFor(key){
 }
 function section(key,title,sub,max,onlyFollowed){
   const{n,cards}=groupCards(key,max,onlyFollowed);
-  if(onlyFollowed&&!n)return null;
+  if((onlyFollowed||query)&&!n)return null;
   const more=max&&n>cards.length;
   return el("section",{class:"fdsec"},
     el("div",{class:"fdsechead"},el("h3",{class:"h3",text:title}),
@@ -207,11 +211,13 @@ function renderList(){
   const box=$("#fd-list");
   if(F.friends==null&&F.congress==null&&F.pros==null){box.replaceChildren(el("p",{class:"meta",text:"Loading the feed…"}));return;}
   let out;
-  if(filter==="all")out=GROUPS.map(([k,t,s])=>section(k,t,s,3));
+  if(filter==="all")out=GROUPS.map(([k,t,s])=>section(k,t,s,3)).filter(Boolean);
   else if(filter==="following"){
     out=GROUPS.filter(g=>g[0]==="congress"||g[0]==="funds").map(([k,t,s])=>section(k,t,s,0,true)).filter(Boolean);
     if(!out.length)out=[emptyMsg(F.follows.size?"The people you follow haven't reported any trades lately.":"Tap Follow on a member of Congress or a big investor and their trades will show up here.")];
-  }else out=GROUPS.filter(g=>g[0]===filter).map(([k,t,s])=>section(k,t,s,0));
+  }else out=GROUPS.filter(g=>g[0]===filter).map(([k,t,s])=>section(k,t,s,0)).filter(Boolean);
+  if(query&&!out.length)out=[emptyMsg(`Nothing matches "${$("#fd-q").value.trim()}" here. Try a ticker like AAPL, a company, or a person's name.`,
+    el("button",{type:"button",class:"btn",text:"Clear search",onclick:()=>setQuery("")}))];
   box.replaceChildren(...out);
 }
 function renderSide(){
@@ -243,5 +249,9 @@ function render(){
   document.querySelectorAll("#feed .fdchip").forEach(b=>{const on=b.dataset.f===filter;b.classList.toggle("on",on);b.setAttribute("aria-pressed",String(on));});
   renderList();renderSide();
 }
+function setQuery(v){const q=$("#fd-q");if(q.value!==v)q.value=v;query=v.trim().toLowerCase();$("#fd-qx").hidden=!v;render();}
+$("#fd-q").addEventListener("input",e=>setQuery(e.target.value));
+$("#fd-q").addEventListener("keydown",e=>{if(e.key==="Escape")setQuery("");});
+$("#fd-qx").addEventListener("click",()=>{setQuery("");$("#fd-q").focus();});
 document.querySelectorAll("#feed .fdchip").forEach(b=>b.addEventListener("click",()=>{filter=b.dataset.f;render();}));
 })();
