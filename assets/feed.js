@@ -9,7 +9,7 @@ const el=(tag,attrs={},...kids)=>{const e=document.createElement(tag);for(const[
 function toast(msg){const t=$("#toast");if(!t)return;t.textContent=msg;t.classList.add("show");clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove("show"),2600);}
 const errText=e=>String(e&&e.message||e||"Something went wrong. Try again.");
 
-let db=null,loaded=false,filter="all",query="";
+let db=null,loaded=false,filter="all",query="",person=null;   // person: {kind:"congress"|"insider"|"fund",name}
 const F={pros:null,friends:null,friendsOff:false,congress:null,congressErr:"",follows:new Set(),followsOff:false,allSells:false};
 const API=String(window.WVFC_CONFIG&&window.WVFC_CONFIG.briefApi||"").replace(/\/$/,"");
 
@@ -122,6 +122,43 @@ async function editWhy(t){
   t.why=data;render();
 }
 
+/* ---------- A person's page: every trade we have for one member of Congress, insider or big investor ---------- */
+// Their name on any card is a button that opens it.
+function personBtn(label,kind,name){return el("button",{type:"button",class:"linkbtn fdperson",text:label,title:`See all of ${name}'s trades`,onclick:()=>openPerson(kind,name)});}
+function openPerson(kind,name){person={kind,name};render();const f=$("#feed");window.scrollTo({top:f?f.offsetTop-10:0});}
+function closePerson(){person=null;render();}
+function personView(){
+  const{kind,name}=person,pros=F.pros||{insiders:[],funds:[]};
+  let rows=[],head,sub,cards,note;
+  if(kind==="congress"){rows=(F.congress||[]).filter(t=>t.member===name).sort(byDay("reported"));const t=rows[0];
+    head=[el("span",{class:"fdgov",text:"Congress"})];sub=t?where(t):"";cards=rows.map(congressCard);
+    note="From the latest Congress reports. Members of Congress must report trades within 45 days.";}
+  else if(kind==="insider"){rows=pros.insiders.filter(t=>t.name===name).sort(byDay("reported"));const t=rows[0];
+    head=[el("span",{class:"fdgov ins",text:"Insider"})];sub=t?`${t.role} at ${t.company}`:"";cards=rows.map(insiderCard);
+    note="Buys and sales from the last 45 days of SEC reports.";}
+  else{rows=pros.funds.filter(t=>t.fund===name);const t=rows[0];
+    head=[];sub=t?String(t.person||"").replace(/^./,c=>c.toUpperCase()):"";cards=rows.length?[fundGroup(rows,0)]:[];
+    note=t?`Their biggest moves in the 3 months that ended ${short(t.asof)}.`:"";}
+  const buys=rows.filter(t=>t.side==="buy"||t.move==="new"||t.move==="more").length,sells=rows.length-buys;
+  const canFollow=kind!=="insider",on=F.follows.has(name);
+  const stocks=[...new Set(rows.map(t=>t.ticker).filter(Boolean))];
+  return[
+    el("button",{type:"button",class:"linkbtn fdback",text:"← Back to the feed",onclick:closePerson}),
+    el("section",{class:"panel fdprofile"},
+      el("div",{class:"fdav big "+(kind==="congress"?"gov":kind==="insider"?"ins":"fund"),text:initials(name)}),
+      el("div",{class:"fdpmain"},
+        el("h3",{class:"h3"},name," ",head),
+        sub?el("div",{class:"fdwho",text:sub}):"",
+        el("div",{class:"fdpstats"},
+          el("span",{},el("b",{text:String(rows.length)})," ",rows.length===1?"trade":"trades"),
+          el("span",{class:"up"},el("b",{text:String(buys)})," ",buys===1?"buy":"buys"),
+          el("span",{class:"down"},el("b",{text:String(sells)})," ",sells===1?"sale":"sales"),
+          el("span",{},el("b",{text:String(stocks.length)})," ",stocks.length===1?"stock":"stocks")),
+        note?el("p",{class:"meta",text:note}):""),
+      canFollow?el("button",{type:"button",class:"btn small"+(on?" fdon":""),text:on?"Following":"Follow",onclick:e=>follow(name,e.currentTarget)}):""),
+    ...(cards.length?cards:[emptyMsg("No trades to show for "+name+" right now.")])];
+}
+
 /* ---------- Cards ---------- */
 function friendCard(t){
   return el("article",{class:"fdcard"},
@@ -142,7 +179,7 @@ function congressCard(t){
   return el("article",{class:"fdcard"},
     el("div",{class:"fdav gov",text:initials(t.member)}),
     el("div",{class:"fdbody"},
-      el("div",{class:"fdtop"},el("div",{},el("div",{class:"fdname"},t.member," ",el("span",{class:"fdgov",text:"Congress"})),el("div",{class:"fdwho",text:where(t)})),
+      el("div",{class:"fdtop"},el("div",{},el("div",{class:"fdname"},personBtn(t.member,"congress",t.member)," ",el("span",{class:"fdgov",text:"Congress"})),el("div",{class:"fdwho",text:where(t)})),
         el("div",{class:"fdwhen",text:t.reported?"Reported "+short(t.reported):""})),
       el("div",{class:"fdtrade"},el("span",{class:"pttag "+t.side,text:t.side==="buy"?"Bought":"Sold"}),
         el("button",{type:"button",class:"linkbtn sym",text:t.ticker,title:`Open ${t.ticker} on Search`,onclick:()=>openStock(t.ticker)}),
@@ -170,7 +207,7 @@ function insiderCard(t){
   return el("article",{class:"fdcard"},
     el("div",{class:"fdav ins",text:initials(t.name)}),
     el("div",{class:"fdbody"},
-      el("div",{class:"fdtop"},el("div",{},el("div",{class:"fdname"},t.name," ",el("span",{class:"fdgov ins",text:"Insider"})),el("div",{class:"fdwho",text:`${t.role} at ${t.company}`})),
+      el("div",{class:"fdtop"},el("div",{},el("div",{class:"fdname"},personBtn(t.name,"insider",t.name)," ",el("span",{class:"fdgov ins",text:"Insider"})),el("div",{class:"fdwho",text:`${t.role} at ${t.company}`})),
         el("div",{class:"fdwhen",text:t.reported?"Reported "+short(t.reported):""})),
       el("div",{class:"fdtrade"},el("span",{class:"pttag "+t.side,text:`${t.side==="buy"?"Bought":"Sold"} ${n.toLocaleString("en-US")} share${n===1?"":"s"}`}),
         el("button",{type:"button",class:"linkbtn sym",text:t.ticker,title:`Open ${t.ticker} on Search`,onclick:()=>openStock(t.ticker)}),
@@ -188,7 +225,7 @@ function fundGroup(moves,max){
   return el("article",{class:"fdcard"},
     el("div",{class:"fdav fund",text:initials(t.fund)}),
     el("div",{class:"fdbody"},
-      el("div",{class:"fdtop"},el("div",{},el("div",{class:"fdname",text:t.fund}),el("div",{class:"fdwho",text:who.charAt(0).toUpperCase()+who.slice(1)})),
+      el("div",{class:"fdtop"},el("div",{},el("div",{class:"fdname"},personBtn(t.fund,"fund",t.fund)),el("div",{class:"fdwho",text:who.charAt(0).toUpperCase()+who.slice(1)})),
         el("button",{type:"button",class:"btn small"+(on?" fdon":""),text:on?"Following":"Follow",onclick:e=>follow(t.fund,e.currentTarget)})),
       el("ul",{class:"fdmoves"},rows.map(m=>{const[k,label]=MOVE[m.move]||["wait",m.move];
         const pct=m.pct==null||m.move==="sold"||m.move==="new"?"":m.pct>=20?", many times more shares":m.pct>=1.5?`, about ${Math.round(1+m.pct)} times as many shares`:`, ${Math.abs(Math.round(m.pct*100))}% ${m.pct>0?"more":"fewer"} shares`;
@@ -266,6 +303,7 @@ function renderList(){
   const box=$("#fd-list");
   if(F.friends==null&&F.congress==null&&F.pros==null){box.replaceChildren(el("p",{class:"meta",text:"Loading the feed…"}));return;}
   let out;
+  if(person){box.replaceChildren(...personView());return;}
   if(filter==="all")out=GROUPS.map(([k,t,s])=>section(k,t,s,3)).filter(Boolean);
   else if(filter==="following"){
     out=GROUPS.filter(g=>g[0]==="congress"||g[0]==="funds").map(([k,t,s])=>section(k,t,s,0,true)).filter(Boolean);
@@ -285,10 +323,10 @@ function renderSide(){
     el("p",{class:"meta",text:"Follow big investors and members of Congress to see their trades in Following."}),
     who.length||funds.length?el("ul",{class:"fdwholist"},funds.map(t=>{const on=F.follows.has(t.fund);return el("li",{},
       el("div",{class:"fdav fund sm",text:initials(t.fund)}),
-      el("div",{class:"fdwl"},el("div",{class:"fdname",text:t.fund}),el("div",{class:"fdwho",text:"Big investor"})),
+      el("div",{class:"fdwl"},el("div",{class:"fdname"},personBtn(t.fund,"fund",t.fund)),el("div",{class:"fdwho",text:"Big investor"})),
       el("button",{type:"button",class:"btn small"+(on?" fdon":""),text:on?"Following":"Follow",onclick:e=>follow(t.fund,e.currentTarget)}));}),who.map(({t,n})=>{const on=F.follows.has(t.member);return el("li",{},
       el("div",{class:"fdav gov sm",text:initials(t.member)}),
-      el("div",{class:"fdwl"},el("div",{class:"fdname",text:t.member}),el("div",{class:"fdwho",text:`${t.chamber==="senate"?"Senate":"House"}${t.state?" · "+t.state.slice(0,2):""} · ${plural(n,"trade")}`})),
+      el("div",{class:"fdwl"},el("div",{class:"fdname"},personBtn(t.member,"congress",t.member)),el("div",{class:"fdwho",text:`${t.chamber==="senate"?"Senate":"House"}${t.state?" · "+t.state.slice(0,2):""} · ${plural(n,"trade")}`})),
       el("button",{type:"button",class:"btn small"+(on?" fdon":""),text:on?"Following":"Follow",onclick:e=>follow(t.member,e.currentTarget)}));})):
       el("p",{class:"meta",text:F.congress==null?"Loading…":"Nobody to show right now."}));
   // Most bought: tickers with the most buys in the latest reports.
@@ -323,9 +361,9 @@ function showDot(n){
   if(!d){d=el("span",{class:"fddot","aria-hidden":"true"});b.append(d);}
   b.setAttribute("aria-label",`Feed, ${n} new`);d.title=`${n} new since you last looked`;
 }
-function setQuery(v){const q=$("#fd-q");if(q.value!==v)q.value=v;query=v.trim().toLowerCase();$("#fd-qx").hidden=!v;render();}
+function setQuery(v){const q=$("#fd-q");if(q.value!==v)q.value=v;query=v.trim().toLowerCase();if(query)person=null;$("#fd-qx").hidden=!v;render();}
 $("#fd-q").addEventListener("input",e=>setQuery(e.target.value));
 $("#fd-q").addEventListener("keydown",e=>{if(e.key==="Escape")setQuery("");});
 $("#fd-qx").addEventListener("click",()=>{setQuery("");$("#fd-q").focus();});
-document.querySelectorAll("#feed .fdchip").forEach(b=>b.addEventListener("click",()=>{filter=b.dataset.f;render();}));
+document.querySelectorAll("#feed .fdchip").forEach(b=>b.addEventListener("click",()=>{filter=b.dataset.f;person=null;render();}));
 })();
