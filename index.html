@@ -14,7 +14,7 @@
 <meta name="apple-mobile-web-app-title" content="Simple Street">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="assets/fonts.css?v=2026111201">
-<link rel="stylesheet" href="assets/style.css?v=2026111303">
+<link rel="stylesheet" href="assets/style.css?v=2026111304">
 <script>
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
@@ -27,24 +27,29 @@ try{if(sessionStorage.getItem("ss.intro")||matchMedia("(prefers-reduced-motion: 
 <body>
 
 <div id="intro" aria-hidden="true">
-  <svg class="ichart" viewBox="0 0 1000 600" preserveAspectRatio="none">
-    <defs><linearGradient id="ifill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f7bff" stop-opacity=".35"/><stop offset="1" stop-color="#2f7bff" stop-opacity="0"/></linearGradient></defs>
-    <g class="igrid"><line x1="0" x2="1000" y1="100" y2="100"/><line x1="0" x2="1000" y1="200" y2="200"/><line x1="0" x2="1000" y1="300" y2="300"/><line x1="0" x2="1000" y1="400" y2="400"/><line x1="0" x2="1000" y1="500" y2="500"/></g>
-    <path class="iarea" d="M0 540 L80 515 L140 545 L210 460 L270 485 L340 400 L400 430 L470 335 L530 360 L600 265 L660 290 L730 190 L800 215 L880 110 L1000 30 L1000 600 L0 600 Z" fill="url(#ifill)"/>
-    <path class="iline" pathLength="1" vector-effect="non-scaling-stroke" d="M0 540 L80 515 L140 545 L210 460 L270 485 L340 400 L400 430 L470 335 L530 360 L600 265 L660 290 L730 190 L800 215 L880 110 L1000 30"/>
-  </svg>
-  <div class="ichips"><span class="ichip" style="left:8%;top:72%;--t:0.3s">AAPL <b>▲</b></span><span class="ichip" style="left:72%;top:78%;--t:0.5s">JPM <b>▲</b></span><span class="ichip" style="left:14%;top:30%;--t:0.75s">XOM <b>▲</b></span><span class="ichip" style="left:74%;top:22%;--t:0.6s">AMZN <b>▲</b></span><span class="ichip" style="left:44%;top:86%;--t:0.9s">JNJ <b>▲</b></span><span class="ichip" style="left:76%;top:48%;--t:0.4s">NVDA <b>▲</b></span><span class="ichip" style="left:4%;top:52%;--t:1.0s">MSFT <b>▲</b></span></div>
-  <div class="iin">
-    <div class="iring"></div><div class="iring r2"></div>
-    <svg class="imark" viewBox="0 0 100 100"><rect class="itile" width="100" height="100" rx="23" fill="#2f7bff"/><g transform="translate(4 7) scale(.9)"><path class="is" pathLength="1" d="M27 74 C36 82 66 82 66 66 C66 51 34 55 34 39 C34 28 44 25 52 25 C60 25 65 22 70.5 16.5" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="round"/><path class="ia" d="M84 3 L81.5 29 L58 5.5 Z" fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></g></svg>
-    <div class="iname sswm"><span style="--d:0">S</span><span style="--d:1">i</span><span style="--d:2">m</span><span style="--d:3">p</span><span style="--d:4">l</span><span style="--d:5">e</span><span style="--d:6">&nbsp;</span><span style="--d:7">S</span><span style="--d:8">t</span><span style="--d:9">r</span><span style="--d:10">e</span><span style="--d:11">e</span><span style="--d:12">t</span></div>
-    <p class="imotto">Wall Street Simplified</p>
+  <div class="irows">
+    <div class="irow" style="--i:0"><div class="itrack"><span>JNJ <b>▲ 1.60%</b></span><span>DIS <b>▲ 2.02%</b></span><span>XOM <b>▲ 0.61%</b></span><span>AAPL <b>▲ 2.05%</b></span><span>WMT <b>▲ 1.53%</b></span><span>NFLX <b>▲ 0.47%</b></span><span>GOOGL <b>▲ 2.67%</b></span><span>AMZN <b>▲ 3.79%</b></span><span>JNJ <b>▲ 1.60%</b></span><span>DIS <b>▲ 2.02%</b></span><span>XOM <b>▲ 0.61%</b></span><span>AAPL <b>▲ 2.05%</b></span><span>WMT <b>▲ 1.53%</b></span><span>NFLX <b>▲ 0.47%</b></span><span>GOOGL <b>▲ 2.67%</b></span><span>AMZN <b>▲ 3.79%</b></span></div></div>
+    <div class="irow r" style="--i:1"><div class="itrack"><span>V <b>▲ 0.69%</b></span><span>JNJ <b>▲ 4.54%</b></span><span>AAPL <b>▲ 4.01%</b></span><span>NFLX <b>▲ 1.40%</b></span><span>AMZN <b>▲ 1.09%</b></span><span>AMZN <b>▲ 1.53%</b></span><span>V <b>▲ 3.57%</b></span><span>V <b>▲ 4.10%</b></span><span>V <b>▲ 0.69%</b></span><span>JNJ <b>▲ 4.54%</b></span><span>AAPL <b>▲ 4.01%</b></span><span>NFLX <b>▲ 1.40%</b></span><span>AMZN <b>▲ 1.09%</b></span><span>AMZN <b>▲ 1.53%</b></span><span>V <b>▲ 3.57%</b></span><span>V <b>▲ 4.10%</b></span></div></div>
+    <div class="irow" style="--i:2"><div class="itrack"><span>NVDA <b>▲ 0.60%</b></span><span>META <b>▲ 1.75%</b></span><span>MSFT <b>▲ 2.53%</b></span><span>XOM <b>▲ 1.34%</b></span><span>AMZN <b>▲ 0.61%</b></span><span>WMT <b>▲ 3.96%</b></span><span>GOOGL <b>▲ 4.07%</b></span><span>AAPL <b>▲ 4.38%</b></span><span>NVDA <b>▲ 0.60%</b></span><span>META <b>▲ 1.75%</b></span><span>MSFT <b>▲ 2.53%</b></span><span>XOM <b>▲ 1.34%</b></span><span>AMZN <b>▲ 0.61%</b></span><span>WMT <b>▲ 3.96%</b></span><span>GOOGL <b>▲ 4.07%</b></span><span>AAPL <b>▲ 4.38%</b></span></div></div>
+    <div class="irow r" style="--i:3"><div class="itrack"><span>META <b>▲ 3.44%</b></span><span>AMZN <b>▲ 4.10%</b></span><span>GOOGL <b>▲ 1.10%</b></span><span>MSFT <b>▲ 2.95%</b></span><span>MSFT <b>▲ 2.28%</b></span><span>JNJ <b>▲ 1.60%</b></span><span>V <b>▲ 3.87%</b></span><span>JPM <b>▲ 0.41%</b></span><span>META <b>▲ 3.44%</b></span><span>AMZN <b>▲ 4.10%</b></span><span>GOOGL <b>▲ 1.10%</b></span><span>MSFT <b>▲ 2.95%</b></span><span>MSFT <b>▲ 2.28%</b></span><span>JNJ <b>▲ 1.60%</b></span><span>V <b>▲ 3.87%</b></span><span>JPM <b>▲ 0.41%</b></span></div></div>
+    <div class="irow" style="--i:4"><div class="itrack"><span>KO <b>▲ 4.79%</b></span><span>GOOGL <b>▲ 2.66%</b></span><span>TSLA <b>▲ 3.42%</b></span><span>XOM <b>▲ 4.79%</b></span><span>JNJ <b>▲ 0.51%</b></span><span>WMT <b>▲ 1.13%</b></span><span>KO <b>▲ 2.23%</b></span><span>XOM <b>▲ 1.84%</b></span><span>KO <b>▲ 4.79%</b></span><span>GOOGL <b>▲ 2.66%</b></span><span>TSLA <b>▲ 3.42%</b></span><span>XOM <b>▲ 4.79%</b></span><span>JNJ <b>▲ 0.51%</b></span><span>WMT <b>▲ 1.13%</b></span><span>KO <b>▲ 2.23%</b></span><span>XOM <b>▲ 1.84%</b></span></div></div>
+    <div class="irow r" style="--i:5"><div class="itrack"><span>DIS <b>▲ 2.91%</b></span><span>KO <b>▲ 2.77%</b></span><span>WMT <b>▲ 1.69%</b></span><span>V <b>▲ 0.48%</b></span><span>JNJ <b>▲ 1.48%</b></span><span>META <b>▲ 3.03%</b></span><span>JNJ <b>▲ 0.76%</b></span><span>WMT <b>▲ 1.02%</b></span><span>DIS <b>▲ 2.91%</b></span><span>KO <b>▲ 2.77%</b></span><span>WMT <b>▲ 1.69%</b></span><span>V <b>▲ 0.48%</b></span><span>JNJ <b>▲ 1.48%</b></span><span>META <b>▲ 3.03%</b></span><span>JNJ <b>▲ 0.76%</b></span><span>WMT <b>▲ 1.02%</b></span></div></div>
+    <div class="irow" style="--i:6"><div class="itrack"><span>TSLA <b>▲ 0.32%</b></span><span>NVDA <b>▲ 3.41%</b></span><span>WMT <b>▲ 4.64%</b></span><span>AMZN <b>▲ 3.58%</b></span><span>NVDA <b>▲ 0.28%</b></span><span>AMZN <b>▲ 1.68%</b></span><span>XOM <b>▲ 3.77%</b></span><span>MSFT <b>▲ 4.16%</b></span><span>TSLA <b>▲ 0.32%</b></span><span>NVDA <b>▲ 3.41%</b></span><span>WMT <b>▲ 4.64%</b></span><span>AMZN <b>▲ 3.58%</b></span><span>NVDA <b>▲ 0.28%</b></span><span>AMZN <b>▲ 1.68%</b></span><span>XOM <b>▲ 3.77%</b></span><span>MSFT <b>▲ 4.16%</b></span></div></div>
+    <div class="irow r" style="--i:7"><div class="itrack"><span>V <b>▲ 3.05%</b></span><span>V <b>▲ 0.56%</b></span><span>META <b>▲ 1.08%</b></span><span>TSLA <b>▲ 1.54%</b></span><span>AMZN <b>▲ 1.96%</b></span><span>XOM <b>▲ 1.72%</b></span><span>AAPL <b>▲ 1.87%</b></span><span>TSLA <b>▲ 0.98%</b></span><span>V <b>▲ 3.05%</b></span><span>V <b>▲ 0.56%</b></span><span>META <b>▲ 1.08%</b></span><span>TSLA <b>▲ 1.54%</b></span><span>AMZN <b>▲ 1.96%</b></span><span>XOM <b>▲ 1.72%</b></span><span>AAPL <b>▲ 1.87%</b></span><span>TSLA <b>▲ 0.98%</b></span></div></div>
+    <div class="irow" style="--i:8"><div class="itrack"><span>NFLX <b>▲ 3.90%</b></span><span>AMZN <b>▲ 2.83%</b></span><span>TSLA <b>▲ 4.72%</b></span><span>MSFT <b>▲ 4.42%</b></span><span>JPM <b>▲ 0.47%</b></span><span>AAPL <b>▲ 3.59%</b></span><span>META <b>▲ 3.31%</b></span><span>XOM <b>▲ 2.99%</b></span><span>NFLX <b>▲ 3.90%</b></span><span>AMZN <b>▲ 2.83%</b></span><span>TSLA <b>▲ 4.72%</b></span><span>MSFT <b>▲ 4.42%</b></span><span>JPM <b>▲ 0.47%</b></span><span>AAPL <b>▲ 3.59%</b></span><span>META <b>▲ 3.31%</b></span><span>XOM <b>▲ 2.99%</b></span></div></div>
+  </div>
+  <div class="iflash"></div>
+  <div class="ilock">
+    <div class="imk"><div class="iglow"></div><svg class="imark" viewBox="0 0 100 100"><rect width="100" height="100" rx="23" fill="#2f7bff"/><g transform="translate(4 7) scale(.9)"><path class="is" pathLength="1" d="M27 74 C36 82 66 82 66 66 C66 51 34 55 34 39 C34 28 44 25 52 25 C60 25 65 22 70.5 16.5" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="round"/><path class="ia" d="M84 3 L81.5 29 L58 5.5 Z" fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></g></svg></div>
+    <div class="itxt"><div class="itxti"><div class="sswm">Simple<br>Street</div><p class="imotto">Wall Street Simplified</p></div></div>
   </div>
   <p class="iskip">Tap to skip</p>
 </div>
 <script>
 (function(){var el=document.getElementById("intro");if(!el)return;var done=function(){el.remove();};
 if(document.documentElement.classList.contains("nointro")){done();return;}
+// Start the logo in the middle: shift it right by half the name's width (measured once, before anything moves).
+try{var t=el.querySelector(".itxt");el.style.setProperty("--shift",((t.offsetWidth+parseFloat(getComputedStyle(t).marginLeft))/2)+"px");}catch(e){}
 var skip=function(){el.classList.add("igo");setTimeout(done,350);};
 el.addEventListener("click",skip);
 addEventListener("keydown",function k(){removeEventListener("keydown",k);skip();});
