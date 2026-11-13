@@ -1,0 +1,38 @@
+name: Update insiders and big investors
+
+# Refreshes data/pros.json for the Feed page: insider buys and sells (SEC Form 4) and
+# famous investors' moves (SEC Form 13F). Free: it only reads the SEC's public EDGAR site.
+on:
+  schedule:
+    - cron: "40 23 * * 1-5"   # weekday evenings, after the day's reports are in
+  push:
+    branches: [main]
+    paths: [scripts/update_pros.py, .github/workflows/update-pros.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-pros
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python scripts/update_pros.py
+      - name: Save the new list
+        run: |
+          git add data/pros.json
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git config user.name "wvfc-price-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update insiders and big investors"
+          git pull --rebase origin main
+          git push
