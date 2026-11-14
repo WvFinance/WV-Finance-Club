@@ -246,7 +246,7 @@ function fundGroup(moves,max){
   moves=[...moves].sort((a,b)=>moved(b)-moved(a));
   const t=moves[0],on=F.follows.has(t.fund),who=String(t.person||"");
   const rows=max?moves.slice(0,max):moves,more=moves.length-rows.length;
-  return el("article",{class:"fdcard"},
+  return el("article",{class:"fdcard fdgroup"},
     el("div",{class:"fdav fund",text:initials(t.fund)}),
     el("div",{class:"fdbody"},
       el("div",{class:"fdtop"},el("div",{},el("div",{class:"fdname"},personBtn(t.fund,"fund",t.fund)),el("div",{class:"fdwho",text:who.charAt(0).toUpperCase()+who.slice(1)})),
