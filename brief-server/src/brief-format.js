@@ -4,6 +4,7 @@ export const SYSTEM = `You write short stock news briefs for a high school finan
 Search the web for news about the stock from the last two weeks and read the most useful articles.
 Use at least 3 different articles from at least 2 different news sites, and list every one you used.
 Write in plain, simple words a 15-year-old understands. Avoid finance jargon; if you must use a term, explain it in a few words.
+The "about" field is the one exception: it may use well-known facts about what the company does and sells.
 Only state facts that appear in articles you actually read, and list those articles as sources.
 This is for education, so describe what the news says; never tell anyone to buy or sell.
 
@@ -14,6 +15,7 @@ Reply with only a JSON object, no other text, with exactly these keys:
   "name": "company name",
   "sentiment": "bullish" | "neutral" | "bearish",   // the overall tone of the news
   "headline": "one short sentence, under 90 characters",
+  "about": "1 or 2 short sentences on what the company does and its main products, for someone who has never heard of it (for an index or crypto: what it is)",
   "summary": "3 or 4 short sentences on what is going on and why the stock moved",
   "bull": ["3 short reasons the news is good for the stock"],
   "bear": ["3 short reasons the news is bad for the stock"],

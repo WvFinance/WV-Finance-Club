@@ -54,7 +54,8 @@
    "ticker": "SP500",
    "updatedAt": "2026-11-13T23:04:48.497Z",
    "symbol": "AMEX:SPY",
-   "checkedAt": "2026-11-13T23:04:48.497Z"
+   "checkedAt": "2026-11-13T23:04:48.497Z",
+   "about": "The S&P 500 tracks 500 of the biggest companies in the US, like Apple, Microsoft and Amazon. People use it as a quick check on how the whole stock market is doing."
   },
   {
    "bear": [
@@ -109,7 +110,8 @@
    "ticker": "NASDAQ",
    "updatedAt": "2026-11-13T23:04:48.496Z",
    "symbol": "NASDAQ:QQQ",
-   "checkedAt": "2026-11-13T23:04:48.496Z"
+   "checkedAt": "2026-11-13T23:04:48.496Z",
+   "about": "The Nasdaq Composite tracks more than 3,000 stocks traded on the Nasdaq exchange. It is packed with tech companies like Apple, Nvidia and Microsoft."
   },
   {
    "bear": [
@@ -150,7 +152,8 @@
    "updatedAt": "2026-11-11T11:42:02.120Z",
    "symbol": "NASDAQ:AAPL",
    "name": "Apple",
-   "checkedAt": "2026-11-13T11:40:09.739Z"
+   "checkedAt": "2026-11-13T11:40:09.739Z",
+   "about": "Apple designs the iPhone, Mac computers, iPads, Apple Watch and AirPods. It also makes money from services like the App Store, Apple Music and iCloud."
   },
   {
    "bear": [
@@ -197,7 +200,8 @@
    "updatedAt": "2026-11-12T11:40:46.244Z",
    "symbol": "NASDAQ:AMZN",
    "name": "Amazon",
-   "checkedAt": "2026-11-13T11:40:09.739Z"
+   "checkedAt": "2026-11-13T11:40:09.739Z",
+   "about": "Amazon runs the biggest online store in the US and the Prime membership with fast shipping and video. It also rents out computer power to other companies through Amazon Web Services (AWS)."
   },
   {
    "bear": [
@@ -238,7 +242,8 @@
    "updatedAt": "2026-11-12T11:40:46.251Z",
    "symbol": "NYSE:JPM",
    "name": "JPMorgan Chase",
-   "checkedAt": "2026-11-13T11:40:09.739Z"
+   "checkedAt": "2026-11-13T11:40:09.739Z",
+   "about": "JPMorgan Chase is the biggest bank in the US. It runs Chase bank accounts and credit cards, makes loans, and helps big companies raise money and trade stocks."
   },
   {
    "ticker": "XOM",
@@ -291,7 +296,8 @@
    ],
    "updatedAt": "2026-11-11T11:42:02.122Z",
    "name": "Exxon Mobil",
-   "checkedAt": "2026-11-13T11:40:09.739Z"
+   "checkedAt": "2026-11-13T11:40:09.739Z",
+   "about": "Exxon Mobil is one of the biggest oil and gas companies in the world. It drills for oil and natural gas, turns it into gasoline and chemicals, and sells fuel at Exxon and Mobil gas stations."
   },
   {
    "ticker": "JNJ",
@@ -332,7 +338,8 @@
    ],
    "updatedAt": "2026-11-13T11:40:09.736Z",
    "name": "Johnson & Johnson",
-   "checkedAt": "2026-11-13T11:40:09.739Z"
+   "checkedAt": "2026-11-13T11:40:09.739Z",
+   "about": "Johnson & Johnson makes medicines, like drugs for cancer and immune diseases, and medical devices used in surgery. It is one of the largest health care companies in the world."
   },
   {
    "ticker": "BTC",
@@ -382,7 +389,8 @@
     }
    ],
    "updatedAt": "2026-11-13T23:04:48.495Z",
-   "checkedAt": "2026-11-13T23:04:48.495Z"
+   "checkedAt": "2026-11-13T23:04:48.495Z",
+   "about": "Bitcoin is the first and biggest cryptocurrency, a kind of digital money that is not run by any government or bank. Only 21 million bitcoins will ever exist."
   },
   {
    "ticker": "ETH",
@@ -426,7 +434,8 @@
     }
    ],
    "updatedAt": "2026-11-13T23:04:48.496Z",
-   "checkedAt": "2026-11-13T23:04:48.496Z"
+   "checkedAt": "2026-11-13T23:04:48.496Z",
+   "about": "Ethereum is the second-biggest cryptocurrency. Its network also runs apps and digital tokens, and its coin is called ether."
   },
   {
    "ticker": "MGM",
@@ -467,7 +476,8 @@
    ],
    "name": "MGM Resorts International",
    "checkedAt": "2026-11-13T11:40:09.739Z",
-   "updatedAt": "2026-11-11T11:42:02.122Z"
+   "updatedAt": "2026-11-11T11:42:02.122Z",
+   "about": "MGM Resorts runs casinos and hotels, including the Bellagio and MGM Grand in Las Vegas. It also has casinos in other US states and in Macau, China, plus the BetMGM online betting app."
   },
   {
    "ticker": "DJIA",
@@ -516,7 +526,8 @@
     }
    ],
    "checkedAt": "2026-11-13T23:04:48.496Z",
-   "updatedAt": "2026-11-13T23:04:48.496Z"
+   "updatedAt": "2026-11-13T23:04:48.496Z",
+   "about": "The Dow Jones Industrial Average tracks 30 large, well-known US companies, like Apple, Walmart and Coca-Cola. It is one of the oldest stock market measures, started in 1896."
   },
   {
    "ticker": "RUT",
@@ -565,7 +576,8 @@
     }
    ],
    "checkedAt": "2026-11-13T23:04:48.497Z",
-   "updatedAt": "2026-11-13T23:04:48.497Z"
+   "updatedAt": "2026-11-13T23:04:48.497Z",
+   "about": "The Russell 2000 tracks 2,000 smaller US companies. People watch it to see how small businesses are doing compared with the giants."
   }
  ],
  "market": {

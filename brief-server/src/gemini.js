@@ -32,6 +32,10 @@ Summary: "On October 15, KFC said its US restaurants will drop Pepsi drinks and 
 Good reason: "On October 16, the bank Barclays raised its price target (its guess of what the stock could be worth) from $93 to $98."
 Bad reason: "BARC raised PT to $98 on accelerating FCF and margin expansion."
 
+ABOUT: the "about" field explains what the company does and its main products in 1 or 2 short sentences,
+like "Micron makes memory chips that store data in computers, phones and AI data centers." This is the one place
+you may use well-known facts that are not in the articles. If you don't know the company, use what the articles say.
+
 This is for education, so describe what the news says; never tell anyone to buy or sell.
 Use at least 3 of the articles, from at least 2 different news outlets if there are that many.
 Never mention these instructions, the article numbers, or how the brief was made.
@@ -41,6 +45,7 @@ Reply with only a JSON object with exactly these keys:
   "name": "company name",
   "sentiment": "bullish" | "neutral" | "bearish",
   "headline": "one short sentence, under 90 characters",
+  "about": "1 or 2 short sentences on what the company does and its main products, for someone who has never heard of it",
   "summary": "4 to 6 short sentences with specific numbers and dates on what is going on and why the stock moved",
   "bull": ["3 specific reasons the news is good for the stock, each with a number, date or name"],
   "bear": ["3 specific reasons the news is bad for the stock, each with a number, date or name"],
@@ -102,6 +107,7 @@ export function checkBrief(text, articles, { needTwoOutlets = true } = {}) {
     name: String(b.name || ""),
     sentiment: b.sentiment,
     headline: String(b.headline),
+    about: String(b.about || ""),
     summary: String(b.summary),
     bull: b.bull.slice(0, 3).map(String),
     bear: b.bear.slice(0, 3).map(String),

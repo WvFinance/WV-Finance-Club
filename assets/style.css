@@ -178,6 +178,7 @@ details.drop>.tvbox{padding:0 12px 12px}
 .brief{display:grid;gap:16px}
 .brief h3{font-size:24px;font-weight:750;font-stretch:92%}
 .brief .lede{font-size:16px;margin:0;max-width:70ch}
+.brief .about,#s-brief .about{margin:0;color:var(--ink-2)}
 .sides{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media (max-width:640px){.sides{grid-template-columns:minmax(0,1fr)}}
 .side-col{border-radius:8px;padding:14px 16px;border:1px solid var(--line)}
