@@ -11,7 +11,7 @@ export const MARKETS = {
   ETH: { subject: "Ethereum (ETH), the second-biggest cryptocurrency", base: { name: "Ethereum", market: true, crypto: true, order: 6, symbol: "COINBASE:ETHUSD" } },
 };
 // Only these fields are rewritten; ticker, symbol, market, order and name stay as they are.
-export const FRESH = ["sentiment", "headline", "summary", "bull", "bear", "nextEvent", "sources"];
+export const FRESH = ["sentiment", "headline", "about", "summary", "bull", "bear", "nextEvent", "sources"];
 
 export function briefJobs(news, picks) {
   const jobs = Object.entries(MARKETS).map(([ticker, m]) => ({ ticker, subject: m.subject, base: news.briefs.find(b => b.ticker === ticker) || { ticker, ...m.base } }));

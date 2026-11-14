@@ -75,7 +75,7 @@ export function explainJargon(b) {
     done.add(key);
     return `${m} (${g[1]})`;
   });
-  return { ...b, summary: fix(b.summary), bull: b.bull.map(fix), bear: b.bear.map(fix) };
+  return { ...b, about: fix(b.about || ""), summary: fix(b.summary), bull: b.bull.map(fix), bear: b.bear.map(fix) };
 }
 
 // Buy/sell advice aimed at the reader, which the site never gives (reporting analysts' ratings is fine).

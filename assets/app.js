@@ -502,6 +502,7 @@ function newsBoard(cls){
   const n=list.find(x=>x.ticker===S[key]);
   br.replaceChildren(...[
     el("div",{class:"sechead"},el("div",{},el("div",{class:"eyebrow",text:n.market?`${n.crypto?"Crypto":"Market"} brief · ${n.name}`:[n.ticker,n.name,cls&&secOf(n.ticker)].filter(Boolean).join(" · ")}),el("h3",{text:n.headline||""})),sentiPill(n.sentiment)),
+    aboutLine(n),
     el("p",{class:"lede",text:n.summary||""}),
     el("div",{class:"sides"},el("div",{class:"side-col bull"},el("h4",{text:"What the bulls say"}),el("ul",{},(n.bull||[]).map(x=>el("li",{text:x})))),el("div",{class:"side-col bear"},el("h4",{text:"What the bears say"}),el("ul",{},(n.bear||[]).map(x=>el("li",{text:x}))))),
     n.nextEvent?el("div",{class:"notice"},el("b",{text:"Coming up: "}),n.nextEvent):null,
@@ -623,6 +624,8 @@ function renderLatest3(n){
   box.replaceChildren(el("h3",{class:"h3",text:src.length===3?"3 latest articles":"Latest articles"}),
     el("ul",{class:"latestlist"},src.map(s=>el("li",{},el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer",text:s.title}),el("span",{class:"o",text:[s.outlet,s.date].filter(Boolean).join(" · ")})))));
 }
+// "What they do": 1-2 plain sentences on the company, shown above the news (older briefs don't have it yet).
+function aboutLine(n){return n.about?el("p",{class:"about"},el("b",{text:n.market?"What it is: ":"What they do: "}),n.about):null;}
 function renderSearchBrief(){
   renderLatest3(anyBriefFor(S.tk)||(liveBriefs[bare(S.tk)]&&!liveBriefs[bare(S.tk)].loading&&!liveBriefs[bare(S.tk)].error?liveBriefs[bare(S.tk)]:null));
   const box=$("#s-brief");let n=anyBriefFor(S.tk);
@@ -634,6 +637,7 @@ function renderSearchBrief(){
   const inNews=visibleBriefs().includes(n);
   box.replaceChildren(...[
     el("div",{class:"sechead"},el("div",{},el("div",{class:"eyebrow",text:`News brief · ${n.market?n.name:n.ticker}`}),el("h3",{text:n.headline||""})),sentiPill(n.sentiment)),
+    aboutLine(n),
     el("p",{class:"lede",text:n.summary||""}),
     el("div",{class:"sides"},el("div",{class:"side-col bull"},el("h4",{text:"What the bulls say"}),el("ul",{},(n.bull||[]).map(x=>el("li",{text:x})))),el("div",{class:"side-col bear"},el("h4",{text:"What the bears say"}),el("ul",{},(n.bear||[]).map(x=>el("li",{text:x}))))),
     el("div",{class:"meta",text:`From ${(n.sources||[]).length} ${(n.sources||[]).length===1?"article":"articles"} · ${briefWhen(n).replace(/^./,c=>c.toLowerCase())}`}),

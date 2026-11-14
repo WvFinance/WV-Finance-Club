@@ -76,6 +76,7 @@ if (mode === "rules") {
       // Same checks as the paid refresh: all fields, a real sentiment, at least 3 sources, no unfinished drafts.
       const b = parseBrief(readFileSync(join(dir, f), "utf8"), 3);
       for (const k of ["bull", "bear"]) if (!Array.isArray(b[k]) || b[k].length < 2) throw new Error(`${k} needs 3 short reasons`);
+      if (typeof b.about !== "string" || b.about.trim().length < 20) throw new Error('about needs 1 or 2 sentences on what the company does and its main products');
       if (typeof b.nextEvent !== "string") throw new Error("nextEvent must be a string (empty if none)");
       if (b.headline.length > 100) throw new Error("headline is too long");
       mergeBrief(news, job, b);
