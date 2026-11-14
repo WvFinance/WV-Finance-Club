@@ -890,3 +890,25 @@ html.nointro #intro{display:none}
   .fdchips{gap:6px}.fdchip{padding:4px 12px;font-size:13px}
   .fdemo{padding:2px 10px;font-size:13px}
 }
+/* Phone, a little tighter again (Charlie, 2026-11-14). */
+@media (max-width:600px){
+  body{line-height:1.4}
+  .mast .wrap{padding-block:6px}
+  .tabs .tab{padding:8px 6px 7px}
+  main .wrap{padding-block:8px 20px}
+  section[role="tabpanel"],.pview{gap:8px}
+  .panel{padding:10px}
+  .sechead h2{font-size:17px}
+  .h3{font-size:14.5px}
+  .tiles{gap:5px}
+  .tile{padding:7px 9px}
+  .tile .v{font-size:17px}
+  .ptboard li{padding:5px 6px}
+  table.pos td{padding:7px 5px}
+  .nitem{padding:8px 10px}
+  .brief h3{font-size:17px}
+  .fdsec{margin-bottom:12px}
+  .fdcard{padding:8px;gap:8px;grid-template-columns:32px minmax(0,1fr)}
+  .fdav{width:32px;height:32px;font-size:11px}
+  .fdchips{margin-bottom:8px}
+}
