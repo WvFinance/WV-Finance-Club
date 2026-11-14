@@ -770,3 +770,34 @@ html.nointro #intro{display:none}
 .fdmoves .pttag{justify-self:start}
 .fdmv{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;min-width:0}
 @media (max-width:600px){.fdmoves li{grid-template-columns:minmax(0,1fr);gap:4px}}
+/* Search: The numbers (assets/numbers.js) */
+.nums{display:grid;gap:12px}
+.nhead{flex-wrap:wrap;gap:10px}
+.ncform{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ncin{width:90px;font:inherit;font-size:14px;padding:5px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);color:var(--ink);text-transform:uppercase}
+.nwrap{overflow-x:auto}
+.ntable{width:100%;border-collapse:collapse}
+.ntable th,.ntable td{text-align:left;padding:12px 10px;border-top:1px solid var(--line);vertical-align:top}
+.ntable thead th{border-top:0;padding-top:0;font-family:var(--f-display);font-weight:800;font-size:18px;letter-spacing:.02em}
+.ntable td{font-family:var(--f-mono);font-size:15px;font-variant-numeric:tabular-nums;width:34%}
+.ntable.duo td{width:28%}
+.ntable td.up{color:var(--up)} .ntable td.down{color:var(--down)}
+.ntable .nk{width:auto;padding-left:0}
+.nkl{font-weight:650;font-size:15px}
+.nkm{font-size:13px;color:var(--muted);margin-top:3px;max-width:46ch;font-weight:400}
+.nload{color:var(--muted)}
+.nrange{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px}
+.nr-bar{position:relative;flex:1 1 60px;min-width:60px;height:6px;border-radius:3px;background:var(--surface-2)}
+.nr-bar i{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:var(--accent,var(--up));translate:-50% -50%;border:2px solid var(--surface)}
+.nfoot{margin:0;font-size:12px}
+@media (max-width:600px){
+  .ntable,.ntable tbody,.ntable thead{display:block}
+  .ntable tr{display:grid;grid-template-columns:minmax(0,1fr);column-gap:12px;border-top:1px solid var(--line);padding:12px 0}
+  .ntable.duo tr{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .ntable thead tr{border-top:0;padding-top:0}
+  .ntable thead .nk{display:none}
+  .ntable th,.ntable td{border:0;padding:0;width:auto!important}
+  .ntable tbody .nk{grid-column:1/-1;margin-bottom:6px}
+  .ntable td{font-size:15px}
+  .nkm{max-width:none}
+}
