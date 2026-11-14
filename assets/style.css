@@ -802,3 +802,113 @@ html.nointro #intro{display:none}
   .ntable td{font-size:15px}
   .nkm{max-width:none}
 }
+/* Phone: tighter and neater (2026-11-14). Same text size for reading; less padding, smaller big numbers and headings. */
+@media (max-width:600px){
+  .mast .wrap{padding-block:10px 10px;gap:8px 12px}
+  .brand .ssmark{width:32px;height:32px}.brand .sswm{font-size:19px}.bmotto{font-size:9px}
+  .mast .topsearch .inp{padding-block:7px}
+  .mt-item{padding:7px 14px;font-size:13px}
+  .tabs .tab{padding:11px 7px 10px;font-size:13.5px}
+  main .wrap{padding-block:14px 28px}
+  section[role="tabpanel"],.pview{gap:12px}
+  .panel{padding:14px}
+  .sechead h2{font-size:19px}
+  .sub{margin-top:4px;font-size:13.5px}
+  .h3{font-size:16px}
+  .tiles{gap:8px}
+  .tile{padding:10px 12px}
+  .tile .eyebrow{font-size:10.5px}
+  .tile .v{font-size:20px;margin-top:2px}
+  .tile .n{font-size:12px;margin-top:0}
+  .ptboard li{padding:8px 6px;gap:8px}
+  details.drop>summary{padding:12px 14px}
+  .dropbody{padding:0 14px 14px}
+  /* Wide tables: keep only the columns that matter, so nothing hides off the right edge. */
+  table.pos{font-size:13px}
+  table.pos td{padding:10px 6px}
+  table.pos th{padding:8px 6px;font-size:11px}
+  table.hold th:nth-child(3),table.hold td:nth-child(3),table.hold th:nth-child(4),table.hold td:nth-child(4),
+  table.hold th:nth-child(6),table.hold td:nth-child(6),table.hold.mine th:nth-child(8),table.hold.mine td:nth-child(8){display:none}
+  table.hist th:nth-child(5),table.hist td:nth-child(5),table.hist th:nth-child(7),table.hist td:nth-child(7){display:none}
+  /* Search: the news brief and numbers come before the chart and watchlist. */
+  #search>.stock{order:2}
+  #search>#latest3,#search>#drop-fin,#search>#drop-feed{order:3}
+  /* Feed: filter buttons in one row you can swipe; tighter sections and cards. */
+  .fdchips{flex-wrap:nowrap;overflow-x:auto;margin:0 -16px 16px;padding:0 16px;scrollbar-width:none}
+  .fdchips::-webkit-scrollbar{display:none}
+  .fdchips>*{flex:0 0 auto}
+  .fdsec{gap:8px;margin-bottom:22px}
+  .fdcard{padding:12px;gap:10px}
+}
+/* Big investor pop-up: their name and Follow are already at the top, so the list below doesn't repeat them. */
+.fdmbox .fdgroup{grid-template-columns:minmax(0,1fr);border:0;background:none;padding:0}
+.fdmbox .fdgroup>.fdav,.fdmbox .fdgroup .fdtop{display:none}
+@media (max-width:600px){
+  table.hold td:first-child{white-space:normal}
+  table.hold td:first-child .pttag{display:table;margin:3px 0 0;font-size:10px}
+  table.pos .btn.small{padding:4px 8px;font-size:12px}
+  .tabs .tab{padding-inline:6px;font-size:13px}
+  .tab .caret{margin-left:4px}
+}
+@media (max-width:600px){table.hist td:first-child{color:var(--ink-2)}table.hist .wt{display:none}}
+@media (max-width:600px){.brief h3{font-size:20px;line-height:1.25}.ntable tr{padding:9px 0}}
+/* Phone, one step tighter (Charlie, 2026-11-14: "even tighter"). */
+@media (max-width:600px){
+  body{font-size:14px;line-height:1.45}
+  .meta{font-size:12.5px}
+  .sub{font-size:13px}
+  .mast .wrap{padding-block:8px;gap:6px 10px}
+  .brand .ssmark{width:28px;height:28px}.brand .sswm{font-size:17px}.brand{gap:8px}.bmotto{display:none}
+  .mast .topsearch .inp{padding-block:6px;font-size:14px}
+  .mt-item{padding:5px 12px;font-size:12.5px}
+  .tabs .tab{padding:9px 6px 8px}
+  main .wrap{padding-block:10px 24px}
+  section[role="tabpanel"],.pview{gap:10px}
+  .panel{padding:12px}
+  .sechead h2{font-size:18px}
+  .h3{font-size:15px}
+  .tiles{gap:6px}
+  .tile{padding:8px 10px}
+  .tile .eyebrow{font-size:10px}
+  .tile .v{font-size:18px;margin-top:0}
+  .tile .n{font-size:11.5px;line-height:1.3}
+  .eyebrow{font-size:11px}
+  .ptboard li{padding:6px;gap:8px}
+  table.pos td{padding:8px 5px}
+  table.pos th{padding:6px 5px}
+  .nlist{gap:6px}
+  .nitem{padding:9px 12px;gap:4px 8px}
+  .brief h3{font-size:18px}
+  .fdsec{gap:6px;margin-bottom:16px}
+  .fdcard{padding:10px;gap:8px}
+  .fdchips{margin-bottom:12px}
+  details.drop>summary{padding:10px 12px}
+  .dropbody{padding:0 12px 12px}
+}
+@media (max-width:600px){
+  .fdsearch{margin-bottom:8px}.fdsearch input{padding-block:7px;font-size:14px}
+  .fdchips{gap:6px}.fdchip{padding:4px 12px;font-size:13px}
+  .fdemo{padding:2px 10px;font-size:13px}
+}
+/* Phone, a little tighter again (Charlie, 2026-11-14). */
+@media (max-width:600px){
+  body{line-height:1.4}
+  .mast .wrap{padding-block:6px}
+  .tabs .tab{padding:8px 6px 7px}
+  main .wrap{padding-block:8px 20px}
+  section[role="tabpanel"],.pview{gap:8px}
+  .panel{padding:10px}
+  .sechead h2{font-size:17px}
+  .h3{font-size:14.5px}
+  .tiles{gap:5px}
+  .tile{padding:7px 9px}
+  .tile .v{font-size:17px}
+  .ptboard li{padding:5px 6px}
+  table.pos td{padding:7px 5px}
+  .nitem{padding:8px 10px}
+  .brief h3{font-size:17px}
+  .fdsec{margin-bottom:12px}
+  .fdcard{padding:8px;gap:8px;grid-template-columns:32px minmax(0,1fr)}
+  .fdav{width:32px;height:32px;font-size:11px}
+  .fdchips{margin-bottom:8px}
+}

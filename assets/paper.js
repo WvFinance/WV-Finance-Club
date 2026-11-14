@@ -212,7 +212,7 @@ function renderHold(box,mine){
     el("td",{},el("button",{type:"button",class:"btn small",text:sh?"Cover":"Sell",onclick:()=>{if(mine)goTrade();fill(p.symbol,Math.abs(p.shares),sh?"cover":"sell");}})));}));
   box.replaceChildren(el("h3",{class:"h3",text:"Your stocks"}),
     el("p",{class:"meta",text:G.pos.some(p=>p.shares<0)?"Prices update every few minutes while the market is open. A short makes money when the price goes down.":"Prices update every few minutes while the market is open."}),
-    el("div",{class:"tablewrap"},el("table",{class:"pos"},head,body)));
+    el("div",{class:"tablewrap"},el("table",{class:"pos hold"+(mine?" mine":"")},head,body)));
 }
 // Order History: every trade this member has made, newest first.
 let histAll=false;
@@ -223,13 +223,13 @@ function renderTrades(box,mine){
   const td=(t,k)=>el("td",{class:k||"",text:t});
   const head=el("thead",{},el("tr",{},["Date","Action","Stock","Shares","Price","Total","Order type"].map((t,i)=>el("th",{class:i>=3&&i<=5?"num":"",text:t}))));
   const body=el("tbody",{},list.map(t=>el("tr",{},
-    td(when(t.at)),el("td",{},el("span",{class:"pttag "+t.side,text:DID[t.side]||t.side})),
+    el("td",{},new Date(t.at).toLocaleDateString("en-US",{month:"short",day:"numeric"}),el("span",{class:"wt",text:", "+new Date(t.at).toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"})})),el("td",{},el("span",{class:"pttag "+t.side,text:DID[t.side]||t.side})),
     el("td",{},el("button",{type:"button",class:"linkbtn sym",text:t.symbol,title:`Open ${t.symbol} on Search`,onclick:()=>window.WVFC_APP&&window.WVFC_APP.openStock(t.symbol)})),
     td(String(+t.shares),"num"),td(fmt$(t.price),"num"),td(fmt$(t.total),"num"),
     td(t.how==="auto"?"Automatic (price doubled)":(KIND[t.how]||"Market")))));
   box.replaceChildren(title,
     el("p",{class:"meta",text:`${mine?"":"Every trade you've made, newest first. "}${G.trades.length} trade${G.trades.length===1?"":"s"} so far.`}),
-    el("div",{class:"tablewrap"},el("table",{class:"pos"},head,body)),
+    el("div",{class:"tablewrap"},el("table",{class:"pos hist"},head,body)),
     G.trades.length>25?el("button",{type:"button",class:"btn small",style:"margin-top:12px",text:histAll?"Show fewer":`Show all ${G.trades.length}`,onclick:()=>{histAll=!histAll;renderTrades();renderMineView();}}):"");
 }
 // Class Leaderboard: only players from your school, ranked among themselves.
