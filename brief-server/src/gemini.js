@@ -22,8 +22,15 @@ WORDING (very important): readers are high school students, so write at about a 
 - Say who said something when it matters ("analysts at Barclays", "the company").
 
 DETAIL (very important): be specific, never vague. Pack in the real facts from the articles.
-- The summary is 4 to 6 short sentences. Give the stock's price or move with a percent, the dates things happened,
-  the key numbers (sales, profit, how many units, how much money), and what is coming up next.
+- "whyMoved" is one paragraph of 3 to 5 short sentences. First: how much the stock moved, between which dates and prices,
+  and what caused it. Then: what it means for the money, meaning where the company's profit really comes from and how this news changes it.
+- The summary is 3 or 4 short sentences on the other important news, each with a real number or date.
+- "keyNumbers" are the 4 numbers that matter most for THIS company right now, taken from the articles: for example the stock price,
+  a sales or profit growth number, the number the business lives on (members, users, cars delivered), and the stock price compared with profit.
+- "watch" lists 1 to 3 upcoming dates from the articles, soonest first. For each: what happens, the exact number to watch,
+  and what a good or bad result would look like. Use [] if the articles name no dates.
+- Every bull and bear reason also says why the fact matters for the company's money, in a few plain words.
+- Never repeat the same fact in two places (like the same sales number in the summary and a bull reason).
 - Every bull and bear reason is one or two short sentences built on a specific fact: a number, a date, a product,
   or who said it. "iPhone sales rose 8% to $49 billion in the July-to-September quarter" is good; "strong iPhone demand" is too vague.
 
@@ -47,9 +54,12 @@ Reply with only a JSON object with exactly these keys:
   "sentiment": "bullish" | "neutral" | "bearish",
   "headline": "one short sentence, under 90 characters",
   "about": "1 or 2 short sentences on what the company does and its main products, for someone who has never heard of it",
-  "summary": "4 to 6 short sentences with specific numbers and dates on what is going on and why the stock moved",
+  "keyNumbers": [{"label": "short label, under 22 characters", "value": "like $1,106 or +7.3%", "note": "under 30 characters, like record close, Nov 13"}],
+  "whyMoved": "3 to 5 short sentences: the move with dates and prices and its cause, then what it means for the company's money",
+  "summary": "3 or 4 short sentences on the other important news, each with a specific number or date",
   "bull": ["3 specific reasons the news is good for the stock, each with a number, date or name"],
   "bear": ["3 specific reasons the news is bad for the stock, each with a number, date or name"],
+  "watch": [{"date": "Dec 10", "what": "what happens, the number to watch, and what good or bad looks like"}],
   "nextEvent": "the next big date mentioned in the articles, like the next earnings report, or an empty string",
   "sources": [the numbers of every article you used, like 1, 4, 7]
 }`;
@@ -112,9 +122,14 @@ export function checkBrief(text, articles, { needTwoOutlets = true } = {}) {
     sentiment: b.sentiment,
     headline: String(b.headline),
     about: String(b.about || ""),
+    // The fuller fields are kept when they look right; a brief without them still shows (the site skips missing parts).
+    keyNumbers: (Array.isArray(b.keyNumbers) ? b.keyNumbers : []).filter(k => k && k.label && k.value).slice(0, 4)
+      .map(k => ({ label: String(k.label).slice(0, 30), value: String(k.value).slice(0, 16), note: String(k.note || "").slice(0, 40) })),
+    whyMoved: String(b.whyMoved || ""),
     summary: String(b.summary),
     bull: b.bull.slice(0, 3).map(String),
     bear: b.bear.slice(0, 3).map(String),
+    watch: (Array.isArray(b.watch) ? b.watch : []).filter(w => w && w.what).slice(0, 3).map(w => ({ date: String(w.date || "").slice(0, 12), what: String(w.what) })),
     nextEvent: String(b.nextEvent || ""),
     sources,
     sourceNumbers: picked,
