@@ -35,25 +35,35 @@ const plural=(n,w)=>`${n} ${w}${n===1?"":"s"}`;
 // Price and the last 5 market days, when the morning list has them.
 const facts=tk=>{const all=file?[...(file.analysts||[]),...(file.movers||[])]:[];return all.find(x=>x.ticker===tk)||null;};
 
-function card(i,p,why,extra){
+// Small line icons for the three lists.
+const ICON={
+  people:'<path d="M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm7 0a3 3 0 1 0 0-6M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 14c2.8 0 5 2.2 5 5"/>',
+  experts:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+  rocket:'<path d="M3 17l6-6 4 4 8-8M15 7h6v6"/>'};
+const icon=k=>{const s=document.createElementNS("http://www.w3.org/2000/svg","svg");s.setAttribute("viewBox","0 0 24 24");s.setAttribute("aria-hidden","true");s.innerHTML=ICON[k];return s;};
+
+// One pick: rank, ticker and name, a big number on the right, the reason, then the buttons.
+function card(i,p,stat,why,extra){
   const f=p.price!=null?p:facts(p.ticker);
   const name=p.name||(app().stockName?app().stockName(p.ticker):"")||"";
+  const look=()=>app().openStock&&app().openStock(p.ticker);
   return el("li",{class:"t3card"},
-    el("span",{class:"t3n",text:String(i+1)}),
-    el("div",{class:"t3body"},
-      el("div",{class:"t3top"},
-        el("button",{type:"button",class:"t3tk",title:`Look up ${p.ticker}`,onclick:()=>app().openStock&&app().openStock(p.ticker)},
-          el("b",{text:p.ticker}),name?el("span",{class:"t3name",text:name}):""),
-        f&&f.price!=null?el("span",{class:"t3px"},money(f.price)," ",
-          el("span",{class:"t3wk "+(f.week>0?"up":f.week<0?"down":""),title:"Change over the last 5 market days",text:pct(f.week)})):""),
-      el("p",{class:"t3why",text:why}),
-      extra||"",
-      el("div",{class:"t3btns"},
-        el("button",{type:"button",class:"btn small",text:"Look it up",onclick:()=>app().openStock&&app().openStock(p.ticker)}),
-        el("button",{type:"button",class:"btn small",text:"Buy Now",title:`Buy ${p.ticker} in Paper Trading`,onclick:()=>window.WVFC_PAPER&&window.WVFC_PAPER.trade(p.ticker,"buy")}))));
+    el("div",{class:"t3row"},
+      el("span",{class:"t3n",text:String(i+1)}),
+      el("button",{type:"button",class:"t3tk",title:`Look up ${p.ticker}`,onclick:look},
+        el("b",{text:p.ticker}),
+        el("span",{class:"t3name",text:[name,f&&f.price!=null?money(f.price):""].filter(Boolean).join(" · ")})),
+      el("div",{class:"t3stat "+(stat.tone||"")},el("b",{text:stat.big}),el("span",{text:stat.small}))),
+    why?el("p",{class:"t3why",text:why}):"",
+    extra||"",
+    el("div",{class:"t3btns"},
+      el("button",{type:"button",class:"btn small primary",text:"Buy Now",title:`Buy ${p.ticker} in Paper Trading`,onclick:()=>window.WVFC_PAPER&&window.WVFC_PAPER.trade(p.ticker,"buy")}),
+      el("button",{type:"button",class:"t3more",text:"See the stock →",onclick:look})));
 }
-function box(title,sub,list){
-  return el("div",{class:"panel t3box"},el("h3",{class:"h3",text:title}),el("p",{class:"meta t3sub",text:sub}),list);
+function box(kind,title,sub,list){
+  return el("div",{class:"panel t3box t3-"+kind},
+    el("div",{class:"t3head"},el("span",{class:"t3ic"},icon(kind)),el("div",{},el("h3",{text:title}),el("p",{class:"t3sub",text:sub}))),
+    list);
 }
 const msg=t=>el("p",{class:"meta t3msg",text:t});
 
@@ -63,22 +73,24 @@ function render(){
   if(bought==null)one=msg("Loading…");
   else if(boughtOff)one=msg("This list turns on soon.");
   else if(!bought.length)one=msg("Nobody has bought a stock in Paper Trading this week yet. Be the first!");
-  else one=el("ol",{class:"t3list"},bought.map((b,i)=>card(i,{ticker:b.ticker},
-    `Bought by ${b.buyers===1?"1 person":b.buyers+" people"} on Simple Street this week${b.buys>b.buyers?` (${plural(b.buys,"buy")} in all)`:""}.`)));
+  else one=el("ol",{class:"t3list"},bought.map((b,i)=>card(i,{ticker:b.ticker},{big:String(b.buyers),small:b.buyers===1?"buyer":"buyers"},
+    `${b.buyers===1?"1 person":b.buyers+" people"} bought it on Simple Street this week${b.buys>b.buyers?`, ${plural(b.buys,"buy")} in all`:""}.`)));
   // 2. Wall Street's favorites
   const an=file&&file.analysts||[];
-  const two=file==null?msg("Loading…"):an.length?el("ol",{class:"t3list"},an.map((p,i)=>card(i,p,p.why))):msg("Check back tomorrow morning.");
+  const two=file==null?msg("Loading…"):an.length?el("ol",{class:"t3list"},an.map((p,i)=>card(i,p,
+    {big:Math.round(p.buy/p.analysts*100)+"%",small:"say Buy"},p.why))):msg("Check back tomorrow morning.");
   // 3. Biggest movers with good news
   const mv=file&&file.movers||[];
-  const three=file==null?msg("Loading…"):mv.length?el("ol",{class:"t3list"},mv.map((p,i)=>card(i,p,p.why,p.headline&&p.headline.title?
+  const three=file==null?msg("Loading…"):mv.length?el("ol",{class:"t3list"},mv.map((p,i)=>card(i,p,
+    {big:pct(p.week),small:"this week",tone:"up"},"",p.headline&&p.headline.title?
     el("a",{class:"t3news",href:p.headline.url,target:"_blank",rel:"noopener"},
-      el("span",{class:"t3q",text:`“${p.headline.title}”`}),
+      el("span",{class:"t3q",text:p.headline.title}),
       el("span",{class:"t3src",text:[p.headline.source,short(p.headline.date)].filter(Boolean).join(" · ")})):null))):msg("No big movers with good news this week. Check back tomorrow morning.");
-  const when=file&&file.updated?new Date(file.updated).toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"}):"";
+  const when=file&&file.updated?new Date(file.updated).toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"}):"";
   $("#t3-grid").replaceChildren(
-    box("Most bought on Simple Street","What people bought the most in Paper Trading over the last 7 days. Updates live.",one),
-    box("Wall Street's favorites","Stocks the most Wall Street experts (analysts) rate as a Buy.",two),
-    box("Biggest movers with good news","Stocks that rose the most this week and have good headlines.",three));
-  $("#t3-when").textContent=when?`Experts and movers lists updated ${when}.`:"";
+    box("people","Most bought on Simple Street","What people bought most in Paper Trading this week.",one),
+    box("experts","Wall Street's favorites","Stocks the most Wall Street experts rate as a Buy.",two),
+    box("rocket","Biggest movers with good news","Big gainers this week with good headlines.",three));
+  $("#t3-when").textContent=when?`Updated ${when}`:"";
 }
 })();

@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-title" content="Simple Street">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="assets/fonts.css?v=2026111201">
-<link rel="stylesheet" href="assets/style.css?v=2026111705">
+<link rel="stylesheet" href="assets/style.css?v=2026111706">
 <script>
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
@@ -338,11 +338,10 @@ setTimeout(done,5400);})();
 
 <!-- TOP 3 TODAY -->
 <section role="tabpanel" id="top3" aria-labelledby="tab-top3" hidden>
-  <div class="sechead">
-    <div>
-      <h2>Top 3 Today</h2>
-      <p class="sub">Three quick lists of stocks worth a closer look. <b>Not advice, just ideas to research.</b> <span id="t3-when"></span></p>
-    </div>
+  <div class="t3hero">
+    <h2>Top 3 Today</h2>
+    <p class="sub">Three quick lists of stocks worth a closer look.</p>
+    <div class="t3chips"><span class="t3chip" id="t3-when"></span><span class="t3chip warn">Not advice, just ideas to research</span></div>
   </div>
   <div class="t3grid" id="t3-grid"></div>
 </section>
@@ -540,7 +539,7 @@ setTimeout(done,5400);})();
 <script src="assets/account.js?v=2026111101"></script>
 <script src="assets/paper.js?v=2026111402"></script>
 <script src="assets/feed.js?v=2026111408"></script>
-<script src="assets/top3.js?v=2026111701"></script>
+<script src="assets/top3.js?v=2026111703"></script>
 <script src="assets/staff.js?v=2026111101"></script>
 <script src="assets/users.js?v=2026111101"></script>
 <script src="assets/numbers.js?v=2026111603"></script>
