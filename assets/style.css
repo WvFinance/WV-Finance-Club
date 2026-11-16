@@ -179,6 +179,15 @@ details.drop>.tvbox{padding:0 12px 12px}
 .brief h3{font-size:24px;font-weight:750;font-stretch:92%}
 .brief .lede{font-size:16px;margin:0;max-width:70ch}
 .brief .about,#s-brief .about{margin:0;color:var(--ink-2)}
+.keynums{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.keynum{border:1px solid var(--line);border-radius:8px;padding:10px 12px;min-width:0}
+.keynum .l,.keynum .n{font-size:12px;color:var(--ink-2)} .keynum .v{font-family:var(--f-mono);font-size:22px;font-weight:600;margin:2px 0;overflow-wrap:anywhere}
+.blk h4{margin:0 0 4px;font-family:var(--f-display);font-size:15px}
+.blk p{margin:0}
+.watch{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.watch li{display:grid;grid-template-columns:70px 1fr;gap:10px;font-size:14px}
+.watch b{font-family:var(--f-mono)}
+@media(max-width:600px){.keynums{grid-template-columns:1fr 1fr}}
 .sides{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media (max-width:640px){.sides{grid-template-columns:minmax(0,1fr)}}
 .side-col{border-radius:8px;padding:14px 16px;border:1px solid var(--line)}

@@ -75,23 +75,24 @@ export function explainJargon(b) {
     done.add(key);
     return `${m} (${g[1]})`;
   });
-  return { ...b, about: fix(b.about || ""), summary: fix(b.summary), bull: b.bull.map(fix), bear: b.bear.map(fix) };
+  return { ...b, about: fix(b.about || ""), whyMoved: fix(b.whyMoved || ""), summary: fix(b.summary), bull: b.bull.map(fix), bear: b.bear.map(fix),
+    watch: (b.watch || []).map(w => ({ ...w, what: fix(w.what) })) };
 }
 
 // Buy/sell advice aimed at the reader, which the site never gives (reporting analysts' ratings is fine).
 const ADVICE = /\b(you|investors|readers|everyone) (should|must|need to|ought to) (buy|sell|hold|consider buying|consider selling|get in|get out)\b|\b(good|great|perfect|bad|right) time to (buy|sell)\b|\bbuy the dip\b|\b(we|i) (recommend|suggest)\b|\bdon't miss\b/i;
 export function givesAdvice(b) {
-  return ADVICE.test([b.headline, b.summary, ...b.bull, ...b.bear].join(" "));
+  return ADVICE.test([b.headline, b.whyMoved || "", b.summary, ...b.bull, ...b.bear, ...(b.watch || []).map(w => w.what)].join(" "));
 }
 
 // What to fix, or [] if the brief is fine.
 export function wordingProblems(b) {
-  const text = [b.headline, b.summary, ...b.bull, ...b.bear].join(" ");
+  const text = [b.headline, b.whyMoved || "", b.summary, ...b.bull, ...b.bear].join(" ");
   const problems = [];
   if (givesAdvice(b)) problems.push("It gives buy or sell advice. This site only describes the news; never tell readers to buy, sell or hold.");
   const jargon = unexplainedJargon(text);
   if (jargon.length) problems.push(`These words are finance jargon a 15-year-old may not know: ${jargon.join(", ")}. Replace each with everyday words, or explain it in a few words in parentheses right after it.`);
-  const grade = gradeLevel([b.summary, ...b.bull, ...b.bear].join(" "));
+  const grade = gradeLevel([b.whyMoved || "", b.summary, ...b.bull, ...b.bear].join(" "));
   if (grade > MAX_GRADE) problems.push(`It reads at about a grade ${grade.toFixed(1)} level. Aim for grade 9: shorter sentences and shorter, everyday words.`);
   return problems;
 }

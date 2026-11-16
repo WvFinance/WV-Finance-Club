@@ -9,6 +9,8 @@ import { handleCongress } from "./congress.js";
 import { findListing } from "./funds.js";
 import { handleRatings } from "./ratings.js";
 
+// Saved instant briefs. "brief2:" since the fuller format (key numbers, why it moved, what to watch), so old-format copies aren't served.
+const BRIEF_KEY = "brief2:";
 const DAY = 24 * 60 * 60;
 
 function cors(env, origin) {
@@ -81,7 +83,7 @@ export default {
     if (!/^([A-Z]{1,10}:)?[A-Z][A-Z0-9.\-]{0,9}$/.test(symbol)) return json({ error: "That doesn't look like a stock ticker." }, 400, headers);
     const ticker = symbol.split(":").pop();
 
-    const saved = await env.BRIEFS.get("brief:" + ticker, "json");
+    const saved = await env.BRIEFS.get(BRIEF_KEY + ticker, "json");
     if (saved) return json(saved, 200, headers);
 
     // Daily limits, checked only once the news is in (typos and stocks with no news don't count):
@@ -103,7 +105,7 @@ export default {
     try {
       const b = await writeBrief(env.GEMINI_API_KEY, symbol, env.GEMINI_MODEL || "gemini-3.5-flash-lite", { beforeAI, listing, kv: env.BRIEFS });
       const brief = { ticker, symbol, ...b, updatedAt: new Date().toISOString(), auto: true, writer: "Gemini" };
-      await env.BRIEFS.put("brief:" + ticker, JSON.stringify(brief), { expirationTtl: DAY });
+      await env.BRIEFS.put(BRIEF_KEY + ticker, JSON.stringify(brief), { expirationTtl: DAY });
       return json(brief, 200, headers);
     } catch (e) {
       console.error(symbol, e.message || e);

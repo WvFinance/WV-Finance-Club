@@ -77,6 +77,10 @@ if (mode === "rules") {
       const b = parseBrief(readFileSync(join(dir, f), "utf8"), 3);
       for (const k of ["bull", "bear"]) if (!Array.isArray(b[k]) || b[k].length < 2) throw new Error(`${k} needs 3 short reasons`);
       if (typeof b.about !== "string" || b.about.trim().length < 20) throw new Error('about needs 1 or 2 sentences on what the company does and its main products');
+      // The fuller format (2026-11-16): key numbers, why it moved + what it means for the money, what to watch next.
+      if (!Array.isArray(b.keyNumbers) || b.keyNumbers.filter(k => k && k.label && k.value).length < 3) throw new Error("keyNumbers needs 4 {label, value, note} numbers that matter for this company");
+      if (typeof b.whyMoved !== "string" || b.whyMoved.trim().length < 150) throw new Error("whyMoved needs a 3 to 5 sentence paragraph: the move with dates and prices, its cause, and what it means for the money");
+      if (!Array.isArray(b.watch) || b.watch.some(w => !w || !w.what)) throw new Error('watch must be a list of {date, what} (empty [] if no dates are known)');
       if (typeof b.nextEvent !== "string") throw new Error("nextEvent must be a string (empty if none)");
       if (b.headline.length > 100) throw new Error("headline is too long");
       mergeBrief(news, job, b);

@@ -497,10 +497,12 @@ function newsBoard(cls){
   const n=list.find(x=>x.ticker===S[key]);
   br.replaceChildren(...[
     el("div",{class:"sechead"},el("div",{},el("div",{class:"eyebrow",text:n.market?`${n.crypto?"Crypto":"Market"} brief · ${n.name}`:[n.ticker,n.name,cls&&secOf(n.ticker)].filter(Boolean).join(" · ")}),el("h3",{text:n.headline||""})),sentiPill(n.sentiment)),
+    keyNums(n),
     aboutLine(n),
+    whyBlock(n),
     el("p",{class:"lede",text:n.summary||""}),
     el("div",{class:"sides"},el("div",{class:"side-col bull"},el("h4",{text:"What the bulls say"}),el("ul",{},(n.bull||[]).map(x=>el("li",{text:x})))),el("div",{class:"side-col bear"},el("h4",{text:"What the bears say"}),el("ul",{},(n.bear||[]).map(x=>el("li",{text:x}))))),
-    n.nextEvent?el("div",{class:"notice"},el("b",{text:"Coming up: "}),n.nextEvent):null,
+    watchBlock(n)||(n.nextEvent?el("div",{class:"notice"},el("b",{text:"Coming up: "}),n.nextEvent):null),
     el("details",{class:"drop srcdrop"},el("summary",{},el("span",{text:`Sources (${(n.sources||[]).length})`})),el("ul",{class:"sources"},(n.sources||[]).map(s=>el("li",{},el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer",text:s.title}),el("span",{class:"o",text:[s.outlet,s.date].filter(Boolean).join(" · ")}))))),
     el("div",{class:"meta",text:briefWhen(n)}),
     el("div",{},el("button",{class:"btn small",text:`Open ${n.market?n.name:n.ticker} chart →`,onclick:()=>{openStock(n.symbol||n.ticker);showTab("search",true);}}))].filter(Boolean));
@@ -622,6 +624,11 @@ function renderLatest3(n){
   box.replaceChildren(el("h3",{class:"h3",text:src.length===3?"3 latest articles":"Latest articles"}),
     el("ul",{class:"latestlist"},src.map(s=>el("li",{},el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer",text:s.title}),el("span",{class:"o",text:[s.outlet,s.date].filter(Boolean).join(" · ")})))));
 }
+// The fuller brief format (2026-11-16): a row of key numbers, "Why it moved and what it means for the money",
+// and "What to watch next" (dates plus the number to watch). Older briefs without these fields show as before.
+function keyNums(n){const k=(n.keyNumbers||[]).filter(x=>x&&x.label&&x.value).slice(0,4);return k.length?el("div",{class:"keynums"},k.map(x=>el("div",{class:"keynum"},el("div",{class:"l",text:x.label}),el("div",{class:"v",text:x.value}),x.note?el("div",{class:"n",text:x.note}):null))):null;}
+function whyBlock(n){return n.whyMoved?el("div",{class:"blk"},el("h4",{text:"Why it moved and what it means for the money"}),el("p",{text:n.whyMoved})):null;}
+function watchBlock(n){const w=(n.watch||[]).filter(x=>x&&x.what).slice(0,3);return w.length?el("div",{class:"blk"},el("h4",{text:"What to watch next"}),el("ul",{class:"watch"},w.map(x=>el("li",{},el("b",{text:x.date||""}),el("span",{text:x.what}))))):null;}
 // "What they do": 1-2 plain sentences on the company, shown above the news (older briefs don't have it yet).
 function aboutLine(n){return n.about?el("p",{class:"about"},el("b",{text:n.market||n.fund?"What it is: ":"What they do: "}),n.about):null;}
 function renderSearchBrief(){
@@ -635,9 +642,12 @@ function renderSearchBrief(){
   const inNews=visibleBriefs().includes(n);
   box.replaceChildren(...[
     el("div",{class:"sechead"},el("div",{},el("div",{class:"eyebrow",text:`News brief · ${n.market?n.name:n.ticker}`}),el("h3",{text:n.headline||""})),sentiPill(n.sentiment)),
+    keyNums(n),
     aboutLine(n),
+    whyBlock(n),
     el("p",{class:"lede",text:n.summary||""}),
     el("div",{class:"sides"},el("div",{class:"side-col bull"},el("h4",{text:"What the bulls say"}),el("ul",{},(n.bull||[]).map(x=>el("li",{text:x})))),el("div",{class:"side-col bear"},el("h4",{text:"What the bears say"}),el("ul",{},(n.bear||[]).map(x=>el("li",{text:x}))))),
+    watchBlock(n),
     el("div",{class:"meta",text:`From ${(n.sources||[]).length} ${(n.sources||[]).length===1?"article":"articles"} · ${briefWhen(n).replace(/^./,c=>c.toLowerCase())}`}),
     inNews?el("div",{},el("button",{class:"btn small",text:"Sources and full brief →",onclick:()=>{S.newsTk=n.ticker;renderNews();showTab("news",true);}})):el("details",{class:"drop srcdrop"},el("summary",{},el("span",{text:`Sources (${(n.sources||[]).length})`})),el("ul",{class:"sources"},(n.sources||[]).map(s=>el("li",{},el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer",text:s.title}),el("span",{class:"o",text:[s.outlet,s.date].filter(Boolean).join(" · ")})))))].filter(Boolean));
 }
