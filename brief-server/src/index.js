@@ -36,6 +36,16 @@ async function countDown(env, key) {
   if (used > 0) await env.BRIEFS.put(key, String(used - 1), { expirationTtl: 2 * DAY });
 }
 
+// Keeps the last 20 failed briefs (ticker, time, reason) for 2 days, so the
+// Test brief server workflow can show why a brief failed. No user info is kept.
+async function logFailure(env, ticker, reason) {
+  try {
+    const list = (await env.BRIEFS.get("errors", "json")) || [];
+    list.unshift({ ticker, at: new Date().toISOString(), reason: String(reason).slice(0, 200) });
+    await env.BRIEFS.put("errors", JSON.stringify(list.slice(0, 20)), { expirationTtl: 2 * DAY });
+  } catch {}
+}
+
 function json(body, status, headers) {
   return new Response(JSON.stringify(body), { status, headers: { ...headers, "Content-Type": "application/json" } });
 }
@@ -61,6 +71,7 @@ export default {
       if (!(await countUp(env, "checks:" + today(), Number(env.CHECK_LIMIT || 30)))) return json({ error: "Feed checks are used up for today." }, 429, headers);
       return json(await checkFeeds(t), 200, headers);
     }
+    if (url.pathname === "/recent-errors") return json((await env.BRIEFS.get("errors", "json")) || [], 200, headers);
     if (url.pathname !== "/brief") return json({ error: "not found" }, 404, headers);
 
     const symbol = (url.searchParams.get("symbol") || "").toUpperCase();
@@ -93,6 +104,7 @@ export default {
       return json(brief, 200, headers);
     } catch (e) {
       console.error(symbol, e.message || e);
+      if (e.kind !== "no-news") await logFailure(env, ticker, `${e.kind || "error"}: ${e.message || e}`);
       // No brief was written, so give back anything already counted.
       if (["limit-minute", "daily", "visitor", "no-news"].includes(e.kind)) for (const k of counted) await countDown(env, k);
       if (e.kind === "no-news") {

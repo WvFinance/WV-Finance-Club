@@ -94,7 +94,9 @@ export function checkBrief(text, articles, { needTwoOutlets = true } = {}) {
   if (start < 0 || end < start) throw new Error("no JSON in reply");
   const b = JSON.parse(text.slice(start, end + 1));
   if (!["bullish", "neutral", "bearish"].includes(b.sentiment)) throw new Error("bad sentiment");
-  if (!b.headline || b.headline.length >= 90) throw new Error("headline missing or too long");
+  if (!b.headline) throw new Error("headline missing");
+  // A headline that runs long is cut at a word instead of throwing the whole brief away.
+  if (b.headline.length >= 90) b.headline = b.headline.slice(0, 86).replace(/\s+\S*$/, "").replace(/[,;:\s-]+$/, "") + "…";
   if (!b.summary) throw new Error("summary missing");
   if (!Array.isArray(b.bull) || b.bull.length < 3 || !Array.isArray(b.bear) || b.bear.length < 3) throw new Error("needs 3 bull and 3 bear reasons");
   const picked = [...new Set((b.sources || []).map(Number))].filter(n => n >= 1 && n <= articles.length);
@@ -152,10 +154,10 @@ export async function writeBrief(apiKey, symbol, model, { beforeAI, listing, kv 
   await startAI();
   const prompt = `Write the news brief for ${symbol}.${fund ? `\n\n${fundNote(fund)}` : ""}\n\nArticles:\n\n${articleBlock(articles)}`;
   let lastError;
-  for (let attempt = 0; attempt < 2; attempt++) {
+  for (let attempt = 0; attempt < 3; attempt++) {
     try {
       // The second try tells Gemini what went wrong the first time.
-      const ask = attempt && /^used /.test(lastError?.message || "") ? `${prompt}\n\nYour last answer was rejected (${lastError.message}). Use at least 3 articles, from 2 different outlets if you can.` : prompt;
+      const ask = attempt && lastError && !/^Gemini /.test(lastError.message || "") ? `${prompt}\n\nYour last answer was rejected (${lastError.message}). Fix that: use at least 3 articles (from 2 different outlets if you can), a headline under 90 characters, and exactly 3 bull and 3 bear reasons.` : prompt;
       const brief = explainJargon(await simplify(apiKey, model, prompt, articles, checkBrief(await askGemini(apiKey, model, ask), articles, { needTwoOutlets: attempt === 0 })));
       // Education only: a brief that still gives buy/sell advice after the rewrite is never shown.
       if (givesAdvice(brief)) throw new Error("brief gives buy/sell advice");
@@ -167,7 +169,7 @@ export async function writeBrief(apiKey, symbol, model, { beforeAI, listing, kv 
       lastError = e;
       console.warn(symbol, "attempt", attempt + 1, "failed:", e.message);
       // Gemini is sometimes busy for a moment (error 500/503); wait a bit before trying again.
-      if (attempt === 0 && /^Gemini 5\d\d/.test(e.message || "")) await new Promise(r => setTimeout(r, 4000));
+      if (attempt < 2 && /^Gemini 5\d\d|fetch failed|network/i.test(e.message || "")) await new Promise(r => setTimeout(r, 4000 * (attempt + 1)));
     }
   }
   throw lastError;

@@ -40,6 +40,13 @@ jobs:
         run: |
           r=$(curl -sS -m 60 "https://wvfc-brief-server.wvfinance.workers.dev/news-check?symbol=${{ inputs.symbol }}")
           echo "$r"; echo "::notice title=News feeds::$r"
+      - name: Recent failed briefs (last 2 days)
+        if: always()
+        run: |
+          r=$(curl -sS -m 30 "https://wvfc-brief-server.wvfinance.workers.dev/recent-errors")
+          echo "$r"
+          n=$(node -e 'try{const j=JSON.parse(process.argv[1]);console.log(j.length?j.slice(0,5).map(e=>`${e.ticker} ${e.at.slice(5,16)} ${e.reason}`).join(" | "):"none")}catch(e){console.log("unreadable")}' "$r")
+          echo "::notice title=Recent failed briefs::$n"
       - name: Check the Congress trades for the Feed page
         if: always()
         run: |
