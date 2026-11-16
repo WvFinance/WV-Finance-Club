@@ -17,6 +17,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="assets/fonts.css?v=2026111201">
 <link rel="stylesheet" href="assets/style.css?v=2026111708">
+<link rel="stylesheet" href="assets/glow.css?v=2026111702">
 <script>
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
@@ -542,6 +543,7 @@ setTimeout(done,5400);})();
 <script src="assets/users.js?v=2026111101"></script>
 <script src="assets/numbers.js?v=2026111603"></script>
 <script src="assets/ratings.js?v=2026111702"></script>
+<script src="assets/glow.js?v=2026111701"></script>
 <script>
 // Lets phones and Chromebooks install Simple Street as an app.
 if("serviceWorker" in navigator&&location.protocol==="https:")addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
