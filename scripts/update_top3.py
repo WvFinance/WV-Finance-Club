@@ -264,14 +264,19 @@ def main():
         if s["ticker"] in picked:
             continue
         hs = headlines(s["ticker"], s["name"])
+        # Shown headline must be about this company (not a rival) and be news, not a question.
+        words = [w.lower() for w in re.findall(r"[A-Za-z]{3,}", s["name"])[:1]] + [s["ticker"].lower()]
+        about = lambda t: any(re.search(rf"\b{re.escape(w)}\b", t.lower()) for w in words)  # noqa: E731
         good = sorted([h for h in hs if tone(h["title"]) > 0], key=lambda h: (-tone(h["title"]), -h["t"]))
+        shown = [h for h in good if about(h["title"]) and not h["title"].rstrip().endswith("?")]
         bad = [h for h in hs if tone(h["title"]) < 0]
         print(f"  {s['ticker']} +{s['week']}%: {len(hs)} headlines, {len(good)} good, {len(bad)} bad")
-        if len(good) < MIN_HEADLINES_GOOD or len(good) <= len(bad):
+        time.sleep(1.5)  # Google News turns away fast askers
+        if len(good) < MIN_HEADLINES_GOOD or len(good) <= len(bad) or not shown:
             continue
-        h = good[0]
+        h = shown[0]
         m = dict(s)
-        m.update({"why": f"Up {s['week']:.0f}% in the last 5 market days, with mostly good news this week.",
+        m.update({"why": f"Up {s['week']:.1f}% in the last 5 market days, with mostly good news this week.",
                   "headline": {"title": h["title"][:200], "url": h["url"], "source": h["source"],
                                "date": dt.datetime.fromtimestamp(h["t"], dt.timezone.utc).date().isoformat()}})
         movers.append(m)
