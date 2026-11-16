@@ -46,8 +46,7 @@ function render(){
   }
   box.replaceChildren(head(),
     el("div",{class:"rt-top"},el("span",{class:"rt-word "+cls,text:word}),el("span",{class:"meta",text:`${r.analysts} analyst${r.analysts===1?"":"s"}`})),
-    el("div",{class:"rt-rows"},rows),goal,
-    el("p",{class:"meta rt-foot",text:`Analysts are experts at big banks who study ${tk}. They're often wrong, so use this to learn, not as advice. From ${r.source}.`}));
+    el("div",{class:"rt-rows"},rows),goal);
 }
 
 async function load(sym){
