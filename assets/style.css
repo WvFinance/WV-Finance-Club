@@ -920,18 +920,20 @@ html.nointro #intro{display:none}
 /* Top 3 Today tab (assets/top3.js): three lists side by side, stacked on phones. */
 .t3grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start}
 @media (max-width:1000px){.t3grid{grid-template-columns:minmax(0,1fr)}}
-.t3box{display:grid;gap:4px;padding:20px}
+.t3box{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;padding:20px}
 .t3sub{margin:0 0 10px}
 .t3list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 .t3card{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;padding-top:12px;border-top:1px solid var(--line)}
 .t3card:first-child{border-top:0;padding-top:4px}
 .t3n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px;background:var(--gold-soft);color:var(--gold)}
-.t3body{display:grid;gap:6px;min-width:0}
+.t3body{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;min-width:0}
 .t3top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
 .t3tk{appearance:none;border:0;background:none;padding:0;cursor:pointer;text-align:left;display:flex;align-items:baseline;gap:8px;min-width:0;flex:1 1 auto;overflow:hidden}
 .t3tk b{font-family:var(--f-display);font-size:17px}
 .t3tk:hover b{color:var(--gold)}
-.t3name{color:var(--ink-2);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.t3name{color:var(--ink-2);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:0 1 auto}
+.t3tk b{flex:none}
+.t3px{flex:none}
 .t3px{font-family:var(--f-mono);font-size:13px;white-space:nowrap;color:var(--ink-2)}
 .t3wk.up{color:var(--up)}.t3wk.down{color:var(--down)}
 .t3why{margin:0;font-size:14px}
