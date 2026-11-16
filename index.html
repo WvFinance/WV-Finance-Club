@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-title" content="Simple Street">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="assets/fonts.css?v=2026111201">
-<link rel="stylesheet" href="assets/style.css?v=2026111701">
+<link rel="stylesheet" href="assets/style.css?v=2026111702">
 <script>
 // Supabase keeps the login in this browser, so open the page straight away if one is saved.
 try{if(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k)))document.documentElement.classList.add("unlocked");}catch(e){}
@@ -146,6 +146,7 @@ setTimeout(done,5400);})();
     <button class="tab" role="tab" id="tab-trade" aria-controls="trade" aria-selected="false" data-tab="trade">Paper Trading</button>
     <button class="tab" role="tab" id="tab-news" aria-controls="news" aria-selected="false" data-tab="news">News<span class="count" id="cnt-news"></span></button>
     <button class="tab" role="tab" id="tab-feed" aria-controls="feed" aria-selected="false" data-tab="feed">Feed</button>
+    <button class="tab" role="tab" id="tab-top3" aria-controls="top3" aria-selected="false" data-tab="top3">Top 3 Today</button>
     <button class="tab hasmenu" role="tab" id="tab-district" aria-controls="district" aria-selected="false" aria-haspopup="menu" aria-expanded="false" data-tab="district">District<span class="caret" aria-hidden="true"></span></button>
     <button class="tab" role="tab" id="tab-staff" aria-controls="staff" aria-selected="false" data-tab="staff" hidden>Students</button>
     <button class="tab" role="tab" id="tab-users" aria-controls="users" aria-selected="false" data-tab="users" hidden>Users</button>
@@ -333,6 +334,17 @@ setTimeout(done,5400);})();
       <div class="panel" id="fd-most"></div>
     </aside>
   </div>
+</section>
+
+<!-- TOP 3 TODAY -->
+<section role="tabpanel" id="top3" aria-labelledby="tab-top3" hidden>
+  <div class="sechead">
+    <div>
+      <h2>Top 3 Today</h2>
+      <p class="sub">Three quick lists of stocks worth a closer look. <b>Not advice, just ideas to research.</b> <span id="t3-when"></span></p>
+    </div>
+  </div>
+  <div class="t3grid" id="t3-grid"></div>
 </section>
 
 <!-- TRADING GAME -->
@@ -523,11 +535,12 @@ setTimeout(done,5400);})();
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="config.js?v=2026111201"></script>
-<script src="assets/app.js?v=2026111701"></script>
+<script src="assets/app.js?v=2026111702"></script>
 <script src="assets/vendor/supabase-2.118.0.js"></script>
 <script src="assets/account.js?v=2026111101"></script>
 <script src="assets/paper.js?v=2026111402"></script>
 <script src="assets/feed.js?v=2026111408"></script>
+<script src="assets/top3.js?v=2026111701"></script>
 <script src="assets/staff.js?v=2026111101"></script>
 <script src="assets/users.js?v=2026111101"></script>
 <script src="assets/numbers.js?v=2026111603"></script>
