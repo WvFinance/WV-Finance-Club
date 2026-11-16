@@ -839,3 +839,7 @@ async function leaderLoad(action,id){
 const armed=new Set();
 function confirmDelete(it){if(armed.has(it.id))return true;armed.add(it.id);toast("Tap Delete again to remove it for good.");setTimeout(()=>armed.delete(it.id),4000);return false;}
 })();
+// The header (logo + search) sticks to the top; keep the tabs stuck right under it.
+(function(){const m=document.querySelector(".mast");if(!m)return;
+  const set=()=>document.documentElement.style.setProperty("--masth",m.offsetHeight+"px");
+  set();if(window.ResizeObserver)new ResizeObserver(set).observe(m);addEventListener("resize",set);})();
