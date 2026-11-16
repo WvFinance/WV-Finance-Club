@@ -1,0 +1,39 @@
+name: Update Top 3 Today
+
+# Refreshes data/top3.json for the "Top 3 Today" tab: Wall Street's favorite stocks and the biggest movers
+# with good news. Free: Yahoo Finance, Nasdaq and Google News public pages, no keys.
+on:
+  schedule:
+    - cron: "30 11 * * 1-5"   # weekday mornings, about 5:30 or 6:30 am Chicago, before the market opens
+  push:
+    branches: [main]
+    paths: [scripts/update_top3.py, .github/workflows/update-top3.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-top3
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python scripts/update_top3.py
+      - name: Save the new list
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git add data/top3.json
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git config user.name "wvfc-price-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update Top 3 Today"
+          git pull --rebase origin main
+          git push
