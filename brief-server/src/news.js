@@ -96,14 +96,14 @@ export function parseYahoo(xml) {
 }
 
 // Keeps recent, real, non-duplicate articles, newest first.
-export function cleanArticles(lists, now = new Date()) {
+export function cleanArticles(lists, now = new Date(), max = MAX_ARTICLES) {
   const cutoff = now.getTime() - DAYS * 86400000;
   const seen = new Set();
   const out = [];
   // Each feed newest first, then take turns between feeds so every brief gets a mix of outlets.
   const queues = lists.map(l => l.filter(a => a.title && /^https?:\/\//.test(a.url) && a.published.getTime() >= cutoff)
     .sort((x, y) => y.published - x.published));
-  while (out.length < MAX_ARTICLES && queues.some(q => q.length)) {
+  while (out.length < max && queues.some(q => q.length)) {
     for (const q of queues) {
       const a = q.shift();
       if (!a) continue;
@@ -111,7 +111,7 @@ export function cleanArticles(lists, now = new Date()) {
       if (seen.has(key)) continue;
       seen.add(key);
       out.push({ ...a, date: fmtDate(a.published) });
-      if (out.length >= MAX_ARTICLES) break;
+      if (out.length >= max) break;
     }
   }
   return out.sort((x, y) => y.published - x.published);
@@ -142,10 +142,14 @@ async function retryFast(f) {
 // so short tickers like F or ON don't pull in unrelated news. Yahoo searches by exact ticker.
 const words = (t, name) => name ? `"${name}" stock` : `${t} stock`;
 
+const google = q => retryFast(() => get(`https://news.google.com/rss/search?q=${encodeURIComponent(`${q} when:${DAYS}d`)}&hl=en-US&gl=US&ceid=US:en`, 6000)).then(parseGoogleNews);
+const bing = q => retryFast(() => get(`https://www.bing.com/news/search?q=${encodeURIComponent(q)}&format=rss&mkt=en-US`, 6000)).then(parseBing);
+const yahoo = t => get(`https://feeds.finance.yahoo.com/rss/2.0/headline?s=${encodeURIComponent(t)}&region=US&lang=en-US`).then(parseYahoo);
+
 const FEEDS = {
-  "Google News": (t, name) => retryFast(() => get(`https://news.google.com/rss/search?q=${encodeURIComponent(`${words(t, name)} when:${DAYS}d`)}&hl=en-US&gl=US&ceid=US:en`, 6000)).then(parseGoogleNews),
-  "Bing News": (t, name) => retryFast(() => get(`https://www.bing.com/news/search?q=${encodeURIComponent(words(t, name))}&format=rss&mkt=en-US`, 6000)).then(parseBing),
-  "Yahoo Finance": t => get(`https://feeds.finance.yahoo.com/rss/2.0/headline?s=${encodeURIComponent(t)}&region=US&lang=en-US`).then(parseYahoo),
+  "Google News": (t, name) => google(words(t, name)),
+  "Bing News": (t, name) => bing(words(t, name)),
+  "Yahoo Finance": t => yahoo(t),
 };
 
 const lookup = ticker => secLookup(ticker).catch(e => { console.warn("SEC lookup failed:", String(e.message || e)); return null; });
@@ -163,12 +167,29 @@ export async function checkFeeds(ticker) {
   return out;
 }
 
-export async function gatherNews(ticker) {
-  const company = await lookup(ticker);
-  const official = secFacts(company).catch(e => { console.warn("SEC failed:", String(e.message || e)); return null; });
-  const feeds = await Promise.allSettled(Object.values(FEEDS).map(f => f(ticker, company?.short)));
+// Labels each article with what it's about, so the brief can say which company the news is for.
+const about = (topic, p) => p.then(list => list.map(a => ({ ...a, topic })));
+
+// News for a fund (ETF): the fund itself, its theme ("space stocks") and its biggest holdings.
+function fundFeeds(fund) {
+  const self = `the fund itself (${fund.ticker})`;
+  const lists = [about(self, google(`"${fund.name}"`)), about(self, yahoo(fund.ticker))];
+  if (fund.search) lists.push(about(`the fund's theme (${fund.theme || fund.search})`, google(fund.search)), about(`the fund's theme (${fund.theme || fund.search})`, bing(fund.search)));
+  for (const h of fund.holdings) {
+    const topic = `${h.name} (${h.ticker}), one of the fund's biggest holdings`;
+    lists.push(about(topic, yahoo(h.ticker)), about(topic, google(words(h.ticker, h.name))));
+  }
+  return lists;
+}
+
+// fund: from funds.js when the ticker is a fund, otherwise leave it out.
+export async function gatherNews(ticker, fund = null) {
+  // Funds don't file company reports, so the SEC is only asked about companies.
+  const company = fund ? null : await lookup(ticker);
+  const official = fund ? Promise.resolve(null) : secFacts(company).catch(e => { console.warn("SEC failed:", String(e.message || e)); return null; });
+  const feeds = await Promise.allSettled(fund ? fundFeeds(fund) : Object.values(FEEDS).map(f => f(ticker, company?.short)));
   for (const f of feeds) if (f.status === "rejected") console.warn("news feed failed:", String(f.reason));
-  const articles = cleanArticles(feeds.filter(f => f.status === "fulfilled").map(f => f.value));
+  const articles = cleanArticles(feeds.filter(f => f.status === "fulfilled").map(f => f.value), new Date(), fund ? MAX_ARTICLES + 3 : MAX_ARTICLES);
 
   // Google News links only redirect in a browser, so read full text from direct links (Yahoo, Bing).
   const direct = articles.filter(a => !/news\.google\.com/.test(a.url)).slice(0, FULL_TEXT);

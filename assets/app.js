@@ -625,7 +625,7 @@ function renderLatest3(n){
     el("ul",{class:"latestlist"},src.map(s=>el("li",{},el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer",text:s.title}),el("span",{class:"o",text:[s.outlet,s.date].filter(Boolean).join(" · ")})))));
 }
 // "What they do": 1-2 plain sentences on the company, shown above the news (older briefs don't have it yet).
-function aboutLine(n){return n.about?el("p",{class:"about"},el("b",{text:n.market?"What it is: ":"What they do: "}),n.about):null;}
+function aboutLine(n){return n.about?el("p",{class:"about"},el("b",{text:n.market||n.fund?"What it is: ":"What they do: "}),n.about):null;}
 function renderSearchBrief(){
   renderLatest3(anyBriefFor(S.tk)||(liveBriefs[bare(S.tk)]&&!liveBriefs[bare(S.tk)].loading&&!liveBriefs[bare(S.tk)].error?liveBriefs[bare(S.tk)]:null));
   const box=$("#s-brief");let n=anyBriefFor(S.tk);

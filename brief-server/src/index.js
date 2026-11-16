@@ -6,6 +6,7 @@ import { checkFeeds } from "./news.js";
 import { handleSuggest } from "./suggest.js";
 import { handleSupabase } from "./proxy.js";
 import { handleCongress } from "./congress.js";
+import { findListing } from "./funds.js";
 
 const DAY = 24 * 60 * 60;
 
@@ -82,16 +83,23 @@ export default {
       counted.push("count:" + day);
     };
 
+    // The ticker's row on the site's stock list: tells funds (ETFs) apart and gives the name.
+    const listing = await findListing(ticker).catch(() => null);
+
     try {
-      const b = await writeBrief(env.GEMINI_API_KEY, symbol, env.GEMINI_MODEL || "gemini-3.5-flash-lite", { beforeAI });
+      const b = await writeBrief(env.GEMINI_API_KEY, symbol, env.GEMINI_MODEL || "gemini-3.5-flash-lite", { beforeAI, listing, kv: env.BRIEFS });
       const brief = { ticker, symbol, ...b, updatedAt: new Date().toISOString(), auto: true, writer: "Gemini" };
       await env.BRIEFS.put("brief:" + ticker, JSON.stringify(brief), { expirationTtl: DAY });
       return json(brief, 200, headers);
     } catch (e) {
       console.error(symbol, e.message || e);
       // No brief was written, so give back anything already counted.
-      if (["limit-minute", "daily", "visitor"].includes(e.kind)) for (const k of counted) await countDown(env, k);
-      if (e.kind === "no-news") return json({ error: `We couldn't find enough recent news for ${ticker}. Make sure you typed the stock's ticker symbol, not the company name (for example NFLX for Netflix).` }, 404, headers);
+      if (["limit-minute", "daily", "visitor", "no-news"].includes(e.kind)) for (const k of counted) await countDown(env, k);
+      if (e.kind === "no-news") {
+        // A real ticker just has quiet news; only a ticker that isn't on the list might be a typo.
+        if (listing) return json({ error: `There isn't enough recent news about ${listing.name} (${ticker}) to write a brief right now. Try again in a few days.` }, 404, headers);
+        return json({ error: `We couldn't find enough recent news for ${ticker}. Make sure you typed the stock's ticker symbol, not the company name (for example NFLX for Netflix).` }, 404, headers);
+      }
       if (e.kind === "limit-minute") return json({ error: "Lots of people are asking for briefs right now. Try again in a minute." }, 429, headers);
       if (e.kind === "limit-day" || e.kind === "daily") return json({ error: "We've written all the free briefs we can for today. Try again tomorrow." }, 429, headers);
       if (e.kind === "visitor") return json({ error: "This network has asked for a lot of new briefs today. Try again tomorrow." }, 429, headers);

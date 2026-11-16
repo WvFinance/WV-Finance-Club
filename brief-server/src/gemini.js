@@ -3,6 +3,7 @@
 // because it isn't free. Every source listed is a real article the server gathered.
 import { gatherNews } from "./news.js";
 import { wordingProblems, explainJargon, givesAdvice } from "./wording.js";
+import { fundInfo, fundNote } from "./funds.js";
 
 const API = "https://generativelanguage.googleapis.com/v1beta/models/";
 
@@ -61,17 +62,18 @@ function articleBlock(articles) {
   return articles.map((a, i) => [
     `[${i + 1}] ${a.title}`,
     `Outlet: ${a.outlet || "unknown"} · ${a.date}`,
+    a.topic ? `About: ${a.topic}` : "",
     a.summary ? `Summary: ${a.summary}` : "",
     a.text ? `${a.official ? "Official numbers" : "Article text"}: ${a.text}` : "",
   ].filter(Boolean).join("\n")).join("\n\n");
 }
 
-async function askGemini(apiKey, model, prompt) {
+async function askGemini(apiKey, model, prompt, system = RULES) {
   const res = await fetch(`${API}${model}:generateContent`, {
     method: "POST",
     headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
     body: JSON.stringify({
-      systemInstruction: { parts: [{ text: RULES }] },
+      systemInstruction: { parts: [{ text: system }] },
       contents: [{ role: "user", parts: [{ text: prompt }] }],
       generationConfig: { responseMimeType: "application/json" },
     }),
@@ -133,14 +135,22 @@ async function simplify(apiKey, model, prompt, articles, brief) {
 }
 
 // symbol: what was searched, e.g. "NASDAQ:NFLX".
-// beforeAI runs once the news is gathered and just before Gemini is used, so the daily limits
-// only count real briefs (typos and stocks with no news don't use up the day's briefs).
-export async function writeBrief(apiKey, symbol, model, { beforeAI } = {}) {
+// beforeAI runs just before Gemini is first used, so the daily limits only count real briefs
+// (typos and stocks with no news don't use up the day's briefs; index.js gives a fund's count back if it has no news).
+// listing: the ticker's row on the site's stock list (funds.js); a fund gets a brief built from its holdings' news.
+export async function writeBrief(apiKey, symbol, model, { beforeAI, listing, kv } = {}) {
   const ticker = symbol.split(":").pop();
-  const articles = await gatherNews(ticker);
+  let counted = false;
+  const startAI = async () => { if (!counted && beforeAI) { counted = true; await beforeAI(); } };
+  let fund = null;
+  if (listing?.fund) {
+    await startAI();
+    fund = await fundInfo(listing, { kv, ask: (system, prompt) => askGemini(apiKey, model, prompt, system) });
+  }
+  const articles = await gatherNews(ticker, fund);
   if (articles.filter(a => !a.official).length < 3) throw new BriefError(`only ${articles.length} recent articles`, "no-news");
-  if (beforeAI) await beforeAI();
-  const prompt = `Write the news brief for ${symbol}.\n\nArticles:\n\n${articleBlock(articles)}`;
+  await startAI();
+  const prompt = `Write the news brief for ${symbol}.${fund ? `\n\n${fundNote(fund)}` : ""}\n\nArticles:\n\n${articleBlock(articles)}`;
   let lastError;
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
@@ -150,6 +160,7 @@ export async function writeBrief(apiKey, symbol, model, { beforeAI } = {}) {
       // Education only: a brief that still gives buy/sell advice after the rewrite is never shown.
       if (givesAdvice(brief)) throw new Error("brief gives buy/sell advice");
       delete brief.sourceNumbers;
+      if (fund) { brief.fund = true; brief.name = brief.name || fund.name; }
       return brief;
     } catch (e) {
       if (e instanceof BriefError) throw e;
