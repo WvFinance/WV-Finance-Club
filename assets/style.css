@@ -912,3 +912,7 @@ html.nointro #intro{display:none}
   .fdav{width:32px;height:32px;font-size:11px}
   .fdchips{margin-bottom:8px}
 }
+
+/* Logo and search bar stay at the top while scrolling, with the tabs right under them. */
+.mast{position:sticky;top:0;z-index:7}
+.tabs{top:var(--masth,0px)}
