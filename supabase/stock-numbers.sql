@@ -25,6 +25,8 @@ declare
   m jsonb := '{}';
   e jsonb;
   got jsonb;
+  q jsonb;
+  eps4 numeric;
 begin
   if auth.uid() is null then raise exception 'Log in first.'; end if;
   select * into c from public.stock_numbers_cache where symbol = s;
@@ -35,6 +37,14 @@ begin
     select * into res from extensions.http_get('https://finnhub.io/api/v1/stock/metric?metric=all&symbol=' || s || '&token=' || key);
     if res.status <> 200 then return coalesce(c.numbers, jsonb_build_object('symbol', s)); end if;
     m := jsonb_strip_nulls(coalesce(res.content::jsonb->'metric', '{}'));
+    -- Profit per share for the last 4 quarters added up, counting one-time gains and losses too.
+    -- This is how TradingView and Yahoo get their P/E, so we can show one whenever they do.
+    q := coalesce(res.content::jsonb->'series'->'quarterly'->'eps', '[]');
+    if jsonb_typeof(q) = 'array' and jsonb_array_length(q) >= 4 then
+      select case when count(*) = 4 and max(d) > current_date - 200 then sum(v) end into eps4
+        from (select (x->>'period')::date d, (x->>'v')::numeric v from jsonb_array_elements(q) x
+              where x->>'v' is not null order by 1 desc limit 4) t;
+    end if;
     select * into res from extensions.http_get('https://finnhub.io/api/v1/calendar/earnings?from=' || current_date
       || '&to=' || (current_date + 120) || '&symbol=' || s || '&token=' || key);
     if res.status = 200 then
@@ -46,8 +56,9 @@ begin
   end;
   got := jsonb_strip_nulls(jsonb_build_object(
     'symbol', s,
-    'pe', coalesce(m->'peTTM', m->'peBasicExclExtraTTM', m->'peNormalizedAnnual'),
-    'eps', coalesce(m->'epsTTM', m->'epsBasicExclExtraItemsTTM'),
+    'pe', coalesce(m->'peTTM', m->'peInclExtraTTM', m->'peExclExtraTTM', m->'peBasicExclExtraTTM'),
+    'eps4', round(eps4, 4),
+    'eps', coalesce(m->'epsTTM', m->'epsInclExtraItemsTTM', m->'epsExclExtraItemsTTM', m->'epsBasicExclExtraItemsTTM'),
     'divYield', coalesce(m->'currentDividendYieldTTM', m->'dividendYieldIndicatedAnnual'),
     'divPerShare', coalesce(m->'dividendPerShareTTM', m->'dividendPerShareAnnual'),
     'marketCap', m->'marketCapitalization',
@@ -66,3 +77,6 @@ end $$;
 
 revoke all on function public.stock_numbers(text) from public, anon;
 grant execute on function public.stock_numbers(text) to authenticated;
+
+-- Forget saved numbers so every stock gets the new P/E right away (they're fetched again on the next look).
+delete from public.stock_numbers_cache;

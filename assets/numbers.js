@@ -24,8 +24,8 @@ const ROWS=[
   {k:"Price",m:"What one share costs right now.",f:d=>money(d.p)},
   {k:"Company size",m:"What the whole company is worth (all its shares added up).",f:d=>bigMoney(num(d.n.marketCap))},
   {k:"P/E (price vs. profit)",m:"How many dollars you pay for each $1 the company earns in a year. Higher means people expect more growth.",
-    f:d=>{const v=num(d.n.pe);return v==null||v<=0?(v!=null?"Losing money":"—"):v.toFixed(1)+"×";}},
-  {k:"Profit per share (EPS)",m:"The company's profit for the last year, split across every share.",f:d=>money(num(d.n.eps))},
+    f:d=>{const v=peOf(d);return v==null?"—":v<=0?"No profit yet":v.toFixed(1)+"×";}},
+  {k:"Profit per share (EPS)",m:"The company's profit for the last year, split across every share.",f:d=>money(num(d.n.eps)??num(d.n.eps4))},
   {k:"Dividend",m:"Cash the company pays you each year just for owning the stock.",
     f:d=>{const y=num(d.n.divYield),ps=num(d.n.divPerShare);if(!y&&!ps)return"None";return pct(y)+" a year"+(ps?` (${money(ps)}/share)`:"");}},
   {k:"Profit margin",m:"How many cents of each $1 in sales the company keeps as profit.",f:d=>{const v=num(d.n.margin);return v==null?"—":Math.round(v)+"¢ per $1";}},
@@ -37,6 +37,12 @@ const ROWS=[
   {k:"Next earnings",m:"The day the company reports its profits. The stock often jumps or drops right after.",
     f:d=>{if(!d.n.earnDate)return"Not announced yet";const dt=new Date(d.n.earnDate+"T12:00:00");
       return dt.toLocaleDateString("en-US",{month:"short",day:"numeric",year:dt.getFullYear()!==new Date().getFullYear()?"numeric":undefined})+(d.n.earnHour==="bmo"?" · before open":d.n.earnHour==="amc"?" · after close":"");}}];
+
+// P/E like TradingView and Yahoo show it: Finnhub's own number first. If Finnhub has none, work it out from
+// the last 4 quarters of profit (one-time gains count too). 0 or less means the company lost money.
+function peOf(d){const pe=num(d.n.pe);if(pe!=null&&pe>0)return pe;
+  const e=num(d.n.eps4)??num(d.n.eps);if(e==null)return pe!=null?0:null;
+  return e<=0?0:d.p!=null?d.p/e:null;}
 
 function range(d){const lo=num(d.n.low52),hi=num(d.n.high52),p=d.p;if(lo==null||hi==null)return"—";
   const at=p!=null&&hi>lo?Math.min(1,Math.max(0,(p-lo)/(hi-lo))):null;
