@@ -610,7 +610,10 @@ const liveBriefs={};
 async function loadLiveBrief(sym){
   const t=bare(sym);if(liveBriefs[t])return;liveBriefs[t]={loading:true};
   let r;
-  try{r=await fetch(`${CFG.briefApi.replace(/\/$/,"")}/brief?symbol=${encodeURIComponent(sym)}`);}
+  const url=`${CFG.briefApi.replace(/\/$/,"")}/brief?symbol=${encodeURIComponent(sym)}`;
+  try{r=await fetch(url);
+    // A brief that fails for a passing reason (the free AI was busy) gets one quiet second try.
+    if(r.status===502){await new Promise(ok=>setTimeout(ok,3000));r=await fetch(url);}}
   catch(e){liveBriefs[t]={error:"The brief couldn't be loaded. Check your connection and try again."};}
   if(r){let b=null;try{b=await r.json();}catch(e){}
     liveBriefs[t]=r.ok&&b?b:{error:(b&&b.error)||"The brief couldn't be written right now. Try again in a minute."};}
