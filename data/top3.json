@@ -1,0 +1,13 @@
+{
+ "updated": "2026-11-16T21:50:16Z",
+ "analysts": [
+  {"ticker": "ANET", "name": "Arista Networks", "price": 187.02, "week": 0.5, "why": "30 of 30 Wall Street experts say Buy. Their average price goal is $250, 33% above today's price.", "buy": 30, "analysts": 30, "target": 249.65},
+  {"ticker": "DAL", "name": "Delta Air Lines", "price": 86.6, "week": -5.7, "why": "24 of 25 Wall Street experts say Buy. Their average price goal is $101, 17% above today's price.", "buy": 24, "analysts": 25, "target": 100.98},
+  {"ticker": "AMZN", "name": "Amazon.com", "price": 257.75, "week": -3.4, "why": "59 of 62 Wall Street experts say Buy. Their average price goal is $326, 27% above today's price.", "buy": 59, "analysts": 62, "target": 326.29}
+ ],
+ "movers": [
+  {"ticker": "CHTR", "name": "Charter Communications", "price": 138.95, "week": 14.6, "why": "Up 14.6% in the last 5 market days, with mostly good news this week.", "headline": {"title": "Charter Communications (CHTR) Expands Enterprise Reach With Managed Secure Networking Launch", "url": "https://finance.yahoo.com/technology/articles/charter-communications-chtr-expands-enterprise-060807602.html", "source": "Simply Wall St.", "date": "2026-11-15"}},
+  {"ticker": "COST", "name": "Costco Wholesale", "price": 1113.74, "week": 4.5, "why": "Up 4.5% in the last 5 market days, with mostly good news this week.", "headline": {"title": "Costco Hits 52-Week High on Strong Sales and Special Dividend", "url": "https://finance.yahoo.com/markets/stocks/articles/costco-hits-52-week-high-151000309.html", "source": "Zacks", "date": "2026-11-16"}},
+  {"ticker": "KR", "name": "Kroger", "price": 70.67, "week": 3.9, "why": "Up 3.9% in the last 5 market days, with mostly good news this week.", "headline": {"title": "Impinj Sees Unprecedented Food Industry Interest as Kroger Expands RFID Deployment", "url": "https://finance.yahoo.com/technology/articles/impinj-sees-unprecedented-food-industry-091456974.html", "source": "MarketBeat", "date": "2026-11-13"}}
+ ]
+}

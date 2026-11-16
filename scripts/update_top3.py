@@ -79,6 +79,7 @@ def names():
 def short_name(n, tk):
     n = re.sub(r",?\s+(Inc\.?|Incorporated|Corporation|Corp\.?|Company|Co\.?|Ltd\.?|plc|Holdings?|Class [A-C]|N\.V\.|S\.A\.|"
                r"Common Stock|Ordinary Shares|\(The\)|Group)\b\.?", "", n or "", flags=re.I).strip(" ,.")
+    n = re.sub(r"\s*\(The\)\s*", " ", n).strip()
     return n or tk
 
 
