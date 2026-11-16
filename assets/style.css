@@ -972,3 +972,25 @@ html.nointro #intro{display:none}
   .t3why{font-size:13px}
   .t3btns .btn{padding:4px 12px}
 }
+
+/* Search page: "What Wall Street experts say" box under the watchlist (assets/ratings.js) */
+.rate .eyebrow{margin-bottom:8px}
+.rt-msg{margin:0}
+.rt-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:10px}
+.rt-word{font-family:var(--f-display);font-size:22px;font-weight:700;line-height:1.1}
+.rt-word.up{color:var(--up)} .rt-word.down{color:var(--down)} .rt-word.flat{color:var(--flat)}
+.rt-rows{display:grid;gap:6px}
+.rt-row{display:grid;grid-template-columns:78px minmax(0,1fr) 26px;gap:8px;align-items:center;font-size:13px}
+.rt-k{color:var(--ink-2);font-size:13px}
+.rt-n{text-align:right;font-family:var(--f-mono);font-size:13px}
+.rt-bar{height:8px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.rt-bar i{display:block;height:100%;border-radius:999px;min-width:2px}
+.rt-sb{background:var(--up)} .rt-b{background:color-mix(in srgb,var(--up) 60%,var(--surface-2))}
+.rt-h{background:var(--flat)} .rt-s{background:color-mix(in srgb,var(--down) 60%,var(--surface-2))} .rt-ss{background:var(--down)}
+.rt-goal{border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
+.rt-gl{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.rt-gl b{font-family:var(--f-mono);font-size:15px}
+.rt-gd{font-size:13px;font-weight:600} .rt-gd.up{color:var(--up)} .rt-gd.down{color:var(--down)}
+.rt-goal .meta{margin:4px 0 0}
+.rt-foot{margin:10px 0 0}
+@media (max-width:600px){.rate{padding:14px}.rt-word{font-size:19px}.rt-top{margin-bottom:8px}.rt-rows{gap:5px}}

@@ -7,6 +7,7 @@ import { handleSuggest } from "./suggest.js";
 import { handleSupabase } from "./proxy.js";
 import { handleCongress } from "./congress.js";
 import { findListing } from "./funds.js";
+import { handleRatings } from "./ratings.js";
 
 const DAY = 24 * 60 * 60;
 
@@ -63,6 +64,8 @@ export default {
     if (suggest) return suggest;
     const congress = await handleCongress(request, env, url, json, headers);
     if (congress) return congress;
+    const ratings = await handleRatings(request, env, url, json, headers);
+    if (ratings) return ratings;
     if (url.pathname === "/news-check") {
       // Test page for the Test brief server workflow. No AI, but it calls the SEC and the
       // news sites, so it's capped per day to keep the server in good standing with them.
