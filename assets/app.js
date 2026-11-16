@@ -388,14 +388,14 @@ function renderPortfolio(){renderMarket();renderTiles();renderCompare();renderEv
 
 /* ---------- Search ---------- */
 function normSym(raw){const v=String(raw||"").trim().toUpperCase().replace(/\s+/g,"");if(!v)return null;if(!/^[A-Z0-9.:\-!_]{1,24}$/.test(v))return null;return v;}
-function openStock(sym){S.tk=sym;store.set("wvfc.tk",sym);if(!$("#search").hidden)renderSearch();renderWatch();renderQuick();}
+function openStock(sym){S.tk=sym;store.set("wvfc.tk",sym);if(!$("#search").hidden)renderSearch();renderWatch();}
 function renderSearch(){
   const sym=S.tk,theme=tvTheme();rendered.search=sym+theme;
   tv($("#tv-info"),"symbol-info",{symbol:sym,width:"100%",colorTheme:theme,isTransparent:true,largeChartUrl:SELF});
   tv($("#tv-chart"),"advanced-chart",{autosize:true,symbol:sym,interval:"D",timezone:"America/Chicago",theme,style:"1",allow_symbol_change:true,calendar:false,hide_volume:false,studies:[],support_host:"https://www.tradingview.com"});
   document.querySelectorAll(".drop [data-sym]").forEach(e=>e.textContent=bare(sym));
   renderDrops();
-  renderWatch();renderSearchBrief();renderQuick();
+  renderWatch();renderSearchBrief();
   document.dispatchEvent(new CustomEvent("wvfc:stock",{detail:bare(sym)}));
 }
 // The dropdowns load their widget only when open, and reload when the stock changes.
@@ -406,11 +406,6 @@ function renderDrops(){
   if(feed.open&&rendered.feed!==sym){rendered.feed=sym;recentNews($("#tv-feed"),newsKey(sym),()=>tv($("#tv-feed"),"timeline",{feedMode:"symbol",symbol:sym,colorTheme:theme,isTransparent:true,displayMode:"regular",width:"100%",height:"100%"}));}
 }
 $("#drop-fin").addEventListener("toggle",renderDrops);$("#drop-feed").addEventListener("toggle",renderDrops);
-function renderQuick(){
-  const q=$("#quick");q.replaceChildren(el("span",{text:"Try:"}));
-  const list=[...new Set(S.picks.map(p=>p.symbol||p.ticker).concat(["NASDAQ:AAPL","NASDAQ:NVDA","NASDAQ:MSFT","NASDAQ:AMZN","NASDAQ:TSLA","NYSE:JPM","NASDAQ:COST","NYSE:KO"]))].slice(0,10);
-  list.forEach(s=>q.append(el("button",{class:"qchip"+(bare(s)===bare(S.tk)?" on":""),type:"button",text:bare(s),onclick:()=>openStock(s)})));
-}
 if(phoneMQ.matches)$("#q").placeholder="Name or ticker, like Nvidia";
 /* ---------- Search suggestions: the top 3 matches by name or ticker ---------- */
 // data/stocks.json is the SEC's list of US stocks and funds, biggest first (updated weekly by GitHub Actions).
@@ -749,7 +744,7 @@ function renderHomeNews(){
 }
 
 async function boot(){
-  renderWatch();renderQuick();
+  renderWatch();
   const [sl,nw,px,mc]=await Promise.allSettled([loadJSON("data/schools.json"),loadJSON("data/news.json"),loadJSON("data/prices.json"),loadJSON("data/market-calendar.json")]);
   if(mc.status==="fulfilled")S.marketCal=mc.value.events||[];
   if(px.status==="fulfilled"&&px.value&&px.value.closes)S.prices=px.value;
