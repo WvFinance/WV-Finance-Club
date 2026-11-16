@@ -3,12 +3,11 @@
 //  * a bottom tab bar on phones that works the same as the tabs at the top
 (function(){
 "use strict";
-const root=document.documentElement,isMe=()=>root.dataset.school==="me";
 const P={home:"M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z",trade:"M7 4v16M3 8l4-4 4 4M17 20V4M13 16l4 4 4-4",
   news:"M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2M8 9h5M8 13h5",feed:"M16 19v-1a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v1M9 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6M22 19v-1a4 4 0 0 0-3-3.9M16 4.1a3 3 0 0 1 0 5.8",
   top3:"M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 6h3v2a3 3 0 0 1-3 3M7 6H4v2a3 3 0 0 0 3 3",board:"M4 20V10M10 20V4M16 20v-7M22 20H2"};
 const ICON={portfolio:"home",mine:"home",trade:"trade",news:"news",feed:"feed",top3:"top3",district:"board"};
-const SHORT={trade:"Trade",top3:"Top 3"};
+const SHORT={portfolio:"Class",trade:"Trade",top3:"Top 3"};
 const svg=d=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"/></svg>`;
 
 /* Bottom tab bar */
@@ -17,7 +16,8 @@ const shown=t=>!t.hidden&&getComputedStyle(t).display!=="none";
 function buildBar(){
   const tabs=[...document.querySelectorAll(".tabs .tab")].filter(t=>!t.hidden&&ICON[t.dataset.tab]).slice(0,5);
   bar.replaceChildren(...tabs.map(t=>{const b=document.createElement("button");b.type="button";b.dataset.tab=t.dataset.tab;
-    const label=SHORT[t.dataset.tab]||(t.firstChild&&t.firstChild.nodeType===3?t.firstChild.textContent:t.textContent).trim();
+    const c=t.cloneNode(true);c.querySelectorAll(".count,.caret,.fddot").forEach(x=>x.remove());
+    const label=SHORT[t.dataset.tab]||c.textContent.trim().replace(/^My Portfolio$/,"Mine");
     b.innerHTML=svg(P[ICON[t.dataset.tab]])+`<span></span>`+(t.querySelector(".fddot")?'<i class="dot"></i>':"");b.querySelector("span").textContent=label;
     b.addEventListener("click",()=>{t.click();scrollTo(0,0);});return b;}));
   syncBar();}
