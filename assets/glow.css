@@ -1,0 +1,47 @@
+/* Midnight Glow look for Simple Street "Just me" accounts (html[data-school="me"]).
+   Same layout as before: only colors, glow and card style change. Class accounts keep school colors.
+   Also: friend bubbles on Home and a bottom tab bar on phones (assets/glow.js). */
+html[data-school="me"]{--surface:rgba(22,36,74,.5);--surface-2:rgba(127,176,255,.08);--line:rgba(127,176,255,.15);--r:16px}
+html[data-school="me"] body{background:radial-gradient(900px 520px at 12% -8%,rgba(47,123,255,.32),transparent 60%),radial-gradient(760px 520px at 100% 6%,rgba(124,92,255,.20),transparent 60%),radial-gradient(900px 600px at 50% 112%,rgba(51,211,145,.08),transparent 60%),#060b1c;background-attachment:fixed}
+html[data-school="me"] .mast{background:rgba(6,11,28,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(127,176,255,.12)}
+html[data-school="me"] .tape{background:transparent;border-bottom-color:rgba(127,176,255,.10)}
+html[data-school="me"] .tabs{background:rgba(6,11,28,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(127,176,255,.14)}
+html[data-school="me"] .tabs .wrap{padding-block:8px;gap:6px}
+html[data-school="me"] .tab{padding:9px 16px;border-radius:12px;border-bottom:0}
+html[data-school="me"] .tab[aria-selected="true"]{color:#fff;background:linear-gradient(135deg,#2f7bff,#6a5cff);box-shadow:0 8px 22px -8px rgba(47,123,255,.9)}
+html[data-school="me"] .tab[aria-selected="true"] .caret{border-color:#fff}
+html[data-school="me"] .tab[aria-selected="true"] .count{color:#dce8ff}
+html[data-school="me"] .panel,html[data-school="me"] .tile{background:linear-gradient(180deg,rgba(30,48,96,.55),rgba(14,24,52,.55));border-color:rgba(127,176,255,.15);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 20px 50px -24px rgba(0,0,0,.7)}
+html[data-school="me"] #mine-chart{border-color:rgba(127,176,255,.38);box-shadow:0 0 0 1px rgba(127,176,255,.08),0 30px 80px -34px rgba(47,123,255,.75)}
+html[data-school="me"] #mine-chart path[stroke-width="3"]{stroke:#8fbcff;filter:drop-shadow(0 0 5px rgba(127,176,255,.85))}
+html[data-school="me"] #mine-tiles .tile:first-child{border-color:rgba(127,176,255,.38);background:linear-gradient(160deg,rgba(47,123,255,.30),rgba(106,92,255,.14))}
+html[data-school="me"] .tile .v.up{text-shadow:0 0 18px rgba(51,211,145,.45)}
+html[data-school="me"] .btn.primary{background:linear-gradient(135deg,#2f7bff,#6a5cff);border-color:transparent;box-shadow:0 8px 22px -8px rgba(47,123,255,.9)}
+html[data-school="me"] .ptboard li.me{background:linear-gradient(90deg,rgba(47,123,255,.28),rgba(106,92,255,.12))}
+
+/* Friend bubbles at the top of Home */
+.ssbub{display:none}
+html[data-school="me"] .ssbub{display:flex;gap:16px;overflow-x:auto;padding:8px 6px 6px;margin:-4px -6px 14px;scrollbar-width:none}
+.ssbub::-webkit-scrollbar{display:none}
+.ssbub button{appearance:none;border:0;background:none;color:var(--ink-2);font:inherit;font-size:12.5px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;flex:none;width:64px}
+.ssbub .av{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:17px;color:#0b1530;background:var(--c,#7fb0ff);box-shadow:0 0 0 3px #070d1f,0 0 0 5.5px var(--ring,#7fb0ff),0 0 18px 3px color-mix(in srgb,var(--ring,#7fb0ff) 45%,transparent)}
+.ssbub .add .av{background:linear-gradient(135deg,#2f7bff,#6a5cff);color:#fff;font-size:26px;font-weight:400;box-shadow:0 0 0 3px #070d1f,0 0 0 5px rgba(127,176,255,.3)}
+.ssbub .nm{max-width:64px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ssbub .pc{font-family:var(--f-mono);font-size:11px;margin-top:-4px}
+.ssbub .pc.up{color:var(--up)}.ssbub .pc.down{color:var(--down)}
+
+/* Bottom tab bar on phones */
+.ssbbar{display:none}
+@media(max-width:600px){
+  html[data-school="me"] .tabs{display:none}
+  html[data-school="me"] .ssbbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9;justify-content:space-around;padding:6px 4px calc(8px + env(safe-area-inset-bottom,0px));background:rgba(8,14,34,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(127,176,255,.18)}
+  html[data-school="me"] body{padding-bottom:72px}
+  .ssbbar button{appearance:none;border:0;background:none;color:var(--muted);font:600 10.5px var(--f-body);display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;padding:4px 0;cursor:pointer;position:relative}
+  .ssbbar svg{width:22px;height:22px}
+  .ssbbar button[aria-current="page"]{color:#fff}
+  .ssbbar button[aria-current="page"] svg{color:#8fbcff;filter:drop-shadow(0 0 6px rgba(127,176,255,.9))}
+  .ssbbar .dot{position:absolute;top:2px;left:calc(50% + 8px);width:7px;height:7px;border-radius:50%;background:var(--down)}
+  html[data-school="me"] .ssbub{gap:10px}html[data-school="me"] .ssbub .av{width:48px;height:48px;font-size:15px}html[data-school="me"] .ssbub button{width:56px}
+}
+html[data-school="me"] .invitebtn{background:linear-gradient(135deg,#2f7bff,#6a5cff);border-color:transparent;box-shadow:0 8px 22px -8px rgba(47,123,255,.9);color:#fff}
+html[data-school="me"] .ssbub+*{margin-top:0}
