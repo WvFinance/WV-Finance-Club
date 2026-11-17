@@ -2,7 +2,7 @@
 // shows the last saved copy of the page if the internet drops.
 // It always asks the network first, so updates show up right away.
 // It never touches logins, trades or the news server (/api), or other sites.
-const CACHE = "ss-app-v2";
+const CACHE = "ss-app-v3";
 const SHELL = ["./", "index.html", "manifest.webmanifest", "assets/app/favicon-32.png", "assets/app/icon-192.png"];
 
 self.addEventListener("install", e => {
@@ -22,8 +22,11 @@ self.addEventListener("fetch", e => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
   if (url.pathname.startsWith("/api/") || url.pathname.startsWith("/data/")) return;
+  // Ask the server if the page changed instead of using the browser's 10-minute copy,
+  // so a site update shows on the next normal refresh.
+  const fresh = req.mode === "navigate" || /\.(html|css|js)$/.test(url.pathname) ? fetch(req.url, { cache: "no-cache", credentials: "same-origin" }) : fetch(req);
   e.respondWith(
-    fetch(req).then(res => {
+    fresh.then(res => {
       if (res.ok && res.type === "basic") {
         const copy = res.clone();
         caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
