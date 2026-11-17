@@ -24,7 +24,7 @@ self.addEventListener("fetch", e => {
   if (url.pathname.startsWith("/api/") || url.pathname.startsWith("/data/")) return;
   // Ask the server if the page changed instead of using the browser's 10-minute copy,
   // so a site update shows on the next normal refresh.
-  const fresh = req.mode === "navigate" || /\.(html|css|js)$/.test(url.pathname) ? fetch(req, { cache: "no-cache" }) : fetch(req);
+  const fresh = req.mode === "navigate" || /\.(html|css|js)$/.test(url.pathname) ? fetch(req.url, { cache: "no-cache", credentials: "same-origin" }) : fetch(req);
   e.respondWith(
     fresh.then(res => {
       if (res.ok && res.type === "basic") {
