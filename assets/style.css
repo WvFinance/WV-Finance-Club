@@ -687,7 +687,7 @@ tr.flash td{background:var(--down-soft);transition:background .4s}
 .fdwholist{list-style:none;margin:12px 0 0;padding:0}
 .fdwholist li{display:grid;grid-template-columns:38px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
 .fdwholist li:first-child{border-top:0}
-.fdwl{min-width:0}.fdwl .fdname{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fdwl{min-width:0}.fdwl .fdname{overflow-wrap:anywhere}
 .fdmost li{grid-template-columns:44px minmax(0,1fr) auto}
 .ptlabel .opt{font-weight:400;color:var(--muted)}
 .fdyours{font-size:12px;font-weight:700;color:var(--gold);background:var(--gold-soft);border-radius:999px;padding:2px 9px;white-space:nowrap}
