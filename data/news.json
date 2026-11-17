@@ -3,7 +3,7 @@
  "briefs": [
   {
    "bear": [
-    "The 10-year Treasury rate is back above 5% at 5.15%, so bonds pay more and some investors move money out of stocks.",
+    "The 10-year Treasury rate is above 5%, at about 5.12%, so bonds pay more and some investors move money out of stocks.",
     "The VIX 'fear gauge' jumped about 20% to 23.1 Monday, a sign traders expect bigger swings in the days ahead.",
     "Fed Governor Michelle Bowman warned about how much companies are borrowing, which matters because big tech firms borrow heavily to build AI data centers."
    ],
@@ -44,7 +44,7 @@
      "date": "Nov 16, 2026"
     }
    ],
-   "summary": "The 10-year Treasury rate, what the government pays to borrow for 10 years, rose to 5.15%, making safer bonds more attractive compared to stocks. Bank of America, Citigroup, Wells Fargo and JPMorgan each fell about 2% after app and payment outages. On Friday, October producer prices (what businesses charge each other) were up 6.5% from a year ago, the biggest jump since November 2022. Not everything fell: Tyson Foods jumped 8.7% after beating its sales and profit targets.",
+   "summary": "The 10-year Treasury rate, what the government pays to borrow for 10 years, is still high at about 5.12% after jumping last week, making safer bonds more attractive compared to stocks. Bank of America, Citigroup, Wells Fargo and JPMorgan each fell about 2% after app and payment outages. On Friday, October producer prices (what businesses charge each other) were up 6.5% from a year ago, the biggest jump since November 2022. Not everything fell: Tyson Foods jumped 8.7% after beating its sales and profit targets.",
    "ticker": "SP500",
    "updatedAt": "2026-11-16T23:05:24.752Z",
    "symbol": "AMEX:SPY",
@@ -63,8 +63,8 @@
     },
     {
      "label": "10-year rate",
-     "value": "5.15%",
-     "note": "up 0.05 points, Nov 16"
+     "value": "5.12%",
+     "note": "down a little, Nov 16"
     },
     {
      "label": "Fear gauge (VIX)",
@@ -72,7 +72,7 @@
      "note": "up about 20% Monday"
     }
    ],
-   "whyMoved": "The S&P 500 fell 145 points, or 1.92%, from 7,561.67 on Friday, November 13 to 7,416.59 on Monday, November 16, wiping out much of last week's 2.5% gain. Nvidia, one of its biggest companies, fell 4.1% to $156.14 after reports its board is not thinking about bringing back Jensen Huang, who resigned as CEO last Thursday. New US rules limiting advanced AI chip sales to Southeast Asia also pushed AMD down 5.6%. Because a handful of giant tech companies make up a big share of the S&P 500, when Alphabet (down 3.8%), Amazon (down 3.3%) and Meta (down 2.4%) all slide together, the whole index drops even if many other companies are fine.",
+   "whyMoved": "The S&P 500 fell 145 points, or 1.92%, from 7,561.67 on Friday, November 13 to 7,416.59 on Monday, November 16, wiping out much of last week's 2.5% gain. Nvidia, one of its biggest companies, fell 4.1% to $156.14 as investors worried about its leadership after Jensen Huang resigned as CEO last Thursday (reports say he may come back). New US rules limiting advanced AI chip sales to Southeast Asia also pushed AMD down 5.6%. Because a handful of giant tech companies make up a big share of the S&P 500, when Alphabet (down 3.8%), Amazon (down 3.3%) and Meta (down 2.4%) all slide together, the whole index drops even if many other companies are fine.",
    "watch": [
     {
      "date": "Nov 17",
@@ -155,7 +155,7 @@
      "note": "down 5.6% Monday"
     }
    ],
-   "whyMoved": "The Nasdaq fell 627 points, or 2.49%, from 25,136.27 on Friday, November 13 to 24,509.76 on Monday, November 16, and the Motley Fool said it has now entered a correction, meaning a drop of 10% or more from its high. Nvidia fell 4.1% after reports its board won't bring back ex-CEO Jensen Huang, and new US limits on AI chip sales to Southeast Asia pushed AMD down 5.6% and Intel down 7%. The Nasdaq is packed with tech companies whose stock prices are based on big hopes for future AI profits. When those hopes get shakier, or when safer bonds pay more (the 10-year rate hit 5.15%), these stocks usually fall the hardest.",
+   "whyMoved": "The Nasdaq fell 627 points, or 2.49%, from 25,136.27 on Friday, November 13 to 24,509.76 on Monday, November 16, and the Motley Fool said it has now entered a correction, meaning a drop of 10% or more from its high. Nvidia fell 4.1% as investors worried about its leadership after CEO Jensen Huang resigned last week, and new US limits on AI chip sales to Southeast Asia pushed AMD down 5.6% and Intel down 7%. The Nasdaq is packed with tech companies whose stock prices are based on big hopes for future AI profits. When those hopes get shakier, or when safer bonds pay more (the 10-year rate is about 5.12%), these stocks usually fall the hardest.",
    "watch": [
     {
      "date": "Nov 17",
@@ -849,8 +849,8 @@
    ],
    "bear": [
     "JPMorgan fell about 2% after outages delayed some transactions, a hit to one of the Dow's biggest banks.",
-    "Nvidia, a Dow member since 2024, faces a leadership crisis after its CEO resigned, and reports Monday said its board won't bring him back.",
-    "The 10-year Treasury rate at 5.15% raises borrowing costs for the big companies in the Dow."
+    "Nvidia, a Dow member since 2024, faces a leadership crisis after its CEO resigned last week, though reports say he may come back.",
+    "The 10-year Treasury rate near 5.1% raises borrowing costs for the big companies in the Dow."
    ],
    "nextEvent": "Nvidia's quarterly earnings report on Tuesday, November 17, 2026",
    "sources": [
@@ -927,7 +927,7 @@
     "The Russell 2000 fell 1.70% Monday, less than the Nasdaq's 2.49%, because it holds fewer giant AI stocks."
    ],
    "bear": [
-    "The 10-year Treasury rate rose to 5.15%, and small companies often depend more on loans, so rising rates hurt them the most.",
+    "The 10-year Treasury rate is still high at about 5.12%, and small companies often depend more on loans, so high rates hurt them the most.",
     "Traders see about a 90% chance of a December Fed rate hike, which would raise borrowing costs further.",
     "Small AI and crypto-linked companies like Navitas (-11.8%) and IREN (-10%) dropped sharply, dragging the index."
    ],
@@ -974,8 +974,8 @@
     },
     {
      "label": "10-year rate",
-     "value": "5.15%",
-     "note": "back above 5%"
+     "value": "5.12%",
+     "note": "down a little, Nov 16"
     },
     {
      "label": "Navitas Semi",
@@ -983,7 +983,7 @@
      "note": "Monday drop"
     }
    ],
-   "whyMoved": "The Russell 2000 fell 47.55 points, or 1.70%, from 2,790.49 on Friday, November 13 to 2,742.94 on Monday, November 16, its third straight daily loss. Smaller AI-linked companies fell hard, like Navitas Semiconductor (down 11.8%), Applied Optoelectronics (down 9.9%) and Tempus AI (down 9.7%). The 10-year Treasury rate rose to 5.15%. Small companies usually borrow more than giant ones and pay higher interest, so when rates climb, more of their money goes to interest instead of profit.",
+   "whyMoved": "The Russell 2000 fell 47.55 points, or 1.70%, from 2,790.49 on Friday, November 13 to 2,742.94 on Monday, November 16, its third straight daily loss. Smaller AI-linked companies fell hard, like Navitas Semiconductor (down 11.8%), Applied Optoelectronics (down 9.9%) and Tempus AI (down 9.7%). The 10-year Treasury rate stayed high at about 5.12%, down slightly from 5.15% on Friday. Small companies usually borrow more than giant ones and pay higher interest, so when rates climb, more of their money goes to interest instead of profit.",
    "watch": [
     {
      "date": "Nov 17",
@@ -1081,7 +1081,7 @@
  ],
  "market": {
   "date": "2026-11-16",
-  "why": "On Monday, November 16, all four indexes fell as AI and chip stocks sold off again, led by Nvidia, down about 4% after reports its board won't bring back ex-CEO Jensen Huang. New US limits on selling advanced AI chips abroad hit AMD (down 5.6%), while Alphabet and Amazon each fell over 3%. The 10-year Treasury rate, what the government pays to borrow, rose to 5.15%, which weighs on smaller Russell 2000 companies that rely on loans.",
+  "why": "On Monday, November 16, all four indexes fell as AI and chip stocks sold off again, led by Nvidia, down about 4% as investors worried about its leadership after CEO Jensen Huang resigned last week (reports say he may return). New US limits on selling advanced AI chips abroad hit AMD (down 5.6%), while Alphabet and Amazon each fell over 3%. The 10-year Treasury rate, what the government pays to borrow, stayed high at about 5.12% (down slightly from 5.15% on Friday), which weighs on smaller Russell 2000 companies that rely on loans.",
   "sources": [
    {
     "title": "Stock market today: Dow and S&P 500 drop, Nasdaq sinks over 2% as Nvidia leads AI trade lower, Anthropic IPO looms",
