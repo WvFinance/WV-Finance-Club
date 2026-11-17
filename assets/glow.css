@@ -49,15 +49,79 @@ html[data-school] .ptboard li.me{background:linear-gradient(90deg,rgba(var(--gr)
 /* Home laid out like the Midnight Glow mockup (desktop): chart big on the left,
    number tiles on the right, friends leaderboard below. */
 @media(min-width:901px){
-  html[data-school] #mine-game:not([hidden]){display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);grid-template-areas:"chart tiles" "friends friends" "hold hold" "orders orders";gap:18px;align-items:start}
+  html[data-school] #mine-game:not([hidden]){display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);grid-template-areas:"chart tiles" "stocks friends" "hold hold" "orders orders";gap:18px;align-items:start}
   html[data-school] #mine-game .minerow{display:contents}
   html[data-school] #mine-chart{grid-area:chart;margin:0;align-self:stretch}
-  html[data-school] #mine-tiles{grid-area:tiles;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:14px;margin:0;align-self:stretch}
+  html[data-school] #mine-tiles{grid-area:tiles;display:grid;grid-template-columns:1fr;grid-auto-rows:1fr;gap:14px;margin:0;align-self:stretch}
   html[data-school] #mine-game:has(#mine-chart[hidden]){grid-template-areas:"tiles tiles" "friends friends" "hold hold" "orders orders"}
   html[data-school] #mine-game:has(#mine-chart[hidden]) #mine-tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
   html[data-school] #mine-friends{grid-area:friends;margin:0}
+  html[data-school] #mine-stockscard{grid-area:stocks;margin:0}
+  html[data-school] #mine-game:has(#mine-stockscard[hidden]),html[data-school] #mine-game:not(:has(#mine-stockscard)){grid-template-areas:"chart tiles" "friends friends" "hold hold" "orders orders"}
   html[data-school] #mine-hold{grid-area:hold;margin:0}
   html[data-school] #mine-orders{grid-area:orders;margin:0}
   html[data-school] #mine-game>*[hidden]{display:none}
   html[data-school] #mv-mine>.sechead h2{font-size:30px;letter-spacing:-.01em}
+}
+
+/* ---- Just me Home, Midnight Glow mockup pieces (paper.js renderHero / renderStocksCard / friends) ---- */
+html[data-school="me"] #mine-date{color:var(--gline);margin-bottom:4px}
+html[data-school="me"] #mv-mine>.sechead h2{font-size:32px;letter-spacing:-.01em}
+#mine-chart.hero .herov{font-family:var(--f-display);font-weight:800;font-size:44px;line-height:1.1;margin:6px 0 10px;font-variant-numeric:tabular-nums}
+.herogain{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hgpill{font-family:var(--f-mono);font-size:13px;font-weight:600;padding:5px 10px;border-radius:999px;background:rgba(51,211,145,.14);color:var(--up)}
+.hgpill.down{background:rgba(236,107,107,.14);color:var(--down)}
+.hrange{display:flex;gap:4px;margin:16px 0 6px}
+.hrange button{appearance:none;border:0;background:none;color:var(--muted);font:600 13px var(--f-body);padding:6px 11px;border-radius:8px;cursor:pointer}
+.hrange button.on{background:rgba(var(--gl),.12);color:#fff}
+.herochart{display:block;margin-top:6px}
+#mine-chart.hero .chartleg{margin-top:12px}
+#mine-chart.hero .chartleg i.ln{width:14px;height:3px;border-radius:2px;background:var(--gline)}
+#mine-chart.hero .chartleg i.ln.dash{background:repeating-linear-gradient(90deg,#9aa6c4 0 4px,transparent 4px 7px)}
+.cardhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:6px}
+.cardhead .h3{margin:0}
+.linkbtn.more{text-decoration:none;color:var(--gline);font-weight:600;font-size:14px;background:none;border:0;cursor:pointer}
+.stkcard,.frlist{list-style:none;margin:6px 0 0;padding:0}
+.stkcard li{border-top:1px solid var(--line)}
+.stkcard button{appearance:none;border:0;background:none;color:inherit;font:inherit;width:100%;display:flex;align-items:center;gap:12px;padding:11px 0;cursor:pointer;text-align:left}
+.stkcard .tkb{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-weight:700;background:rgba(var(--gl),.14);color:#fff;flex:none}
+.stkcard .nm{display:flex;flex-direction:column;flex:1;min-width:0}
+.stkcard .nm .meta{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0}
+.stkcard .spark{flex:none}
+.stkcard .rt{display:flex;flex-direction:column;align-items:flex-end;font-variant-numeric:tabular-nums;min-width:78px}
+.stkcard .rt span{font-family:var(--f-mono);font-size:12.5px}
+.stkcard .up{color:var(--up)}.stkcard .down{color:var(--down)}.stkcard .flat{color:var(--muted)}
+.frlist li{display:flex;align-items:center;gap:12px;padding:10px 10px;border-top:1px solid var(--line);border-radius:10px}
+.frlist li.me{background:rgba(var(--gr),.22);border-top-color:transparent}
+.frlist .r{width:18px;color:var(--muted);font-family:var(--f-mono)}
+.frlist .fav{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:12.5px;color:#0b1530;background:var(--c);flex:none}
+.frlist .n{flex:1;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.frlist .g{font-family:var(--f-mono);font-size:13px}.frlist .g.up{color:var(--up)}.frlist .g.down{color:var(--down)}
+/* news as cards */
+html[data-school="me"] #mine-news .homenews{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:10px}
+html[data-school="me"] #mine-news .homenews li{border:1px solid rgba(var(--gl),.14);border-radius:14px;background:rgba(var(--gp1),.35)}
+html[data-school="me"] #mine-news .homenews button{padding:16px}
+html[data-school="me"] #mine-news .homenews .tkp{background:rgba(var(--gl),.14);color:var(--gline);display:table;margin-bottom:8px}
+/* tabs as a rounded pill bar like the mockup */
+@media(min-width:901px){
+  html[data-school] .tabs{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;padding-top:12px}
+  html[data-school] .tabs .wrap{width:max-content;max-width:calc(100% - 48px);margin-left:max(24px,calc((100% - 1232px)/2));margin-right:auto;padding:6px;border-radius:16px;border:1px solid rgba(var(--gl),.14);background:color-mix(in srgb,var(--gbg) 70%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  html[data-school] .tabs .wrap>*{margin-left:0!important}
+}
+@media(max-width:900px){
+  html[data-school="me"] #mine-news .homenews{grid-template-columns:1fr}
+  #mine-chart.hero .herov{font-size:34px}
+}
+@media(max-width:900px){
+  html[data-school="me"] #mine-game:not([hidden]){display:flex;flex-direction:column}
+  html[data-school="me"] #mine-game .minerow{display:contents}
+  html[data-school="me"] #mine-chart{order:1;margin:0 0 12px}
+  html[data-school="me"] #mine-tiles{order:2;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:12px}
+  html[data-school="me"] #mine-tiles .tile{padding:10px 10px}
+  html[data-school="me"] #mine-tiles .tile .v{font-size:17px}
+  html[data-school="me"] #mine-tiles .tile .eyebrow{font-size:9.5px}
+  html[data-school="me"] #mine-tiles .tile .n{font-size:11px}
+  html[data-school="me"] #mine-stockscard{order:3;margin:0 0 12px}
+  html[data-school="me"] #mine-friends{order:4;margin:0 0 12px}
+  html[data-school="me"] #mine-hold{order:5}html[data-school="me"] #mine-orders{order:6}
 }

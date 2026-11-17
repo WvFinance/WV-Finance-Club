@@ -78,7 +78,7 @@ const when=t=>new Date(t).toLocaleString("en-US",{month:"short",day:"numeric",ho
 // Tells the News tab which stocks this member owns, so it shows their news.
 function shareMine(){window.WVFC_APP&&window.WVFC_APP.setMine&&window.WVFC_APP.setMine(G.pos.map(p=>p.symbol));}
 function renderAll(){shareMine();renderTradeBar();renderTiles();renderOrders();renderTrades();renderBoard();renderEst();renderMine();}
-function renderMine(){if(!$("#mine"))return;renderTiles($("#mine-tiles"));renderHold($("#mine-hold"),true);renderOrders($("#mine-orders"),true);renderChart();renderFriends();renderMineView();}
+function renderMine(){if(!$("#mine"))return;renderTiles($("#mine-tiles"));renderStocksCard();renderHold($("#mine-hold"),true);renderOrders($("#mine-orders"),true);renderChart();renderFriends();renderMineView();}
 
 /* ---------- Personal Home drop-down views (My stocks, by sector, vs S&P 500, My trades) ---------- */
 let mView="mine";
@@ -111,14 +111,17 @@ async function loadExtras(){
   // Before home-extras.sql is run these don't exist yet, so the two panels stay hidden.
   if(d.error&&f.error){G.extrasOff=true;renderChart();renderFriends();renderMineView();return;}
   G.daily=d.error?[]:(d.data||[]);G.friends=f.error?null:(f.data||[]);G.invite=c.error?null:c.data;
-  renderChart();renderFriends();renderMineView();
+  if(glowHome()&&G.acct)renderTiles($("#mine-tiles"));renderChart();renderFriends();renderMineView();
 }
 const SVGNS="http://www.w3.org/2000/svg";
 const sv=(tag,attrs={})=>{const e=document.createElementNS(SVGNS,tag);for(const[k,v]of Object.entries(attrs))e.setAttribute(k,v);return e;};
 const chiDay=t=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/Chicago"}).format(t?new Date(t):new Date());
 function spyOn(day){const P=window.WVFC_APP&&window.WVFC_APP.prices&&window.WVFC_APP.prices();if(!P||!P.closes||!P.closes.SPY)return null;
   const c=P.closes.SPY,d=P.dates||[];let v=null;for(let i=0;i<d.length&&d[i]<=day;i++)if(c[i]!=null)v=c[i];return v;}
+const glowHome=()=>document.documentElement.dataset.school==="me";
+let heroRange="all";
 function renderChart(box,big){
+  if(!box&&!big&&glowHome())return renderHero();
   box=box||$("#mine-chart");if(!box||!G.acct)return;
   if(big&&(G.extrasOff||!G.daily)){box.replaceChildren(el("p",{class:"meta",text:G.extrasOff?"This chart isn't turned on yet.":"Loading…"}));return;}
   if(G.extrasOff||!G.daily){box.hidden=true;return;}box.hidden=false;
@@ -147,11 +150,75 @@ function renderChart(box,big){
     el("div",{class:"chartleg"},el("span",{},el("i",{style:"background:var(--gold)"}),"You"),sp==null?"":el("span",{},el("i",{style:"background:#8a8a86"}),"Same money in the S&P 500")),
     svg,G.daily.length<2?el("p",{class:"meta",text:"Your account value is saved every weekday after the market closes, so this line fills in a little more each day."}):"");
 }
+
+/* ---------- Just me Home in the Midnight Glow style: big account value + chart card ---------- */
+function acctValue(){return +G.acct.cash+G.pos.reduce((s,p)=>s+priceOf(p)*p.shares,0);}
+function yesterdayValue(){const today=chiDay();let v=null;for(const r of G.daily||[])if(r.day<today)v=+r.value;return v;}
+function renderHero(){
+  const box=$("#mine-chart");if(!box||!G.acct)return;box.hidden=false;box.classList.add("hero");
+  const now=acctValue(),gain=now-START;
+  const head=[el("div",{class:"eyebrow",text:"Account value"}),el("div",{class:"herov",text:fmt$(now)}),
+    el("div",{class:"herogain"},el("span",{class:"hgpill "+cls(gain),text:(gain>=0?"▲ ":"▼ ")+fmt$(Math.abs(gain))+" ("+fmtPct(gain/START)+")"}),el("span",{class:"meta",text:"since you started"}))];
+  if(G.extrasOff||!G.daily){box.replaceChildren(...head);return;}
+  const start=chiDay(G.acct.started_at||G.acct.created_at),today=chiDay();
+  let pts=[{day:start,v:START}].concat(G.daily.filter(r=>r.day>start&&r.day<today).map(r=>({day:r.day,v:+r.value})),[{day:today,v:now}]);
+  if(pts.length>1&&pts[pts.length-1].day===pts[0].day)pts.shift();
+  const DAYS={"1w":7,"1m":31,"3m":92};
+  if(DAYS[heroRange]){const cut=chiDay(Date.now()-DAYS[heroRange]*864e5);const k=pts.filter(p=>p.day>=cut);if(k.length>=2)pts=k;}
+  const s0=spyOn(pts[0].day),base=pts[0].v;
+  const spy=s0?pts.map(p=>{const c=spyOn(p.day);return c?base*c/s0:null;}):[];
+  const vals=pts.map(p=>p.v).concat(spy.filter(x=>x!=null));
+  let lo=Math.min(...vals),hi=Math.max(...vals);const pad=Math.max((hi-lo)*.12,base*.004);lo-=pad;hi+=pad;
+  const W=Math.round(Math.max(300,Math.min(820,(box.clientWidth||760)-40))),H=W<500?190:250,T=8,B=8,n=pts.length;
+  const x=i=>n<2?0:W*i/(n-1),y=v=>T+(H-T-B)*(1-(v-lo)/(hi-lo));
+  const svg=sv("svg",{viewBox:`0 0 ${W} ${H}`,width:"100%",class:"herochart",role:"img","aria-label":"Your account value over time compared with the S&P 500"});
+  const gid="hg"+Math.random().toString(36).slice(2,7),defs=sv("defs"),lg=sv("linearGradient",{id:gid,x1:0,y1:0,x2:0,y2:1});
+  lg.append(sv("stop",{offset:"0","stop-color":"var(--gline,#8fbcff)","stop-opacity":".38"}),sv("stop",{offset:"1","stop-color":"var(--gline,#8fbcff)","stop-opacity":"0"}));defs.append(lg);svg.append(defs);
+  const P=pts.map((p,i)=>`${x(i).toFixed(1)} ${y(p.v).toFixed(1)}`);
+  if(P.length>1){svg.append(sv("path",{d:`M${P.join(" L")} L${W} ${H} L0 ${H} Z`,fill:`url(#${gid})`,stroke:"none"}));}
+  const sd=spy.map((v,i)=>v==null?null:`${x(i).toFixed(1)} ${y(v).toFixed(1)}`).filter(Boolean);
+  if(sd.length>1)svg.append(sv("path",{d:"M"+sd.join(" L"),fill:"none",stroke:"#9aa6c4","stroke-width":1.6,"stroke-dasharray":"4 5","stroke-linejoin":"round",opacity:".8"}));
+  if(P.length>1)svg.append(sv("path",{d:"M"+P.join(" L"),fill:"none",stroke:"var(--gline,#8fbcff)","stroke-width":3,"stroke-linejoin":"round","stroke-linecap":"round"}));
+  const rb=el("div",{class:"hrange"},[["1w","1W"],["1m","1M"],["3m","3M"],["all","All"]].map(([k,t])=>el("button",{type:"button",class:k===heroRange?"on":"",text:t,onclick:()=>{heroRange=k;renderHero();}})));
+  box.replaceChildren(...head,rb,svg,
+    el("div",{class:"chartleg"},el("span",{},el("i",{class:"ln"}),"You"),sd.length>1?el("span",{},el("i",{class:"ln dash"}),"Same money in the S&P 500"):""),
+    G.daily.length<2?el("p",{class:"meta",text:"Your account value is saved every weekday after the market closes, so this line fills in a little more each day."}):"");
+}
+function renderStocksCard(){
+  let box=$("#mine-stockscard");
+  if(!glowHome()||!G.acct){if(box)box.hidden=true;return;}
+  if(!box){box=el("div",{class:"panel",id:"mine-stockscard"});$("#mine-friends").before(box);}
+  box.hidden=false;
+  const head=el("div",{class:"cardhead"},el("h3",{class:"h3",text:"Your stocks"}),el("button",{type:"button",class:"linkbtn more",text:"See all →",onclick:()=>{const b=document.querySelector('#mine-menu [data-view="mystocks"]');if(b)b.click();}}));
+  if(!G.pos.length){box.replaceChildren(head,el("p",{class:"meta",text:"You don't own any stocks yet. Go to Paper Trading to buy your first one."}));return;}
+  const PX=(window.WVFC_APP&&window.WVFC_APP.prices&&window.WVFC_APP.prices())||{},today=chiDay();
+  const rows=G.pos.map(p=>({p,px:priceOf(p)})).sort((a,b)=>Math.abs(b.px*b.p.shares)-Math.abs(a.px*a.p.shares)).slice(0,5);
+  box.replaceChildren(head,el("ul",{class:"stkcard"},rows.map(({p,px})=>{
+    const c=(PX.closes&&PX.closes[p.symbol])||[],d=PX.dates||[];
+    const hist=[];for(let i=0;i<c.length;i++)if(c[i]!=null)hist.push([d[i],c[i]]);
+    let prev=null;for(const[dd,v]of hist)if(dd<today)prev=v;
+    const ch=prev?px/prev-1:(p.cost?(px*p.shares)/p.cost-1:0);
+    const sp=hist.slice(-30).map(h=>h[1]).concat([px]);
+    let spark="";if(sp.length>2){const lo=Math.min(...sp),hi=Math.max(...sp)||1,w=80,h=26;
+      const pp=sp.map((v,i)=>`${(w*i/(sp.length-1)).toFixed(1)} ${(h-2-(h-4)*(hi===lo?.5:(v-lo)/(hi-lo))).toFixed(1)}`);
+      spark=sv("svg",{viewBox:`0 0 ${w} ${h}`,width:w,height:h,class:"spark"});spark.append(sv("path",{d:"M"+pp.join(" L"),fill:"none",stroke:ch>=0?"var(--up)":"var(--down)","stroke-width":1.6,"stroke-linejoin":"round"}));}
+    const name=(window.WVFC_APP&&window.WVFC_APP.stockName&&window.WVFC_APP.stockName(p.symbol))||"";
+    return el("li",{},el("button",{type:"button",onclick:()=>window.WVFC_APP&&window.WVFC_APP.openStock(p.symbol)},
+      el("span",{class:"tkb",text:p.symbol[0]}),el("span",{class:"nm"},el("b",{text:p.symbol}),el("span",{class:"meta",text:(name?name+" · ":"")+Math.abs(p.shares)+" share"+(Math.abs(p.shares)===1?"":"s")})),
+      spark,el("span",{class:"rt"},el("b",{text:fmt$(px)}),el("span",{class:cls(ch),text:fmtPct(ch)}))));})));
+}
 function renderFriends(){
   const box=$("#mine-friends");if(!box||!G.acct)return;
   if(G.extrasOff||!G.friends){box.hidden=true;return;}box.hidden=false;
   const link=G.invite?location.origin+location.pathname+"?invite="+G.invite:"";
   const rows=G.friends;
+  if(glowHome()){const COL=["#7fb0ff","#5fd6a0","#ffb36b","#ff7a9a","#b99bff","#6fd3e8","#f2c14e"];
+    const ini=n=>String(n||"?").split(/\s+/).map(w=>w[0]||"").join("").slice(0,2).toUpperCase();
+    box.replaceChildren(el("div",{class:"cardhead"},el("h3",{class:"h3",text:"Friends leaderboard"}),link?el("button",{type:"button",class:"linkbtn more invitelink",text:"Invite →",onclick:()=>shareInvite(link)}):""),
+      rows.length>1?"":el("p",{class:"meta",text:"Invite friends with your link. When they sign up, you'll see each other here."}),
+      rows.length?el("ol",{class:"frlist"},rows.map((r,i)=>el("li",{class:r.me?"me":""},el("span",{class:"r",text:String(r.rank)}),
+        el("span",{class:"fav",style:"--c:"+COL[i%COL.length],text:ini(r.name)}),el("span",{class:"n",text:r.name+(r.me?" (you)":"")}),
+        el("span",{class:"g "+cls(+r.gain_pct),text:fmtPct(+r.gain_pct)})))):"");return;}
   box.replaceChildren(el("h3",{class:"h3",text:"Friends leaderboard"}),
     el("p",{class:"meta",text:rows.length>1?"You and your friends, ranked by how much your $50,000 has grown.":"Invite friends with your link. When they sign up, you'll see each other here."}),
     rows.length?el("ol",{class:"ptboard"},rows.map(r=>el("li",{class:r.me?"me":""},el("span",{class:"r",text:"#"+r.rank}),el("span",{class:"n",text:r.name+(r.me?" (you)":"")}),
@@ -165,6 +232,14 @@ async function shareInvite(link){
   catch(e){window.prompt("Copy your invite link:",link);}
 }
 function renderTiles(box){
+  if(box&&box.id==="mine-tiles"&&glowHome()){
+    const me=G.board.find(r=>r.me),y=yesterdayValue(),now=acctValue(),d=y==null?null:now-y;
+    const tile=(label,val,note,k)=>el("div",{class:"tile"},el("div",{class:"eyebrow",text:label}),el("div",{class:"v "+(k||""),text:val}),el("div",{class:"n",text:note}));
+    const fr=G.friends&&G.friends.length>1?G.friends:null,fm=fr&&fr.find(r=>r.me);
+    box.replaceChildren(tile("Cash to spend",money(+G.acct.cash),"Pretend money"),
+      tile("Today",d==null?"–":signed$(d),d==null?"Shows after your first full day":fmtPct(d/y)+" today",d==null?"":cls(d)),
+      fm?tile("Your rank","#"+fm.rank,`out of ${fr.length} friends`):tile("Your rank",me?"#"+me.rank:"–",me?`out of ${G.board.length}${G.board.length>=100?"+":""} players`:"Make a trade to get ranked"));
+    return;}
   const stocks=G.pos.reduce((s,p)=>s+priceOf(p)*p.shares,0),value=+G.acct.cash+stocks,gain=value-START;
   const me=G.board.find(r=>r.me);
   const tile=(label,val,note,k)=>el("div",{class:"tile"},el("div",{class:"eyebrow",text:label}),el("div",{class:"v "+(k||""),text:val}),el("div",{class:"n",text:note}));
