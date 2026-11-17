@@ -1,3 +1,4 @@
+// NOT LOADED right now: Charlie (2026-11-16) said not to make the site social yet. Re-add the <script> tag in index.html to bring the bubbles back.
 // Midnight Glow extras for "Just me" accounts (styles in glow.css):
 //  * friend bubbles at the top of Home, made from the Friends leaderboard
 //  * a bottom tab bar on phones that works the same as the tabs at the top
