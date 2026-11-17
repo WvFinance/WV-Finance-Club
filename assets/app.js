@@ -732,6 +732,8 @@ function setupIndividual(){
   const h=new Date().getHours(),hi=h<12?"Good morning":h<17?"Good afternoon":"Good evening";
   const first=String(window.WVFC_NAME||"").split(/\s+/)[0];
   $("#mine-title").textContent=first?`${hi}, ${first}`:hi;
+  if(!$("#mine-date"))$("#mine-title").before(el("div",{class:"eyebrow",id:"mine-date",text:new Date().toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"})}));
+  $("#mine-trade").textContent="Trade";
   
   $("#dpeople-title").textContent="Leaderboard";
   $("#dpeople-sub").textContent="Everyone playing Paper Trading on Simple Street, ranked by how much their $50,000 has grown, in %.";
