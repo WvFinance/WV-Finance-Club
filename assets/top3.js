@@ -52,7 +52,7 @@ function card(i,p,stat,why,extra){
       el("span",{class:"t3n",text:String(i+1)}),
       el("button",{type:"button",class:"t3tk",title:`Look up ${p.ticker}`,onclick:look},
         el("b",{text:p.ticker}),
-        el("span",{class:"t3name",text:[name,f&&f.price!=null?money(f.price):""].filter(Boolean).join(" · ")})),
+        el("span",{class:"t3name"},el("span",{class:"t3nm",text:name||""}),f&&f.price!=null?el("span",{class:"t3px",text:(name?" · ":"")+money(f.price)}):null)),
       el("div",{class:"t3stat "+(stat.tone||"")},el("b",{text:stat.big}),el("span",{text:stat.small}))),
     why?el("p",{class:"t3why",text:why}):"",
     extra||"",
