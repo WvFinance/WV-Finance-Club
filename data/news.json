@@ -3,167 +3,175 @@
  "briefs": [
   {
    "bear": [
-    "The 10-year Treasury rate is above 5%, at about 5.12%, so bonds pay more and some investors move money out of stocks.",
-    "The VIX 'fear gauge' jumped about 20% to 23.1 Monday, a sign traders expect bigger swings in the days ahead.",
-    "Fed Governor Michelle Bowman warned about how much companies are borrowing, which matters because big tech firms borrow heavily to build AI data centers."
+    "The Fear & Greed Index closed at 25, 'extreme fear', and the VIX jumped 11% to 25.46, so traders expect more big swings.",
+    "Fed official Alberto Musalem said the Fed may need to raise rates several times before spring 2027, which makes borrowing costlier for companies.",
+    "Big software names like Oracle (down 3.43%) and Microsoft (down 2.27%) kept sliding, and they make up a large part of the index."
    ],
    "bull": [
-    "Last week, ending November 13, the S&P 500 still rose about 2.5% and snapped a four-week losing streak, so buyers have been stepping in after drops.",
-    "Tyson Foods rose 8.7% and health insurer Elevance gained 3.8% Monday, showing money moved into non-tech companies rather than leaving stocks completely.",
-    "Oil fell, with US crude down 3.7% to about $85 as ships moved through the Strait of Hormuz again, which can ease pressure on gas prices and inflation."
+    "Nvidia's sales of $115.84 billion beat forecasts by about $6.7 billion, and its shares briefly rose over 4% after hours, which could calm worries about AI spending.",
+    "Shoppers spent 0.2% more in October, beating the 0.1% forecast, a sign the economy that feeds company profits is still growing.",
+    "Even after four losing days, the S&P 500 is up 7.23% in 2026, so this drop comes after a good year, not a long slump."
    ],
-   "headline": "S&P 500 drops 1.9% Monday as Nvidia and AI stocks slide again",
+   "headline": "S&P 500 falls 1% to its lowest close since July, fourth loss in a row",
    "market": true,
    "name": "S&P 500",
-   "nextEvent": "Nvidia's quarterly earnings report on Tuesday, November 17, 2026",
+   "nextEvent": "Fed meeting notes on Wednesday, November 18, 2026",
    "order": 1,
    "sentiment": "bearish",
    "sources": [
     {
-     "title": "Stock market today: Dow and S&P 500 drop, Nasdaq sinks over 2% as Nvidia leads AI trade lower, Anthropic IPO looms",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-16-dow-sp-500-nasdaq-nvidia-oil-091631084.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 16, 2026"
+     "title": "Nasdaq Drops 0.74% to Near Seven-Month Intraday Low, Dow Falls Over 800 Points as Chip Stocks Sell Off",
+     "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262309739-chip-stocks-fall-ahead-of-nvidia-earnings-nasdaq-hits-seven-month-low-tradingkey",
+     "outlet": "TradingKey",
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "Stock Market Today, Nov. 16: Tech Selloff Deepens as AI Leadership Crisis Rattles Nasdaq",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/16/stock-market-today-nov-16-tech-selloff-deepens-as-ai-leadership-crisis-rattles-nasdaq/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 16, 2026"
+     "title": "Nvidia beats and guides to $130bn as Jensen Huang says he's open to a return, software stocks fall sharply, and the S&P 500 drops to its lowest close since July",
+     "url": "https://thewallstreetrepublic.substack.com/p/nvidia-beats-and-guides-to-130bn",
+     "outlet": "The Wall Street Republic",
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "S&P 500 Closes Down 2% as Nasdaq Leads Broad Market Lower",
-     "url": "https://247wallst.com/cards/tech-took-the-worst-of-it-the-nasdaq-s-2-54-drop-nearly-do-gspc-market-bell-01m7k2rvdndtgg635thrxjgnck",
+     "title": "S&P 500 Closes Down 1% as the Dow Sheds 955 Points",
+     "url": "https://247wallst.com/cards/the-dow-s-955-point-drop-led-the-selling-a-sharper-hit-than-gspc-market-bell-01m7nn5ym7r5nqbd4d83yt9zt1",
      "outlet": "24/7 Wall St.",
-     "date": "Nov 16, 2026"
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "Stock Market News for Nov 16, 2026",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-news-nov-16-132700717.html",
-     "outlet": "Zacks (via Yahoo Finance)",
-     "date": "Nov 16, 2026"
+     "title": "Stock market today: Dow, S&P 500, Nasdaq losses pick up in countdown to Nvidia earnings",
+     "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-17-dow-sp-500-nasdaq-nvidia-earnings-retail-sales-143848454.html",
+     "outlet": "Yahoo Finance",
+     "date": "Nov 17, 2026"
     }
    ],
-   "summary": "The 10-year Treasury rate, what the government pays to borrow for 10 years, is still high at about 5.12% after jumping last week, making safer bonds more attractive compared to stocks. Bank of America, Citigroup, Wells Fargo and JPMorgan each fell about 2% after app and payment outages. On Friday, October producer prices (what businesses charge each other) were up 6.5% from a year ago, the biggest jump since November 2022. Not everything fell: Tyson Foods jumped 8.7% after beating its sales and profit targets.",
+   "summary": "After the close, Nvidia reported $115.84 billion in sales, beating the $109.10 billion expected, and said next quarter could reach about $130 billion. Jensen Huang, who resigned as CEO last week, said he would be honored to return if the board asks, but reports say the board is not discussing it. October store sales rose 0.2%, a bit better than the 0.1% expected. The S&P 500 is still up 7.23% for the year so far.",
    "ticker": "SP500",
-   "updatedAt": "2026-11-16T23:05:24.752Z",
+   "updatedAt": "2026-11-17T23:06:02.953Z",
    "symbol": "AMEX:SPY",
-   "checkedAt": "2026-11-17T11:39:23.362Z",
+   "checkedAt": "2026-11-17T23:06:02.953Z",
    "about": "The S&P 500 tracks 500 of the biggest companies in the US, like Apple, Microsoft and Amazon. People use it as a quick check on how the whole stock market is doing.",
    "keyNumbers": [
     {
      "label": "Index level",
-     "value": "7,416.59",
-     "note": "close, Nov 16"
+     "value": "7,340.53",
+     "note": "close, Nov 17"
     },
     {
-     "label": "Monday move",
-     "value": "-1.92%",
-     "note": "down 145 points"
-    },
-    {
-     "label": "10-year rate",
-     "value": "5.12%",
-     "note": "down a little, Nov 16"
+     "label": "Tuesday move",
+     "value": "-1.03%",
+     "note": "4th loss in a row"
     },
     {
      "label": "Fear gauge (VIX)",
-     "value": "23.1",
-     "note": "up about 20% Monday"
+     "value": "25.46",
+     "note": "up 11% Tuesday"
+    },
+    {
+     "label": "Fed hike odds",
+     "value": "96.7%",
+     "note": "for Dec 9 meeting"
     }
    ],
-   "whyMoved": "The S&P 500 fell 145 points, or 1.92%, from 7,561.67 on Friday, November 13 to 7,416.59 on Monday, November 16, wiping out much of last week's 2.5% gain. Nvidia, one of its biggest companies, fell 4.1% to $156.14 as investors worried about its leadership after Jensen Huang resigned as CEO last Thursday (reports say he may come back). New US rules limiting advanced AI chip sales to Southeast Asia also pushed AMD down 5.6%. Because a handful of giant tech companies make up a big share of the S&P 500, when Alphabet (down 3.8%), Amazon (down 3.3%) and Meta (down 2.4%) all slide together, the whole index drops even if many other companies are fine.",
+   "whyMoved": "The S&P 500 dropped 1.03% on Tuesday to 7,340.53, its lowest close since July 29 and its fourth straight loss; it was 7,689 on November 4, so it is down about 4.5% in two weeks. Software stocks led the fall: Salesforce sank 9.45%, Intuit 7.17% and ServiceNow 6.51%, and health insurer UnitedHealth lost 5.42%. These companies earn steady money from subscriptions and insurance plans, so when investors pay less for those future profits, the whole index feels it. Traders also now see a 96.7% chance the Fed raises rates on December 9, which makes safe bonds paying about 5.10% look better than stocks.",
    "watch": [
     {
-     "date": "Nov 17",
-     "what": "Nvidia reports quarterly results after the bell, its first without Jensen Huang as CEO. Strong sales and a calm outlook could steady AI stocks; a miss could deepen the slide."
+     "date": "Nov 18",
+     "what": "The Fed releases notes from its last meeting at 2pm ET. Talk of more rate hikes would be bad for stocks; signs of patience would help."
     },
     {
      "date": "Nov 19",
-     "what": "Anthropic's stock is expected to start trading, possibly the biggest debut ever at about a $1.4 trillion value. Strong demand would show investors still want AI; a weak start would add to the worries."
+     "what": "Anthropic's stock is expected to start trading under ANT, selling 825 million shares at $70 to $78. Strong demand would show investors still want AI; a weak start could drag tech lower."
+    },
+    {
+     "date": "Dec 9",
+     "what": "The Fed decides on interest rates. Traders see a 96.7% chance of a hike; anything less would be a big surprise that could lift stocks."
     }
    ]
   },
   {
    "bear": [
-    "The Nasdaq is now about 11% below its recent high near 27,600, which officially counts as a correction.",
-    "New US limits on selling advanced AI chips to Southeast Asia could cut sales for AMD and Nvidia, two of the Nasdaq's key chip companies.",
-    "Intel fell 7% Monday after a shareholder lawsuit, adding to a run of bad news for chip makers."
+    "Nvidia expects its profit margin to slip to about 71% to 72% from about 75%, so each dollar of sales may earn a bit less.",
+    "Software stocks are falling fast, with Salesforce down 9.45% in its worst day since May 2024, and software is a big part of the Nasdaq.",
+    "Higher interest rates hurt tech most, and traders see a 96.7% chance the Fed raises them on December 9."
    ],
    "bull": [
-    "Nvidia's results on November 17 give investors real numbers on AI chip demand, which could calm fears if sales hold up without Jensen Huang.",
-    "Anthropic's planned stock debut on November 19 at about a $1.4 trillion value shows big money still wants to invest in AI companies.",
-    "The Nasdaq gained about 2.3% last week, so Monday's drop came after a strong bounce, not after months of losses."
+    "Nvidia expects about $130 billion in sales next quarter, nearly $5 billion above forecasts, showing AI chip demand is still strong.",
+    "Nvidia said its new Vera Rubin chips are 'off to an explosive start', which supports the whole group of AI chip makers in the Nasdaq.",
+    "Nvidia bought back $28.1 billion of its own stock, which leaves fewer shares and gives each one a bigger slice of profit."
    ],
-   "headline": "Nasdaq sinks 2.5% Monday, now about 11% below its recent high",
+   "headline": "Nasdaq slips 0.74% as software sinks but chip stocks hold up",
    "market": true,
    "name": "Nasdaq",
-   "nextEvent": "Nvidia's quarterly earnings report on Tuesday, November 17, 2026",
+   "nextEvent": "Anthropic's expected stock debut on Thursday, November 19, 2026",
    "order": 2,
    "sentiment": "bearish",
    "sources": [
     {
-     "title": "Stock Market Today, Nov. 16: Tech Selloff Deepens as AI Leadership Crisis Rattles Nasdaq",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/16/stock-market-today-nov-16-tech-selloff-deepens-as-ai-leadership-crisis-rattles-nasdaq/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 16, 2026"
+     "title": "Nasdaq Drops 0.74% to Near Seven-Month Intraday Low, Dow Falls Over 800 Points as Chip Stocks Sell Off",
+     "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262309739-chip-stocks-fall-ahead-of-nvidia-earnings-nasdaq-hits-seven-month-low-tradingkey",
+     "outlet": "TradingKey",
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "Stock market today: Dow and S&P 500 drop, Nasdaq sinks over 2% as Nvidia leads AI trade lower, Anthropic IPO looms",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-16-dow-sp-500-nasdaq-nvidia-oil-091631084.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 16, 2026"
+     "title": "Nvidia beats and guides to $130bn as Jensen Huang says he's open to a return, software stocks fall sharply, and the S&P 500 drops to its lowest close since July",
+     "url": "https://thewallstreetrepublic.substack.com/p/nvidia-beats-and-guides-to-130bn",
+     "outlet": "The Wall Street Republic",
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "S&P 500 Closes Down 2% as Nasdaq Leads Broad Market Lower",
-     "url": "https://247wallst.com/cards/tech-took-the-worst-of-it-the-nasdaq-s-2-54-drop-nearly-do-gspc-market-bell-01m7k2rvdndtgg635thrxjgnck",
+     "title": "S&P 500 Closes Down 1% as the Dow Sheds 955 Points",
+     "url": "https://247wallst.com/cards/the-dow-s-955-point-drop-led-the-selling-a-sharper-hit-than-gspc-market-bell-01m7nn5ym7r5nqbd4d83yt9zt1",
      "outlet": "24/7 Wall St.",
-     "date": "Nov 16, 2026"
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "Stock Market News for Nov 16, 2026",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-news-nov-16-132700717.html",
-     "outlet": "Zacks (via Yahoo Finance)",
-     "date": "Nov 16, 2026"
+     "title": "Stock market today: Dow, S&P 500, Nasdaq losses pick up in countdown to Nvidia earnings",
+     "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-17-dow-sp-500-nasdaq-nvidia-earnings-retail-sales-143848454.html",
+     "outlet": "Yahoo Finance",
+     "date": "Nov 17, 2026"
     }
    ],
-   "summary": "Alphabet fell 3.8%, Amazon 3.3%, Tesla 2.7% and Meta 2.4% on Monday, so nearly every giant tech company dropped together. Dell fell almost 7% after warnings about how much debt is building up across the industry. Last Friday, chip stocks also slid, with AMD down 8.8% and a group of chip companies down 3.4%. Even so, the Nasdaq rose about 2.3% in the week ending November 13.",
+   "summary": "Nvidia beat forecasts with $115.84 billion in sales and $107.6 billion from data centers, and expects about $130 billion next quarter, versus $125.1 billion expected. Nvidia stock closed down 0.44% at $155.46 before the report and briefly rose over 4% after hours. OpenAI cut prices for one of its new AI models by 20%, and Microsoft announced its own in-house AI models. Coherent rose 3.65% and Lumentum 2.56% as makers of data-center light parts gained.",
    "ticker": "NASDAQ",
-   "updatedAt": "2026-11-16T23:05:24.751Z",
+   "updatedAt": "2026-11-17T23:06:02.953Z",
    "symbol": "NASDAQ:QQQ",
-   "checkedAt": "2026-11-17T11:39:23.362Z",
+   "checkedAt": "2026-11-17T23:06:02.953Z",
    "about": "The Nasdaq Composite tracks more than 3,000 companies listed on the Nasdaq exchange, many of them tech companies like Apple, Nvidia and Microsoft. It shows how tech stocks are doing.",
    "keyNumbers": [
     {
      "label": "Index level",
-     "value": "24,509.76",
-     "note": "close, Nov 16"
+     "value": "24,328.38",
+     "note": "close, Nov 17"
     },
     {
-     "label": "Monday move",
-     "value": "-2.49%",
-     "note": "down 627 points"
+     "label": "Tuesday move",
+     "value": "-0.74%",
+     "note": "down 181 points"
     },
     {
-     "label": "Nvidia",
-     "value": "$156.14",
-     "note": "down 4.1% Monday"
+     "label": "Nvidia sales",
+     "value": "$115.84B",
+     "note": "beat $109.10B forecast"
     },
     {
-     "label": "AMD",
-     "value": "$504.28",
-     "note": "down 5.6% Monday"
+     "label": "Chip index",
+     "value": "+0.34%",
+     "note": "9,642.88, Nov 17"
     }
    ],
-   "whyMoved": "The Nasdaq fell 627 points, or 2.49%, from 25,136.27 on Friday, November 13 to 24,509.76 on Monday, November 16, and the Motley Fool said it has now entered a correction, meaning a drop of 10% or more from its high. Nvidia fell 4.1% as investors worried about its leadership after CEO Jensen Huang resigned last week, and new US limits on AI chip sales to Southeast Asia pushed AMD down 5.6% and Intel down 7%. The Nasdaq is packed with tech companies whose stock prices are based on big hopes for future AI profits. When those hopes get shakier, or when safer bonds pay more (the 10-year rate is about 5.12%), these stocks usually fall the hardest.",
+   "whyMoved": "The Nasdaq fell 0.74% on Tuesday to 24,328.38, after touching its lowest level in about seven months during the day; it closed at 25,737 on November 4, so it is down about 5.5% since. Software makers dragged it down: Intuit fell 7.17%, Oracle 3.43% and Microsoft 2.27%, and a software fund dropped 3.32%. Chip stocks held up instead, with the chip index up 0.34%, Arm up 4.76% and Broadcom up 2.46%, which is why the Nasdaq fell less than the Dow. Much of the Nasdaq's value rides on AI chips and software, so Nvidia's report after the close was the day's biggest test.",
    "watch": [
     {
-     "date": "Nov 17",
-     "what": "Nvidia reports quarterly results after the bell, its first without Jensen Huang as CEO. Strong sales and a calm outlook could steady AI stocks; a miss could deepen the slide."
+     "date": "Nov 18",
+     "what": "The Fed releases notes from its last meeting at 2pm ET. Talk of more rate hikes would be bad for stocks; signs of patience would help."
     },
     {
      "date": "Nov 19",
-     "what": "Anthropic's stock is expected to start trading, possibly the biggest debut ever at about a $1.4 trillion value. Strong demand would show investors still want AI; a weak start would add to the worries."
+     "what": "Anthropic's stock is expected to start trading under ANT, selling 825 million shares at $70 to $78. Strong demand would show investors still want AI; a weak start could drag tech lower."
+    },
+    {
+     "date": "Dec 9",
+     "what": "The Fed decides on interest rates. Traders see a 96.7% chance of a hike; anything less would be a big surprise that could lift stocks."
     }
    ]
   },
@@ -598,81 +606,75 @@
    "order": 5,
    "symbol": "COINBASE:BTCUSD",
    "sentiment": "bearish",
-   "headline": "Bitcoin falls to about $65,000 after its lowest point since July",
-   "summary": "Bitcoin fell nearly 15% over the seven days to November 15, and the whole crypto market dropped about 4% in one day to $2.26 trillion. A Fear & Greed score of 10 out of 100 shows 'extreme fear' among crypto buyers. On November 9, over $1.14 billion of borrowed crypto bets were forced to close as prices dropped, about 90% of them bets on rising prices. Crypto company stocks also fell, with Coinbase and Strategy down 7% to 8% early Monday.",
+   "headline": "Bitcoin hovers near $64,500, down about 14% in a week",
+   "summary": "The Fear & Greed score for crypto rose slightly to 12 from 10, but it was 32 a week ago, so fear is still extreme. US bitcoin funds took in $7.9 million on November 16, ending seven days of withdrawals, led by BlackRock's fund with $76.5 million. Bitcoin makes up about 59% of the whole $2.19 trillion crypto market. Ether, the second-biggest coin, also fell about 15% in the week.",
    "bull": [
-    "Bitcoin bounced from $62,081 on Sunday back above $65,000, showing some buyers stepped in at lower prices.",
-    "A Fear & Greed score of 10 is extremely low, and some traders see that much fear as a sign selling may be close to running out.",
-    "Friday's producer price report was 0.1 points cooler than expected, a small sign inflation may ease."
+    "Bitcoin funds got $7.9 million of new money on November 16, the first day of inflows after seven days of withdrawals.",
+    "BlackRock's bitcoin fund alone took in $76.5 million on November 16, a sign some big buyers are stepping back in.",
+    "Most of the top 100 coins (83 of them) rose earlier Tuesday, showing buyers are testing lower prices."
    ],
    "bear": [
-    "$2.35 billion left US bitcoin ETFs in two weeks, the biggest withdrawals since late June.",
-    "Analysts warned that after earlier breakdowns this year, bitcoin fell to about $60,000, and it broke below $73,000 again this month.",
-    "A likely Fed rate hike in December, about 90% odds, makes risky things like crypto less attractive."
+    "Bitcoin is down 13.9% in seven days and sits near its 30-day low of $64,155.",
+    "Analysts said bitcoin fell from $83,000 to $74,000 while the number of open bets barely changed, so the drop came from plain selling.",
+    "Traders see a 96.7% chance of a Fed rate hike on December 9, which usually hurts risky things like crypto."
    ],
-   "nextEvent": "",
+   "nextEvent": "Fed interest rate decision on Wednesday, December 9, 2026",
    "sources": [
     {
-     "title": "Bitcoin falls to 4-month low near $62K as crypto selloff deepens",
-     "url": "https://cointelegraph.com/markets/bitcoin-four-month-low-62k-crypto-market-selloff",
-     "outlet": "Cointelegraph",
-     "date": "Nov 15, 2026"
+     "title": "Crypto market today, 17 Nov 2026: Bitcoin +1.0% at $64,888, total market $2.19T",
+     "url": "https://thedailycoins.io/2026/11/crypto-market-today-2026-11-17/",
+     "outlet": "The Daily Coins",
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "Bitcoin ETFs shed $2.35B in 2 weeks, BlackRock's losing streak hits 11",
-     "url": "https://cointelegraph.com/markets/bitcoin-etf-outflows-2-35-billion-blackrock-11-session-streak",
-     "outlet": "Cointelegraph",
-     "date": "Nov 14, 2026"
+     "title": "Ether ETFs lose $398.9M as November withdrawals top $764M",
+     "url": "https://crypto.news/ether-etf-outflows-398-million-november/",
+     "outlet": "crypto.news",
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "Bitcoin holds below $70K as stocks slip despite a cooler US PPI print",
-     "url": "https://cointelegraph.com/markets/bitcoin-below-70k-stocks-slip-cooler-us-ppi-print",
-     "outlet": "Cointelegraph",
-     "date": "Nov 13, 2026"
+     "title": "Current price of Ethereum for November 17, 2026",
+     "url": "https://fortune.com/article/price-of-ethereum-11-17-2026/",
+     "outlet": "Fortune",
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "Bitcoin, Ethereum, XRP Whipsaw On Nvidia Scandal, Iran Tensions: Crypto Sell-Off Sparks $1B Liquidation Wave",
-     "url": "https://stocktwits.com/news-articles/markets/cryptocurrency/bitcoin-ethereum-xrp-whipsaw-on-nvidia-scandal-iran-tensions/cNGr4kAR9ej",
-     "outlet": "Stocktwits",
-     "date": "Nov 9, 2026"
-    },
-    {
-     "title": "Stock market today: Dow and S&P 500 drop, Nasdaq sinks over 2% as Nvidia leads AI trade lower, Anthropic IPO looms",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-16-dow-sp-500-nasdaq-nvidia-oil-091631084.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 16, 2026"
+     "title": "Nvidia beats and guides to $130bn as Jensen Huang says he's open to a return, software stocks fall sharply, and the S&P 500 drops to its lowest close since July",
+     "url": "https://thewallstreetrepublic.substack.com/p/nvidia-beats-and-guides-to-130bn",
+     "outlet": "The Wall Street Republic",
+     "date": "Nov 17, 2026"
     }
    ],
-   "updatedAt": "2026-11-16T23:05:24.747Z",
-   "checkedAt": "2026-11-17T11:39:23.362Z",
+   "updatedAt": "2026-11-17T23:06:02.950Z",
+   "checkedAt": "2026-11-17T23:06:02.950Z",
    "about": "Bitcoin is the first and biggest cryptocurrency, a digital money that is not run by any government or bank. Its price swings a lot as people buy and sell it.",
    "keyNumbers": [
     {
      "label": "Price",
-     "value": "$65,405",
-     "note": "Nov 16"
+     "value": "$64,557",
+     "note": "Nov 17, evening"
     },
     {
-     "label": "Low this weekend",
-     "value": "$62,081",
-     "note": "Nov 15, since July"
-    },
-    {
-     "label": "ETF outflows",
-     "value": "$2.35B",
-     "note": "two weeks to Nov 13"
+     "label": "7-day change",
+     "value": "-13.9%",
+     "note": "to Nov 17"
     },
     {
      "label": "Fear & Greed",
-     "value": "10",
-     "note": "extreme fear, Nov 15"
+     "value": "12",
+     "note": "extreme fear, Nov 17"
+    },
+    {
+     "label": "Crypto market",
+     "value": "$2.19T",
+     "note": "total value, Nov 17"
     }
    ],
-   "whyMoved": "Bitcoin fell from about $73,720 on November 10 to about $65,400 on November 16, roughly an 11% drop, after touching $62,081 on Sunday, November 15, its lowest since July. A big reason is that bitcoin funds traded on the stock market (ETFs) saw $2.35 billion pulled out in two weeks, including 11 straight days of withdrawals from BlackRock's fund. Traders also see about a 90% chance the Fed raises interest rates in December, and higher rates make safe savings pay more, so fewer people buy risky things like crypto. Bitcoin pays no interest, so its price depends only on buyers wanting it more, and right now more people are selling.",
+   "whyMoved": "Bitcoin was about $64,557 on Tuesday evening, down about 1% for the day and 13.9% for the week, near the bottom of its 30-day range of $64,155 to $84,117. Analysts said it slid from $83,000 to $74,000 earlier this month, then toward $62,000 when few people were trading over the weekend. Big investors have been pulling money out of bitcoin funds, and with a Fed rate hike likely in December, risky things like crypto are less attractive. Bitcoin has no company profits behind it, so its price rests only on how much buyers want it, which is why fear moves it so fast.",
    "watch": [
     {
-     "date": "Nov 17",
-     "what": "Nvidia's results. Crypto has been moving with tech stocks, so a strong report could help bitcoin hold $65,000; a weak one could push it back toward $62,000."
+     "date": "Dec 9",
+     "what": "The Fed decides on interest rates. A hike is expected; any sign of a pause could help bitcoin bounce, while talk of more hikes could push it lower."
     }
    ]
   },
@@ -684,75 +686,75 @@
    "order": 6,
    "symbol": "COINBASE:ETHUSD",
    "sentiment": "bearish",
-   "headline": "Ether drops below $1,900 as crypto selling spreads",
-   "summary": "The whole crypto market fell about 4% on November 15 to $2.26 trillion, with Solana down 20.7% for the week. On November 9, ether fell 5.6% in a day to lows not seen since August, after news about Nvidia's CEO and stalled US talks with Iran. A Fear & Greed score of 10 out of 100 on November 15 shows 'extreme fear' across crypto. Crypto stocks like Coinbase and Circle fell 7% to 8% early Monday.",
+   "headline": "Ether stuck near $1,810 as funds keep pulling money out",
+   "summary": "Wallets linked to crypto investor Erik Voorhees bought 6,382 ether (about $11.6 million) in 12 hours and now hold 84,840 ether. Bitmine bought 7,653 more ether last week and now owns about 4.97% of all ether. Bets on ether's future price shrank to $9.12 billion, the lowest since October 2024. Ether is about 64% below its record near $5,000 in August 2025.",
    "bull": [
-    "Bitcoin bounced back above $65,000 on November 15, and ether often follows bitcoin when buyers return.",
-    "After forced selling of about $500 million in ether bets on November 9, fewer risky borrowed bets are left to be wiped out.",
-    "Extreme fear, with a score of 10 out of 100, has sometimes come near the end of big sell-offs."
+    "Big holders are buying the dip: Voorhees-linked wallets bought $11.6 million of ether in 12 hours, and Bitmine added 7,653 ether last week.",
+    "Ether held on the Binance exchange fell to about 2.9 million, the lowest in nearly five years, which often means people are moving coins out to hold, not sell.",
+    "Ether funds took in $2.3 million on November 13, breaking a six-day streak of withdrawals."
    ],
    "bear": [
-    "Ether fell 19.5% in a week to November 15, worse than bitcoin's roughly 15% drop.",
-    "Bitcoin ETFs lost $2.35 billion in two weeks, a sign big investors are pulling back from crypto in general.",
-    "Traders see about a 90% chance of a December Fed rate hike, which usually hurts risky things like crypto."
+    "US ether funds have lost $764.1 million in November, and only two days this month had money coming in.",
+    "Ether funds lost another $8.4 million on November 16, so the selling has not stopped.",
+    "Ether is down 39.9% from a year ago at $3,029, showing a long slide, not just a bad week."
    ],
-   "nextEvent": "",
+   "nextEvent": "Fed interest rate decision on Wednesday, December 9, 2026",
    "sources": [
     {
-     "title": "Bitcoin falls to 4-month low near $62K as crypto selloff deepens",
-     "url": "https://cointelegraph.com/markets/bitcoin-four-month-low-62k-crypto-market-selloff",
-     "outlet": "Cointelegraph",
-     "date": "Nov 15, 2026"
+     "title": "Ethereum price gains as whales buy the dip, but ETF withdrawals persist",
+     "url": "https://crypto.news/ethereum-price-up-today-whale-buying-etf-outflows/",
+     "outlet": "crypto.news",
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "Bitcoin, Ethereum, XRP Whipsaw On Nvidia Scandal, Iran Tensions: Crypto Sell-Off Sparks $1B Liquidation Wave",
-     "url": "https://stocktwits.com/news-articles/markets/cryptocurrency/bitcoin-ethereum-xrp-whipsaw-on-nvidia-scandal-iran-tensions/cNGr4kAR9ej",
-     "outlet": "Stocktwits",
-     "date": "Nov 9, 2026"
+     "title": "Ether ETFs lose $398.9M as November withdrawals top $764M",
+     "url": "https://crypto.news/ether-etf-outflows-398-million-november/",
+     "outlet": "crypto.news",
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "Bitcoin ETFs shed $2.35B in 2 weeks, BlackRock's losing streak hits 11",
-     "url": "https://cointelegraph.com/markets/bitcoin-etf-outflows-2-35-billion-blackrock-11-session-streak",
-     "outlet": "Cointelegraph",
-     "date": "Nov 14, 2026"
+     "title": "Current price of Ethereum for November 17, 2026",
+     "url": "https://fortune.com/article/price-of-ethereum-11-17-2026/",
+     "outlet": "Fortune",
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "Stock market today: Dow and S&P 500 drop, Nasdaq sinks over 2% as Nvidia leads AI trade lower, Anthropic IPO looms",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-16-dow-sp-500-nasdaq-nvidia-oil-091631084.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 16, 2026"
+     "title": "Crypto market today, 17 Nov 2026: Bitcoin +1.0% at $64,888, total market $2.19T",
+     "url": "https://thedailycoins.io/2026/11/crypto-market-today-2026-11-17/",
+     "outlet": "The Daily Coins",
+     "date": "Nov 17, 2026"
     }
    ],
-   "updatedAt": "2026-11-16T23:05:24.751Z",
-   "checkedAt": "2026-11-17T11:39:23.362Z",
+   "updatedAt": "2026-11-17T23:06:02.953Z",
+   "checkedAt": "2026-11-17T23:06:02.953Z",
    "about": "Ethereum is the second-biggest cryptocurrency. Its network runs apps and digital tokens, and its coin, ether, pays the fees to use it.",
    "keyNumbers": [
     {
      "label": "Price",
-     "value": "$1,835",
-     "note": "Nov 16"
+     "value": "$1,814",
+     "note": "Nov 17, evening"
     },
     {
-     "label": "One-week drop",
-     "value": "-19.5%",
-     "note": "week to Nov 15"
+     "label": "1-month change",
+     "value": "-24.8%",
+     "note": "from $2,420"
     },
     {
-     "label": "ETH liquidations",
-     "value": "~$500M",
-     "note": "one day, Nov 9"
+     "label": "ETF outflows",
+     "value": "$764.1M",
+     "note": "November, to Nov 16"
     },
     {
-     "label": "Crypto market",
-     "value": "$2.26T",
-     "note": "down 4% Nov 15"
+     "label": "Weekend low",
+     "value": "$1,712",
+     "note": "Nov 15-16"
     }
    ],
-   "whyMoved": "Ether fell from about $2,131 on November 9 to about $1,835 on November 16, a drop of roughly 14%, and it was down 19.5% for the week to November 15, worse than bitcoin's 15%. On November 9 alone, nearly $500 million of borrowed ether bets were forced to close, and those forced sales push the price down even faster. Ether tends to swing more than bitcoin, so when traders get scared about higher interest rates and tech stocks, it often falls further. The ether coin is used to pay fees on the Ethereum network, so its price also depends on people wanting to use and hold it.",
+   "whyMoved": "Ether was about $1,814 on Tuesday evening, down about 15% in a week and 24.8% from $2,420 a month ago; it bottomed near $1,712 over the weekend. US ether funds lost $398.9 million in the week to November 13 and $764.1 million so far in November, mostly from BlackRock's fund. Ether's price depends on how many people want to use and hold it, so when big funds keep selling, the price has fewer buyers to lean on. Tom Lee of Bitmine said ether tumbled 28% in two weeks and linked it partly to turmoil around Nvidia and the Anthropic stock sale.",
    "watch": [
     {
-     "date": "Nov 17",
-     "what": "Nvidia's results. Crypto has been moving with tech stocks, so a strong report could help ether climb back toward $2,000; a weak one could extend the slide."
+     "date": "Dec 9",
+     "what": "The Fed decides on interest rates. A hike is expected; talk of more hikes could push ether lower, while a softer tone could help it."
     }
    ]
   },
@@ -840,75 +842,83 @@
    "order": 3,
    "symbol": "AMEX:DIA",
    "sentiment": "bearish",
-   "headline": "Dow falls 739 points Monday as Nvidia, Amazon and big banks drop",
-   "summary": "Other Dow members Apple and Microsoft each slipped about 1% Monday, much less than the chip stocks. The Dow rose about 2.1% in the week ending November 13. On Friday, October producer prices rose 6.5% from a year ago, the biggest jump since November 2022, keeping traders betting on a Fed rate hike in December. Oil fell to about $85, down 3.7%, as shipping through the Strait of Hormuz picked up.",
+   "headline": "Dow drops 848 points as Salesforce and UnitedHealth tumble",
+   "summary": "Home Depot beat earnings forecasts and named Richard McPhail as its next CEO, but its stock still fell 2.45% to $339.01. Disney also beat forecasts but fell 1.48% to $116.94. Nvidia, now a Dow member, beat sales forecasts after the close with $115.84 billion and expects about $130 billion next quarter. Builder confidence fell to 25 in November, its lowest since April 2012.",
    "bull": [
-    "The Dow fell 1.41% Monday, less than the S&P 500 (1.92%) and Nasdaq (2.49%), because it holds fewer tech stocks.",
-    "Apple and Microsoft, two of the Dow's biggest names, fell only about 1%, softening the drop.",
-    "Cheaper oil, down 3.7% to about $85, helps Dow companies that spend a lot on fuel and shipping, like airlines and stores."
+    "Nvidia, one of the Dow's 30 companies, beat sales forecasts by about $6.7 billion and briefly rose over 4% after hours.",
+    "Home Depot and Disney both beat earnings forecasts, showing their businesses are still making money even as their stocks fell.",
+    "Shoppers spent 0.2% more in October, beating the 0.1% forecast, which helps store and consumer companies in the Dow."
    ],
    "bear": [
-    "JPMorgan fell about 2% after outages delayed some transactions, a hit to one of the Dow's biggest banks.",
-    "Nvidia, a Dow member since 2024, faces a leadership crisis after its CEO resigned last week, though reports say he may come back.",
-    "The 10-year Treasury rate near 5.1% raises borrowing costs for the big companies in the Dow."
+    "Salesforce's 9.45% fall was its worst day since May 2024, a sign investors are losing faith in software businesses.",
+    "The Dow has fallen four days in a row and is about 4.9% below its November 4 close of 53,356.",
+    "Builder confidence of 25 is the lowest since April 2012, bad news for Dow members like Home Depot that sell to homeowners."
    ],
-   "nextEvent": "Nvidia's quarterly earnings report on Tuesday, November 17, 2026",
+   "nextEvent": "Fed meeting notes on Wednesday, November 18, 2026",
    "sources": [
     {
-     "title": "Stock market today: Dow and S&P 500 drop, Nasdaq sinks over 2% as Nvidia leads AI trade lower, Anthropic IPO looms",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-16-dow-sp-500-nasdaq-nvidia-oil-091631084.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 16, 2026"
+     "title": "Nvidia beats and guides to $130bn as Jensen Huang says he's open to a return, software stocks fall sharply, and the S&P 500 drops to its lowest close since July",
+     "url": "https://thewallstreetrepublic.substack.com/p/nvidia-beats-and-guides-to-130bn",
+     "outlet": "The Wall Street Republic",
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "Stock Market Today, Nov. 16: Tech Selloff Deepens as AI Leadership Crisis Rattles Nasdaq",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/16/stock-market-today-nov-16-tech-selloff-deepens-as-ai-leadership-crisis-rattles-nasdaq/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 16, 2026"
+     "title": "Nasdaq Drops 0.74% to Near Seven-Month Intraday Low, Dow Falls Over 800 Points as Chip Stocks Sell Off",
+     "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262309739-chip-stocks-fall-ahead-of-nvidia-earnings-nasdaq-hits-seven-month-low-tradingkey",
+     "outlet": "TradingKey",
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "S&P 500 Closes Down 2% as Nasdaq Leads Broad Market Lower",
-     "url": "https://247wallst.com/cards/tech-took-the-worst-of-it-the-nasdaq-s-2-54-drop-nearly-do-gspc-market-bell-01m7k2rvdndtgg635thrxjgnck",
+     "title": "S&P 500 Closes Down 1% as the Dow Sheds 955 Points",
+     "url": "https://247wallst.com/cards/the-dow-s-955-point-drop-led-the-selling-a-sharper-hit-than-gspc-market-bell-01m7nn5ym7r5nqbd4d83yt9zt1",
      "outlet": "24/7 Wall St.",
-     "date": "Nov 16, 2026"
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "Stock Market News for Nov 16, 2026",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-news-nov-16-132700717.html",
-     "outlet": "Zacks (via Yahoo Finance)",
-     "date": "Nov 16, 2026"
+     "title": "Stock market today: Dow, S&P 500, Nasdaq losses pick up in countdown to Nvidia earnings",
+     "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-17-dow-sp-500-nasdaq-nvidia-earnings-retail-sales-143848454.html",
+     "outlet": "Yahoo Finance",
+     "date": "Nov 17, 2026"
     }
    ],
-   "checkedAt": "2026-11-17T11:39:23.362Z",
-   "updatedAt": "2026-11-16T23:05:24.751Z",
+   "checkedAt": "2026-11-17T23:06:02.953Z",
+   "updatedAt": "2026-11-17T23:06:02.953Z",
    "about": "The Dow Jones Industrial Average tracks 30 large, well-known US companies, like Apple, Walmart and Coca-Cola. It is one of the oldest stock market measures, started in 1896.",
    "keyNumbers": [
     {
      "label": "Index level",
-     "value": "51,608.17",
-     "note": "close, Nov 16"
+     "value": "50,759.42",
+     "note": "close, Nov 17"
     },
     {
-     "label": "Monday move",
-     "value": "-1.41%",
-     "note": "down 739 points"
+     "label": "Tuesday move",
+     "value": "-1.64%",
+     "note": "down 848 points"
     },
     {
-     "label": "Nvidia (member)",
-     "value": "$156.14",
-     "note": "down 4.1% Monday"
+     "label": "Salesforce (member)",
+     "value": "$194.52",
+     "note": "down 9.45%, Dow's worst"
     },
     {
-     "label": "Amazon (member)",
-     "value": "$257.75",
-     "note": "down 3.3% Monday"
+     "label": "UnitedHealth (member)",
+     "value": "-5.42%",
+     "note": "Tuesday drop"
     }
    ],
-   "whyMoved": "The Dow fell 739 points, or 1.41%, from 52,347.55 on Friday, November 13 to 51,608.17 on Monday, November 16, a day after it was the only major index to rise. Dow members Nvidia (down 4.1%) and Amazon (down 3.3%) fell with the AI sell-off, while JPMorgan dropped about 2% after app and payment outages delayed some customer transactions. The Dow is weighted by stock price, not company size, so high-priced members swing it more. It fell less than the Nasdaq because most of its 30 companies are banks, stores, drug makers and factories rather than chip companies.",
+   "whyMoved": "The Dow fell 1.64%, or 848 points, on Tuesday to 50,759.42, a bigger drop than the S&P 500 or Nasdaq; it was at 53,356 on November 4, so it has lost about 4.9% in two weeks. Salesforce, a Dow member, was its worst stock, down 9.45% to $194.52, and UnitedHealth fell 5.42%. Because the Dow holds only 30 companies, a big drop in one or two of them pulls the whole average down much harder than in the 500-company S&P 500. Home Depot fell 2.45%, Microsoft 2.27% and Disney 1.48%, so the selling hit old, well-known companies more than chip makers.",
    "watch": [
     {
-     "date": "Nov 17",
-     "what": "Nvidia reports quarterly results after the bell, its first without Jensen Huang as CEO. Strong sales and a calm outlook could steady AI stocks; a miss could deepen the slide."
+     "date": "Nov 18",
+     "what": "The Fed releases notes from its last meeting at 2pm ET. Talk of more rate hikes would be bad for stocks; signs of patience would help."
+    },
+    {
+     "date": "Nov 19",
+     "what": "Anthropic's stock is expected to start trading under ANT, selling 825 million shares at $70 to $78. Strong demand would show investors still want AI; a weak start could drag tech lower."
+    },
+    {
+     "date": "Dec 9",
+     "what": "The Fed decides on interest rates. Traders see a 96.7% chance of a hike; anything less would be a big surprise that could lift stocks."
     }
    ]
   },
@@ -919,75 +929,83 @@
    "order": 4,
    "symbol": "AMEX:IWM",
    "sentiment": "bearish",
-   "headline": "Russell 2000 drops 1.7% as rising rates and AI selling hit small companies",
-   "summary": "Not every small company fell: Bill Holdings, which makes payment software for small businesses, rose 5.2% on Monday. Traders see about a 90% chance the Fed raises interest rates by 0.25 points in December, according to CME data on November 13, which would make loans even pricier for small firms. Bitcoin-linked companies like IREN fell 10% as bitcoin dropped to about $65,000. Oil fell 3.7% to about $85, which helps small businesses that spend a lot on fuel.",
+   "headline": "Russell 2000 drops 1.5% as a December rate hike looks almost certain",
+   "summary": "October store sales rose 0.2%, beating the 0.1% forecast, and September was raised to 0.8%, so shoppers are still spending. The 10-year Treasury rate eased slightly to about 5.10%, down from 5.12% on Monday. The VIX fear gauge rose 11% to 25.46, and the Fear & Greed Index closed at 25, 'extreme fear'. Prices of goods brought into the US rose 1.1% in October, more than the 0.7% expected.",
    "bull": [
-    "Bill Holdings rose 5.2% Monday, showing some small companies still gained on a red day.",
-    "Oil fell 3.7% to about $85, cutting costs for small trucking, shipping and retail companies.",
-    "The Russell 2000 fell 1.70% Monday, less than the Nasdaq's 2.49%, because it holds fewer giant AI stocks."
+    "Retail sales beat forecasts at 0.2% in October, and smaller companies earn most of their money inside the US, so steady shoppers help them.",
+    "The 10-year rate slipped to about 5.10% from 5.12%, a small break on borrowing costs.",
+    "Bill Holdings jumped 13.2% Tuesday, showing some smaller companies still drew buyers on a down day."
    ],
    "bear": [
-    "The 10-year Treasury rate is still high at about 5.12%, and small companies often depend more on loans, so high rates hurt them the most.",
-    "Traders see about a 90% chance of a December Fed rate hike, which would raise borrowing costs further.",
-    "Small AI and crypto-linked companies like Navitas (-11.8%) and IREN (-10%) dropped sharply, dragging the index."
+    "Fed official Alberto Musalem said rates may need to rise several times before spring 2027, which would make loans for small firms costlier.",
+    "Import prices rose 1.1% in October, above the 0.7% expected, which can squeeze small companies that buy parts from abroad.",
+    "Builder confidence of 25 is far below the 29 economists expected, a bad sign for small housing-related companies."
    ],
-   "nextEvent": "Nvidia's quarterly earnings report on Tuesday, November 17, 2026",
+   "nextEvent": "Housing starts and Fed meeting notes on Wednesday, November 18, 2026",
    "sources": [
     {
-     "title": "S&P 500 Closes Down 2% as Nasdaq Leads Broad Market Lower",
-     "url": "https://247wallst.com/cards/tech-took-the-worst-of-it-the-nasdaq-s-2-54-drop-nearly-do-gspc-market-bell-01m7k2rvdndtgg635thrxjgnck",
+     "title": "Nvidia beats and guides to $130bn as Jensen Huang says he's open to a return, software stocks fall sharply, and the S&P 500 drops to its lowest close since July",
+     "url": "https://thewallstreetrepublic.substack.com/p/nvidia-beats-and-guides-to-130bn",
+     "outlet": "The Wall Street Republic",
+     "date": "Nov 17, 2026"
+    },
+    {
+     "title": "Nasdaq Drops 0.74% to Near Seven-Month Intraday Low, Dow Falls Over 800 Points as Chip Stocks Sell Off",
+     "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262309739-chip-stocks-fall-ahead-of-nvidia-earnings-nasdaq-hits-seven-month-low-tradingkey",
+     "outlet": "TradingKey",
+     "date": "Nov 17, 2026"
+    },
+    {
+     "title": "S&P 500 Closes Down 1% as the Dow Sheds 955 Points",
+     "url": "https://247wallst.com/cards/the-dow-s-955-point-drop-led-the-selling-a-sharper-hit-than-gspc-market-bell-01m7nn5ym7r5nqbd4d83yt9zt1",
      "outlet": "24/7 Wall St.",
-     "date": "Nov 16, 2026"
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "Stock market today: Dow and S&P 500 drop, Nasdaq sinks over 2% as Nvidia leads AI trade lower, Anthropic IPO looms",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-16-dow-sp-500-nasdaq-nvidia-oil-091631084.html",
+     "title": "Stock market today: Dow, S&P 500, Nasdaq losses pick up in countdown to Nvidia earnings",
+     "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-17-dow-sp-500-nasdaq-nvidia-earnings-retail-sales-143848454.html",
      "outlet": "Yahoo Finance",
-     "date": "Nov 16, 2026"
-    },
-    {
-     "title": "Stock Market Today, Nov. 16: Tech Selloff Deepens as AI Leadership Crisis Rattles Nasdaq",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/16/stock-market-today-nov-16-tech-selloff-deepens-as-ai-leadership-crisis-rattles-nasdaq/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 16, 2026"
-    },
-    {
-     "title": "Bitcoin holds below $70K as stocks slip despite a cooler US PPI print",
-     "url": "https://cointelegraph.com/markets/bitcoin-below-70k-stocks-slip-cooler-us-ppi-print",
-     "outlet": "Cointelegraph",
-     "date": "Nov 13, 2026"
+     "date": "Nov 17, 2026"
     }
    ],
-   "checkedAt": "2026-11-17T11:39:23.362Z",
-   "updatedAt": "2026-11-16T23:05:24.752Z",
+   "checkedAt": "2026-11-17T23:06:02.953Z",
+   "updatedAt": "2026-11-17T23:06:02.953Z",
    "about": "The Russell 2000 tracks about 2,000 smaller US companies. It shows how smaller businesses, which often depend more on loans and the US economy, are doing.",
    "keyNumbers": [
     {
      "label": "Index level",
-     "value": "2,742.94",
-     "note": "close, Nov 16"
+     "value": "2,701.87",
+     "note": "close, Nov 17"
     },
     {
-     "label": "Monday move",
-     "value": "-1.70%",
-     "note": "down 47.55 points"
+     "label": "Tuesday move",
+     "value": "-1.50%",
+     "note": "down 41 points"
     },
     {
-     "label": "10-year rate",
-     "value": "5.12%",
-     "note": "down a little, Nov 16"
+     "label": "Fed hike odds",
+     "value": "96.7%",
+     "note": "for Dec 9 meeting"
     },
     {
-     "label": "Navitas Semi",
-     "value": "-11.8%",
-     "note": "Monday drop"
+     "label": "Builder confidence",
+     "value": "25",
+     "note": "lowest since April 2012"
     }
    ],
-   "whyMoved": "The Russell 2000 fell 47.55 points, or 1.70%, from 2,790.49 on Friday, November 13 to 2,742.94 on Monday, November 16, its third straight daily loss. Smaller AI-linked companies fell hard, like Navitas Semiconductor (down 11.8%), Applied Optoelectronics (down 9.9%) and Tempus AI (down 9.7%). The 10-year Treasury rate stayed high at about 5.12%, down slightly from 5.15% on Friday. Small companies usually borrow more than giant ones and pay higher interest, so when rates climb, more of their money goes to interest instead of profit.",
+   "whyMoved": "The Russell 2000 fell 1.50% on Tuesday to 2,701.87, more than the S&P 500's 1.03% drop; it was 2,857 on November 4, so smaller companies have lost about 5.4% in two weeks. Traders now see a 96.7% chance the Fed raises interest rates on December 9, and Fed officials said more hikes may come before spring 2027. Smaller companies borrow more of their money, often at rates that change, so higher rates eat directly into their profits. Builder confidence also fell to 25, the lowest since April 2012, which hurts the many small home and building companies in the index.",
    "watch": [
     {
-     "date": "Nov 17",
-     "what": "Nvidia reports quarterly results after the bell, its first without Jensen Huang as CEO. Strong sales and a calm outlook could steady AI stocks; a miss could deepen the slide."
+     "date": "Nov 18",
+     "what": "New home building numbers come out at 8:30am ET. A drop would add to the housing worries hurting smaller companies; a rise would ease them."
+    },
+    {
+     "date": "Nov 18",
+     "what": "The Fed releases notes from its last meeting at 2pm ET. Talk of more rate hikes would be bad for stocks; signs of patience would help."
+    },
+    {
+     "date": "Dec 9",
+     "what": "The Fed decides on interest rates. Traders see a 96.7% chance of a hike; anything less would be a big surprise that could lift stocks."
     }
    ]
   },
@@ -1080,28 +1098,34 @@
   }
  ],
  "market": {
-  "date": "2026-11-16",
-  "why": "On Monday, November 16, all four indexes fell as AI and chip stocks sold off again, led by Nvidia, down about 4% as investors worried about its leadership after CEO Jensen Huang resigned last week (reports say he may return). New US limits on selling advanced AI chips abroad hit AMD (down 5.6%), while Alphabet and Amazon each fell over 3%. The 10-year Treasury rate, what the government pays to borrow, stayed high at about 5.12% (down slightly from 5.15% on Friday), which weighs on smaller Russell 2000 companies that rely on loans.",
+  "date": "2026-11-17",
+  "why": "On Tuesday, November 17, stocks fell for a fourth day in a row, and the S&P 500 had its lowest close since July. Software companies dropped hard, led by Salesforce (down 9.5%, the Dow's worst stock), and UnitedHealth fell 5.4%, so the Dow lost 848 points. Smaller Russell 2000 companies slid as traders now see about a 97% chance the Fed raises interest rates on December 9, making loans cost more, while chip stocks rose a bit, so the Nasdaq fell least.",
   "sources": [
    {
-    "title": "Stock market today: Dow and S&P 500 drop, Nasdaq sinks over 2% as Nvidia leads AI trade lower, Anthropic IPO looms",
-    "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-16-dow-sp-500-nasdaq-nvidia-oil-091631084.html",
-    "outlet": "Yahoo Finance",
-    "date": "Nov 16, 2026"
+    "title": "Nasdaq Drops 0.74% to Near Seven-Month Intraday Low, Dow Falls Over 800 Points as Chip Stocks Sell Off",
+    "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262309739-chip-stocks-fall-ahead-of-nvidia-earnings-nasdaq-hits-seven-month-low-tradingkey",
+    "outlet": "TradingKey",
+    "date": "Nov 17, 2026"
    },
    {
-    "title": "Stock Market Today, Nov. 16: Tech Selloff Deepens as AI Leadership Crisis Rattles Nasdaq",
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/16/stock-market-today-nov-16-tech-selloff-deepens-as-ai-leadership-crisis-rattles-nasdaq/",
-    "outlet": "The Motley Fool",
-    "date": "Nov 16, 2026"
+    "title": "Nvidia beats and guides to $130bn as Jensen Huang says he's open to a return, software stocks fall sharply, and the S&P 500 drops to its lowest close since July",
+    "url": "https://thewallstreetrepublic.substack.com/p/nvidia-beats-and-guides-to-130bn",
+    "outlet": "The Wall Street Republic",
+    "date": "Nov 17, 2026"
    },
    {
-    "title": "S&P 500 Closes Down 2% as Nasdaq Leads Broad Market Lower",
-    "url": "https://247wallst.com/cards/tech-took-the-worst-of-it-the-nasdaq-s-2-54-drop-nearly-do-gspc-market-bell-01m7k2rvdndtgg635thrxjgnck",
+    "title": "S&P 500 Closes Down 1% as the Dow Sheds 955 Points",
+    "url": "https://247wallst.com/cards/the-dow-s-955-point-drop-led-the-selling-a-sharper-hit-than-gspc-market-bell-01m7nn5ym7r5nqbd4d83yt9zt1",
     "outlet": "24/7 Wall St.",
-    "date": "Nov 16, 2026"
+    "date": "Nov 17, 2026"
+   },
+   {
+    "title": "Stock market today: Dow, S&P 500, Nasdaq losses pick up in countdown to Nvidia earnings",
+    "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-17-dow-sp-500-nasdaq-nvidia-earnings-retail-sales-143848454.html",
+    "outlet": "Yahoo Finance",
+    "date": "Nov 17, 2026"
    }
   ],
-  "updatedAt": "2026-11-16T23:05:19.173Z"
+  "updatedAt": "2026-11-17T23:05:53.454Z"
  }
 }
