@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16T21:54:36Z",
+ "updated": "2026-11-17T12:21:19Z",
  "analysts": [
   {
    "ticker": "ANET",
@@ -40,10 +40,10 @@
    "week": 14.6,
    "why": "Up 14.6% in the last 5 market days, with mostly good news this week.",
    "headline": {
-    "title": "Charter Communications (CHTR) Expands Enterprise Reach With Managed Secure Networking Launch",
-    "url": "https://finance.yahoo.com/technology/articles/charter-communications-chtr-expands-enterprise-060807602.html",
-    "source": "Simply Wall St.",
-    "date": "2026-11-15"
+    "title": "Consumer Defensive Stocks Extend Winning Streak To 6 Weeks As SPY, QQQ Rebound: TTD, CHTR, TSLA Lead Gains",
+    "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQSFhaT09vcFhvNzdjVG40UkRKMm9tbDZLLWllU3VKdVlMRTF0Rk5yeUMwdFhTclZjMEZVUWxFbUVJMDM0WkJLcS05WHEzNmdudUFtWVFhNFBjQ0haZDdnVl9scDFyWG1NQlgxV0taSURnNlZqZmp0VjJTSlVDZVp1cDFFb2N5T0pJVjR4MkFPUGF2UmhhemdxbFhtd2FOU1lDYUNsVEM2Y0pRUXFtY3B5ZVhnanZlUFFNSGtVMHZKdVRvRU9pX3BVdExWYXlvQUFfazNzWmhuUXFxbk5kR0ZuOWJ1SWN0UVMtdEVDQy1Ma0JMdXZ3Snc?oc=5",
+    "source": "TradingView",
+    "date": "2026-11-16"
    }
   },
   {
@@ -53,23 +53,23 @@
    "week": 4.5,
    "why": "Up 4.5% in the last 5 market days, with mostly good news this week.",
    "headline": {
-    "title": "Costco Hits 52-Week High on Strong Sales and Special Dividend",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/costco-hits-52-week-high-151000309.html",
-    "source": "Zacks",
-    "date": "2026-11-16"
+    "title": "Costco (COST) Declares $30 Special Dividend And Reauthorizes $4 Billion Buyback",
+    "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNVk1SbzRkY0hkTVlRbk9LWHduY2lLZnJjeUIxU3NvbWVNLWhVZFFJMjNJYUNlSF92N2p5YTY5RFFocmVYSGdKakNybjRTeVZZd250OGg0aWNVVmR6UzFhVHpXRnhVREVmbHJ0RXBVZU5HUVRWelYyRUFxOVhHeHN1QXAxUGxYRVZJSW93OEhjSnJ0V3BGMm9OeURlbk8?oc=5",
+    "source": "Yahoo Finance",
+    "date": "2026-11-11"
    }
   },
   {
-   "ticker": "KR",
-   "name": "Kroger",
-   "price": 70.67,
-   "week": 3.9,
-   "why": "Up 3.9% in the last 5 market days, with mostly good news this week.",
+   "ticker": "CMCSA",
+   "name": "Comcast",
+   "price": 25.6,
+   "week": 4.4,
+   "why": "Up 4.4% in the last 5 market days, with mostly good news this week.",
    "headline": {
-    "title": "Albertsons deal or no deal: Why Kroger\u2019s grocery moat is winning",
-    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPaGFhRldINTdJVmNhdXhvZ3U1Mkk4VlJvRnFuNnYzRUVxUmpqdGF0MGJOV1dkRTZ5MUZ3NHA2bFp3dDd1Z3BaV1ZVYUwtb2lXWWlnRU5uWUtMX1J0REowZEd0anFaSXREakN0aTAzbjBKcVh1NmNIWlM2OEMzTzRDUzFoWnhBVGlxdnE2aUhVXzBlMDlKV0pWN0lITE5tSFdlaVZPc0VXV2tlVFk5T0V3bWVpSVhhQnZBUDh3?oc=5",
-    "source": "Investing.com",
-    "date": "2026-11-11"
+    "title": "Comcast Corp. Cl A stock outperforms competitors on strong trading day",
+    "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNRnJMRFJRdjFPT0lNWUM3b1dzZzJmNUc1Y1lBeEJDWVNHOWt2QjVKcFBvOWY5MHlqR1U5d2Z4VjR1dWFWQnd1VjNTS1JKZEJKM1FEaE1RQTFlYkVLbV85T2lWU2JZbmZXd1pmSWpscExvWVlTcllnVG1BUlRBeUJEU0hySlZFaVdaVTFPWnlDbUhHQWVHLTk3Y3J6QUhTOWVfMzE2Y3ZPOG04b3owMkFMMG0xWkZXVzhYRE1JQXZvT0J5TTJ4TlZxdFdYZmhkQzVxTXJ0Q2VoUjhGVGROa1FPRA?oc=5",
+    "source": "MarketWatch",
+    "date": "2026-11-16"
    }
   }
  ]
