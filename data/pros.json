@@ -1,7 +1,43 @@
 {
- "updated": "2026-11-14",
+ "updated": "2026-11-17",
  "source": "SEC EDGAR (Form 4 and Form 13F)",
  "insiders": [
+  {
+   "name": "Jonathan Banner",
+   "role": "EVP - Chief Impact Officer",
+   "company": "McDonald's",
+   "ticker": "MCD",
+   "side": "sell",
+   "shares": 750,
+   "value": 207930,
+   "traded": "2026-11-13",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/63908/000194355126000007/xslF345X06/form4.xml"
+  },
+  {
+   "name": "Tony West",
+   "role": "See Remarks",
+   "company": "Uber Technologies",
+   "ticker": "UBER",
+   "side": "sell",
+   "shares": 35800,
+   "value": 2482448,
+   "traded": "2026-11-12",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1543151/000162620126000024/xslF345X06/primarydocument.xml"
+  },
+  {
+   "name": "John L. Hennessy",
+   "role": "Board member",
+   "company": "Alphabet",
+   "ticker": "GOOGL",
+   "side": "sell",
+   "shares": 300,
+   "value": 90000,
+   "traded": "2026-11-12",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526463983/xslF345X06/ownership.xml"
+  },
   {
    "name": "Elizabeth Forminard",
    "role": "EVP, Chief Legal Officer",
@@ -49,6 +85,18 @@
    "traded": "2026-11-12",
    "reported": "2026-11-13",
    "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000138/xslF345X06/form4.xml"
+  },
+  {
+   "name": "Shyam Sankar",
+   "role": "See Remarks",
+   "company": "Palantir Technologies",
+   "ticker": "PLTR",
+   "side": "sell",
+   "shares": 384680,
+   "value": 64933199,
+   "traded": "2026-11-11",
+   "reported": "2026-11-13",
+   "url": "https://www.sec.gov/Archives/edgar/data/1321655/000182415926000017/xslF345X06/wk-form4_1794618004.xml"
   },
   {
    "name": "Gustav Soderstrom",
@@ -1729,141 +1777,549 @@
    "traded": "2026-10-01",
    "reported": "2026-10-05",
    "url": "https://www.sec.gov/Archives/edgar/data/1018724/000193600626000026/xslF345X06/wk-form4_1791230893.xml"
-  },
-  {
-   "name": "Ryan McInerney",
-   "role": "Chief Executive Officer",
-   "company": "Visa",
-   "ticker": "V",
-   "side": "sell",
-   "shares": 5875,
-   "value": 2108009,
-   "traded": "2026-10-01",
-   "reported": "2026-10-02",
-   "url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316126000123/xslF345X06/form4.xml"
-  },
-  {
-   "name": "Gregory Baszucki",
-   "role": "Board member",
-   "company": "Roblox",
-   "ticker": "RBLX",
-   "side": "sell",
-   "shares": 16666,
-   "value": 714441,
-   "traded": "2026-10-01",
-   "reported": "2026-10-02",
-   "url": "https://www.sec.gov/Archives/edgar/data/1315098/000131509826000186/xslF345X06/wk-form4_1790978110.xml"
-  },
-  {
-   "name": "Daniel J Bartlett",
-   "role": "Executive Vice President",
-   "company": "Walmart",
-   "ticker": "WMT",
-   "side": "sell",
-   "shares": 3990,
-   "value": 416596,
-   "traded": "2026-10-01",
-   "reported": "2026-10-02",
-   "url": "https://www.sec.gov/Archives/edgar/data/104169/000157929926000026/xslF345X06/wk-form4_1790976822.xml"
-  },
-  {
-   "name": "Michael John Callahan",
-   "role": "Chief Administrative Officer",
-   "company": "Rivian Automotive",
-   "ticker": "RIVN",
-   "side": "sell",
-   "shares": 15000,
-   "value": 225000,
-   "traded": "2026-10-01",
-   "reported": "2026-10-02",
-   "url": "https://www.sec.gov/Archives/edgar/data/1874178/000126274226000017/xslF345X06/wk-form4_1790977870.xml"
-  },
-  {
-   "name": "Frances Arnold",
-   "role": "Board member",
-   "company": "Alphabet",
-   "ticker": "GOOGL",
-   "side": "sell",
-   "shares": 83,
-   "value": 28257,
-   "traded": "2026-09-30",
-   "reported": "2026-10-02",
-   "url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526412669/xslF345X06/ownership.xml"
-  },
-  {
-   "name": "Stephen H Rusckowski",
-   "role": "Board member",
-   "company": "Oracle",
-   "ticker": "ORCL",
-   "side": "buy",
-   "shares": 25000,
-   "value": 3483800,
-   "traded": "2026-09-29",
-   "reported": "2026-10-01",
-   "url": "https://www.sec.gov/Archives/edgar/data/1341439/000134143926000099/xslF345X06/form4.xml"
-  },
-  {
-   "name": "Jennifer Newstead",
-   "role": "SVP, GC and Government Affairs",
-   "company": "Apple",
-   "ticker": "AAPL",
-   "side": "sell",
-   "shares": 2399,
-   "value": 806496,
-   "traded": "2026-09-29",
-   "reported": "2026-10-01",
-   "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126038307/xslF345X06/form4.xml"
-  },
-  {
-   "name": "Claudine Adamo",
-   "role": "Executive Vice President",
-   "company": "Costco Wholesale",
-   "ticker": "COST",
-   "side": "sell",
-   "shares": 2200,
-   "value": 2015046,
-   "traded": "2026-09-29",
-   "reported": "2026-09-30",
-   "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000088/xslF345X06/form4.xml"
-  },
-  {
-   "name": "Caton Frates",
-   "role": "Sr. Executive Vice President",
-   "company": "Costco Wholesale",
-   "ticker": "COST",
-   "side": "sell",
-   "shares": 801,
-   "value": 733328,
-   "traded": "2026-09-29",
-   "reported": "2026-09-30",
-   "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000090/xslF345X06/form4.xml"
-  },
-  {
-   "name": "Nathan Blecharczyk",
-   "role": "Chief Strategy Officer",
-   "company": "Airbnb",
-   "ticker": "ABNB",
-   "side": "sell",
-   "shares": 13615,
-   "value": 2135172,
-   "traded": "2026-09-28",
-   "reported": "2026-09-30",
-   "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312526409120/xslF345X06/ownership.xml"
-  },
-  {
-   "name": "Javier Olivan",
-   "role": "Chief Operating Officer",
-   "company": "Meta Platforms",
-   "ticker": "META",
-   "side": "sell",
-   "shares": 1575,
-   "value": 1180966,
-   "traded": "2026-09-28",
-   "reported": "2026-09-30",
-   "url": "https://www.sec.gov/Archives/edgar/data/1326801/000095010326014886/xslF345X06/ownership.xml"
   }
  ],
  "funds": [
+  {
+   "fund": "Pershing Square",
+   "person": "Bill Ackman's fund",
+   "company": "Pershing Square",
+   "ticker": "PS",
+   "move": "new",
+   "value": 10309165762,
+   "pct": null,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126005427/"
+  },
+  {
+   "fund": "Bridgewater Associates",
+   "person": "the fund Ray Dalio started",
+   "company": "State STR Spdr S&P 500 ETF T",
+   "ticker": "",
+   "move": "less",
+   "value": 1461954846,
+   "pct": -0.36,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000004/"
+  },
+  {
+   "fund": "Bridgewater Associates",
+   "person": "the fund Ray Dalio started",
+   "company": "Ishares TR",
+   "ticker": "",
+   "move": "less",
+   "value": 1144358343,
+   "pct": -0.498,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000004/"
+  },
+  {
+   "fund": "Pershing Square",
+   "person": "Bill Ackman's fund",
+   "company": "Microsoft",
+   "ticker": "MSFT",
+   "move": "less",
+   "value": 1098606668,
+   "pct": -0.345,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126005427/"
+  },
+  {
+   "fund": "Berkshire Hathaway",
+   "person": "Warren Buffett's company",
+   "company": "Lennar",
+   "ticker": "LEN",
+   "move": "more",
+   "value": 1074750776,
+   "pct": 0.986,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526463399/"
+  },
+  {
+   "fund": "Pershing Square",
+   "person": "Bill Ackman's fund",
+   "company": "Intercontinental Exchange IN",
+   "ticker": "",
+   "move": "new",
+   "value": 1008855725,
+   "pct": null,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126005427/"
+  },
+  {
+   "fund": "Pershing Square",
+   "person": "Bill Ackman's fund",
+   "company": "Alcon",
+   "ticker": "ALC",
+   "move": "new",
+   "value": 954175943,
+   "pct": null,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126005427/"
+  },
+  {
+   "fund": "Berkshire Hathaway",
+   "person": "Warren Buffett's company",
+   "company": "VeriSign",
+   "ticker": "VRSN",
+   "move": "less",
+   "value": 865134485,
+   "pct": -0.341,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526463399/"
+  },
+  {
+   "fund": "Berkshire Hathaway",
+   "person": "Warren Buffett's company",
+   "company": "Bending Spoons S.p.A.",
+   "ticker": "BSP",
+   "move": "new",
+   "value": 689379305,
+   "pct": null,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526463399/"
+  },
+  {
+   "fund": "Appaloosa",
+   "person": "David Tepper's fund",
+   "company": "Space Exploration Techn",
+   "ticker": "",
+   "move": "more",
+   "value": 524300737,
+   "pct": 16.259,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000004/"
+  },
+  {
+   "fund": "Berkshire Hathaway",
+   "person": "Warren Buffett's company",
+   "company": "Capital One Financial",
+   "ticker": "COF",
+   "move": "less",
+   "value": 357179500,
+   "pct": -0.617,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526463399/"
+  },
+  {
+   "fund": "Bridgewater Associates",
+   "person": "the fund Ray Dalio started",
+   "company": "Alphabet",
+   "ticker": "GOOGL",
+   "move": "less",
+   "value": 314357501,
+   "pct": -0.652,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000004/"
+  },
+  {
+   "fund": "Appaloosa",
+   "person": "David Tepper's fund",
+   "company": "Micron Technology",
+   "ticker": "MU",
+   "move": "more",
+   "value": 292905250,
+   "pct": 0.282,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000004/"
+  },
+  {
+   "fund": "Appaloosa",
+   "person": "David Tepper's fund",
+   "company": "Alphabet",
+   "ticker": "GOOGL",
+   "move": "less",
+   "value": 289629000,
+   "pct": -0.459,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000004/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Taiwan Semiconductor Manufac",
+   "ticker": "",
+   "move": "less",
+   "value": 254081672,
+   "pct": -0.945,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000011/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Seagate Technology Hldngs Pl",
+   "ticker": "",
+   "move": "more",
+   "value": 202721373,
+   "pct": 1.802,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000011/"
+  },
+  {
+   "fund": "Appaloosa",
+   "person": "David Tepper's fund",
+   "company": "Oracle",
+   "ticker": "ORCL",
+   "move": "new",
+   "value": 172164864,
+   "pct": null,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000004/"
+  },
+  {
+   "fund": "Bridgewater Associates",
+   "person": "the fund Ray Dalio started",
+   "company": "Applovin",
+   "ticker": "APP",
+   "move": "more",
+   "value": 155797688,
+   "pct": 3.659,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000004/"
+  },
+  {
+   "fund": "Bridgewater Associates",
+   "person": "the fund Ray Dalio started",
+   "company": "Union PAC",
+   "ticker": "",
+   "move": "sold",
+   "value": 139880352,
+   "pct": -1.0,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000004/"
+  },
+  {
+   "fund": "Bridgewater Associates",
+   "person": "the fund Ray Dalio started",
+   "company": "Applied Materials",
+   "ticker": "AMAT",
+   "move": "more",
+   "value": 139071325,
+   "pct": 0.933,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000004/"
+  },
+  {
+   "fund": "Bridgewater Associates",
+   "person": "the fund Ray Dalio started",
+   "company": "QUALCOMM Incorporated",
+   "ticker": "QCOM",
+   "move": "more",
+   "value": 131708042,
+   "pct": 4.405,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000004/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Unity Software",
+   "ticker": "U",
+   "move": "more",
+   "value": 131696500,
+   "pct": 4.355,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000011/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Alphabet",
+   "ticker": "GOOGL",
+   "move": "sold",
+   "value": 120184000,
+   "pct": -1.0,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000011/"
+  },
+  {
+   "fund": "Appaloosa",
+   "person": "David Tepper's fund",
+   "company": "Applied Materials",
+   "ticker": "AMAT",
+   "move": "new",
+   "value": 115060500,
+   "pct": null,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000004/"
+  },
+  {
+   "fund": "Appaloosa",
+   "person": "David Tepper's fund",
+   "company": "Advanced Micro Devices",
+   "ticker": "AMD",
+   "move": "sold",
+   "value": 114729725,
+   "pct": -1.0,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000004/"
+  },
+  {
+   "fund": "Bridgewater Associates",
+   "person": "the fund Ray Dalio started",
+   "company": "Paccar",
+   "ticker": "PCAR",
+   "move": "sold",
+   "value": 113646373,
+   "pct": -1.0,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000004/"
+  },
+  {
+   "fund": "Appaloosa",
+   "person": "David Tepper's fund",
+   "company": "Meta Platforms",
+   "ticker": "META",
+   "move": "less",
+   "value": 108777000,
+   "pct": -0.222,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000004/"
+  },
+  {
+   "fund": "Appaloosa",
+   "person": "David Tepper's fund",
+   "company": "Nvidia",
+   "ticker": "NVDA",
+   "move": "more",
+   "value": 108480500,
+   "pct": 0.311,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000004/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "United Airlines Holdings",
+   "ticker": "UAL",
+   "move": "sold",
+   "value": 108084000,
+   "pct": -1.0,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000011/"
+  },
+  {
+   "fund": "Bridgewater Associates",
+   "person": "the fund Ray Dalio started",
+   "company": "Dominion Energy",
+   "ticker": "D",
+   "move": "new",
+   "value": 91758306,
+   "pct": null,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000004/"
+  },
+  {
+   "fund": "Bridgewater Associates",
+   "person": "the fund Ray Dalio started",
+   "company": "Occidental Petroleum",
+   "ticker": "OXY",
+   "move": "new",
+   "value": 85771392,
+   "pct": null,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000004/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "STMicroelectronics",
+   "ticker": "STM",
+   "move": "less",
+   "value": 79373298,
+   "pct": -0.479,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000011/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Sandisk",
+   "ticker": "SNDK",
+   "move": "sold",
+   "value": 79353000,
+   "pct": -1.0,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000011/"
+  },
+  {
+   "fund": "Bridgewater Associates",
+   "person": "the fund Ray Dalio started",
+   "company": "Synaptics Incorporated",
+   "ticker": "SYNA",
+   "move": "new",
+   "value": 78347207,
+   "pct": null,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000004/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "BBB Foods",
+   "ticker": "TBBB",
+   "move": "less",
+   "value": 66028005,
+   "pct": -0.432,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000011/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Somnigroup International",
+   "ticker": "SGI",
+   "move": "new",
+   "value": 61712000,
+   "pct": null,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000011/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Amazon.com",
+   "ticker": "AMZN",
+   "move": "more",
+   "value": 57553563,
+   "pct": 0.427,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000011/"
+  },
+  {
+   "fund": "Appaloosa",
+   "person": "David Tepper's fund",
+   "company": "Broadcom",
+   "ticker": "AVGO",
+   "move": "sold",
+   "value": 56662500,
+   "pct": -1.0,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000004/"
+  },
+  {
+   "fund": "Appaloosa",
+   "person": "David Tepper's fund",
+   "company": "Modine Manufacturing",
+   "ticker": "MOD",
+   "move": "new",
+   "value": 52969925,
+   "pct": null,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000004/"
+  },
+  {
+   "fund": "Bridgewater Associates",
+   "person": "the fund Ray Dalio started",
+   "company": "Nutanix",
+   "ticker": "NTNX",
+   "move": "sold",
+   "value": 50896861,
+   "pct": -1.0,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000004/"
+  },
+  {
+   "fund": "Appaloosa",
+   "person": "David Tepper's fund",
+   "company": "American Airlines Group",
+   "ticker": "AAL",
+   "move": "less",
+   "value": 47751824,
+   "pct": -0.476,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000004/"
+  },
+  {
+   "fund": "Appaloosa",
+   "person": "David Tepper's fund",
+   "company": "QUALCOMM Incorporated",
+   "ticker": "QCOM",
+   "move": "sold",
+   "value": 46197500,
+   "pct": -1.0,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000004/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Newmont",
+   "ticker": "NEM",
+   "move": "new",
+   "value": 43875000,
+   "pct": null,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000011/"
+  },
+  {
+   "fund": "Duquesne Family Office",
+   "person": "Stanley Druckenmiller's fund",
+   "company": "Barrick Mng",
+   "ticker": "",
+   "move": "new",
+   "value": 42891000,
+   "pct": null,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000011/"
+  },
+  {
+   "fund": "Pershing Square",
+   "person": "Bill Ackman's fund",
+   "company": "Hertz Global Holdings",
+   "ticker": "HTZ",
+   "move": "sold",
+   "value": 33955972,
+   "pct": -1.0,
+   "asof": "2026-09-30",
+   "reported": "2026-11-16",
+   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126005427/"
+  },
   {
    "fund": "ARK Invest",
    "person": "Cathie Wood's fund",
@@ -2007,1584 +2463,892 @@
    "asof": "2026-09-30",
    "reported": "2026-11-13",
    "url": "https://www.sec.gov/Archives/edgar/data/1697748/000110465926126785/"
-  },
-  {
-   "fund": "Berkshire Hathaway",
-   "person": "Warren Buffett's company",
-   "company": "Alphabet",
-   "ticker": "GOOGL",
-   "move": "more",
-   "value": 17110074056,
-   "pct": 0.452,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/"
-  },
-  {
-   "fund": "Berkshire Hathaway",
-   "person": "Warren Buffett's company",
-   "company": "Delta Air Lines",
-   "ticker": "DAL",
-   "move": "more",
-   "value": 1640037551,
-   "pct": 0.44,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/"
-  },
-  {
-   "fund": "Bridgewater Associates",
-   "person": "the fund Ray Dalio started",
-   "company": "Micron Technology",
-   "ticker": "MU",
-   "move": "less",
-   "value": 1568723971,
-   "pct": -0.921,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
-  },
-  {
-   "fund": "Pershing Square",
-   "person": "Bill Ackman's fund",
-   "company": "Visa",
-   "ticker": "V",
-   "move": "new",
-   "value": 1122065552,
-   "pct": null,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
-  },
-  {
-   "fund": "Pershing Square",
-   "person": "Bill Ackman's fund",
-   "company": "Mastercard Incorporated",
-   "ticker": "",
-   "move": "new",
-   "value": 1091218186,
-   "pct": null,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
-  },
-  {
-   "fund": "Pershing Square",
-   "person": "Bill Ackman's fund",
-   "company": "S&P Global",
-   "ticker": "SPGI",
-   "move": "new",
-   "value": 1056088305,
-   "pct": null,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
-  },
-  {
-   "fund": "Berkshire Hathaway",
-   "person": "Warren Buffett's company",
-   "company": "Capital One Financial",
-   "ticker": "COF",
-   "move": "less",
-   "value": 832573000,
-   "pct": -0.58,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/"
-  },
-  {
-   "fund": "Appaloosa",
-   "person": "David Tepper's fund",
-   "company": "Micron Technology",
-   "ticker": "MU",
-   "move": "less",
-   "value": 796460100,
-   "pct": -0.414,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/"
-  },
-  {
-   "fund": "Bridgewater Associates",
-   "person": "the fund Ray Dalio started",
-   "company": "State STR Spdr S&P 500 ETF T",
-   "ticker": "",
-   "move": "more",
-   "value": 713498409,
-   "pct": 0.219,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
-  },
-  {
-   "fund": "Pershing Square",
-   "person": "Bill Ackman's fund",
-   "company": "Amazon.com",
-   "ticker": "AMZN",
-   "move": "less",
-   "value": 688355474,
-   "pct": -0.252,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
-  },
-  {
-   "fund": "Pershing Square",
-   "person": "Bill Ackman's fund",
-   "company": "Howard Hughes Holdings",
-   "ticker": "HHH",
-   "move": "more",
-   "value": 643410000,
-   "pct": 0.477,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
-  },
-  {
-   "fund": "Berkshire Hathaway",
-   "person": "Warren Buffett's company",
-   "company": "Kroger Company (The)",
-   "ticker": "KR",
-   "move": "less",
-   "value": 610830000,
-   "pct": -0.22,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/"
-  },
-  {
-   "fund": "Bridgewater Associates",
-   "person": "the fund Ray Dalio started",
-   "company": "Amazon.com",
-   "ticker": "AMZN",
-   "move": "less",
-   "value": 563252239,
-   "pct": -0.538,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
-  },
-  {
-   "fund": "Bridgewater Associates",
-   "person": "the fund Ray Dalio started",
-   "company": "Marvell Technology",
-   "ticker": "MRVL",
-   "move": "less",
-   "value": 526601307,
-   "pct": -0.907,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
-  },
-  {
-   "fund": "Berkshire Hathaway",
-   "person": "Warren Buffett's company",
-   "company": "Nucor",
-   "ticker": "NUE",
-   "move": "less",
-   "value": 456486698,
-   "pct": -0.525,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/"
-  },
-  {
-   "fund": "Pershing Square",
-   "person": "Bill Ackman's fund",
-   "company": "Meta Platforms",
-   "ticker": "META",
-   "move": "more",
-   "value": 301473371,
-   "pct": 0.201,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
-  },
-  {
-   "fund": "Berkshire Hathaway",
-   "person": "Warren Buffett's company",
-   "company": "Lennar",
-   "ticker": "LEN",
-   "move": "more",
-   "value": 277924164,
-   "pct": 0.298,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/"
-  },
-  {
-   "fund": "Bridgewater Associates",
-   "person": "the fund Ray Dalio started",
-   "company": "Vanguard Index FDS",
-   "ticker": "",
-   "move": "more",
-   "value": 205873358,
-   "pct": 1.89,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
-  },
-  {
-   "fund": "Appaloosa",
-   "person": "David Tepper's fund",
-   "company": "Sandisk",
-   "ticker": "SNDK",
-   "move": "sold",
-   "value": 178689375,
-   "pct": -1.0,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/"
-  },
-  {
-   "fund": "Appaloosa",
-   "person": "David Tepper's fund",
-   "company": "Boeing Company (The)",
-   "ticker": "BA",
-   "move": "new",
-   "value": 173176000,
-   "pct": null,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/"
-  },
-  {
-   "fund": "Appaloosa",
-   "person": "David Tepper's fund",
-   "company": "Taiwan Semiconductor Manufac",
-   "ticker": "",
-   "move": "more",
-   "value": 154016325,
-   "pct": 0.243,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/"
-  },
-  {
-   "fund": "Appaloosa",
-   "person": "David Tepper's fund",
-   "company": "Corning Incorporated",
-   "ticker": "GLW",
-   "move": "sold",
-   "value": 153578115,
-   "pct": -1.0,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/"
-  },
-  {
-   "fund": "Duquesne Family Office",
-   "person": "Stanley Druckenmiller's fund",
-   "company": "Fox",
-   "ticker": "FOXA",
-   "move": "new",
-   "value": 144623000,
-   "pct": null,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
-  },
-  {
-   "fund": "Appaloosa",
-   "person": "David Tepper's fund",
-   "company": "Alibaba Group Holding Limited",
-   "ticker": "BABA",
-   "move": "less",
-   "value": 140610700,
-   "pct": -0.423,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/"
-  },
-  {
-   "fund": "Appaloosa",
-   "person": "David Tepper's fund",
-   "company": "American Airlines Group",
-   "ticker": "AAL",
-   "move": "new",
-   "value": 135525000,
-   "pct": null,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/"
-  },
-  {
-   "fund": "Appaloosa",
-   "person": "David Tepper's fund",
-   "company": "Meta Platforms",
-   "ticker": "META",
-   "move": "more",
-   "value": 134344665,
-   "pct": 0.546,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/"
-  },
-  {
-   "fund": "Duquesne Family Office",
-   "person": "Stanley Druckenmiller's fund",
-   "company": "Alphabet",
-   "ticker": "GOOGL",
-   "move": "new",
-   "value": 120184000,
-   "pct": null,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
-  },
-  {
-   "fund": "Duquesne Family Office",
-   "person": "Stanley Druckenmiller's fund",
-   "company": "Amazon.com",
-   "ticker": "AMZN",
-   "move": "more",
-   "value": 118169023,
-   "pct": 10.825,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
-  },
-  {
-   "fund": "Appaloosa",
-   "person": "David Tepper's fund",
-   "company": "CoreWeave",
-   "ticker": "CRWV",
-   "move": "new",
-   "value": 107328806,
-   "pct": null,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/"
-  },
-  {
-   "fund": "Duquesne Family Office",
-   "person": "Stanley Druckenmiller's fund",
-   "company": "CDW",
-   "ticker": "CDW",
-   "move": "new",
-   "value": 104629000,
-   "pct": null,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
-  },
-  {
-   "fund": "Bridgewater Associates",
-   "person": "the fund Ray Dalio started",
-   "company": "Pacific Gas & Electric",
-   "ticker": "PCG",
-   "move": "more",
-   "value": 99352090,
-   "pct": 240.789,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
-  },
-  {
-   "fund": "Pershing Square",
-   "person": "Bill Ackman's fund",
-   "company": "Alphabet",
-   "ticker": "GOOGL",
-   "move": "sold",
-   "value": 98731763,
-   "pct": -1.0,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/"
-  },
-  {
-   "fund": "Appaloosa",
-   "person": "David Tepper's fund",
-   "company": "Uber Technologies",
-   "ticker": "UBER",
-   "move": "more",
-   "value": 98235088,
-   "pct": 0.215,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/"
-  },
-  {
-   "fund": "Berkshire Hathaway",
-   "person": "Warren Buffett's company",
-   "company": "Constellation Brands",
-   "ticker": "STZ",
-   "move": "sold",
-   "value": 94933500,
-   "pct": -1.0,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/"
-  },
-  {
-   "fund": "Appaloosa",
-   "person": "David Tepper's fund",
-   "company": "PDD Holdings",
-   "ticker": "PDD",
-   "move": "sold",
-   "value": 91962000,
-   "pct": -1.0,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/"
-  },
-  {
-   "fund": "Bridgewater Associates",
-   "person": "the fund Ray Dalio started",
-   "company": "Eversource Energy (D/B/A)",
-   "ticker": "ES",
-   "move": "new",
-   "value": 86372768,
-   "pct": null,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
-  },
-  {
-   "fund": "Duquesne Family Office",
-   "person": "Stanley Druckenmiller's fund",
-   "company": "Roku",
-   "ticker": "ROKU",
-   "move": "less",
-   "value": 78204789,
-   "pct": -0.755,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
-  },
-  {
-   "fund": "Bridgewater Associates",
-   "person": "the fund Ray Dalio started",
-   "company": "Applovin",
-   "ticker": "APP",
-   "move": "new",
-   "value": 75533748,
-   "pct": null,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
-  },
-  {
-   "fund": "Duquesne Family Office",
-   "person": "Stanley Druckenmiller's fund",
-   "company": "United Airlines Holdings",
-   "ticker": "UAL",
-   "move": "more",
-   "value": 72387362,
-   "pct": 2.028,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
-  },
-  {
-   "fund": "Bridgewater Associates",
-   "person": "the fund Ray Dalio started",
-   "company": "Consolidated Edison",
-   "ticker": "ED",
-   "move": "new",
-   "value": 68993404,
-   "pct": null,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
-  },
-  {
-   "fund": "Duquesne Family Office",
-   "person": "Stanley Druckenmiller's fund",
-   "company": "Seagate Technology Hldngs Pl",
-   "ticker": "",
-   "move": "more",
-   "value": 68804500,
-   "pct": 1.406,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
-  },
-  {
-   "fund": "Duquesne Family Office",
-   "person": "Stanley Druckenmiller's fund",
-   "company": "Alcoa",
-   "ticker": "AA",
-   "move": "less",
-   "value": 68184186,
-   "pct": -0.876,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
-  },
-  {
-   "fund": "Bridgewater Associates",
-   "person": "the fund Ray Dalio started",
-   "company": "Cisco Systems",
-   "ticker": "CSCO",
-   "move": "sold",
-   "value": 63848190,
-   "pct": -1.0,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
-  },
-  {
-   "fund": "Duquesne Family Office",
-   "person": "Stanley Druckenmiller's fund",
-   "company": "Woodward",
-   "ticker": "WWD",
-   "move": "less",
-   "value": 61331823,
-   "pct": -0.682,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
-  },
-  {
-   "fund": "Duquesne Family Office",
-   "person": "Stanley Druckenmiller's fund",
-   "company": "Broadcom",
-   "ticker": "AVGO",
-   "move": "sold",
-   "value": 60650000,
-   "pct": -1.0,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
-  },
-  {
-   "fund": "Duquesne Family Office",
-   "person": "Stanley Druckenmiller's fund",
-   "company": "Option Care Health",
-   "ticker": "OPCH",
-   "move": "sold",
-   "value": 50301000,
-   "pct": -1.0,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
-  },
-  {
-   "fund": "Appaloosa",
-   "person": "David Tepper's fund",
-   "company": "Whirlpool",
-   "ticker": "WHR",
-   "move": "less",
-   "value": 48683700,
-   "pct": -0.633,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/"
-  },
-  {
-   "fund": "Duquesne Family Office",
-   "person": "Stanley Druckenmiller's fund",
-   "company": "Figure Technology Solutio",
-   "ticker": "",
-   "move": "sold",
-   "value": 39057000,
-   "pct": -1.0,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1536411/000153641126000006/"
-  },
-  {
-   "fund": "Bridgewater Associates",
-   "person": "the fund Ray Dalio started",
-   "company": "ASE Technology Holding",
-   "ticker": "ASX",
-   "move": "sold",
-   "value": 33557583,
-   "pct": -1.0,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
-  },
-  {
-   "fund": "Bridgewater Associates",
-   "person": "the fund Ray Dalio started",
-   "company": "CoreWeave",
-   "ticker": "CRWV",
-   "move": "sold",
-   "value": 28201017,
-   "pct": -1.0,
-   "asof": "2026-06-30",
-   "reported": "2026-08-14",
-   "url": "https://www.sec.gov/Archives/edgar/data/1350694/000135069426000003/"
   }
  ],
  "prices": {
-  "AA": {
-   "now": 39.74,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 49.98
-   }
-  },
-  "AAL": {
-   "now": 13.17,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 14.83
-   }
-  },
   "AAPL": {
-   "now": 356.27,
-   "day": "2026-11-13",
+   "now": 352.78,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-29": 348.91,
-    "2026-09-22": 339.75,
-    "2026-10-22": 348.22,
-    "2026-11-05": 344.17,
-    "2026-10-05": 332.89,
-    "2026-10-27": 347.1,
     "2026-10-15": 342.0,
-    "2026-10-01": 330.32,
-    "2026-11-12": 354.88,
     "2026-10-19": 342.94,
+    "2026-10-08": 340.42,
+    "2026-11-12": 354.88,
+    "2026-10-22": 348.22,
+    "2026-10-29": 348.91,
+    "2026-10-05": 332.89,
+    "2026-11-05": 344.17,
     "2026-11-04": 349.51,
-    "2026-10-08": 340.42
+    "2026-10-27": 347.1
    }
   },
   "ABNB": {
-   "now": 186.78,
-   "day": "2026-11-13",
+   "now": 186.19,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-28": 166.04,
-    "2026-10-14": 167.06,
-    "2026-09-30": 160.65,
-    "2026-11-10": 186.9,
     "2026-10-19": 175.46,
-    "2026-11-04": 176.37
+    "2026-10-14": 167.06,
+    "2026-11-04": 176.37,
+    "2026-10-28": 166.04,
+    "2026-11-10": 186.9
    }
   },
   "ABT": {
-   "now": 108.52,
-   "day": "2026-11-13",
+   "now": 107.45,
+   "day": "2026-11-16",
    "on": {
     "2026-10-27": 103.1
    }
   },
   "ADI": {
-   "now": 397.97,
-   "day": "2026-11-13",
+   "now": 383.17,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 406.25
    }
   },
   "AEIS": {
-   "now": 219.68,
-   "day": "2026-11-13",
+   "now": 209.67,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 280.77
    }
   },
   "ALGM": {
-   "now": 30.13,
-   "day": "2026-11-13",
+   "now": 28.11,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 33.79
    }
   },
   "ALKS": {
-   "now": 47.03,
-   "day": "2026-11-13",
+   "now": 46.53,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 40.26
    }
   },
   "AMAT": {
-   "now": 370.5,
-   "day": "2026-11-13",
+   "now": 350.25,
+   "day": "2026-11-16",
    "on": {
     "2026-11-05": 319.25
    }
   },
   "AMD": {
-   "now": 534.06,
-   "day": "2026-11-13",
+   "now": 504.28,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-19": 538.05
+    "2026-10-19": 538.05,
+    "2026-11-13": 534.06
    }
   },
   "AMGN": {
-   "now": 465.67,
-   "day": "2026-11-13",
+   "now": 462.32,
+   "day": "2026-11-16",
    "on": {
-    "2026-11-02": 465.45,
-    "2026-10-01": 407.27
+    "2026-11-12": 467.06,
+    "2026-11-02": 465.45
    }
   },
   "AMZN": {
-   "now": 266.66,
-   "day": "2026-11-13",
+   "now": 257.75,
+   "day": "2026-11-16",
    "on": {
-    "2026-08-14": 262.65,
-    "2026-10-05": 251.4,
     "2026-11-04": 266.03,
-    "2026-10-27": 253.1
+    "2026-10-27": 253.1,
+    "2026-10-05": 251.4
    }
   },
   "APP": {
-   "now": 409.1,
-   "day": "2026-11-13",
+   "now": 415.22,
+   "day": "2026-11-16",
    "on": {
-    "2026-11-10": 395.51,
-    "2026-08-14": 315.44
+    "2026-11-10": 395.51
    }
   },
   "APTV": {
-   "now": 38.75,
-   "day": "2026-11-13",
+   "now": 37.81,
+   "day": "2026-11-16",
    "on": {
     "2026-10-21": 44.34
    }
   },
-  "ASX": {
-   "now": 35.55,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 39.54
-   }
-  },
   "ATRC": {
-   "now": 56.84,
-   "day": "2026-11-13",
+   "now": 55.31,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 57.28
    }
   },
   "AVGO": {
-   "now": 347.01,
-   "day": "2026-11-13",
+   "now": 333.4,
+   "day": "2026-11-16",
    "on": {
     "2026-11-01": 322.23,
-    "2026-08-14": 392.99
+    "2026-11-12": 364.36
    }
   },
   "AXP": {
-   "now": 320.6,
-   "day": "2026-11-13",
+   "now": 319.05,
+   "day": "2026-11-16",
    "on": {
     "2026-11-05": 324.97
    }
   },
-  "AZO": {
-   "now": 3259.7,
-   "day": "2026-11-13",
-   "on": {
-    "2026-10-14": 2911.62
-   }
-  },
   "BA": {
-   "now": 171.5,
-   "day": "2026-11-13",
+   "now": 165.22,
+   "day": "2026-11-16",
    "on": {
     "2026-11-12": 171.55,
-    "2026-08-14": 231.67,
     "2026-10-07": 188.32,
     "2026-11-03": 173.31
    }
   },
-  "BABA": {
-   "now": 94.38,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 123.81
-   }
-  },
   "BAC": {
-   "now": 51.02,
-   "day": "2026-11-13",
+   "now": 50.08,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-29": 51.14,
-    "2026-10-22": 51.08,
+    "2026-10-13": 53.96,
     "2026-10-16": 51.23,
-    "2026-10-23": 50.56,
-    "2026-10-13": 53.96
+    "2026-10-22": 51.08,
+    "2026-10-29": 51.14,
+    "2026-10-23": 50.56
    }
   },
   "BBIO": {
-   "now": 78.3,
-   "day": "2026-11-13",
+   "now": 77.36,
+   "day": "2026-11-16",
    "on": {
-    "2026-11-10": 78.67,
-    "2026-10-12": 65.75
+    "2026-10-12": 65.75,
+    "2026-11-10": 78.67
    }
   },
   "BEPH": {
-   "now": 13.49,
-   "day": "2026-11-13",
+   "now": 13.35,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 14.5
    }
   },
   "BHE": {
-   "now": 63.03,
-   "day": "2026-11-13",
+   "now": 61.59,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 79.34,
     "2026-11-05": 59.34
    }
   },
   "BIIB": {
-   "now": 253.4,
-   "day": "2026-11-13",
+   "now": 251.65,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 222.15
    }
   },
   "C": {
-   "now": 124.01,
-   "day": "2026-11-13",
+   "now": 121.32,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 127.32
    }
   },
   "CAT": {
-   "now": 600.2,
-   "day": "2026-11-13",
+   "now": 570.49,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 799.37
    }
   },
   "CB": {
-   "now": 375.74,
-   "day": "2026-11-13",
+   "now": 381.28,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 334.7,
     "2026-10-13": 346.16
    }
   },
-  "CDW": {
-   "now": 171.65,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 139.42
-   }
-  },
   "CF": {
-   "now": 125.09,
-   "day": "2026-11-13",
+   "now": 119.85,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 122.36
    }
   },
   "CIEN": {
-   "now": 280.54,
-   "day": "2026-11-13",
+   "now": 257.56,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 272.1
    }
   },
   "CINF": {
-   "now": 189.65,
-   "day": "2026-11-13",
+   "now": 191.33,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 189.89
    }
   },
   "CLX": {
-   "now": 109.46,
-   "day": "2026-11-13",
+   "now": 110.17,
+   "day": "2026-11-16",
    "on": {
     "2026-11-05": 99.7
    }
   },
   "CMG": {
-   "now": 35.28,
-   "day": "2026-11-13",
+   "now": 35.94,
+   "day": "2026-11-16",
    "on": {
-    "2026-11-10": 35.92,
     "2026-10-07": 30.77,
-    "2026-10-27": 27.98
+    "2026-10-27": 27.98,
+    "2026-11-10": 35.92
    }
   },
   "CMS": {
-   "now": 70.38,
-   "day": "2026-11-13",
+   "now": 70.79,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 69.78
    }
   },
-  "COF": {
-   "now": 195.08,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 227.34
-   }
-  },
   "COIN": {
-   "now": 127.64,
-   "day": "2026-11-13",
+   "now": 119.84,
+   "day": "2026-11-16",
    "on": {
     "2026-10-05": 188.22
    }
   },
   "COO": {
-   "now": 62.65,
-   "day": "2026-11-13",
+   "now": 61.88,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 63.57
    }
   },
   "COST": {
-   "now": 1106.21,
-   "day": "2026-11-13",
+   "now": 1113.74,
+   "day": "2026-11-16",
    "on": {
+    "2026-11-12": 1092.21,
     "2026-10-27": 992.13,
     "2026-10-14": 982.0,
-    "2026-09-30": 910.34,
-    "2026-11-12": 1092.21
+    "2026-11-13": 1106.21
    }
   },
   "CPB": {
-   "now": 22.76,
-   "day": "2026-11-13",
+   "now": 23.45,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 22.59
    }
   },
   "CRM": {
-   "now": 217.84,
-   "day": "2026-11-13",
+   "now": 214.83,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 224.56
    }
   },
-  "CRWV": {
-   "now": 53.13,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 105.26
-   }
-  },
   "CSCO": {
-   "now": 95.64,
-   "day": "2026-11-13",
+   "now": 94.52,
+   "day": "2026-11-16",
    "on": {
-    "2026-08-14": 111.68,
-    "2026-11-05": 95.72,
-    "2026-10-07": 117.39,
     "2026-11-10": 98.15,
-    "2026-10-21": 107.26
+    "2026-10-07": 117.39,
+    "2026-10-21": 107.26,
+    "2026-11-05": 95.72
    }
   },
   "CTSH": {
-   "now": 63.01,
-   "day": "2026-11-13",
+   "now": 62.29,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 57.07
    }
   },
   "CTVA": {
-   "now": 9.43,
-   "day": "2026-11-13",
+   "now": 9.04,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 12.17
    }
   },
   "CVX": {
-   "now": 219.89,
-   "day": "2026-11-13",
+   "now": 217.14,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-27": 228.23,
-    "2026-11-12": 216.35,
     "2026-10-13": 217.73,
+    "2026-11-12": 216.35,
+    "2026-10-21": 226.78,
+    "2026-11-13": 219.89,
     "2026-11-04": 216.96,
-    "2026-10-21": 226.78
+    "2026-10-27": 228.23
    }
   },
   "CYTK": {
-   "now": 56.13,
-   "day": "2026-11-13",
+   "now": 53.17,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 62.79
    }
   },
   "DAL": {
-   "now": 86.25,
-   "day": "2026-11-13",
+   "now": 86.6,
+   "day": "2026-11-16",
    "on": {
-    "2026-08-14": 89.35,
-    "2026-11-06": 87.2,
     "2026-11-09": 91.8,
-    "2026-10-30": 80.15
+    "2026-10-30": 80.15,
+    "2026-11-06": 87.2,
+    "2026-11-13": 86.25
    }
   },
   "DDOG": {
-   "now": 184.16,
-   "day": "2026-11-13",
+   "now": 172.86,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-07": 271.34,
-    "2026-10-19": 260.36
+    "2026-10-19": 260.36,
+    "2026-10-07": 271.34
    }
   },
   "DIS": {
-   "now": 118.97,
-   "day": "2026-11-13",
+   "now": 118.7,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-09": 108.05,
-    "2026-11-05": 117.22,
-    "2026-11-06": 116.75,
     "2026-10-19": 109.59,
+    "2026-10-09": 108.05,
+    "2026-11-06": 116.75,
+    "2026-11-05": 117.22,
     "2026-11-03": 114.18
    }
   },
   "DKNG": {
-   "now": 18.89,
-   "day": "2026-11-13",
+   "now": 18.42,
+   "day": "2026-11-16",
    "on": {
     "2026-11-12": 19.12,
     "2026-11-09": 18.7
    }
   },
   "DVN": {
-   "now": 46.58,
-   "day": "2026-11-13",
+   "now": 44.27,
+   "day": "2026-11-16",
    "on": {
     "2026-10-13": 50.21
    }
   },
-  "ED": {
-   "now": 121.0,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 108.8
-   }
-  },
   "EIX": {
-   "now": 60.18,
-   "day": "2026-11-13",
+   "now": 61.97,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 60.2
    }
   },
   "EL": {
-   "now": 111.75,
-   "day": "2026-11-13",
+   "now": 108.61,
+   "day": "2026-11-16",
    "on": {
     "2026-10-19": 105.78
    }
   },
   "EMR": {
-   "now": 166.38,
-   "day": "2026-11-13",
+   "now": 160.65,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 159.22
    }
   },
-  "EPAC": {
-   "now": 39.37,
-   "day": "2026-11-13",
-   "on": {
-    "2026-10-12": 35.15
-   }
-  },
   "ES": {
-   "now": 71.73,
-   "day": "2026-11-13",
+   "now": 72.79,
+   "day": "2026-11-16",
    "on": {
-    "2026-08-14": 72.36,
     "2026-10-07": 65.24
    }
   },
   "ESAB": {
-   "now": 83.25,
-   "day": "2026-11-13",
+   "now": 79.15,
+   "day": "2026-11-16",
    "on": {
     "2026-10-30": 69.76
    }
   },
+  "ETN": {
+   "now": 336.88,
+   "day": "2026-11-16",
+   "on": {
+    "2026-11-12": 359.04
+   }
+  },
   "FDX": {
-   "now": 324.14,
-   "day": "2026-11-13",
+   "now": 327.65,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 292.23,
     "2026-10-07": 289.04
    }
   },
   "FERG": {
-   "now": 256.47,
-   "day": "2026-11-13",
+   "now": 253.2,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 215.06
    }
   },
   "FIS": {
-   "now": 29.54,
-   "day": "2026-11-13",
+   "now": 28.3,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 28.31
    }
   },
   "FITB": {
-   "now": 54.5,
-   "day": "2026-11-13",
+   "now": 53.63,
+   "day": "2026-11-16",
    "on": {
     "2026-10-15": 50.35
    }
   },
   "FMAO": {
-   "now": 36.81,
-   "day": "2026-11-13",
+   "now": 36.49,
+   "day": "2026-11-16",
    "on": {
     "2026-11-03": 36.38
    }
   },
-  "FOXA": {
-   "now": 68.42,
-   "day": "2026-11-13",
+  "FRNM": {
+   "now": 10.09,
+   "day": "2026-11-16",
    "on": {
-    "2026-08-14": 69.04
-   }
-  },
-  "FSS": {
-   "now": 115.36,
-   "day": "2026-11-13",
-   "on": {
-    "2026-10-12": 114.78
+    "2026-11-13": 10.41
    }
   },
   "GE": {
-   "now": 331.81,
-   "day": "2026-11-13",
+   "now": 325.18,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 303.62
    }
   },
   "GH": {
-   "now": 151.7,
-   "day": "2026-11-13",
+   "now": 144.03,
+   "day": "2026-11-16",
    "on": {
     "2026-10-19": 157.88
    }
   },
   "GLPI": {
    "now": 39.34,
-   "day": "2026-11-13",
+   "day": "2026-11-16",
    "on": {
     "2026-11-05": 39.44
    }
   },
   "GLW": {
-   "now": 114.08,
-   "day": "2026-11-13",
+   "now": 106.17,
+   "day": "2026-11-16",
    "on": {
-    "2026-08-14": 165.99,
     "2026-10-07": 163.25
    }
   },
   "GM": {
-   "now": 86.0,
-   "day": "2026-11-13",
+   "now": 83.67,
+   "day": "2026-11-16",
    "on": {
     "2026-11-06": 86.16
    }
   },
   "GOOG": {
-   "now": 292.52,
-   "day": "2026-11-13",
+   "now": 281.26,
+   "day": "2026-11-16",
    "on": {
     "2026-10-19": 340.16,
     "2026-10-27": 316.83
    }
   },
   "GOOGL": {
-   "now": 295.77,
-   "day": "2026-11-13",
+   "now": 283.72,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-02": 343.5,
-    "2026-08-14": 345.9,
     "2026-10-30": 279.84
    }
   },
   "GS": {
-   "now": 916.56,
-   "day": "2026-11-13",
+   "now": 891.54,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-29": 927.73,
-    "2026-10-26": 893.28,
+    "2026-10-27": 911.77,
     "2026-10-07": 887.21,
-    "2026-10-27": 911.77
+    "2026-10-26": 893.28,
+    "2026-10-29": 927.73
    }
   },
   "GTES": {
-   "now": 25.4,
-   "day": "2026-11-13",
+   "now": 25.05,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 26.23
    }
   },
   "HALO": {
-   "now": 100.27,
-   "day": "2026-11-13",
+   "now": 96.5,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 111.08
    }
   },
   "HD": {
-   "now": 348.69,
-   "day": "2026-11-13",
+   "now": 347.51,
+   "day": "2026-11-16",
    "on": {
+    "2026-10-13": 293.92,
     "2026-10-12": 290.62,
+    "2026-11-12": 348.26,
     "2026-10-27": 318.5,
-    "2026-10-01": 282.46,
-    "2026-11-10": 351.0,
-    "2026-10-13": 293.92
-   }
-  },
-  "HHH": {
-   "now": 83.02,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 66.6
+    "2026-11-10": 351.0
    }
   },
   "HON": {
-   "now": 222.46,
-   "day": "2026-11-13",
+   "now": 217.95,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 208.11,
-    "2026-10-27": 218.81
+    "2026-10-27": 218.81,
+    "2026-11-13": 222.46
    }
   },
   "HONA": {
-   "now": 165.01,
-   "day": "2026-11-13",
+   "now": 163.36,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 153.07,
     "2026-10-30": 154.15
    }
   },
   "HOOD": {
-   "now": 77.86,
-   "day": "2026-11-13",
+   "now": 72.06,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-29": 91.59,
-    "2026-11-05": 78.39,
-    "2026-10-09": 109.02,
-    "2026-10-27": 94.56,
     "2026-10-15": 103.99,
-    "2026-10-07": 109.51,
-    "2026-10-23": 95.07,
     "2026-10-13": 110.52,
     "2026-10-19": 96.52,
+    "2026-10-09": 109.02,
+    "2026-10-29": 91.59,
+    "2026-10-30": 84.99,
+    "2026-10-23": 95.07,
+    "2026-11-05": 78.39,
     "2026-11-04": 87.41,
-    "2026-10-30": 84.99
+    "2026-10-07": 109.51,
+    "2026-10-27": 94.56
    }
   },
   "IBM": {
-   "now": 247.13,
-   "day": "2026-11-13",
+   "now": 242.51,
+   "day": "2026-11-16",
    "on": {
     "2026-10-27": 250.25
    }
   },
+  "IBP": {
+   "now": 231.97,
+   "day": "2026-11-16",
+   "on": {
+    "2026-11-12": 223.76
+   }
+  },
   "IBRX": {
-   "now": 6.02,
-   "day": "2026-11-13",
+   "now": 5.98,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 10.12
    }
   },
   "ILMN": {
-   "now": 207.01,
-   "day": "2026-11-13",
+   "now": 198.0,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 214.91
    }
   },
   "INTC": {
-   "now": 59.66,
-   "day": "2026-11-13",
+   "now": 55.47,
+   "day": "2026-11-16",
    "on": {
     "2026-11-04": 58.27
    }
   },
   "ISRG": {
-   "now": 443.59,
-   "day": "2026-11-13",
+   "now": 437.75,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 414.52,
     "2026-11-05": 468.52
    }
   },
   "ITT": {
-   "now": 211.18,
-   "day": "2026-11-13",
+   "now": 207.48,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 201.9
    }
   },
   "JNJ": {
-   "now": 285.75,
-   "day": "2026-11-13",
+   "now": 282.55,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-30": 273.2
+    "2026-10-30": 273.2,
+    "2026-11-13": 285.75
    }
   },
   "KO": {
-   "now": 99.25,
-   "day": "2026-11-13",
+   "now": 99.48,
+   "day": "2026-11-16",
    "on": {
     "2026-11-09": 96.03,
+    "2026-11-04": 95.8,
     "2026-11-11": 97.57,
-    "2026-11-04": 95.8
+    "2026-11-13": 99.25
    }
   },
   "KR": {
-   "now": 70.8,
-   "day": "2026-11-13",
+   "now": 70.67,
+   "day": "2026-11-16",
    "on": {
-    "2026-08-14": 56.69
-   }
-  },
-  "LEN": {
-   "now": 83.61,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 86.83
+    "2026-11-12": 69.81
    }
   },
   "LITE": {
-   "now": 596.62,
-   "day": "2026-11-13",
+   "now": 546.0,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 585.57
    }
   },
   "LLY": {
-   "now": 1443.5,
-   "day": "2026-11-13",
+   "now": 1431.67,
+   "day": "2026-11-16",
    "on": {
+    "2026-11-12": 1427.28,
     "2026-11-10": 1432.29,
     "2026-11-03": 1409.38
    }
   },
   "LMT": {
-   "now": 596.04,
-   "day": "2026-11-13",
+   "now": 585.21,
+   "day": "2026-11-16",
    "on": {
     "2026-10-13": 504.02
    }
   },
   "LNT": {
-   "now": 73.43,
-   "day": "2026-11-13",
+   "now": 72.91,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 73.24
    }
   },
   "LNTH": {
-   "now": 101.59,
-   "day": "2026-11-13",
+   "now": 101.72,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 101.62
    }
   },
   "LOW": {
-   "now": 227.73,
-   "day": "2026-11-13",
+   "now": 224.93,
+   "day": "2026-11-16",
    "on": {
     "2026-10-27": 198.18
    }
   },
   "LRCX": {
-   "now": 225.92,
-   "day": "2026-11-13",
+   "now": 210.83,
+   "day": "2026-11-16",
    "on": {
+    "2026-11-12": 233.78,
     "2026-10-29": 254.39
    }
   },
   "LVS": {
-   "now": 40.39,
-   "day": "2026-11-13",
+   "now": 39.82,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 35.81
    }
   },
   "MA": {
-   "now": 661.19,
-   "day": "2026-11-13",
+   "now": 661.71,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-13": 604.8,
     "2026-10-19": 616.4,
-    "2026-11-03": 647.18,
-    "2026-10-27": 609.85
+    "2026-10-27": 609.85,
+    "2026-10-13": 604.8,
+    "2026-11-03": 647.18
    }
   },
   "MAR": {
-   "now": 423.16,
-   "day": "2026-11-13",
+   "now": 425.7,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 356.5
    }
   },
   "MBGL": {
-   "now": 23.28,
-   "day": "2026-11-13",
+   "now": 24.04,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 19.93
    }
   },
   "MCD": {
-   "now": 271.97,
-   "day": "2026-11-13",
+   "now": 274.67,
+   "day": "2026-11-16",
    "on": {
-    "2026-11-12": 273.63,
     "2026-10-07": 230.88,
-    "2026-10-27": 249.47
+    "2026-10-27": 249.47,
+    "2026-11-12": 273.63
    }
   },
   "MDLZ": {
    "now": 67.54,
-   "day": "2026-11-13",
+   "day": "2026-11-16",
    "on": {
     "2026-10-30": 64.94
    }
   },
   "META": {
-   "now": 641.69,
-   "day": "2026-11-13",
+   "now": 626.41,
+   "day": "2026-11-16",
    "on": {
-    "2026-08-14": 589.85,
-    "2026-10-28": 612.49,
     "2026-10-14": 737.54,
-    "2026-10-07": 721.31,
-    "2026-09-30": 725.18,
     "2026-11-12": 623.61,
+    "2026-10-21": 697.52,
     "2026-11-04": 630.0,
-    "2026-10-21": 697.52
+    "2026-10-07": 721.31,
+    "2026-10-28": 612.49
    }
   },
   "MGM": {
-   "now": 33.49,
-   "day": "2026-11-13",
+   "now": 33.23,
+   "day": "2026-11-16",
    "on": {
     "2026-11-03": 31.02
    }
   },
   "MLM": {
-   "now": 513.61,
-   "day": "2026-11-13",
+   "now": 510.39,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 479.01
    }
   },
   "MPC": {
-   "now": 414.65,
-   "day": "2026-11-13",
+   "now": 402.19,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-29": 432.51,
-    "2026-10-01": 420.15
+    "2026-10-29": 432.51
    }
   },
   "MRK": {
-   "now": 147.76,
-   "day": "2026-11-13",
+   "now": 144.46,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 142.79
    }
   },
   "MRNA": {
-   "now": 223.37,
-   "day": "2026-11-13",
+   "now": 215.27,
+   "day": "2026-11-16",
    "on": {
-    "2026-11-10": 250.83,
-    "2026-10-07": 196.48
+    "2026-10-07": 196.48,
+    "2026-11-10": 250.83
    }
   },
   "MRVL": {
-   "now": 156.76,
-   "day": "2026-11-13",
+   "now": 145.36,
+   "day": "2026-11-16",
    "on": {
-    "2026-08-14": 222.02,
     "2026-10-07": 284.68,
     "2026-11-05": 133.55
    }
   },
   "MSFT": {
-   "now": 523.88,
-   "day": "2026-11-13",
+   "now": 517.99,
+   "day": "2026-11-16",
    "on": {
     "2026-11-02": 507.12,
-    "2026-10-02": 517.53,
     "2026-10-12": 541.15,
-    "2026-10-27": 531.33,
     "2026-10-14": 533.69,
-    "2026-10-07": 529.76,
     "2026-11-12": 523.0,
-    "2026-11-10": 533.16,
-    "2026-11-04": 555.8
+    "2026-10-02": 517.53,
+    "2026-11-04": 555.8,
+    "2026-10-07": 529.76,
+    "2026-10-27": 531.33,
+    "2026-11-10": 533.16
    }
   },
   "MTSI": {
-   "now": 232.06,
-   "day": "2026-11-13",
+   "now": 220.44,
+   "day": "2026-11-16",
    "on": {
-    "2026-11-10": 226.48,
-    "2026-10-12": 306.36
+    "2026-10-12": 306.36,
+    "2026-11-10": 226.48
    }
   },
   "MU": {
-   "now": 778.31,
-   "day": "2026-11-13",
+   "now": 719.02,
+   "day": "2026-11-16",
    "on": {
-    "2026-08-14": 971.66,
-    "2026-11-05": 656.39,
     "2026-10-15": 931.24,
-    "2026-10-20": 896.07,
-    "2026-10-07": 1088.0,
     "2026-11-01": 833.59,
-    "2026-10-21": 913.67
+    "2026-10-21": 913.67,
+    "2026-10-20": 896.07,
+    "2026-11-05": 656.39,
+    "2026-10-07": 1088.0
    }
   },
   "NCLH": {
-   "now": 17.96,
-   "day": "2026-11-13",
+   "now": 17.9,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 18.51
    }
   },
   "NEE": {
-   "now": 85.12,
-   "day": "2026-11-13",
+   "now": 85.34,
+   "day": "2026-11-16",
    "on": {
     "2026-10-13": 78.22
    }
   },
   "NFLX": {
-   "now": 62.15,
-   "day": "2026-11-13",
+   "now": 60.75,
+   "day": "2026-11-16",
    "on": {
-    "2026-11-10": 63.26,
-    "2026-11-05": 65.56,
     "2026-11-04": 66.39,
-    "2026-10-27": 62.52
+    "2026-10-27": 62.52,
+    "2026-11-05": 65.56,
+    "2026-11-10": 63.26
    }
   },
   "NNN": {
-   "now": 41.18,
-   "day": "2026-11-13",
+   "now": 40.83,
+   "day": "2026-11-16",
    "on": {
     "2026-11-05": 41.46
    }
   },
   "NOW": {
-   "now": 102.25,
-   "day": "2026-11-13",
+   "now": 99.37,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 99.61
    }
   },
-  "NUE": {
-   "now": 251.73,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 268.91
-   }
-  },
   "NVDA": {
-   "now": 162.85,
-   "day": "2026-11-13",
+   "now": 156.14,
+   "day": "2026-11-16",
    "on": {
+    "2026-11-13": 162.85,
     "2026-10-22": 212.21,
     "2026-11-05": 181.6,
     "2026-10-27": 217.94,
@@ -3592,558 +3356,516 @@
    }
   },
   "O": {
-   "now": 58.82,
-   "day": "2026-11-13",
+   "now": 58.55,
+   "day": "2026-11-16",
    "on": {
-    "2026-11-10": 59.54,
-    "2026-10-21": 55.35
+    "2026-10-21": 55.35,
+    "2026-11-10": 59.54
    }
   },
   "OKTA": {
-   "now": 182.87,
-   "day": "2026-11-13",
+   "now": 178.22,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 218.0
    }
   },
   "ON": {
-   "now": 71.06,
-   "day": "2026-11-13",
+   "now": 67.69,
+   "day": "2026-11-16",
    "on": {
-    "2026-11-10": 69.61,
     "2026-10-12": 76.0,
-    "2026-10-07": 82.51
-   }
-  },
-  "OPCH": {
-   "now": 31.65,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 23.95
-   }
-  },
-  "ORCL": {
-   "now": 125.35,
-   "day": "2026-11-13",
-   "on": {
-    "2026-10-01": 138.07
+    "2026-10-07": 82.51,
+    "2026-11-10": 69.61
    }
   },
   "OXM": {
-   "now": 28.05,
-   "day": "2026-11-13",
+   "now": 27.08,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 25.28
    }
   },
-  "PCG": {
-   "now": 13.25,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 17.84
-   }
-  },
-  "PDD": {
-   "now": 78.97,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 84.79
-   }
-  },
   "PEG": {
-   "now": 75.88,
-   "day": "2026-11-13",
+   "now": 76.06,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 71.74
    }
   },
   "PEP": {
-   "now": 145.44,
-   "day": "2026-11-13",
+   "now": 146.43,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-23": 135.77,
     "2026-10-16": 131.49,
-    "2026-10-27": 133.5
+    "2026-10-27": 133.5,
+    "2026-10-23": 135.77
    }
   },
   "PG": {
-   "now": 169.8,
-   "day": "2026-11-13",
+   "now": 173.02,
+   "day": "2026-11-16",
    "on": {
+    "2026-11-12": 168.03,
     "2026-10-15": 157.08,
-    "2026-11-05": 167.1,
-    "2026-10-27": 159.23
+    "2026-10-27": 159.23,
+    "2026-11-05": 167.1
    }
   },
   "PLD": {
-   "now": 128.67,
-   "day": "2026-11-13",
+   "now": 127.6,
+   "day": "2026-11-16",
    "on": {
     "2026-10-29": 128.02
    }
   },
   "PLTR": {
-   "now": 167.99,
-   "day": "2026-11-13",
+   "now": 160.39,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-05": 189.4,
-    "2026-10-14": 200.97,
     "2026-10-13": 208.67,
     "2026-10-19": 194.15,
+    "2026-10-14": 200.97,
+    "2026-10-05": 189.4,
+    "2026-11-13": 167.99,
     "2026-11-04": 171.7
    }
   },
   "PODD": {
-   "now": 152.48,
-   "day": "2026-11-13",
+   "now": 145.29,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 148.06
    }
   },
   "PRAX": {
-   "now": 328.13,
-   "day": "2026-11-13",
+   "now": 310.27,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 251.38
    }
   },
   "PTON": {
-   "now": 5.7,
-   "day": "2026-11-13",
+   "now": 5.33,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 4.85
    }
   },
   "PYPL": {
-   "now": 59.28,
-   "day": "2026-11-13",
+   "now": 58.83,
+   "day": "2026-11-16",
    "on": {
     "2026-10-30": 57.01
    }
   },
   "RARE": {
-   "now": 16.08,
-   "day": "2026-11-13",
+   "now": 15.9,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 15.3
    }
   },
   "RBLX": {
-   "now": 49.91,
-   "day": "2026-11-13",
+   "now": 46.12,
+   "day": "2026-11-16",
    "on": {
     "2026-11-12": 51.42,
-    "2026-10-02": 44.12,
-    "2026-10-06": 45.56,
-    "2026-11-04": 49.31
+    "2026-11-04": 49.31,
+    "2026-10-06": 45.56
    }
   },
   "REZI": {
-   "now": 21.32,
-   "day": "2026-11-13",
+   "now": 21.79,
+   "day": "2026-11-16",
    "on": {
     "2026-10-27": 18.29
    }
   },
   "RH": {
-   "now": 129.39,
-   "day": "2026-11-13",
+   "now": 126.16,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 115.19
    }
   },
-  "RIVN": {
-   "now": 12.18,
-   "day": "2026-11-13",
-   "on": {
-    "2026-10-02": 14.3
-   }
-  },
-  "ROKU": {
-   "now": 160.52,
-   "day": "2026-11-09",
-   "on": {
-    "2026-08-14": 160.52
-   }
-  },
   "RPM": {
-   "now": 103.73,
-   "day": "2026-11-13",
+   "now": 103.79,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-29": 102.22,
-    "2026-10-15": 100.09
+    "2026-10-15": 100.09,
+    "2026-10-29": 102.22
    }
   },
   "RVTY": {
-   "now": 154.39,
-   "day": "2026-11-13",
+   "now": 148.85,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 159.1
    }
   },
   "SARO": {
-   "now": 27.73,
-   "day": "2026-11-13",
+   "now": 27.42,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 28.49
    }
   },
   "SBUX": {
-   "now": 106.44,
-   "day": "2026-11-13",
+   "now": 108.72,
+   "day": "2026-11-16",
    "on": {
+    "2026-10-13": 92.0,
     "2026-10-22": 101.91,
-    "2026-10-27": 103.04,
-    "2026-11-09": 109.44,
     "2026-10-07": 93.58,
-    "2026-10-13": 92.0
+    "2026-10-27": 103.04,
+    "2026-11-09": 109.44
+   }
+  },
+  "SECZ": {
+   "now": 7.33,
+   "day": "2026-11-16",
+   "on": {
+    "2026-11-13": 8.08
    }
   },
   "SHW": {
-   "now": 349.89,
-   "day": "2026-11-13",
+   "now": 350.54,
+   "day": "2026-11-16",
    "on": {
     "2026-11-11": 355.76
    }
   },
   "SMTC": {
-   "now": 114.59,
-   "day": "2026-11-13",
+   "now": 105.3,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 168.28
    }
   },
   "SNAP": {
-   "now": 5.26,
-   "day": "2026-11-13",
+   "now": 5.09,
+   "day": "2026-11-16",
    "on": {
     "2026-11-12": 5.22,
     "2026-11-10": 5.0,
-    "2026-10-20": 6.38
-   }
-  },
-  "SNDK": {
-   "now": 885.01,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 1641.11
+    "2026-10-20": 6.38,
+    "2026-11-13": 5.26
    }
   },
   "SNEJF": {
-   "now": 26.57,
-   "day": "2026-11-12",
+   "now": 27.51,
+   "day": "2026-11-13",
    "on": {
     "2026-11-10": 26.27
    }
   },
   "SNOW": {
-   "now": 291.0,
-   "day": "2026-11-13",
+   "now": 280.54,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 332.85
    }
   },
   "SOFI": {
-   "now": 15.42,
-   "day": "2026-11-13",
+   "now": 14.85,
+   "day": "2026-11-16",
    "on": {
     "2026-10-22": 14.77
    }
   },
   "SOLS": {
-   "now": 66.12,
-   "day": "2026-11-13",
+   "now": 64.92,
+   "day": "2026-11-16",
    "on": {
     "2026-10-27": 62.97
    }
   },
   "SPCX": {
-   "now": 139.11,
-   "day": "2026-11-13",
+   "now": 137.36,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-07": 167.6
-   }
-  },
-  "SPGI": {
-   "now": 473.59,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 418.8
+    "2026-10-07": 167.6,
+    "2026-11-13": 139.11
    }
   },
   "SPOT": {
-   "now": 612.63,
-   "day": "2026-11-13",
+   "now": 611.73,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-14": 523.96
+    "2026-10-14": 523.96,
+    "2026-11-13": 612.63
+   }
+  },
+  "SRTA": {
+   "now": 5.42,
+   "day": "2026-11-16",
+   "on": {
+    "2026-11-13": 5.51
    }
   },
   "STLN": {
-   "now": 3.5,
-   "day": "2026-11-13",
+   "now": 3.54,
+   "day": "2026-11-16",
    "on": {
     "2026-10-26": 6.29
    }
   },
   "STX": {
-   "now": 528.29,
-   "day": "2026-11-13",
+   "now": 499.0,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-28": 697.97,
-    "2026-10-12": 753.25
+    "2026-10-12": 753.25,
+    "2026-10-28": 697.97
    }
   },
   "STZ": {
-   "now": 145.61,
-   "day": "2026-11-13",
+   "now": 146.63,
+   "day": "2026-11-16",
    "on": {
-    "2026-08-14": 139.18,
     "2026-10-07": 118.39
    }
   },
   "SYK": {
-   "now": 309.64,
-   "day": "2026-11-13",
+   "now": 310.72,
+   "day": "2026-11-16",
    "on": {
     "2026-10-30": 291.86
    }
   },
   "T": {
-   "now": 22.18,
-   "day": "2026-11-13",
+   "now": 22.36,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-29": 20.92,
-    "2026-10-15": 23.5
+    "2026-11-12": 22.18,
+    "2026-10-15": 23.5,
+    "2026-10-29": 20.92
+   }
+  },
+  "TEVA": {
+   "now": 42.57,
+   "day": "2026-11-16",
+   "on": {
+    "2026-11-13": 44.5
    }
   },
   "TJX": {
-   "now": 134.37,
-   "day": "2026-11-13",
+   "now": 131.09,
+   "day": "2026-11-16",
    "on": {
     "2026-10-27": 140.2
    }
   },
   "TKO": {
-   "now": 195.42,
-   "day": "2026-11-13",
+   "now": 190.31,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 199.22
    }
   },
   "TLK": {
-   "now": 11.67,
-   "day": "2026-11-13",
+   "now": 11.73,
+   "day": "2026-11-16",
    "on": {
     "2026-11-05": 10.95
    }
   },
   "TNDM": {
-   "now": 20.07,
-   "day": "2026-11-13",
+   "now": 18.48,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 16.45
    }
   },
   "TOELF": {
-   "now": 57.27,
+   "now": 57.01,
    "day": "2026-11-13",
    "on": {
     "2026-11-10": 55.74
    }
   },
   "TSCO": {
-   "now": 36.45,
-   "day": "2026-11-13",
+   "now": 37.95,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 32.52
    }
   },
   "TSLA": {
-   "now": 390.22,
-   "day": "2026-11-13",
+   "now": 379.74,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-27": 407.46
+    "2026-10-27": 407.46,
+    "2026-11-13": 390.22
    }
   },
   "TSM": {
-   "now": 398.73,
-   "day": "2026-11-13",
+   "now": 373.45,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-12": 444.35,
     "2026-10-22": 412.35
    }
   },
   "TTD": {
-   "now": 15.68,
-   "day": "2026-11-13",
+   "now": 14.83,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 15.42
    }
   },
+  "TWST": {
+   "now": 105.04,
+   "day": "2026-11-16",
+   "on": {
+    "2026-11-13": 111.6
+   }
+  },
+  "TXG": {
+   "now": 54.99,
+   "day": "2026-11-16",
+   "on": {
+    "2026-11-13": 58.19
+   }
+  },
   "TXN": {
-   "now": 303.6,
-   "day": "2026-11-13",
+   "now": 294.21,
+   "day": "2026-11-16",
    "on": {
     "2026-10-28": 309.83
    }
   },
   "TXRH": {
-   "now": 185.98,
-   "day": "2026-11-13",
+   "now": 189.0,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 188.16
    }
   },
-  "UAL": {
-   "now": 109.31,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 125.34
-   }
-  },
   "UBER": {
-   "now": 69.69,
-   "day": "2026-11-13",
+   "now": 69.99,
+   "day": "2026-11-16",
    "on": {
-    "2026-11-10": 70.05,
-    "2026-08-14": 75.95
+    "2026-11-10": 70.05
    }
   },
   "UNH": {
-   "now": 407.46,
-   "day": "2026-11-13",
+   "now": 412.02,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 375.98,
     "2026-10-13": 377.76
    }
   },
   "UPS": {
-   "now": 112.4,
-   "day": "2026-11-13",
+   "now": 111.82,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 92.29
    }
   },
   "URI": {
-   "now": 1124.56,
-   "day": "2026-11-13",
+   "now": 1094.69,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 1037.44
    }
   },
   "V": {
-   "now": 425.76,
-   "day": "2026-11-13",
+   "now": 426.46,
+   "day": "2026-11-16",
    "on": {
     "2026-11-02": 425.51,
-    "2026-10-02": 360.66,
-    "2026-08-14": 364.15,
+    "2026-11-12": 420.31,
     "2026-10-29": 410.54,
     "2026-11-05": 422.59,
-    "2026-10-27": 401.86,
-    "2026-11-12": 420.31,
     "2026-11-10": 423.0,
+    "2026-10-27": 401.86,
     "2026-11-03": 420.42
    }
   },
   "VMC": {
-   "now": 278.63,
-   "day": "2026-11-13",
+   "now": 277.26,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 244.13
    }
   },
   "VSAT": {
-   "now": 67.72,
-   "day": "2026-11-13",
+   "now": 63.9,
+   "day": "2026-11-16",
    "on": {
     "2026-10-19": 60.29
    }
   },
   "VZ": {
-   "now": 46.36,
-   "day": "2026-11-13",
+   "now": 46.34,
+   "day": "2026-11-16",
    "on": {
     "2026-10-27": 43.93
    }
   },
   "WDC": {
-   "now": 295.65,
-   "day": "2026-11-13",
+   "now": 280.93,
+   "day": "2026-11-16",
    "on": {
     "2026-11-06": 263.78
    }
   },
   "WFC": {
-   "now": 86.05,
-   "day": "2026-11-13",
+   "now": 84.84,
+   "day": "2026-11-16",
    "on": {
     "2026-11-10": 85.76
    }
   },
-  "WHR": {
-   "now": 29.06,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 41.37
-   }
-  },
   "WM": {
-   "now": 243.83,
-   "day": "2026-11-13",
+   "now": 244.33,
+   "day": "2026-11-16",
    "on": {
     "2026-10-07": 208.94
    }
   },
   "WMT": {
-   "now": 128.09,
-   "day": "2026-11-13",
+   "now": 128.41,
+   "day": "2026-11-16",
    "on": {
-    "2026-10-02": 104.26,
-    "2026-10-27": 119.32,
-    "2026-10-16": 118.81,
     "2026-10-19": 118.7,
+    "2026-10-16": 118.81,
+    "2026-10-27": 119.32,
     "2026-11-03": 124.86
    }
   },
   "WSBC": {
-   "now": 38.6,
-   "day": "2026-11-13",
+   "now": 38.27,
+   "day": "2026-11-16",
    "on": {
     "2026-10-19": 37.05
    }
   },
   "WSM": {
-   "now": 254.05,
-   "day": "2026-11-13",
+   "now": 252.05,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 238.86
    }
   },
-  "WWD": {
-   "now": 329.86,
-   "day": "2026-11-13",
-   "on": {
-    "2026-08-14": 370.56
-   }
-  },
   "XOM": {
-   "now": 170.59,
-   "day": "2026-11-13",
+   "now": 166.87,
+   "day": "2026-11-16",
    "on": {
     "2026-10-27": 179.91
    }
   },
   "YETI": {
-   "now": 39.42,
-   "day": "2026-11-13",
+   "now": 38.53,
+   "day": "2026-11-16",
    "on": {
     "2026-10-12": 39.01
    }
   },
   "ZTS": {
-   "now": 83.82,
-   "day": "2026-11-13",
+   "now": 84.39,
+   "day": "2026-11-16",
    "on": {
     "2026-11-04": 89.2
    }
