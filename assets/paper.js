@@ -32,7 +32,7 @@ function marketOpen(){
   const m=+p.hour*60+ +p.minute;return!["Sat","Sun"].includes(p.weekday)&&m>=510&&m<=900;
 }
 function renderMarket(){const open=marketOpen();const m=$("#pt-market");
-  m.textContent=open?"The market is open. Market orders go through right away at the real price.":"The market is closed (weekdays 8:30am to 3pm Chicago time). You can still place limit and stop orders: they wait for the market to open.";
+  m.textContent=open?"The market is open. Market orders go through right away at the real price.":"The market is closed (weekdays 8:30am to 3pm Chicago time). You can still place orders: market orders go through when the market opens, and limit and stop orders wait for your price.";
   m.className="meta "+(open?"open":"closed");}
 
 /* ---------- Loading ---------- */
@@ -249,6 +249,7 @@ function renderTiles(box){
 }
 function orderText(o){
   const n=`${+o.shares} ${o.symbol}`;
+  if(o.kind==="market")return `${SIDE[o.side]} ${n} when the market opens`;
   if(o.kind==="limit")return `${SIDE[o.side]} ${n} at ${fmt$(o.limit_price)} or ${o.side==="buy"||o.side==="cover"?"less":"more"}`;
   if(o.kind==="stop")return `${SIDE[o.side]} ${n} if it ${o.side==="buy"||o.side==="cover"?"rises":"falls"} to ${fmt$(o.stop_price)}`;
   if(o.kind==="stop_limit")return `${SIDE[o.side]} ${n} if it ${o.side==="buy"||o.side==="cover"?"rises":"falls"} to ${fmt$(o.stop_price)}, at ${fmt$(o.limit_price)} or ${o.side==="buy"||o.side==="cover"?"less":"more"}`;
@@ -400,7 +401,8 @@ function help(){
   const k=kindIn.value,sd=side(),b=buying(),up=b?"rises":"falls";
   const act={buy:"buys",sell:"sells",short:"shorts",cover:"buys back your short"}[sd];
   let t={
-    market:`Trades right away at the price now. Only works while the market is open.`,
+    market:marketOpen()?`Trades right away at the price now.`
+          :`The market is closed, so this waits and trades at the price when the market opens (8:30am Chicago time). That price can be a little different from the last price.`,
     limit:b?`Waits until the price drops to your limit price or lower, then ${act}. You never pay more than your limit.`
            :`Waits until the price rises to your limit price or higher, then ${act}. You never get less than your limit.`,
     stop:sd==="sell"?`Stop loss: if the price falls to your stop price, it sells at the price then. It protects you from losing too much.`
@@ -420,7 +422,7 @@ function formChanged(){
   $("#pt-trail-box").hidden=k!=="trailing_stop";
   $("#pt-why-box").hidden=k!=="market";
   $("#pt-help").textContent=help();
-  const go=$("#pt-go");go.textContent=k==="market"?SIDE[side()]+" now":"Place "+KIND[k].toLowerCase()+" order";
+  const go=$("#pt-go");go.textContent=k==="market"?SIDE[side()]+(marketOpen()?" now":" at market open"):"Place "+KIND[k].toLowerCase()+" order";
   go.className="btn "+(side()==="sell"||side()==="short"?"sell":"primary");
   renderEst();
 }
@@ -428,7 +430,7 @@ function renderEst(){const q=+qtyIn.value,est=$("#pt-est"),k=kindIn.value,lim=+$
   if(!(q>0)){est.textContent="";return;}
   const cash=`You have ${money(G.acct?+G.acct.cash:0)} in cash.`;
   if((k==="limit"||k==="stop_limit")&&lim>0){est.textContent=`About ${fmt$(q*lim)} for ${q} shares at your limit. ${cash}`;return;}
-  est.textContent=shown&&shown.symbol===cleanSym()?`About ${fmt$(q*shown.price)} for ${q} shares at today's price. ${cash}`:"";}
+  est.textContent=shown&&shown.symbol===cleanSym()?`About ${fmt$(q*shown.price)} for ${q} shares at ${k==="market"&&!marketOpen()?"the last":"today's"} price. ${cash}`:"";}
 $("#pt-check").addEventListener("click",checkPrice);
 symIn.addEventListener("change",checkPrice);
 symIn.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();checkPrice();}});
@@ -448,7 +450,16 @@ $("#pt-form").addEventListener("submit",async e=>{e.preventDefault();
   if(k==="trailing_stop"&&!(args.trail_pct>=1&&args.trail_pct<=50)){msg.textContent="Enter a trailing percent between 1 and 50.";return;}
   busy=true;const b=$("#pt-go"),label=b.textContent;b.disabled=true;b.textContent="…";
   try{
-    if(k==="market"){const{data,error}=await db.rpc("paper_trade",{sym,side:sd,qty});if(error)throw error;
+    // Market closed (or a holiday): the order waits and goes through when the market opens (supabase/market-at-open.sql).
+    let queue=k==="market"&&!marketOpen(),data,error;
+    if(k==="market"&&!queue){({data,error}=await db.rpc("paper_trade",{sym,side:sd,qty}));
+      if(error&&/market is closed/i.test(errText(error)))queue=true;else if(error)throw error;}
+    if(queue){const why=$("#pt-why").value.trim();
+      ({data,error}=await db.rpc("paper_queue_market",{sym,side:sd,qty,why:why||null}));
+      if(error){if(/paper_queue_market|PGRST202/.test(errText(error)+" "+(error.code||"")))throw new Error("The market is closed. Market orders go through on weekdays from 8:30am to 3pm Chicago time. A limit or stop order can wait for the market to open.");throw error;}
+      toast(data.status==="filled"?`${DID[data.side]} ${+data.shares} ${data.symbol}`:data.status==="failed"?`Your order didn't go through: ${data.note}`:`Order placed. ${SIDE[data.side]} ${+data.shares} ${data.symbol} will go through when the market opens.`);
+      $("#pt-why").value="";if(data.status==="filled")document.dispatchEvent(new CustomEvent("wvfc:traded"));}
+    else if(k==="market"){
       toast(`${DID[data.side]} ${+data.shares} ${data.symbol} at ${fmt$(data.price)}`);
       // The reason goes on the Feed (supabase/feed.sql). If that isn't set up yet, the trade still counts.
       const why=$("#pt-why").value.trim();if(why&&data.id){await db.rpc("feed_set_why",{tid:data.id,txt:why});}
@@ -487,5 +498,5 @@ window.WVFC_PAPER={trade:(sym,sd)=>tradeFromSearch(sd||"buy",sym)};
 $("#s-sell").addEventListener("click",()=>tradeFromSearch("sell"));
 document.addEventListener("wvfc:stock",renderTradeBar);
 document.addEventListener("wvfc:tab",e=>{if(e.detail==="search")renderTradeBar();});
-setInterval(()=>{if(loaded&&!$("#trade").hidden)renderMarket();},60000);
+setInterval(()=>{if(loaded&&!$("#trade").hidden){renderMarket();formChanged();}},60000);
 })();
