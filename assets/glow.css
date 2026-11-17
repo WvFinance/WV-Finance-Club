@@ -2,28 +2,25 @@
    Each school keeps its own colors (--g1/--g2 = button and tab colors, --gr/--gr2 = glow colors).
    Also: friend bubbles on Home and a bottom tab bar on phones (assets/glow.js). */
 html[data-school="me"]{--g1:#2f7bff;--g2:#6a5cff;--gon:#fff;--gr:47,123,255;--gr2:124,92,255;--gbg:#060b1c;--gp1:30,48,96;--gp2:14,24,52;--gl:127,176,255;--gline:#8fbcff;--gc:127,176,255}
-html[data-school="wvhs"],html:not([data-school]){--g1:#1f8a4c;--g2:#3fae6a;--gon:#fff;--gr:51,184,132;--gr2:217,169,67;--gbg:#050806;--gp1:24,44,32;--gp2:12,18,14;--gl:108,197,138;--gline:#f0c05a;--gc:240,192,90}
-html[data-school="nvhs"]{--g1:#ffc72c;--g2:#ffdc5e;--gon:#0b1d3f;--gr:47,90,200;--gr2:255,199,44;--gbg:#050b1a;--gp1:22,36,74;--gp2:12,22,48;--gl:255,199,44;--gline:#ffd34d;--gc:255,211,77}
-html[data-school="mvhs"]{--g1:#f5c400;--g2:#ffe066;--gon:#111;--gr:245,196,0;--gr2:255,255,255;--gbg:#0a0a0a;--gp1:38,36,28;--gp2:18,18,16;--gl:245,196,0;--gline:#f5c400;--gc:245,196,0}
-html[data-school]{--surface:rgba(var(--gp1),.5);--surface-2:rgba(var(--gl),.08);--line:rgba(var(--gl),.15);--r:16px}
-html[data-school] body{background:radial-gradient(900px 520px at 12% -8%,rgba(var(--gr),.30),transparent 60%),radial-gradient(760px 520px at 100% 6%,rgba(var(--gr2),.16),transparent 60%),radial-gradient(900px 600px at 50% 112%,rgba(var(--gr),.08),transparent 60%),var(--gbg);background-attachment:fixed}
+html[data-school="me"]{--surface:rgba(var(--gp1),.5);--surface-2:rgba(var(--gl),.08);--line:rgba(var(--gl),.15);--r:16px}
+html[data-school="me"] body{background:radial-gradient(900px 520px at 12% -8%,rgba(var(--gr),.30),transparent 60%),radial-gradient(760px 520px at 100% 6%,rgba(var(--gr2),.16),transparent 60%),radial-gradient(900px 600px at 50% 112%,rgba(var(--gr),.08),transparent 60%),var(--gbg);background-attachment:fixed}
 html[data-school="me"] .mast{background:rgba(6,11,28,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(127,176,255,.12)}
-html[data-school] .tape{background:transparent;border-bottom-color:rgba(var(--gl),.10)}
-html[data-school] .tabs{background:color-mix(in srgb,var(--gbg) 65%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(var(--gl),.14)}
-html[data-school] .tabs .wrap{padding-block:8px;gap:6px}
-html[data-school] .tab{padding:9px 16px;border-radius:12px;border-bottom:0}
-html[data-school] .tab[aria-selected="true"]{color:var(--gon);background:linear-gradient(135deg,var(--g1),var(--g2));box-shadow:0 8px 22px -8px rgba(var(--gr),.9)}
-html[data-school] .tab[aria-selected="true"] .caret{border-color:var(--gon)}
-html[data-school] .tab[aria-selected="true"] .count{color:var(--gon);opacity:.8}
-html[data-school] .panel,html[data-school] .tile{background:linear-gradient(180deg,rgba(var(--gp1),.55),rgba(var(--gp2),.55));border-color:rgba(var(--gl),.15);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 20px 50px -24px rgba(0,0,0,.7)}
-html[data-school] .panel:has(svg path[stroke-width="3"]){border-color:rgba(var(--gl),.38);box-shadow:0 0 0 1px rgba(var(--gl),.08),0 30px 80px -34px rgba(var(--gr),.75)}
-html[data-school] svg path[stroke-width="3"]{filter:drop-shadow(0 0 5px rgba(var(--gc),.85))}
+html[data-school="me"] .tape{background:transparent;border-bottom-color:rgba(var(--gl),.10)}
+html[data-school="me"] .tabs{background:color-mix(in srgb,var(--gbg) 65%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(var(--gl),.14)}
+html[data-school="me"] .tabs .wrap{padding-block:8px;gap:6px}
+html[data-school="me"] .tab{padding:9px 16px;border-radius:12px;border-bottom:0}
+html[data-school="me"] .tab[aria-selected="true"]{color:var(--gon);background:linear-gradient(135deg,var(--g1),var(--g2));box-shadow:0 8px 22px -8px rgba(var(--gr),.9)}
+html[data-school="me"] .tab[aria-selected="true"] .caret{border-color:var(--gon)}
+html[data-school="me"] .tab[aria-selected="true"] .count{color:var(--gon);opacity:.8}
+html[data-school="me"] .panel,html[data-school="me"] .tile{background:linear-gradient(180deg,rgba(var(--gp1),.55),rgba(var(--gp2),.55));border-color:rgba(var(--gl),.15);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 20px 50px -24px rgba(0,0,0,.7)}
+html[data-school="me"] .panel:has(svg path[stroke-width="3"]){border-color:rgba(var(--gl),.38);box-shadow:0 0 0 1px rgba(var(--gl),.08),0 30px 80px -34px rgba(var(--gr),.75)}
+html[data-school="me"] svg path[stroke-width="3"]{filter:drop-shadow(0 0 5px rgba(var(--gc),.85))}
 html[data-school="me"] #mine-chart path[stroke-width="3"]{stroke:var(--gline)}
-html[data-school] .tiles .tile:first-child{border-color:rgba(var(--gl),.38);background:linear-gradient(160deg,rgba(var(--gr),.30),rgba(var(--gr2),.12))}
-html[data-school] .tile .v.up{text-shadow:0 0 18px rgba(51,211,145,.45)}
-html[data-school] .tile .v.down{text-shadow:0 0 18px rgba(236,107,107,.4)}
-html[data-school] .btn.primary,html[data-school] .invitebtn{background:linear-gradient(135deg,var(--g1),var(--g2));border-color:transparent;color:var(--gon);box-shadow:0 8px 22px -8px rgba(var(--gr),.9)}
-html[data-school] .ptboard li.me{background:linear-gradient(90deg,rgba(var(--gr),.28),rgba(var(--gr2),.12))}
+html[data-school="me"] .tiles .tile:first-child{border-color:rgba(var(--gl),.38);background:linear-gradient(160deg,rgba(var(--gr),.30),rgba(var(--gr2),.12))}
+html[data-school="me"] .tile .v.up{text-shadow:0 0 18px rgba(51,211,145,.45)}
+html[data-school="me"] .tile .v.down{text-shadow:0 0 18px rgba(236,107,107,.4)}
+html[data-school="me"] .btn.primary,html[data-school="me"] .invitebtn{background:linear-gradient(135deg,var(--g1),var(--g2));border-color:transparent;color:var(--gon);box-shadow:0 8px 22px -8px rgba(var(--gr),.9)}
+html[data-school="me"] .ptboard li.me{background:linear-gradient(90deg,rgba(var(--gr),.28),rgba(var(--gr2),.12))}
 
 /* Friend bubbles at the top of Home */
 .ssbub{display:flex;gap:16px;overflow-x:auto;padding:8px 6px 6px;margin:-4px -6px 14px;scrollbar-width:none}
@@ -49,19 +46,19 @@ html[data-school] .ptboard li.me{background:linear-gradient(90deg,rgba(var(--gr)
 /* Home laid out like the Midnight Glow mockup (desktop): chart big on the left,
    number tiles on the right, friends leaderboard below. */
 @media(min-width:901px){
-  html[data-school] #mine-game:not([hidden]){display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);grid-template-areas:"chart tiles" "stocks friends" "hold hold" "orders orders";gap:18px;align-items:start}
-  html[data-school] #mine-game .minerow{display:contents}
-  html[data-school] #mine-chart{grid-area:chart;margin:0;align-self:stretch}
-  html[data-school] #mine-tiles{grid-area:tiles;display:grid;grid-template-columns:1fr;grid-auto-rows:1fr;gap:14px;margin:0;align-self:stretch}
-  html[data-school] #mine-game:has(#mine-chart[hidden]){grid-template-areas:"tiles tiles" "friends friends" "hold hold" "orders orders"}
-  html[data-school] #mine-game:has(#mine-chart[hidden]) #mine-tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
-  html[data-school] #mine-friends{grid-area:friends;margin:0}
-  html[data-school] #mine-stockscard{grid-area:stocks;margin:0}
-  html[data-school] #mine-game:has(#mine-stockscard[hidden]),html[data-school] #mine-game:not(:has(#mine-stockscard)){grid-template-areas:"chart tiles" "friends friends" "hold hold" "orders orders"}
-  html[data-school] #mine-hold{grid-area:hold;margin:0}
-  html[data-school] #mine-orders{grid-area:orders;margin:0}
-  html[data-school] #mine-game>*[hidden]{display:none}
-  html[data-school] #mv-mine>.sechead h2{font-size:30px;letter-spacing:-.01em}
+  html[data-school="me"] #mine-game:not([hidden]){display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);grid-template-areas:"chart tiles" "stocks friends" "hold hold" "orders orders";gap:18px;align-items:start}
+  html[data-school="me"] #mine-game .minerow{display:contents}
+  html[data-school="me"] #mine-chart{grid-area:chart;margin:0;align-self:stretch}
+  html[data-school="me"] #mine-tiles{grid-area:tiles;display:grid;grid-template-columns:1fr;grid-auto-rows:1fr;gap:14px;margin:0;align-self:stretch}
+  html[data-school="me"] #mine-game:has(#mine-chart[hidden]){grid-template-areas:"tiles tiles" "friends friends" "hold hold" "orders orders"}
+  html[data-school="me"] #mine-game:has(#mine-chart[hidden]) #mine-tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
+  html[data-school="me"] #mine-friends{grid-area:friends;margin:0}
+  html[data-school="me"] #mine-stockscard{grid-area:stocks;margin:0}
+  html[data-school="me"] #mine-game:has(#mine-stockscard[hidden]),html[data-school="me"] #mine-game:not(:has(#mine-stockscard)){grid-template-areas:"chart tiles" "friends friends" "hold hold" "orders orders"}
+  html[data-school="me"] #mine-hold{grid-area:hold;margin:0}
+  html[data-school="me"] #mine-orders{grid-area:orders;margin:0}
+  html[data-school="me"] #mine-game>*[hidden]{display:none}
+  html[data-school="me"] #mv-mine>.sechead h2{font-size:30px;letter-spacing:-.01em}
 }
 
 /* ---- Just me Home, Midnight Glow mockup pieces (paper.js renderHero / renderStocksCard / friends) ---- */
@@ -104,9 +101,9 @@ html[data-school="me"] #mine-news .homenews button{padding:16px}
 html[data-school="me"] #mine-news .homenews .tkp{background:rgba(var(--gl),.14);color:var(--gline);display:table;margin-bottom:8px}
 /* tabs as a rounded pill bar like the mockup */
 @media(min-width:901px){
-  html[data-school] .tabs{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;padding-top:12px}
-  html[data-school] .tabs .wrap{width:max-content;max-width:calc(100% - 48px);margin-left:max(24px,calc((100% - 1232px)/2));margin-right:auto;padding:6px;border-radius:16px;border:1px solid rgba(var(--gl),.14);background:color-mix(in srgb,var(--gbg) 70%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-  html[data-school] .tabs .wrap>*{margin-left:0!important}
+  html[data-school="me"] .tabs{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;padding-top:12px}
+  html[data-school="me"] .tabs .wrap{width:max-content;max-width:calc(100% - 48px);margin-left:max(24px,calc((100% - 1232px)/2));margin-right:auto;padding:6px;border-radius:16px;border:1px solid rgba(var(--gl),.14);background:color-mix(in srgb,var(--gbg) 70%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  html[data-school="me"] .tabs .wrap>*{margin-left:0!important}
 }
 @media(max-width:900px){
   html[data-school="me"] #mine-news .homenews{grid-template-columns:1fr}
