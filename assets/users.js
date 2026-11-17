@@ -16,7 +16,7 @@ if(!$("#users"))return;
 
 const DID={buy:"Bought",sell:"Sold",short:"Shorted",cover:"Bought back"};
 const SIDE={buy:"Buy",sell:"Sell",short:"Short",cover:"Buy to cover"};
-const KIND={limit:"Limit",stop:"Stop",stop_limit:"Stop-limit",trailing_stop:"Trailing stop"};
+const KIND={market:"Market at open",limit:"Limit",stop:"Stop",stop_limit:"Stop-limit",trailing_stop:"Trailing stop"};
 const STAT={open:"Waiting",filled:"Went through",canceled:"Canceled",failed:"Didn't go through"};
 
 let U=null,loaded=false,people=[];
