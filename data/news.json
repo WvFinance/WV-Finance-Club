@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16",
+ "updated": "2026-11-17",
  "briefs": [
   {
    "bear": [
@@ -48,7 +48,7 @@
    "ticker": "SP500",
    "updatedAt": "2026-11-16T23:05:24.752Z",
    "symbol": "AMEX:SPY",
-   "checkedAt": "2026-11-16T23:05:24.752Z",
+   "checkedAt": "2026-11-17T11:39:23.362Z",
    "about": "The S&P 500 tracks 500 of the biggest companies in the US, like Apple, Microsoft and Amazon. People use it as a quick check on how the whole stock market is doing.",
    "keyNumbers": [
     {
@@ -131,7 +131,7 @@
    "ticker": "NASDAQ",
    "updatedAt": "2026-11-16T23:05:24.751Z",
    "symbol": "NASDAQ:QQQ",
-   "checkedAt": "2026-11-16T23:05:24.751Z",
+   "checkedAt": "2026-11-17T11:39:23.362Z",
    "about": "The Nasdaq Composite tracks more than 3,000 companies listed on the Nasdaq exchange, many of them tech companies like Apple, Nvidia and Microsoft. It shows how tech stocks are doing.",
    "keyNumbers": [
     {
@@ -218,7 +218,7 @@
    "updatedAt": "2026-11-16T22:44:26.874Z",
    "symbol": "NASDAQ:AAPL",
    "name": "Apple",
-   "checkedAt": "2026-11-16T22:44:26.874Z",
+   "checkedAt": "2026-11-17T11:39:23.362Z",
    "about": "Apple designs the iPhone, Mac computers, iPads, Apple Watch and AirPods. It also makes money from services like the App Store, Apple Music and iCloud.",
    "keyNumbers": [
     {
@@ -297,7 +297,7 @@
    "updatedAt": "2026-11-16T22:44:26.877Z",
    "symbol": "NASDAQ:AMZN",
    "name": "Amazon",
-   "checkedAt": "2026-11-16T22:44:26.877Z",
+   "checkedAt": "2026-11-17T11:39:23.362Z",
    "about": "Amazon runs the biggest online store in the US and Amazon Web Services (AWS), which rents computing power and storage to other companies. It also sells ads, Prime memberships and is building Amazon Leo, a satellite internet service.",
    "keyNumbers": [
     {
@@ -388,7 +388,7 @@
    "updatedAt": "2026-11-16T22:44:26.877Z",
    "symbol": "NYSE:JPM",
    "name": "JPMorgan Chase",
-   "checkedAt": "2026-11-16T22:44:26.877Z",
+   "checkedAt": "2026-11-17T11:39:23.362Z",
    "about": "JPMorgan Chase is the biggest bank in the US. It runs Chase bank accounts and credit cards, makes loans, and helps big companies raise money by selling stock and bonds.",
    "keyNumbers": [
     {
@@ -469,7 +469,7 @@
    ],
    "updatedAt": "2026-11-16T22:44:26.877Z",
    "name": "Exxon Mobil",
-   "checkedAt": "2026-11-16T22:44:26.877Z",
+   "checkedAt": "2026-11-17T11:39:23.362Z",
    "about": "Exxon Mobil is one of the world's biggest oil and gas companies. It pumps oil and gas out of the ground, turns it into gasoline, diesel and chemicals, and sells them around the world.",
    "keyNumbers": [
     {
@@ -550,7 +550,7 @@
    ],
    "updatedAt": "2026-11-16T22:44:26.877Z",
    "name": "Johnson & Johnson",
-   "checkedAt": "2026-11-16T22:44:26.877Z",
+   "checkedAt": "2026-11-17T11:39:23.362Z",
    "about": "Johnson & Johnson makes prescription medicines, like cancer and immune drugs, and medical devices used in surgery and heart care. It sold its Band-Aid and Tylenol business in 2023.",
    "keyNumbers": [
     {
@@ -644,7 +644,7 @@
     }
    ],
    "updatedAt": "2026-11-16T23:05:24.747Z",
-   "checkedAt": "2026-11-16T23:05:24.747Z",
+   "checkedAt": "2026-11-17T11:39:23.362Z",
    "about": "Bitcoin is the first and biggest cryptocurrency, a digital money that is not run by any government or bank. Its price swings a lot as people buy and sell it.",
    "keyNumbers": [
     {
@@ -724,7 +724,7 @@
     }
    ],
    "updatedAt": "2026-11-16T23:05:24.751Z",
-   "checkedAt": "2026-11-16T23:05:24.751Z",
+   "checkedAt": "2026-11-17T11:39:23.362Z",
    "about": "Ethereum is the second-biggest cryptocurrency. Its network runs apps and digital tokens, and its coin, ether, pays the fees to use it.",
    "keyNumbers": [
     {
@@ -800,7 +800,7 @@
     }
    ],
    "name": "MGM Resorts International",
-   "checkedAt": "2026-11-16T22:44:26.877Z",
+   "checkedAt": "2026-11-17T11:39:23.362Z",
    "updatedAt": "2026-11-16T22:44:26.877Z",
    "about": "MGM Resorts runs casinos and hotels, including the Bellagio and MGM Grand in Las Vegas. It also has casinos in Macau, China, and co-owns BetMGM, an online sports betting app.",
    "keyNumbers": [
@@ -879,7 +879,7 @@
      "date": "Nov 16, 2026"
     }
    ],
-   "checkedAt": "2026-11-16T23:05:24.751Z",
+   "checkedAt": "2026-11-17T11:39:23.362Z",
    "updatedAt": "2026-11-16T23:05:24.751Z",
    "about": "The Dow Jones Industrial Average tracks 30 large, well-known US companies, like Apple, Walmart and Coca-Cola. It is one of the oldest stock market measures, started in 1896.",
    "keyNumbers": [
@@ -958,7 +958,7 @@
      "date": "Nov 13, 2026"
     }
    ],
-   "checkedAt": "2026-11-16T23:05:24.752Z",
+   "checkedAt": "2026-11-17T11:39:23.362Z",
    "updatedAt": "2026-11-16T23:05:24.752Z",
    "about": "The Russell 2000 tracks about 2,000 smaller US companies. It shows how smaller businesses, which often depend more on loans and the US economy, are doing.",
    "keyNumbers": [
@@ -1042,7 +1042,7 @@
     }
    ],
    "name": "Micron Technology",
-   "checkedAt": "2026-11-16T22:44:26.877Z",
+   "checkedAt": "2026-11-17T11:39:23.362Z",
    "updatedAt": "2026-11-16T22:44:26.877Z",
    "keyNumbers": [
     {
