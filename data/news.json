@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17",
+ "updated": "2026-11-18",
  "briefs": [
   {
    "bear": [
@@ -48,7 +48,7 @@
    "ticker": "SP500",
    "updatedAt": "2026-11-17T23:06:02.953Z",
    "symbol": "AMEX:SPY",
-   "checkedAt": "2026-11-17T23:06:02.953Z",
+   "checkedAt": "2026-11-18T11:40:41.752Z",
    "about": "The S&P 500 tracks 500 of the biggest companies in the US, like Apple, Microsoft and Amazon. People use it as a quick check on how the whole stock market is doing.",
    "keyNumbers": [
     {
@@ -135,7 +135,7 @@
    "ticker": "NASDAQ",
    "updatedAt": "2026-11-17T23:06:02.953Z",
    "symbol": "NASDAQ:QQQ",
-   "checkedAt": "2026-11-17T23:06:02.953Z",
+   "checkedAt": "2026-11-18T11:40:41.752Z",
    "about": "The Nasdaq Composite tracks more than 3,000 companies listed on the Nasdaq exchange, many of them tech companies like Apple, Nvidia and Microsoft. It shows how tech stocks are doing.",
    "keyNumbers": [
     {
@@ -226,7 +226,7 @@
    "updatedAt": "2026-11-16T22:44:26.874Z",
    "symbol": "NASDAQ:AAPL",
    "name": "Apple",
-   "checkedAt": "2026-11-17T11:39:23.362Z",
+   "checkedAt": "2026-11-18T11:40:41.752Z",
    "about": "Apple designs the iPhone, Mac computers, iPads, Apple Watch and AirPods. It also makes money from services like the App Store, Apple Music and iCloud.",
    "keyNumbers": [
     {
@@ -305,7 +305,7 @@
    "updatedAt": "2026-11-16T22:44:26.877Z",
    "symbol": "NASDAQ:AMZN",
    "name": "Amazon",
-   "checkedAt": "2026-11-17T11:39:23.362Z",
+   "checkedAt": "2026-11-18T11:40:41.752Z",
    "about": "Amazon runs the biggest online store in the US and Amazon Web Services (AWS), which rents computing power and storage to other companies. It also sells ads, Prime memberships and is building Amazon Leo, a satellite internet service.",
    "keyNumbers": [
     {
@@ -396,7 +396,7 @@
    "updatedAt": "2026-11-16T22:44:26.877Z",
    "symbol": "NYSE:JPM",
    "name": "JPMorgan Chase",
-   "checkedAt": "2026-11-17T11:39:23.362Z",
+   "checkedAt": "2026-11-18T11:40:41.752Z",
    "about": "JPMorgan Chase is the biggest bank in the US. It runs Chase bank accounts and credit cards, makes loans, and helps big companies raise money by selling stock and bonds.",
    "keyNumbers": [
     {
@@ -477,7 +477,7 @@
    ],
    "updatedAt": "2026-11-16T22:44:26.877Z",
    "name": "Exxon Mobil",
-   "checkedAt": "2026-11-17T11:39:23.362Z",
+   "checkedAt": "2026-11-18T11:40:41.752Z",
    "about": "Exxon Mobil is one of the world's biggest oil and gas companies. It pumps oil and gas out of the ground, turns it into gasoline, diesel and chemicals, and sells them around the world.",
    "keyNumbers": [
     {
@@ -558,7 +558,7 @@
    ],
    "updatedAt": "2026-11-16T22:44:26.877Z",
    "name": "Johnson & Johnson",
-   "checkedAt": "2026-11-17T11:39:23.362Z",
+   "checkedAt": "2026-11-18T11:40:41.752Z",
    "about": "Johnson & Johnson makes prescription medicines, like cancer and immune drugs, and medical devices used in surgery and heart care. It sold its Band-Aid and Tylenol business in 2023.",
    "keyNumbers": [
     {
@@ -646,7 +646,7 @@
     }
    ],
    "updatedAt": "2026-11-17T23:06:02.950Z",
-   "checkedAt": "2026-11-17T23:06:02.950Z",
+   "checkedAt": "2026-11-18T11:40:41.752Z",
    "about": "Bitcoin is the first and biggest cryptocurrency, a digital money that is not run by any government or bank. Its price swings a lot as people buy and sell it.",
    "keyNumbers": [
     {
@@ -726,7 +726,7 @@
     }
    ],
    "updatedAt": "2026-11-17T23:06:02.953Z",
-   "checkedAt": "2026-11-17T23:06:02.953Z",
+   "checkedAt": "2026-11-18T11:40:41.752Z",
    "about": "Ethereum is the second-biggest cryptocurrency. Its network runs apps and digital tokens, and its coin, ether, pays the fees to use it.",
    "keyNumbers": [
     {
@@ -802,7 +802,7 @@
     }
    ],
    "name": "MGM Resorts International",
-   "checkedAt": "2026-11-17T11:39:23.362Z",
+   "checkedAt": "2026-11-18T11:40:41.752Z",
    "updatedAt": "2026-11-16T22:44:26.877Z",
    "about": "MGM Resorts runs casinos and hotels, including the Bellagio and MGM Grand in Las Vegas. It also has casinos in Macau, China, and co-owns BetMGM, an online sports betting app.",
    "keyNumbers": [
@@ -881,7 +881,7 @@
      "date": "Nov 17, 2026"
     }
    ],
-   "checkedAt": "2026-11-17T23:06:02.953Z",
+   "checkedAt": "2026-11-18T11:40:41.752Z",
    "updatedAt": "2026-11-17T23:06:02.953Z",
    "about": "The Dow Jones Industrial Average tracks 30 large, well-known US companies, like Apple, Walmart and Coca-Cola. It is one of the oldest stock market measures, started in 1896.",
    "keyNumbers": [
@@ -968,7 +968,7 @@
      "date": "Nov 17, 2026"
     }
    ],
-   "checkedAt": "2026-11-17T23:06:02.953Z",
+   "checkedAt": "2026-11-18T11:40:41.752Z",
    "updatedAt": "2026-11-17T23:06:02.953Z",
    "about": "The Russell 2000 tracks about 2,000 smaller US companies. It shows how smaller businesses, which often depend more on loans and the US economy, are doing.",
    "keyNumbers": [
@@ -1012,87 +1012,81 @@
   {
    "ticker": "MU",
    "symbol": "MU",
-   "sentiment": "bearish",
-   "headline": "Micron drops about 6% Monday on a new US chip export rule and Nvidia worries",
+   "sentiment": "neutral",
+   "headline": "Micron jumps about 4.7% after hours as Nvidia's huge quarter eases AI fears",
    "about": "Micron makes memory chips, the parts that store data in computers, phones and the giant data centers that run AI. Its main products are DRAM and NAND flash memory, plus HBM, a fast memory built for AI chips.",
-   "summary": "Micron is now about 40% below its 52-week high of $1,255. Business is still booming: last quarter Micron's sales were $54.2 billion and it kept 87 cents of each sales dollar as gross profit, and it expects about $61.5 billion of sales this quarter. On November 14, a judge let a lawsuit go forward that says Micron, Samsung and SK Hynix worked together to keep memory prices high. A November 6 report said Nvidia asked TSMC to look into making memory chips, though Jefferies thinks real competition might not come until 2035.",
+   "summary": "On November 16, the US Commerce Department made companies get licenses to send advanced AI chips to Indonesia, Malaysia, Singapore, Thailand and Brazil, to stop chips from slipping into China. Micron is one of seven companies, along with Google, Nvidia and AMD, buying part of a $26 billion block of Anthropic shares at its IPO price, with Micron's share reported at $1.0 billion. Before Tuesday, Micron had dropped 18.7% from its $884.74 close on October 30, partly on worries that it plans to spend more than $25 billion on new factories.",
    "bull": [
-    "More than 75% of Micron's 2027 chips are already promised to customers, mostly at higher prices than 2026, so sales are largely locked in.",
-    "The stock costs only about 10 times its past-year profit, very cheap compared with most chip stocks, because it has fallen so far.",
-    "The average expert price goal of about $1,562 from 49 analysts is roughly double the current price."
+    "Nvidia raised its growth forecast for its next fiscal year to 75% from 70%, and every Nvidia AI system needs lots of memory, so more Nvidia sales usually mean more Micron sales.",
+    "Micron made $84.97 billion of profit on $133.19 billion of sales in its last year, so it keeps about 64 cents of each sales dollar as profit.",
+    "Analysts' average 12-month price goal is about $1,624, more than double Tuesday's $712.42 close, with DA Davidson's $3,000 the highest."
    ],
    "bear": [
-    "The new US export rule could cut chip sales into Asia and Brazil, and memory is one of the parts the US wants to watch.",
-    "A judge let a price-fixing lawsuit against Micron move ahead on November 14, which could mean costly penalties.",
-    "Micron's new Idaho factory will not make chips until mid-2027, so it cannot grow supply much if prices stay high."
+    "Nvidia's forecast assumes zero AI chip sales to China, and the new November 16 license rule could slow AI chip sales in five more countries, which means less memory needed.",
+    "A judge has let a lawsuit move ahead that says memory makers worked together to keep DRAM prices high, which could lead to costly penalties.",
+    "Nvidia expects its profit margin to shrink to 71% to 72% from 74.9%, and higher memory prices are one cost that big customers may push back on."
    ],
-   "nextEvent": "Nvidia, Micron's biggest AI customer, reports results on November 17, 2026; Micron reports around December 16",
+   "nextEvent": "Micron's next quarterly report, expected around December 16, 2026",
    "sources": [
     {
-     "title": "Why Micron Stock Dove Today",
-     "url": "https://www.fool.com/investing/2026/11/16/why-micron-stock-dove-today/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 16, 2026"
+     "title": "Micron (MU) Stock: $712 Wednesday After Nvidia's $115.8 Billion Quarter, Bull $778, Bear $667",
+     "url": "https://financefeeds.com/micron-mu-stock-712-wednesday-after-nvidia-115-8-billion-quarter-bull-778-bear-667/",
+     "outlet": "FinanceFeeds",
+     "date": "Nov 18, 2026"
     },
     {
-     "title": "Why Micron Stock Keeps Going Down",
-     "url": "https://www.fool.com/investing/2026/11/16/why-micron-stock-keeps-going-down/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 16, 2026"
+     "title": "Micron stock falls about 7% as Nvidia earnings and export curbs hit chips",
+     "url": "https://startupfortune.com/micron-stock-falls-about-7-as-nvidia-earnings-and-export-curbs-hit-chips/",
+     "outlet": "Startup Fortune",
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "Micron's AI Memory Is Nearly Sold Out Through 2027 - That Could Be Its Biggest Risk",
-     "url": "https://247wallst.com/investing/2026/11/16/microns-ai-memory-is-nearly-sold-out-through-2027-that-could-be-its-biggest-risk/",
-     "outlet": "24/7 Wall St.",
-     "date": "Nov 16, 2026"
-    },
-    {
-     "title": "US Memory Stocks Tumble Again Overnight as SanDisk, Micron Fall Over 4%, Western Digital Drops Over 3%",
-     "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262306725-memory-stocks-drop-sndk-mu-wdc-tradingkey",
+     "title": "Micron Technology Inc Stock (MU) Moved Down by 3.79% on Nov 17: What Signal Does It Send?",
+     "url": "https://www.tradingkey.com/news/market-movers/262309336-market-movers-mu-20261117",
      "outlet": "TradingKey",
-     "date": "Nov 16, 2026"
+     "date": "Nov 17, 2026"
     },
     {
-     "title": "Micron Technology (MU) Stock Price, Chart & News",
-     "url": "https://stockanalysis.com/stocks/mu/",
-     "outlet": "StockAnalysis",
-     "date": "Nov 14, 2026"
+     "title": "Micron (MU) Stock: $719 Tuesday, Nvidia Reports Tonight, Bull $798, Bear $656",
+     "url": "https://financefeeds.com/micron-mu-stock-719-tuesday-nvidia-results-tonight-bull-798-bear-656/",
+     "outlet": "FinanceFeeds",
+     "date": "Nov 17, 2026"
     }
    ],
    "name": "Micron Technology",
-   "checkedAt": "2026-11-17T11:39:23.362Z",
-   "updatedAt": "2026-11-16T22:44:26.877Z",
+   "checkedAt": "2026-11-18T11:40:41.752Z",
+   "updatedAt": "2026-11-18T11:40:41.750Z",
    "keyNumbers": [
     {
      "label": "Stock price",
-     "value": "about $730",
-     "note": "midday Nov 16, down ~6%"
+     "value": "$712.42",
+     "note": "close Nov 17, down 0.92%"
     },
     {
-     "label": "Quarterly sales",
-     "value": "$54.2B",
-     "note": "about 5x a year earlier"
+     "label": "After hours",
+     "value": "about $745.80",
+     "note": "up 4.7% after Nvidia, Nov 17"
     },
     {
-     "label": "Next year sold",
-     "value": "75%+",
-     "note": "of 2027 chips already promised"
+     "label": "Yearly profit",
+     "value": "$84.97B",
+     "note": "on $133.19B of sales"
     },
     {
-     "label": "Price vs. profit",
-     "value": "about 10x",
-     "note": "past-year profit"
+     "label": "Experts' price goal",
+     "value": "about $1,624",
+     "note": "average 12-month target"
     }
    ],
-   "whyMoved": "Micron fell about 6% on November 16, trading near $730 at midday after closing at $778.31 on November 13, its third drop in a row. Reports said the US government is adding a new rule that limits AI chips and computing going to China and makes buyers in places like Singapore, Malaysia and Brazil get export licenses, which could mean fewer memory chips sold. Investors also worry that Nvidia, the biggest buyer of Micron's AI memory, could slow orders after CEO Jensen Huang resigned. Almost all of Micron's huge profit now comes from selling memory for AI data centers, so any sign that AI chip buying slows hits the stock hard.",
+   "whyMoved": "Micron fell 7.62% on Monday, November 16, to $719.02, then slipped another 0.92% to $712.42 on Tuesday after being down 5.47% in the morning, leaving it about 8.5% below its $778.31 close on November 13. After Tuesday's close, Nvidia, Micron's biggest buyer of HBM memory for AI chips, reported $115.84 billion in quarterly sales, about $6.7 billion more than expected, and said next quarter could reach about $130 billion. Micron then rose about 4.7% to roughly $745.80 in after-hours trading. Almost all of Micron's giant profit now comes from AI data centers, and Nvidia said its new Vera Rubin systems, which hold more memory each, are off to an 'explosive start', so Nvidia's growth is a direct signal for Micron's memory orders.",
    "watch": [
     {
-     "date": "Nov 17",
-     "what": "Nvidia reports results after the close. Strong AI chip sales and a confident new leader would ease fears about memory orders; a weak outlook could push Micron lower."
+     "date": "Nov 19",
+     "what": "Anthropic's stock starts trading and Samsung and SK Hynix news comes out in Korea. A strong Anthropic debut would show money still pouring into AI; a weak one could hurt memory stocks."
     },
     {
      "date": "Dec 16",
-     "what": "Micron's expected quarterly report (estimated date). Good: sales near or above $61.5 billion. Bad: a lower forecast or falling memory prices."
+     "what": "Micron's expected quarterly report (estimated date). Good: a higher sales forecast and steady memory prices. Bad: a lower forecast or signs AI customers are slowing orders."
     }
    ]
   }
