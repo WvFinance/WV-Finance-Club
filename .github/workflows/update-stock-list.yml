@@ -3,7 +3,7 @@ name: Update stock list
 # Refreshes data/stocks.json (ticker, name, exchange) for the search bar's suggestions. Free.
 on:
   schedule:
-    - cron: "0 9 * * 0"   # Sunday morning
+    - cron: "0 11 * * 1-5"   # Every weekday morning (about 5-6am Chicago), so new stocks show up fast
   push:
     branches: [main]
     paths: [scripts/update_stock_list.py, .github/workflows/update-stock-list.yml]
