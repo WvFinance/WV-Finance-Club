@@ -1,12 +1,12 @@
 {
- "updated": "2026-11-18T12:25:18Z",
+ "updated": "2026-11-19T12:28:08Z",
  "analysts": [
   {
    "ticker": "ANET",
    "name": "Arista Networks",
-   "price": 186.42,
-   "week": 0.8,
-   "why": "30 of 30 Wall Street experts say Buy. Their average price goal is $250, 34% above today's price.",
+   "price": 193.94,
+   "week": -1.4,
+   "why": "30 of 30 Wall Street experts say Buy. Their average price goal is $250, 29% above today's price.",
    "buy": 30,
    "analysts": 30,
    "target": 249.65
@@ -14,9 +14,9 @@
   {
    "ticker": "DAL",
    "name": "Delta Air Lines",
-   "price": 84.3,
-   "week": -8.6,
-   "why": "24 of 25 Wall Street experts say Buy. Their average price goal is $102, 21% above today's price.",
+   "price": 84.88,
+   "week": -7.1,
+   "why": "24 of 25 Wall Street experts say Buy. Their average price goal is $102, 20% above today's price.",
    "buy": 24,
    "analysts": 25,
    "target": 101.65
@@ -24,9 +24,9 @@
   {
    "ticker": "AMZN",
    "name": "Amazon.com",
-   "price": 257.89,
-   "week": -4.8,
-   "why": "59 of 62 Wall Street experts say Buy. Their average price goal is $326, 26% above today's price.",
+   "price": 267.74,
+   "week": 0.6,
+   "why": "59 of 62 Wall Street experts say Buy. Their average price goal is $326, 22% above today's price.",
    "buy": 59,
    "analysts": 62,
    "target": 326.09
@@ -36,9 +36,9 @@
   {
    "ticker": "DPZ",
    "name": "Domino's Pizza",
-   "price": 349.86,
-   "week": 6.0,
-   "why": "Up 6.0% in the last 5 market days, with mostly good news this week.",
+   "price": 353.54,
+   "week": 7.6,
+   "why": "Up 7.6% in the last 5 market days, with mostly good news this week.",
    "headline": {
     "title": "Domino's Shares Climb as Baird Upgrades to Outperform, Lifts Target to $400",
     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5XbnFhNmNickRzOWN0OWVrenc2UFNsRjJweGdXVzBHYUpPNHhVamhlVDhBWWN3SlI3SEUxSlpWM1k1NFozX0JUVTNqX0Qtek1TbmY4NXpqZXdCQjdON25mY1hiVHRENFJqcFJzYmkxYWVlQ2dHYVE?oc=5",
@@ -47,29 +47,29 @@
    }
   },
   {
-   "ticker": "COST",
-   "name": "Costco Wholesale",
-   "price": 1110.08,
-   "week": 4.1,
-   "why": "Up 4.1% in the last 5 market days, with mostly good news this week.",
+   "ticker": "TJX",
+   "name": "TJX Companies",
+   "price": 140.3,
+   "week": 2.8,
+   "why": "Up 2.8% in the last 5 market days, with mostly good news this week.",
    "headline": {
-    "title": "Costco (COST) Stock Fair Value Edges Higher As AI Rollout Expands And Lawsuits Emerge",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/costco-cost-stock-fair-value-001518698.html",
-    "source": "Simply Wall St.",
-    "date": "2026-11-18"
+    "title": "TJX Beat Its Own Sales Forecast With 4% Comparable Growth, but Management Is Bracing for a Slower Holiday Quarter.",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/tjx-beat-own-sales-forecast-121648009.html",
+    "source": "Motley Fool",
+    "date": "2026-11-19"
    }
   },
   {
-   "ticker": "ROKU",
-   "name": "ROKU",
-   "price": 160.52,
-   "week": 3.5,
-   "why": "Up 3.5% in the last 5 market days, with mostly good news this week.",
+   "ticker": "AVGO",
+   "name": "Broadcom",
+   "price": 354.05,
+   "week": 2.6,
+   "why": "Up 2.6% in the last 5 market days, with mostly good news this week.",
    "headline": {
-    "title": "Fox stock surges nearly 4% as acquisition of Roku boosts streaming strategy",
-    "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQZkwzX3E0aXdMc1ppVTVpMTNibUJ5U2pfWTR1aWZYVF9IU0c4WGxKOXZfYTBrVVlmOWVZZkpMUExIdXEyR19Vb205UWowRWpLR1NLZ0NmbHNpcGgxTDRzZVU0LV93eDVWSGRRSEZwWXlXS1RubjAxcmFral9JZjZoUnBWY1hRRVhtc1RoRzJaQ1hkNVJSTlE?oc=5",
-    "source": "Traders Union",
-    "date": "2026-11-13"
+    "title": "Is Broadcom \u201ca Momentum Stock Wearing a Value Costume\u201d? Its December 9 Report Will Tell",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-momentum-stock-wearing-value-113837763.html",
+    "source": "TIKR",
+    "date": "2026-11-19"
    }
   }
  ]
