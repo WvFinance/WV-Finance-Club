@@ -1,7 +1,8 @@
 """Download the list of US-listed stocks and funds (ticker, name, exchange) for the search bar's suggestions.
 
-Writes data/stocks.json from Nasdaq's public stock screener (biggest companies first), falling back to the SEC's company list. Runs in GitHub Actions once a week
-(see .github/workflows/update-stock-list.yml). The site keeps the list's order
+Writes data/stocks.json from Nasdaq's public stock screener (biggest companies first), falling back to the SEC's company list. Runs in GitHub Actions every weekday
+morning (see .github/workflows/update-stock-list.yml). Brand-new stocks (IPOs) from Nasdaq's IPO
+calendar are added too, since the screener can take a few days to list them. The site keeps the list's order
 (biggest first) to rank suggestions.
 """
 import json
@@ -62,6 +63,52 @@ def from_nasdaq():
     return [(t, n, ex) for _, t, n, ex in rows]
 
 
+# Big new stocks to always include, in case the screener and IPO calendar both miss them.
+# (ticker, name, exchange, rough market value in dollars for ranking)
+NEW_LISTINGS = [
+    ("ANT", "Anthropic PBC Class A", "NASDAQ", 1.9e12),  # IPO 2026-11-19
+]
+
+
+def recent_ipos():
+    """Stocks that went public this month or last month, from Nasdaq's IPO calendar."""
+    import datetime
+    h = {"User-Agent": BROWSER_UA}
+    today = datetime.date.today()
+    last = (today.replace(day=1) - datetime.timedelta(days=1))
+    rows = []
+    for month in {today.strftime("%Y-%m"), last.strftime("%Y-%m")}:
+        try:
+            data = get_json(f"https://api.nasdaq.com/api/ipo/calendar?date={month}", h)
+            for r in ((data.get("data") or {}).get("priced") or {}).get("rows") or []:
+                t = (r.get("proposedTickerSymbol") or "").strip().upper()
+                ex = (r.get("proposedExchange") or "").upper()
+                ex = "NASDAQ" if "NASDAQ" in ex else "NYSE" if "NYSE" in ex else "AMEX" if "AMEX" in ex or "AMERICAN" in ex else ""
+                raised = float(re.sub(r"[^0-9.]", "", r.get("dollarValueOfSharesOffered") or "") or 0)
+                if t and r.get("companyName"):
+                    # A company usually sells about a tenth of itself in an IPO, so 10x the money raised ranks it near its real size.
+                    rows.append((t, r["companyName"].strip(), ex, raised * 10))
+        except Exception as e:
+            print(f"Could not download IPO calendar for {month}: {e}")
+    return rows
+
+
+def add_new_listings(rows, seen):
+    """Slot brand-new stocks into the biggest-first list by their rough size."""
+    extra = [x for x in recent_ipos() + NEW_LISTINGS if x[0] not in seen and re.fullmatch(r"[A-Z0-9.\-]{1,8}", x[0])]
+    if not extra:
+        return rows
+    # The saved list has no sizes, so use a simple rule: big IPOs go near the top, small ones near the end.
+    for t, n, ex, cap in sorted(extra, key=lambda x: -x[3]):
+        if t in seen:
+            continue
+        seen.add(t)
+        pos = 5 if cap >= 1e12 else 50 if cap >= 1e11 else 300 if cap >= 1e10 else 1500 if cap >= 1e9 else len(rows)
+        rows.insert(min(pos, len(rows)), [t, nice(n), ex])
+        print(f"Added new listing {t} ({n})")
+    return rows
+
+
 def from_sec():
     data = get_json(URL, UA)
     cols = data["fields"]
@@ -84,6 +131,8 @@ def main():
                 rows.append([t, nice(n or t), ex])
         if len(rows) >= 3000:
             break
+    if len(rows) >= 3000:
+        rows = add_new_listings(rows, seen)
     if len(rows) < 3000:
         raise SystemExit(f"Only {len(rows)} stocks came back; keeping the old list.")
     OUT.write_text(json.dumps({"source": "Nasdaq and SEC listings", "stocks": rows}, separators=(",", ":")) + "\n")
