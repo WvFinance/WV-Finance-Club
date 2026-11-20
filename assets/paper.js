@@ -476,8 +476,11 @@ $("#pt-form").addEventListener("submit",async e=>{e.preventDefault();
 function classTrader(){return window.WVFC_ROLE==="teacher";}
 function searchSym(){return window.WVFC_APP&&window.WVFC_APP.tk?window.WVFC_APP.tk():"";}
 function renderTradeBar(){const bar=$("#s-trade");if(!bar)return;const sym=searchSym();
-  if(!sym||!db){bar.hidden=true;return;}bar.hidden=false;
+  // Guests see the bar too; pressing Buy or Sell asks them to make a free account.
+  const guest=document.documentElement.classList.contains("guest");
+  if(!sym||(!db&&!guest)){bar.hidden=true;return;}bar.hidden=false;
   const own=$("#s-trade-own"),sell=$("#s-sell");
+  if(!db){$("#s-trade-title").textContent="Paper Trading";own.textContent=`Make a free account to practice buying and selling ${sym} with pretend money.`;sell.disabled=false;return;}
   if(classTrader()){$("#s-trade-title").textContent="Class Portfolio";
     const app=window.WVFC_APP,has=app&&app.picks&&app.picks().some(p=>String(p.ticker).toUpperCase()===sym);
     own.textContent=has?`The class owns ${sym}.`:`The class doesn't own ${sym} yet.`;sell.disabled=!has;return;}

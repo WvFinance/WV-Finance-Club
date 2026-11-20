@@ -307,8 +307,19 @@ table.pos th{padding:10px 12px}
 .latestlist .o{font-size:12px;color:var(--muted);font-family:var(--f-mono)}
 
 /* Log in and sign up screen (Simple Street, dark) */
-html:not(.unlocked) body>*:not(#gate):not(#intro):not(script){display:none!important}
-html.unlocked #gate{display:none}
+/* Everyone can look around without logging in. The sign in box only opens when someone asks for it. */
+html:not(.signin) #gate{display:none}
+html.signin{overflow:hidden}
+.gclose{position:absolute;top:58px;right:14px;z-index:2;width:40px;height:40px;border:1px solid #2a3b6a;border-radius:50%;background:#13224a;color:#f2f2f2;font-size:24px;line-height:1;cursor:pointer}
+.gclose:hover{background:#1c2f60}
+.signinbtn{display:none;white-space:nowrap}
+html.guest .signinbtn{display:inline-flex}
+html.guest #logout{display:none}
+.guestbar{display:none}
+html.guest .guestbar{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;margin:0 0 16px;padding:14px 18px;border:1px solid var(--line);border-radius:14px;background:var(--surface);line-height:1.5}
+.guestbar .gbbtns{display:flex;gap:8px;flex-wrap:wrap}
+.guestonly{display:none}html.guest .guestonly{display:inline}html.guest .memonly{display:none}
+@media (max-width:640px){html.guest .guestbar{padding:12px 14px;font-size:14px}.guestbar .gbbtns .btn{flex:1;white-space:nowrap;justify-content:center}}
 #gate{position:fixed;inset:0;z-index:50;overflow:auto;display:flex;flex-direction:column;background:radial-gradient(70% 60% at 50% 30%,#13224a,#0b1530 70%);color:#f2f2f2;font-family:var(--f-body)}
 .gtick{flex:none;background:#070d1f;border-bottom:1px solid #1c2a52;min-height:46px}
 .gtick .tradingview-widget-container{width:100%}

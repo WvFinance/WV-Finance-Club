@@ -8,7 +8,11 @@ function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show"
 const root=document.documentElement;
 const msg=$("#gate-msg");
 
-if(!window.supabase||!CFG.supabaseUrl||!CFG.supabaseKey){root.classList.remove("unlocked");msg.textContent="Logins aren't set up yet.";return;}
+// Visitors without a login look around as a guest. The sign in box opens only when they ask for it
+// (Sign in button, or a members-only part like Paper Trading). School web filters block sites that open on a password box.
+function guest(){root.classList.remove("unlocked");root.classList.add("guest");window.WVFC_APP&&window.WVFC_APP.setSchool("guest");}
+function closeSignin(){root.classList.remove("signin");}
+if(!window.supabase||!CFG.supabaseUrl||!CFG.supabaseKey){guest();window.WVFC_SIGNIN=()=>{};return;}
 // Two logins can live in this browser: the main one (the email and password people type) and, if they made one,
 // their second account (class or personal, supabase/two-accounts.sql). The page logs in to the second one for them.
 const dbMain=window.supabase.createClient(CFG.supabaseUrl,CFG.supabaseKey);
@@ -42,6 +46,15 @@ function setMode(m){mode=m;const login=m==="login",choose=m==="choose",signup=m=
   $("#auth-switch").textContent=login?"Create an account":"Log in";
   msg.textContent="";
   if(m==="class")$("#auth-club").focus();else if(m==="me")$("#auth-name").focus();}
+function openSignin(m){
+  const pw=$("#auth-pass");if(pw.type!=="password")pw.type="password";
+  root.classList.add("signin");setMode(m==="choose"?"choose":"login");
+  if(m!=="choose")$("#auth-email").focus();}
+window.WVFC_SIGNIN=openSignin;
+$("#signin-btn").addEventListener("click",()=>openSignin("login"));
+document.addEventListener("click",e=>{const b=e.target.closest("[data-signin]");if(b)openSignin(b.dataset.signin);});
+$("#gate-close").addEventListener("click",closeSignin);
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&root.classList.contains("signin"))closeSignin();});
 $("#auth-switch").addEventListener("click",()=>setMode(mode==="login"?"choose":"login"));
 $("#g-back").addEventListener("click",()=>setMode("choose"));
 document.querySelectorAll(".gchoice").forEach(b=>b.addEventListener("click",()=>{kind=b.dataset.kind;
@@ -104,11 +117,11 @@ document.addEventListener("click",async e=>{
 
 async function start(){
   let session=null;try{({data:{session}}=await db.auth.getSession());}catch(e){}
-  if(!session){root.classList.remove("unlocked");
-    if(pendingInvite()){kind="me";document.querySelectorAll(".gchoice").forEach(x=>x.setAttribute("aria-checked",String(x.dataset.kind==="me")));setMode("choose");
+  if(!session){guest();
+    if(pendingInvite()){kind="me";document.querySelectorAll(".gchoice").forEach(x=>x.setAttribute("aria-checked",String(x.dataset.kind==="me")));openSignin("choose");
       $("#g-choose .gsub").textContent="A friend invited you! How do you want to use Simple Street?";}
-    else{setMode("login");$("#auth-email").focus();}return;}
-  user=session.user;root.classList.add("unlocked");
+    else setMode("login");return;}
+  user=session.user;root.classList.remove("guest");root.classList.add("unlocked");
   // Open the second account if that's the one picked last, and it really belongs to this login.
   window.WVFC_LINK_READY=dbMain.rpc("linked_account").then(({data,error})=>error?null:data,()=>null);
   if(getActive()==="second"){
