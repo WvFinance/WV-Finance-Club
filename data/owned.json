@@ -1,6 +1,10 @@
 {
  "tickers": [
   {
+   "ticker": "DPZ",
+   "owners": 1
+  },
+  {
    "ticker": "MGM",
    "owners": 1
   },
