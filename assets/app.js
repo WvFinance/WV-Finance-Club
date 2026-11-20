@@ -45,7 +45,10 @@ const PVIEWS=["overview","positions","sectors","history","classnews","ideas"];le
 const DVIEWS=["dschools","dpeople","dweek"];let D_view="dschools";
 // Personal Home (My Portfolio) drop-down: "mine" is the overview, the rest are views of your own Paper Trading stocks (paper.js draws them).
 const MVIEWS=["mine","mystocks","mysectors","myhistory","mytrades"];let M_view="mine";
+// Guests (no login) can use News, Top 3 Today and stock search. Other parts need an account, so they open the sign in box.
+const MEMBER_ONLY=["portfolio","home","mine","trade","feed","district","staff","users","schools",...PVIEWS,...DVIEWS,...MVIEWS];
 function showTab(name,push){
+  if(S.guest&&MEMBER_ONLY.includes(name)){if(push&&window.WVFC_SIGNIN)window.WVFC_SIGNIN("choose");if(push&&S.loaded)return;name="news";}
   if(name==="schools")name="dschools";
   // "Just me" accounts: Home is My Portfolio, Leaderboard is the everyone list. No class or school pages.
   if(S.individual){if(name==="portfolio"||PVIEWS.includes(name)||name==="home")name="mine";if(name==="district"||DVIEWS.includes(name))name="dpeople";}
@@ -54,7 +57,7 @@ function showTab(name,push){
   if(MVIEWS.includes(name)){M_view=name;name="mine";}
   // Search has no tab button: the search bar at the top opens it.
   const tb=n=>$("#tab-"+n);
-  if(!TABS.includes(name)||(tb(name)&&tb(name).hidden)){name=S.individual?"mine":"portfolio";}
+  if(!TABS.includes(name)||(tb(name)&&tb(name).hidden)){name=S.guest?"news":S.individual?"mine":"portfolio";}
   if(name==="portfolio"){for(const v of PVIEWS)$("#pv-"+v).hidden=v!==S_view;
     document.querySelectorAll("#pf-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===S_view));renderBreakdown();if(S_view==="classnews")renderClassFeed();if(S_view==="ideas")loadIdeas();}
   for(const t of TABS){$("#"+t).hidden=t!==name;if(tb(t))tb(t).setAttribute("aria-selected",String(t===name));}
@@ -108,7 +111,7 @@ function lastTwo(tk){const c=S.prices.closes&&S.prices.closes[tk];if(!c)return n
 function tapeNum(tk){const q=tapeLive[tk];if(q&&q.price>0)return{price:+q.price,chg:q.prev_close>0?q.price/q.prev_close-1:null};return lastTwo(tk);}
 function tapeStocks(){const own=S.individual?(S.mine||[]):S.picks.filter(p=>!["BTC","ETH"].includes(p.ticker)).map(p=>p.ticker);
   return [...new Set(own.concat(TAPE_FILL).map(bare))].slice(0,Math.max(12,own.length));}
-function tapeItem(tk,label,sym){const it=el("button",{type:"button",class:"mt-item","data-tk":tk,onclick:()=>{if(!document.documentElement.classList.contains("unlocked"))return;openStock(sym);showTab("search",true);}},
+function tapeItem(tk,label,sym){const it=el("button",{type:"button",class:"mt-item","data-tk":tk,onclick:()=>{if(document.documentElement.classList.contains("signin"))return;openStock(sym);showTab("search",true);}},
     el("b",{text:label}),el("span",{class:"mt-px"}),el("span",{class:"mt-ch"}));fillTapeItem(it);return it;}
 function fillTapeItem(it){const n=tapeNum(it.dataset.tk);if(!n){it.hidden=true;return;}it.hidden=false;
   it.querySelector(".mt-px").textContent=n.price.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -707,13 +710,19 @@ function showBrand(sc){
   const id=S.individual?"me":sc.id;
   document.documentElement.dataset.school=id;try{localStorage.setItem("wvfc.theme",id);}catch(e){}
   $("#school-name").textContent=S.individual?"":(sc.club||sc.name);
-  $("#brand-link").setAttribute("href",S.individual?"#mine":"#portfolio");
+  $("#brand-link").setAttribute("href",S.guest?"#news":S.individual?"#mine":"#portfolio");
 }
 
 // The strip across the top of the log in screen: the same moving ticker as inside the site.
 function renderGateTick(){
   const box=$("#gate-tick");if(!box||box.dataset.done)return;box.dataset.done="1";
   buildTape(box,TAPE_FILL);
+}
+
+/* ---------- Guests: looking around without a login ---------- */
+// Tabs become News · Top 3 Today, plus a Paper Trading tab that asks them to make a free account.
+function setupGuest(){
+  for(const t of["portfolio","mine","feed","district","staff","users"])$("#tab-"+t).hidden=true;
 }
 
 /* ---------- "Just me" accounts (supabase/individual.sql) ---------- */
@@ -764,17 +773,18 @@ async function boot(){
   S.schools=sl.status==="fulfilled"&&sl.value.schools&&sl.value.schools.length?sl.value.schools:DEFAULT_SCHOOLS;
   // Wait for the login to say which school this is (a page with no login shows the log in box anyway).
   const sid=await Promise.race([schoolReady,new Promise(r=>setTimeout(()=>r(null),10000))]);
-  S.individual=sid==="me";
+  // Guests get the Simple Street look, like "Just me" accounts.
+  S.guest=sid==="guest";S.individual=sid==="me"||S.guest;
   S.school=S.schools.find(sc=>sc.id===sid)||S.schools[0];
   showBrand(S.school);
   S.picks=S.individual?[]:await schoolPicks(S.school);
   if(nw.status==="fulfilled"){S.briefs=nw.value.briefs||[];S.marketRecap=nw.value.market||null;if(nw.value.updated)$("#news-asof").textContent="News briefs updated "+fmtDate(nw.value.updated);}
   S.loaded=true;renderTape();renderPortfolio();renderNews();
-  if(S.individual)setupIndividual();
+  if(S.guest)setupGuest();else if(S.individual)setupIndividual();
   loadMineBriefs();
   const fromWidget=new URLSearchParams(location.search).get("tvwidgetsymbol");
   if(fromWidget){try{history.replaceState(null,"",location.pathname+"#search")}catch(e){}openStock(fromWidget.toUpperCase());}
-  showTab(location.hash.slice(1)||(S.individual?"mine":"portfolio"));
+  showTab(location.hash.slice(1)||(S.guest?"news":S.individual?"mine":"portfolio"));
   if(S.picks.length&&CFG.finnhubKey){await Promise.all(S.picks.map(p=>quote(p.ticker)).concat([quote("SPY")]));renderTiles();renderCompare();renderPicks();renderBreakdown();}
 }
 boot();
@@ -825,7 +835,7 @@ function ideaRow(i,done){
 }
 // Club leader view. The password stays only in this tab's memory and is checked by the server.
 let leaderPass="";
-$("#leader-open").addEventListener("click",()=>{const f=$("#leader-form");f.hidden=!f.hidden;if(!f.hidden)$("#leader-pass").focus();});
+$("#leader-open").addEventListener("click",()=>{const f=$("#leader-form");f.hidden=!f.hidden;const lp=$("#leader-pass");lp.type="password";if(!f.hidden)lp.focus();});
 $("#leader-form").addEventListener("submit",e=>{e.preventDefault();leaderPass=$("#leader-pass").value;leaderLoad();});
 const KIND_NAME={pitch:"Stock to pitch",topic:"Meeting topic",feedback:"Site feedback"};
 async function leaderLoad(action,id){
