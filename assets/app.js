@@ -45,8 +45,8 @@ const PVIEWS=["overview","positions","sectors","history","classnews","ideas"];le
 const DVIEWS=["dschools","dpeople","dweek"];let D_view="dschools";
 // Personal Home (My Portfolio) drop-down: "mine" is the overview, the rest are views of your own Paper Trading stocks (paper.js draws them).
 const MVIEWS=["mine","mystocks","mysectors","myhistory","mytrades"];let M_view="mine";
-// Guests (no login) can use News, Top 3 Today and stock search. Other parts need an account, so they open the sign in box.
-const MEMBER_ONLY=["portfolio","home","mine","trade","feed","district","staff","users","schools",...PVIEWS,...DVIEWS,...MVIEWS];
+// Guests (no login) can use News, Feed, Top 3 Today and stock search. Other parts need an account, so they open the sign in box.
+const MEMBER_ONLY=["portfolio","home","mine","trade","district","staff","users","schools",...PVIEWS,...DVIEWS,...MVIEWS];
 function showTab(name,push){
   if(S.guest&&MEMBER_ONLY.includes(name)){if(push&&window.WVFC_SIGNIN)window.WVFC_SIGNIN("choose");if(push&&S.loaded)return;name="news";}
   if(name==="schools")name="dschools";
@@ -720,9 +720,9 @@ function renderGateTick(){
 }
 
 /* ---------- Guests: looking around without a login ---------- */
-// Tabs become News · Top 3 Today, plus a Paper Trading tab that asks them to make a free account.
+// Tabs become News · Feed · Top 3 Today, plus a Paper Trading tab that asks them to make a free account.
 function setupGuest(){
-  for(const t of["portfolio","mine","feed","district","staff","users"])$("#tab-"+t).hidden=true;
+  for(const t of["portfolio","mine","district","staff","users"])$("#tab-"+t).hidden=true;
 }
 
 /* ---------- "Just me" accounts (supabase/individual.sql) ---------- */
