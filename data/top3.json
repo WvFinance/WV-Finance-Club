@@ -1,12 +1,12 @@
 {
- "updated": "2026-11-19T12:28:08Z",
+ "updated": "2026-11-20T12:27:17Z",
  "analysts": [
   {
    "ticker": "ANET",
    "name": "Arista Networks",
-   "price": 193.94,
-   "week": -1.4,
-   "why": "30 of 30 Wall Street experts say Buy. Their average price goal is $250, 29% above today's price.",
+   "price": 189.59,
+   "week": -8.2,
+   "why": "30 of 30 Wall Street experts say Buy. Their average price goal is $250, 32% above today's price.",
    "buy": 30,
    "analysts": 30,
    "target": 249.65
@@ -14,9 +14,9 @@
   {
    "ticker": "DAL",
    "name": "Delta Air Lines",
-   "price": 84.88,
-   "week": -7.1,
-   "why": "24 of 25 Wall Street experts say Buy. Their average price goal is $102, 20% above today's price.",
+   "price": 83.17,
+   "week": -3.9,
+   "why": "24 of 25 Wall Street experts say Buy. Their average price goal is $102, 22% above today's price.",
    "buy": 24,
    "analysts": 25,
    "target": 101.65
@@ -24,21 +24,34 @@
   {
    "ticker": "AMZN",
    "name": "Amazon.com",
-   "price": 267.74,
-   "week": 0.6,
-   "why": "59 of 62 Wall Street experts say Buy. Their average price goal is $326, 22% above today's price.",
+   "price": 257.37,
+   "week": -3.8,
+   "why": "59 of 62 Wall Street experts say Buy. Their average price goal is $327, 27% above today's price.",
    "buy": 59,
    "analysts": 62,
-   "target": 326.09
+   "target": 326.51
   }
  ],
  "movers": [
   {
+   "ticker": "PANW",
+   "name": "Palo Alto Networks",
+   "price": 361.73,
+   "week": 12.1,
+   "why": "Up 12.1% in the last 5 market days, with mostly good news this week.",
+   "headline": {
+    "title": "Cybersecurity Stocks Rally On Palo Alto Earnings Beat, Raised Guidance",
+    "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOX19aUDFOZDBzZUhoQWZldUVFMFMyTDdHNjN0V0JmRDNHWEprWXIxdjB0cmV5MlVUTG1mZ3QxVmNkaGU3ZDYzTzJwTXUxVXlFaWcyUkRjY2QxamI2WU5lX2JvbzhVX1RRTTdHQkhrUkZpU2ludHNpU3h1bWU0NnJnejFMLVFDclBGQTJmbzVvaUFORWtXUUpFSA?oc=5",
+    "source": "Investor's Business Daily",
+    "date": "2026-11-19"
+   }
+  },
+  {
    "ticker": "DPZ",
    "name": "Domino's Pizza",
-   "price": 353.54,
-   "week": 7.6,
-   "why": "Up 7.6% in the last 5 market days, with mostly good news this week.",
+   "price": 352.28,
+   "week": 5.7,
+   "why": "Up 5.7% in the last 5 market days, with mostly good news this week.",
    "headline": {
     "title": "Domino's Shares Climb as Baird Upgrades to Outperform, Lifts Target to $400",
     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5XbnFhNmNickRzOWN0OWVrenc2UFNsRjJweGdXVzBHYUpPNHhVamhlVDhBWWN3SlI3SEUxSlpWM1k1NFozX0JUVTNqX0Qtek1TbmY4NXpqZXdCQjdON25mY1hiVHRENFJqcFJzYmkxYWVlQ2dHYVE?oc=5",
@@ -47,29 +60,16 @@
    }
   },
   {
-   "ticker": "TJX",
-   "name": "TJX Companies",
-   "price": 140.3,
-   "week": 2.8,
-   "why": "Up 2.8% in the last 5 market days, with mostly good news this week.",
+   "ticker": "TGT",
+   "name": "Target",
+   "price": 167.46,
+   "week": 4.1,
+   "why": "Up 4.1% in the last 5 market days, with mostly good news this week.",
    "headline": {
-    "title": "TJX Beat Its Own Sales Forecast With 4% Comparable Growth, but Management Is Bracing for a Slower Holiday Quarter.",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/tjx-beat-own-sales-forecast-121648009.html",
-    "source": "Motley Fool",
-    "date": "2026-11-19"
-   }
-  },
-  {
-   "ticker": "AVGO",
-   "name": "Broadcom",
-   "price": 354.05,
-   "week": 2.6,
-   "why": "Up 2.6% in the last 5 market days, with mostly good news this week.",
-   "headline": {
-    "title": "Is Broadcom \u201ca Momentum Stock Wearing a Value Costume\u201d? Its December 9 Report Will Tell",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-momentum-stock-wearing-value-113837763.html",
-    "source": "TIKR",
-    "date": "2026-11-19"
+    "title": "Target shares rise 7% as retailer posts best sales growth in five years, hikes guidance",
+    "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5nNkJ5R1ViMWludTd4T3hpbzhjN1pkSXg0eEZrbnhJQzhaUTV5NXppeDFISmN3ZTJpVE1Gc2NWamwzRmJDdTZ4akpEelFBRDlnZFR2SFUwbU9lX3JnYUZGTFUtNDNJMGRnVnBaRXZuZ19ZQdIBd0FVX3lxTE12TzRCdzJGeEh1S1Fmd05QaXlJdHpxLUFOeEFGZ2FpUURqaUlrWENORmRaQ3E5OHhjXzVLbXVVcV8yd1JJbHNzZHNWZFczUERGMEpKV1pLMTFTMkg1ZU9Hb3VuU0szSUJJWDZYNlhhM281aS11RXZZ?oc=5",
+    "source": "CNBC",
+    "date": "2026-11-18"
    }
   }
  ]
