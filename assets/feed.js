@@ -17,7 +17,9 @@ const API=String(window.WVFC_CONFIG&&window.WVFC_CONFIG.briefApi||"").replace(/\
 function signedIn(d){if(db)return;db=d.db;if(!$("#feed").hidden)load();else setTimeout(()=>{if(!loaded)load();},2500);}
 document.addEventListener("wvfc:login",e=>signedIn(e.detail));
 if(window.WVFC_SESSION)signedIn(window.WVFC_SESSION);
-document.addEventListener("wvfc:tab",e=>{if(e.detail==="feed"){markSeen();if(db){if(!loaded)load();else loadFriends();}}});
+// Guests (no login) see Congress, insider and big investor trades. Friends and Follow need an account.
+const isGuest=()=>document.documentElement.classList.contains("guest");
+document.addEventListener("wvfc:tab",e=>{if(e.detail==="feed"){markSeen();if(db){if(!loaded)load();else loadFriends();}else if(isGuest()&&!loaded)load();}});
 document.addEventListener("wvfc:mine",()=>{if(loaded)render();});
 document.addEventListener("wvfc:traded",()=>{if(loaded)loadFriends();});
 
@@ -27,10 +29,12 @@ async function load(){
   await Promise.all([loadFriends(),loadCongress(),loadFollows(),loadPros()]);
 }
 async function loadFriends(){
+  if(!db){F.friends=[];render();return;}
   const{data,error}=await db.rpc("feed_friends");
   F.friendsOff=!!error;F.friends=error?[]:(data||[]);render();
 }
 async function loadFollows(){
+  if(!db){F.follows=new Set();render();return;}
   const{data,error}=await db.from("feed_follows").select("member");
   F.followsOff=!!error;F.follows=new Set((data||[]).map(r=>r.member));render();
 }
@@ -99,6 +103,7 @@ const moved=m=>m.move==="new"||m.move==="sold"||m.pct==null||!(1+m.pct>0)?+m.val
 const openStock=s=>{if(person){person=null;render();}window.WVFC_APP&&window.WVFC_APP.openStock(s);};
 const practice=s=>{if(person){person=null;render();}window.WVFC_PAPER&&window.WVFC_PAPER.trade(s,"buy");};
 async function follow(m,btn){
+  if(!db){window.WVFC_SIGNIN&&window.WVFC_SIGNIN("choose");return;}
   if(F.followsOff){toast("Following isn't set up yet.");return;}
   btn.disabled=true;
   const{data,error}=await db.rpc("feed_follow",{m});
@@ -302,6 +307,8 @@ function emptyFor(key){
     return own.size||watch.size?emptyMsg("Nobody here has traded your stocks lately. When they do, it shows up here first."):
       emptyMsg("Buy a stock in Paper Trading or add one to your watchlist, and trades in it will show up here first.",
         el("button",{type:"button",class:"btn primary",text:"Go to Paper Trading",onclick:()=>$("#tab-trade").click()}));}
+  if(key==="friends"&&!db)return emptyMsg("Make a free account to see what you and your friends trade.",
+    el("button",{type:"button",class:"btn primary",text:"Create account","data-signin":"choose"}));
   if(key==="friends")return F.friends==null?emptyMsg("Loading…"):F.friendsOff?emptyMsg("Friends' trades aren't turned on yet. Check back soon."):
     emptyMsg("No trades from you or your friends in the last 30 days. Make a trade in Paper Trading, or invite a friend from Home.",
       el("button",{type:"button",class:"btn primary",text:"Go to Paper Trading",onclick:()=>$("#tab-trade").click()}));
