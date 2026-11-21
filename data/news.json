@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-20",
+ "updated": "2026-11-21",
  "briefs": [
   {
    "bear": [
@@ -179,141 +179,117 @@
   },
   {
    "bear": [
-    "At about 39 times its yearly profit, Apple costs much more than Microsoft at 28 times, so any slowdown could pull the price down hard.",
-    "Levinson's planned $31.8 million sale adds to his 2026 selling; insiders sell for many reasons, but it is not a sign of extra confidence.",
-    "Pricier memory chips cut Apple's expected gross profit to 45 to 46 cents per sales dollar this quarter, so costs are rising faster than prices."
+    "Two insiders sold stock within two days (November 16 and 17), worth about $32.6 million together; insiders sell for many reasons, but it is not a sign of extra confidence.",
+    "Apple is now 3.8% below its November 13 record, and the S&P 500 just had seven losing days in a row, so even safer stocks are slipping.",
+    "Pricier memory chips threaten Apple's profit per iPhone, which is why the stock fell after its record quarter earlier this month, as The Motley Fool noted."
    ],
    "bull": [
-    "Apple fell less than the market on every bad day this week, and the S&P 500 hit its lowest close since July 29 on November 17, showing investors trust Apple's steady profits.",
-    "A long Samsung memory deal, if confirmed, could lock in chip supply from 2027, which would help protect the profit Apple keeps on each iPhone.",
-    "Apple expects sales to grow 7% to 10% this holiday quarter, and Greater China sales grew 21% last quarter, so demand for iPhones is still strong."
+    "On November 20 Apple fell 1.9% while the tech sector lost about 7%, so investors still treat it as one of the safer big tech names.",
+    "Apple's price is about the same as two weeks ago ($342.37 on November 6 vs. $342.56 now), while the S&P 500 lost 3.7% on November 20 alone.",
+    "Bloomberg's November 20 report of an Apple AI 'agent' could give iPhone owners a new reason to upgrade, which matters because the iPhone is Apple's biggest product."
    ],
-   "headline": "Apple holds near its record at $352.45 while the S&P 500 falls five days in a row",
+   "headline": "Apple slips 1.9% to $342.56 in a brutal tech selloff, 3.8% below its record",
    "nextEvent": "Apple's holiday-quarter results, expected in late January 2027",
-   "sentiment": "bullish",
+   "sentiment": "neutral",
    "sources": [
     {
-     "title": "Apple (AAPL) Stock on Wednesday: Rises 0.15%, Up 2.5% in a Month",
-     "url": "https://journalarta.com/en/2026/11/19/apple-aapl-stock-on-wednesday-rises-0-15-up-2-5-in-a-month/",
-     "outlet": "JournalArta",
-     "date": "Nov 19, 2026"
+     "title": "Closing Look — Friday, November 20, 2026",
+     "url": "https://cappnotes.substack.com/p/closing-look-friday-november-20-2026",
+     "outlet": "CappNotes",
+     "date": "Nov 20, 2026"
     },
     {
-     "title": "Apple Is the Only Magnificent Seven Stock Near a Record",
-     "url": "https://247wallst.com/investing/2026/11/18/apple-is-the-only-magnificent-seven-stock-near-a-record/",
-     "outlet": "24/7 Wall St.",
-     "date": "Nov 18, 2026"
+     "title": "Why Financial Markets Had the Worst Day of the Year (And How Apple Did)",
+     "url": "https://www.idropnews.com/news/why-financial-markets-had-the-worst-day-of-the-year-and-how-apple-did/271448",
+     "outlet": "iDrop News",
+     "date": "Nov 20, 2026"
     },
     {
-     "title": "Apple's Levinson Moves to Unload $31.8 Million in Stock as Shares Sit Near Record",
-     "url": "https://finance.biggo.com/news/12f762a1-d567-4d75-91ce-c1b7a3e78e40",
-     "outlet": "BigGo Finance",
-     "date": "Nov 18, 2026"
+     "title": "Apple Shares Close at $349.21 After Two Insiders Sell Stock",
+     "url": "https://www.tokenpost.com/news/investing/62065",
+     "outlet": "TokenPost",
+     "date": "Nov 20, 2026"
     },
     {
-     "title": "Apple Sets a Record Close at $356.27 as Tech Sells Off, and AAPL Now Eyes $363.34",
-     "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262306622-apple-record-close-356-27-tech-selloff-aapl-eyes-363-34-november-16-2026-tradingkey",
-     "outlet": "TradingKey",
-     "date": "Nov 16, 2026"
-    },
-    {
-     "title": "Apple Is Above $5 Trillion After Its First-Ever Close Above $350",
-     "url": "https://247wallst.com/investing/2026/11/10/apple-is-above-5-trillion-after-its-first-ever-close-above-350/",
-     "outlet": "24/7 Wall St.",
-     "date": "Nov 10, 2026"
+     "title": "Why Apple Stock Fell Despite a Record Quarter",
+     "url": "https://fool.com/investing/2026/11/11/why-apple-stock-fell-despite-a-record-quarter",
+     "outlet": "The Motley Fool",
+     "date": "Nov 11, 2026"
     }
    ],
-   "summary": "Apple's fiscal year that ended September 26 brought $478.8 billion in sales and $132.2 billion in profit, or $8.98 per share. On November 18, former chairman Arthur Levinson filed to sell 90,000 shares worth about $31.8 million, after selling about $86.8 million of stock earlier in 2026. Reports say Apple is close to a 4-to-5-year deal with Samsung for memory chips starting in early 2027, which Apple has not confirmed. Apple is worth about $5.11 trillion and is up about 29% in 2026.",
+   "summary": "Former chairman Arthur Levinson sold 90,000 shares for about $31.76 million on November 16 and gave away another 50,000 shares the same day; he still owns about 3.56 million shares. On November 17, top lawyer Jennifer Newstead sold 2,398 shares for $845,942 under a trading plan she set up on May 5, which means the sale was scheduled months ahead. Bloomberg reported on November 20 that Apple is building an AI assistant that can do tasks on its own, called an 'agent.' iDrop News noted that on November 20 Apple fell much less than pure AI and chip stocks, as the S&P 500 dropped about 3.7% and the Dow nearly 2%.",
    "ticker": "AAPL",
-   "updatedAt": "2026-11-19T11:42:10.421Z",
+   "updatedAt": "2026-11-21T02:54:59.775Z",
    "symbol": "NASDAQ:AAPL",
    "name": "Apple",
-   "checkedAt": "2026-11-20T11:41:37.109Z",
+   "checkedAt": "2026-11-21T02:54:59.775Z",
    "about": "Apple designs the iPhone, Mac computers, iPads, Apple Watch and AirPods. It also makes money from services like the App Store, Apple Music and iCloud.",
    "keyNumbers": [
     {
      "label": "Stock price",
-     "value": "$352.45",
-     "note": "close Nov 18, up 0.15%"
+     "value": "$342.56",
+     "note": "close Nov 20, down 1.9%"
     },
     {
      "label": "Below record",
-     "value": "about 1%",
+     "value": "3.8%",
      "note": "record close $356.27, Nov 13"
     },
     {
-     "label": "Yearly sales",
-     "value": "$478.8B",
-     "note": "fiscal 2026, up 15.1%"
+     "label": "Two-week change",
+     "value": "about 0%",
+     "note": "$342.37 on Nov 6"
     },
     {
-     "label": "Price vs. profit",
-     "value": "about 39x",
-     "note": "Microsoft is about 28x"
+     "label": "Nasdaq on Nov 20",
+     "value": "-5.3%",
+     "note": "Apple fell far less"
     }
    ],
-   "whyMoved": "Apple barely moved this week: it closed at $352.78 on November 16, slipped 0.25% to $351.91 on November 17, and rose 0.15% to $352.45 on November 18. That is only about 1% below its record close of $356.27 on November 13, while the S&P 500 fell five days in a row and Apple is the only one of the seven giant tech stocks near a record. Investors treat Apple as a safer place because most of its profit comes from selling iPhones and from services like the App Store, not from spending huge sums on AI data centers. Its biggest money risk is cost: memory chips are much pricier, so Apple expects to keep only 45 to 46 cents of each sales dollar as gross profit this quarter, down from 47.9 cents.",
+   "whyMoved": "Apple ended Friday, November 20 at $342.56, almost exactly where it was two weeks earlier ($342.37 on November 6), after hitting a record close of $356.27 on November 13. It fell 0.9% to $349.21 on November 19 and another 1.9% on November 20, the day the Nasdaq dropped 5.3% and the tech sector lost about 7% as investors dumped AI and chip stocks. Apple held up better because most of its profit comes from selling iPhones and from services like the App Store, not from building giant AI data centers, so doubts about AI spending hit it less. The money risk to watch is cost: memory chips have become much pricier, which squeezes the profit Apple keeps on each iPhone it sells.",
    "watch": [
     {
-     "date": "Dec 2026",
-     "what": "Apple's first AI features launch in China. Strong iPhone sales there after launch would support last quarter's 21% growth; weak sales would raise doubts."
+     "date": "Nov 23",
+     "what": "New York Fed President John Williams speaks. Hints of a December rate hike could pressure big stocks like Apple; calmer words could help."
     },
     {
-     "date": "Late Jan 2027",
-     "what": "Holiday-quarter results. Good: sales growth of 7% or more and gross profit of at least 45 cents per sales dollar. Bad: lower than that."
+     "date": "Dec 9",
+     "what": "Fed interest rate decision. Traders put about a 90% chance on a hike; a surprise pause would likely lift stocks, a hike is mostly expected."
     }
    ]
   },
   {
    "bear": [
-    "Amazon still fell 3.9% on Anthropic's big day, showing investors care more about AI spending worries than the stake's paper gain.",
-    "Spending about $220 billion a year on data centers means Amazon spends more cash than it brings in, so AI demand must stay strong to pay off.",
-    "The 40 Leo satellites lost on November 16 set back Amazon's satellite internet plan and mean more spending before it earns money."
+    "Amazon spent $42.4 billion more cash than it brought in over the past year, and it has started borrowing as interest rates rise.",
+    "A large part of Amazon's value now rides on Anthropic's stock, which fell 8.5% on November 20; every $1 move in Anthropic changes the stake by about $3.5 billion.",
+    "The November 15 rocket failure destroyed 40 Leo satellites, and many of the 38 rocket launches Amazon has booked could be delayed."
    ],
    "bull": [
-    "Anthropic closed its first day at $97.17, 17% above $83, so Amazon's stake gained about $27 billion in one day; each $1 move in ANT changes it by about $1.9 billion.",
-    "AWS sales grew 39%, the fastest in nearly five years, with 38.7 cents of profit on each sales dollar, so Amazon's main profit engine is speeding up.",
-    "Anthropic's $110 billion AWS promise equals about 6% of AWS's yearly sales, guaranteed business for the next decade."
+    "AWS boss Andy Jassy said AWS can grow 'north of 40%' in both 2027 and 2028, and AWS is where most of Amazon's profit comes from.",
+    "59 analysts rate Amazon a buy with no sells, and their average target is $326.29, which is far above Friday's close.",
+    "Selling 75% of two data center partnerships to Blackstone for about $5 billion brings in cash to help pay for Amazon's huge building plans."
    ],
-   "headline": "Amazon falls 3.9% to $257.37 even as Anthropic jumps 17% in its first day",
+   "headline": "Amazon falls 4.1% to $246.82 as its Anthropic stake and AI spending worry investors",
    "nextEvent": "Fed interest rate decision on December 9, 2026",
-   "sentiment": "neutral",
+   "sentiment": "bearish",
    "sources": [
     {
-     "title": "Stock market today: Dow sinks 1,100 points, S&P 500 and Nasdaq tank 2% as Anthropic IPO grabs spotlight",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-19-dow-sp-500-nasdaq-anthropic-ipo-live-141306032.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 19, 2026"
-    },
-    {
-     "title": "Stocks plunge as investors take cover amid growing uncertainty",
-     "url": "https://www.cbsnews.com/news/dow-tumbles-wall-street-ai-fears/",
-     "outlet": "CBS News",
-     "date": "Nov 19, 2026"
-    },
-    {
-     "title": "Wall Street Wipes Out Early Gains As Dow Sinks 1,100 Points. Anthropic's $81 Billion IPO Fails To Lift Stocks.",
-     "url": "https://www.ibtimes.com/us-stocks-plunge-anthropic-ipo-ai-spending-concerns-3809985",
-     "outlet": "International Business Times",
-     "date": "Nov 19, 2026"
-    },
-    {
-     "title": "Amazon's Andy Jassy Plans To Stay Invested In Anthropic For 'A Long Time'",
-     "url": "https://stocktwits.com/news-articles/markets/equity/amazon-s-andy-jassy-plans-to-stay-invested-in-anthropic-for-a-long-time/cNbO5FVR9ha",
-     "outlet": "Stocktwits",
-     "date": "Nov 17, 2026"
-    },
-    {
-     "title": "Amazon's $18 Billion Anthropic Bet Is Worth $159 Billion at the IPO Price. Here's What That Is Per Amazon Share",
-     "url": "https://247wallst.com/investing/2026/11/18/amazons-18-billion-anthropic-bet-is-worth-159-billion-at-the-ipo-price-heres-what-that-is-per-amazon-share/",
-     "outlet": "24/7 Wall St.",
-     "date": "Nov 18, 2026"
-    },
-    {
-     "title": "Amazon and Alphabet Will Own Over 28% of Anthropic After Its IPO. Here's What That Means for Their Stocks.",
-     "url": "https://www.fool.com/investing/2026/11/18/amazon-and-alphabet-will-own-28-percent-of-anthropic-after-ipo/",
+     "title": "Stock Market Today, Nov. 20: Amazon Shares Slide on AI and Mega-Cap Tech Sell-Off",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/20/stock-market-today-nov-20-amazon-shares-slide-on-ai-and-mega-cap-tech-sell-off/",
      "outlet": "The Motley Fool",
-     "date": "Nov 18, 2026"
+     "date": "Nov 20, 2026"
+    },
+    {
+     "title": "Oppenheimer raises Amazon stock price target on Anthropic stake value",
+     "url": "https://www.investing.com/news/analyst-ratings/oppenheimer-raises-amazon-stock-price-target-on-anthropic-stake-value-93CH-5041686",
+     "outlet": "Investing.com",
+     "date": "Nov 20, 2026"
+    },
+    {
+     "title": "Amazon Stock: What Wall Street's Latest Forecasts Say About Its Next Move",
+     "url": "https://247wallst.com/investing/2026/11/20/amazon-stock-what-wall-streets-latest-forecasts-say-about-its-next-move/",
+     "outlet": "24/7 Wall St.",
+     "date": "Nov 20, 2026"
     },
     {
      "title": "Amazon Stock (AMZN) Falls 3.3% After Leo Launch Failure (Nov 16)",
@@ -322,137 +298,129 @@
      "date": "Nov 17, 2026"
     }
    ],
-   "summary": "Anthropic raised a record $81.3 billion in the biggest IPO ever, selling about 980 million shares. On November 16, Blackstone agreed to pay about $5 billion for 75% of two AWS data center partnerships, and AWS will rent those buildings back for 12 years. On the same day a rocket carrying 40 Amazon Leo internet satellites failed, sending the stock down 3.3%. Amazon is spending about $220 billion this year on AI data centers, and last quarter it earned $1.89 per share, below the $1.96 experts expected.",
+   "summary": "In a note reported November 20, Oppenheimer raised its price target to $310 from $285, saying Amazon owns about 3.5 billion Anthropic shares, worth about $339 billion at $97 a share; at Friday's Anthropic price near $88.91 that stake is worth about $311 billion. Blackstone agreed to buy 75% of two AWS data center building partnerships for about $5 billion, and AWS will rent the buildings back for 12 years. Third-quarter sales were $201.94 billion, up 12.1%, and AWS has $578 billion of signed future business. Italian prosecutors told Amazon's European unit it may face trial over unpaid import taxes on goods from China.",
    "ticker": "AMZN",
-   "updatedAt": "2026-11-20T11:41:37.106Z",
+   "updatedAt": "2026-11-21T02:54:59.779Z",
    "symbol": "NASDAQ:AMZN",
    "name": "Amazon",
-   "checkedAt": "2026-11-20T11:41:37.109Z",
-   "about": "Amazon runs the biggest online store in the US and Amazon Web Services (AWS), which rents computing power and storage to other companies. It also sells ads, Prime memberships and is building Amazon Leo, a satellite internet service.",
+   "checkedAt": "2026-11-21T02:54:59.779Z",
+   "about": "Amazon runs the biggest online store in the US and Amazon Web Services (AWS), which rents computing power to other companies. It also sells ads, Prime memberships and devices like Echo and Kindle.",
    "keyNumbers": [
     {
      "label": "Stock price",
-     "value": "$257.37",
-     "note": "close Nov 19, down 3.9%"
+     "value": "$246.82",
+     "note": "close Nov 20, down 4.1%"
     },
     {
-     "label": "Anthropic stake",
-     "value": "about $186B",
-     "note": "14.7% at ANT's $97.17 close"
+     "label": "Two-week change",
+     "value": "-4.8%",
+     "note": "$259.30 on Nov 6"
     },
     {
      "label": "AWS sales growth",
-     "value": "+39%",
-     "note": "to $45.98B last quarter"
+     "value": "39%",
+     "note": "Q3, to $45.98B"
     },
     {
-     "label": "AWS backlog",
-     "value": "$578B",
-     "note": "signed future sales"
+     "label": "2026 spending",
+     "value": "about $220B",
+     "note": "mostly AI data centers"
     }
    ],
-   "whyMoved": "Amazon jumped 3.8% to $267.74 on November 18, then gave it all back on November 19, falling 3.9% to $257.37. That was the same day AI company Anthropic started trading as ANT: it opened at $111.50, 34% above its $83 sale price, then slid and closed at $97.17, still up 17%. At that close Amazon's 14.7% stake is worth about $186 billion, roughly $27 billion more than at $83, on an $18 billion investment. But the whole market fell, with the Dow down 1,101 points and more than 90% of S&P 500 stocks lower, as investors worried that giant AI data center spending may not pay off and that interest rates could rise. AWS earns most of Amazon's profit and Anthropic has promised to spend at least $110 billion on it through April 2036, while the stake is a paper gain because CEO Andy Jassy says Amazon plans to hold it for a long time.",
+   "whyMoved": "Amazon fell 4.1%, or $10.55, to $246.82 on Friday, November 20, its lowest close in this two-week stretch, with 72.1 million shares traded, about 79% more than usual; it was $259.30 on November 6. The week was a roller coaster: down 3.3% on November 16 after a rocket carrying 40 of its Amazon Leo internet satellites failed, up 3.8% on November 18, then down 3.9% on November 19 and 4.1% on November 20 as AI stocks sold off and Anthropic, the AI company Amazon owns a big piece of, fell 8.5% on its second trading day. Most of Amazon's profit comes from AWS, its cloud business, which grew 39% last quarter, but Amazon expects to spend about $220 billion this year, mostly on AI data centers, so over the past year it spent $42.4 billion more cash than it brought in. Investors are now asking whether that spending, and the paper value of the Anthropic stake, will pay off.",
    "watch": [
     {
      "date": "Dec 9",
-     "what": "The Fed's interest rate decision. A rate hike would make borrowing for data centers costlier; no hike would ease that worry."
-    },
-    {
-     "date": "Late Jan 2027",
-     "what": "Holiday-quarter results. Good: AWS growth staying near 39%. Bad: AWS growth slowing while data center spending keeps rising."
+     "what": "Fed interest rate decision. A hike is widely expected; a bigger worry would be hints of more hikes, which make borrowing for data centers more costly."
     }
    ]
   },
   {
    "bear": [
-    "The stock dropped about 7.5% in four days and sits below its 200-day average price of about $325, a level many traders watch.",
-    "Investors are weighing more Fed rate hikes because inflation is still high, which could slow borrowing and make some loans go bad.",
-    "Anthropic slid 13% from its $111.50 opening price within 30 minutes, so some everyday investors JPMorgan sold to may have bought high."
+    "A hacker group leaked about 16,000 email addresses of JPMorgan's ultra-rich Reserve card customers, a trust problem for its most valuable clients.",
+    "Senate Democrats plan an Epstein investigation once they control Congress in 2027; JPMorgan already paid $290 million plus $75 million in 2023 settlements.",
+    "The UK doubled its bank tax to 6% for 15 months, and JPMorgan has about 5,300 staff at one UK campus, so its costs there go up."
    ],
    "bull": [
-    "Anthropic closed its first day 17% above its $83 price, a smooth debut that helps the banks that sold it win future big IPOs, and Evercore estimated it could add about 0.8% to big banks' fourth-quarter profit.",
-    "Barnum stays as vice chairman and de Best does not take over until after the first-quarter 2027 report, giving the bank a slow, planned handoff.",
-    "Jobless claims of 203,000 show few layoffs, so fewer customers should fall behind on loans and credit cards."
+    "JPMorgan says the November 16 outage was 'a software bug' with 'no evidence' of a cyberattack, so the damage may be limited to one bad day.",
+    "If the Fed raises rates on December 9, banks can often charge more on loans, which can widen the main gap JPMorgan earns money from.",
+    "Dimon's ban on outside AI agents, explained in mid-November, shows the bank guarding customer accounts, which matters after this week's leak scare."
    ],
-   "headline": "JPMorgan falls a fourth day to $320.22 as Anthropic's debut fails to lift stocks",
+   "headline": "JPMorgan drops 3% to $310.53, down 7% in two weeks as bank stocks slide",
    "nextEvent": "Fed interest rate decision on December 9, 2026",
    "sentiment": "bearish",
    "sources": [
     {
-     "title": "Stock market today: Dow sinks 1,100 points, S&P 500 and Nasdaq tank 2% as Anthropic IPO grabs spotlight",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-19-dow-sp-500-nasdaq-anthropic-ipo-live-141306032.html",
-     "outlet": "Yahoo Finance",
+     "title": "Goldman Sachs Group Inc Stock (GS) Moved Down by 5.50% on Nov 20: Drivers Behind the Movement",
+     "url": "https://www.tradingkey.com/news/market-movers/262315927-market-movers-gs-20261120",
+     "outlet": "TradingKey",
+     "date": "Nov 20, 2026"
+    },
+    {
+     "title": "JP Morgan boss Jamie Dimon to set 'example' after Healey's bank tax hike",
+     "url": "https://www.cityam.com/jp-morgan-boss-jamie-dimon-to-set-example-after-healeys-bank-tax-hike/",
+     "outlet": "City AM",
+     "date": "Nov 20, 2026"
+    },
+    {
+     "title": "Hackers leak stolen JPMorgan data about rich people",
+     "url": "https://cybernews.com/security/jpmorgan-chase-data-leak-non-ransomware-gang",
+     "outlet": "Cybernews",
      "date": "Nov 19, 2026"
     },
     {
-     "title": "Wall Street Wipes Out Early Gains As Dow Sinks 1,100 Points. Anthropic's $81 Billion IPO Fails To Lift Stocks.",
-     "url": "https://www.ibtimes.com/us-stocks-plunge-anthropic-ipo-ai-spending-concerns-3809985",
-     "outlet": "International Business Times",
-     "date": "Nov 19, 2026"
-    },
-    {
-     "title": "Stocks plunge as investors take cover amid growing uncertainty",
-     "url": "https://www.cbsnews.com/news/dow-tumbles-wall-street-ai-fears/",
-     "outlet": "CBS News",
-     "date": "Nov 19, 2026"
-    },
-    {
-     "title": "JPMorgan Chase falls 2.47% in Tuesday's session",
-     "url": "https://www.globalbankingandfinance.com/jpmorgan-chase-jpm-falls-2026-11-17/",
-     "outlet": "Global Banking & Finance Review",
+     "title": "Dead Cross Nears for Major US Bank Stocks as Fed Rate Hikes, AI Concerns Weigh",
+     "url": "https://finance.biggo.com/news/e5af2d17-2ecd-4a33-bcc7-4ae02a1b6d6f",
+     "outlet": "BigGo Finance",
      "date": "Nov 17, 2026"
     },
     {
-     "title": "Anthropic reportedly prices IPO at $83 a share, above projected range",
-     "url": "https://techcrunch.com/2026/11/18/anthropic-reportedly-prices-ipo-at-83-a-share-above-projected-range/",
-     "outlet": "TechCrunch",
-     "date": "Nov 18, 2026"
+     "title": "Jamie Dimon Just Said 5 Words Blocking Outside AI Agents From JPMorgan Accounts: \"You Don't Want Rogue Agents.\"",
+     "url": "https://www.fool.com/investing/2026/11/14/jamie-dimon-just-said-5-words-blocking-outside-ai/",
+     "outlet": "The Motley Fool",
+     "date": "Nov 14, 2026"
     },
     {
-     "title": "Why the Anthropic IPO 'could be the swing vote' for Wall Street bank stocks",
-     "url": "https://finance.yahoo.com/markets/article/why-the-anthropic-ipo-could-be-the-swing-vote-for-wall-street-bank-stocks-172030065.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 3, 2026"
+     "title": "JPMorgan Stock Slid After Reports That Senate Democrats Plan a New Investigation Into Jamie Dimon's Bank Over Its Jeffrey Epstein Relationship",
+     "url": "https://www.fool.com/investing/2026/11/13/jpmorgan-stock-slid-report-senate-democrats-investigation-jamie-dimon-jeffrey-epstein-relationship-why-political-risk-jpm-shares/",
+     "outlet": "The Motley Fool",
+     "date": "Nov 13, 2026"
     }
    ],
-   "summary": "Anthropic's IPO raised a record $81.3 billion, and everyday investors got 15% of the shares, down from up to 20% planned. JPMorgan said a mid-November software bug that slowed some customer transactions was fixed and was not a cyberattack. JPMorgan and Singapore's DBS linked their blockchain deposit systems so business customers can move US dollars between the two countries 24 hours a day. Weekly jobless claims were 203,000 for the week ended November 14, showing few layoffs, which matters because people with jobs keep paying their loans.",
+   "summary": "CNBC reported on November 5 that Senate Democrats plan to investigate JPMorgan's past ties to Jeffrey Epstein, and Democrats take control of Congress in early 2027. On November 19 in London, CEO Jamie Dimon called the UK's doubled bank tax 'unfair' and said JPMorgan may cut back there to set 'an example.' Dimon also said JPMorgan will not let outside AI 'agents' into customer accounts, saying 'You don't want rogue agents.' The KBW bank index fell 2% on November 17 and its short-term trend line is close to dropping below its long-term one, a pattern traders call a 'dead cross.'",
    "ticker": "JPM",
-   "updatedAt": "2026-11-20T11:41:37.109Z",
+   "updatedAt": "2026-11-21T02:54:59.780Z",
    "symbol": "NYSE:JPM",
    "name": "JPMorgan Chase",
-   "checkedAt": "2026-11-20T11:41:37.109Z",
-   "about": "JPMorgan Chase is the biggest bank in the US. It runs Chase bank accounts and credit cards, makes loans, and helps big companies raise money by selling stock and bonds.",
+   "checkedAt": "2026-11-21T02:54:59.780Z",
+   "about": "JPMorgan Chase is the biggest bank in the US. It runs Chase bank accounts and credit cards, makes loans, and helps big companies and rich clients invest and raise money.",
    "keyNumbers": [
     {
      "label": "Stock price",
-     "value": "$320.22",
-     "note": "close Nov 19, down 1.2%"
+     "value": "$310.53",
+     "note": "close Nov 20, down 3%"
     },
     {
-     "label": "4-day drop",
-     "value": "about 7.5%",
-     "note": "from $346.19 on Nov 13"
+     "label": "Two-week change",
+     "value": "-7.2%",
+     "note": "$334.49 on Nov 6"
     },
     {
-     "label": "Anthropic IPO",
-     "value": "$81.3B raised",
-     "note": "record; priced at $83"
+     "label": "Below its high",
+     "value": "about 15%",
+     "note": "52-week high $366.50"
     },
     {
-     "label": "ANT first close",
-     "value": "$97.17",
-     "note": "up 17% on Nov 19"
+     "label": "Dividend yield",
+     "value": "about 2%",
+     "note": "yearly payout vs. price"
     }
    ],
-   "whyMoved": "JPMorgan fell four days in a row: to $338.21 on November 16, $329.96 on November 17, $324.11 on November 18 and $320.22 on November 19, about 7.5% below its $346.19 close on November 13. On November 19 Anthropic, whose stock JPMorgan helped sell to everyday US investors, opened at $111.50 and closed at $97.17, 17% above its $83 price, but the Dow still fell 1,101 points as investors worried about AI spending and possible Fed rate hikes. Earlier in the week the bank said Chief Financial Officer Jeremy Barnum will step down, with Bregje de Best taking over after the first-quarter 2027 report. Most of JPMorgan's profit comes from interest on loans and fees from deals, so the record $81.3 billion Anthropic sale should add fees to its year-end quarter, while higher rates could make some loans go bad.",
+   "whyMoved": "JPMorgan fell from $334.49 on November 6 to $310.53 on November 20, a 7.2% drop, with five losing days in a row since its $346.19 close on November 13. On Friday alone it lost about 3% as Goldman Sachs fell 5.5% and the whole bank group slid about 2%, as traders bet heavily on a Fed rate hike on December 9 and the S&P 500 fell into a correction (more than 10% below its record). A system outage on November 16 that JPMorgan blamed on 'a software bug' also hurt, and a hacker group later leaked about 16,000 emails of its richest card customers. JPMorgan earns most of its money from the gap between what it pays savers and what it charges borrowers, plus fees from trading and deals, so a scary stock market can cut deal and trading fees even if higher rates help lending.",
    "watch": [
     {
      "date": "Dec 9",
-     "what": "The Fed's rate decision. A half-point hike would be a surprise that could pressure bank stocks; a smaller move would ease worries."
-    },
-    {
-     "date": "Mid-Jan 2027",
-     "what": "Fourth-quarter results. Good: deal fees up with the Anthropic sale. Bad: more money set aside for bad loans."
+     "what": "Fed rate decision. A hike is about 90% expected; watch whether bank stocks steady afterward or keep sliding on worries about loans going bad."
     }
    ]
   },
@@ -460,181 +428,151 @@
    "ticker": "XOM",
    "symbol": "NYSE:XOM",
    "sentiment": "bearish",
-   "headline": "Exxon drops 4% to $160.58 as oil keeps sliding",
-   "summary": "Last quarter Exxon earned $17.5 billion, or $4.23 per share, after special items, up from $1.88 a year earlier. On November 9 it signed an early, non-binding agreement with Venezuela's state oil company and is studying 7 areas there for possible projects. On November 11 it moved ahead with Longtail, the next oil project in Guyana, and filed a legal challenge to an EU carbon capture law. Barclays raised its price goal to $206 while Bernstein cut its goal to $186.",
+   "headline": "Exxon slips to $159.99 as US oil falls to its lowest price since August",
+   "summary": "Exxon earned $17.5 billion, or $4.23 a share, in its third quarter (adjusted, leaving out one-time items), up from $3.52 a share the quarter before, and paid shareholders $9.4 billion, including $5.1 billion of buybacks. It plans $20 billion of buybacks in 2027 and has cut its debt by nearly $11 billion this year. On November 16 Exxon offered to buy back up to $3.0 billion of its own bonds, an offer that ran until November 20. On November 9 oil fell about 3% after President Trump said new strikes on Iran were 'highly unlikely' if talks made progress.",
    "bull": [
-    "Profit per share more than doubled to $4.23 last quarter, so Exxon still has a lot of cash coming in even as oil cools.",
-    "Exxon's refining business, which turns crude into gasoline and diesel, grew profit 181% to $11.4 billion through September 30, and it can earn money even when crude prices fall.",
-    "New projects like Longtail in Guyana add cheap-to-pump oil, and Exxon aims to make a profit even if oil drops to $35 a barrel by 2027."
+    "Exxon made $19.1 billion of free cash (money left after all spending) last quarter, enough to keep paying dividends and buybacks even with cheaper oil.",
+    "The planned $20 billion of buybacks in 2027 would shrink the number of shares, so each remaining share gets a bigger slice of profit.",
+    "On November 20 Exxon rose 0.7% while the S&P 500 fell 3.7%, showing oil stocks can hold up when tech stocks crash."
    ],
    "bear": [
-    "Brent has fallen from as high as $120 during the Iran conflict to $91.95, and lower oil means less profit on every barrel Exxon sells.",
-    "The stock fell 3.97% on November 18 alone and is about 14% below its October 30 close, falling faster than the S&P 500.",
-    "The Venezuela deal commits Exxon to nothing yet, and Venezuela still has not paid a $1.6 billion award from taking Exxon's projects in 2007."
+    "US oil lost about 6% in one week (November 13 to 18), and Exxon's profit falls when the oil price falls.",
+    "The IEA now expects more oil than the world needs this quarter, 1.7 million barrels a day extra, after earlier expecting a shortage.",
+    "Analysts are split: TD Cowen has a $193 target, but DZ Bank cut its rating to sell with a $170 target, and most of 26 analysts say hold."
    ],
-   "nextEvent": "Exxon pays a $1.07 per share dividend on December 10, 2026",
+   "nextEvent": "",
    "sources": [
     {
-     "title": "ExxonMobil Shares Fall 4% as Brent Crude Settles at $91.95",
-     "url": "https://www.tokenpost.com/news/investing/60946",
-     "outlet": "TokenPost",
+     "title": "Crude Gives Back Ground Midweek as Inventories Build and Surplus Talk Grows",
+     "url": "https://www.prnewswire.com/news-releases/crude-gives-back-ground-midweek-as-inventories-build-and-surplus-talk-grows-302945575.html",
+     "outlet": "PR Newswire",
+     "date": "Nov 19, 2026"
+    },
+    {
+     "title": "Exxon Mobil Corp Stock (XOM) Moved Down by 3.28% on Nov 18: A Full Analysis",
+     "url": "https://www.tradingkey.com/news/market-movers/262311470-market-movers-xom-20261118",
+     "outlet": "TradingKey",
      "date": "Nov 18, 2026"
     },
     {
-     "title": "Stock market today: Dow and S&P 500 slide, Nasdaq rises in anticipation of Anthropic IPO",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-18-dow-sp-500-nasdaq-nvidia-earnings-anthropic-ipo-143530588.html",
+     "title": "Exxon Mobil Stocks Move Lower 0.31% as Crude Slides Toward $87",
+     "url": "https://finance.yahoo.com/energy/articles/exxon-mobil-stocks-move-lower-190037292.html",
      "outlet": "Yahoo Finance",
-     "date": "Nov 18, 2026"
+     "date": "Nov 9, 2026"
     },
     {
-     "title": "ExxonMobil Holdings (XOM) Stock Price History",
-     "url": "https://stockanalysis.com/stocks/xom/history/",
-     "outlet": "StockAnalysis",
-     "date": "Nov 16, 2026"
-    },
-    {
-     "title": "If You'd Invested $1,000 in ExxonMobil 1 Year Ago, Here's How Much You'd Have Today",
-     "url": "https://www.fool.com/investing/2026/11/13/if-invested-1000-exxonmobil-year-ago-how-much-have-today-xom/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 13, 2026"
-    },
-    {
-     "title": "ExxonMobil Takes First Step Toward Venezuela Oil Return",
-     "url": "https://www.marinelink.com/news/exxonmobil-takes-first-step-toward-544247",
-     "outlet": "MarineLink (Reuters)",
-     "date": "Nov 10, 2026"
+     "title": "XOM Stock Is Up 43% In 2026: Wall Street Is Split On The Oil Major Following Q3 Results",
+     "url": "https://stocktwits.com/news-articles/markets/equity/xom-stock-is-up-43-in-2026-wall-street-is-split-on-the-oil-major-following-q3-results/cNG13IER9EX",
+     "outlet": "Stocktwits",
+     "date": "Nov 4, 2026"
     }
    ],
-   "updatedAt": "2026-11-19T11:42:10.425Z",
+   "updatedAt": "2026-11-21T02:54:59.780Z",
    "name": "Exxon Mobil",
-   "checkedAt": "2026-11-20T11:41:37.109Z",
-   "about": "Exxon Mobil is one of the world's biggest oil and gas companies. It pumps oil and gas out of the ground, turns it into gasoline, diesel and chemicals, and sells them around the world.",
+   "checkedAt": "2026-11-21T02:54:59.780Z",
+   "about": "Exxon Mobil is one of the world's biggest oil and gas companies. It pumps oil and natural gas, turns them into gasoline and other fuels, and makes chemicals and plastics.",
    "keyNumbers": [
     {
      "label": "Stock price",
-     "value": "$160.58",
-     "note": "close Nov 18, down 3.97%"
+     "value": "$159.99",
+     "note": "close Nov 20, up 0.7%"
     },
     {
-     "label": "Brent oil price",
-     "value": "$91.95",
-     "note": "a barrel, Nov 18, down 1.3%"
+     "label": "Two-week change",
+     "value": "-3.5%",
+     "note": "$165.87 on Nov 6"
     },
     {
      "label": "US oil price",
-     "value": "$82.08",
-     "note": "a barrel, Nov 18, down 3%"
+     "value": "$83.26",
+     "note": "Nov 18, lowest since Aug 26"
     },
     {
-     "label": "Profit per share",
-     "value": "$4.23",
-     "note": "last quarter, was $1.88"
+     "label": "Free cash",
+     "value": "$19.1B",
+     "note": "Q3, after all spending"
     }
    ],
-   "whyMoved": "Exxon fell $6.63, or 3.97%, to $160.58 on November 18, after closing at $166.87 on November 16 and $167.21 on November 17. That leaves it down about 10.6% from $179.67 on November 2 and about 14% below its $187.25 close on October 30, the day it reported earnings. The cause is cheaper oil: Brent, the world's main oil price, settled 1.3% lower at $91.95 a barrel on November 18, and US oil fell 3% to $82.08, after falling below $90 Brent earlier in the month when President Trump said the Iran war was 'effectively over'. Exxon earns most of its profit from pumping oil, so every dollar oil falls cuts what each barrel earns, and investors are pricing in smaller profits than the war-time highs.",
-   "watch": [
-    {
-     "date": "Nov 30",
-     "what": "Brent oil at month's end. Staying above $90 a barrel keeps most of Exxon's big profits; a drop toward $85 would shrink what each barrel earns."
-    },
-    {
-     "date": "Dec 10",
-     "what": "Exxon pays its $1.07 per share dividend (cash paid to owners). A steady payment shows the company is still confident in its cash."
-    }
-   ]
+   "whyMoved": "Exxon fell from $165.87 on November 6 to $159.99 on November 20, a 3.5% drop, after reaching $170.59 on November 13; its worst day was November 18, when it lost about 4% to $160.58 as Chevron fell 3.4% too. The cause was oil: US oil fell from $88.56 a barrel on November 13 to $83.26 on November 18, its lowest since August 26, after US stockpiles rose 3.4 million barrels and the International Energy Agency said the world will pump 1.7 million barrels a day more than it uses this quarter. Exxon earns most of its profit from selling the oil and gas it pumps, so every drop in the oil price shrinks the money it makes on each barrel. On November 20 Exxon actually rose 0.7% while the S&P 500 fell 3.7%, because oil companies do not depend on AI spending.",
+   "watch": []
   },
   {
    "ticker": "JNJ",
    "symbol": "NYSE:JNJ",
-   "sentiment": "bearish",
-   "headline": "J&J falls a fourth day to $267.14, 6.5% below its record, as health stocks slide",
-   "summary": "On November 17, the law firm Pomerantz said it is looking into whether J&J misled investors, pointing to October 13, when J&J reported only $210 million of profit after big lawsuit charges for talc (baby powder) cases and the stock fell 5.73%; this is a search for clients, not a finding of wrongdoing. On November 16, J&J agreed to buy eye-drug maker Ollin Biosciences for $2.2 billion in cash plus up to about $1.13 billion more if goals are met. Blackstone will pay J&J $750 million to help fund final testing of Ollin's main drug for two causes of vision loss. J&J pays a $1.34 per share dividend on December 8.",
+   "sentiment": "neutral",
+   "headline": "J&J bounces 1.2% to $270.47 on a crash day after four straight losses",
+   "summary": "On November 19 J&J asked the FDA to approve its mental health drug CAPLYTA for bipolar mania, which would be the drug's fifth approved use; two studies showed improvement as early as day 3. The same day a California jury awarded $34.2 million to a man with a cancer called mesothelioma, finding J&J 40% at fault over its old talc baby powder; J&J plans to appeal. J&J has offered a $5.5 billion deal to settle about 76,500 remaining talc claims, with nothing due before 2028. Third-quarter sales were $25.4 billion, up 5.9%, and J&J has raised its dividend for 64 years in a row.",
    "bull": [
-    "Tremfya, an immune drug, grew sales 68% to $2.40 billion last quarter, and the CEO says it can become a $10 billion-a-year drug.",
-    "Blackstone pays $750 million toward Ollin's final testing, so J&J takes on less of the cost and risk of the new eye drug.",
-    "The FDA approved Rybrevant Faspro for head and neck cancer on November 5, adding another use for one of J&J's cancer drugs."
+    "J&J rose 1.2% on November 20, one of the market's worst days, which shows investors see its medicine sales as steady in hard times.",
+    "New cancer drugs like Carvykti and Tecvayli made $4.1 billion in nine months, and J&J aims to be the number one cancer drug company by 2030.",
+    "J&J raised its 2026 profit goal to $11.05 to $11.15 a share, so its business is doing better than it planned at the start of the year."
    ],
    "bear": [
-    "At about 42.8 times its past-year profit before this week's drop, J&J cost about twice the average S&P 500 stock, so it had room to fall.",
-    "Talc lawsuits already cost multi-billion-dollar charges in October, and the November 17 Pomerantz probe could lead to another lawsuit.",
-    "Products with $4 to $4.5 billion in yearly sales lose patent protection in 2027, letting cheaper copies take sales away."
+    "Stelara's lost patent cut J&J's worldwide sales growth by 4.7 points in the first nine months of 2026, and two more drugs face cheaper copies since mid-2026.",
+    "Talc lawsuits keep costing money: the November 19 California verdict was $34.2 million, on top of a separate Massachusetts award of about $3.3 million with interest.",
+    "Zacks says analysts cut their 2027 profit estimate from $12.02 to $11.56 a share over 30 days, which makes the high price harder to justify."
    ],
-   "nextEvent": "J&J's investor meeting on 2027 goals and its $1.34 dividend payment, both on December 8, 2026",
+   "nextEvent": "",
    "sources": [
     {
-     "title": "Johnson & Johnson falls 2.04% in Thursday's session",
-     "url": "https://www.globalbankingandfinance.com/johnson-and-johnson-jnj-falls-2026-11-19/",
-     "outlet": "Global Banking & Finance Review",
+     "title": "Johnson & Johnson Seeks U.S. FDA Approval for CAPLYTA in Bipolar Mania, Marking Fifth Potential Indication",
+     "url": "https://www.stocktitan.net/news/JNJ/johnson-johnson-seeks-u-s-fda-approval-for-caplyta-in-bipolar-mania-fprgko2hhkb4.html",
+     "outlet": "Stock Titan",
      "date": "Nov 19, 2026"
     },
     {
-     "title": "Stock market today: Dow sinks 1,100 points, S&P 500 and Nasdaq tank 2% as Anthropic IPO grabs spotlight",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-19-dow-sp-500-nasdaq-anthropic-ipo-live-141306032.html",
-     "outlet": "Yahoo Finance",
+     "title": "California Jury Awards $34.2 Million in Johnson & Johnson Talc Lawsuit",
+     "url": "https://www.mesothelioma.com/blog/california-jury-awards-34-million-johnson-johnson-talc-lawsuit/",
+     "outlet": "Mesothelioma.com",
      "date": "Nov 19, 2026"
     },
     {
-     "title": "Stocks plunge as investors take cover amid growing uncertainty",
-     "url": "https://www.cbsnews.com/news/dow-tumbles-wall-street-ai-fears/",
-     "outlet": "CBS News",
-     "date": "Nov 19, 2026"
-    },
-    {
-     "title": "INVESTOR ALERT: Pomerantz Law Firm Investigates Claims On Behalf of Investors of Johnson & Johnson - JNJ",
-     "url": "https://www.globenewswire.com/news-release/2026/11/17/3405273/1087/en/investor-alert-pomerantz-law-firm-investigates-claims-on-behalf-of-investors-of-johnson-johnson-jnj.html",
-     "outlet": "GlobeNewswire",
+     "title": "Johnson & Johnson (JNJ) Stock Falls 1.12% (November 16, 2026): Up 11.3% in a Month",
+     "url": "https://journalarta.com/en/2026/11/17/johnson-johnson-jnj-stock-falls-1-12-november-16-2026-up-11-3-in-a-month/",
+     "outlet": "JournalArta",
      "date": "Nov 17, 2026"
     },
     {
-     "title": "Johnson & Johnson Stocks Edge Higher on $2.2 Billion Ollin Eye Deal",
-     "url": "https://www.gurufocus.com/news/9202086/johnson-johnson-stocks-edge-higher-on-22-billion-ollin-eye-deal",
-     "outlet": "GuruFocus",
+     "title": "J&J Stock Rallies More Than 10% in a Month: Time to Buy, Sell or Hold?",
+     "url": "https://www.zacks.com/stock/news/3030408/jj-stock-rallies-more-than-10-in-a-month-time-to-buy-sell-or-hold",
+     "outlet": "Zacks",
      "date": "Nov 16, 2026"
     },
     {
-     "title": "Does Johnson & Johnson Stock's Valuation Make Sense?",
-     "url": "https://www.trefis.com/stock/jnj/articles/625180/does-johnson-johnson-stocks-valuation-make-sense/2026-11-16",
-     "outlet": "Trefis",
-     "date": "Nov 16, 2026"
+     "title": "Johnson & Johnson Proposes New Asbestos Testing Standards for Talc",
+     "url": "https://medtruth.com/articles/fda-regulation/jj-talc-asbestos-fda-testing/",
+     "outlet": "MedTruth",
+     "date": "Nov 13, 2026"
     }
    ],
-   "updatedAt": "2026-11-20T11:41:37.109Z",
+   "updatedAt": "2026-11-21T02:54:59.780Z",
    "name": "Johnson & Johnson",
-   "checkedAt": "2026-11-20T11:41:37.109Z",
-   "about": "Johnson & Johnson makes prescription medicines, like cancer and immune drugs, and medical devices used in surgery and heart care. It sold its Band-Aid and Tylenol business in 2023.",
+   "checkedAt": "2026-11-21T02:54:59.780Z",
+   "about": "Johnson & Johnson makes prescription medicines, like cancer and immune system drugs, and medical devices used in surgery and heart care.",
    "keyNumbers": [
     {
      "label": "Stock price",
-     "value": "$267.14",
-     "note": "Nov 19, down 2.04%"
+     "value": "$270.47",
+     "note": "close Nov 20, up 1.2%"
     },
     {
-     "label": "Record close",
-     "value": "$285.75",
-     "note": "Nov 13"
+     "label": "Below record",
+     "value": "5.3%",
+     "note": "record close $285.75, Nov 13"
     },
     {
-     "label": "Market value",
-     "value": "$643.8B",
-     "note": "Nov 19"
+     "label": "2026 profit goal",
+     "value": "$11.05-$11.15",
+     "note": "per share, raised in Oct"
     },
     {
-     "label": "Tremfya sales",
-     "value": "+68%",
-     "note": "to $2.40B last quarter"
+     "label": "Price vs. profit",
+     "value": "about 25x",
+     "note": "next 12 mo; 5-yr avg 16x"
     }
    ],
-   "whyMoved": "J&J fell four days in a row after its record close of $285.75 on November 13: to $282.55, $278.70, $272.70 and then $267.14 on November 19, a drop of about 6.5%. On November 19 the Dow fell 1,101 points and more than 90% of S&P 500 stocks dropped, and investors sold health care stocks in particular, with UnitedHealth down 5% and on track for an 18% slide in five days. J&J sells medicines and devices, not insurance, so the Medicare rule hitting insurers does not touch it directly, but it fell with the group after climbing about 15% in the month before. Most of J&J's profit comes from its medicine business, whose sales grew 7.9% last quarter, so new drugs and deals like Ollin matter far more to the stock than daily market swings.",
-   "watch": [
-    {
-     "date": "Nov 24",
-     "what": "Last day to own the stock to get the $1.34 per share dividend (cash paid to owners), which is paid December 8."
-    },
-    {
-     "date": "Dec 8",
-     "what": "J&J's investor meeting with its 2027 goals. Analysts expect about $11.62 profit per share; a goal above that would be good news, below it would be bad."
-    }
-   ]
+   "whyMoved": "J&J hit a record close of $285.75 on November 13, then fell four days in a row to $267.14 on November 19, before rising 1.2% to $270.47 on November 20 while the S&P 500 fell 3.7%. Over two weeks it is down 2.1% from $276.22 on November 6. The slide came after a run of more than 10% in a month, which left the stock priced at about 25 times its expected profit for the next 12 months, far above its five-year average of about 16 times, so some investors took profits. J&J's money comes mostly from medicines, and its new cancer drugs brought in $4.1 billion in the first nine months of 2026, which helps replace sales lost as its big immune drug Stelara faces cheaper copies.",
+   "watch": []
   },
   {
    "ticker": "BTC",
@@ -812,76 +750,82 @@
    "ticker": "MGM",
    "symbol": "MGM",
    "sentiment": "neutral",
-   "headline": "MGM climbs to about $33.50 after a board member's $51.7 million stock buy",
-   "summary": "MGM is still down about 8.6% in 2026 as of November 13. Last quarter, sales were $4.21 billion, down 1%, and MGM lost 11 cents per share when analysts expected a profit. Its online business, MGM Digital, grew 6% to $184 million, and BetMGM paid MGM $34 million. Investing.com compared MGM with rival Wynn on November 16 and called MGM the steadier business, with yearly sales of $17.72 billion versus Wynn's $7.27 billion.",
+   "headline": "MGM holds near $33.41 as Las Vegas Grand Prix race week takes over the Strip",
+   "summary": "A Seeking Alpha writer started coverage with a buy rating and a $43.62 target on November 18, noting MGM's Strip profit before rent fell 5.1% in the first nine months of 2026, less than rivals. MGM pays about $1.8 billion a year in rent for its buildings, and that rent rises 2% every year no matter how the casinos do. Last quarter total revenue slipped about 1% to $4.2 billion, and analysts expect 2026 profit of $1.62 a share, down 51.1%. People Inc., which owns 26.6% of MGM, withdrew its $48.30-a-share buyout offer in September, and the stock fell almost 11% that day.",
    "bull": [
-    "A board member's funds bought about $51.7 million of stock near $29 to $30 a share, and insiders usually buy only when they expect better days.",
-    "MGM bought back about 7 million of its own shares for $253 million this year and has $1.4 billion left to spend, which raises each share's slice of profit.",
-    "At about 12 times its past-year profit, MGM is priced cheaper than Wynn at about 23 times."
+    "Last year the race brought about 150,000 extra visitors and was BetMGM's most bet-on race ever, and MGM shares jumped 6.1% after that weekend on November 25, 2025.",
+    "At 12.3 times its past-year profit, MGM is priced fairly low, and analysts' average target of $38.75 is above the current price.",
+    "MGM's Strip profit fell 5.1% this year, less than its rivals, helped by reopened rooms and winning more at its table games."
    ],
    "bear": [
-    "Weiss Ratings cut MGM to sell on November 10, and Argus lowered its price goal to $40 from $55 on November 5.",
-    "Adjusted operating profit fell to $403 million last quarter from $506 million a year earlier, mostly because Las Vegas rooms sold for less.",
-    "MGM owes a lot of money, with debt about 1.7 times what the company is worth on its books, which leaves less room if Las Vegas slows."
+    "Las Vegas room prices fell 8% last quarter and adjusted profit before interest and taxes fell 20.4% to $402.8 million.",
+    "Rent of about $1.8 billion rises 2% each year even if business slows, which squeezes profit when visitors spend less.",
+    "Analysts disagree a lot: Morgan Stanley says sell with a $29 target while Mizuho says buy at $55, and MGM missed profit estimates in 3 of the last 4 quarters."
    ],
-   "nextEvent": "The Formula 1 Las Vegas Grand Prix race week, November 19-21, 2026",
+   "nextEvent": "Formula 1 Las Vegas Grand Prix race night, November 21, 2026",
    "sources": [
     {
-     "title": "MGM vs Wynn: operating scale against valuation upside",
-     "url": "https://www.investing.com/news/stock-market-news/mgm-vs-wynn-operating-scale-against-valuation-upside-93CH-5029987",
-     "outlet": "Investing.com",
-     "date": "Nov 16, 2026"
-    },
-    {
-     "title": "MGM Resorts (MGM) Stock Price: Nov 13 Close $33.49",
+     "title": "MGM Resorts (MGM) Stock Price: Nov 19 Close $33.41",
      "url": "https://www.heygotrade.com/en/us-stock/mgm/",
      "outlet": "Gotrade",
-     "date": "Nov 13, 2026"
+     "date": "Nov 19, 2026"
     },
     {
-     "title": "MGM Resorts International (MGM) - Analysts' Recent Ratings Changes",
-     "url": "https://thecerbatgem.com/2026/11/13/mgm-resorts-international-mgm-analysts-recent-ratings-changes.html",
-     "outlet": "The Cerbat Gem",
-     "date": "Nov 13, 2026"
+     "title": "MGM Resorts: Holding Up Better Than The Strip",
+     "url": "https://seekingalpha.com/article/4969508-mgm-resorts-holding-up-better-than-the-strip",
+     "outlet": "Seeking Alpha",
+     "date": "Nov 18, 2026"
     },
     {
-     "title": "Corvex Funds Boost MGM Position 32.6% With About $51.7 Million in Purchases",
-     "url": "https://www.tokenpost.com/news/investing/52406",
-     "outlet": "TokenPost",
-     "date": "Nov 9, 2026"
+     "title": "Are Wall Street Analysts Bullish on MGM Resorts Stock?",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/wall-street-analysts-bullish-mgm-075025503.html",
+     "outlet": "Barchart (via Yahoo Finance)",
+     "date": "Nov 8, 2026"
+    },
+    {
+     "title": "MGM Resorts Sprints to Race Week With High-Octane Fan Experiences for Formula 1 Heineken Las Vegas Grand Prix 2026, November 19-21",
+     "url": "https://finviz.com/news/405626/mgm-resorts-sprints-to-race-week-with-high-octane-fan-experiences-for-formula-1-heineken-las-vegas-grand-prix-2026-november-19-21",
+     "outlet": "PR Newswire",
+     "date": "Oct 21, 2026"
+    },
+    {
+     "title": "Why Are MGM Resorts (MGM) Shares Soaring Today",
+     "url": "https://finviz.com/news/238897/why-are-mgm-resorts-mgm-shares-soaring-today",
+     "outlet": "StockStory",
+     "date": "Nov 25, 2025"
     }
    ],
    "name": "MGM Resorts International",
-   "checkedAt": "2026-11-20T11:41:37.109Z",
-   "updatedAt": "2026-11-16T22:44:26.877Z",
+   "checkedAt": "2026-11-21T02:54:59.780Z",
+   "updatedAt": "2026-11-21T02:54:59.780Z",
    "about": "MGM Resorts runs casinos and hotels, including the Bellagio and MGM Grand in Las Vegas. It also has casinos in Macau, China, and co-owns BetMGM, an online sports betting app.",
    "keyNumbers": [
     {
      "label": "Stock price",
-     "value": "$33.49",
-     "note": "close Nov 13, up 0.75%"
-    },
-    {
-     "label": "Strip sales",
-     "value": "$2B",
-     "note": "last quarter, down 2%"
-    },
-    {
-     "label": "Insider buy",
-     "value": "$51.7M",
-     "note": "board member, Oct 30-Nov 2"
+     "value": "$33.41",
+     "note": "close Nov 19, down 0.98%"
     },
     {
      "label": "Price vs. profit",
-     "value": "about 12x",
+     "value": "12.3x",
      "note": "past-year profit"
+    },
+    {
+     "label": "Vegas room sales",
+     "value": "-5.8%",
+     "note": "Q3 vs. a year ago"
+    },
+    {
+     "label": "Avg analyst target",
+     "value": "$38.75",
+     "note": "12 analysts"
     }
    ],
-   "whyMoved": "MGM rose about 13%, from an average buy price near $29.64 on October 30 to a $33.49 close on November 13, and traded near $33.55 before the market opened on November 16. A big reason: board member Keith Meister's Corvex funds bought about $51.7 million of stock on October 30 and November 2, raising their stake 32.6%, a sign that an insider thinks the stock is cheap. Most of MGM's money comes from Las Vegas hotels and casinos, where Strip sales fell 2% to $2 billion last quarter because rooms sold for less. CEO Bill Hornbuckle said October bounced back, so the next report will show whether Las Vegas is really recovering.",
+   "whyMoved": "MGM barely moved over the two weeks: it closed at $33.49 on November 13 and $33.41 on November 19, down 0.98% that day, far steadier than the tech stocks that crashed this week. It is still well below its 52-week high of $51.59. The big event is the Formula 1 Las Vegas Grand Prix, November 19 to 21, which runs through the middle of the Strip, and MGM has turned four of its hotels (Bellagio, ARIA, The Cosmopolitan and Park MGM) into an 'MGM Zone' with parties, food events and driver appearances. MGM makes most of its money from Las Vegas hotel rooms and casinos, and room sales there fell 5.8% last quarter with room prices down 8%, so a strong race week matters for its fourth-quarter numbers.",
    "watch": [
     {
-     "date": "Nov 19",
-     "what": "The Las Vegas Grand Prix race week starts, one of the city's busiest weekends. Strong hotel room prices would support the CEO's claim that October bounced back."
+     "date": "Nov 21",
+     "what": "Grand Prix race night. Reports of full hotels and record BetMGM bets, like last year, would be a good sign for MGM's fourth-quarter Las Vegas sales."
     }
    ]
   },
@@ -1065,94 +1009,159 @@
    "ticker": "MU",
    "symbol": "MU",
    "sentiment": "bearish",
-   "headline": "Micron flips from a 7.8% gain to a 1.8% loss as AI stocks sell off",
+   "headline": "Micron plunges 13.9% to $594.73 after a warning that memory prices are falling",
    "about": "Micron makes memory chips, the parts that store data in computers, phones and the giant data centers that run AI. Its main products are DRAM and NAND flash memory, plus HBM, a fast memory built for AI chips.",
-   "summary": "Micron fell 7.6% to $719.02 on November 16 with no company news, as 33 of 34 big chip stocks dropped the same day. Its last quarter's sales were $54.2 billion, up 379% from a year earlier. Micron is still about 43% below its June 25 high, and analysts expect about $175.61 of profit per share next fiscal year. On November 19 chip maker AMD fell about 8% after an investment firm bet against it, adding to the pressure on chip stocks.",
+   "summary": "On November 5 Micron fell more than 17% after Bloomberg reported it paused a $4.5 billion memory factory in Taiwan over a labor dispute; Taiwan makes about three-fifths of its regular memory chips. Last quarter Micron earned $33.42 a share, up from $3.03 a year earlier, and it expects about $61.5 billion of sales this quarter. Its board approved $35.16 billion of stock buybacks that can start December 9, though government chip-factory funding rules limit how much it can buy. Micron's next quarterly report is expected in December.",
    "bull": [
-    "Nvidia's part-buying promises rose to $390 billion from $279 billion, mostly multi-year memory deals, a direct sign of future demand for Micron's chips.",
-    "Micron can start big stock buybacks on December 9 under its $35.2 billion plan, which leaves fewer shares and more profit per share.",
-    "Micron made $32.9 billion of free cash (money left after costs) in its record quarter, so it can fund new factories and buybacks at once."
+    "Micron expects about $61.5 billion of sales this quarter, up from $54.2 billion last quarter, so demand for its chips is still growing for now.",
+    "Buybacks of up to $35.16 billion can start December 9, which would shrink the number of shares and give each one a bigger slice of profit.",
+    "With $73.5 billion of cash and investments against $4.7 billion of debt, Micron can keep building factories even if prices fall for a while."
    ],
    "bear": [
-    "Micron gave up a 7.8% gain in one day on November 19, showing buyers are quick to sell any AI chip rally.",
-    "Trefis found that after 8 past profit peaks since 2000, Micron's stock was lower a year later every time, by a typical 34.7%.",
-    "The new November 16 US license rule on AI chip exports to five countries could slow AI chip sales, which would mean less memory needed."
+    "TrendForce says NAND prices have already dropped 20% and should keep falling in the first half of 2027, which would cut Micron's profit per chip.",
+    "Micron has now had two huge one-day drops this month, more than 17% on November 5 and 13.9% on November 20, showing how nervous investors are.",
+    "The paused $4.5 billion Taiwan factory matters because Taiwan makes about three-fifths of Micron's regular memory chips."
    ],
-   "nextEvent": "Micron's next quarterly report, expected in late December 2026",
+   "nextEvent": "Micron's next quarterly report, expected in December 2026",
    "sources": [
     {
-     "title": "Stocks plunge as investors take cover amid growing uncertainty",
-     "url": "https://www.cbsnews.com/news/dow-tumbles-wall-street-ai-fears/",
-     "outlet": "CBS News",
-     "date": "Nov 19, 2026"
+     "title": "Micron Shares Fall Nearly 14% as Technology Stocks Slide",
+     "url": "https://www.tokenpost.com/news/investing/62339",
+     "outlet": "TokenPost",
+     "date": "Nov 20, 2026"
     },
     {
-     "title": "Wall Street Wipes Out Early Gains As Dow Sinks 1,100 Points. Anthropic's $81 Billion IPO Fails To Lift Stocks.",
-     "url": "https://www.ibtimes.com/us-stocks-plunge-anthropic-ipo-ai-spending-concerns-3809985",
-     "outlet": "International Business Times",
-     "date": "Nov 19, 2026"
+     "title": "Why Micron Stock Crashed Today",
+     "url": "https://www.fool.com/investing/2026/11/20/why-micron-stock-crashed-today/",
+     "outlet": "The Motley Fool",
+     "date": "Nov 20, 2026"
     },
     {
-     "title": "Stock market today: Dow sinks 1,100 points, S&P 500 and Nasdaq tank 2% as Anthropic IPO grabs spotlight",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-19-dow-sp-500-nasdaq-anthropic-ipo-live-141306032.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 19, 2026"
+     "title": "Micron Lost 17% in a Day. Its $35 Billion Buyback Can Start December 9",
+     "url": "https://www.tikr.com/blog/micron-lost-17-in-a-day-its-35-billion-buyback-can-start-december-9",
+     "outlet": "TIKR",
+     "date": "Nov 10, 2026"
     },
     {
-     "title": "Why Is Micron Stock Down Nearly 8%?",
-     "url": "https://www.trefis.com/stock/mu/articles2/625793/why-did-micron-stock-fall-nearly-8/2026-11-17",
-     "outlet": "Trefis",
-     "date": "Nov 17, 2026"
-    },
-    {
-     "title": "What Micron's Record Margin Means For Your Shares",
-     "url": "https://www.trefis.com/stock/mu/articles/626702/what-micron-s-record-margin-means-for-your-shares/2026-11-19",
-     "outlet": "Trefis",
-     "date": "Nov 19, 2026"
-    },
-    {
-     "title": "Micron (MU) Stock Rises Premarket as Nvidia Memory Commitments Hit $390B",
-     "url": "https://coincentral.com/micron-mu-stock-rises-premarket-as-nvidia-memory-commitments-hit-390b/",
-     "outlet": "CoinCentral",
-     "date": "Nov 18, 2026"
+     "title": "Closing Look — Friday, November 20, 2026",
+     "url": "https://cappnotes.substack.com/p/closing-look-friday-november-20-2026",
+     "outlet": "CappNotes",
+     "date": "Nov 20, 2026"
     }
    ],
    "name": "Micron Technology",
-   "checkedAt": "2026-11-20T11:41:37.109Z",
-   "updatedAt": "2026-11-20T11:41:37.109Z",
+   "checkedAt": "2026-11-21T02:54:59.780Z",
+   "updatedAt": "2026-11-21T02:54:59.780Z",
    "keyNumbers": [
     {
      "label": "Stock price",
-     "value": "about $693",
-     "note": "Nov 19, down 1.8%"
+     "value": "$594.73",
+     "note": "close Nov 20, down 13.9%"
     },
     {
-     "label": "Below its high",
-     "value": "about 43%",
-     "note": "high close $1,213.56, Jun 25"
+     "label": "One-week change",
+     "value": "-23.6%",
+     "note": "$778.31 on Nov 13"
     },
     {
-     "label": "Gross profit",
-     "value": "86.8 cents",
-     "note": "per sales dollar, record"
+     "label": "Quarterly sales",
+     "value": "$54.2B",
+     "note": "last quarter, up 379%"
     },
     {
-     "label": "Price vs. profit",
-     "value": "about 4x",
-     "note": "this year's expected profit"
+     "label": "Cash vs. debt",
+     "value": "$73.5B vs $4.7B",
+     "note": "cash and investments"
     }
    ],
-   "whyMoved": "On November 19 Micron rose as much as 7.8% early as AI company Anthropic began trading, then swung to a 1.8% loss, closing near $693, down from $705.27 on November 18 and about 11% below its $778.31 close on November 13. Nvidia did the same thing, erasing a 4.7% gain to end down 2.7%, and the Nasdaq fell 2.3% as investors worried whether huge AI data center spending will pay off and whether interest rates will rise. Almost all of Micron's profit now comes from memory for AI data centers, and Nvidia said its promises to buy parts jumped from $279 billion to $390 billion, mostly long memory deals, which points to more orders. The worry is that Micron keeps a record 86.8 cents of gross profit on each sales dollar, and Trefis notes that after past profit peaks the stock was usually lower a year later, because memory prices tend to fall when supply catches up.",
+   "whyMoved": "Micron lost $95.71, or 13.9%, to close at $594.73 on Friday, November 20, and is down 23.6% from $778.31 on November 13. The trigger was a warning from the research firm TrendForce that big Chinese cloud companies will likely order fewer storage drives next year, that NAND memory prices have already dropped 20% in the open market, and that they should keep falling in early 2027; Sandisk fell 14.3% on the same news, and the whole chip group crashed as Nvidia fell 14%. NAND is only about 26% of Micron's sales; the rest is DRAM, but investors fear DRAM prices could slip too. Micron's record profits come from memory prices being very high, so even a small drop in prices cuts deeply into the money it keeps on each chip.",
    "watch": [
     {
      "date": "Dec 9",
-     "what": "Micron can start big stock buybacks. Fast buying would show the company thinks its stock is cheap; little buying would be a letdown."
+     "what": "Micron's buyback window opens, and the Fed decides on interest rates the same day. Fast buying would show Micron thinks its stock is cheap."
     },
     {
-     "date": "Late Dec",
-     "what": "Micron's next quarterly report. Good: a higher sales forecast and steady memory prices. Bad: a lower forecast or signs AI customers are slowing orders."
+     "date": "Dec 2026",
+     "what": "Next quarterly report. Good: sales near the $61.5 billion goal and steady prices. Bad: a weaker outlook as memory prices fall."
     }
    ]
+  },
+  {
+   "ticker": "DPZ",
+   "symbol": "DPZ",
+   "sentiment": "neutral",
+   "headline": "Domino's gets an upgrade to a $400 target, but US store sales grew just 0.3%",
+   "about": "Domino's Pizza is the world's biggest pizza delivery chain. Most of its stores are run by franchise owners, who pay Domino's fees and buy dough, cheese and other supplies from it.",
+   "keyNumbers": [
+    {
+     "label": "Baird target",
+     "value": "$400",
+     "note": "raised from $320, Nov 13"
+    },
+    {
+     "label": "US store sales",
+     "value": "+0.3%",
+     "note": "Q3, vs +5.2% a year ago"
+    },
+    {
+     "label": "Profit per share",
+     "value": "$4.60",
+     "note": "Q3, up from $4.08"
+    },
+    {
+     "label": "Avg analyst target",
+     "value": "$356.48",
+     "note": "30 analysts"
+    }
+   ],
+   "whyMoved": "Domino's rose about 2.5% on the morning of November 13 after the research firm Baird upgraded it to 'outperform' and raised its target to $400 from $320, about 20% above the prior day's close. Baird sees a 'clearer path' to better sales because the average order size grew in the third quarter and Domino's is shortening its discount deals and adding menu items people add on. The rest of the two weeks was quiet, and the stock is still down more than 18% in 2026. Domino's makes most of its money from fees franchise owners pay on their sales and from selling them supplies, so its profit depends on sales at existing stores, which grew only 0.3% in the US last quarter.",
+   "summary": "Third-quarter revenue was $1.19 billion and profit was $4.60 a share, both above what analysts expected. Global retail sales rose 3.2% to $4.84 billion, slower than 6.3% a year earlier, and international same-store sales rose just 0.2%. On October 30 Domino's lowered its 2026 goal for new US stores and for operating profit growth, citing pressure on franchise owners' profits. BMO Capital also rates Domino's 'outperform' with a $390 target, while 16 of 30 analysts say hold.",
+   "bull": [
+    "Baird's November 13 upgrade to a $400 target points to bigger average orders, which matter because more money per order helps both Domino's and its franchise owners.",
+    "Profit per share rose to $4.60 from $4.08 a year earlier, even though US store sales barely grew.",
+    "13 of 30 analysts rate Domino's a buy and only 1 says sell, with targets as high as $425."
+   ],
+   "bear": [
+    "US same-store sales grew only 0.3% last quarter, down from 5.2% a year earlier, and the CFO expects 2026 growth at the low end of low single digits.",
+    "Domino's cut its 2026 goal for new US stores on October 30, and Baird warns weaker 2026 results will likely slow store openings in 2027 too.",
+    "Markets expect a Fed rate hike at the December 8-9 meeting, and higher rates make it costlier for franchise owners to borrow money to open stores."
+   ],
+   "watch": [
+    {
+     "date": "Dec 9",
+     "what": "Fed rate decision. A hike is expected; more hikes would raise franchise owners' borrowing costs and could slow new store openings."
+    }
+   ],
+   "nextEvent": "Fed interest rate decision on December 9, 2026",
+   "sources": [
+    {
+     "title": "Why Baird Upgraded Domino's (DPZ) Without Needing Faster Order Growth",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/why-baird-upgraded-domino-dpz-161313880.html",
+     "outlet": "Insider Monkey (via Yahoo Finance)",
+     "date": "Nov 18, 2026"
+    },
+    {
+     "title": "Domino's Pizza shares rise after Baird upgrades stock on improving sales outlook",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/domino-pizza-shares-rise-baird-151217319.html",
+     "outlet": "Investing.com (via Yahoo Finance)",
+     "date": "Nov 13, 2026"
+    },
+    {
+     "title": "Domino's Stock Gets Baird Upgrade As Analyst Sees 'Clearer Path' To Improved Sales",
+     "url": "https://stocktwits.com/news-articles/markets/equity/domino-s-stock-gets-baird-upgrade-as-analyst-sees-clearer-path-to-improved-sales/cNbRdEHR9fi",
+     "outlet": "Stocktwits",
+     "date": "Nov 13, 2026"
+    },
+    {
+     "title": "Domino's Pizza stock outlook cut amid franchisee and global pressure",
+     "url": "https://www.ad-hoc-news.de/boerse/news/nebenwerte/domino-s-pizza-stock-outlook-cut-amid-franchisee-and-global-pressure/70460254",
+     "outlet": "ad-hoc-news.de",
+     "date": "Nov 5, 2026"
+    }
+   ],
+   "name": "Domino's Pizza",
+   "checkedAt": "2026-11-21T02:54:59.779Z",
+   "updatedAt": "2026-11-21T02:54:59.779Z"
   }
  ],
  "market": {
