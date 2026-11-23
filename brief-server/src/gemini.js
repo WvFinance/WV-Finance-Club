@@ -79,22 +79,22 @@ function articleBlock(articles) {
 }
 
 // model can be a list ("main-model,backup-1,backup-2"). When Google says a model is too busy
-// (error 500/503) or doesn't exist (404), the next model in the list is tried, so one busy model
-// doesn't stop the brief.
+// (error 500/503), is at its free limit (429) or doesn't exist (404), the next model in the
+// list is tried, so one busy model doesn't stop the brief. If every model fails, the main
+// model's error is the one reported.
 async function askGemini(apiKey, model, prompt, system = RULES) {
   const models = String(model).split(",").map(m => m.trim()).filter(Boolean);
-  let lastError;
+  const errors = [];
   for (const m of models) {
     try {
       return await askOneModel(apiKey, m, prompt, system);
     } catch (e) {
-      if (e instanceof BriefError) throw e;
-      lastError = e;
-      if (!/^Gemini (5\d\d|404)|fetch failed|network/i.test(e.message || "")) throw e;
+      errors.push(e);
+      if (!(e instanceof BriefError) && !/^Gemini (5\d\d|404)|fetch failed|network/i.test(e.message || "")) throw e;
       console.warn("Gemini model", m, "failed, trying the next one:", (e.message || "").slice(0, 80));
     }
   }
-  throw lastError;
+  throw errors[0];
 }
 
 async function askOneModel(apiKey, model, prompt, system) {
