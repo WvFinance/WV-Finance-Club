@@ -3,26 +3,44 @@
  "briefs": [
   {
    "bear": [
-    "Capital Economics' Thomas Mathews said the US stock market has further to fall, so not every expert thinks the bottom is in.",
-    "October consumer prices rose 0.4% in one month, and a hot PCE reading on November 25 could make a December rate hike more likely, making borrowing pricier.",
-    "Nvidia, the index's biggest company, has lost more than $2 trillion in value since October and faces government investigations and a possible class action lawsuit after Jensen Huang's exit."
+    "CME FedWatch shows about 96% odds of a Fed rate hike on December 9, and higher rates make borrowing pricier for companies and shoppers.",
+    "Capital Economics' Thomas Mathews said last week the market has further to fall, so one strong day may not mean the drop is over.",
+    "Nvidia's internal review of Huang's ties to a Megaspeed executive is still going, so more news could shake the index's biggest stock again."
    ],
    "bull": [
-    "Deutsche Bank strategists Parag Thatte and Binky Chadha said 'a lot of bad news is already being priced,' meaning prices may already reflect the worst fears.",
-    "The S&P 500's RSI, a 0-to-100 gauge of how fast prices moved, hit about 25 on November 20; below 30 is called oversold, meaning the drop was unusually fast.",
-    "Nasdaq 100 futures were up about 3.5% early Monday, November 23, a sign buyers came back after the index's seventh straight losing day on Friday."
+    "The index left correction territory in one day, a sign many investors saw last week's 8.6% drop as too far, too fast.",
+    "Its RSI, a 0-to-100 speed gauge of price moves, hit about 25 on November 20; readings under 30 often come before bounces like Monday's.",
+    "Monday's gain spread beyond chips: Tesla rose about 11% and CoreWeave about 22%, so buyers came back across many growth companies."
    ],
-   "headline": "S&P 500 futures jump 2.1% Monday after an 8.6% weekly drop into a correction",
+   "headline": "S&P 500 jumps 4.7% Monday as Nvidia's CEO returns, ending its losing streak",
    "market": true,
    "name": "S&P 500",
    "nextEvent": "Nov 25: October PCE inflation report",
    "order": 1,
-   "sentiment": "bearish",
+   "sentiment": "neutral",
    "sources": [
     {
-     "title": "Wall Street futures bounce after AI jitters spark slide into correction",
-     "url": "https://ca.investing.com/news/stock-market-news/wall-street-futures-jump-after-major-indexes-enter-correction-territory-4974621",
-     "outlet": "Investing.com",
+     "title": "Stock Market Today, Nov. 23: Markets Rebound From Correction on AI Relief Rally",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/23/stock-market-today-nov-23-markets-rebound-from-correction-on-ai-relief-rally/",
+     "outlet": "The Motley Fool",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "Stocks soar on Jensen Huang's return to Nvidia",
+     "url": "https://www.foxbusiness.com/markets/stocks-november-23-2026",
+     "outlet": "Fox Business",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "How major US stock indexes fared Monday 11/23/2026",
+     "url": "https://mymotherlode.com/news/national/11334721/how-major-us-stock-indexes-fared-monday-11-23-2026.html",
+     "outlet": "Associated Press",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "Stock market today: Dow, S&P 500, Nasdaq surge as Jensen Huang's reinstatement at Nvidia sparks stunning rally",
+     "url": "https://sg.finance.yahoo.com/news/live/stock-market-today-monday-november-23-dow-sp-500-nasdaq-surge-after-nvidia-reinstates-jensen-huang-182039397.html",
+     "outlet": "Yahoo Finance",
      "date": "Nov 23, 2026"
     },
     {
@@ -36,82 +54,98 @@
      "url": "https://www.aol.com/articles/thanksgiving-week-ugly-stock-market-034528000.html",
      "outlet": "TheStreet (via AOL)",
      "date": "Nov 23, 2026"
-    },
-    {
-     "title": "Stocks to Watch This Week: Nvidia, Workday, Deere and Thanksgiving PCE Data",
-     "url": "https://journalarta.com/en/2026/11/22/stocks-to-watch-this-week-nvidia-workday-deere-and-thanksgiving-pce-data/",
-     "outlet": "JournalArta",
-     "date": "Nov 22, 2026"
-    },
-    {
-     "title": "Tech and AI Sentiment, Thanksgiving and Other Key Things to Watch this Week",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/tech-ai-sentiment-thanksgiving-other-180003267.html",
-     "outlet": "Barchart (via Yahoo Finance)",
-     "date": "Nov 22, 2026"
     }
    ],
-   "summary": "Thanksgiving week is short: markets close Thursday, November 26, and close early at 1 p.m. Eastern on Friday. On Wednesday, November 25, the government releases October PCE inflation, the Fed's favorite price gauge, plus a second look at third-quarter GDP. The fear gauge VIX ended last week at 35.89, its highest since the April 2025 tariff turmoil. Futures put roughly 82% to 90% odds on a quarter-point Fed rate hike at the December 8-9 meeting.",
+   "summary": "Nvidia's board said Huang's return 'poses no national security risk,' but its own review of his ties to a businessperson at chip firm Megaspeed will continue. CrowdStrike agreed to buy Zscaler in an all-stock deal worth about $44 billion; Zscaler rose about 18% and CrowdStrike fell about 9%. Markets close Thursday, November 26, for Thanksgiving and close early at 1 p.m. Eastern on Friday. HPE and Zoom report results after Monday's close.",
    "ticker": "SP500",
-   "updatedAt": "2026-11-23T11:43:09.061Z",
+   "updatedAt": "2026-11-23T23:07:41.452Z",
    "symbol": "AMEX:SPY",
-   "checkedAt": "2026-11-23T11:43:09.061Z",
+   "checkedAt": "2026-11-23T23:07:41.452Z",
    "about": "The S&P 500 tracks about 500 of the biggest US companies, like Apple, Nvidia and JPMorgan. It is the most common way to measure how the whole US stock market is doing.",
    "keyNumbers": [
     {
      "label": "Index level",
-     "value": "6,910.39",
-     "note": "Nov 20 close"
+     "value": "7,237.17",
+     "note": "Nov 23 close"
     },
     {
-     "label": "Last week",
-     "value": "-8.6%",
-     "note": "-651.28 points"
+     "label": "Monday",
+     "value": "+4.7%",
+     "note": "+326.78 points"
+    },
+    {
+     "label": "2026 so far",
+     "value": "+5.7%",
+     "note": "as of Nov 23"
     },
     {
      "label": "From record",
-     "value": "-11.6%",
+     "value": "about -7.4%",
      "note": "Oct 6 peak"
-    },
-    {
-     "label": "Monday futures",
-     "value": "+2.1%",
-     "note": "early Nov 23"
     }
    ],
-   "whyMoved": "The S&P 500 lost 8.6% last week, falling from 7,561.67 at the start of the week to 6,910.39 on November 20, including a 3.7% drop on Friday alone. That left it 11.6% below its October 6 record, which counts as a correction (a drop of more than 10%), and cut its 2026 gain to about 1% from as much as 14% in early October. The selling started in AI and chip stocks: Nvidia fell 14% on Friday and is down 48% from its October 6 peak, and the technology group lost 9.62% for the week. Early Monday, S&P 500 futures (bets on where the index will open) were up about 2.1%, but the index counts its biggest companies most, so its direction still depends on whether the giant AI companies steady.",
+   "whyMoved": "The S&P 500 rose 326.78 points, or 4.7%, on Monday, November 23, to 7,237.17, after falling 8.6% last week to 6,910.39 and losing seven days in a row. The spark was Nvidia, its biggest company, which jumped about 31% to $165.05 after its board brought back Jensen Huang as CEO, 11 days after he resigned on November 12. Other AI stocks followed: Micron rose 19%, Dell 20% and Tesla about 11%. The gain lifted the index out of a correction (a drop of more than 10% from its October 6 record), but because the biggest companies count most, its path still depends on whether AI-related giants keep their footing.",
    "watch": [
     {
+     "date": "Nov 24",
+     "what": "Dell, Workday and Autodesk report results; strong sales would back up Monday's AI bounce, while weak forecasts could undo part of it."
+    },
+    {
      "date": "Nov 25",
-     "what": "October PCE inflation and a second look at third-quarter GDP at 8:30 a.m. Eastern; after October consumer prices rose 0.4% in a month, a cooler reading would ease rate-hike fears and a hotter one would add to them."
+     "what": "October PCE inflation, the Fed's favorite price gauge, at 8:30 a.m. Eastern; a cooler reading would ease rate-hike fears and a hotter one would make a December hike even more certain."
     },
     {
      "date": "Dec 9",
-     "what": "Fed rate decision after the Dec 8-9 meeting: futures put about 82% to 90% odds on a quarter-point hike; a bigger hike would likely hurt more, while a calmer message could help."
+     "what": "Fed rate decision: CME FedWatch puts about 96% odds on a quarter-point hike; a bigger hike or talk of more hikes would likely hurt, while a calmer message could help."
     }
    ]
   },
   {
    "bear": [
-    "Nvidia faces government investigations and a possible class action lawsuit, and it disclosed $102 billion in data-center lease and cloud commitments that could hurt if AI demand slows.",
-    "The technology group of the S&P 500 lost 9.62% last week, so the losses spread across tech, not just one company.",
-    "Futures put roughly 82% to 90% odds on a December Fed rate hike, and higher rates make future tech profits worth less today."
+    "Even after Monday, the Nasdaq is still roughly 13% below its October 6 peak, and last week's 10% drop shows how fast AI stocks can fall.",
+    "Nvidia's own review of Huang's ties to an executive at chip firm Megaspeed will continue, so more headlines could hit the index's biggest stock.",
+    "CME FedWatch shows about 96% odds of a December 9 rate hike, and higher rates make future tech profits worth less today."
    ],
    "bull": [
-    "Nvidia's first report since Jensen Huang's resignation topped estimates, so its sales are still growing even though its stock is 48% below its October peak.",
-    "Deutsche Bank's Parag Thatte and Binky Chadha said 'a lot of bad news is already being priced,' meaning fear may already be in the price.",
-    "Workday and Autodesk report on November 24; solid results from software companies could show that tech profits outside of chips are holding up."
+    "Nvidia's board said Huang's return 'poses no national security risk,' which removes the biggest question hanging over the largest AI chip maker.",
+    "Micron's trading volume was about 72% above normal as it rose 19%, showing many buyers, not just a few, came back to memory chips.",
+    "Dell rose about 20% and Lumentum about 18%, a sign investors think AI data-center spending is still growing."
    ],
-   "headline": "Nasdaq futures jump 3.5% Monday after a 10% weekly plunge erased its 2026 gain",
+   "headline": "Nasdaq soars 6.5% as Nvidia jumps 31% on Jensen Huang's return as CEO",
    "market": true,
    "name": "Nasdaq",
-   "nextEvent": "Nov 24: Dell, Workday and Autodesk results",
+   "nextEvent": "Nov 24: Dell, Workday and Autodesk earnings",
    "order": 2,
-   "sentiment": "bearish",
+   "sentiment": "neutral",
    "sources": [
     {
-     "title": "Wall Street futures bounce after AI jitters spark slide into correction",
-     "url": "https://ca.investing.com/news/stock-market-news/wall-street-futures-jump-after-major-indexes-enter-correction-territory-4974621",
-     "outlet": "Investing.com",
+     "title": "Stock Market Today, Nov. 23: Markets Rebound From Correction on AI Relief Rally",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/23/stock-market-today-nov-23-markets-rebound-from-correction-on-ai-relief-rally/",
+     "outlet": "The Motley Fool",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "Stock Market Today, Nov. 23: Micron Surges 19% as Nvidia CEO Change Calms AI Spending Fears",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/23/stock-market-today-nov-23-micron-surges-19-as-nvidia-ceo-change-calms-ai-spending-fears/",
+     "outlet": "The Motley Fool",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "Stocks soar on Jensen Huang's return to Nvidia",
+     "url": "https://www.foxbusiness.com/markets/stocks-november-23-2026",
+     "outlet": "Fox Business",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "How major US stock indexes fared Monday 11/23/2026",
+     "url": "https://mymotherlode.com/news/national/11334721/how-major-us-stock-indexes-fared-monday-11-23-2026.html",
+     "outlet": "Associated Press",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "Stock Market Today, November 23, 2026: Nvidia Brings Back Jensen Huang as CEO",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-23-2026",
+     "outlet": "StockTitan",
      "date": "Nov 23, 2026"
     },
     {
@@ -119,67 +153,49 @@
      "url": "https://www.tradingkey.com/analysis/stocks/stocks-weekly/262317153-wall-street-weekly-tradingkey",
      "outlet": "TradingKey",
      "date": "Nov 23, 2026"
-    },
-    {
-     "title": "It's Thanksgiving week after an ugly stock market slump: now what?",
-     "url": "https://www.aol.com/articles/thanksgiving-week-ugly-stock-market-034528000.html",
-     "outlet": "TheStreet (via AOL)",
-     "date": "Nov 23, 2026"
-    },
-    {
-     "title": "Tech and AI Sentiment, Thanksgiving and Other Key Things to Watch this Week",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/tech-ai-sentiment-thanksgiving-other-180003267.html",
-     "outlet": "Barchart (via Yahoo Finance)",
-     "date": "Nov 22, 2026"
-    },
-    {
-     "title": "Stocks to Watch This Week: Nvidia, Workday, Deere and Thanksgiving PCE Data",
-     "url": "https://journalarta.com/en/2026/11/22/stocks-to-watch-this-week-nvidia-workday-deere-and-thanksgiving-pce-data/",
-     "outlet": "JournalArta",
-     "date": "Nov 22, 2026"
     }
    ],
-   "summary": "Anthropic, which priced its stock market debut at $83 a share, opened at $111.50 on Thursday but ended the week at $88.91. HPE and Zoom report results on Monday, November 23, and Dell, Workday and Autodesk report on Tuesday. The Nasdaq's RSI, a 0-to-100 gauge of how fast prices moved, hit 26, its most oversold since April 2025. The VIX fear gauge ended the week at 35.89, after reaching 37.67.",
+   "summary": "CrowdStrike agreed to buy fellow cybersecurity company Zscaler for about $44 billion in stock; Zscaler rose about 18% and CrowdStrike fell about 9%. Anthropic, which started trading on November 19 at $83 a share, closed at $87.64, down 1.4%. HPE and Zoom report after Monday's close, and Dell, Workday and Autodesk report Tuesday, November 24. Micron's next earnings report is due December 17.",
    "ticker": "NASDAQ",
-   "updatedAt": "2026-11-23T11:43:09.060Z",
+   "updatedAt": "2026-11-23T23:07:41.452Z",
    "symbol": "NASDAQ:QQQ",
-   "checkedAt": "2026-11-23T11:43:09.061Z",
+   "checkedAt": "2026-11-23T23:07:41.452Z",
    "about": "The Nasdaq Composite tracks more than 3,000 stocks listed on the Nasdaq exchange. It is packed with tech companies like Apple, Microsoft, Nvidia, Amazon and Alphabet.",
    "keyNumbers": [
     {
      "label": "Index level",
-     "value": "22,617.73",
-     "note": "Nov 20 close"
+     "value": "24,089.56",
+     "note": "Nov 23 close"
     },
     {
-     "label": "Last week",
-     "value": "-10.02%",
-     "note": "-2,518.54 points"
+     "label": "Monday",
+     "value": "+6.5%",
+     "note": "+1,471.82 points"
     },
     {
-     "label": "From high",
-     "value": "-18%",
-     "note": "Oct 6 peak"
+     "label": "Nvidia Monday",
+     "value": "+31.5%",
+     "note": "to $165.05"
     },
     {
      "label": "2026 so far",
-     "value": "-2.7%",
-     "note": "was +18.8% on Oct 6"
+     "value": "+3.6%",
+     "note": "was -2.7% on Nov 20"
     }
    ],
-   "whyMoved": "The Nasdaq Composite fell 2,518.54 points, or 10.02%, last week to 22,617.73 on November 20, including a 5.28% drop on Friday. It is now down 2.7% for 2026 after being up 18.8% at its October 6 peak, and 18% below that high, close to the 20% drop that counts as a bear market. AI chip makers were hit hardest: on Friday Nvidia fell 14% to $125.53, Arm 14.09% and Micron 13.89%. Early Monday, Nasdaq 100 futures (bets on where its 100 biggest companies will open) were up about 3.5%, or 882 points; the Nasdaq is packed with companies whose profits depend on AI spending, so it swings much more than the Dow.",
+   "whyMoved": "The Nasdaq jumped 1,471.82 points, or 6.5%, on Monday, November 23, to 24,089.56, winning back more than half of last week's 10.02% drop. Nvidia rose about 31.5% to $165.05 after its board reinstated Jensen Huang as CEO, 11 days after he quit, and chip and AI stocks followed: Micron rose 19% to $707.70, AMD about 6% and CoreWeave about 22%. That matters because many Nasdaq companies earn their profits from AI spending, and Nvidia's leadership chaos had made investors fear that spending could slow. With Huang back, the index turned positive for 2026 again, up 3.6% for the year.",
    "watch": [
     {
      "date": "Nov 24",
-     "what": "Dell, Workday and Autodesk report results; strong sales would ease fears about tech spending, while weak forecasts could extend the slide."
+     "what": "Dell, Workday and Autodesk report results; strong sales would back up Monday's AI rebound, while weak forecasts could undo part of it."
     },
     {
      "date": "Nov 25",
-     "what": "October PCE inflation and a second look at third-quarter GDP at 8:30 a.m. Eastern; after October consumer prices rose 0.4% in a month, a cooler reading would ease rate-hike fears and a hotter one would add to them."
+     "what": "October PCE inflation, the Fed's favorite price gauge, at 8:30 a.m. Eastern; a cooler reading would ease rate-hike fears and a hotter one would make a December hike even more certain."
     },
     {
      "date": "Dec 9",
-     "what": "Fed rate decision after the Dec 8-9 meeting: futures put about 82% to 90% odds on a quarter-point hike; a bigger hike would likely hurt more, while a calmer message could help."
+     "what": "Fed rate decision: CME FedWatch puts about 96% odds on a quarter-point hike; a bigger hike or talk of more hikes would likely hurt, while a calmer message could help."
     }
    ]
   },
@@ -593,91 +609,89 @@
    "order": 5,
    "symbol": "COINBASE:BTCUSD",
    "sentiment": "bearish",
-   "headline": "Bitcoin sinks to $55,300, its lowest since 2024, then climbs back above $60,000",
-   "summary": "US spot bitcoin funds lost about $1.25 billion last week and about $3.59 billion so far in November, including a record $541.1 million out of IBIT on November 19. Strategy, the company that holds the most bitcoin, fell 30.3% for the week to $77.80, and bitcoin is about 20% below Strategy's average purchase price of $75,452. Coinbase fell 20.1% and Robinhood 20.2% for the week. Bitcoin traded near $60,786 on Sunday, November 22.",
+   "headline": "Bitcoin stays stuck near $61,200 while stocks soar, as fund outflows weigh",
+   "summary": "Strategy, the company that holds the most bitcoin, bought 457 more bitcoin for $29.6 million during November 16-22, bringing its total to 851,305. Strategy's stock fell 30.3% last week, and MSCI plans to drop it from its indexes after November 30. The whole crypto market was worth about $2.10 trillion on Monday, with bitcoin making up about 59% of it. Bitcoin's record high is $126,198, set on October 6, 2025.",
    "bull": [
-    "Tracker Lookonchain spotted Abraxas Capital buying 10,356 bitcoin worth about $607 million near $58,651 each, showing some big buyers step in after drops.",
-    "Twenty One Capital bought 172.25 bitcoin on Friday at about $58,054 each, after paying about $64,801 four days earlier, so it kept buying as prices fell.",
-    "Bitcoin rebounded almost 9% from Saturday's low within hours, showing buyers were waiting below $56,000."
+    "Bitcoin's RSI, a 0-to-100 gauge of how fast prices moved, was about 27 on Monday; under 30 is called oversold, meaning the drop was unusually fast.",
+    "Strategy kept buying, adding 457 bitcoin last week, and Abraxas Capital bought about $607 million of bitcoin near $58,651, showing big buyers step in after drops.",
+    "Bitcoin fund shares like IBIT and FBTC rose about 5% during Monday's stock rally, a hint that some investors were willing to buy again."
    ],
    "bear": [
-    "Trading firm Wintermute warned bitcoin could fall into the $50,000 range unless money starts flowing back into bitcoin funds.",
-    "MSCI plans to remove Strategy from its stock indexes after November 30, which could force funds that copy those indexes to sell Strategy shares.",
-    "Futures show about 82% to 90% odds of a December Fed rate hike, and higher rates pull money away from risky things like crypto."
+    "Spot bitcoin funds lost about $1.8 billion last week, and a steady flow out of funds means fewer buyers for each coin.",
+    "Traders see $70,000 to $75,000 as a hard ceiling, where many past buyers may sell to get their money back.",
+    "CME FedWatch shows about 96% odds of a Fed rate hike on December 9, and higher rates pull money away from risky things like crypto."
    ],
    "nextEvent": "Dec 9: Fed interest rate decision",
    "sources": [
+    {
+     "title": "Crypto Market Today, Nov. 23: Bitcoin Sits Out Wall Street's Historic Rally as $1.8 Billion ETF Exodus Weighs on Prices",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/23/crypto-market-today-nov-23-bitcoin-sits-out-wall-street-s-historic-rally-as-usd1-8-billion-etf-exodus-weighs-on-prices/",
+     "outlet": "The Motley Fool",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "Current price of Bitcoin for November 23, 2026",
+     "url": "https://fortune.com/article/price-of-bitcoin-11-23-2026/",
+     "outlet": "Fortune",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "Bitcoin needs a daily close above $62,371.21 to extend its rebound",
+     "url": "https://cryptonews.net/news/bitcoin/33794226/",
+     "outlet": "Cryptonomist (via cryptonews.net)",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "TCB Daily Edition: What Happened in Crypto on November 23, 2026",
+     "url": "https://thecryptobasic.com/2026/11/23/tcb-daily-edition-what-happened-in-crypto-on-november-23-2026",
+     "outlet": "The Crypto Basic",
+     "date": "Nov 23, 2026"
+    },
     {
      "title": "Crypto week in review: bitcoin's 12% drop, a record IBIT outflow and a 30% slide in Strategy shares",
      "url": "https://ceoeconomy.com/article/crypto-week-in-review-nov-21-2026",
      "outlet": "CEO Economy",
      "date": "Nov 21, 2026"
-    },
-    {
-     "title": "TCB Daily Edition: What Happened in Crypto on November 21, 2026",
-     "url": "https://thecryptobasic.com/2026/11/21/tcb-daily-edition-what-happened-in-crypto-on-november-21-2026/",
-     "outlet": "The Crypto Basic",
-     "date": "Nov 21, 2026"
-    },
-    {
-     "title": "The Crypto Desk - Saturday, 21 November 2026",
-     "url": "https://thecryptodesk.substack.com/p/the-crypto-desk-saturday-21-november",
-     "outlet": "The Crypto Desk",
-     "date": "Nov 21, 2026"
-    },
-    {
-     "title": "Bitcoin Price Today, November 21, 2026: BTC Rebounds Above $60,000 as Solana Leads Crypto Gains",
-     "url": "https://eurasiabusinessnews.com/2026/11/21/bitcoin-price-today-november-21-2026-btc-rebounds-above-60000-as-solana-leads-crypto-gains/",
-     "outlet": "Eurasia Business News",
-     "date": "Nov 21, 2026"
-    },
-    {
-     "title": "Crypto market today, 21 Nov 2026: Bitcoin -5.3% at $58,165, total market $2.03T",
-     "url": "https://thedailycoins.io/2026/11/crypto-market-today-2026-11-21/",
-     "outlet": "The Daily Coins",
-     "date": "Nov 21, 2026"
-    },
-    {
-     "title": "Stocks to Watch This Week: Nvidia, Workday, Deere and Thanksgiving PCE Data",
-     "url": "https://journalarta.com/en/2026/11/22/stocks-to-watch-this-week-nvidia-workday-deere-and-thanksgiving-pce-data/",
-     "outlet": "JournalArta",
-     "date": "Nov 22, 2026"
     }
    ],
-   "updatedAt": "2026-11-23T11:43:09.057Z",
-   "checkedAt": "2026-11-23T11:43:09.061Z",
+   "updatedAt": "2026-11-23T23:07:41.448Z",
+   "checkedAt": "2026-11-23T23:07:41.448Z",
    "about": "Bitcoin is the first and largest cryptocurrency, a digital money that is not run by any bank or government. Its price moves only on how much people want to buy or sell it.",
    "keyNumbers": [
     {
      "label": "Price",
-     "value": "$60,121",
-     "note": "7 p.m. ET, Nov 21"
+     "value": "about $61,213",
+     "note": "evening Nov 23"
     },
     {
-     "label": "Last week",
-     "value": "-12%",
-     "note": "from $68,314"
+     "label": "Past 7 days",
+     "value": "-5.9%",
+     "note": "CoinGecko"
     },
     {
-     "label": "Saturday low",
-     "value": "about $55,300",
-     "note": "lowest since Sep 2024"
+     "label": "From record",
+     "value": "about -51%",
+     "note": "$126,198 on Oct 6, 2025"
     },
     {
      "label": "Fear & Greed",
-     "value": "12 of 100",
+     "value": "11 of 100",
      "note": "'extreme fear'"
     }
    ],
-   "whyMoved": "Bitcoin fell to about $55,300 early Saturday, November 21, its lowest price since September 2024, then bounced almost 9% to about $60,200 by midday and finished the week at $60,121, down about 12% from $68,314 a week earlier. It was above $70,000 early in the week, broke below $65,000 on Tuesday and below $60,000 on Friday as the Nasdaq fell about 10%. More than $2 billion of borrowed crypto bets were forced closed in 24 hours, and each forced sale pushed prices lower. Bitcoin pays no profit or interest, so its price depends only on how many people want to hold it, and when big funds pull out and traders rush to cash, few buyers are left.",
+   "whyMoved": "Bitcoin was nearly flat on Monday, November 23, up just 0.08% to about $61,213 in the evening, while the Nasdaq jumped 6.5%. Last week it sank to about $55,000, its lowest in about two years, and it is still about 25% below its price a month ago of $81,355. The main drag is money leaving bitcoin funds: US spot bitcoin funds saw about $1.8 billion in net outflows last week, including a record $541.1 million out of BlackRock's IBIT on November 19. Bitcoin pays no profit or interest, so its price depends only on how many people want to hold it, and when big funds keep selling, rallies are hard to keep going.",
    "watch": [
+    {
+     "date": "Nov 25",
+     "what": "October PCE inflation, the Fed's favorite price gauge, at 8:30 a.m. Eastern; a cooler reading would ease rate-hike fears and a hotter one would make a December hike even more certain."
+    },
     {
      "date": "Nov 30",
      "what": "MSCI's removal of Strategy from its indexes takes effect after this date; heavy selling of Strategy shares could weigh on bitcoin's mood."
     },
     {
      "date": "Dec 9",
-     "what": "Fed rate decision after the Dec 8-9 meeting: futures put about 82% to 90% odds on a quarter-point hike; a bigger hike would likely hurt more, while a calmer message could help."
+     "what": "Fed rate decision: CME FedWatch puts about 96% odds on a quarter-point hike; a bigger hike or talk of more hikes would likely hurt, while a calmer message could help."
     }
    ]
   },
@@ -689,81 +703,85 @@
    "order": 6,
    "symbol": "COINBASE:ETHUSD",
    "sentiment": "bearish",
-   "headline": "Ether ends the week near $1,683, down about 13%, as crypto funds keep shrinking",
-   "summary": "Bitcoin funds lost about $1.25 billion last week, far more than ether funds. Tracker Lookonchain saw Bit Digital move 16,639 ether, worth about $26.3 million, to Galaxy Digital, though that does not prove a sale. The Chainflip project said $4.86 million, including 520 ether, left its Ethereum vault, and its FLIP token fell about a third. The whole crypto market was worth about $2.08 trillion at the end of the week.",
+   "headline": "Ether touches $1,845 then slips back near $1,720 as ether funds keep shrinking",
+   "summary": "US ether funds lost $305.8 million from November 16 to 20, including $124.2 million out of BlackRock's ETHA on Thursday alone. Company Bitmine bought 7,819 more ether and now holds about 6.09 million, about 5% of all ether. Bitcoin, which ether usually follows, was also flat near $61,200 Monday even as US stocks soared. The crypto Fear & Greed Index was at 11 of 100, 'extreme fear.'",
    "bull": [
-    "Ether rose about 2.2% to around $1,690 on Saturday as Solana led a crypto bounce, showing some buyers returned after the drop.",
-    "Bitcoin rebounded almost 9% from its Saturday low within hours, and ether usually moves in the same direction as bitcoin.",
-    "Ether is still the second-biggest cryptocurrency, worth about 10% of the whole crypto market."
+    "Bitmine keeps buying, adding 7,819 ether last week to reach about 6.09 million, and more than 5.2 million of those are staked (locked up to help run the network).",
+    "Ether bounced about 20% from Saturday's low near $1,539 to Monday's $1,845 high, showing buyers show up after sharp drops.",
+    "Traders who bet on falling prices lost about $42.9 million in forced buybacks Monday, a sign that many of those bets have been cleared out."
    ],
    "bear": [
-    "Hackers from Binance's October break-in moved about 488,000 ether, worth about $860 million, between November 17 and 20, and swapped about 39,000 of it for bitcoin, adding selling worries.",
-    "The Fear & Greed Index ended the week at 12, deep in 'extreme fear,' showing few traders are eager to buy.",
-    "Futures show about 82% to 90% odds of a December Fed rate hike, and higher rates pull money away from risky things like crypto."
+    "Ether funds lost $305.8 million in five days through November 20, so big investors are still pulling money out.",
+    "Ether gave back its whole Monday jump by evening, ending near $1,719, which shows sellers are still in control.",
+    "CME FedWatch shows about 96% odds of a Fed rate hike on December 9, and higher rates pull money away from risky things like crypto."
    ],
    "nextEvent": "Dec 9: Fed interest rate decision",
    "sources": [
     {
-     "title": "Crypto week in review: bitcoin's 12% drop, a record IBIT outflow and a 30% slide in Strategy shares",
-     "url": "https://ceoeconomy.com/article/crypto-week-in-review-nov-21-2026",
-     "outlet": "CEO Economy",
-     "date": "Nov 21, 2026"
+     "title": "Crypto Market Today, Nov. 23: Bitcoin Sits Out Wall Street's Historic Rally as $1.8 Billion ETF Exodus Weighs on Prices",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/23/crypto-market-today-nov-23-bitcoin-sits-out-wall-street-s-historic-rally-as-usd1-8-billion-etf-exodus-weighs-on-prices/",
+     "outlet": "The Motley Fool",
+     "date": "Nov 23, 2026"
     },
     {
-     "title": "Bitcoin Price Today, November 21, 2026: BTC Rebounds Above $60,000 as Solana Leads Crypto Gains",
-     "url": "https://eurasiabusinessnews.com/2026/11/21/bitcoin-price-today-november-21-2026-btc-rebounds-above-60000-as-solana-leads-crypto-gains/",
-     "outlet": "Eurasia Business News",
-     "date": "Nov 21, 2026"
+     "title": "Ethereum is back above $1,700. Can buyers take it to $1,900?",
+     "url": "https://crypto.news/ethereum-price-rebound-1845-etf-outflows/",
+     "outlet": "crypto.news",
+     "date": "Nov 23, 2026"
     },
     {
-     "title": "The Crypto Desk - Saturday, 21 November 2026",
-     "url": "https://thecryptodesk.substack.com/p/the-crypto-desk-saturday-21-november",
-     "outlet": "The Crypto Desk",
-     "date": "Nov 21, 2026"
-    },
-    {
-     "title": "TCB Daily Edition: What Happened in Crypto on November 21, 2026",
-     "url": "https://thecryptobasic.com/2026/11/21/tcb-daily-edition-what-happened-in-crypto-on-november-21-2026/",
+     "title": "TCB Daily Edition: What Happened in Crypto on November 23, 2026",
+     "url": "https://thecryptobasic.com/2026/11/23/tcb-daily-edition-what-happened-in-crypto-on-november-23-2026",
      "outlet": "The Crypto Basic",
-     "date": "Nov 21, 2026"
+     "date": "Nov 23, 2026"
     },
     {
-     "title": "Crypto market today, 21 Nov 2026: Bitcoin -5.3% at $58,165, total market $2.03T",
-     "url": "https://thedailycoins.io/2026/11/crypto-market-today-2026-11-21/",
-     "outlet": "The Daily Coins",
-     "date": "Nov 21, 2026"
+     "title": "Current price of Bitcoin for November 23, 2026",
+     "url": "https://fortune.com/article/price-of-bitcoin-11-23-2026/",
+     "outlet": "Fortune",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "Bitcoin needs a daily close above $62,371.21 to extend its rebound",
+     "url": "https://cryptonews.net/news/bitcoin/33794226/",
+     "outlet": "Cryptonomist (via cryptonews.net)",
+     "date": "Nov 23, 2026"
     }
    ],
-   "updatedAt": "2026-11-23T11:43:09.060Z",
-   "checkedAt": "2026-11-23T11:43:09.061Z",
+   "updatedAt": "2026-11-23T23:07:41.451Z",
+   "checkedAt": "2026-11-23T23:07:41.451Z",
    "about": "Ether is the coin of Ethereum, a network that runs apps and digital tokens. People pay in ether to use the network, and it is the second-largest cryptocurrency.",
    "keyNumbers": [
     {
      "label": "Price",
-     "value": "$1,683",
-     "note": "7 p.m. ET, Nov 21"
+     "value": "about $1,719",
+     "note": "evening Nov 23"
     },
     {
-     "label": "Last week",
-     "value": "about -13%",
-     "note": "week to Nov 21"
+     "label": "Past 7 days",
+     "value": "-5.4%",
+     "note": "CoinGecko"
     },
     {
-     "label": "Ether fund outflow",
-     "value": "$221.7 million",
-     "note": "last week"
+     "label": "Fund outflows",
+     "value": "$305.8 million",
+     "note": "Nov 16-20"
     },
     {
-     "label": "Fear & Greed",
-     "value": "12 of 100",
-     "note": "'extreme fear'"
+     "label": "Saturday low",
+     "value": "about $1,539",
+     "note": "Nov 21"
     }
    ],
-   "whyMoved": "Ether finished the week at $1,683 on November 21, about 13% lower, after trading near $1,644 on Saturday morning. It fell along with bitcoin, which hit about $55,300, its lowest since September 2024, as more than $2 billion of borrowed crypto bets were forced closed in 24 hours, including about $545 million of ether bets. Ether funds lost about $221.7 million last week as investors pulled money out. Ether's price depends on how many people want to use and hold it, so when investors rush to cash, smaller coins like ether usually fall faster than bitcoin.",
+   "whyMoved": "Ether swung on Monday, November 23: it climbed as high as $1,845 and traded near $1,784 in the afternoon, but by evening it was back to about $1,719, down 0.09% for the day. That followed a rough stretch: it peaked near $1,864 on November 16, fell about 7.6% on Friday and hit about $1,539 on Saturday. Much of Monday's early jump came from traders who had bet on a fall being forced to buy back, which can push prices up fast but briefly. Ether's price depends on how many people want to use and hold it, and with funds still selling, there were not enough steady buyers to hold the gains.",
    "watch": [
     {
+     "date": "Nov 25",
+     "what": "October PCE inflation, the Fed's favorite price gauge, at 8:30 a.m. Eastern; a cooler reading would ease rate-hike fears and a hotter one would make a December hike even more certain."
+    },
+    {
      "date": "Dec 9",
-     "what": "Fed rate decision after the Dec 8-9 meeting: futures put about 82% to 90% odds on a quarter-point hike; a bigger hike would likely hurt more, while a calmer message could help."
+     "what": "Fed rate decision: CME FedWatch puts about 96% odds on a quarter-point hike; a bigger hike or talk of more hikes would likely hurt, while a calmer message could help."
     }
    ]
   },
@@ -856,25 +874,43 @@
    "market": true,
    "order": 3,
    "symbol": "AMEX:DIA",
-   "sentiment": "bearish",
-   "headline": "Dow futures rise 929 points Monday after an 8% weekly drop into a correction",
-   "summary": "Markets close Thursday, November 26, for Thanksgiving and shut at 1 p.m. Eastern on Friday, leaving about 3.5 trading days. The Conference Board's consumer confidence report comes Tuesday, November 24, a read on how shoppers feel before the holidays. Selling was worldwide on Friday: Japan's Nikkei fell 5.06% and Germany's DAX 2.6%. Deere, which makes farm and building machines, reports on Wednesday, November 25.",
+   "sentiment": "neutral",
+   "headline": "Dow jumps 1,448 points Monday as member Nvidia rockets 31%",
+   "summary": "Markets close Thursday, November 26, for Thanksgiving and shut at 1 p.m. Eastern on Friday. The Conference Board's consumer confidence report comes Tuesday, November 24, a read on how shoppers feel before the holidays. Deere, which makes farm and building machines, reports on Wednesday, November 25. Nvidia's board formed a new committee on national security and export rules as part of Huang's return.",
    "bull": [
-    "TradingKey named Walmart, UnitedHealth and J&J as defensive picks, and all three are Dow members whose sales tend to hold up when the economy slows.",
-    "The 10-year Treasury rate fell 0.14 points on Friday to 4.91%, which makes borrowing a bit cheaper for Dow companies and their customers.",
-    "Deutsche Bank strategists said 'a lot of bad news is already being priced,' meaning the worst fears may already be in stock prices."
+    "Walmart, UnitedHealth and J&J, which TradingKey named as safer picks last week, are Dow members whose sales tend to hold up when the economy slows.",
+    "The 10-year Treasury rate fell to 4.91% on November 20, which keeps borrowing a bit cheaper for Dow companies and their customers.",
+    "Nvidia's board said Huang's return 'poses no national security risk,' easing the worry that knocked the Dow's chip member down 48% from its peak."
    ],
    "bear": [
-    "Futures put about 82% to 90% odds on a quarter-point Fed hike in December, raising loan costs for Dow banks and their customers.",
-    "Capital Economics' Thomas Mathews said the US market has further to fall, so the drop may not be over.",
-    "The average 30-year mortgage rate hit 7.28%, which makes big purchases like homes costly and can slow spending."
+    "CME FedWatch shows about 96% odds of a quarter-point Fed rate hike on December 9, raising loan costs for Dow banks and their customers.",
+    "The average 30-year mortgage rate hit 7.28% last week, which makes homes costly and can slow spending at Dow retailers like Home Depot.",
+    "Nvidia's internal review of Huang's ties to a Megaspeed executive will continue, so the Dow's most volatile member could swing again."
    ],
    "nextEvent": "Nov 25: October PCE inflation report",
    "sources": [
     {
-     "title": "Wall Street futures bounce after AI jitters spark slide into correction",
-     "url": "https://ca.investing.com/news/stock-market-news/wall-street-futures-jump-after-major-indexes-enter-correction-territory-4974621",
-     "outlet": "Investing.com",
+     "title": "How major US stock indexes fared Monday 11/23/2026",
+     "url": "https://mymotherlode.com/news/national/11334721/how-major-us-stock-indexes-fared-monday-11-23-2026.html",
+     "outlet": "Associated Press",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "Stocks soar on Jensen Huang's return to Nvidia",
+     "url": "https://www.foxbusiness.com/markets/stocks-november-23-2026",
+     "outlet": "Fox Business",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "Stock market today: Dow, S&P 500, Nasdaq surge as Jensen Huang's reinstatement at Nvidia sparks stunning rally",
+     "url": "https://sg.finance.yahoo.com/news/live/stock-market-today-monday-november-23-dow-sp-500-nasdaq-surge-after-nvidia-reinstates-jensen-huang-182039397.html",
+     "outlet": "Yahoo Finance",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "Stock Market Today, Nov. 23: Markets Rebound From Correction on AI Relief Rally",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/23/stock-market-today-nov-23-markets-rebound-from-correction-on-ai-relief-rally/",
+     "outlet": "The Motley Fool",
      "date": "Nov 23, 2026"
     },
     {
@@ -884,50 +920,38 @@
      "date": "Nov 23, 2026"
     },
     {
-     "title": "It's Thanksgiving week after an ugly stock market slump: now what?",
-     "url": "https://www.aol.com/articles/thanksgiving-week-ugly-stock-market-034528000.html",
-     "outlet": "TheStreet (via AOL)",
-     "date": "Nov 23, 2026"
-    },
-    {
      "title": "Stocks to Watch This Week: Nvidia, Workday, Deere and Thanksgiving PCE Data",
      "url": "https://journalarta.com/en/2026/11/22/stocks-to-watch-this-week-nvidia-workday-deere-and-thanksgiving-pce-data/",
      "outlet": "JournalArta",
      "date": "Nov 22, 2026"
-    },
-    {
-     "title": "Tech and AI Sentiment, Thanksgiving and Other Key Things to Watch this Week",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/tech-ai-sentiment-thanksgiving-other-180003267.html",
-     "outlet": "Barchart (via Yahoo Finance)",
-     "date": "Nov 22, 2026"
     }
    ],
-   "checkedAt": "2026-11-23T11:43:09.061Z",
-   "updatedAt": "2026-11-23T11:43:09.060Z",
+   "checkedAt": "2026-11-23T23:07:41.451Z",
+   "updatedAt": "2026-11-23T23:07:41.451Z",
    "about": "The Dow Jones Industrial Average tracks 30 big, well-known US companies, like Apple, JPMorgan, Walmart and Nvidia. Higher-priced stocks count more, so a few members can move it a lot.",
    "keyNumbers": [
     {
      "label": "Index level",
-     "value": "48,147.33",
-     "note": "Nov 20 close"
+     "value": "49,595.31",
+     "note": "Nov 23 close"
+    },
+    {
+     "label": "Monday",
+     "value": "+3.01%",
+     "note": "+1,447.98 points"
+    },
+    {
+     "label": "2026 so far",
+     "value": "+3.2%",
+     "note": "was +0.2% on Nov 20"
     },
     {
      "label": "Last week",
      "value": "-8.02%",
      "note": "-4,200.22 points"
-    },
-    {
-     "label": "2026 gain",
-     "value": "+0.2%",
-     "note": "was 13.1% on Aug 5"
-    },
-    {
-     "label": "Monday futures",
-     "value": "+1.9%",
-     "note": "+929 points early Nov 23"
     }
    ],
-   "whyMoved": "The Dow fell 4,200.22 points, or 8.02%, last week to 48,147.33 on November 20, about 12% below its high, which counts as a correction. Its 2026 gain shrank to just 0.2% from 13.1% on August 5. The Dow held up a bit better than the Nasdaq's 10% drop because it is only 30 companies and few are chip makers, though member Nvidia fell 14% on Friday alone. The Dow is weighted by share price, so high-priced members like UnitedHealth, which rose 2.84% to $339.85 on Friday, move it more than lower-priced ones like Nvidia at $125.53.",
+   "whyMoved": "The Dow rose 1,447.98 points, or 3.01%, on Monday, November 23, to 49,595.31, after an 8.02% drop last week left it at 48,147.33. Member Nvidia led, jumping about 31% to $165.05 after its board brought back Jensen Huang as CEO, 11 days after he resigned. The Dow gained less than the Nasdaq's 6.5% because only a few of its 30 companies are chip or AI makers, and it is weighted by share price, so Nvidia's lower-priced shares move it less than costly ones like UnitedHealth. Its 2026 gain grew back to 3.2% from just 0.2% on Friday.",
    "watch": [
     {
      "date": "Nov 24",
@@ -935,11 +959,11 @@
     },
     {
      "date": "Nov 25",
-     "what": "October PCE inflation and a second look at third-quarter GDP at 8:30 a.m. Eastern; after October consumer prices rose 0.4% in a month, a cooler reading would ease rate-hike fears and a hotter one would add to them."
+     "what": "October PCE inflation, the Fed's favorite price gauge, at 8:30 a.m. Eastern; a cooler reading would ease rate-hike fears and a hotter one would make a December hike even more certain."
     },
     {
      "date": "Dec 9",
-     "what": "Fed rate decision after the Dec 8-9 meeting: futures put about 82% to 90% odds on a quarter-point hike; a bigger hike would likely hurt more, while a calmer message could help."
+     "what": "Fed rate decision: CME FedWatch puts about 96% odds on a quarter-point hike; a bigger hike or talk of more hikes would likely hurt, while a calmer message could help."
     }
    ]
   },
@@ -949,21 +973,45 @@
    "market": true,
    "order": 4,
    "symbol": "AMEX:IWM",
-   "sentiment": "bearish",
-   "headline": "Russell 2000 ends a 7.5% losing week at 2,581 as Thanksgiving week begins",
-   "summary": "Early Monday, futures pointed to gains of 2.1% for the S&P 500 and 3.5% for the Nasdaq 100 after the selloff. The average 30-year mortgage rate is 7.28%, which weighs on small builders and lenders. Markets close Thursday for Thanksgiving and shut at 1 p.m. Eastern on Friday. Best Buy reports on Tuesday, November 24, an early hint at how holiday shoppers are spending.",
+   "sentiment": "neutral",
+   "headline": "Russell 2000 climbs 3.4% to 2,669 as smaller companies join Monday's rebound",
+   "summary": "Markets close Thursday, November 26, for Thanksgiving and shut at 1 p.m. Eastern on Friday. Best Buy reports Tuesday, November 24, an early hint at how holiday shoppers are spending. The consumer confidence report also comes out Tuesday. The average 30-year mortgage rate was 7.28% last week, which weighs on small home builders and lenders.",
    "bull": [
-    "Consumer confidence comes out Tuesday, November 24; small companies mostly sell inside the US, so a steady reading would be good news for them.",
-    "The 10-year Treasury rate slipped to 4.91% Friday, near the low end of its 4.91% to 5.15% range for the week, which helps companies that borrow a lot.",
-    "Deutsche Bank strategists said 'a lot of bad news is already being priced,' meaning prices may already reflect the worst fears."
+    "The index is up 7.6% for 2026, more than the S&P 500's 5.7%, showing smaller companies have held up better than the giants this year.",
+    "The 10-year Treasury rate slipped to 4.91% on November 20, which helps small companies that borrow a lot.",
+    "Consumer confidence comes out November 24; small companies mostly sell inside the US, so a steady reading would be good news for them."
    ],
    "bear": [
-    "Crypto-linked small stocks were crushed last week: miner MARA fell 27.2% and IREN 34.9% as bitcoin dropped about 12%.",
-    "The VIX fear gauge closed the week at 35.89, its highest since April 2025, and nervous investors often sell smaller, riskier stocks first.",
-    "October consumer prices rose 0.4% in a month, and a hot PCE reading on November 25 could lock in a December rate hike."
+    "CME FedWatch shows about 96% odds of a December 9 rate hike, and small companies with floating-rate loans feel higher rates first.",
+    "Crypto-linked small stocks were hit hard last week, with MARA down 27.2% and IREN 34.9%, and bitcoin barely rose on Monday.",
+    "October consumer prices rose 0.4% in a month, and a hot PCE reading on November 25 could add pressure for more rate hikes."
    ],
    "nextEvent": "Nov 25: October PCE inflation report",
    "sources": [
+    {
+     "title": "How major US stock indexes fared Monday 11/23/2026",
+     "url": "https://mymotherlode.com/news/national/11334721/how-major-us-stock-indexes-fared-monday-11-23-2026.html",
+     "outlet": "Associated Press",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "Stocks soar on Jensen Huang's return to Nvidia",
+     "url": "https://www.foxbusiness.com/markets/stocks-november-23-2026",
+     "outlet": "Fox Business",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "Stock Market Today, Nov. 23: Markets Rebound From Correction on AI Relief Rally",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/23/stock-market-today-nov-23-markets-rebound-from-correction-on-ai-relief-rally/",
+     "outlet": "The Motley Fool",
+     "date": "Nov 23, 2026"
+    },
+    {
+     "title": "Stock Market Today, November 23, 2026: Nvidia Brings Back Jensen Huang as CEO",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-23-2026",
+     "outlet": "StockTitan",
+     "date": "Nov 23, 2026"
+    },
     {
      "title": "TradingKey Wall Street Weekly: Nvidia and Anthropic Deepen AI Selloff; Nasdaq Plunges 10.02% and Erases 2026 Gains",
      "url": "https://www.tradingkey.com/analysis/stocks/stocks-weekly/262317153-wall-street-weekly-tradingkey",
@@ -975,64 +1023,46 @@
      "url": "https://journalarta.com/en/2026/11/22/stocks-to-watch-this-week-nvidia-workday-deere-and-thanksgiving-pce-data/",
      "outlet": "JournalArta",
      "date": "Nov 22, 2026"
-    },
-    {
-     "title": "Wall Street futures bounce after AI jitters spark slide into correction",
-     "url": "https://ca.investing.com/news/stock-market-news/wall-street-futures-jump-after-major-indexes-enter-correction-territory-4974621",
-     "outlet": "Investing.com",
-     "date": "Nov 23, 2026"
-    },
-    {
-     "title": "It's Thanksgiving week after an ugly stock market slump: now what?",
-     "url": "https://www.aol.com/articles/thanksgiving-week-ugly-stock-market-034528000.html",
-     "outlet": "TheStreet (via AOL)",
-     "date": "Nov 23, 2026"
-    },
-    {
-     "title": "Crypto week in review: bitcoin's 12% drop, a record IBIT outflow and a 30% slide in Strategy shares",
-     "url": "https://ceoeconomy.com/article/crypto-week-in-review-nov-21-2026",
-     "outlet": "CEO Economy",
-     "date": "Nov 21, 2026"
     }
    ],
-   "checkedAt": "2026-11-23T11:43:09.061Z",
-   "updatedAt": "2026-11-23T11:43:09.061Z",
+   "checkedAt": "2026-11-23T23:07:41.452Z",
+   "updatedAt": "2026-11-23T23:07:41.452Z",
    "about": "The Russell 2000 tracks about 2,000 smaller US companies, such as regional banks, small factories and young health companies. It shows how smaller businesses are doing compared with giants.",
    "keyNumbers": [
     {
      "label": "Index level",
-     "value": "2,581.79",
-     "note": "Nov 20 close"
+     "value": "2,669.66",
+     "note": "Nov 23 close"
     },
     {
-     "label": "Last week",
-     "value": "-7.48%",
-     "note": "-208.70 points"
+     "label": "Monday",
+     "value": "+3.4%",
+     "note": "+87.87 points"
+    },
+    {
+     "label": "2026 so far",
+     "value": "+7.6%",
+     "note": "best of the four"
     },
     {
      "label": "From Aug high",
-     "value": "-15.9%",
+     "value": "-13.0%",
      "note": "3,068.42 on Aug 14"
-    },
-    {
-     "label": "10-year rate",
-     "value": "4.91%",
-     "note": "Nov 20, down 0.14"
     }
    ],
-   "whyMoved": "The Russell 2000 fell 208.70 points, or 7.48%, last week to 2,581.79 on November 20, including a 2.76% drop on Friday. That is 15.9% below its August 14 close of 3,068.42, getting closer to the 20% drop that counts as a bear market. Smaller companies fell less than the Nasdaq's 10.02% because few of them are AI chip makers, but they were hurt by rising bets on a December Fed rate hike, now about 82% to 90% likely in futures. Many small companies borrow at loan rates that change, so a hike raises their interest bills faster than for cash-rich giants and can eat into thin profits.",
+   "whyMoved": "The Russell 2000 rose 87.87 points, or 3.4%, on Monday, November 23, to 2,669.66, after falling 7.48% last week to 2,581.79. Smaller companies rose with the whole market after Nvidia's board brought back Jensen Huang as CEO, but they gained about half as much as the Nasdaq's 6.5% because few small companies make AI chips. What still holds them back is the Fed: CME FedWatch shows about 96% odds of a rate hike on December 9, and many small companies borrow at loan rates that change, so a hike raises their interest bills faster than for cash-rich giants. The index is still 13% below its August 14 high, but it is up 7.6% in 2026, more than the other three.",
    "watch": [
     {
      "date": "Nov 24",
-     "what": "Consumer confidence report; a drop would hint US shoppers may pull back, which hurts small companies that sell mostly at home."
+     "what": "Consumer confidence and Best Buy results; weak numbers would hint US shoppers may pull back, which hurts small companies that sell mostly at home."
     },
     {
      "date": "Nov 25",
-     "what": "October PCE inflation and a second look at third-quarter GDP at 8:30 a.m. Eastern; after October consumer prices rose 0.4% in a month, a cooler reading would ease rate-hike fears and a hotter one would add to them."
+     "what": "October PCE inflation, the Fed's favorite price gauge, at 8:30 a.m. Eastern; a cooler reading would ease rate-hike fears and a hotter one would make a December hike even more certain."
     },
     {
      "date": "Dec 9",
-     "what": "Fed rate decision after the Dec 8-9 meeting: futures put about 82% to 90% odds on a quarter-point hike; a bigger hike would likely hurt more, while a calmer message could help."
+     "what": "Fed rate decision: CME FedWatch puts about 96% odds on a quarter-point hike; a bigger hike or talk of more hikes would likely hurt, while a calmer message could help."
     }
    ]
   },
@@ -1196,40 +1226,40 @@
   }
  ],
  "market": {
-  "date": "2026-11-20",
-  "why": "On Friday, November 20, the Nasdaq fell 5.3% and the S&P 500 dropped 3.7%, its seventh loss in a row, ending more than 10% below its October record (called a \"correction\"). Nvidia sank about 14% after Reuters reported the SEC is looking into its accounting, and Broadcom fell 12% on a report Google will buy fewer of its chips. The Dow fell less as Walmart and UnitedHealth rose, while smaller Russell 2000 companies slid on fears of a Fed rate hike on December 9.",
+  "date": "2026-11-23",
+  "why": "On Monday, November 23, stocks had a huge bounce back after last week's big drop, and the Nasdaq jumped 6.5%, the most among the four. Nvidia soared about 31% after its board brought back Jensen Huang as CEO, 11 days after he quit, which calmed fears about the AI chip boom; Micron rose 19% and Tesla about 11%. The Dow gained 1,448 points and smaller Russell 2000 companies rose 3.4%, even though traders still expect the Fed to raise interest rates on December 9.",
   "sources": [
    {
-    "title": "Stock Market Today, Nov. 20: Stocks Plunge as AI Trade Unwinds",
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/20/stock-market-today-nov-20-stocks-plunge-as-ai-trade-unwinds/",
+    "title": "Stock Market Today, Nov. 23: Markets Rebound From Correction on AI Relief Rally",
+    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/23/stock-market-today-nov-23-markets-rebound-from-correction-on-ai-relief-rally/",
     "outlet": "The Motley Fool",
-    "date": "Nov 20, 2026"
+    "date": "Nov 23, 2026"
    },
    {
-    "title": "BNP Paribas sees 'panic selling' as the AI selloff drags the S&P 500 into a correction and wipes out the Nasdaq's 2026 gains",
-    "url": "https://fortune.com/2026/11/20/sp-500-correction-panic-selling-ai-selloff-nasdaq-2026-gains-bnp-paribas/",
-    "outlet": "Fortune",
-    "date": "Nov 20, 2026"
+    "title": "Stocks soar on Jensen Huang's return to Nvidia",
+    "url": "https://www.foxbusiness.com/markets/stocks-november-23-2026",
+    "outlet": "Fox Business",
+    "date": "Nov 23, 2026"
    },
    {
-    "title": "Stocks enter correction territory, driven by a deepening tech rout",
-    "url": "https://www.cbsnews.com/news/stocks-enter-correction-territory-ai-fears/",
-    "outlet": "CBS News",
-    "date": "Nov 20, 2026"
+    "title": "How major US stock indexes fared Monday 11/23/2026",
+    "url": "https://mymotherlode.com/news/national/11334721/how-major-us-stock-indexes-fared-monday-11-23-2026.html",
+    "outlet": "Associated Press",
+    "date": "Nov 23, 2026"
    },
    {
-    "title": "Nvidia Stock Plunges 12% After Reuters Reports an SEC Probe of Its Accounting. It's Nvidia's Worst Day Since DeepSeek and It Has Lost $2.7 Trillion Since October",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-stock-plunges-12-reuters-201702082.html",
-    "outlet": "24/7 Wall St. (via Yahoo Finance)",
-    "date": "Nov 20, 2026"
+    "title": "Stock market today: Dow, S&P 500, Nasdaq surge as Jensen Huang's reinstatement at Nvidia sparks stunning rally",
+    "url": "https://sg.finance.yahoo.com/news/live/stock-market-today-monday-november-23-dow-sp-500-nasdaq-surge-after-nvidia-reinstates-jensen-huang-182039397.html",
+    "outlet": "Yahoo Finance",
+    "date": "Nov 23, 2026"
    },
    {
-    "title": "S&P 500 Drops Nearly 4% as Nasdaq Leads a Broad Market Selloff",
-    "url": "https://247wallst.com/cards/the-nasdaq-s-5-57-drop-was-nearly-triple-the-dow-s-decline-gspc-market-bell-01m7xcbks3vbjsn2anrzaqypc4",
-    "outlet": "24/7 Wall St.",
-    "date": "Nov 20, 2026"
+    "title": "Stock Market Today, Nov. 23: Micron Surges 19% as Nvidia CEO Change Calms AI Spending Fears",
+    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/23/stock-market-today-nov-23-micron-surges-19-as-nvidia-ceo-change-calms-ai-spending-fears/",
+    "outlet": "The Motley Fool",
+    "date": "Nov 23, 2026"
    }
   ],
-  "updatedAt": "2026-11-20T23:07:48.398Z"
+  "updatedAt": "2026-11-23T23:06:21.344Z"
  }
 }
