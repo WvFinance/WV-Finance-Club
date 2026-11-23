@@ -78,7 +78,26 @@ function articleBlock(articles) {
   ].filter(Boolean).join("\n")).join("\n\n");
 }
 
+// model can be a list ("main-model,backup-1,backup-2"). When Google says a model is too busy
+// (error 500/503) or doesn't exist (404), the next model in the list is tried, so one busy model
+// doesn't stop the brief.
 async function askGemini(apiKey, model, prompt, system = RULES) {
+  const models = String(model).split(",").map(m => m.trim()).filter(Boolean);
+  let lastError;
+  for (const m of models) {
+    try {
+      return await askOneModel(apiKey, m, prompt, system);
+    } catch (e) {
+      if (e instanceof BriefError) throw e;
+      lastError = e;
+      if (!/^Gemini (5\d\d|404)|fetch failed|network/i.test(e.message || "")) throw e;
+      console.warn("Gemini model", m, "failed, trying the next one:", (e.message || "").slice(0, 80));
+    }
+  }
+  throw lastError;
+}
+
+async function askOneModel(apiKey, model, prompt, system) {
   const res = await fetch(`${API}${model}:generateContent`, {
     method: "POST",
     headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
@@ -93,7 +112,7 @@ async function askGemini(apiKey, model, prompt, system = RULES) {
     const body = await res.text();
     throw new BriefError(`Gemini 429: ${body.slice(0, 300)}`, /PerDay/i.test(body) ? "limit-day" : "limit-minute");
   }
-  if (!res.ok) throw new Error(`Gemini ${res.status}: ${await res.text()}`);
+  if (!res.ok) throw new Error(`Gemini ${res.status} (${model}): ${await res.text()}`);
   const cand = (await res.json()).candidates?.[0];
   return (cand?.content?.parts || []).map(p => p.text || "").join("");
 }

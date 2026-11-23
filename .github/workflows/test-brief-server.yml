@@ -60,3 +60,11 @@ jobs:
           code=$(curl -sS -m 60 -o ratings.json -w '%{http_code}' -H "Origin: https://simplestreet.com.co" "https://simplestreet.com.co/api/ratings?symbol=$t")
           r=$(node -e 'const j=JSON.parse(require("fs").readFileSync("ratings.json","utf8"));console.log(j.error?"Error: "+j.error:j.analysts?`${j.analysts} analysts from ${j.source}, price goal ${j.target??"none"}`:"No ratings ("+(j.tried||[]).join("; ")+")")' 2>/dev/null || echo "Unreadable reply")
           echo "HTTP $code: $r"; echo "::notice title=Analyst ratings::HTTP $code: $r"
+      - name: Gemini models the key can use
+        if: always()
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          [ -z "$GEMINI_API_KEY" ] && { echo "No GEMINI_API_KEY secret"; exit 0; }
+          curl -sS -m 30 -H "x-goog-api-key: $GEMINI_API_KEY" "https://generativelanguage.googleapis.com/v1beta/models?pageSize=200" \
+            | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);const n=(j.models||[]).filter(m=>(m.supportedGenerationMethods||[]).includes("generateContent")).map(m=>m.name.replace("models/","")).filter(n=>/flash/.test(n));console.log(n.join(", ")||JSON.stringify(j).slice(0,300));console.log("::notice title=Gemini flash models::"+n.join(", "))})'
