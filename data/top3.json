@@ -1,12 +1,12 @@
 {
- "updated": "2026-11-20T12:27:17Z",
+ "updated": "2026-11-23T12:29:27Z",
  "analysts": [
   {
    "ticker": "ANET",
    "name": "Arista Networks",
-   "price": 189.59,
-   "week": -8.2,
-   "why": "30 of 30 Wall Street experts say Buy. Their average price goal is $250, 32% above today's price.",
+   "price": 167.62,
+   "week": -15.0,
+   "why": "30 of 30 Wall Street experts say Buy. Their average price goal is $250, 49% above today's price.",
    "buy": 30,
    "analysts": 30,
    "target": 249.65
@@ -14,9 +14,9 @@
   {
    "ticker": "DAL",
    "name": "Delta Air Lines",
-   "price": 83.17,
-   "week": -3.9,
-   "why": "24 of 25 Wall Street experts say Buy. Their average price goal is $102, 22% above today's price.",
+   "price": 80.01,
+   "week": -7.2,
+   "why": "24 of 25 Wall Street experts say Buy. Their average price goal is $102, 27% above today's price.",
    "buy": 24,
    "analysts": 25,
    "target": 101.65
@@ -24,9 +24,9 @@
   {
    "ticker": "AMZN",
    "name": "Amazon.com",
-   "price": 257.37,
-   "week": -3.8,
-   "why": "59 of 62 Wall Street experts say Buy. Their average price goal is $327, 27% above today's price.",
+   "price": 246.82,
+   "week": -7.4,
+   "why": "59 of 62 Wall Street experts say Buy. Their average price goal is $327, 32% above today's price.",
    "buy": 59,
    "analysts": 62,
    "target": 326.51
@@ -36,40 +36,40 @@
   {
    "ticker": "PANW",
    "name": "Palo Alto Networks",
-   "price": 361.73,
-   "week": 12.1,
-   "why": "Up 12.1% in the last 5 market days, with mostly good news this week.",
+   "price": 343.32,
+   "week": 6.5,
+   "why": "Up 6.5% in the last 5 market days, with mostly good news this week.",
    "headline": {
-    "title": "Cybersecurity Stocks Rally On Palo Alto Earnings Beat, Raised Guidance",
-    "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOX19aUDFOZDBzZUhoQWZldUVFMFMyTDdHNjN0V0JmRDNHWEprWXIxdjB0cmV5MlVUTG1mZ3QxVmNkaGU3ZDYzTzJwTXUxVXlFaWcyUkRjY2QxamI2WU5lX2JvbzhVX1RRTTdHQkhrUkZpU2ludHNpU3h1bWU0NnJnejFMLVFDclBGQTJmbzVvaUFORWtXUUpFSA?oc=5",
-    "source": "Investor's Business Daily",
+    "title": "Palo Alto Networks (PANW) Stock Jumps As Q1 Results Boost ARR Confidence",
+    "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOaUd0S1k5NllyV2E5UllFUFZkdEp0RlBVYndwaVAteEZFUkJtWXZwcnp6WEhmY2h4Vnl5ZEg0UG5jQ2RhOUhYQ1hNd2pDMEFZZTdEaFZQajlub0NhMC1iczhILVhVdEZFT3lobzROYlVycVZYQ0VVYkEwSlJ1YWlFZUdTaGhCaGFXS3J0ZFloQU9sdXIyblBSUHln?oc=5",
+    "source": "Yahoo Finance",
     "date": "2026-11-19"
    }
   },
   {
-   "ticker": "DPZ",
-   "name": "Domino's Pizza",
-   "price": 352.28,
-   "week": 5.7,
-   "why": "Up 5.7% in the last 5 market days, with mostly good news this week.",
-   "headline": {
-    "title": "Domino's Shares Climb as Baird Upgrades to Outperform, Lifts Target to $400",
-    "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5XbnFhNmNickRzOWN0OWVrenc2UFNsRjJweGdXVzBHYUpPNHhVamhlVDhBWWN3SlI3SEUxSlpWM1k1NFozX0JUVTNqX0Qtek1TbmY4NXpqZXdCQjdON25mY1hiVHRENFJqcFJzYmkxYWVlQ2dHYVE?oc=5",
-    "source": "BigGo Finance",
-    "date": "2026-11-13"
-   }
-  },
-  {
-   "ticker": "TGT",
-   "name": "Target",
-   "price": 167.46,
+   "ticker": "GIS",
+   "name": "General Mills",
+   "price": 35.74,
    "week": 4.1,
    "why": "Up 4.1% in the last 5 market days, with mostly good news this week.",
    "headline": {
-    "title": "Target shares rise 7% as retailer posts best sales growth in five years, hikes guidance",
-    "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5nNkJ5R1ViMWludTd4T3hpbzhjN1pkSXg0eEZrbnhJQzhaUTV5NXppeDFISmN3ZTJpVE1Gc2NWamwzRmJDdTZ4akpEelFBRDlnZFR2SFUwbU9lX3JnYUZGTFUtNDNJMGRnVnBaRXZuZ19ZQdIBd0FVX3lxTE12TzRCdzJGeEh1S1Fmd05QaXlJdHpxLUFOeEFGZ2FpUURqaUlrWENORmRaQ3E5OHhjXzVLbXVVcV8yd1JJbHNzZHNWZFczUERGMEpKV1pLMTFTMkg1ZU9Hb3VuU0szSUJJWDZYNlhhM281aS11RXZZ?oc=5",
-    "source": "CNBC",
-    "date": "2026-11-18"
+    "title": "Forget Walmart: General Mills Has More to Gain From Its Beat. Walmart Is 22% of Sales",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/forget-walmart-general-mills-more-132735878.html",
+    "source": "TIKR",
+    "date": "2026-11-20"
+   }
+  },
+  {
+   "ticker": "TJX",
+   "name": "TJX Companies",
+   "price": 139.62,
+   "week": 3.9,
+   "why": "Up 3.9% in the last 5 market days, with mostly good news this week.",
+   "headline": {
+    "title": "TJX Beat Its Own Sales Forecast With 4% Comparable Growth, but Management Is Bracing for a Slower Holiday Quarter.",
+    "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQQzdnUXhsUTNVeW5kT1BDSUpJeExISGU1MUJTa2E0cV9ZR3Z1WDZnejNyanlmVlhVTmRuWjR5djdONWJ4Y1ZZTE94SnNzSE9JVTgyQ2FwYVVsd2xJRWlwV1E2OERBaHB0MVFXWW5kbktUTC1wMVRtS2xVVVFKN3pIdnJVZkdkU1M2VUhCQ0ZySmZoTzRYVEpLbFZDU2UzSV84X01rOWpmWE5JTFlKMjRKUFkwYWdhVF9BU2xnZjVtLUZKX3B6SG1rRkdOdkFiWVJJZDJVSzNPeWo0bUpYTWNmTnk5bVpscy1qSWc?oc=5",
+    "source": "The Motley Fool",
+    "date": "2026-11-19"
    }
   }
  ]
