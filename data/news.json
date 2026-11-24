@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23",
+ "updated": "2026-11-24",
  "briefs": [
   {
    "bear": [
@@ -60,7 +60,7 @@
    "ticker": "SP500",
    "updatedAt": "2026-11-23T23:07:41.452Z",
    "symbol": "AMEX:SPY",
-   "checkedAt": "2026-11-23T23:07:41.452Z",
+   "checkedAt": "2026-11-24T11:42:09.369Z",
    "about": "The S&P 500 tracks about 500 of the biggest US companies, like Apple, Nvidia and JPMorgan. It is the most common way to measure how the whole US stock market is doing.",
    "keyNumbers": [
     {
@@ -159,7 +159,7 @@
    "ticker": "NASDAQ",
    "updatedAt": "2026-11-23T23:07:41.452Z",
    "symbol": "NASDAQ:QQQ",
-   "checkedAt": "2026-11-23T23:07:41.452Z",
+   "checkedAt": "2026-11-24T11:42:09.369Z",
    "about": "The Nasdaq Composite tracks more than 3,000 stocks listed on the Nasdaq exchange. It is packed with tech companies like Apple, Microsoft, Nvidia, Amazon and Alphabet.",
    "keyNumbers": [
     {
@@ -244,7 +244,7 @@
    "updatedAt": "2026-11-21T02:54:59.775Z",
    "symbol": "NASDAQ:AAPL",
    "name": "Apple",
-   "checkedAt": "2026-11-23T11:43:09.061Z",
+   "checkedAt": "2026-11-24T11:42:09.369Z",
    "about": "Apple designs the iPhone, Mac computers, iPads, Apple Watch and AirPods. It also makes money from services like the App Store, Apple Music and iCloud.",
    "keyNumbers": [
     {
@@ -282,78 +282,88 @@
   },
   {
    "bear": [
-    "Amazon spent $42.4 billion more cash than it brought in over the past year, and it has started borrowing as interest rates rise.",
-    "A large part of Amazon's value now rides on Anthropic's stock, which fell 8.5% on November 20; every $1 move in Anthropic changes the stake by about $3.5 billion.",
-    "The November 15 rocket failure destroyed 40 Leo satellites, and many of the 38 rocket launches Amazon has booked could be delayed."
+    "Amazon spent $42.4 billion more cash than it brought in over the past year, so every big purchase adds pressure to show AI is paying off.",
+    "UBS's lower 2027 cloud margin estimate means each dollar of AWS sales may turn into less profit as AI costs rise.",
+    "Nvidia invested in Decart in May and Decart's software also ran on Nvidia and Google chips, so the deal puts Amazon in sharper competition with its own big chip supplier."
    ],
    "bull": [
-    "AWS boss Andy Jassy said AWS can grow 'north of 40%' in both 2027 and 2028, and AWS is where most of Amazon's profit comes from.",
-    "59 analysts rate Amazon a buy with no sells, and their average target is $326.29, which is far above Friday's close.",
-    "Selling 75% of two data center partnerships to Blackstone for about $5 billion brings in cash to help pay for Amazon's huge building plans."
+    "Amazon's chip boss Peter DeSantis said 'every leap forward in AI starts with getting more out of every chip,' and Decart was one of the first customers of Trainium3, so the team already knows Amazon's chips.",
+    "CEO Andy Jassy said last month Amazon expects 'a very significant business selling chips externally,' which would add a new way to make money beyond renting cloud space.",
+    "Analysts' average price target is $323.05, TradingKey reported, about 26% above Monday's close, so most experts covering Amazon still expect growth."
    ],
-   "headline": "Amazon falls 4.1% to $246.82 as its Anthropic stake and AI spending worry investors",
-   "nextEvent": "Fed interest rate decision on December 9, 2026",
-   "sentiment": "bearish",
+   "headline": "Amazon rises 3.5% to $255.39 after confirming a $7.5 billion AI chip software deal",
+   "nextEvent": "Dec 9: Fed interest rate decision",
+   "sentiment": "bullish",
    "sources": [
     {
-     "title": "Stock Market Today, Nov. 20: Amazon Shares Slide on AI and Mega-Cap Tech Sell-Off",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/20/stock-market-today-nov-20-amazon-shares-slide-on-ai-and-mega-cap-tech-sell-off/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 20, 2026"
+     "title": "Amazon is buying Decart's AI chip software for a reported $7.5B and bringing its founders aboard",
+     "url": "https://www.geekwire.com/2026/amazon-is-buying-decarts-ai-chip-software-for-a-reported-7-5b-and-bringing-its-founders-aboard/",
+     "outlet": "GeekWire",
+     "date": "Nov 23, 2026"
     },
     {
-     "title": "Oppenheimer raises Amazon stock price target on Anthropic stake value",
-     "url": "https://www.investing.com/news/analyst-ratings/oppenheimer-raises-amazon-stock-price-target-on-anthropic-stake-value-93CH-5041686",
-     "outlet": "Investing.com",
-     "date": "Nov 20, 2026"
+     "title": "Amazon confirms Decart acquisition",
+     "url": "https://en.globes.co.il/en/article-amazon-confirms-decart-acquisition-1001564520",
+     "outlet": "Globes",
+     "date": "Nov 23, 2026"
     },
     {
-     "title": "Amazon Stock: What Wall Street's Latest Forecasts Say About Its Next Move",
-     "url": "https://247wallst.com/investing/2026/11/20/amazon-stock-what-wall-streets-latest-forecasts-say-about-its-next-move/",
-     "outlet": "24/7 Wall St.",
-     "date": "Nov 20, 2026"
+     "title": "Amazon.com Inc Stock (AMZN) Moved Up by 3.71% on Nov 23: A Full Analysis",
+     "url": "https://www.tradingkey.com/news/market-movers/262318350-market-movers-amzn-20261123",
+     "outlet": "TradingKey",
+     "date": "Nov 23, 2026"
     },
     {
-     "title": "Amazon Stock (AMZN) Falls 3.3% After Leo Launch Failure (Nov 16)",
-     "url": "https://www.heygotrade.com/en/news/amazon-amzn-stock-news-november-17-2026/",
-     "outlet": "Gotrade",
-     "date": "Nov 17, 2026"
+     "title": "Amazon Plans to Acquire Decart for About $7.5 Billion, Threatening Nvidia Data Center AI Chips",
+     "url": "https://tradingkey.com/analysis/stocks/us-stocks/262319616-stock-amazon-decart-nvidia-data-ai-chips-tradingkey",
+     "outlet": "TradingKey",
+     "date": "Nov 24, 2026"
+    },
+    {
+     "title": "Stock market today: Dow, S&P 500, Nasdaq post best day since April 2025 as Nvidia stock soars 31% on Jensen Huang's return",
+     "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-23-dow-sp-500-nasdaq-surge-after-nvidia-reinstates-jensen-huang-182039397.html",
+     "outlet": "Yahoo Finance",
+     "date": "Nov 23, 2026"
     }
    ],
-   "summary": "In a note reported November 20, Oppenheimer raised its price target to $310 from $285, saying Amazon owns about 3.5 billion Anthropic shares, worth about $339 billion at $97 a share; at Friday's Anthropic price near $88.91 that stake is worth about $311 billion. Blackstone agreed to buy 75% of two AWS data center building partnerships for about $5 billion, and AWS will rent the buildings back for 12 years. Third-quarter sales were $201.94 billion, up 12.1%, and AWS has $578 billion of signed future business. Italian prosecutors told Amazon's European unit it may face trial over unpaid import taxes on goods from China.",
+   "summary": "Globes reported that Decart's three founders, Dean Leitersdorf, his brother Orian and Moshe Shalev, own about 64% of the company and agreed to work at Amazon for five years, with the payout tied to hitting goals over that time. Amazon is not buying Decart's AI video models, Lucy and Oasis, only its speed-up software, and the deal still needs government approval. UBS trimmed its AWS growth outlook and cut its 2027 cloud profit margin estimate from 45% to 40%, TradingKey reported. Anthropic, the AI company Amazon owns a big piece of, slipped about 1% Monday but stayed above its $83 first-sale price.",
    "ticker": "AMZN",
-   "updatedAt": "2026-11-21T02:54:59.779Z",
+   "updatedAt": "2026-11-24T11:42:09.367Z",
    "symbol": "NASDAQ:AMZN",
    "name": "Amazon",
-   "checkedAt": "2026-11-23T11:43:09.061Z",
+   "checkedAt": "2026-11-24T11:42:09.369Z",
    "about": "Amazon runs the biggest online store in the US and Amazon Web Services (AWS), which rents computing power to other companies. It also sells ads, Prime memberships and devices like Echo and Kindle.",
    "keyNumbers": [
     {
      "label": "Stock price",
-     "value": "$246.82",
-     "note": "close Nov 20, down 4.1%"
+     "value": "$255.39",
+     "note": "close Nov 23, up 3.5%"
     },
     {
-     "label": "Two-week change",
-     "value": "-4.8%",
-     "note": "$259.30 on Nov 6"
-    },
-    {
-     "label": "AWS sales growth",
-     "value": "39%",
-     "note": "Q3, to $45.98B"
+     "label": "Decart deal",
+     "value": "about $7.5B",
+     "note": "reported, confirmed Nov 23"
     },
     {
      "label": "2026 spending",
-     "value": "about $220B",
+     "value": "$220B",
      "note": "mostly AI data centers"
+    },
+    {
+     "label": "Free cash flow",
+     "value": "-$42.4B",
+     "note": "past 12 months"
     }
    ],
-   "whyMoved": "Amazon fell 4.1%, or $10.55, to $246.82 on Friday, November 20, its lowest close in this two-week stretch, with 72.1 million shares traded, about 79% more than usual; it was $259.30 on November 6. The week was a roller coaster: down 3.3% on November 16 after a rocket carrying 40 of its Amazon Leo internet satellites failed, up 3.8% on November 18, then down 3.9% on November 19 and 4.1% on November 20 as AI stocks sold off and Anthropic, the AI company Amazon owns a big piece of, fell 8.5% on its second trading day. Most of Amazon's profit comes from AWS, its cloud business, which grew 39% last quarter, but Amazon expects to spend about $220 billion this year, mostly on AI data centers, so over the past year it spent $42.4 billion more cash than it brought in. Investors are now asking whether that spending, and the paper value of the Anthropic stake, will pay off.",
+   "whyMoved": "Amazon rose $8.57, or 3.5%, from $246.82 on Friday, November 20 to $255.39 on Monday, November 23, winning back most of Friday's 4.1% drop. Two things helped: the whole market bounced after Nvidia brought back Jensen Huang as CEO, and Amazon confirmed Monday morning that it is buying the chip software and top team of Israeli AI startup Decart, in a deal Bloomberg put at about $7.5 billion. Decart's software squeezes more speed out of each AI chip, and Amazon will use it on its own Trainium and Inferentia chips, which it builds so customers can rent AI power from AWS without paying for pricey Nvidia chips. AWS, the cloud business, is where most of Amazon's profit comes from, so making its own chips faster could mean more customers and fatter profit on the $220 billion it is spending this year on AI data centers.",
    "watch": [
     {
+     "date": "Nov 27",
+     "what": "Black Friday kicks off the holiday shopping rush. Reports of strong online spending would help Amazon's store business, which makes thin profits but huge sales."
+    },
+    {
      "date": "Dec 9",
-     "what": "Fed interest rate decision. A hike is widely expected; a bigger worry would be hints of more hikes, which make borrowing for data centers more costly."
+     "what": "Fed interest rate decision. A hike is widely expected; hints of more hikes would make borrowing for data centers costlier."
     }
    ]
   },
@@ -414,7 +424,7 @@
    "updatedAt": "2026-11-21T02:54:59.780Z",
    "symbol": "NYSE:JPM",
    "name": "JPMorgan Chase",
-   "checkedAt": "2026-11-23T11:43:09.061Z",
+   "checkedAt": "2026-11-24T11:42:09.369Z",
    "about": "JPMorgan Chase is the biggest bank in the US. It runs Chase bank accounts and credit cards, makes loans, and helps big companies and rich clients invest and raise money.",
    "keyNumbers": [
     {
@@ -450,73 +460,82 @@
    "ticker": "XOM",
    "symbol": "NYSE:XOM",
    "sentiment": "bearish",
-   "headline": "Exxon slips to $159.99 as US oil falls to its lowest price since August",
-   "summary": "Exxon earned $17.5 billion, or $4.23 a share, in its third quarter (adjusted, leaving out one-time items), up from $3.52 a share the quarter before, and paid shareholders $9.4 billion, including $5.1 billion of buybacks. It plans $20 billion of buybacks in 2027 and has cut its debt by nearly $11 billion this year. On November 16 Exxon offered to buy back up to $3.0 billion of its own bonds, an offer that ran until November 20. On November 9 oil fell about 3% after President Trump said new strikes on Iran were 'highly unlikely' if talks made progress.",
+   "headline": "Exxon falls 1.9% to $156.90 on a huge up day as oil keeps sliding",
+   "summary": "Trefis figured Exxon's dividend alone stays covered as long as US oil is above about $59 a barrel, and dividends plus buybacks need about $79. Exxon raised its quarterly dividend to $1.07 from $1.03, its 44th yearly raise in a row, and plans $20 billion of buybacks in 2027. JPMorgan expects oil to fall to the high $70s in the first half of 2027, Invezz reported. OPEC+, the group of big oil countries, meets November 29 to set how much oil to pump in 2027.",
    "bull": [
-    "Exxon made $19.1 billion of free cash (money left after all spending) last quarter, enough to keep paying dividends and buybacks even with cheaper oil.",
-    "The planned $20 billion of buybacks in 2027 would shrink the number of shares, so each remaining share gets a bigger slice of profit.",
-    "On November 20 Exxon rose 0.7% while the S&P 500 fell 3.7%, showing oil stocks can hold up when tech stocks crash."
+    "Third-quarter free cash, the money left after all spending, was $19.1 billion, enough to pay the dividend about 4.4 times over, 24/7 Wall St. reported.",
+    "CEO Darren Woods said 'we're not going ever to cut our dividend,' and Trefis's math shows it is safe down to about $59 oil, well below today's price.",
+    "Even after the drop, Exxon is up 33.8% this year versus 6.7% for the S&P 500 fund SPY, so it is still one of 2026's stronger big stocks."
    ],
    "bear": [
-    "US oil lost about 6% in one week (November 13 to 18), and Exxon's profit falls when the oil price falls.",
-    "The IEA now expects more oil than the world needs this quarter, 1.7 million barrels a day extra, after earlier expecting a shortage.",
-    "Analysts are split: TD Cowen has a $193 target, but DZ Bank cut its rating to sell with a $170 target, and most of 26 analysts say hold."
+    "The International Energy Agency says the world will pump 1.7 million barrels a day more than it uses this quarter, and extra supply pushes prices down.",
+    "If US oil drops below about $79, Trefis says Exxon's cash would no longer cover both its dividend and its planned buybacks, so buybacks could shrink.",
+    "Fewer signs of new US strikes on Iran are taking away a reason oil was high; IG's Chris Beauchamp said a new attack looks 'less likely' each day."
    ],
-   "nextEvent": "",
+   "nextEvent": "Nov 29: OPEC+ meeting on 2027 oil output",
    "sources": [
     {
-     "title": "Crude Gives Back Ground Midweek as Inventories Build and Surplus Talk Grows",
-     "url": "https://www.prnewswire.com/news-releases/crude-gives-back-ground-midweek-as-inventories-build-and-surplus-talk-grows-302945575.html",
-     "outlet": "PR Newswire",
-     "date": "Nov 19, 2026"
+     "title": "Your Exxon Dividend Needs Only About $59 Oil",
+     "url": "https://www.trefis.com/stock/xom/articles/628301/your-exxon-dividend-needs-only-about-59-oil/2026-11-24",
+     "outlet": "Trefis",
+     "date": "Nov 24, 2026"
     },
     {
-     "title": "Exxon Mobil Corp Stock (XOM) Moved Down by 3.28% on Nov 18: A Full Analysis",
-     "url": "https://www.tradingkey.com/news/market-movers/262311470-market-movers-xom-20261118",
-     "outlet": "TradingKey",
-     "date": "Nov 18, 2026"
+     "title": "Exxon, Chevron and ConocoPhillips Are Down. Here's What Their Dividends Tell Investors",
+     "url": "https://247wallst.com/investing/2026/11/23/exxon-chevron-and-conocophillips-are-down-heres-what-their-dividends-tell-investors/",
+     "outlet": "24/7 Wall St.",
+     "date": "Nov 23, 2026"
     },
     {
-     "title": "Exxon Mobil Stocks Move Lower 0.31% as Crude Slides Toward $87",
-     "url": "https://finance.yahoo.com/energy/articles/exxon-mobil-stocks-move-lower-190037292.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 9, 2026"
+     "title": "Oil price today: Brent slides over 3% below $90 as surplus fears build",
+     "url": "https://www.tradingview.com/news/invezz:4da5802ad094b:0-oil-price-today-brent-slides-over-3-below-90-as-surplus-fears-build/",
+     "outlet": "Invezz",
+     "date": "Nov 23, 2026"
     },
     {
-     "title": "XOM Stock Is Up 43% In 2026: Wall Street Is Split On The Oil Major Following Q3 Results",
-     "url": "https://stocktwits.com/news-articles/markets/equity/xom-stock-is-up-43-in-2026-wall-street-is-split-on-the-oil-major-following-q3-results/cNG13IER9EX",
-     "outlet": "Stocktwits",
-     "date": "Nov 4, 2026"
+     "title": "Oil Retreats as Mideast Supply Gains Offset Tensions",
+     "url": "https://www.tradingpedia.com/2026/11/23/oil-retreats-as-mideast-supply-gains-offset-tensions/",
+     "outlet": "Tradingpedia",
+     "date": "Nov 23, 2026"
     }
    ],
-   "updatedAt": "2026-11-21T02:54:59.780Z",
+   "updatedAt": "2026-11-24T11:42:09.369Z",
    "name": "Exxon Mobil",
-   "checkedAt": "2026-11-23T11:43:09.061Z",
+   "checkedAt": "2026-11-24T11:42:09.369Z",
    "about": "Exxon Mobil is one of the world's biggest oil and gas companies. It pumps oil and natural gas, turns them into gasoline and other fuels, and makes chemicals and plastics.",
    "keyNumbers": [
     {
      "label": "Stock price",
-     "value": "$159.99",
-     "note": "close Nov 20, up 0.7%"
+     "value": "$156.90",
+     "note": "close Nov 23, down 1.9%"
     },
     {
-     "label": "Two-week change",
-     "value": "-3.5%",
-     "note": "$165.87 on Nov 6"
+     "label": "One-month change",
+     "value": "-14.4%",
+     "note": "Oct 23 to Nov 23"
     },
     {
-     "label": "US oil price",
-     "value": "$83.26",
-     "note": "Nov 18, lowest since Aug 26"
+     "label": "Brent oil price",
+     "value": "$89.21",
+     "note": "Nov 23, down 3.6%"
     },
     {
-     "label": "Free cash",
-     "value": "$19.1B",
-     "note": "Q3, after all spending"
+     "label": "Dividend",
+     "value": "$1.07",
+     "note": "per share, paid Dec 10"
     }
    ],
-   "whyMoved": "Exxon fell from $165.87 on November 6 to $159.99 on November 20, a 3.5% drop, after reaching $170.59 on November 13; its worst day was November 18, when it lost about 4% to $160.58 as Chevron fell 3.4% too. The cause was oil: US oil fell from $88.56 a barrel on November 13 to $83.26 on November 18, its lowest since August 26, after US stockpiles rose 3.4 million barrels and the International Energy Agency said the world will pump 1.7 million barrels a day more than it uses this quarter. Exxon earns most of its profit from selling the oil and gas it pumps, so every drop in the oil price shrinks the money it makes on each barrel. On November 20 Exxon actually rose 0.7% while the S&P 500 fell 3.7%, because oil companies do not depend on AI spending.",
-   "watch": []
+   "whyMoved": "Exxon fell from $159.99 on Friday, November 20 to $156.90 on Monday, November 23, a 1.9% drop on a day the S&P 500 jumped 4.7%. Over the month from October 23 it lost 14.4%, more than Chevron's 11.6%. The cause is oil: Brent, the world price, fell $3.36, or 3.6%, to $89.21 a barrel on Monday, and US oil hit $80.36, its lowest since September 1, after a Libyan pipeline carrying 350,000 barrels a day restarted. Exxon earns most of its profit from selling the oil and gas it pumps, and Trefis estimates each $1 drop in the oil price cuts about $1 billion a year from the cash Exxon has left after spending, which is the money it uses for dividends and buybacks.",
+   "watch": [
+    {
+     "date": "Nov 29",
+     "what": "OPEC+ meeting on 2027 oil output. Pumping cuts would likely lift oil prices and help Exxon; plans to pump more would push oil lower."
+    },
+    {
+     "date": "Dec 10",
+     "what": "Exxon pays its $1.07 quarterly dividend. Paying it as planned would match the CEO's promise; any change would be a big surprise."
+    }
+   ]
   },
   {
    "ticker": "JNJ",
@@ -569,7 +588,7 @@
    ],
    "updatedAt": "2026-11-23T11:43:09.060Z",
    "name": "Johnson & Johnson",
-   "checkedAt": "2026-11-23T11:43:09.061Z",
+   "checkedAt": "2026-11-24T11:42:09.369Z",
    "about": "Johnson & Johnson makes prescription medicines, like cancer and immune system drugs, and medical devices used in surgery and heart care.",
    "keyNumbers": [
     {
@@ -655,7 +674,7 @@
     }
    ],
    "updatedAt": "2026-11-23T23:07:41.448Z",
-   "checkedAt": "2026-11-23T23:07:41.448Z",
+   "checkedAt": "2026-11-24T11:42:09.369Z",
    "about": "Bitcoin is the first and largest cryptocurrency, a digital money that is not run by any bank or government. Its price moves only on how much people want to buy or sell it.",
    "keyNumbers": [
     {
@@ -749,7 +768,7 @@
     }
    ],
    "updatedAt": "2026-11-23T23:07:41.451Z",
-   "checkedAt": "2026-11-23T23:07:41.451Z",
+   "checkedAt": "2026-11-24T11:42:09.369Z",
    "about": "Ether is the coin of Ethereum, a network that runs apps and digital tokens. People pay in ether to use the network, and it is the second-largest cryptocurrency.",
    "keyNumbers": [
     {
@@ -788,83 +807,71 @@
   {
    "ticker": "MGM",
    "symbol": "MGM",
-   "sentiment": "neutral",
-   "headline": "MGM holds near $33.41 as Las Vegas Grand Prix race week takes over the Strip",
-   "summary": "A Seeking Alpha writer started coverage with a buy rating and a $43.62 target on November 18, noting MGM's Strip profit before rent fell 5.1% in the first nine months of 2026, less than rivals. MGM pays about $1.8 billion a year in rent for its buildings, and that rent rises 2% every year no matter how the casinos do. Last quarter total revenue slipped about 1% to $4.2 billion, and analysts expect 2026 profit of $1.62 a share, down 51.1%. People Inc., which owns 26.6% of MGM, withdrew its $48.30-a-share buyout offer in September, and the stock fell almost 11% that day.",
+   "sentiment": "bearish",
+   "headline": "MGM slides 3.4% in Grand Prix week to $32.36 as Morgan Stanley trims its target",
+   "summary": "On November 23 Morgan Stanley analyst Stephen Grambling cut his MGM target to $28 from $29 and kept an 'Underweight' rating, meaning he expects it to do worse than similar stocks. He said most casino stocks he covers did worse than the S&P 500 this earnings season, though investors liked the demand at physical casinos. On November 16 Uber and Zoox announced robotaxis for Las Vegas, which could make it easier to get around the Strip. MGM's fourth-quarter results are due after the market closes on February 3, 2027.",
    "bull": [
-    "Last year the race brought about 150,000 extra visitors and was BetMGM's most bet-on race ever, and MGM shares jumped 6.1% after that weekend on November 25, 2025.",
-    "At 12.3 times its past-year profit, MGM is priced fairly low, and analysts' average target of $38.75 is above the current price.",
-    "MGM's Strip profit fell 5.1% this year, less than its rivals, helped by reopened rooms and winning more at its table games."
+    "Of 23 analysts tracked by Longbridge, 11 rate MGM a buy or overweight, and their $37.89 average target is about 17% above the November 20 close.",
+    "MGM lost far less than the S&P 500 in the November 16 to 20 selloff, showing casino stocks can hold up when tech stocks crash.",
+    "Morgan Stanley noted investors were encouraged by demand at physical casinos, which is MGM's main business on the Strip."
    ],
    "bear": [
-    "Las Vegas room prices fell 8% last quarter and adjusted profit before interest and taxes fell 20.4% to $402.8 million.",
-    "Rent of about $1.8 billion rises 2% each year even if business slows, which squeezes profit when visitors spend less.",
-    "Analysts disagree a lot: Morgan Stanley says sell with a $29 target while Mizuho says buy at $55, and MGM missed profit estimates in 3 of the last 4 quarters."
+    "Morgan Stanley's new $28 target is about 13% below the November 20 close, and its Underweight rating means it expects MGM to lag.",
+    "Analysts expect fourth-quarter profit of about $0.50 a share, down about 23% from a year ago, on sales of $4.42 billion, slightly lower.",
+    "MGM closed the week at its lowest price of the day on its busiest trading day, a sign sellers were in control as the week ended."
    ],
-   "nextEvent": "Formula 1 Las Vegas Grand Prix race night, November 21, 2026",
+   "nextEvent": "Feb 3, 2027: MGM fourth-quarter results",
    "sources": [
     {
-     "title": "MGM Resorts (MGM) Stock Price: Nov 19 Close $33.41",
-     "url": "https://www.heygotrade.com/en/us-stock/mgm/",
-     "outlet": "Gotrade",
-     "date": "Nov 19, 2026"
+     "title": "MGM Resorts price target lowered to $28 from $29 at Morgan Stanley",
+     "url": "https://www.tipranks.com/news/the-fly/mgm-resorts-price-target-lowered-to-28-from-29-at-morgan-stanley-thefly-news",
+     "outlet": "TipRanks",
+     "date": "Nov 23, 2026"
     },
     {
-     "title": "MGM Resorts: Holding Up Better Than The Strip",
-     "url": "https://seekingalpha.com/article/4969508-mgm-resorts-holding-up-better-than-the-strip",
-     "outlet": "Seeking Alpha",
-     "date": "Nov 18, 2026"
+     "title": "Weekly Recap | MGM Resorts -3.37%, most brokers rate it buy",
+     "url": "https://longbridge.com/en/news/306359106",
+     "outlet": "Longbridge",
+     "date": "Nov 21, 2026"
     },
     {
-     "title": "Are Wall Street Analysts Bullish on MGM Resorts Stock?",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/wall-street-analysts-bullish-mgm-075025503.html",
-     "outlet": "Barchart (via Yahoo Finance)",
-     "date": "Nov 8, 2026"
-    },
-    {
-     "title": "MGM Resorts Sprints to Race Week With High-Octane Fan Experiences for Formula 1 Heineken Las Vegas Grand Prix 2026, November 19-21",
-     "url": "https://finviz.com/news/405626/mgm-resorts-sprints-to-race-week-with-high-octane-fan-experiences-for-formula-1-heineken-las-vegas-grand-prix-2026-november-19-21",
-     "outlet": "PR Newswire",
-     "date": "Oct 21, 2026"
-    },
-    {
-     "title": "Why Are MGM Resorts (MGM) Shares Soaring Today",
-     "url": "https://finviz.com/news/238897/why-are-mgm-resorts-mgm-shares-soaring-today",
-     "outlet": "StockStory",
-     "date": "Nov 25, 2025"
+     "title": "PEPSI Turns Up the Flavor on the Las Vegas Strip During Formula 1 Heineken Las Vegas Grand Prix 2026 Race Weekend With MGM Resorts International",
+     "url": "https://www.marketscreener.com/news/pepsi-turns-up-the-flavor-on-the-las-vegas-strip-during-formula-1-heineken-las-vegas-grand-prix-202-ce785edcd88ff326",
+     "outlet": "MarketScreener",
+     "date": "Nov 17, 2026"
     }
    ],
    "name": "MGM Resorts International",
-   "checkedAt": "2026-11-23T11:43:09.061Z",
-   "updatedAt": "2026-11-21T02:54:59.780Z",
+   "checkedAt": "2026-11-24T11:42:09.369Z",
+   "updatedAt": "2026-11-24T11:42:09.369Z",
    "about": "MGM Resorts runs casinos and hotels, including the Bellagio and MGM Grand in Las Vegas. It also has casinos in Macau, China, and co-owns BetMGM, an online sports betting app.",
    "keyNumbers": [
     {
      "label": "Stock price",
-     "value": "$33.41",
-     "note": "close Nov 19, down 0.98%"
-    },
-    {
-     "label": "Price vs. profit",
-     "value": "12.3x",
-     "note": "past-year profit"
-    },
-    {
-     "label": "Vegas room sales",
-     "value": "-5.8%",
-     "note": "Q3 vs. a year ago"
+     "value": "$32.36",
+     "note": "close Nov 20, week -3.4%"
     },
     {
      "label": "Avg analyst target",
-     "value": "$38.75",
-     "note": "12 analysts"
+     "value": "$37.89",
+     "note": "23 analysts"
+    },
+    {
+     "label": "Next-quarter profit",
+     "value": "about $0.50",
+     "note": "per share, expected, -23%"
+    },
+    {
+     "label": "Year-to-date",
+     "value": "-8.9%",
+     "note": "as of Nov 16"
     }
    ],
-   "whyMoved": "MGM barely moved over the two weeks: it closed at $33.49 on November 13 and $33.41 on November 19, down 0.98% that day, far steadier than the tech stocks that crashed this week. It is still well below its 52-week high of $51.59. The big event is the Formula 1 Las Vegas Grand Prix, November 19 to 21, which runs through the middle of the Strip, and MGM has turned four of its hotels (Bellagio, ARIA, The Cosmopolitan and Park MGM) into an 'MGM Zone' with parties, food events and driver appearances. MGM makes most of its money from Las Vegas hotel rooms and casinos, and room sales there fell 5.8% last quarter with room prices down 8%, so a strong race week matters for its fourth-quarter numbers.",
+   "whyMoved": "MGM fell 3.37% in the week of November 16 to 20, from a $33.61 Monday open to a $32.36 Friday close, the low of the day, with Friday's 5.8 million shares the busiest of the week. That was still far better than the S&P 500's 8.6% drop that week, because casinos do not depend on the AI spending that crashed tech stocks. The Formula 1 Las Vegas Grand Prix ran through the Strip from November 19 to 21, with MGM partners like Pepsi running free food stops next to Park MGM, but no report yet shows how much extra money race week brought in. MGM makes most of its money from Las Vegas hotel rooms and casinos, so its stock moves on signs of how many visitors come and how much they spend.",
    "watch": [
     {
-     "date": "Nov 21",
-     "what": "Grand Prix race night. Reports of full hotels and record BetMGM bets, like last year, would be a good sign for MGM's fourth-quarter Las Vegas sales."
+     "date": "Feb 3, 2027",
+     "what": "MGM's fourth-quarter report after the close. Beating about $0.50 profit per share and $4.42 billion of sales would be good; Las Vegas room sales falling again would be bad."
     }
    ]
   },
@@ -926,7 +933,7 @@
      "date": "Nov 22, 2026"
     }
    ],
-   "checkedAt": "2026-11-23T23:07:41.451Z",
+   "checkedAt": "2026-11-24T11:42:09.369Z",
    "updatedAt": "2026-11-23T23:07:41.451Z",
    "about": "The Dow Jones Industrial Average tracks 30 big, well-known US companies, like Apple, JPMorgan, Walmart and Nvidia. Higher-priced stocks count more, so a few members can move it a lot.",
    "keyNumbers": [
@@ -1025,7 +1032,7 @@
      "date": "Nov 22, 2026"
     }
    ],
-   "checkedAt": "2026-11-23T23:07:41.452Z",
+   "checkedAt": "2026-11-24T11:42:09.369Z",
    "updatedAt": "2026-11-23T23:07:41.452Z",
    "about": "The Russell 2000 tracks about 2,000 smaller US companies, such as regional banks, small factories and young health companies. It shows how smaller businesses are doing compared with giants.",
    "keyNumbers": [
@@ -1069,81 +1076,75 @@
   {
    "ticker": "MU",
    "symbol": "MU",
-   "sentiment": "bearish",
-   "headline": "Micron plunges 13.9% to $594.73 after a warning that memory prices are falling",
+   "sentiment": "bullish",
+   "headline": "Micron rockets 19% to $707.70 as Nvidia brings back Jensen Huang",
    "about": "Micron makes memory chips, the parts that store data in computers, phones and the giant data centers that run AI. Its main products are DRAM and NAND flash memory, plus HBM, a fast memory built for AI chips.",
-   "summary": "On November 5 Micron fell more than 17% after Bloomberg reported it paused a $4.5 billion memory factory in Taiwan over a labor dispute; Taiwan makes about three-fifths of its regular memory chips. Last quarter Micron earned $33.42 a share, up from $3.03 a year earlier, and it expects about $61.5 billion of sales this quarter. Its board approved $35.16 billion of stock buybacks that can start December 9, though government chip-factory funding rules limit how much it can buy. Micron's next quarterly report is expected in December.",
+   "summary": "On November 20 TradingKey said Micron hit about $590, its lowest since May and roughly 53% below its peak. Citi analyst Atif Malik said Monday the selloff went too far and that tight supply of DRAM and HBM should last through 2027 and 2028. TradingKey named $800 as a price where sellers may show up and $500 as a level where buyers stepped in before. Micron's roughly $100 billion of customer deals through 2030 were announced in September, not this week.",
    "bull": [
-    "Micron expects about $61.5 billion of sales this quarter, up from $54.2 billion last quarter, so demand for its chips is still growing for now.",
-    "Buybacks of up to $35.16 billion can start December 9, which would shrink the number of shares and give each one a bigger slice of profit.",
-    "With $73.5 billion of cash and investments against $4.7 billion of debt, Micron can keep building factories even if prices fall for a while."
+    "Citi says over 75% of Micron's 2027 chip output is already booked by customers, which would protect sales even if new orders slow.",
+    "Nvidia's board brought back Huang on November 23, which removes a big question over Micron's most important AI customer.",
+    "Western Digital rose 13.8% and NXP about 8.9% on Monday too, a sign investors are coming back to the whole chip group, not just one stock."
    ],
    "bear": [
-    "TrendForce says NAND prices have already dropped 20% and should keep falling in the first half of 2027, which would cut Micron's profit per chip.",
-    "Micron has now had two huge one-day drops this month, more than 17% on November 5 and 13.9% on November 20, showing how nervous investors are.",
-    "The paused $4.5 billion Taiwan factory matters because Taiwan makes about three-fifths of Micron's regular memory chips."
+    "Startup Fortune noted Micron had no new deal or report behind Monday's jump, so the gain rests on mood, which can flip fast.",
+    "TradingKey warns memory is a boom-and-bust business, and an 80.7% margin near record highs leaves little room to get better.",
+    "The Fed's December 9 rate decision and US limits on chip sales to China are two risks TradingKey named that could hit chip stocks again."
    ],
-   "nextEvent": "Micron's next quarterly report, expected in December 2026",
+   "nextEvent": "Dec 17: Micron quarterly earnings report",
    "sources": [
     {
-     "title": "Micron Shares Fall Nearly 14% as Technology Stocks Slide",
-     "url": "https://www.tokenpost.com/news/investing/62339",
-     "outlet": "TokenPost",
-     "date": "Nov 20, 2026"
-    },
-    {
-     "title": "Why Micron Stock Crashed Today",
-     "url": "https://www.fool.com/investing/2026/11/20/why-micron-stock-crashed-today/",
+     "title": "Stock Market Today, Nov. 23: Micron Surges 19% as Nvidia CEO Change Calms AI Spending Fears",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/23/stock-market-today-nov-23-micron-surges-19-as-nvidia-ceo-change-calms-ai-spending-fears/",
      "outlet": "The Motley Fool",
-     "date": "Nov 20, 2026"
+     "date": "Nov 23, 2026"
     },
     {
-     "title": "Micron Lost 17% in a Day. Its $35 Billion Buyback Can Start December 9",
-     "url": "https://www.tikr.com/blog/micron-lost-17-in-a-day-its-35-billion-buyback-can-start-december-9",
-     "outlet": "TIKR",
-     "date": "Nov 10, 2026"
+     "title": "Jensen Huang's Return Sparks AI Stocks as Micron Surges 19%, but Downside Risks Loom",
+     "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262319749-stock-jensen-huang-micron-mu-price-ai-tradingkey",
+     "outlet": "TradingKey",
+     "date": "Nov 24, 2026"
     },
     {
-     "title": "Closing Look — Friday, November 20, 2026",
-     "url": "https://cappnotes.substack.com/p/closing-look-friday-november-20-2026",
-     "outlet": "CappNotes",
-     "date": "Nov 20, 2026"
+     "title": "Micron stock jumps 19% on Huang's return, with no new contracts behind it",
+     "url": "https://startupfortune.com/micron-stock-jumps-19-on-huangs-return-with-no-new-contracts-behind-it/",
+     "outlet": "Startup Fortune",
+     "date": "Nov 24, 2026"
     }
    ],
    "name": "Micron Technology",
-   "checkedAt": "2026-11-23T11:43:09.061Z",
-   "updatedAt": "2026-11-21T02:54:59.780Z",
+   "checkedAt": "2026-11-24T11:42:09.369Z",
+   "updatedAt": "2026-11-24T11:42:09.369Z",
    "keyNumbers": [
     {
      "label": "Stock price",
-     "value": "$594.73",
-     "note": "close Nov 20, down 13.9%"
+     "value": "$707.70",
+     "note": "close Nov 23, up 19%"
     },
     {
-     "label": "One-week change",
-     "value": "-23.6%",
-     "note": "$778.31 on Nov 13"
+     "label": "Below June high",
+     "value": "about 42%",
+     "note": "high was $1,214"
     },
     {
-     "label": "Quarterly sales",
-     "value": "$54.2B",
-     "note": "last quarter, up 379%"
+     "label": "Gross margin",
+     "value": "80.7%",
+     "note": "profit left per $1 of sales"
     },
     {
-     "label": "Cash vs. debt",
-     "value": "$73.5B vs $4.7B",
-     "note": "cash and investments"
+     "label": "Citi price target",
+     "value": "$1,300",
+     "note": "repeated Nov 23"
     }
    ],
-   "whyMoved": "Micron lost $95.71, or 13.9%, to close at $594.73 on Friday, November 20, and is down 23.6% from $778.31 on November 13. The trigger was a warning from the research firm TrendForce that big Chinese cloud companies will likely order fewer storage drives next year, that NAND memory prices have already dropped 20% in the open market, and that they should keep falling in early 2027; Sandisk fell 14.3% on the same news, and the whole chip group crashed as Nvidia fell 14%. NAND is only about 26% of Micron's sales; the rest is DRAM, but investors fear DRAM prices could slip too. Micron's record profits come from memory prices being very high, so even a small drop in prices cuts deeply into the money it keeps on each chip.",
+   "whyMoved": "Micron jumped $113.19, or 19%, from $594.51 on Friday, November 20 to $707.70 on Monday, November 23, after falling about 23.6% the week before. The spark was Nvidia's board bringing back Jensen Huang as CEO about two weeks after he quit; Nvidia rose 31.5% and the Philadelphia chip index rose 14%, because Nvidia is one of the biggest buyers of the fast HBM memory that Micron sells for AI chips. About 49 million Micron shares traded, roughly 72% more than a normal day, so many buyers came back at once. No new contract was announced Monday, so the jump was about calmer fears of an AI spending slowdown, not new sales. Micron makes most of its money when memory is scarce and prices are high, which is why its profit swings so much with demand from AI data centers.",
    "watch": [
     {
      "date": "Dec 9",
-     "what": "Micron's buyback window opens, and the Fed decides on interest rates the same day. Fast buying would show Micron thinks its stock is cheap."
+     "what": "Fed rate decision. A hike is widely expected; hints of more hikes would make high-flying chip stocks like Micron fall harder."
     },
     {
-     "date": "Dec 2026",
-     "what": "Next quarterly report. Good: sales near the $61.5 billion goal and steady prices. Bad: a weaker outlook as memory prices fall."
+     "date": "Dec 17",
+     "what": "Micron's quarterly report. Watch whether sales reach about $61.5 billion, what it had forecast; a miss or a weaker memory price outlook would be a bad sign."
     }
    ]
   },
@@ -1221,7 +1222,7 @@
     }
    ],
    "name": "Domino's Pizza",
-   "checkedAt": "2026-11-23T11:43:09.061Z",
+   "checkedAt": "2026-11-24T11:42:09.369Z",
    "updatedAt": "2026-11-21T02:54:59.779Z"
   }
  ],
