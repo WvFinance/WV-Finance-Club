@@ -1,12 +1,12 @@
 {
- "updated": "2026-11-23T12:29:27Z",
+ "updated": "2026-11-24T12:29:26Z",
  "analysts": [
   {
    "ticker": "ANET",
    "name": "Arista Networks",
-   "price": 167.62,
-   "week": -15.0,
-   "why": "30 of 30 Wall Street experts say Buy. Their average price goal is $250, 49% above today's price.",
+   "price": 178.31,
+   "week": -4.7,
+   "why": "30 of 30 Wall Street experts say Buy. Their average price goal is $250, 40% above today's price.",
    "buy": 30,
    "analysts": 30,
    "target": 249.65
@@ -14,9 +14,9 @@
   {
    "ticker": "DAL",
    "name": "Delta Air Lines",
-   "price": 80.01,
-   "week": -7.2,
-   "why": "24 of 25 Wall Street experts say Buy. Their average price goal is $102, 27% above today's price.",
+   "price": 84.34,
+   "week": -2.6,
+   "why": "24 of 25 Wall Street experts say Buy. Their average price goal is $102, 21% above today's price.",
    "buy": 24,
    "analysts": 25,
    "target": 101.65
@@ -24,52 +24,52 @@
   {
    "ticker": "AMZN",
    "name": "Amazon.com",
-   "price": 246.82,
-   "week": -7.4,
-   "why": "59 of 62 Wall Street experts say Buy. Their average price goal is $327, 32% above today's price.",
+   "price": 255.39,
+   "week": -0.9,
+   "why": "59 of 62 Wall Street experts say Buy. Their average price goal is $326, 28% above today's price.",
    "buy": 59,
    "analysts": 62,
-   "target": 326.51
+   "target": 326.34
   }
  ],
  "movers": [
   {
    "ticker": "PANW",
    "name": "Palo Alto Networks",
-   "price": 343.32,
-   "week": 6.5,
-   "why": "Up 6.5% in the last 5 market days, with mostly good news this week.",
+   "price": 353.43,
+   "week": 11.8,
+   "why": "Up 11.8% in the last 5 market days, with mostly good news this week.",
    "headline": {
-    "title": "Palo Alto Networks (PANW) Stock Jumps As Q1 Results Boost ARR Confidence",
-    "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOaUd0S1k5NllyV2E5UllFUFZkdEp0RlBVYndwaVAteEZFUkJtWXZwcnp6WEhmY2h4Vnl5ZEg0UG5jQ2RhOUhYQ1hNd2pDMEFZZTdEaFZQajlub0NhMC1iczhILVhVdEZFT3lobzROYlVycVZYQ0VVYkEwSlJ1YWlFZUdTaGhCaGFXS3J0ZFloQU9sdXIyblBSUHln?oc=5",
-    "source": "Yahoo Finance",
+    "title": "Cybersecurity Stocks Rally On Palo Alto Earnings Beat, Raised Guidance",
+    "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOX19aUDFOZDBzZUhoQWZldUVFMFMyTDdHNjN0V0JmRDNHWEprWXIxdjB0cmV5MlVUTG1mZ3QxVmNkaGU3ZDYzTzJwTXUxVXlFaWcyUkRjY2QxamI2WU5lX2JvbzhVX1RRTTdHQkhrUkZpU2ludHNpU3h1bWU0NnJnejFMLVFDclBGQTJmbzVvaUFORWtXUUpFSA?oc=5",
+    "source": "Investor's Business Daily",
     "date": "2026-11-19"
-   }
-  },
-  {
-   "ticker": "GIS",
-   "name": "General Mills",
-   "price": 35.74,
-   "week": 4.1,
-   "why": "Up 4.1% in the last 5 market days, with mostly good news this week.",
-   "headline": {
-    "title": "Forget Walmart: General Mills Has More to Gain From Its Beat. Walmart Is 22% of Sales",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/forget-walmart-general-mills-more-132735878.html",
-    "source": "TIKR",
-    "date": "2026-11-20"
    }
   },
   {
    "ticker": "TJX",
    "name": "TJX Companies",
-   "price": 139.62,
-   "week": 3.9,
-   "why": "Up 3.9% in the last 5 market days, with mostly good news this week.",
+   "price": 139.25,
+   "week": 6.2,
+   "why": "Up 6.2% in the last 5 market days, with mostly good news this week.",
    "headline": {
-    "title": "TJX Beat Its Own Sales Forecast With 4% Comparable Growth, but Management Is Bracing for a Slower Holiday Quarter.",
-    "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQQzdnUXhsUTNVeW5kT1BDSUpJeExISGU1MUJTa2E0cV9ZR3Z1WDZnejNyanlmVlhVTmRuWjR5djdONWJ4Y1ZZTE94SnNzSE9JVTgyQ2FwYVVsd2xJRWlwV1E2OERBaHB0MVFXWW5kbktUTC1wMVRtS2xVVVFKN3pIdnJVZkdkU1M2VUhCQ0ZySmZoTzRYVEpLbFZDU2UzSV84X01rOWpmWE5JTFlKMjRKUFkwYWdhVF9BU2xnZjVtLUZKX3B6SG1rRkdOdkFiWVJJZDJVSzNPeWo0bUpYTWNmTnk5bVpscy1qSWc?oc=5",
-    "source": "The Motley Fool",
+    "title": "TJX Stock What Changed After An Earnings Beat",
+    "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPRTBhUGlDNTJ6Y0RPMEI2U3V5Y1JScEJhOWxCZzJuVWRPYnNyeThuM2M2WC13Y0JscTAtbFdVa3FpMzVWQkhMVURIV3VXcG51cFB4REdhRUJzck5Jb0FEbWVwdmdzNksxOFI4U3duNHhQQWJOZ1BkNlNFNFN0bXVIcDhMWlJMVGVfRXFTNHctN3NEZXVqbUw5cnhFM1A?oc=5",
+    "source": "Yahoo Finance",
     "date": "2026-11-19"
+   }
+  },
+  {
+   "ticker": "NVDA",
+   "name": "NVIDIA",
+   "price": 165.05,
+   "week": 5.7,
+   "why": "Up 5.7% in the last 5 market days, with mostly good news this week.",
+   "headline": {
+    "title": "Nvidia live updates: Nvidia stock climbs more than 31% as board reinstates Jensen Huang as CEO",
+    "url": "https://finance.yahoo.com/markets/stocks/live/nvidia-live-updates-jensen-huang-reinstated-as-ceo-trump-says-he-convinced-board-165423793.html",
+    "source": "Yahoo Finance",
+    "date": "2026-11-24"
    }
   }
  ]
