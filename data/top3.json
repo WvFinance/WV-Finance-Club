@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-25T20:37:00Z",
+ "updated": "2026-11-26T20:27:58Z",
  "analysts": [
   {
    "ticker": "ANET",
    "name": "Arista Networks",
-   "price": 163.73,
-   "week": -15.6,
+   "price": 163.99,
+   "week": -15.4,
    "why": "30 of 30 Wall Street experts say Buy. Their average price goal is $249, 52% above today's price.",
    "buy": 30,
    "analysts": 30,
@@ -14,9 +14,9 @@
   {
    "ticker": "DAL",
    "name": "Delta Air Lines",
-   "price": 83.03,
-   "week": -2.2,
-   "why": "24 of 25 Wall Street experts say Buy. Their average price goal is $102, 22% above today's price.",
+   "price": 82.95,
+   "week": -2.3,
+   "why": "24 of 25 Wall Street experts say Buy. Their average price goal is $102, 23% above today's price.",
    "buy": 24,
    "analysts": 25,
    "target": 101.65
@@ -24,9 +24,9 @@
   {
    "ticker": "AMZN",
    "name": "Amazon.com",
-   "price": 244.96,
-   "week": -8.5,
-   "why": "59 of 62 Wall Street experts say Buy. Their average price goal is $326, 33% above today's price.",
+   "price": 244.43,
+   "week": -8.7,
+   "why": "59 of 62 Wall Street experts say Buy. Their average price goal is $326, 34% above today's price.",
    "buy": 59,
    "analysts": 62,
    "target": 326.34
@@ -36,9 +36,9 @@
   {
    "ticker": "RBLX",
    "name": "Roblox",
-   "price": 55.49,
-   "week": 17.2,
-   "why": "Up 17.2% in the last 5 market days, with mostly good news this week.",
+   "price": 55.63,
+   "week": 17.5,
+   "why": "Up 17.5% in the last 5 market days, with mostly good news this week.",
    "headline": {
     "title": "Roblox Soars 9% as Oppenheimer Says GTA VI Hasn\u2019t Dented Engagement, Lifts Target to $55",
     "url": "https://finance.yahoo.com/markets/stocks/articles/roblox-soars-9-oppenheimer-says-192333551.html",
@@ -49,27 +49,27 @@
   {
    "ticker": "PINS",
    "name": "Pinterest",
-   "price": 19.57,
-   "week": 10.6,
-   "why": "Up 10.6% in the last 5 market days, with mostly good news this week.",
+   "price": 19.71,
+   "week": 11.4,
+   "why": "Up 11.4% in the last 5 market days, with mostly good news this week.",
    "headline": {
-    "title": "Is Pinterst preparing for a sale? Shares gain ground on executive pay protections (PINS:NYSE)",
-    "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPRG9IbDdibXNxRXkxWkw3TlNuWi1XR2ZvdE1XMTNLdS1CSFJoTjFBV090TXZ2cHJtanhJQlg2VHVEaEJvQ2pETE1TS20yVFl5dm9zd1JxY1RrVWIwRW9LMDM2QWhuS1JHMk9CdG9oZHl1V2dzRmt6cHRZVFJRWk14OGtkRkVpVWw5dmdWSHFTYzNhcjhIQURrTno1OVBwMWRuR1kxZUsxOXZROWxWeURGWjZ4UFdzREJ6V1E?oc=5",
-    "source": "Seeking Alpha",
-    "date": "2026-11-25"
+    "title": "Pinterest Shares Surge 20% as Executive Pay Filing Fuels Sale Rumors",
+    "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQWXlrakVRblZuQnBRUFk0NUJjaWs3eW1mdDV5dDM3dkc2VHRxZHk3Q3U4c0R3ZEVfMTU1Z1l1YmQ5c2o5NnR2UWFFVm9BYmNsVzRTODFrV1VfblNTcHFRRTRpcEJNVmJERkdFUlpUc0VWMjd3ZjZhRENCM2FwTHFSbmJYZG5YckJTc1ZmTDFPUS02S05FdWhCNVJ5VU5QNVlDclRlNjZwYlRISDFtQlRnSGFFOHc1OEpkY3hsZWNn?oc=5",
+    "source": "PYMNTS.com",
+    "date": "2026-11-26"
    }
   },
   {
-   "ticker": "HPQ",
-   "name": "HP",
-   "price": 31.06,
-   "week": 8.4,
-   "why": "Up 8.4% in the last 5 market days, with mostly good news this week.",
+   "ticker": "F",
+   "name": "Ford Motor",
+   "price": 12.17,
+   "week": 7.9,
+   "why": "Up 7.9% in the last 5 market days, with mostly good news this week.",
    "headline": {
-    "title": "HP (HPQ) Stock Is Up 10.4% Today: Barclays Raises Price Target to $24",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/hp-hpq-stock-10-4-150045887.html",
-    "source": "GuruFocus.com",
-    "date": "2026-11-25"
+    "title": "Ford Motor Company Rises 3% After DZ Bank Upgrade",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5XUzhvWjF1QWExWjNBeW9wTTRRTkJCdnFkeWRvQ0ZKU1UzbGZVSk55ZlhNbzBISHdyN3FuYnhIZENPT1pySkpGNjlYTHpOSGxTN3R0aS1maUM4bl9sdWExc3VqQlo3U3F5bjlrNWNMQzFOWndyb0dj?oc=5",
+    "source": "StocksToTrade",
+    "date": "2026-11-20"
    }
   }
  ]
