@@ -1,0 +1,38 @@
+name: Update discover
+
+# Refreshes data/discover.json (stocks by industry, movers, new stocks) for the Discover tab. Free.
+on:
+  schedule:
+    - cron: "45 15 * * 1-5"   # about 9:45-10:45am Chicago, soon after the open
+    - cron: "15 18 * * 1-5"   # midday
+    - cron: "40 21 * * 1-5"   # after the close
+  push:
+    branches: [main]
+    paths: [scripts/update_discover.py, data/sectors.json, .github/workflows/update-discover.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-discover
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python scripts/update_discover.py
+      - name: Save the new list
+        run: |
+          git add data/discover.json
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git config user.name "wvfc-price-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update discover"
+          git pull --rebase origin main
+          git push

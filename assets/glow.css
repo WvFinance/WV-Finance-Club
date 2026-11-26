@@ -122,3 +122,6 @@ html[data-school="me"] #mine-news .homenews .tkp{background:rgba(var(--gl),.14);
   html[data-school="me"] #mine-friends{order:4;margin:0 0 12px}
   html[data-school="me"] #mine-hold{order:5}html[data-school="me"] #mine-orders{order:6}
 }
+/* Tab drop-downs (Home, Discover, Leaderboard): solid so the page doesn't show through. */
+html[data-school="me"] .tabmenu{background:#0f1a38;border-color:rgba(var(--gl),.2);border-top-color:var(--gline);border-radius:0 0 14px 14px}
+html[data-school="me"] .tabmenu button:hover,html[data-school="me"] .tabmenu button:focus-visible{background:rgba(var(--gl),.1)}

@@ -1,6 +1,7 @@
 """Builds data/sectors.json: a simple sector name for each S&P 500 stock, plus some other popular stocks.
 
-Used by the personal Home page's "What I own by sector" view. Sector names are kept short and plain
+Used by the personal Home page's "What I own by sector" view and the Industries page. "subs" holds the
+finer S&P group (like "Footwear") that "Stocks like this" on the Search page uses to find similar companies. Sector names are kept short and plain
 (Tech, Banks, Health...) to match the Class Portfolio. Funds are found from data/stocks.json instead
 (no exchange listed), and anything not here shows as "Other".
 
@@ -44,14 +45,15 @@ def main():
     page = urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
     table = page[page.find('id="constituents"'):]
     table = table[:table.find("</table>")]
-    out = {}
+    out, subs = {}, {}
     for row in re.findall(r"<tr[^>]*>(.*?)</tr>", table, re.S)[1:]:
         cells = [html.unescape(re.sub("<[^>]+>", "", c)).strip() for c in re.findall(r"<td[^>]*>(.*?)</td>", row, re.S)]
-        if len(cells) > 3: out[cells[0]] = simple(cells[2], cells[3])
+        if len(cells) > 3: out[cells[0]] = simple(cells[2], cells[3]); subs[cells[0]] = cells[3]
     if len(out) < 450: raise SystemExit(f"Only found {len(out)} stocks; the page may have changed.")
     for k, v in EXTRA.items(): out.setdefault(k, v)
     path = pathlib.Path(__file__).resolve().parent.parent / "data" / "sectors.json"
-    path.write_text(json.dumps({"source": "S&P 500 sectors (Wikipedia) plus popular stocks", "sectors": dict(sorted(out.items()))}, separators=(",", ":")) + "\n")
+    path.write_text(json.dumps({"source": "S&P 500 sectors (Wikipedia) plus popular stocks", "sectors": dict(sorted(out.items())),
+                                "subs": dict(sorted(subs.items()))}, separators=(",", ":")) + "\n")
     print(f"Wrote {len(out)} stocks to {path}")
 
 if __name__ == "__main__":
