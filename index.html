@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-title" content="Simple Street">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="assets/fonts.css?v=2026111201">
-<link rel="stylesheet" href="assets/style.css?v=2026112001">
+<link rel="stylesheet" href="assets/style.css?v=2026112601">
 <link rel="stylesheet" href="assets/glow.css?v=2026111721">
 <script>
 // The site opens for everyone, no login needed. Supabase keeps a login in this browser; without one the visitor is a guest.
@@ -150,6 +150,7 @@ setTimeout(done,5400);})();
     <button class="tab" role="tab" id="tab-news" aria-controls="news" aria-selected="false" data-tab="news">News<span class="count" id="cnt-news"></span></button>
     <button class="tab" role="tab" id="tab-feed" aria-controls="feed" aria-selected="false" data-tab="feed">Feed</button>
     <button class="tab" role="tab" id="tab-top3" aria-controls="top3" aria-selected="false" data-tab="top3">Top 3 Today</button>
+    <button class="tab" role="tab" id="tab-industries" aria-controls="industries" aria-selected="false" data-tab="industries">Industries</button>
     <button class="tab hasmenu" role="tab" id="tab-district" aria-controls="district" aria-selected="false" aria-haspopup="menu" aria-expanded="false" data-tab="district">District<span class="caret" aria-hidden="true"></span></button>
     <button class="tab" role="tab" id="tab-staff" aria-controls="staff" aria-selected="false" data-tab="staff" hidden>Students</button>
     <button class="tab" role="tab" id="tab-users" aria-controls="users" aria-selected="false" data-tab="users" hidden>Users</button>
@@ -354,6 +355,16 @@ setTimeout(done,5400);})();
   <div class="t3grid" id="t3-grid"></div>
 </section>
 
+<!-- INDUSTRIES -->
+<section role="tabpanel" id="industries" aria-labelledby="tab-industries" hidden>
+  <div class="t3hero">
+    <h2>Industries</h2>
+    <p class="sub">Pick an industry to see the companies in it, biggest first.</p>
+    <div class="t3chips"><span class="t3chip" id="in-when"></span></div>
+  </div>
+  <div id="in-body"></div>
+</section>
+
 <!-- TRADING GAME -->
 <section role="tabpanel" id="trade" aria-labelledby="tab-trade" hidden>
   <div class="sechead">
@@ -540,12 +551,13 @@ setTimeout(done,5400);})();
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="config.js?v=2026111201"></script>
-<script src="assets/app.js?v=2026112002"></script>
+<script src="assets/app.js?v=2026112601"></script>
 <script src="assets/vendor/supabase-2.118.0.js"></script>
 <script src="assets/account.js?v=2026112001"></script>
 <script src="assets/paper.js?v=2026112001"></script>
 <script src="assets/feed.js?v=2026112002"></script>
 <script src="assets/top3.js?v=2026111720"></script>
+<script src="assets/industries.js?v=2026112601"></script>
 <script src="assets/staff.js?v=2026111701"></script>
 <script src="assets/users.js?v=2026111701"></script>
 <script src="assets/numbers.js?v=2026111603"></script>

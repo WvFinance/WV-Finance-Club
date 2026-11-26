@@ -40,14 +40,15 @@ const S={livePx:{},schools:[],school:null,picks:[],briefs:[],quotes:{},prices:{d
 try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="string");}catch(e){S.watch=[];}
 
 /* ---------- Tabs ---------- */
-const TABS=["portfolio","mine","feed","top3","trade","search","news","district","staff","users"].filter(t=>document.getElementById(t));const rendered={};
+const TABS=["portfolio","mine","feed","top3","industries","trade","search","news","district","staff","users"].filter(t=>document.getElementById(t));const rendered={};
 const PVIEWS=["overview","positions","sectors","history","classnews","ideas"];let S_view="overview";
 const DVIEWS=["dschools","dpeople","dweek"];let D_view="dschools";
 // Personal Home (My Portfolio) drop-down: "mine" is the overview, the rest are views of your own Paper Trading stocks (paper.js draws them).
 const MVIEWS=["mine","mystocks","mysectors","myhistory","mytrades"];let M_view="mine";
-// Guests (no login) can use News, Feed, Top 3 Today and stock search. Other parts need an account, so they open the sign in box.
+// Guests (no login) can use News, Feed, Top 3 Today, Industries and stock search. Other parts need an account, so they open the sign in box.
 const MEMBER_ONLY=["portfolio","home","mine","trade","district","staff","users","schools",...PVIEWS,...DVIEWS,...MVIEWS];
 function showTab(name,push){
+  name=String(name||"").split("/")[0]; // "#industries/Tech" opens the Industries tab (industries.js reads the rest)
   if(S.guest&&MEMBER_ONLY.includes(name)){if(push&&window.WVFC_SIGNIN)window.WVFC_SIGNIN("choose");if(push&&S.loaded)return;name="news";}
   if(name==="schools")name="dschools";
   // "Just me" accounts: Home is My Portfolio, Leaderboard is the everyone list. No class or school pages.

@@ -1016,3 +1016,59 @@ html.nointro #intro{display:none}
 .rt-goal .meta{margin:4px 0 0}
 .rt-foot{margin:10px 0 0}
 @media (max-width:600px){.rate{padding:14px}.rt-word{font-size:19px}.rt-top{margin-bottom:8px}.rt-rows{gap:5px}}
+
+/* Industries tab (assets/industries.js): tiles of industries, then a list of the companies in one. */
+#industries{display:grid;gap:18px}
+.inlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.intile{appearance:none;font:inherit;color:var(--ink);text-align:left;cursor:pointer;display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:12px;align-items:center;padding:16px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);transition:border-color .15s,transform .15s}
+.intile:hover{border-color:var(--brand-2);transform:translateY(-1px)}
+.inic{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--brand-2) 16%,transparent);color:var(--brand-2)}
+.inic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.inic.big{width:48px;height:48px;border-radius:12px}.inic.big svg{width:26px;height:26px}
+.inbody{display:grid;gap:3px;min-width:0}
+.inname{font-size:17px;font-weight:750;line-height:1.2}
+.inabout{font-size:13px;color:var(--ink-2);margin:0;line-height:1.35}
+.inmeta{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12.5px;color:var(--muted);margin:2px 0 0}
+.inday{font-weight:600}.inday.up,.inchg.up,.inmo.up{color:var(--up)}.inday.down,.inchg.down,.inmo.down{color:var(--down)}
+.inarrow{font-size:24px;color:var(--muted);line-height:1}
+.indetail{display:grid;gap:12px}
+.inback{appearance:none;border:0;background:none;padding:2px 0;font:inherit;font-size:14px;font-weight:600;color:var(--ink-2);cursor:pointer;justify-self:start}
+.inback:hover{color:var(--ink)}
+.inpanel{display:grid;gap:14px;padding:22px}
+.inhead{display:grid;grid-template-columns:48px minmax(0,1fr);gap:14px;align-items:center}
+.inhead h3{font-size:22px;font-weight:800;line-height:1.15}
+.inchips{display:flex;flex-wrap:wrap;gap:8px}
+.inchip{appearance:none;font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:none;color:var(--ink-2);border-radius:999px;padding:5px 13px;cursor:pointer}
+.inchip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.inrows{list-style:none;margin:0;padding:0;display:grid}
+.inrow{display:grid;grid-template-columns:minmax(0,1fr) 130px 80px 130px;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line)}
+.incols{border-top:0;padding:0;font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:600;color:var(--muted)}
+.intk{appearance:none;border:0;background:none;padding:0;font:inherit;color:var(--ink);cursor:pointer;text-align:left;display:grid;min-width:0;line-height:1.3}
+.intk b{font-family:var(--f-display);font-size:16px}
+.intk:hover b{text-decoration:underline}
+.innm{font-size:13px;color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.inpx{display:grid;line-height:1.3}.inpx b{font-family:var(--f-mono);font-size:14px;font-weight:600}
+.inchg{font-size:12.5px;font-weight:600;color:var(--flat)}
+.inmo{font-size:13.5px;font-weight:600;color:var(--flat)}
+.incols .inmo{color:var(--muted);font-size:11px}
+.inbtns{display:flex;align-items:center;justify-content:flex-end;gap:10px}
+.inmore{appearance:none;border:0;background:none;padding:4px 0;font:inherit;font-size:13px;font-weight:600;color:var(--ink-2);cursor:pointer;white-space:nowrap}
+.inmore:hover{color:var(--ink)}
+.inshowmore{justify-self:center}
+@media (max-width:600px){
+  #industries{gap:12px}
+  .inlist{grid-template-columns:minmax(0,1fr);gap:8px}
+  .intile{grid-template-columns:32px minmax(0,1fr) auto;gap:10px;padding:10px 12px}
+  .inic{width:32px;height:32px;border-radius:8px}.inic svg{width:18px;height:18px}
+  .inic.big{width:38px;height:38px}.inic.big svg{width:22px;height:22px}
+  .inname{font-size:15px}.inabout{font-size:12px}.inmeta{font-size:12px}
+  .inpanel{padding:12px;gap:10px}
+  .inhead{grid-template-columns:38px minmax(0,1fr);gap:10px}
+  .inhead h3{font-size:18px}
+  .inchips{gap:6px}.inchip{font-size:12px;padding:4px 10px}
+  .inrow{grid-template-columns:minmax(0,1fr) auto auto;gap:8px;padding:9px 0}
+  .inrow .inmo,.incols{display:none}
+  .inmore{display:none}
+  .inbtns .btn{padding:4px 10px}
+  .inpx{text-align:right}
+}
