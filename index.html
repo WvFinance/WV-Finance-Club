@@ -17,7 +17,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="assets/fonts.css?v=2026111201">
 <link rel="stylesheet" href="assets/style.css?v=2026112601">
-<link rel="stylesheet" href="assets/glow.css?v=2026111721">
+<link rel="stylesheet" href="assets/glow.css?v=2026112601">
 <script>
 // The site opens for everyone, no login needed. Supabase keeps a login in this browser; without one the visitor is a guest.
 try{document.documentElement.classList.add(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k))?"unlocked":"guest");}catch(e){document.documentElement.classList.add("guest");}
@@ -149,8 +149,7 @@ setTimeout(done,5400);})();
     <button class="tab" role="tab" id="tab-trade" aria-controls="trade" aria-selected="false" data-tab="trade">Paper Trading</button>
     <button class="tab" role="tab" id="tab-news" aria-controls="news" aria-selected="false" data-tab="news">News<span class="count" id="cnt-news"></span></button>
     <button class="tab" role="tab" id="tab-feed" aria-controls="feed" aria-selected="false" data-tab="feed">Feed</button>
-    <button class="tab" role="tab" id="tab-top3" aria-controls="top3" aria-selected="false" data-tab="top3">Top 3 Today</button>
-    <button class="tab" role="tab" id="tab-industries" aria-controls="industries" aria-selected="false" data-tab="industries">Industries</button>
+    <button class="tab hasmenu" role="tab" id="tab-discover" aria-selected="false" aria-haspopup="menu" aria-expanded="false" data-tab="discover">Discover<span class="caret" aria-hidden="true"></span></button>
     <button class="tab hasmenu" role="tab" id="tab-district" aria-controls="district" aria-selected="false" aria-haspopup="menu" aria-expanded="false" data-tab="district">District<span class="caret" aria-hidden="true"></span></button>
     <button class="tab" role="tab" id="tab-staff" aria-controls="staff" aria-selected="false" data-tab="staff" hidden>Students</button>
     <button class="tab" role="tab" id="tab-users" aria-controls="users" aria-selected="false" data-tab="users" hidden>Users</button>
@@ -168,6 +167,15 @@ setTimeout(done,5400);})();
     <button role="menuitem" data-view="mysectors">What I own by sector</button>
     <button role="menuitem" data-view="myhistory">Me vs S&amp;P 500</button>
     <button role="menuitem" data-view="mytrades">My trades</button>
+  </div>
+  <div class="tabmenu" id="disc-menu" role="menu" hidden>
+    <button role="menuitem" data-view="industries">Industries</button>
+    <button role="menuitem" data-view="movers">Movers today</button>
+    <button role="menuitem" data-view="top3">Top 3 Today</button>
+    <button role="menuitem" data-view="newstocks">New on the market</button>
+    <button role="menuitem" data-view="searched">Most searched</button>
+    <button role="menuitem" data-view="filters">Find stocks with filters</button>
+    <button role="menuitem" data-view="surprise">Surprise me</button>
   </div>
   <div class="tabmenu" id="dist-menu" role="menu" hidden>
     <button role="menuitem" data-view="dschools">District Leaderboard</button>

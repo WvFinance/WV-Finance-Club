@@ -40,7 +40,9 @@ const S={livePx:{},schools:[],school:null,picks:[],briefs:[],quotes:{},prices:{d
 try{S.watch=JSON.parse(store.get("wvfc.watch")||"[]").filter(x=>typeof x==="string");}catch(e){S.watch=[];}
 
 /* ---------- Tabs ---------- */
-const TABS=["portfolio","mine","feed","top3","industries","trade","search","news","district","staff","users"].filter(t=>document.getElementById(t));const rendered={};
+// Discover drop-down: each page is its own section.
+const DISC=["industries","movers","top3","newstocks","searched","filters"];
+const TABS=["portfolio","mine","feed",...DISC,"trade","search","news","district","staff","users"].filter(t=>document.getElementById(t));const rendered={};
 const PVIEWS=["overview","positions","sectors","history","classnews","ideas"];let S_view="overview";
 const DVIEWS=["dschools","dpeople","dweek"];let D_view="dschools";
 // Personal Home (My Portfolio) drop-down: "mine" is the overview, the rest are views of your own Paper Trading stocks (paper.js draws them).
@@ -51,6 +53,8 @@ function showTab(name,push){
   name=String(name||"").split("/")[0]; // "#industries/Tech" opens the Industries tab (industries.js reads the rest)
   if(S.guest&&MEMBER_ONLY.includes(name)){if(push&&window.WVFC_SIGNIN)window.WVFC_SIGNIN("choose");if(push&&S.loaded)return;name="news";}
   if(name==="schools")name="dschools";
+  if(name==="discover")name="industries";
+  if(name==="surprise"){if(window.WVFC_SURPRISE)window.WVFC_SURPRISE();return;}
   // "Just me" accounts: Home is My Portfolio, Leaderboard is the everyone list. No class or school pages.
   if(S.individual){if(name==="portfolio"||PVIEWS.includes(name)||name==="home")name="mine";if(name==="district"||DVIEWS.includes(name))name="dpeople";}
   if(DVIEWS.includes(name)){D_view=name;name="district";}else if(name==="district")D_view="dschools";
@@ -62,6 +66,7 @@ function showTab(name,push){
   if(name==="portfolio"){for(const v of PVIEWS)$("#pv-"+v).hidden=v!==S_view;
     document.querySelectorAll("#pf-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===S_view));renderBreakdown();if(S_view==="classnews")renderClassFeed();if(S_view==="ideas")loadIdeas();}
   for(const t of TABS){$("#"+t).hidden=t!==name;if(tb(t))tb(t).setAttribute("aria-selected",String(t===name));}
+  if(tb("discover")){tb("discover").setAttribute("aria-selected",String(DISC.includes(name)));document.querySelectorAll("#disc-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===name));}
   if(name==="mine"){for(const v of MVIEWS)$("#mv-"+v).hidden=v!==M_view;
     document.querySelectorAll("#mine-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===M_view));}
   if(name==="district"){for(const v of DVIEWS)$("#dv-"+v).hidden=v!==D_view;
@@ -77,8 +82,8 @@ function showTab(name,push){
   window.scrollTo({top:0});
 }
 document.querySelectorAll(".tab:not(.hasmenu)").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.tab,true)));
-// Tabs with a drop-down menu: Class Portfolio and District.
-const menus=[["#tab-portfolio","#pf-menu"],["#tab-district","#dist-menu"]].map(([t,m])=>({tab:$(t),menu:$(m)})).filter(x=>x.tab&&x.menu);
+// Tabs with a drop-down menu: Class Portfolio, Discover and District.
+const menus=[["#tab-portfolio","#pf-menu"],["#tab-discover","#disc-menu"],["#tab-district","#dist-menu"]].map(([t,m])=>({tab:$(t),menu:$(m)})).filter(x=>x.tab&&x.menu);
 function setMenu(open,which){for(const m of menus){const on=open&&m===which;m.menu.hidden=!on;m.tab.setAttribute("aria-expanded",String(on));
   if(on){const r=m.tab.getBoundingClientRect(),n=m.tab.closest("nav").getBoundingClientRect();m.menu.style.left=Math.max(8,Math.min(r.left-n.left,n.width-m.menu.offsetWidth-8))+"px";}}}
 function addMenu(m){
