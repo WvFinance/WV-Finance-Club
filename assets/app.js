@@ -67,6 +67,8 @@ function showTab(name,push){
     document.querySelectorAll("#pf-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===S_view));renderBreakdown();if(S_view==="classnews")renderClassFeed();if(S_view==="ideas")loadIdeas();}
   for(const t of TABS){$("#"+t).hidden=t!==name;if(tb(t))tb(t).setAttribute("aria-selected",String(t===name));}
   if(tb("discover")){tb("discover").setAttribute("aria-selected",String(DISC.includes(name)));document.querySelectorAll("#disc-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===name));}
+  // On phones the tab row scrolls sideways: bring the open tab into view.
+  {const on=document.querySelector('.tabs .tab[aria-selected="true"]'),row=on&&on.parentElement;if(row&&row.scrollWidth>row.clientWidth){const l=on.offsetLeft-row.offsetLeft,r=l+on.offsetWidth;if(l<row.scrollLeft||r>row.scrollLeft+row.clientWidth)row.scrollLeft=Math.max(0,r-row.clientWidth+16);}}
   if(name==="mine"){for(const v of MVIEWS)$("#mv-"+v).hidden=v!==M_view;
     document.querySelectorAll("#mine-menu [data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view===M_view));}
   if(name==="district"){for(const v of DVIEWS)$("#dv-"+v).hidden=v!==D_view;

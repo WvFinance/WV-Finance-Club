@@ -354,7 +354,7 @@ setTimeout(done,5400);})();
 </section>
 
 <!-- TOP 3 TODAY -->
-<section role="tabpanel" id="top3" aria-labelledby="tab-top3" hidden>
+<section role="tabpanel" id="top3" aria-labelledby="tab-discover" hidden>
   <div class="t3hero">
     <h2>Top 3 Today</h2>
     <p class="sub">Three quick lists of stocks worth a closer look.</p>
@@ -363,14 +363,46 @@ setTimeout(done,5400);})();
   <div class="t3grid" id="t3-grid"></div>
 </section>
 
-<!-- INDUSTRIES -->
-<section role="tabpanel" id="industries" aria-labelledby="tab-industries" hidden>
+<!-- DISCOVER: ways to find new stocks (assets/discover.js). The Discover drop-down opens each one. -->
+<section role="tabpanel" id="industries" aria-labelledby="tab-discover" class="disc" hidden>
   <div class="t3hero">
     <h2>Industries</h2>
     <p class="sub">Pick an industry to see the companies in it, biggest first.</p>
     <div class="t3chips"><span class="t3chip" id="in-when"></span></div>
   </div>
   <div id="in-body"></div>
+</section>
+<section role="tabpanel" id="movers" aria-labelledby="tab-discover" class="disc" hidden>
+  <div class="t3hero">
+    <h2>Movers today</h2>
+    <p class="sub">Well-known stocks that moved the most today, and the news that may explain why.</p>
+    <div class="t3chips"><span class="t3chip" id="mv-when"></span><span class="t3chip warn">Not advice, just ideas to research</span></div>
+  </div>
+  <div class="t3grid mvgrid" id="mv-grid"></div>
+</section>
+<section role="tabpanel" id="newstocks" aria-labelledby="tab-discover" class="disc" hidden>
+  <div class="t3hero">
+    <h2>New on the market</h2>
+    <p class="sub">When a company first sells its stock to the public, it's called an IPO. Here are the newest ones.</p>
+    <div class="t3chips"></div>
+  </div>
+  <div class="nwgrid" id="nw-body"></div>
+</section>
+<section role="tabpanel" id="searched" aria-labelledby="tab-discover" class="disc" hidden>
+  <div class="t3hero">
+    <h2>Most searched</h2>
+    <p class="sub">The stocks people looked up most on Simple Street this week.</p>
+    <div class="t3chips"></div>
+  </div>
+  <div id="ms-body"></div>
+</section>
+<section role="tabpanel" id="filters" aria-labelledby="tab-discover" class="disc" hidden>
+  <div class="t3hero">
+    <h2>Find stocks with filters</h2>
+    <p class="sub">Pick what you're looking for and see which companies match.</p>
+    <div class="t3chips"><span class="t3chip" id="fl-when"></span></div>
+  </div>
+  <div id="fl-body"></div>
 </section>
 
 <!-- TRADING GAME -->
@@ -449,6 +481,7 @@ setTimeout(done,5400);})();
         <p class="meta" style="margin:8px 0 0"><span class="memonly">Saved to your account, so it follows you to any device.</span><span class="guestonly">Saved on this computer. Make a free account to keep it on any device.</span></p>
       </div>
       <div class="panel rate" id="s-rate" hidden></div>
+      <div class="panel like" id="s-like" hidden></div>
     </div>
   </div>
   <div class="panel brief" id="s-brief" hidden></div>
@@ -565,7 +598,7 @@ setTimeout(done,5400);})();
 <script src="assets/paper.js?v=2026112001"></script>
 <script src="assets/feed.js?v=2026112002"></script>
 <script src="assets/top3.js?v=2026111720"></script>
-<script src="assets/industries.js?v=2026112601"></script>
+<script src="assets/discover.js?v=2026112602"></script>
 <script src="assets/staff.js?v=2026111701"></script>
 <script src="assets/users.js?v=2026111701"></script>
 <script src="assets/numbers.js?v=2026111603"></script>
