@@ -153,6 +153,13 @@ def ipos():
                              "price_range": (r.get("proposedSharePrice") or "").strip(),
                              "raised": float(re.sub(r"[^0-9.]", "", r.get("dollarValueOfSharesOffered") or "") or 0),
                              "exchange": (r.get("proposedExchange") or "").strip()})
+    # Skip blank-check "Acquisition" companies (SPACs): they have no business yet. Tidy ALL-CAPS names.
+    spac = lambda x: re.search(r"\bAcquisition\b|\bSPAC\b|Blank Check", x["name"], re.I)  # noqa: E731
+    for x in recent + upcoming:
+        if x["name"].isupper():
+            x["name"] = " ".join(w if w in ("AG", "SA", "NV", "PLC", "LLC", "AI") else w.capitalize() for w in x["name"].split())
+    recent = [x for x in recent if not spac(x)]
+    upcoming = [x for x in upcoming if not spac(x)]
     # Biggest first, skip tiny ones (under $20 million raised) so the list stays well-known names.
     recent = sorted((x for x in recent if x["raised"] >= 2e7), key=lambda x: -x["raised"])[:15]
     upcoming = sorted((x for x in upcoming if x["raised"] >= 2e7), key=lambda x: (x["date"] or "9999", -x["raised"]))[:10]
