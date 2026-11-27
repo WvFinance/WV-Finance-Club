@@ -258,9 +258,11 @@ async function drawLike(t){
   await load();if(likeTk!==t)return;
   const ss=stocks(),me=ss.find(s=>s.tk===t);
   if(!me){likeBox.hidden=true;return;}
-  const subs=(file&&file.subs)||{},sub=subs[t];
+  // Same S&P group first, then same Nasdaq group, then same industry, closest in size.
+  const subs=(file&&file.subs)||{},nsubs=(file&&file.nsubs)||{},sub=subs[t],nsub=nsubs[t];
   const near=(a,b)=>Math.abs(a.rk-me.rk)-Math.abs(b.rk-me.rk);
   let picks=sub?ss.filter(s=>s.tk!==t&&subs[s.tk]===sub).sort(near):[];
+  if(picks.length<5&&nsub)picks=picks.concat(ss.filter(s=>s.tk!==t&&nsubs[s.tk]===nsub&&!picks.includes(s)).sort(near));
   // Same company, other share class (GOOGL and GOOG): skip.
   const base=n=>(n||"").replace(/\s+Class [A-C].*$/,"").toLowerCase();
   picks=picks.filter(s=>base(s.name)!==base(me.name));

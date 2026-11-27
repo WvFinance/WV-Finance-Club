@@ -3,7 +3,10 @@
  * industries: every stock in data/sectors.json grouped by industry, biggest first, each as
    [ticker, name, price, % today, % about a month, % about a year, dividend yield %]. Used by Industries,
    Find stocks with filters, Surprise me and "Stocks like this".
- * order: every ticker, biggest company first. subs: the finer S&P group for each stock (for "Stocks like this").
+ * order: every ticker, biggest company first. subs: the finer S&P group for each stock, nsubs: Nasdaq's finer
+   group (both for "Stocks like this").
+ Stocks: data/sectors.json (S&P 500 + popular stocks, hand-checked industries) plus the 1,500 biggest US stocks from
+ Nasdaq's free stock list, sorted into the same plain industries.
  * movers: the 5 biggest gainers and 5 biggest losers today among those stocks, each with its newest headline.
  * ipos: companies that went public in the last ~2 months (with how they've done since) and ones coming up soon,
    from Nasdaq's IPO calendar.
@@ -170,12 +173,102 @@ def ipos():
     return {"recent": recent, "upcoming": upcoming}
 
 
+# ---------- More stocks: the biggest US companies from Nasdaq's free stock list ----------
+HOW_MANY = 1500
+# Nasdaq's industry words -> our plain industries. Checked in order; the first match wins.
+NQ_INDUSTRY = [
+    (r"insur", "Insurance"),
+    (r"real estate|reit", "Real Estate"),
+    (r"bank|savings inst|finance|credit|invest|broker|stock exchange|trust", "Banks"),
+    (r"auto manuf|auto parts|motor vehicle|automotive|recreational vehicles", "Cars"),
+    (r"hotel|resort|restaurant|casino|gaming|cruise|recreation|amusement|travel|leisure|sporting|ski|theme", "Travel & Fun"),
+    (r"movie|entertainment|broadcast|cable|television|radio|advertis|publish|newspaper|telecommunications services|"
+     r"telephone|wireless|internet & information|music", "Media"),
+    (r"electric util|water supply|power gen|utilit|natural gas distribution", "Utilities"),
+    (r"oil|gas production|natural gas|petroleum|coal|integrated oil|energy|refin|pipeline", "Energy"),
+    (r"biotech|pharma|medic|hospital|health|dental|ophthalm|diagnost|drug", "Health"),
+    (r"semiconductor|software|computer|edp|electronic comp|internet|\bit services|technology|tele.*equipment|"
+     r"radio and television broadcasting and communications equipment|data processing", "Tech"),
+    (r"food|beverage|meat|poultry|farm|grocery|tobacco|cosmetic|household|soap|package good|bottl|sugar|specialty foods", "Food & Household"),
+    (r"retail|store|catalog|apparel|clothing|shoe|footwear|department|e-commerce|consumer electronics/video chains|"
+     r"home furnishings|other consumer services", "Shopping"),
+    (r"chemical|metal|mining|steel|iron|aluminum|gold|silver|paper|forest|lumber|container|packag|glass|plastic|"
+     r"textile|fertiliz|agricultural chem", "Materials"),
+]
+NQ_SECTOR = {"Technology": "Tech", "Health Care": "Health", "Energy": "Energy", "Utilities": "Utilities",
+             "Real Estate": "Real Estate", "Finance": "Banks", "Basic Materials": "Materials",
+             "Consumer Staples": "Food & Household", "Consumer Discretionary": "Shopping",
+             "Telecommunications": "Media", "Industrials": "Industrial"}
+NOT_COMMON = re.compile(r"warrants?\b|\brights?\b|\bunits?\b|preferred|depositary shares? \(each|notes due|debentures|% ", re.I)
+
+
+def plain_industry(sector, industry):
+    ind = (industry or "").lower()
+    for pat, name in NQ_INDUSTRY:
+        if re.search(pat, ind):
+            # Nasdaq files car dealers and some others under retail-ish words; trust the sector for industrial firms.
+            if name == "Shopping" and sector == "Industrials":
+                return "Industrial"
+            return name
+    return NQ_SECTOR.get(sector, "Industrial" if sector else None)
+
+
+def biggest_stocks():
+    """[(ticker, name, market value, plain industry, Nasdaq industry)] for the biggest US stocks, or [] if Nasdaq fails."""
+    rows = []
+    for ex in ("nasdaq", "nyse", "amex"):
+        try:
+            data = json.loads(get(f"https://api.nasdaq.com/api/screener/stocks?tableonly=true&download=true&exchange={ex}", BROWSER_UA))
+        except Exception as e:
+            print(f"Nasdaq stock list ({ex}): {e}")
+            return []
+        for r in data["data"]["rows"]:
+            t = (r.get("symbol") or "").strip().upper().replace("/", ".")
+            name = (r.get("name") or "").strip()
+            cap = float(re.sub(r"[^0-9.]", "", r.get("marketCap") or "") or 0)
+            # Skip blank-check shells and investment funds: they aren't regular companies.
+            if not t or "^" in t or not cap or NOT_COMMON.search(name) or re.search(r"acquisition|\bfund\b|blank check", name, re.I) \
+                    or (r.get("industry") or "").startswith("Trusts Except"):
+                continue
+            ind = plain_industry((r.get("sector") or "").strip(), (r.get("industry") or "").strip())
+            if ind:
+                rows.append((t, name, cap, ind, (r.get("industry") or "").strip()))
+    rows.sort(key=lambda x: -x[2])
+    seen, out = set(), []
+    for x in rows:
+        if x[0] not in seen:
+            seen.add(x[0])
+            out.append(x)
+    return out[:HOW_MANY]
+
+
+def tidy(name):
+    """'Apple Inc. Common Stock' -> 'Apple Inc.'"""
+    return re.sub(r"\s+(Common Stock|Common Shares|Ordinary Shares|Class [A-C] (Common|Ordinary).*|American Depositary Shares?.*|"
+                  r"Capital Stock|Subordinate Voting Shares|New York Registry Shares)\b.*$", "", name).strip() or name
+
+
 def main():
     sec = json.loads((ROOT / "data" / "sectors.json").read_text())
-    sectors = sec["sectors"]
+    sectors = dict(sec["sectors"])  # our hand-checked industries for the S&P 500 and popular stocks win
     stocks = json.loads((ROOT / "data" / "stocks.json").read_text())["stocks"]
-    rank = {s[0]: (i, s[1]) for i, s in enumerate(stocks)}
-    tickers = sorted(sectors, key=lambda t: rank.get(t, (10**6, ""))[0])
+    names = {s[0]: s[1] for s in stocks}
+    big = biggest_stocks()
+    nsubs = {}
+    for t, name, cap, ind, nq in big:
+        sectors.setdefault(t, ind)
+        names.setdefault(t, tidy(name))
+        if nq:
+            nsubs[t] = nq
+    if big:  # biggest first by today's market value
+        size = {x[0]: i for i, x in enumerate(big)}
+        order = {s[0]: i for i, s in enumerate(stocks)}
+        tickers = sorted(sectors, key=lambda t: (size.get(t, len(size) + order.get(t, 10**6))))
+    else:
+        order = {s[0]: i for i, s in enumerate(stocks)}
+        tickers = sorted(sectors, key=lambda t: order.get(t, 10**6))
+    rank = {t: (i, names.get(t, t)) for i, t in enumerate(tickers)}
+    print(f"{len(tickers)} stocks ({len(big)} from Nasdaq's list)")
     with cf.ThreadPoolExecutor(max_workers=6) as pool:
         got = dict(zip(tickers, pool.map(prices, tickers)))
     ok = sum(1 for v in got.values() if v)
@@ -197,6 +290,8 @@ def main():
         if got[t] and got[t][1] is not None:
             flat.append(row)
     # Movers: only stocks with fresh prices today.
+    # Movers: only the 600 biggest, so the list stays well-known names.
+    flat = [r for r in flat if rank[r[0]][0] < 600]
     up = sorted((r for r in flat if r[3] > 0), key=lambda r: -r[3])[:5]
     down = sorted((r for r in flat if r[3] < 0), key=lambda r: r[3])[:5]
     mv = lambda r: {"ticker": r[0], "name": r[1], "price": r[2], "day": r[3], "industry": sectors[r[0]], "headline": headline(r[0], r[1])}  # noqa: E731
@@ -206,6 +301,7 @@ def main():
            "industries": dict(sorted(groups.items())),
            "order": tickers,
            "subs": sec.get("subs", {}),
+           "nsubs": nsubs,
            "movers": {"up": [mv(r) for r in up], "down": [mv(r) for r in down]}}
     try:
         out["ipos"] = ipos()
