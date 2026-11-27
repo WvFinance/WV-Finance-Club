@@ -3,181 +3,167 @@
  "briefs": [
   {
    "bear": [
-    "Core inflation of 3.3% in October beat the 3.2% forecast, and traders now see about a 97% chance the Fed raises rates in December, which makes borrowing cost more for companies and shoppers.",
-    "The new tariff plan would tax imports from China, the EU and 12 other partners at up to 20% starting in January at the earliest, which could raise costs for US companies.",
-    "Nvidia fell as much as 8% on Nov 25 before closing down 3.91%, and huge AI companies make up a big part of the index, so their swings move it the most."
+    "Traders see a Fed rate hike as nearly certain at the December meeting, and higher rates make borrowing and stocks more costly.",
+    "October prices rose 0.4% in one month, faster than forecast, so inflation is not cooling yet.",
+    "The Motley Fool noted one big week does not mean the correction is over, and the index is still headed for its worst November since 2008."
    ],
    "bull": [
-    "The index cut a 1.5% morning loss to just 0.25% by the close on Nov 25, showing buyers stepped in quickly when prices fell.",
-    "Summer growth was revised up to 4.3% a year and new jobless claims were only 189,000, signs the US economy and job market are still strong, which supports company profits.",
-    "Even with two down days, the S&P 500 is up 3.9% for the week of Nov 23 and 4.9% for 2026."
+    "The 5.6% weekly gain was the S&P 500's biggest since April 2025, showing buyers came back fast after the November drop.",
+    "Economic growth was revised up to 4.3% a year for the summer, a sign companies can keep selling more.",
+    "The VIX fear gauge fell from 35.89 on Nov 20 to 23.81 on Nov 27, meaning traders expect calmer swings ahead."
    ],
-   "headline": "S&P 500 slips 0.25% after a hot inflation report and new tariff plan",
+   "headline": "S&P 500 jumps 1.6% to cap its best week since April 2025",
    "market": true,
    "name": "S&P 500",
    "nextEvent": "Dec 9: Fed interest rate decision",
    "order": 1,
-   "sentiment": "bearish",
+   "sentiment": "bullish",
    "sources": [
     {
-     "title": "How major US stock indexes fared Wednesday 11/25/2026",
-     "url": "https://abcnews.com/Business/wireStory/major-us-stock-indexes-fared-wednesday-11252026-138453529",
-     "outlet": "ABC News (AP)",
-     "date": "Nov 25, 2026"
-    },
-    {
-     "title": "Stock market today: Dow erases losses to end positive, S&P 500 and Nasdaq recover ground amid AI sell-off",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-25-dow-sp-500-nasdaq-pce-inflation-data-091428237.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 25, 2026"
-    },
-    {
-     "title": "Stock Market Today, Nov. 25: Dow Erases 1,100-Point Loss as Wall Street Stages Dramatic Late-Day Comeback",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/25/stock-market-today-nov-25-dow-erases-1-100-point-loss-as-wall-street-stages-dramatic-late-day-comeback/",
+     "title": "Stock Market Today, Nov. 27: S&P 500 Posts Best Week in 19 Months as AI Stocks Rebound",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/27/stock-market-today-nov-27-s-and-p-500-posts-best-week-in-19-months-as-ai-stocks-rebound/",
      "outlet": "The Motley Fool",
-     "date": "Nov 25, 2026"
+     "date": "Nov 27, 2026"
     },
     {
-     "title": "Stocks slide as AI sell-off deepens, Fed's preferred inflation gauge rises",
-     "url": "https://www.foxbusiness.com/markets/stocks-11-25-2026",
-     "outlet": "Fox Business",
-     "date": "Nov 25, 2026"
+     "title": "How major US stock indexes fared Friday 11/27/2026",
+     "url": "https://finance.yahoo.com/markets/world-indices/articles/major-us-stock-indexes-fared-184551517.html",
+     "outlet": "Yahoo Finance (AP)",
+     "date": "Nov 27, 2026"
     },
     {
-     "title": "Stocks Close Mixed on Wednesday, November 25, 2026, as Hot PCE Inflation, New Tariff Plans and an AI Sell-Off Test Wall Street",
-     "url": "https://vistapglobal.com/stocks-close-mixed-on-wednesday-november-25-2026-as-hot-pce-inflation-new-tariff-plans-and-an-ai-sell-off-test-wall-street-amd-eprx-googl-modd-nvda-ser-spcx-vix/",
+     "title": "Dow Jumps 591 Points as Black Friday Shopping Season Lifts Stocks; Nasdaq Surges 6.7% for the Week",
+     "url": "https://finance.biggo.com/news/94218d89-8592-4b2f-a61c-1e75d032506d",
+     "outlet": "BigGo Finance",
+     "date": "Nov 27, 2026"
+    },
+    {
+     "title": "Weekly Market Summary: Stocks Stage a Sharp Rebound in a Thanksgiving Holiday-Shortened Week Ending November 27, 2026",
+     "url": "https://vistapglobal.com/weekly-market-summary-stocks-stage-a-sharp-rebound-in-a-thanksgiving-holiday-shortened-week-ending-november-27-2026-ant-bby-eprx-gap-googl-ko-modd-mo-nvda-ser-sndk-skhy-spcx-wmt/",
      "outlet": "Vista Partners",
-     "date": "Nov 25, 2026"
+     "date": "Nov 27, 2026"
     }
    ],
-   "summary": "Even after two down days, the S&P 500 is up 3.9% this week and 4.9% for 2026, thanks to Monday's 4.7% jump when Nvidia brought back Jensen Huang as CEO. Fox Business reported the index was on track for its worst November since 2008. Summer economic growth (GDP) was revised up to 4.3% a year, and only 189,000 people filed new jobless claims, a very low number. Bank of America strategists expect the S&P 500 to reach 7,800 by late 2027.",
+   "summary": "Even after this week, the S&P 500 is on track for its worst November since 2008 and fell into a correction (a drop of 10% or more from its high) this month. October consumer prices rose 0.4% in one month, more than expected. Summer economic growth was revised up to 4.3% a year from 3.4%. The fear gauge VIX fell 11.16% on Friday to 23.81, down from 35.89 a week earlier.",
    "ticker": "SP500",
-   "updatedAt": "2026-11-25T23:16:40.205Z",
+   "updatedAt": "2026-11-27T23:05:52.432Z",
    "symbol": "AMEX:SPY",
-   "checkedAt": "2026-11-27T11:43:17.501Z",
-   "about": "The S&P 500 tracks about 500 of the biggest US companies, like Apple, Microsoft, Nvidia and Amazon. It is the most common way to measure how the whole US stock market is doing.",
+   "checkedAt": "2026-11-27T23:05:52.432Z",
+   "about": "The S&P 500 tracks 500 of the biggest US companies, like Apple, Nvidia and Amazon. It is the most common way to measure how the whole US stock market is doing.",
    "keyNumbers": [
     {
      "label": "Index level",
-     "value": "7,182.78",
-     "note": "Nov 25 close"
+     "value": "7,297.49",
+     "note": "Nov 27 close"
     },
     {
-     "label": "Wednesday",
-     "value": "-0.25%",
-     "note": "-18.31 points"
+     "label": "Friday",
+     "value": "+1.60%",
+     "note": "+114.71 points"
     },
     {
-     "label": "Core inflation",
-     "value": "3.3%",
-     "note": "Oct, vs 3.2% expected"
+     "label": "This week",
+     "value": "+5.6%",
+     "note": "best since April 2025"
     },
     {
-     "label": "Fed hike odds",
-     "value": "about 97%",
-     "note": "December meeting"
+     "label": "2026 so far",
+     "value": "+6.6%",
+     "note": "as of Nov 27"
     }
    ],
-   "whyMoved": "The S&P 500 fell 18.31 points, or 0.25%, on Wednesday, November 25, to 7,182.78, after being down about 1.5% in the morning. Two pieces of news hit early: October core PCE inflation, the Fed's favorite price gauge, came in at 3.3% over a year, above the 3.2% expected, and the government proposed new tariffs (import taxes) of up to 20% on 14 trading partners. AI stocks fell for a second day, with Nvidia closing down 3.91% at $149.30 after falling as much as 8%, while HP jumped 11.49% on strong results. The index recovered most of its loss as rates on 10-year government bonds dipped to about 4.85%, because lower bond rates make stocks look like a better deal.",
+   "whyMoved": "The S&P 500 rose 114.71 points, or 1.60%, to 7,297.49 on Friday, November 27, in a short session that ended at 1 p.m. ET, and gained 5.6% for the week from 6,910.39 on November 20. The week turned on Monday, November 23, when Nvidia brought back Jensen Huang as CEO and AI stocks soared, after his November 12 exit had dragged them down. On Friday, chip makers led again, with Micron up 7.6% and AMD up 4.6%, while Amazon gained 3.96% on early holiday shopping data. Because a handful of giant tech companies make up a big share of the S&P 500, their swings decide most of the index's moves.",
    "watch": [
     {
-     "date": "Nov 27",
-     "what": "Markets reopen for a short half-day after being closed for Thanksgiving on Nov 26; trading is light on half-days, so moves can be bigger than usual."
+     "date": "Dec 1",
+     "what": "The job openings report comes out at 10 a.m. ET; fewer openings would point to a cooling job market, which could ease pressure for more rate hikes."
     },
     {
      "date": "Dec 9",
-     "what": "The Fed announces its interest rate decision; traders see about a 97% to 98% chance of a quarter-point hike, so no hike would be a big surprise and a bigger hike would be a shock."
-    },
-    {
-     "date": "Jan 10",
-     "what": "The US-China trade truce ends, and the new tariffs of up to 20% could start in January after a comment period; dropping or shrinking them would ease worries."
+     "what": "The Fed announces its interest rate decision; traders see a hike as almost certain, so holding rates steady would be a big surprise and a larger hike would be a shock."
     }
    ]
   },
   {
    "bear": [
-    "AI stocks fell for a second day on Nov 25, with Nvidia down as much as 8% during the day, showing how fast worries about AI spending can return.",
-    "Traders see about a 97% chance of a Fed rate hike in December after core inflation hit 3.3%, and higher rates hurt tech companies whose biggest profits are years away.",
-    "The Nasdaq 100 briefly fell 20% below its record high on Nov 25, the line many people use to define a big market drop."
+    "The Nasdaq is still up only 3.8% for 2026, far behind the Russell 2000's 10.8%.",
+    "Nvidia sits 8.8% below its Nov 23 close, so the biggest AI company has not fully recovered.",
+    "A Fed rate hike is expected in December, and higher rates hurt fast-growing tech companies most because their profits are far in the future."
    ],
    "bull": [
-    "The Nasdaq cut a 2.4% morning drop to 0.62% by the close on Nov 25, so many buyers stepped in at lower prices.",
-    "HP jumped 11.49% on Nov 25 after its quarterly results and 2027 outlook beat forecasts, showing some tech companies are still growing.",
-    "Even after two losing days, the Nasdaq is up 4.3% for the week of Nov 23, thanks to Monday's 6.5% jump."
+    "The 6.7% weekly gain was the Nasdaq's best since April 2026, a sign buyers think the AI sell-off went too far.",
+    "Chip stocks like Micron (+7.6%) and AMD (+4.6%) led Friday, and chip makers supply the whole AI build-out.",
+    "Anthropic closed at $91.88 on Nov 27, back above its $83 starting price, showing demand for new AI companies."
    ],
-   "headline": "Nasdaq falls 0.6% as AI stocks drop for a second straight day",
+   "headline": "Nasdaq leaps 2.3% as chip stocks rebound, up 6.7% for the week",
    "market": true,
    "name": "Nasdaq",
    "nextEvent": "Dec 9: Fed interest rate decision",
    "order": 2,
-   "sentiment": "bearish",
+   "sentiment": "bullish",
    "sources": [
     {
-     "title": "How major US stock indexes fared Wednesday 11/25/2026",
-     "url": "https://abcnews.com/Business/wireStory/major-us-stock-indexes-fared-wednesday-11252026-138453529",
-     "outlet": "ABC News (AP)",
-     "date": "Nov 25, 2026"
+     "title": "Dow Jumps 591 Points as Black Friday Shopping Season Lifts Stocks; Nasdaq Surges 6.7% for the Week",
+     "url": "https://finance.biggo.com/news/94218d89-8592-4b2f-a61c-1e75d032506d",
+     "outlet": "BigGo Finance",
+     "date": "Nov 27, 2026"
     },
     {
-     "title": "Stock market today: Dow erases losses to end positive, S&P 500 and Nasdaq recover ground amid AI sell-off",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-25-dow-sp-500-nasdaq-pce-inflation-data-091428237.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 25, 2026"
+     "title": "How major US stock indexes fared Friday 11/27/2026",
+     "url": "https://finance.yahoo.com/markets/world-indices/articles/major-us-stock-indexes-fared-184551517.html",
+     "outlet": "Yahoo Finance (AP)",
+     "date": "Nov 27, 2026"
     },
     {
-     "title": "Stock Market Today, Nov. 25: Dow Erases 1,100-Point Loss as Wall Street Stages Dramatic Late-Day Comeback",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/25/stock-market-today-nov-25-dow-erases-1-100-point-loss-as-wall-street-stages-dramatic-late-day-comeback/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 25, 2026"
+     "title": "Stock Market Today, November 27, 2026: Stocks Close Higher in a Short Black Friday Session",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-27-2026",
+     "outlet": "Stock Titan",
+     "date": "Nov 27, 2026"
     },
     {
-     "title": "Stocks slide as AI sell-off deepens, Fed's preferred inflation gauge rises",
-     "url": "https://www.foxbusiness.com/markets/stocks-11-25-2026",
-     "outlet": "Fox Business",
-     "date": "Nov 25, 2026"
+     "title": "Weekly Market Summary: Stocks Stage a Sharp Rebound in a Thanksgiving Holiday-Shortened Week Ending November 27, 2026",
+     "url": "https://vistapglobal.com/weekly-market-summary-stocks-stage-a-sharp-rebound-in-a-thanksgiving-holiday-shortened-week-ending-november-27-2026-ant-bby-eprx-gap-googl-ko-modd-mo-nvda-ser-sndk-skhy-spcx-wmt/",
+     "outlet": "Vista Partners",
+     "date": "Nov 27, 2026"
     }
    ],
-   "summary": "The Nasdaq is still up 4.3% this week thanks to Monday's 6.5% jump, but only 1.5% for 2026. At its low in the morning, the Nasdaq 100 (its 100 biggest companies) was briefly 20% below its record high, per Fox Business. Ambarella fell 19.77% and Nutanix about 15% on weak forecasts, while Meta rose about 3.4%. Anthropic, which went public at $83, fell about 8% in the morning.",
+   "summary": "At one point this month the Nasdaq 100, its 100 biggest companies, fell nearly 20% from its October high. Nvidia rose just 0.80% Friday to $150.49 and is 8.8% below its Monday close of $165.05. Anthropic, which started trading on November 19 at $83, jumped about 11% to $91.88. Tesla rose 5.22% to $400.00 and Palantir 5.24% to $172.17.",
    "ticker": "NASDAQ",
-   "updatedAt": "2026-11-25T23:16:40.205Z",
+   "updatedAt": "2026-11-27T23:05:52.431Z",
    "symbol": "NASDAQ:QQQ",
-   "checkedAt": "2026-11-27T11:43:17.501Z",
-   "about": "The Nasdaq Composite tracks more than 3,000 stocks traded on the Nasdaq exchange. It is packed with tech companies like Nvidia, Apple, Microsoft, Amazon and Alphabet, so it moves most with tech news.",
+   "checkedAt": "2026-11-27T23:05:52.431Z",
+   "about": "The Nasdaq Composite tracks more than 3,000 stocks on the Nasdaq exchange, many of them tech companies like Nvidia, Apple, Microsoft and Amazon. It shows how tech stocks are doing.",
    "keyNumbers": [
     {
      "label": "Index level",
-     "value": "23,585.80",
-     "note": "Nov 25 close"
+     "value": "24,129.50",
+     "note": "Nov 27 close"
     },
     {
-     "label": "Wednesday",
-     "value": "-0.62%",
-     "note": "-147.73 points"
+     "label": "Friday",
+     "value": "+2.31%",
+     "note": "+543.70 points"
     },
     {
-     "label": "Nvidia",
-     "value": "$149.30",
-     "note": "-3.91% on Nov 25"
+     "label": "This week",
+     "value": "+6.7%",
+     "note": "best since April 2026"
     },
     {
      "label": "2026 so far",
-     "value": "+1.5%",
-     "note": "as of Nov 25"
+     "value": "+3.8%",
+     "note": "as of Nov 27"
     }
    ],
-   "whyMoved": "The Nasdaq fell 147.73 points, or 0.62%, on Wednesday, November 25, to 23,585.80, after being down about 2.4% in the morning. AI stocks fell for a second day after Monday's rally on Jensen Huang's return as Nvidia's CEO faded: Nvidia closed down 3.91% at $149.30 after falling as much as 8%, and Amazon fell about 3% and Alphabet about 2%. A hotter-than-expected inflation report raised the odds of a Fed rate hike, and higher rates hurt fast-growing tech companies most because much of their profit is expected years from now. The drop shrank as bond rates fell, and HP jumped 11.49% on better-than-expected results.",
+   "whyMoved": "The Nasdaq rose 543.70 points, or 2.31%, to 24,129.50 on Friday, November 27, and climbed 6.7% for the week from 22,617.73, the best gain of the four big indexes. Chip makers that had been beaten down led Friday's bounce: SanDisk jumped about 16%, Micron 7.6% to $646.95, AMD 4.6% to $424.54 and Broadcom 3.8%. The big turn came Monday, November 23, when Nvidia reinstated Jensen Huang as CEO and the Nasdaq soared about 6.5%, its best day since April 2025. The Nasdaq is packed with AI companies whose profits depend on selling chips and cloud computing, so news about AI spending moves it more than any other index.",
    "watch": [
     {
-     "date": "Nov 27",
-     "what": "Markets reopen for a short half-day after being closed for Thanksgiving on Nov 26; trading is light on half-days, so moves can be bigger than usual."
+     "date": "Dec 1",
+     "what": "The job openings report comes out at 10 a.m. ET; fewer openings would point to a cooling job market, which could ease pressure for more rate hikes."
     },
     {
      "date": "Dec 9",
-     "what": "The Fed announces its interest rate decision; traders see about a 97% to 98% chance of a quarter-point hike, so no hike would be a big surprise and a bigger hike would be a shock."
-    },
-    {
-     "date": "Jan 10",
-     "what": "The US-China trade truce ends, and the new tariffs of up to 20% could start in January after a comment period; dropping or shrinking them would ease worries."
+     "what": "The Fed announces its interest rate decision; traders see a hike as almost certain, so holding rates steady would be a big surprise and a larger hike would be a shock."
     }
    ]
   },
@@ -622,79 +608,75 @@
    "order": 5,
    "symbol": "COINBASE:BTCUSD",
    "sentiment": "bearish",
-   "headline": "Bitcoin climbs back to about $60,100 but is down nearly 4% this week",
-   "summary": "Bitcoin is down about 27% from $80,770 a month ago and about 33% from a year ago. Its all-time high was $126,198 on October 6, 2025. Hot October inflation of 3.3% (core) raised expectations of a Fed rate hike in December. US regulators (the CFTC) said trading firms can count bitcoin toward some money they must keep in reserve.",
+   "headline": "Bitcoin slips back near $59,800 as stocks rally, funds keep selling",
+   "summary": "A crypto Fear & Greed score of 12 out of 100 shows traders are very nervous. A bill called the American Reserve Modernization Act, sent forward on November 24 by a 28 to 21 committee vote, would stop the US from selling its bitcoin for 20 years. A new Swiss bitcoin fund, BBIT, started trading. Traders watch $58,500 as a level where buyers have stepped in before.",
    "bull": [
-    "Bitcoin climbed back above $60,000 by the evening of Nov 25 after dipping to about $58,564 that morning, so buyers still show up near that level.",
-    "The CFTC said trading firms can count bitcoin toward some of their required reserves, a small step toward wider use by big institutions.",
-    "BlackRock's bitcoin fund IBIT rose 0.92% on Nov 25 along with the coin, showing the bounce reached the big funds too."
+    "A bill advanced on Nov 24 by a 28 to 21 vote would bar US government bitcoin sales for 20 years, which would keep those coins off the market.",
+    "Bitcoin briefly reclaimed $61,000 early on Nov 27, so buyers still appear near $60,000.",
+    "A new Swiss bitcoin fund, BBIT, began trading, giving more investors an easy way to buy."
    ],
    "bear": [
-    "US bitcoin funds lost $4.94 billion in November, a record, and had six straight days of outflows through Nov 24, so big investors keep selling.",
-    "Traders see about a 97% chance of a Fed rate hike in December after core inflation came in at 3.3%, which makes interest-paying savings more attractive than bitcoin.",
-    "Bitcoin is down about 27% in a month and more than 50% from its October 2025 record, and weak tech stocks could pull it lower."
+    "US bitcoin funds lost a record $5.39 billion in November with seven straight days of outflows, so big investors keep selling.",
+    "Bitcoin fell about 1.4% on Nov 27 while the S&P 500 rose 1.6%, showing it is missing the stock rally.",
+    "A Fed rate hike is expected in December, and bitcoin pays no interest, so higher savings rates pull buyers away."
    ],
    "nextEvent": "Dec 9: Fed interest rate decision",
    "sources": [
     {
-     "title": "Crypto Market Today, Nov. 25: Bitcoin, Ethereum, and Solana as Short Liquidations Fuel Fragile Rebound",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/25/crypto-market-today-nov-25-bitcoin-ethereum-and-solana-as-short-liquidations-fuel-fragile-rebound/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 25, 2026"
-    },
-    {
-     "title": "Bitcoin at $58,616, Ether at $1,646: crypto prices today, November 25, 2026",
-     "url": "https://thecompanychronicle.com/story/crypto-prices-today-november-25-2026",
+     "title": "Bitcoin reclaims $61,000 as Chainlink leads the week: crypto prices today, November 27, 2026",
+     "url": "https://thecompanychronicle.com/story/crypto-prices-today-november-27-2026",
      "outlet": "The Company Chronicle",
-     "date": "Nov 25, 2026"
+     "date": "Nov 27, 2026"
     },
     {
-     "title": "Current price of Bitcoin for November 25, 2026",
-     "url": "https://fortune.com/article/price-of-bitcoin-11-25-2026/",
-     "outlet": "Fortune",
-     "date": "Nov 25, 2026"
+     "title": "Crypto Daily Market Report – November 27, 2026",
+     "url": "https://www.kucoin.com/news/articles/crypto-daily-market-report-november-27-2026",
+     "outlet": "KuCoin",
+     "date": "Nov 27, 2026"
     },
     {
-     "title": "Crypto Market Today, November 25, 2026: Bitcoin Below $60,000 as Ethereum, XRP and Solana Slide",
-     "url": "https://eurasiabusinessnews.com/2026/11/25/crypto-market-today-november-25-2026-bitcoin-below-60000-as-ethereum-xrp-and-solana-slide/",
+     "title": "Weekly Market Summary: Stocks Stage a Sharp Rebound in a Thanksgiving Holiday-Shortened Week Ending November 27, 2026",
+     "url": "https://vistapglobal.com/weekly-market-summary-stocks-stage-a-sharp-rebound-in-a-thanksgiving-holiday-shortened-week-ending-november-27-2026-ant-bby-eprx-gap-googl-ko-modd-mo-nvda-ser-sndk-skhy-spcx-wmt/",
+     "outlet": "Vista Partners",
+     "date": "Nov 27, 2026"
+    },
+    {
+     "title": "U.S. Stock Market Today, November 27, 2026: Tech Rebounds in Shortened Black Friday Session",
+     "url": "https://eurasiabusinessnews.com/2026/11/27/u-s-stock-market-today-november-27-2026-tech-rebounds-in-shortened-black-friday-session/",
      "outlet": "Eurasia Business News",
-     "date": "Nov 25, 2026"
+     "date": "Nov 27, 2026"
     }
    ],
-   "updatedAt": "2026-11-25T23:16:40.200Z",
-   "checkedAt": "2026-11-27T11:43:17.501Z",
+   "updatedAt": "2026-11-27T23:05:52.430Z",
+   "checkedAt": "2026-11-27T23:05:52.430Z",
    "about": "Bitcoin is the first and biggest cryptocurrency, a digital money that is not run by any bank or government. There will only ever be 21 million bitcoins, and its price depends on how many people want to buy and hold it.",
    "keyNumbers": [
     {
      "label": "Price",
-     "value": "about $60,139",
-     "note": "Nov 25, early evening"
+     "value": "about $59,800",
+     "note": "Nov 27 afternoon"
     },
     {
-     "label": "Past 7 days",
-     "value": "-3.8%",
-     "note": "as of Nov 25"
+     "label": "Friday",
+     "value": "about -1.4%",
+     "note": "while stocks rose"
     },
     {
      "label": "Fund outflows",
-     "value": "$4.94 billion",
+     "value": "$5.39 billion",
      "note": "November, a record"
     },
     {
-     "label": "From record",
-     "value": "over -50%",
-     "note": "$126,198, Oct 6, 2025"
+     "label": "Fear & Greed",
+     "value": "12 of 100",
+     "note": "extreme fear"
     }
    ],
-   "whyMoved": "Bitcoin fell to about $58,564 on Wednesday morning, November 25, down 3.13% from the day before, then climbed back to about $60,139 by early evening, up 0.66% for the day. The bounce came mostly from traders who had bet on a fall being forced to buy back in, not from new buyers. Money keeps leaving US bitcoin funds: they lost $231.6 million on Tuesday, the sixth straight day, and $4.94 billion in November, beating June's record of $4.51 billion. Bitcoin pays no interest, so when traders expect the Fed to raise rates, safer savings and bonds look better and bitcoin loses buyers.",
+   "whyMoved": "Bitcoin rose to about $61,508 early Friday, November 27, with a 24-hour range of $59,842 to $62,123, but slipped back to about $59,818 by the afternoon, down about 1.4%, even as stocks jumped. US bitcoin funds have had seven straight days of money leaving, and November's outflows hit a record $5.39 billion. When those big funds sell, they must sell actual bitcoin, which pushes the price down. About $7.6 billion of bitcoin and ether options (bets on future prices) expired Friday, which can cause extra swings.",
    "watch": [
     {
-     "date": "Nov 27",
-     "what": "Markets reopen for a short half-day after being closed for Thanksgiving on Nov 26; trading is light on half-days, so moves can be bigger than usual."
-    },
-    {
      "date": "Dec 9",
-     "what": "The Fed announces its interest rate decision; traders see about a 97% to 98% chance of a quarter-point hike, so no hike would be a big surprise and a bigger hike would be a shock."
+     "what": "The Fed announces its interest rate decision; traders see a hike as almost certain, so holding rates steady would be a big surprise and a larger hike would be a shock."
     }
    ]
   },
@@ -705,33 +687,21 @@
    "crypto": true,
    "order": 6,
    "symbol": "COINBASE:ETHUSD",
-   "sentiment": "neutral",
-   "headline": "Ether rises 3% to about $1,740 as a Dec 15 test date is set for its next upgrade",
-   "summary": "Glamsterdam already ran on another practice network, Sepolia, on October 6, but no date is set for the real network. Safety reviews found 200 possible problems with older apps, 3 of them serious, and one developer estimated 10,000 to 15,000 of about 90 million smart contracts (programs on Ethereum) could be affected. Researcher Justin Drake set a goal of late 2028 to make Ethereum safe from future quantum computers. Ether is still about 65% below its August 2025 record of $4,950.",
+   "sentiment": "bearish",
+   "headline": "Ether fades from $1,730 to about $1,670, down 2% this week",
+   "summary": "About $7.6 billion of bitcoin and ether options expired on November 27, which can make prices jumpy. The crypto Fear & Greed score sits at 12 out of 100, showing deep fear. Brazil's B3 exchange pushed its stablecoin launch to 2027. Chainlink, a coin used by many Ethereum apps, is up 5.4% this week.",
    "bull": [
-    "The December 15 test date puts Glamsterdam back on track after a delay from October 26, and finishing upgrades on time builds trust in the network.",
-    "Traders betting on a fall lost $6.13 million in one hour on November 27, showing buyers stepped in even on a holiday.",
-    "Ether held above about $1,640, its November 25 low, and has bounced from there, a sign some buyers see value at that price."
+    "Ether climbed to $1,730.42 early on Nov 27, showing buyers step in after drops.",
+    "Chainlink, which many Ethereum apps rely on, rose 5.4% this week, a sign of interest in apps built on the network.",
+    "Ether rose 2.42% early Friday by one count, so the bounce on light holiday trading was real, if short."
    ],
    "bear": [
-    "Ether is down 30.4% in a month as of November 25, from $2,357.50, showing heavy selling through November.",
-    "The safety reviews found 3 serious problems, and up to 15,000 apps may need fixes, which could push the real upgrade later.",
-    "Traders see about a 97% chance of a Fed rate hike on December 9, which makes interest-paying savings look better than crypto."
+    "The supply of stablecoins is shrinking, and fewer stablecoins on Ethereum means less use and fewer fees.",
+    "Brazil's B3 delayed its stablecoin launch to 2027, pushing back a possible new source of activity.",
+    "US bitcoin funds lost a record $5.39 billion in November, and that fear usually drags ether down too."
    ],
    "nextEvent": "Dec 9: Fed interest rate decision",
    "sources": [
-    {
-     "title": "Ethereum price rises 3% as developers confirm December 15 test for Glamsterdam upgrade",
-     "url": "https://crypto.news/ethereum-price-glamsterdam-upgrade-hoodi-december-15",
-     "outlet": "crypto.news",
-     "date": "Nov 27, 2026"
-    },
-    {
-     "title": "Ether Rises 2.75% in Four Hours to $1,747 on Nov. 27",
-     "url": "https://www.tokenpost.com/news/investing/63259",
-     "outlet": "TokenPost",
-     "date": "Nov 27, 2026"
-    },
     {
      "title": "Ether Trades at $1,730.42 in Friday Morning Market Snapshot",
      "url": "https://www.tokenpost.com/news/investing/63420",
@@ -739,52 +709,54 @@
      "date": "Nov 27, 2026"
     },
     {
-     "title": "Crypto Market Today, Nov. 25: Bitcoin, Ethereum, and Solana as Short Liquidations Fuel Fragile Rebound",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/25/crypto-market-today-nov-25-bitcoin-ethereum-and-solana-as-short-liquidations-fuel-fragile-rebound/",
-     "outlet": "The Motley Fool",
-     "date": "Nov 25, 2026"
+     "title": "Bitcoin reclaims $61,000 as Chainlink leads the week: crypto prices today, November 27, 2026",
+     "url": "https://thecompanychronicle.com/story/crypto-prices-today-november-27-2026",
+     "outlet": "The Company Chronicle",
+     "date": "Nov 27, 2026"
     },
     {
-     "title": "Bitcoin at $58,616, Ether at $1,646: crypto prices today, November 25, 2026",
-     "url": "https://thecompanychronicle.com/story/crypto-prices-today-november-25-2026",
-     "outlet": "The Company Chronicle",
-     "date": "Nov 25, 2026"
+     "title": "Crypto Daily Market Report – November 27, 2026",
+     "url": "https://www.kucoin.com/news/articles/crypto-daily-market-report-november-27-2026",
+     "outlet": "KuCoin",
+     "date": "Nov 27, 2026"
+    },
+    {
+     "title": "U.S. Stock Market Today, November 27, 2026: Tech Rebounds in Shortened Black Friday Session",
+     "url": "https://eurasiabusinessnews.com/2026/11/27/u-s-stock-market-today-november-27-2026-tech-rebounds-in-shortened-black-friday-session/",
+     "outlet": "Eurasia Business News",
+     "date": "Nov 27, 2026"
     }
    ],
-   "updatedAt": "2026-11-27T11:43:17.500Z",
-   "checkedAt": "2026-11-27T11:43:17.501Z",
-   "about": "Ether is the digital money of Ethereum, a network where people run apps, make payments and trade digital tokens without a bank in the middle. People pay small fees in ether to use the network.",
+   "updatedAt": "2026-11-27T23:05:52.431Z",
+   "checkedAt": "2026-11-27T23:05:52.431Z",
+   "about": "Ethereum is a blockchain network that runs apps, digital tokens and stablecoins; ether is its coin, used to pay fees on the network. It is the second-biggest cryptocurrency after bitcoin.",
    "keyNumbers": [
     {
      "label": "Price",
-     "value": "about $1,740",
-     "note": "Nov 27, up 3% in a day"
+     "value": "about $1,667",
+     "note": "Nov 27 afternoon"
     },
     {
-     "label": "Past month",
-     "value": "-30.4%",
-     "note": "as of Nov 25"
+     "label": "Morning high",
+     "value": "$1,730.42",
+     "note": "4:33 a.m. ET, Nov 27"
     },
     {
-     "label": "From record",
-     "value": "about -65%",
-     "note": "record $4,950, Aug 2025"
+     "label": "Past 7 days",
+     "value": "-2.0%",
+     "note": "as of Nov 27 morning"
     },
     {
-     "label": "Upgrade test date",
-     "value": "Dec 15",
-     "note": "Glamsterdam on Hoodi"
+     "label": "Fear & Greed",
+     "value": "12 of 100",
+     "note": "extreme fear"
     }
    ],
-   "whyMoved": "Ether rose about 3% over Thanksgiving to about $1,740 on Friday morning, November 27, after trading between $1,670 and $1,750 in a day; it was near $1,685 on the evening of November 25. Part of the jump came fast: ether climbed 2.75% in four hours to $1,747 just after midnight Eastern time, as $6.13 million of bets on a fall were forced to close, compared with only $10,000 of bets on a rise. Developers also agreed on November 26 to test Ethereum's next big upgrade, called Glamsterdam, on the Hoodi practice network on December 15, after delaying it from October 26. Ether's price depends on how many people want to use and hold it, and upgrades that make the network faster and cheaper can bring in more users.",
+   "whyMoved": "Ether traded at $1,730.42 early Friday, November 27, and about $1,720 at 8 a.m. ET, up 1.1% in 24 hours, but fell back to about $1,667 later in the day, down about 2.2%. It started the day near $1,689.91 at midnight UTC. Ether is down about 2.0% over the past week, worse than bitcoin's 0.7% drop over the same span. Ether's value depends on people using the Ethereum network for apps and stablecoins, and the supply of stablecoins is shrinking, which means less activity and fewer fees.",
    "watch": [
     {
      "date": "Dec 9",
-     "what": "The Fed announces its interest rate decision; a hike is widely expected, so no hike would help crypto and hints of more hikes would hurt."
-    },
-    {
-     "date": "Dec 15",
-     "what": "Glamsterdam goes live on the Hoodi practice network. A smooth test would clear the way for a real launch date; problems would mean more delay."
+     "what": "The Fed announces its interest rate decision; traders see a hike as almost certain, so holding rates steady would be a big surprise and a larger hike would be a shock."
     }
    ]
   },
@@ -865,90 +837,80 @@
    "market": true,
    "order": 3,
    "symbol": "AMEX:DIA",
-   "sentiment": "neutral",
-   "headline": "Dow erases a 1,100-point drop to close up 164 at 50,183",
-   "summary": "The Dow is up 4.2% this week, its best of the three main indexes, and closed above 50,000 for a second day after reclaiming that mark on Tuesday. Microsoft fell about 1.3% and Apple rose about 0.4% on Wednesday. Only 189,000 people filed new jobless claims and summer growth was revised up to 4.3% a year, signs of a strong economy. Markets are closed Thursday for Thanksgiving and reopen for a half-day Friday.",
+   "sentiment": "bullish",
+   "headline": "Dow gains 592 points as Amazon and Caterpillar lead, up 5.5% this week",
+   "summary": "On Wednesday, November 25, the Dow came back from a drop of more than 1,100 points to finish higher after a hot inflation report. Investors are watching holiday store sales to see how much shoppers are spending. Gap lowered its outlook because of warm weather, while Best Buy sounded more upbeat. Summer economic growth was revised up to 4.3% a year.",
    "bull": [
-    "The Dow erased a loss of more than 1,100 points on Nov 25 to finish up 164, showing strong buying when prices dipped.",
-    "Energy stocks led the market on Nov 25 as oil rose about 2.5%, and the Dow holds energy giant Chevron, so it benefits when money leaves tech.",
-    "New jobless claims were just 189,000 and summer growth was revised to 4.3%, good signs for Dow companies that sell to US shoppers and businesses."
+    "Amazon's 3.96% jump on early Black Friday data shows shoppers are spending, which helps the Dow's store and consumer companies.",
+    "Caterpillar rose 3.3% on Nov 27, and its high share price gives it extra pull on the Dow.",
+    "The Dow's 5.5% weekly gain lifted it to 50,774.94, up 5.6% for 2026."
    ],
    "bear": [
-    "Core inflation came in at 3.3% in October, above the 3.2% forecast, and traders see about a 97% chance of a Fed rate hike in December, raising borrowing costs for big companies.",
-    "The new tariff plan of up to 20% on imports from 14 partners could raise costs for Dow companies like Apple, Nike and Caterpillar that make or sell goods around the world.",
-    "Member Nvidia fell as much as 8% on Nov 25, and the Dow's 1,100-point swing in one day shows how jumpy the market is."
+    "A Fed rate hike looks nearly certain in December, raising loan costs for big companies and their customers.",
+    "Gap cut its outlook over warm weather, a warning that holiday sales may be uneven across stores.",
+    "October prices rose 0.4% in one month, more than forecast, which squeezes what shoppers can buy."
    ],
    "nextEvent": "Dec 9: Fed interest rate decision",
    "sources": [
     {
-     "title": "Stock Market Today, Nov. 25: Dow Erases 1,100-Point Loss as Wall Street Stages Dramatic Late-Day Comeback",
-     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/25/stock-market-today-nov-25-dow-erases-1-100-point-loss-as-wall-street-stages-dramatic-late-day-comeback/",
+     "title": "Stock Market Today, Nov. 27: S&P 500 Posts Best Week in 19 Months as AI Stocks Rebound",
+     "url": "https://www.fool.com/coverage/stock-market-today/2026/11/27/stock-market-today-nov-27-s-and-p-500-posts-best-week-in-19-months-as-ai-stocks-rebound/",
      "outlet": "The Motley Fool",
-     "date": "Nov 25, 2026"
+     "date": "Nov 27, 2026"
     },
     {
-     "title": "How major US stock indexes fared Wednesday 11/25/2026",
-     "url": "https://abcnews.com/Business/wireStory/major-us-stock-indexes-fared-wednesday-11252026-138453529",
-     "outlet": "ABC News (AP)",
-     "date": "Nov 25, 2026"
+     "title": "How major US stock indexes fared Friday 11/27/2026",
+     "url": "https://finance.yahoo.com/markets/world-indices/articles/major-us-stock-indexes-fared-184551517.html",
+     "outlet": "Yahoo Finance (AP)",
+     "date": "Nov 27, 2026"
     },
     {
-     "title": "Stock market today: Dow erases losses to end positive, S&P 500 and Nasdaq recover ground amid AI sell-off",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-25-dow-sp-500-nasdaq-pce-inflation-data-091428237.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 25, 2026"
+     "title": "Dow Jumps 591 Points as Black Friday Shopping Season Lifts Stocks; Nasdaq Surges 6.7% for the Week",
+     "url": "https://finance.biggo.com/news/94218d89-8592-4b2f-a61c-1e75d032506d",
+     "outlet": "BigGo Finance",
+     "date": "Nov 27, 2026"
     },
     {
-     "title": "Stocks slide as AI sell-off deepens, Fed's preferred inflation gauge rises",
-     "url": "https://www.foxbusiness.com/markets/stocks-11-25-2026",
-     "outlet": "Fox Business",
-     "date": "Nov 25, 2026"
-    },
-    {
-     "title": "Stocks Close Mixed on Wednesday, November 25, 2026, as Hot PCE Inflation, New Tariff Plans and an AI Sell-Off Test Wall Street",
-     "url": "https://vistapglobal.com/stocks-close-mixed-on-wednesday-november-25-2026-as-hot-pce-inflation-new-tariff-plans-and-an-ai-sell-off-test-wall-street-amd-eprx-googl-modd-nvda-ser-spcx-vix/",
+     "title": "Weekly Market Summary: Stocks Stage a Sharp Rebound in a Thanksgiving Holiday-Shortened Week Ending November 27, 2026",
+     "url": "https://vistapglobal.com/weekly-market-summary-stocks-stage-a-sharp-rebound-in-a-thanksgiving-holiday-shortened-week-ending-november-27-2026-ant-bby-eprx-gap-googl-ko-modd-mo-nvda-ser-sndk-skhy-spcx-wmt/",
      "outlet": "Vista Partners",
-     "date": "Nov 25, 2026"
+     "date": "Nov 27, 2026"
     }
    ],
-   "checkedAt": "2026-11-27T11:43:17.501Z",
-   "updatedAt": "2026-11-25T23:16:40.204Z",
-   "about": "The Dow Jones Industrial Average tracks 30 big, well-known US companies like Apple, Walmart, JPMorgan, Nvidia and UnitedHealth. Unlike most indexes, it is weighted by share price, so stocks with higher prices move it more.",
+   "checkedAt": "2026-11-27T23:05:52.431Z",
+   "updatedAt": "2026-11-27T23:05:52.431Z",
+   "about": "The Dow Jones Industrial Average tracks 30 large, well-known US companies, such as Apple, Amazon, Nvidia, JPMorgan and Caterpillar. It is the oldest major US stock index.",
    "keyNumbers": [
     {
      "label": "Index level",
-     "value": "50,182.95",
-     "note": "Nov 25 close"
+     "value": "50,774.94",
+     "note": "Nov 27 close"
     },
     {
-     "label": "Wednesday",
-     "value": "+0.33%",
-     "note": "+164.25 points"
-    },
-    {
-     "label": "Worst point",
-     "value": "-1,100+ points",
-     "note": "in the morning, Nov 25"
+     "label": "Friday",
+     "value": "+1.18%",
+     "note": "+591.99 points"
     },
     {
      "label": "This week",
-     "value": "+4.2%",
-     "note": "+2,035.62 points"
+     "value": "+5.5%",
+     "note": "+2,627.61 points"
+    },
+    {
+     "label": "2026 so far",
+     "value": "+5.6%",
+     "note": "as of Nov 27"
     }
    ],
-   "whyMoved": "The Dow rose 164.25 points, or 0.33%, on Wednesday, November 25, to 50,182.95, after being down more than 1,100 points earlier in the day. It fell early on a hotter-than-expected inflation report and a new tariff plan, and because member Nvidia fell as much as 8% before closing down 3.91%. It came back as bond rates dropped and money moved from tech into older kinds of businesses like energy, which led all sectors as oil rose about 2.5% to $84.11. That mix helps the Dow more than the Nasdaq, because only a few of its 30 companies make chips.",
+   "whyMoved": "The Dow rose 591.99 points, or 1.18%, to 50,774.94 on Friday, November 27, and gained 2,627.61 points, or 5.5%, for the week. Amazon, one of its 30 members, rose 3.96% to $254.12 on early Black Friday shopping data, and Caterpillar, which sells construction machines, gained 3.3%. Apple added 0.83% to $358.54 and Nvidia 0.80% to $150.49. The Dow is weighted by share price, not company size, so high-priced stocks like Caterpillar can move it more than bigger but cheaper ones.",
    "watch": [
     {
-     "date": "Nov 27",
-     "what": "Markets reopen for a short half-day after being closed for Thanksgiving on Nov 26; trading is light on half-days, so moves can be bigger than usual."
+     "date": "Dec 1",
+     "what": "The job openings report comes out at 10 a.m. ET; fewer openings would point to a cooling job market, which could ease pressure for more rate hikes."
     },
     {
      "date": "Dec 9",
-     "what": "The Fed announces its interest rate decision; traders see about a 97% to 98% chance of a quarter-point hike, so no hike would be a big surprise and a bigger hike would be a shock."
-    },
-    {
-     "date": "Jan 10",
-     "what": "The US-China trade truce ends, and the new tariffs of up to 20% could start in January after a comment period; dropping or shrinking them would ease worries."
+     "what": "The Fed announces its interest rate decision; traders see a hike as almost certain, so holding rates steady would be a big surprise and a larger hike would be a shock."
     }
    ]
   },
@@ -959,83 +921,79 @@
    "order": 4,
    "symbol": "AMEX:IWM",
    "sentiment": "bullish",
-   "headline": "Russell 2000 rises 0.7% as smaller companies beat tech giants again",
-   "summary": "The Russell 2000 is up 4.7% this week and 9% for 2026, beating the S&P 500's 4.9% and the Nasdaq's 1.5% this year. Smaller stocks like Joby Aviation (up 11.6%), AMC (up 8.8%) and GoPro (up 7.0%) were among the biggest gainers on Wednesday. On November 18 Russell 2000 futures had hit their lowest level since April 13, so the index has bounced back fast. Shoppers' spending rose 0.3% in October and incomes rose 0.7%.",
+   "headline": "Russell 2000 rises 1.7% to 2,750, ending a 6.5% weekly gain",
+   "summary": "The Russell 2000 is up 10.8% in 2026, ahead of the S&P 500's 6.6%, Dow's 5.6% and Nasdaq's 3.8%. The IWM fund that tracks it rose 1.83% on Friday, beating SPY's 1.62%. Friday's session ended at 1 p.m. ET with lighter trading than usual. The VIX fear gauge fell 11.16% to 23.81.",
    "bull": [
-    "Small companies beat the big indexes again on Nov 25, rising 0.71% while the Nasdaq fell 0.62%, as money moved away from AI giants.",
-    "The 10-year bond rate fell to about 4.85% on Nov 25, which lowers borrowing costs for small companies that rely on loans.",
-    "The US economy looks strong: summer growth was revised to 4.3% and jobless claims were only 189,000, good for small firms that sell mainly at home."
+    "Its 10.8% gain for 2026 leads all four major indexes, so smaller US companies have held up best this year.",
+    "The economy grew 4.3% a year in the summer after the update, which helps small firms that sell mostly at home.",
+    "The 6.5% weekly gain shows buying spread beyond big tech, with all 11 S&P sectors higher on Friday."
    ],
    "bear": [
-    "Traders see about a 97% chance of a Fed rate hike in December after core inflation hit 3.3%, and small companies' loan costs rise quickly when the Fed raises rates.",
-    "The new tariff plan of up to 20% on imports from 14 partners could raise the cost of parts and goods that many small US firms buy from abroad.",
-    "Russell 2000 futures hit their lowest level since April 13 on Nov 18, a reminder that small company stocks can swing a lot in a few days."
+    "Traders expect a Fed rate hike in December, and many small companies have loans whose costs rise quickly with rates.",
+    "October prices rose 0.4% in one month, faster than forecast, which could keep rates high for longer.",
+    "Friday's half-day had light trading, so the 1.71% gain may not show how strongly investors really feel."
    ],
    "nextEvent": "Dec 9: Fed interest rate decision",
    "sources": [
     {
-     "title": "How major US stock indexes fared Wednesday 11/25/2026",
-     "url": "https://abcnews.com/Business/wireStory/major-us-stock-indexes-fared-wednesday-11252026-138453529",
-     "outlet": "ABC News (AP)",
-     "date": "Nov 25, 2026"
+     "title": "Russell 2000 Closes 1.71% Higher as AI Fears Ease",
+     "url": "https://www.ad-hoc-news.de/boerse/news/marktberichte/russell-2000-closes-1-71-prozent-higher-as-ai-fears-ease/70563104",
+     "outlet": "ad-hoc-news",
+     "date": "Nov 27, 2026"
     },
     {
-     "title": "Stock market today: Dow erases losses to end positive, S&P 500 and Nasdaq recover ground amid AI sell-off",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-25-dow-sp-500-nasdaq-pce-inflation-data-091428237.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 25, 2026"
+     "title": "How major US stock indexes fared Friday 11/27/2026",
+     "url": "https://finance.yahoo.com/markets/world-indices/articles/major-us-stock-indexes-fared-184551517.html",
+     "outlet": "Yahoo Finance (AP)",
+     "date": "Nov 27, 2026"
     },
     {
-     "title": "Stocks Close Mixed on Wednesday, November 25, 2026, as Hot PCE Inflation, New Tariff Plans and an AI Sell-Off Test Wall Street",
-     "url": "https://vistapglobal.com/stocks-close-mixed-on-wednesday-november-25-2026-as-hot-pce-inflation-new-tariff-plans-and-an-ai-sell-off-test-wall-street-amd-eprx-googl-modd-nvda-ser-spcx-vix/",
+     "title": "Stock Market Today, November 27, 2026: Stocks Close Higher in a Short Black Friday Session",
+     "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-27-2026",
+     "outlet": "Stock Titan",
+     "date": "Nov 27, 2026"
+    },
+    {
+     "title": "Weekly Market Summary: Stocks Stage a Sharp Rebound in a Thanksgiving Holiday-Shortened Week Ending November 27, 2026",
+     "url": "https://vistapglobal.com/weekly-market-summary-stocks-stage-a-sharp-rebound-in-a-thanksgiving-holiday-shortened-week-ending-november-27-2026-ant-bby-eprx-gap-googl-ko-modd-mo-nvda-ser-sndk-skhy-spcx-wmt/",
      "outlet": "Vista Partners",
-     "date": "Nov 25, 2026"
-    },
-    {
-     "title": "S&P 500 Closes Nearly Flat as Money Shifts From Tech to Old-Economy Stocks",
-     "url": "https://247wallst.com/cards/money-kept-rotating-out-of-tech-into-old-economy-names-on-th-gspc-market-bell-01m8a8b6rxkn4pffmb6jtqtxe7",
-     "outlet": "24/7 Wall St.",
-     "date": "Nov 25, 2026"
+     "date": "Nov 27, 2026"
     }
    ],
-   "checkedAt": "2026-11-27T11:43:17.501Z",
-   "updatedAt": "2026-11-25T23:16:40.205Z",
+   "checkedAt": "2026-11-27T23:05:52.431Z",
+   "updatedAt": "2026-11-27T23:05:52.431Z",
    "about": "The Russell 2000 tracks about 2,000 smaller US companies, like regional banks, stores and factories. Most of them sell mainly inside the US, so it shows how smaller businesses and the US economy are doing.",
    "keyNumbers": [
     {
      "label": "Index level",
-     "value": "2,704.06",
-     "note": "Nov 25 close"
+     "value": "2,750.30",
+     "note": "Nov 27 close"
     },
     {
-     "label": "Wednesday",
-     "value": "+0.71%",
-     "note": "+19.12 points"
+     "label": "Friday",
+     "value": "+1.71%",
+     "note": "+46.24 points"
     },
     {
      "label": "This week",
-     "value": "+4.7%",
-     "note": "best of the 4 indexes"
+     "value": "+6.5%",
+     "note": "from 2,581.79"
     },
     {
      "label": "2026 so far",
-     "value": "+9%",
-     "note": "as of Nov 25"
+     "value": "+10.8%",
+     "note": "best of the 4 indexes"
     }
    ],
-   "whyMoved": "The Russell 2000 rose 19.12 points, or 0.71%, on Wednesday, November 25, to 2,704.06, its third straight gain, while the Nasdaq fell 0.62%. Investors kept moving money away from big AI stocks, and few small companies make AI chips. Rates on 10-year government bonds fell to about 4.85%, which matters a lot for small companies because many borrow money at rates that move with the market. Strong economic news helped too, with summer growth revised up to 4.3% a year and only 189,000 new jobless claims.",
+   "whyMoved": "The Russell 2000 rose 46.24 points, or 1.71%, to 2,750.30 on Friday, November 27, after trading between 2,721.39 and 2,751.42. For the week it climbed 168.51 points, or 6.5%, from 2,581.79 on November 20, almost matching the Nasdaq's 6.7%. Friday's gain came as fears about AI stocks eased and all 11 parts of the S&P 500 traded higher, so the buying spread to smaller companies too. Small companies mostly sell inside the US, so a strong economy, like summer growth revised up to 4.3%, helps their profits directly.",
    "watch": [
     {
-     "date": "Nov 27",
-     "what": "Markets reopen for a short half-day after being closed for Thanksgiving on Nov 26; trading is light on half-days, so moves can be bigger than usual."
+     "date": "Dec 1",
+     "what": "The job openings report comes out at 10 a.m. ET; fewer openings would point to a cooling job market, which could ease pressure for more rate hikes."
     },
     {
      "date": "Dec 9",
-     "what": "The Fed announces its interest rate decision; traders see about a 97% to 98% chance of a quarter-point hike, so no hike would be a big surprise and a bigger hike would be a shock."
-    },
-    {
-     "date": "Jan 10",
-     "what": "The US-China trade truce ends, and the new tariffs of up to 20% could start in January after a comment period; dropping or shrinking them would ease worries."
+     "what": "The Fed announces its interest rate decision; traders see a hike as almost certain, so holding rates steady would be a big surprise and a larger hike would be a shock."
     }
    ]
   },
@@ -1203,34 +1161,34 @@
   }
  ],
  "market": {
-  "date": "2026-11-25",
-  "why": "On Wednesday, November 25, the Dow came back from a drop of more than 1,100 points to close up 164, while the S&P 500 and Nasdaq slipped as Nvidia fell about 4% in a second day of AI stock selling. Early losses came from a hot inflation report, with core prices up 3.3% in a year, and a plan for new tariffs (import taxes) of up to 20% on 14 trading partners. Falling bond rates helped smaller Russell 2000 companies rise.",
+  "date": "2026-11-27",
+  "why": "On Friday, November 27, stocks rose in a short Black Friday session that ended at 1 p.m., capping the S&P 500's best week since April 2025, up 5.6%. Beaten-down AI and chip stocks led the bounce, with Micron up 7.6% and AMD up 4.6%, which lifted the tech-heavy Nasdaq the most. Amazon rose about 4% on early holiday shopping news, helping the Dow gain 592 points, and the smaller companies in the Russell 2000 rose 1.7%, finishing up 6.5% for the week.",
   "sources": [
    {
-    "title": "How major US stock indexes fared Wednesday 11/25/2026",
-    "url": "https://abcnews.com/Business/wireStory/major-us-stock-indexes-fared-wednesday-11252026-138453529",
-    "outlet": "ABC News (AP)",
-    "date": "Nov 25, 2026"
-   },
-   {
-    "title": "Stock Market Today, Nov. 25: Dow Erases 1,100-Point Loss as Wall Street Stages Dramatic Late-Day Comeback",
-    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/25/stock-market-today-nov-25-dow-erases-1-100-point-loss-as-wall-street-stages-dramatic-late-day-comeback/",
+    "title": "Stock Market Today, Nov. 27: S&P 500 Posts Best Week in 19 Months as AI Stocks Rebound",
+    "url": "https://www.fool.com/coverage/stock-market-today/2026/11/27/stock-market-today-nov-27-s-and-p-500-posts-best-week-in-19-months-as-ai-stocks-rebound/",
     "outlet": "The Motley Fool",
-    "date": "Nov 25, 2026"
+    "date": "Nov 27, 2026"
    },
    {
-    "title": "Stock market today: Dow erases losses to end positive, S&P 500 and Nasdaq recover ground amid AI sell-off",
-    "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-25-dow-sp-500-nasdaq-pce-inflation-data-091428237.html",
-    "outlet": "Yahoo Finance",
-    "date": "Nov 25, 2026"
+    "title": "How major US stock indexes fared Friday 11/27/2026",
+    "url": "https://finance.yahoo.com/markets/world-indices/articles/major-us-stock-indexes-fared-184551517.html",
+    "outlet": "Yahoo Finance (AP)",
+    "date": "Nov 27, 2026"
    },
    {
-    "title": "Stocks slide as AI sell-off deepens, Fed's preferred inflation gauge rises",
-    "url": "https://www.foxbusiness.com/markets/stocks-11-25-2026",
-    "outlet": "Fox Business",
-    "date": "Nov 25, 2026"
+    "title": "Dow Jumps 591 Points as Black Friday Shopping Season Lifts Stocks; Nasdaq Surges 6.7% for the Week",
+    "url": "https://finance.biggo.com/news/94218d89-8592-4b2f-a61c-1e75d032506d",
+    "outlet": "BigGo Finance",
+    "date": "Nov 27, 2026"
+   },
+   {
+    "title": "Stock Market Today, November 27, 2026: Stocks Close Higher in a Short Black Friday Session",
+    "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-27-2026",
+    "outlet": "Stock Titan",
+    "date": "Nov 27, 2026"
    }
   ],
-  "updatedAt": "2026-11-25T23:16:33.513Z"
+  "updatedAt": "2026-11-27T23:04:51.433Z"
  }
 }
