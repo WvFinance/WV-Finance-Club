@@ -1,12 +1,12 @@
 {
- "updated": "2026-11-26T20:27:58Z",
+ "updated": "2026-11-27T20:12:56Z",
  "analysts": [
   {
    "ticker": "ANET",
    "name": "Arista Networks",
-   "price": 163.99,
-   "week": -15.4,
-   "why": "30 of 30 Wall Street experts say Buy. Their average price goal is $249, 52% above today's price.",
+   "price": 174.73,
+   "week": -7.8,
+   "why": "30 of 30 Wall Street experts say Buy. Their average price goal is $249, 42% above today's price.",
    "buy": 30,
    "analysts": 30,
    "target": 248.61
@@ -14,9 +14,9 @@
   {
    "ticker": "DAL",
    "name": "Delta Air Lines",
-   "price": 82.95,
-   "week": -2.3,
-   "why": "24 of 25 Wall Street experts say Buy. Their average price goal is $102, 23% above today's price.",
+   "price": 84.82,
+   "week": 2.0,
+   "why": "24 of 25 Wall Street experts say Buy. Their average price goal is $102, 20% above today's price.",
    "buy": 24,
    "analysts": 25,
    "target": 101.65
@@ -24,9 +24,9 @@
   {
    "ticker": "AMZN",
    "name": "Amazon.com",
-   "price": 244.43,
-   "week": -8.7,
-   "why": "59 of 62 Wall Street experts say Buy. Their average price goal is $326, 34% above today's price.",
+   "price": 254.12,
+   "week": -1.3,
+   "why": "59 of 62 Wall Street experts say Buy. Their average price goal is $326, 28% above today's price.",
    "buy": 59,
    "analysts": 62,
    "target": 326.34
@@ -36,9 +36,9 @@
   {
    "ticker": "RBLX",
    "name": "Roblox",
-   "price": 55.63,
-   "week": 17.5,
-   "why": "Up 17.5% in the last 5 market days, with mostly good news this week.",
+   "price": 57.38,
+   "week": 23.8,
+   "why": "Up 23.8% in the last 5 market days, with mostly good news this week.",
    "headline": {
     "title": "Roblox Soars 9% as Oppenheimer Says GTA VI Hasn\u2019t Dented Engagement, Lifts Target to $55",
     "url": "https://finance.yahoo.com/markets/stocks/articles/roblox-soars-9-oppenheimer-says-192333551.html",
@@ -49,27 +49,27 @@
   {
    "ticker": "PINS",
    "name": "Pinterest",
-   "price": 19.71,
-   "week": 11.4,
-   "why": "Up 11.4% in the last 5 market days, with mostly good news this week.",
+   "price": 20.32,
+   "week": 20.3,
+   "why": "Up 20.3% in the last 5 market days, with mostly good news this week.",
    "headline": {
-    "title": "Pinterest Shares Surge 20% as Executive Pay Filing Fuels Sale Rumors",
-    "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQWXlrakVRblZuQnBRUFk0NUJjaWs3eW1mdDV5dDM3dkc2VHRxZHk3Q3U4c0R3ZEVfMTU1Z1l1YmQ5c2o5NnR2UWFFVm9BYmNsVzRTODFrV1VfblNTcHFRRTRpcEJNVmJERkdFUlpUc0VWMjd3ZjZhRENCM2FwTHFSbmJYZG5YckJTc1ZmTDFPUS02S05FdWhCNVJ5VU5QNVlDclRlNjZwYlRISDFtQlRnSGFFOHc1OEpkY3hsZWNn?oc=5",
-    "source": "PYMNTS.com",
-    "date": "2026-11-26"
+    "title": "Pinterest Stocks Jump 5.43% as Change-of-Control Pay Moves Keep Sale Talk Alive",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/pinterest-stocks-jump-5-43-181045795.html",
+    "source": "GuruFocus.com",
+    "date": "2026-11-27"
    }
   },
   {
-   "ticker": "F",
-   "name": "Ford Motor",
-   "price": 12.17,
-   "week": 7.9,
-   "why": "Up 7.9% in the last 5 market days, with mostly good news this week.",
+   "ticker": "CHTR",
+   "name": "Charter Communications",
+   "price": 153.87,
+   "week": 15.5,
+   "why": "Up 15.5% in the last 5 market days, with mostly good news this week.",
    "headline": {
-    "title": "Ford Motor Company Rises 3% After DZ Bank Upgrade",
-    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5XUzhvWjF1QWExWjNBeW9wTTRRTkJCdnFkeWRvQ0ZKU1UzbGZVSk55ZlhNbzBISHdyN3FuYnhIZENPT1pySkpGNjlYTHpOSGxTN3R0aS1maUM4bl9sdWExc3VqQlo3U3F5bjlrNWNMQzFOWndyb0dj?oc=5",
-    "source": "StocksToTrade",
-    "date": "2026-11-20"
+    "title": "CHTR climbs around 3.5% after major advisory firms boost holdings and technical signals turn bullish",
+    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQekZrRG9MZlhYVmN6RmdTSGxzUnZLMTNQbkNXcFVWZFYwRE1neHVFNGlvaVdIeXpNS3I5bXQ0NFAyUDdzR1hacWwyUEQ2Y0NpLWRlOUdtbURpN0gxeEU4OHNJOE5CMkNUSU02d2tYZ2VTajZ3V3ZUZ3RweE9GdFFTSTRnZTFLclBwTU5KQzFLYw?oc=5",
+    "source": "Traders Union",
+    "date": "2026-11-25"
    }
   }
  ]
