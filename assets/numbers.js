@@ -62,8 +62,8 @@ async function load(sym){
   delete r.loading;render();return r;
 }
 
-function cell(d,row){if(!d||d.loading)return el("td",{class:"nload",text:"…"});if(d.err)return el("td",{class:"meta",text:"—"});
-  const v=row.f(d);return el("td",{class:row.c?row.c(d):""},v);}
+function cell(d,row){if(!d||d.loading)return el("span",{class:"nv nload",text:"…"});if(d.err)return el("span",{class:"nv meta",text:"—"});
+  const v=row.f(d);return el("span",{class:"nv "+(row.c?row.c(d):"")},v);}
 
 function render(){
   if(!db||!tk){box.hidden=true;return;}
@@ -73,15 +73,18 @@ function render(){
   const form=el("form",{class:"ncform",onsubmit:e=>{e.preventDefault();const s=bare(input.value.trim());if(!okSym(s)){input.focus();return;}setOther(s);}},
     el("label",{class:"meta",text:"Compare with"}),input,el("button",{class:"btn small",type:"submit",text:"Compare"}),
     two?el("button",{class:"btn small ghost",type:"button",text:"✕","aria-label":"Stop comparing",onclick:()=>setOther("")}):null);
-  const head=el("tr",{},el("th",{scope:"col",class:"nk"},""),el("th",{scope:"col",text:tk}),two?el("th",{scope:"col",text:other}):null);
-  const body=ROWS.map(row=>el("tr",{},el("th",{scope:"row",class:"nk"},el("div",{class:"nkl",text:row.k}),el("div",{class:"nkm",text:row.m})),
-    cell(A,row),two?cell(B,row):null));
+  // Small boxes, 2 across on phones (less scrolling, 2026-11-27). The explanation opens with the ⓘ.
+  const tiles=ROWS.map(row=>{const t=el("div",{class:"ntile"});
+    const info=el("button",{type:"button",class:"ninfo",text:"ⓘ","aria-label":`What is ${row.k}?`,"aria-expanded":"false",onclick:()=>{const o=t.classList.toggle("showm");info.setAttribute("aria-expanded",String(o));}});
+    t.append(el("div",{class:"nkl"},el("span",{text:row.k}),info),el("div",{class:"nkm",text:row.m}),
+      two?el("div",{class:"nvs"},el("span",{class:"ntk",text:tk}),cell(A,row),el("span",{class:"ntk",text:other}),cell(B,row)):cell(A,row));
+    return t;});
   const errs=[A&&A.err?`${tk}: ${A.err}`:"",B&&B.err?`${other}: ${B.err}`:""].filter(Boolean);
   box.replaceChildren(...[
     el("div",{class:"sechead nhead"},el("div",{class:"eyebrow",text:`The numbers · ${tk}${two?" vs "+other:""}`}),form),
-    el("div",{class:"nwrap"},el("table",{class:"ntable"+(two?" duo":"")},el("thead",{},head),el("tbody",{},body))),
+    el("div",{class:"ngrid"+(two?" duo":"")},tiles),
     errs.length?el("p",{class:"meta",style:"margin:8px 0 0",text:errs.join(" ")}):null,
-    el("p",{class:"meta nfoot",text:"From Finnhub, updated twice a day. Facts to learn from, not advice to buy or sell."})].filter(Boolean));
+    el("p",{class:"meta nfoot",text:"From Finnhub · not advice"})].filter(Boolean));
 }
 
 function setOther(s){other=s;store.set("ss.compare",s||null);render();if(s&&db)load(s);}

@@ -30,7 +30,7 @@ const INFO=[
   ["Real Estate","Buildings, apartments and cell towers.","M4 21V8l6-4 6 4v13M16 11h4v10M8 10h4M8 14h4M8 18h4"],
   ["Materials","Chemicals, metals and packaging.","M12 3l9 5-9 5-9-5zM3 13l9 5 9-5M3 18l9 5 9-5"],
 ];
-const PAGE=25;
+const PAGE=25,FIRST=10; // lists start with 10 rows (less scrolling), "Show more" adds 25
 const app=()=>window.WVFC_APP||{};
 let file=null,loading=null;
 function load(){
@@ -83,11 +83,11 @@ function list(rows,shown,more,extra,third){
 }
 
 /* ---------- Industries ---------- */
-let pick=null,sort="big",shown=PAGE;
+let pick=null,sort="big",shown=FIRST;
 function median(rows){const v=rows.map(r=>r[3]).filter(x=>x!=null).sort((a,b)=>a-b);if(!v.length)return null;const m=v.length>>1;return v.length%2?v[m]:(v[m-1]+v[m])/2;}
 const rowsOf=name=>(file&&file.industries&&file.industries[name])||[];
 const asStock=(r,ind)=>({tk:r[0],name:r[1],price:r[2],day:r[3],month:r[4],year:r[5],div:r[6],ind});
-function goInd(name){pick=name;sort="big";shown=PAGE;try{history.replaceState(null,"","#industries"+(name?"/"+encodeURIComponent(name):""));}catch(e){}drawInd();window.scrollTo({top:0});}
+function goInd(name){pick=name;sort="big";shown=FIRST;try{history.replaceState(null,"","#industries"+(name?"/"+encodeURIComponent(name):""));}catch(e){}drawInd();window.scrollTo({top:0});}
 function tiles(){
   return el("div",{class:"inlist"},INFO.filter(i=>!file||rowsOf(i[0]).length).map(([name,about,d])=>{
     const rows=rowsOf(name),m=median(rows);
@@ -108,7 +108,7 @@ function detail(){
   if(sort==="up")rows=rows.filter(r=>r.day!=null).sort((a,b)=>b.day-a.day);
   if(sort==="down")rows=rows.filter(r=>r.day!=null).sort((a,b)=>a.day-b.day);
   if(sort==="month")rows=rows.filter(r=>r.month!=null).sort((a,b)=>b.month-a.month);
-  const chip=(k,t)=>el("button",{type:"button",class:"inchip"+(sort===k?" on":""),"aria-pressed":String(sort===k),text:t,onclick:()=>{sort=k;shown=PAGE;drawInd();}});
+  const chip=(k,t)=>el("button",{type:"button",class:"inchip"+(sort===k?" on":""),"aria-pressed":String(sort===k),text:t,onclick:()=>{sort=k;shown=FIRST;drawInd();}});
   const m=median(rowsOf(pick));
   return el("div",{class:"indetail"},
     el("button",{type:"button",class:"inback",onclick:()=>goInd(null),text:"‹ All industries"}),
@@ -123,7 +123,7 @@ function detail(){
 function drawInd(){setWhen("#in-when");$("#in-body").replaceChildren(pick?detail():tiles());}
 function startInd(){
   const h=decodeURIComponent((location.hash.split("/")[1]||""));
-  pick=h&&INFO.some(i=>i[0]===h)?h:null;if(!pick){sort="big";shown=PAGE;}
+  pick=h&&INFO.some(i=>i[0]===h)?h:null;if(!pick){sort="big";shown=FIRST;}
   drawInd();load().then(drawInd);
 }
 
@@ -148,11 +148,15 @@ function drawMovers(){
   setWhen("#mv-when");
   const mv=(file&&file.movers)||{up:[],down:[]};
   const box=(kind,title,sub,rows,up)=>el("div",{class:"panel t3box t3-"+kind},
-    el("div",{class:"t3head"},el("span",{class:"t3ic"},icon(up?"M3 17l6-6 4 4 8-8M15 7h6v6":"M3 7l6 6 4-4 8 8M15 17h6v-6")),el("div",{},el("h3",{text:title}),el("p",{class:"t3sub",text:sub}))),
+    el("div",{class:"t3head"},el("span",{class:"t3ic"},icon(up?"M3 17l6-6 4 4 8-8M15 7h6v6":"M3 7l6 6 4-4 8 8M15 17h6v-6")),el("div",{},el("h3",{text:title}),sub?el("p",{class:"t3sub",text:sub}):null)),
     !file?msg("Loading…"):rows.length?el("ol",{class:"t3list"},rows.map(m=>moverCard(m,up))):msg("Check back once the market opens."));
-  $("#mv-grid").replaceChildren(
-    box("rocket","Up the most today","Well-known companies that rose the most.",mv.up||[],true),
-    box("down","Down the most today","Well-known companies that fell the most.",mv.down||[],false));
+  // Phones show one list at a time with an Up/Down switch (less scrolling); bigger screens show both.
+  const g=$("#mv-grid");g.dataset.side=g.dataset.side||"up";
+  const seg=el("div",{class:"mvseg",role:"group","aria-label":"Show stocks that went"},[["up","▲ Up today"],["down","▼ Down today"]].map(([k,t])=>
+    el("button",{type:"button",class:"mvsegbtn "+k+(g.dataset.side===k?" on":""),"aria-pressed":String(g.dataset.side===k),text:t,onclick:()=>{g.dataset.side=k;drawMovers();}})));
+  g.replaceChildren(seg,
+    box("rocket","Up the most today","",mv.up||[],true),
+    box("down","Down the most today","",mv.down||[],false));
 }
 
 /* ---------- New on the market ---------- */
@@ -209,11 +213,11 @@ document.addEventListener("wvfc:stock",e=>{
 });
 
 /* ---------- Find stocks with filters ---------- */
-const F={ind:"",price:"",div:false,yearUp:false,sale:false,sort:"big"};let fShown=PAGE;
+const F={ind:"",price:"",div:false,yearUp:false,sale:false,sort:"big"};let fShown=FIRST;
 function drawFilters(){
   const opt=(v,t,cur)=>el("option",{value:v,selected:cur===v,text:t});
-  const sel=(key,label,opts)=>el("label",{class:"fl"},el("span",{text:label}),el("select",{onchange:e=>{F[key]=e.target.value;fShown=PAGE;drawFilters();}},opts));
-  const box=(key,label,hint)=>el("label",{class:"flck"},el("input",{type:"checkbox",checked:F[key],onchange:e=>{F[key]=e.target.checked;fShown=PAGE;drawFilters();}}),el("span",{},el("b",{text:label}),el("span",{class:"meta",text:hint})));
+  const sel=(key,label,opts)=>el("label",{class:"fl"},el("span",{text:label}),el("select",{onchange:e=>{F[key]=e.target.value;fShown=FIRST;drawFilters();}},opts));
+  const box=(key,label,hint)=>el("label",{class:"flck"},el("input",{type:"checkbox",checked:F[key],onchange:e=>{F[key]=e.target.checked;fShown=FIRST;drawFilters();}}),el("span",{},el("b",{text:label}),el("span",{class:"meta",text:hint})));
   let rows=stocks().filter(s=>s.price!=null||!file||!file.updated);
   if(F.ind)rows=rows.filter(s=>s.ind===F.ind);
   if(F.price)rows=rows.filter(s=>s.price!=null&&s.price<+F.price);
@@ -267,7 +271,7 @@ async function drawLike(t){
   const base=n=>(n||"").replace(/\s+Class [A-C].*$/,"").toLowerCase();
   picks=picks.filter(s=>base(s.name)!==base(me.name));
   if(picks.length<5)picks=picks.concat(ss.filter(s=>s.tk!==t&&s.ind===me.ind&&!picks.includes(s)&&base(s.name)!==base(me.name)).sort(near)).slice(0,5);
-  picks=picks.slice(0,5);
+  picks=picks.slice(0,3);
   likeBox.hidden=!picks.length;
   likeBox.replaceChildren(el("div",{class:"eyebrow",text:"Stocks like this"}),
     el("ul",{class:"lklist"},picks.map(s=>el("li",{},

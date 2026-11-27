@@ -211,18 +211,21 @@ function renderFriends(){
   const box=$("#mine-friends");if(!box||!G.acct)return;
   if(G.extrasOff||!G.friends){box.hidden=true;return;}box.hidden=false;
   const link=G.invite?location.origin+location.pathname+"?invite="+G.invite:"";
-  const rows=G.friends;
+  // Top 3 plus you (less scrolling); "See all" shows everyone.
+  const all=G.friends,rows=G.frAll?all:all.filter((r,i)=>i<3||r.me);
+  const seeAll=all.length>rows.length||G.frAll&&all.length>4?el("button",{type:"button",class:"linkbtn frmore",text:G.frAll?"Show fewer":`See all ${all.length} →`,onclick:()=>{G.frAll=!G.frAll;renderFriends();}}):"";
   if(glowHome()){const COL=["#7fb0ff","#5fd6a0","#ffb36b","#ff7a9a","#b99bff","#6fd3e8","#f2c14e"];
     const ini=n=>String(n||"?").split(/\s+/).map(w=>w[0]||"").join("").slice(0,2).toUpperCase();
     box.replaceChildren(el("div",{class:"cardhead"},el("h3",{class:"h3",text:"Friends leaderboard"}),link?el("button",{type:"button",class:"linkbtn more invitelink",text:"Invite →",onclick:()=>shareInvite(link)}):""),
-      rows.length>1?"":el("p",{class:"meta",text:"Invite friends with your link. When they sign up, you'll see each other here."}),
+      all.length>1?"":el("p",{class:"meta",text:"Invite friends with your link. When they sign up, you'll see each other here."}),
       rows.length?el("ol",{class:"frlist"},rows.map((r,i)=>el("li",{class:r.me?"me":""},el("span",{class:"r",text:String(r.rank)}),
         el("span",{class:"fav",style:"--c:"+COL[i%COL.length],text:ini(r.name)}),el("span",{class:"n",text:r.name+(r.me?" (you)":"")}),
-        el("span",{class:"g "+cls(+r.gain_pct),text:fmtPct(+r.gain_pct)})))):"");return;}
+        el("span",{class:"g "+cls(+r.gain_pct),text:fmtPct(+r.gain_pct)})))):"",seeAll);return;}
   box.replaceChildren(el("h3",{class:"h3",text:"Friends leaderboard"}),
-    el("p",{class:"meta",text:rows.length>1?"You and your friends, ranked by how much your $50,000 has grown.":"Invite friends with your link. When they sign up, you'll see each other here."}),
+    all.length>1?"":el("p",{class:"meta",text:"Invite friends with your link. When they sign up, you'll see each other here."}),
     rows.length?el("ol",{class:"ptboard"},rows.map(r=>el("li",{class:r.me?"me":""},el("span",{class:"r",text:"#"+r.rank}),el("span",{class:"n",text:r.name+(r.me?" (you)":"")}),
       el("span",{class:"g "+cls(+r.gain_pct),text:fmtPct(+r.gain_pct)}),el("span",{class:"v",text:fmt$(r.value)})))):"",
+    seeAll,
     link?el("button",{type:"button",class:"btn invitebtn",text:"Invite a friend",onclick:()=>shareInvite(link)}):"");
 }
 async function shareInvite(link){

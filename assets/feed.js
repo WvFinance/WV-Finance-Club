@@ -322,8 +322,8 @@ function section(key,title,sub,max,onlyFollowed){
   return el("section",{class:"fdsec"},
     el("div",{class:"fdsechead"},el("h3",{class:"h3",text:title}),
       more?el("button",{type:"button",class:"linkbtn",text:"See all",onclick:()=>{filter=key;render();window.scrollTo({top:0});}}):""),
-    el("p",{class:"meta fdsecsub",text:sub}),
     cards.length?cards:emptyFor(key),
+    more?el("button",{type:"button",class:"linkbtn fdseeall",text:`See all ${n} →`,onclick:()=>{filter=key;render();window.scrollTo({top:0});}}):"",
     key==="insiders"&&!max&&!query?moreSells():"");
 }
 function moreSells(){
@@ -334,13 +334,15 @@ function renderList(){
   const box=$("#fd-list");
   if(F.friends==null&&F.congress==null&&F.pros==null){box.replaceChildren(el("p",{class:"meta",text:"Loading the feed…"}));return;}
   let out;
-  if(filter==="all")out=GROUPS.map(([k,t,s])=>section(k,t,s,3)).filter(Boolean);
+  // "All" shows one card per section (less scrolling); "See all" opens the rest.
+  if(filter==="all")out=GROUPS.map(([k,t,s])=>section(k,t,s,1)).filter(Boolean);
   else if(filter==="following"){
     out=GROUPS.filter(g=>g[0]==="congress"||g[0]==="funds").map(([k,t,s])=>section(k,t,s,0,true)).filter(Boolean);
     if(!out.length)out=[emptyMsg(F.follows.size?"The people you follow haven't reported any trades lately.":"Tap Follow on a member of Congress or a big investor and their trades will show up here.")];
   }else out=GROUPS.filter(g=>g[0]===filter).map(([k,t,s])=>section(k,t,s,0)).filter(Boolean);
   if(query&&!out.length)out=[emptyMsg(`Nothing matches "${$("#fd-q").value.trim()}" here. Try a ticker like AAPL, a company, or a person's name.`,
     el("button",{type:"button",class:"btn",text:"Clear search",onclick:()=>setQuery("")}))];
+  box.classList.toggle("fdall",filter==="all"&&!query);
   box.replaceChildren(...out);
 }
 function renderSide(){
@@ -350,7 +352,6 @@ function renderSide(){
   const who=[...by.values()].sort((a,b)=>b.n-a.n).slice(0,4);
   const funds=[...new Map(((F.pros||{}).funds||[]).map(t=>[t.fund,t])).values()].slice(0,4);
   $("#fd-follow").replaceChildren(el("h3",{class:"h3",text:"Who to follow"}),
-    el("p",{class:"meta",text:"Follow big investors and members of Congress to see their trades in Following."}),
     who.length||funds.length?el("ul",{class:"fdwholist"},funds.map(t=>{const on=F.follows.has(t.fund);return el("li",{},
       el("div",{class:"fdav fund sm",text:initials(t.fund)}),
       el("div",{class:"fdwl"},el("div",{class:"fdname"},personBtn(t.fund,"fund",t.fund)),el("div",{class:"fdwho",text:"Big investor"})),
