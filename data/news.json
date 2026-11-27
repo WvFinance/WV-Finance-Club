@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25",
+ "updated": "2026-11-27",
  "briefs": [
   {
    "bear": [
@@ -54,7 +54,7 @@
    "ticker": "SP500",
    "updatedAt": "2026-11-25T23:16:40.205Z",
    "symbol": "AMEX:SPY",
-   "checkedAt": "2026-11-25T23:16:40.205Z",
+   "checkedAt": "2026-11-27T11:43:17.501Z",
    "about": "The S&P 500 tracks about 500 of the biggest US companies, like Apple, Microsoft, Nvidia and Amazon. It is the most common way to measure how the whole US stock market is doing.",
    "keyNumbers": [
     {
@@ -141,7 +141,7 @@
    "ticker": "NASDAQ",
    "updatedAt": "2026-11-25T23:16:40.205Z",
    "symbol": "NASDAQ:QQQ",
-   "checkedAt": "2026-11-25T23:16:40.205Z",
+   "checkedAt": "2026-11-27T11:43:17.501Z",
    "about": "The Nasdaq Composite tracks more than 3,000 stocks traded on the Nasdaq exchange. It is packed with tech companies like Nvidia, Apple, Microsoft, Amazon and Alphabet, so it moves most with tech news.",
    "keyNumbers": [
     {
@@ -232,7 +232,7 @@
    "updatedAt": "2026-11-25T11:43:07.176Z",
    "symbol": "NASDAQ:AAPL",
    "name": "Apple",
-   "checkedAt": "2026-11-25T11:43:07.180Z",
+   "checkedAt": "2026-11-27T11:43:17.501Z",
    "about": "Apple designs the iPhone, Mac computers, iPads, Apple Watch and AirPods. It also makes money from services like the App Store, Apple Music and iCloud.",
    "keyNumbers": [
     {
@@ -270,19 +270,37 @@
   },
   {
    "bear": [
-    "Six top leaders sold about $16.6 million of stock on November 23, the day of the Decart news; it is not a sign of extra confidence, even if some sales were planned.",
-    "Amazon spent $77.3 billion on buildings and equipment in just the third quarter, and those AI costs have pushed its free cash flow to minus $42.4 billion.",
-    "Its Anthropic stake lost value as Anthropic's price fell from $111.50 on its first day to $87.59 on November 20, and a further slide would shrink it again."
+    "Bernstein's 16% traffic drop is the first sign in a while that AWS customers are pulling back, and AWS is where most of Amazon's profit comes from.",
+    "Amazon plans to spend about $220 billion in 2026, mostly on AI data centers, and its total debt roughly doubled in a year to $272 billion.",
+    "Six Amazon leaders, including CEO Andy Jassy, sold about $16.6 million of stock after shares they were paid in vested on November 21."
    ],
    "bull": [
-    "AWS sales rose 39.3% to $45.98 billion last quarter, beating the $45.29 billion expected, and AWS has a $578 billion backlog of signed customer deals, which locks in future sales.",
-    "Amazon's total operating profit rose 61% to $28.1 billion last quarter, so the company is earning more on each dollar of sales.",
-    "Analysts' average price target is about $326.51, TradingNEWS reported, roughly 29% above Tuesday's close."
+    "AWS's operating profit jumped 55% to $17.8 billion last quarter, so even a few points of slower growth would still leave a fast-growing, very profitable business.",
+    "Amazon expects $28.5 billion to $33.5 billion of operating profit this quarter, up from $25.0 billion a year earlier.",
+    "Analysts' average price target is $323.05, TradingKey reported, about 32% above Wednesday's close."
    ],
-   "headline": "Amazon slips to $252.29 as top bosses' $16.6 million in stock sales come to light",
-   "nextEvent": "Nov 27: Black Friday",
-   "sentiment": "neutral",
+   "headline": "Amazon drops 3.1% to $244.43 after a warning that cloud traffic fell 16%",
+   "nextEvent": "Dec 1: AWS re:Invent keynote",
+   "sentiment": "bearish",
    "sources": [
+    {
+     "title": "Amazon Stock Holds $235.98 After Bernstein's Cloud Warning, but $247.46 Caps the Rebound",
+     "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262323357-amazon-stock-holds-235-98-bernstein-cloud-warning-247-46-caps-rebound-november-26-2026-tradingkey",
+     "outlet": "TradingKey",
+     "date": "Nov 26, 2026"
+    },
+    {
+     "title": "Amazon (AMZN) Stock Drops 5% as AWS Holiday Slowdown Warning Meets AI Selloff",
+     "url": "https://moneycheck.com/amazon-amzn-stock-drops-5-as-aws-holiday-slowdown-warning-meets-ai-selloff",
+     "outlet": "MoneyCheck",
+     "date": "Nov 25, 2026"
+    },
+    {
+     "title": "Amazon.com Inc Stock (AMZN) Opened Down by 5.64% on Nov 25: What Investors Need To Know",
+     "url": "https://www.tradingkey.com/news/market-movers/262322207-market-movers-amzn-20261125",
+     "outlet": "TradingKey",
+     "date": "Nov 25, 2026"
+    },
     {
      "title": "Amazon stock hit by major insider trading activity",
      "url": "https://finbold.com/amazon-stock-hit-by-major-insider-trading-activity/",
@@ -294,54 +312,42 @@
      "url": "https://www.geekwire.com/2026/amazon-is-buying-decarts-ai-chip-software-for-a-reported-7-5b-and-bringing-its-founders-aboard/",
      "outlet": "GeekWire",
      "date": "Nov 23, 2026"
-    },
-    {
-     "title": "Amazon confirms Decart acquisition",
-     "url": "https://en.globes.co.il/en/article-amazon-confirms-decart-acquisition-1001564520",
-     "outlet": "Globes",
-     "date": "Nov 23, 2026"
-    },
-    {
-     "title": "Amazon Stock Slides to $248.31 as Anthropic Stake Shrinks to $169.6B; $269 Upside Target on AWS Strength",
-     "url": "https://www.tradingnews.com/news/amazon-stock-slides-to-248-31-as-anthropic-stake-shrinks-to-169-6b-269-usd-upside-target-on-aws-strength",
-     "outlet": "TradingNEWS",
-     "date": "Nov 20, 2026"
     }
    ],
-   "summary": "Globes reported that Decart's three founders own about 64% of the company and agreed to work at Amazon for five years; Amazon is buying its speed-up software, not its AI video models, and the deal still needs government approval. Amazon owns 14.6% of Anthropic, a stake TradingNEWS valued at $169.6 billion on November 20 after Anthropic's shares fell to $87.59, close to their $83 starting price. Amazon expects to spend about $220 billion in 2026, mostly on AI data centers, and spent $42.4 billion more cash than it brought in over the past year. Its holiday-quarter sales forecast is $240 billion to $247 billion.",
+   "summary": "Amazon's yearly AWS conference, re:Invent, runs November 30 to December 4 in Las Vegas, with AWS boss Matt Garman speaking December 1. Short interest, the number of shares borrowed by traders betting on a fall, rose 7.25% to over 101 million, MoneyCheck reported. October's PCE inflation number came in at 3.8% from a year earlier, and traders now see about a 97% chance of a Fed rate hike in December. Black Friday, November 27, kicks off a holiday quarter where Amazon expects $240 billion to $247 billion in sales.",
    "ticker": "AMZN",
-   "updatedAt": "2026-11-25T11:43:07.179Z",
+   "updatedAt": "2026-11-27T11:43:17.497Z",
    "symbol": "NASDAQ:AMZN",
    "name": "Amazon",
-   "checkedAt": "2026-11-25T11:43:07.180Z",
+   "checkedAt": "2026-11-27T11:43:17.501Z",
    "about": "Amazon runs the biggest online store in the US and Amazon Web Services (AWS), which rents computing power to other companies. It also sells ads, Prime memberships and devices like Echo and Kindle.",
    "keyNumbers": [
     {
      "label": "Stock price",
-     "value": "$252.29",
-     "note": "close Nov 24, down 1.2%"
+     "value": "$244.43",
+     "note": "close Nov 25, down 3.1%"
     },
     {
-     "label": "Insider sales",
-     "value": "$16.6M",
-     "note": "six sales on Nov 23"
+     "label": "Cloud web traffic",
+     "value": "-16%",
+     "note": "vs. Q3, per Bernstein"
     },
     {
      "label": "AWS sales growth",
-     "value": "+39.3%",
-     "note": "Q3, to $45.98B"
+     "value": "+39%",
+     "note": "Q3, to $46.0B"
     },
     {
-     "label": "Anthropic stake",
-     "value": "14.6%",
-     "note": "AI company Amazon owns part of"
+     "label": "Free cash flow",
+     "value": "-$42.4B",
+     "note": "past 12 months"
     }
    ],
-   "whyMoved": "Amazon fell about 1.2% on Tuesday, November 24, to $252.29, after jumping 3.5% to $255.39 on Monday when it confirmed a deal, reported at about $7.5 billion, for the chip software and team of AI startup Decart. SEC filings dated November 24 showed six Amazon leaders sold about $16.6 million of stock on Monday, including CEO Andy Jassy (20,000 shares, about $5.1 million) and AWS boss Matt Garman ($3.73 million), and early Wednesday trading put the stock near $244. Insiders sell for many reasons, and Jassy's sale matches 20,000-share sales he made in May and August. The bigger money story is AWS: its sales grew 39.3% last quarter and it earned $17.77 billion in operating profit, most of Amazon's total, so AI cloud demand matters more to the stock than any single sale.",
+   "whyMoved": "Amazon fell $7.86, or 3.12%, on Wednesday, November 25, to $244.43, after sliding as low as $235.96 (down 6.47%) during the day. The trigger was a Bernstein report saying web activity on pay-as-you-go cloud services, including AWS, was about 16% below third-quarter levels in mid-to-late November, as companies froze system updates before the holidays. Bernstein said that could slow AWS growth by a few percentage points in early 2027. That matters because AWS made $17.8 billion of Amazon's $28.1 billion operating profit last quarter, so the cloud, not the online store, drives most of the money. The stock is now 8.7% below its November 18 close of $267.74.",
    "watch": [
     {
-     "date": "Nov 27",
-     "what": "Black Friday starts the holiday shopping rush. Strong online spending reports would help; Amazon forecast $240B to $247B in holiday-quarter sales."
+     "date": "Dec 1",
+     "what": "Matt Garman's re:Invent keynote. New AI deals or signs of strong customer demand would ease the traffic worry; silence on growth would add to it."
     },
     {
      "date": "Dec 9",
@@ -406,7 +412,7 @@
    "updatedAt": "2026-11-21T02:54:59.780Z",
    "symbol": "NYSE:JPM",
    "name": "JPMorgan Chase",
-   "checkedAt": "2026-11-25T11:43:07.180Z",
+   "checkedAt": "2026-11-27T11:43:17.501Z",
    "about": "JPMorgan Chase is the biggest bank in the US. It runs Chase bank accounts and credit cards, makes loans, and helps big companies and rich clients invest and raise money.",
    "keyNumbers": [
     {
@@ -441,21 +447,33 @@
   {
    "ticker": "XOM",
    "symbol": "NYSE:XOM",
-   "sentiment": "bearish",
-   "headline": "Exxon falls 1.9% to $156.90 on a huge up day as oil keeps sliding",
-   "summary": "Trefis figured Exxon's dividend alone stays covered as long as US oil is above about $59 a barrel, and dividends plus buybacks need about $79. Exxon raised its quarterly dividend to $1.07 from $1.03, its 44th yearly raise in a row, and plans $20 billion of buybacks in 2027. JPMorgan expects oil to fall to the high $70s in the first half of 2027, Invezz reported. OPEC+, the group of big oil countries, meets November 29 to set how much oil to pump in 2027.",
+   "sentiment": "neutral",
+   "headline": "Oil jumps back near $97 after a Saudi refinery attack, a lift for Exxon",
+   "summary": "OPEC+, the group of big oil countries, meets Sunday, November 29, and is expected to keep its pumping targets unchanged for at least the first three months of 2027. Exxon raised its quarterly dividend to $1.07 from $1.03, its 44th yearly raise in a row, and plans $20 billion of buybacks in 2027. Trefis figured the dividend alone stays covered as long as US oil is above about $59 a barrel. Brent is on track for its first weekly gain in weeks after a November slide.",
    "bull": [
+    "Bank ANZ said Brent could top $100 a barrel even without a bigger fight in the Middle East, which would raise Exxon's profit on every barrel.",
     "Third-quarter free cash, the money left after all spending, was $19.1 billion, enough to pay the dividend about 4.4 times over, 24/7 Wall St. reported.",
-    "CEO Darren Woods said 'we're not going ever to cut our dividend,' and Trefis's math shows it is safe down to about $59 oil, well below today's price.",
-    "Even after the drop, Exxon is up 33.8% this year versus 6.7% for the S&P 500 fund SPY, so it is still one of 2026's stronger big stocks."
+    "Bank OCBC pointed to low oil stockpiles and slow refinery repairs, which can keep prices higher for longer."
    ],
    "bear": [
     "The International Energy Agency says the world will pump 1.7 million barrels a day more than it uses this quarter, and extra supply pushes prices down.",
-    "If US oil drops below about $79, Trefis says Exxon's cash would no longer cover both its dividend and its planned buybacks, so buybacks could shrink.",
-    "Fewer signs of new US strikes on Iran are taking away a reason oil was high; IG's Chris Beauchamp said a new attack looks 'less likely' each day."
+    "Oil fell below $90 as recently as Monday, November 23, so if the attacks calm, the jump could fade just as fast.",
+    "JPMorgan expects oil to fall to the high $70s in the first half of 2027; below about $79, Trefis says Exxon's cash would not cover both dividends and buybacks."
    ],
    "nextEvent": "Nov 29: OPEC+ meeting on 2027 oil output",
    "sources": [
+    {
+     "title": "Oil on track to snap 3-week losing streak over West Asia supply fears",
+     "url": "https://www.business-standard.com/markets/commodities/oil-on-track-to-snap-3-week-losing-streak-over-west-asia-supply-fears-126112700293_1.html",
+     "outlet": "Business Standard (Reuters)",
+     "date": "Nov 27, 2026"
+    },
+    {
+     "title": "Market Quick Take - Brent tops USD 97 and Asian stocks extend rebound - 27 November 2026",
+     "url": "https://www.home.saxo/en-mena/content/articles/macro/market-quick-take---brent-tops-usd-97-and-asian-stocks-extend-rebound---27-november-2026-27112026",
+     "outlet": "Saxo Bank",
+     "date": "Nov 27, 2026"
+    },
     {
      "title": "Your Exxon Dividend Needs Only About $59 Oil",
      "url": "https://www.trefis.com/stock/xom/articles/628301/your-exxon-dividend-needs-only-about-59-oil/2026-11-24",
@@ -473,33 +491,27 @@
      "url": "https://www.tradingview.com/news/invezz:4da5802ad094b:0-oil-price-today-brent-slides-over-3-below-90-as-surplus-fears-build/",
      "outlet": "Invezz",
      "date": "Nov 23, 2026"
-    },
-    {
-     "title": "Oil Retreats as Mideast Supply Gains Offset Tensions",
-     "url": "https://www.tradingpedia.com/2026/11/23/oil-retreats-as-mideast-supply-gains-offset-tensions/",
-     "outlet": "Tradingpedia",
-     "date": "Nov 23, 2026"
     }
    ],
-   "updatedAt": "2026-11-24T11:42:09.369Z",
+   "updatedAt": "2026-11-27T11:43:17.501Z",
    "name": "Exxon Mobil",
-   "checkedAt": "2026-11-25T11:43:07.180Z",
+   "checkedAt": "2026-11-27T11:43:17.501Z",
    "about": "Exxon Mobil is one of the world's biggest oil and gas companies. It pumps oil and natural gas, turns them into gasoline and other fuels, and makes chemicals and plastics.",
    "keyNumbers": [
     {
      "label": "Stock price",
-     "value": "$156.90",
-     "note": "close Nov 23, down 1.9%"
-    },
-    {
-     "label": "One-month change",
-     "value": "-14.4%",
-     "note": "Oct 23 to Nov 23"
+     "value": "$158.08",
+     "note": "close Nov 25"
     },
     {
      "label": "Brent oil price",
-     "value": "$89.21",
-     "note": "Nov 23, down 3.6%"
+     "value": "$96.61",
+     "note": "Nov 27, highest since Nov 6"
+    },
+    {
+     "label": "US oil price",
+     "value": "$85.78",
+     "note": "Nov 27, up $2.10"
     },
     {
      "label": "Dividend",
@@ -507,11 +519,11 @@
      "note": "per share, paid Dec 10"
     }
    ],
-   "whyMoved": "Exxon fell from $159.99 on Friday, November 20 to $156.90 on Monday, November 23, a 1.9% drop on a day the S&P 500 jumped 4.7%. Over the month from October 23 it lost 14.4%, more than Chevron's 11.6%. The cause is oil: Brent, the world price, fell $3.36, or 3.6%, to $89.21 a barrel on Monday, and US oil hit $80.36, its lowest since September 1, after a Libyan pipeline carrying 350,000 barrels a day restarted. Exxon earns most of its profit from selling the oil and gas it pumps, and Trefis estimates each $1 drop in the oil price cuts about $1 billion a year from the cash Exxon has left after spending, which is the money it uses for dividends and buybacks.",
+   "whyMoved": "Exxon edged up from $156.90 on Monday, November 23 to $158.08 on Wednesday, November 25, before markets closed for Thanksgiving. Since then oil has jumped: Brent, the world price, gained nearly $2 on Thursday to its highest close since November 6 and was $96.61 early Friday, up from below $90 on Monday. The cause is fresh attacks in the Middle East: a projectile hit Saudi Aramco's Jazan refinery on Thursday, halting some work and killing a worker, and Iran has kept attacking tankers in the Strait of Hormuz, a key oil shipping route. Exxon earns most of its profit selling the oil and gas it pumps, and Trefis estimates each $1 change in oil moves its leftover cash by about $1 billion a year, so this jump matters for its dividend and buybacks.",
    "watch": [
     {
      "date": "Nov 29",
-     "what": "OPEC+ meeting on 2027 oil output. Pumping cuts would likely lift oil prices and help Exxon; plans to pump more would push oil lower."
+     "what": "OPEC+ meeting on 2027 output. Keeping targets flat is expected; a surprise cut would lift oil and help Exxon, while pumping more would push oil lower."
     },
     {
      "date": "Dec 10",
@@ -570,7 +582,7 @@
    ],
    "updatedAt": "2026-11-23T11:43:09.060Z",
    "name": "Johnson & Johnson",
-   "checkedAt": "2026-11-25T11:43:07.180Z",
+   "checkedAt": "2026-11-27T11:43:17.501Z",
    "about": "Johnson & Johnson makes prescription medicines, like cancer and immune system drugs, and medical devices used in surgery and heart care.",
    "keyNumbers": [
     {
@@ -650,7 +662,7 @@
     }
    ],
    "updatedAt": "2026-11-25T23:16:40.200Z",
-   "checkedAt": "2026-11-25T23:16:40.200Z",
+   "checkedAt": "2026-11-27T11:43:17.501Z",
    "about": "Bitcoin is the first and biggest cryptocurrency, a digital money that is not run by any bank or government. There will only ever be 21 million bitcoins, and its price depends on how many people want to buy and hold it.",
    "keyNumbers": [
     {
@@ -693,21 +705,39 @@
    "crypto": true,
    "order": 6,
    "symbol": "COINBASE:ETHUSD",
-   "sentiment": "bearish",
-   "headline": "Ether bounces to about $1,685 but is down 30% in a month",
-   "summary": "Ether is about 45% below its price a year ago of $2,958.86 and far from its peak near $5,000 in August 2025. Every major coin was down 5% to 9% for the week as of Wednesday morning. The total value of all ether is about $233 billion. US regulators (the CFTC) said trading firms can count ether toward some money they must keep in reserve.",
+   "sentiment": "neutral",
+   "headline": "Ether rises 3% to about $1,740 as a Dec 15 test date is set for its next upgrade",
+   "summary": "Glamsterdam already ran on another practice network, Sepolia, on October 6, but no date is set for the real network. Safety reviews found 200 possible problems with older apps, 3 of them serious, and one developer estimated 10,000 to 15,000 of about 90 million smart contracts (programs on Ethereum) could be affected. Researcher Justin Drake set a goal of late 2028 to make Ethereum safe from future quantum computers. Ether is still about 65% below its August 2025 record of $4,950.",
    "bull": [
-    "Ether rose back to about $1,685 by the evening of Nov 25 after dipping to $1,640.88 that morning, so buyers stepped in at lower prices.",
-    "The CFTC said trading firms can count ether toward some required reserves, which could help big institutions use it more.",
-    "BlackRock's ether fund ETHA rose 0.90% on Nov 25, a sign the bounce reached the big funds too."
+    "The December 15 test date puts Glamsterdam back on track after a delay from October 26, and finishing upgrades on time builds trust in the network.",
+    "Traders betting on a fall lost $6.13 million in one hour on November 27, showing buyers stepped in even on a holiday.",
+    "Ether held above about $1,640, its November 25 low, and has bounced from there, a sign some buyers see value at that price."
    ],
    "bear": [
-    "Ether is down 30.39% in a month, from $2,357.50, showing heavy selling through November.",
-    "Traders see a Fed rate hike in December as very likely after core inflation hit 3.3%, which makes safer interest-paying savings look better than crypto.",
-    "Ether is down about 45% from a year ago, and continued weakness in tech stocks could pull crypto lower again."
+    "Ether is down 30.4% in a month as of November 25, from $2,357.50, showing heavy selling through November.",
+    "The safety reviews found 3 serious problems, and up to 15,000 apps may need fixes, which could push the real upgrade later.",
+    "Traders see about a 97% chance of a Fed rate hike on December 9, which makes interest-paying savings look better than crypto."
    ],
    "nextEvent": "Dec 9: Fed interest rate decision",
    "sources": [
+    {
+     "title": "Ethereum price rises 3% as developers confirm December 15 test for Glamsterdam upgrade",
+     "url": "https://crypto.news/ethereum-price-glamsterdam-upgrade-hoodi-december-15",
+     "outlet": "crypto.news",
+     "date": "Nov 27, 2026"
+    },
+    {
+     "title": "Ether Rises 2.75% in Four Hours to $1,747 on Nov. 27",
+     "url": "https://www.tokenpost.com/news/investing/63259",
+     "outlet": "TokenPost",
+     "date": "Nov 27, 2026"
+    },
+    {
+     "title": "Ether Trades at $1,730.42 in Friday Morning Market Snapshot",
+     "url": "https://www.tokenpost.com/news/investing/63420",
+     "outlet": "TokenPost",
+     "date": "Nov 27, 2026"
+    },
     {
      "title": "Crypto Market Today, Nov. 25: Bitcoin, Ethereum, and Solana as Short Liquidations Fuel Fragile Rebound",
      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/25/crypto-market-today-nov-25-bitcoin-ethereum-and-solana-as-short-liquidations-fuel-fragile-rebound/",
@@ -719,60 +749,42 @@
      "url": "https://thecompanychronicle.com/story/crypto-prices-today-november-25-2026",
      "outlet": "The Company Chronicle",
      "date": "Nov 25, 2026"
-    },
-    {
-     "title": "Current price of Ethereum for Nov. 25, 2026",
-     "url": "https://www.byteseu.com/2545879/",
-     "outlet": "Bytes Europe",
-     "date": "Nov 25, 2026"
-    },
-    {
-     "title": "Current price of Bitcoin for November 25, 2026",
-     "url": "https://fortune.com/article/price-of-bitcoin-11-25-2026/",
-     "outlet": "Fortune",
-     "date": "Nov 25, 2026"
-    },
-    {
-     "title": "Crypto Market Today, November 25, 2026: Bitcoin Below $60,000 as Ethereum, XRP and Solana Slide",
-     "url": "https://eurasiabusinessnews.com/2026/11/25/crypto-market-today-november-25-2026-bitcoin-below-60000-as-ethereum-xrp-and-solana-slide/",
-     "outlet": "Eurasia Business News",
-     "date": "Nov 25, 2026"
     }
    ],
-   "updatedAt": "2026-11-25T23:16:40.204Z",
-   "checkedAt": "2026-11-25T23:16:40.204Z",
+   "updatedAt": "2026-11-27T11:43:17.500Z",
+   "checkedAt": "2026-11-27T11:43:17.501Z",
    "about": "Ether is the digital money of Ethereum, a network where people run apps, make payments and trade digital tokens without a bank in the middle. People pay small fees in ether to use the network.",
    "keyNumbers": [
     {
      "label": "Price",
-     "value": "about $1,685",
-     "note": "Nov 25, early evening"
+     "value": "about $1,740",
+     "note": "Nov 27, up 3% in a day"
     },
     {
      "label": "Past month",
      "value": "-30.4%",
-     "note": "from $2,357.50"
-    },
-    {
-     "label": "Past 7 days",
-     "value": "-3.7%",
      "note": "as of Nov 25"
     },
     {
      "label": "From record",
-     "value": "about -66%",
-     "note": "near $5,000, Aug 2025"
-    }
-   ],
-   "whyMoved": "Ether dipped to about $1,640.88 on Wednesday morning, November 25, down 3.66% from $1,703.26 the day before, then rose to about $1,685 by early evening, up 0.45% for the day. Like bitcoin, the bounce came mostly from traders who had bet on a fall being forced to buy back in. Over the past month ether has dropped 30.39% from $2,357.50, as money left crypto funds and a hot inflation report raised the odds of a Fed rate hike. Ether's price depends on how many people want to use and hold it, and with big funds selling there are not enough steady buyers.",
-   "watch": [
-    {
-     "date": "Nov 27",
-     "what": "Markets reopen for a short half-day after being closed for Thanksgiving on Nov 26; trading is light on half-days, so moves can be bigger than usual."
+     "value": "about -65%",
+     "note": "record $4,950, Aug 2025"
     },
     {
+     "label": "Upgrade test date",
+     "value": "Dec 15",
+     "note": "Glamsterdam on Hoodi"
+    }
+   ],
+   "whyMoved": "Ether rose about 3% over Thanksgiving to about $1,740 on Friday morning, November 27, after trading between $1,670 and $1,750 in a day; it was near $1,685 on the evening of November 25. Part of the jump came fast: ether climbed 2.75% in four hours to $1,747 just after midnight Eastern time, as $6.13 million of bets on a fall were forced to close, compared with only $10,000 of bets on a rise. Developers also agreed on November 26 to test Ethereum's next big upgrade, called Glamsterdam, on the Hoodi practice network on December 15, after delaying it from October 26. Ether's price depends on how many people want to use and hold it, and upgrades that make the network faster and cheaper can bring in more users.",
+   "watch": [
+    {
      "date": "Dec 9",
-     "what": "The Fed announces its interest rate decision; traders see about a 97% to 98% chance of a quarter-point hike, so no hike would be a big surprise and a bigger hike would be a shock."
+     "what": "The Fed announces its interest rate decision; a hike is widely expected, so no hike would help crypto and hints of more hikes would hurt."
+    },
+    {
+     "date": "Dec 15",
+     "what": "Glamsterdam goes live on the Hoodi practice network. A smooth test would clear the way for a real launch date; problems would mean more delay."
     }
    ]
   },
@@ -814,7 +826,7 @@
     }
    ],
    "name": "MGM Resorts International",
-   "checkedAt": "2026-11-25T11:43:07.180Z",
+   "checkedAt": "2026-11-27T11:43:17.501Z",
    "updatedAt": "2026-11-24T11:42:09.369Z",
    "about": "MGM Resorts runs casinos and hotels, including the Bellagio and MGM Grand in Las Vegas. It also has casinos in Macau, China, and co-owns BetMGM, an online sports betting app.",
    "keyNumbers": [
@@ -899,7 +911,7 @@
      "date": "Nov 25, 2026"
     }
    ],
-   "checkedAt": "2026-11-25T23:16:40.204Z",
+   "checkedAt": "2026-11-27T11:43:17.501Z",
    "updatedAt": "2026-11-25T23:16:40.204Z",
    "about": "The Dow Jones Industrial Average tracks 30 big, well-known US companies like Apple, Walmart, JPMorgan, Nvidia and UnitedHealth. Unlike most indexes, it is weighted by share price, so stocks with higher prices move it more.",
    "keyNumbers": [
@@ -986,7 +998,7 @@
      "date": "Nov 25, 2026"
     }
    ],
-   "checkedAt": "2026-11-25T23:16:40.205Z",
+   "checkedAt": "2026-11-27T11:43:17.501Z",
    "updatedAt": "2026-11-25T23:16:40.205Z",
    "about": "The Russell 2000 tracks about 2,000 smaller US companies, like regional banks, stores and factories. Most of them sell mainly inside the US, so it shows how smaller businesses and the US economy are doing.",
    "keyNumbers": [
@@ -1031,21 +1043,33 @@
    "ticker": "MU",
    "symbol": "MU",
    "sentiment": "bearish",
-   "headline": "Micron drops 11% to $629.79, giving back most of Monday's 19% jump",
+   "headline": "Micron slips 4.5% more as BNP Paribas cuts its target to $775 from $1,700",
    "about": "Micron makes memory chips, the parts that store data in computers, phones and the giant data centers that run AI. Its main products are DRAM and NAND flash memory, plus HBM, a fast memory built for AI chips.",
-   "summary": "Micron is now 48% below its June 25 high of $1,213.56 and down 32% in the past month, which counts as a bear market (a fall of 20% or more). About 38.9 million shares traded Tuesday, above the 20-day average of about 35.9 million, so many owners were selling at once. Even after the drop, the stock is still up about 131% this year, 24/7 Wall St. noted. Bloomingbit reported a US Senate hearing set for December 3 tied to the Nvidia questions.",
+   "summary": "BNP Paribas lowered Micron to Neutral (no strong view either way) and expects memory supply and demand to balance by mid-2027. Research firm SemiAnalysis cut its forecasts for AI chip spending on November 13 by 19% for 2027 and 28% for 2028. Huawei plans to show its own HBM memory design at a chip conference in February, and US rules already stop Micron from selling HBM to China. Micron has about $150 billion of signed orders it has not yet delivered, Blockonomi reported.",
    "bull": [
-    "Micron's last quarter (reported September 30) brought in $54.23 billion in sales, up 379% from a year earlier, so demand for its chips has been huge.",
-    "Micron forecast next quarter's sales at about $61.5 billion, higher than last quarter, which shows it expects AI memory demand to keep growing.",
-    "The stock is still about 180% above its low of $224.53 from November 2025, so long-time owners are still far ahead."
+    "Micron's $150 billion of signed but undelivered orders, from 26 long-term customer agreements, locks in a lot of future sales even if prices soften.",
+    "Even after the drop, 28 of 30 analysts tracked by TipRanks rate it a Buy, with an average target of $1,574, and Citi keeps a $1,300 target.",
+    "Micron brought in $43.97 billion of cash from its business last quarter, giving it a big cushion if the memory market cools."
    ],
    "bear": [
-    "The 11% drop on Nov 24 wiped out most of Monday's gain in one day, showing how fast Micron swings with news about Nvidia.",
-    "A US Senate hearing on December 3 and a board investigation into Nvidia's CEO could keep worries about AI spending alive.",
-    "Micron is down 32% in a month and 48% from its June high, a sign many investors fear memory prices have peaked."
+    "BNP Paribas cut its target 54%, from $1,700 to $775, a sign that even some fans now think memory prices have peaked.",
+    "TrendForce expects NAND supply to grow 25% to 30% next year; more supply than demand usually pushes memory prices down.",
+    "SemiAnalysis cut its 2030 AI chip spending forecast by 40%, and Micron's biggest growth has come from memory for AI chips."
    ],
    "nextEvent": "Dec 17: Micron quarterly earnings report",
    "sources": [
+    {
+     "title": "Micron (MU) Stock Is Down Nearly 50% Since June. Is the Memory Peak Priced In?",
+     "url": "https://blockonomi.com/micron-mu-stock-is-down-nearly-50-since-june-is-the-memory-peak-priced-in/",
+     "outlet": "Blockonomi",
+     "date": "Nov 26, 2026"
+    },
+    {
+     "title": "Micron Slips 6.4% to $662 as Dell Earnings Loom",
+     "url": "https://shattered.io/micron-stock-6-4-percent-662-13-dell-earnings-nand-warning-nov-25/",
+     "outlet": "Shattered",
+     "date": "Nov 25, 2026"
+    },
     {
      "title": "Micron shares plunge to $629.79 as AI chip selloff resumes",
      "url": "https://journalarta.com/en/2026/11/25/micron-shares-plunge-to-629-79-as-ai-chip-selloff-resumes/",
@@ -1057,46 +1081,34 @@
      "url": "https://en.bloomingbit.io/feed/news/125159",
      "outlet": "Bloomingbit",
      "date": "Nov 24, 2026"
-    },
-    {
-     "title": "Micron Falls 7% as NVIDIA Pullback Partially Reverses Monday's AI Chip Rally; SanDisk and SK Hynix Drop 6%",
-     "url": "https://finance.yahoo.com/markets/stocks/articles/micron-falls-7-nvidia-pullback-140733539.html",
-     "outlet": "24/7 Wall St. via Yahoo Finance",
-     "date": "Nov 24, 2026"
-    },
-    {
-     "title": "Stock market today: Dow rises, S&P 500 and Nasdaq decline as chip sector tumbles, Nvidia stock falls 6%",
-     "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-24-dow-sp-500-nasdaq-chip-stocks-nvidia-140629923.html",
-     "outlet": "Yahoo Finance",
-     "date": "Nov 24, 2026"
     }
    ],
    "name": "Micron Technology",
-   "checkedAt": "2026-11-25T11:43:07.180Z",
-   "updatedAt": "2026-11-25T11:43:07.180Z",
+   "checkedAt": "2026-11-27T11:43:17.501Z",
+   "updatedAt": "2026-11-27T11:43:17.500Z",
    "keyNumbers": [
     {
      "label": "Stock price",
-     "value": "$629.79",
-     "note": "close Nov 24, down 11%"
+     "value": "about $601",
+     "note": "Nov 25, down 4.53%"
     },
     {
-     "label": "Below June high",
-     "value": "48%",
-     "note": "high was $1,213.56"
+     "label": "BNP Paribas target",
+     "value": "$775",
+     "note": "cut from $1,700"
     },
     {
-     "label": "Past month",
-     "value": "-32%",
-     "note": "as of Nov 24"
+     "label": "Last quarter sales",
+     "value": "$54.23B",
+     "note": "up 379%, reported Sep 30"
     },
     {
-     "label": "Next quarter goal",
-     "value": "$61.5B",
-     "note": "sales forecast, +/- $1.5B"
+     "label": "Gross margin",
+     "value": "87%",
+     "note": "share of sales kept, Q4"
     }
    ],
-   "whyMoved": "Micron fell $77.91, or 11%, on Tuesday, November 24, from $707.70 to $629.79, giving back about 69% of Monday's 19% jump. The whole chip group sank: a chip index fell 7.9%, Nvidia dropped 5.9% a day after jumping 31.5%, and fellow memory makers SanDisk fell 11.1% and Western Digital 7.8%. Reports named profit-taking after Monday's rally, worries about higher tariffs, a board investigation into Nvidia's Jensen Huang and unconfirmed reports of a government probe into Nvidia. That matters for Micron because Nvidia is one of the biggest buyers of the HBM memory Micron sells for AI chips, and Micron earns most of its money when AI data centers keep buying memory at high prices.",
+   "whyMoved": "Micron had a wild Thanksgiving week: it closed at $594.51 on Friday, November 20, jumped 19% to $707.70 on Monday, fell 11% to $629.79 on Tuesday, and dropped another 4.53% on Wednesday, November 25, to about $601. It has lost nearly half its value since June. The worries are about memory prices: TrendForce said on November 19 that NAND flash prices could stay flat or fall in early 2027, and it expects world NAND supply to grow 25% to 30% next year while Chinese cloud companies trimmed their 2027 orders. That matters because Micron kept 87 cents of every sales dollar as gross profit last quarter, which only happens when memory is scarce, so more supply and lower prices would shrink profit fast.",
    "watch": [
     {
      "date": "Dec 3",
@@ -1104,11 +1116,11 @@
     },
     {
      "date": "Dec 9",
-     "what": "Fed rate decision. Traders see about a 95% chance of a rate hike; signs of more hikes would hurt fast-moving chip stocks like Micron."
+     "what": "Fed rate decision. A hike is widely expected; signs of more hikes would hurt fast-moving chip stocks like Micron."
     },
     {
      "date": "Dec 17",
-     "what": "Micron's quarterly report. Watch whether sales reach about $61.5 billion, its own forecast; a miss or weaker memory prices would be a bad sign."
+     "what": "Micron's quarterly report. Watch whether sales reach about $61.5 billion, its own forecast, and what it says about 2027 memory prices."
     }
    ]
   },
@@ -1186,7 +1198,7 @@
     }
    ],
    "name": "Domino's Pizza",
-   "checkedAt": "2026-11-25T11:43:07.180Z",
+   "checkedAt": "2026-11-27T11:43:17.501Z",
    "updatedAt": "2026-11-21T02:54:59.779Z"
   }
  ],
