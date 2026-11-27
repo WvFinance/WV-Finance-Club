@@ -1116,3 +1116,66 @@ html.nointro #intro{display:none}
   .msn{width:22px;height:22px;font-size:12px}
   .like{padding:14px}
 }
+
+/* ---------- Less scrolling (2026-11-27) ---------- */
+/* Feed "All": one card per section, two columns on a laptop. */
+.fdseeall{justify-self:start;font-weight:600;font-size:.88rem}
+.fdempty{padding:12px 14px}
+/* Briefs: start of "Why it moved" + Read more; bulls/bears/watch drop-downs. */
+.bmore{display:grid;gap:12px}
+.bmore:not(.open)>:not(:first-child){display:none}
+.bmore:not(.open)>:first-child p,.bmore:not(.open)>p:first-child{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.bmorebtn{justify-self:start;margin-top:-4px}
+.folds{display:grid;gap:8px}
+details.fold{background:none}
+details.drop.fold>summary{font-size:16px;padding:10px 14px}
+details.fold.bull>summary,details.fold.bull>summary:hover{color:var(--up)}
+details.fold.bear>summary,details.fold.bear>summary:hover{color:var(--down)}
+details.fold>ul{margin:0;padding:0 16px 12px 32px;display:grid;gap:6px;font-size:14px;color:var(--ink)}
+details.fold>ul.watch{padding-left:14px}
+details.upfold>.uplist,details.upfold>.evmore{margin:0 10px 10px}
+@media (max-width:820px){
+  /* News on phones: the list becomes one row you swipe sideways; Upcoming goes under the brief. */
+  .news-left{display:contents}
+  .newsgrid>.brief-col{order:2}.newsgrid .upcoming{order:3}
+  .nlist{display:flex;overflow-x:auto;gap:8px;scrollbar-width:none;padding:2px 0 4px;scroll-snap-type:x proximity}
+  .nlist::-webkit-scrollbar{display:none}
+  .nlist>.nitem{flex:0 0 auto;min-width:128px;scroll-snap-align:start}
+  .nlist>.nitem .h,.nlist>.eyebrow,.nlist>.notice{display:none}
+}
+/* Search: "The numbers" as small boxes; tap ⓘ for what each one means. */
+.ngrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.ngrid.duo{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1000px){.ngrid{grid-template-columns:repeat(3,minmax(0,1fr))}.ngrid.duo{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.ngrid,.ngrid.duo{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}}
+.ntile{border:1px solid var(--line);border-radius:10px;padding:9px 11px;display:grid;gap:3px;align-content:start;min-width:0}
+.ntile .nkl{display:flex;align-items:flex-start;justify-content:space-between;gap:6px;font-size:14px}
+.ninfo{appearance:none;background:none;border:0;padding:0 2px;color:var(--muted);cursor:pointer;font-size:14px;line-height:1.2}
+.ninfo:hover,.ntile.showm .ninfo{color:var(--gold)}
+.ntile .nkm{display:none;margin:0 0 2px;font-size:12.5px}
+.ntile.showm .nkm{display:block}
+.nv{font-family:var(--f-mono);font-size:15px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.nv.up{color:var(--up)}.nv.down{color:var(--down)}
+.nvs{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 8px;align-items:baseline}
+.ntk{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+/* Movers: Up/Down switch on phones, one list at a time. */
+.mvseg{display:none;grid-column:1/-1;gap:6px}
+.mvsegbtn{flex:1;appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 10px;font:inherit;font-weight:650;cursor:pointer}
+.mvsegbtn.up.on{background:var(--up);border-color:var(--up);color:#06210f}
+.mvsegbtn.down.on{background:var(--down);border-color:var(--down);color:#2a0707}
+@media (max-width:1000px){.mvseg{display:flex}
+  .mvgrid[data-side="up"]>.t3-down,.mvgrid[data-side="down"]>.t3-rocket{display:none}}
+.frmore{justify-self:start;font-weight:600;font-size:.88rem;margin-top:6px}
+/* Small explanation lines under headings are left out (Charlie, 2026-11-27). */
+.t3sub,.flck .meta,.mybr-sub{display:none}
+/* Laptop polish (2026-11-27): footer sits at the bottom of short pages. */
+body{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+body>main{flex:1 0 auto}
+/* Home: "Part of a club or class?" fits on one line on laptops. */
+@media (min-width:821px){.joinclass{grid-template-columns:minmax(0,1fr) minmax(0,440px);align-items:center}.joinclass>p:empty{display:none}}
+.joinclass #join-msg{grid-column:1/-1}.joinclass #join-msg:empty{display:none}
+/* Search on laptops: stock name/price and Buy/Sell share one row. */
+@media (min-width:901px){#search:not([hidden]){display:grid;grid-template-columns:minmax(0,1fr) 300px;column-gap:32px}
+  #search>*{grid-column:1/-1;min-width:0}
+  #search>#tv-info{grid-column:1}#search>#s-trade{grid-column:2;align-self:stretch;margin-top:0}
+  #s-trade{flex-direction:column;align-items:stretch;justify-content:center}}

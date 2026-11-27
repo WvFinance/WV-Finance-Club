@@ -505,15 +505,13 @@ function newsBoard(cls){
     if(!mine.length)nl.append(el("div",{class:"notice",text:S.mine?"Buy a stock in Paper Trading and its news shows up here.":"Log in and buy stocks in Paper Trading to see their news here."}));
     else if(missing.length)nl.append(el("div",{class:"notice",text:mineMissingNote(list)}));}
   if(cls){const missing=S.picks.filter(p=>!list.some(b=>b.ticker===p.ticker)).map(p=>p.ticker);if(missing.length)nl.append(el("div",{class:"notice",text:`No brief yet for ${missing.join(", ")}.`}));}
+  {const cur=nl.querySelector('.nitem[aria-current="true"]');if(cur&&nl.scrollWidth>nl.clientWidth)nl.scrollLeft=Math.max(0,cur.offsetLeft-nl.offsetLeft-16);}
   const n=list.find(x=>x.ticker===S[key]);
   br.replaceChildren(...[
     el("div",{class:"sechead"},el("div",{},el("div",{class:"eyebrow",text:n.market?`${n.crypto?"Crypto":"Market"} brief · ${n.name}`:[n.ticker,n.name,cls&&secOf(n.ticker)].filter(Boolean).join(" · ")}),el("h3",{text:n.headline||""})),sentiPill(n.sentiment)),
     keyNums(n),
-    aboutLine(n),
-    whyBlock(n),
-    el("p",{class:"lede",text:n.summary||""}),
-    el("div",{class:"sides"},el("div",{class:"side-col bull"},el("h4",{text:"What the bulls say"}),el("ul",{},(n.bull||[]).map(x=>el("li",{text:x})))),el("div",{class:"side-col bear"},el("h4",{text:"What the bears say"}),el("ul",{},(n.bear||[]).map(x=>el("li",{text:x}))))),
-    watchBlock(n)||(n.nextEvent?el("div",{class:"notice"},el("b",{text:"Coming up: "}),n.nextEvent):null),
+    ...briefParts(n),
+    n.watch&&n.watch.length?null:(n.nextEvent?el("div",{class:"notice"},el("b",{text:"Coming up: "}),n.nextEvent):null),
     el("details",{class:"drop srcdrop"},el("summary",{},el("span",{text:`Sources (${(n.sources||[]).length})`})),el("ul",{class:"sources"},(n.sources||[]).map(s=>el("li",{},el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer",text:s.title}),el("span",{class:"o",text:[s.outlet,s.date].filter(Boolean).join(" · ")}))))),
     el("div",{class:"meta",text:briefWhen(n)}),
     el("div",{},el("button",{class:"btn small",text:`Open ${n.market?n.name:n.ticker} chart →`,onclick:()=>{openStock(n.symbol||n.ticker);showTab("search",true);}}))].filter(Boolean));
@@ -560,12 +558,14 @@ function renderUpcoming(){
   const box=$("#upcoming");if(!box)return;const rows=upcomingRows();box.hidden=!rows.length;if(!rows.length)return;
   const shown=S.upAll?rows:rows.slice(0,5);
   const more=rows.length>5?el("button",{type:"button",class:"btn small evmore",text:S.upAll?"Show fewer":`Show all ${rows.length}`,onclick:()=>{S.upAll=!S.upAll;renderUpcoming();}}):null;
-  box.replaceChildren(el("div",{class:"eyebrow",style:"margin:6px 2px 0",text:"Upcoming"}),
+  const wasOpen=box.querySelector("details.upfold");
+  const open=wasOpen?wasOpen.open:innerWidth>820;
+  box.replaceChildren(el("details",{class:"drop fold upfold",open},el("summary",{},el("span",{text:`Upcoming dates (${rows.length})`})),
     el("div",{class:"uplist"},shown.map(r=>el("details",{class:"uprow"},
       el("summary",{},el("span",{class:"ud",text:r.d.toLocaleDateString("en-US",{month:"short",day:"numeric"})}),el("span",{class:"ut",text:r.title})),
       el("div",{class:"um"},el("span",{text:r.d.toLocaleDateString("en-US",{weekday:"long"})+". "+(r.mean||"")}),
         r.tk&&visibleBriefs().some(b=>b.ticker===r.tk)?el("button",{type:"button",class:"btn small",text:`Read the ${r.tk} brief`,onclick:()=>{S.newsTk=r.tk;newsBoard(false);renderNewsFeed();$("#brief").scrollIntoView({behavior:"smooth",block:"start"});}}):null)))),
-    ...(more?[more]:[]));
+    ...(more?[more]:[])));
 }
 // Headlines from only the last 30 days (supabase/recent-news.sql, from Finnhub). TradingView's news box
 // can show years-old stories, so it's only used if that list can't load (for example before the SQL is run).
@@ -639,7 +639,22 @@ function renderLatest3(n){
 // and "What to watch next" (dates plus the number to watch). Older briefs without these fields show as before.
 function keyNums(n){const k=(n.keyNumbers||[]).filter(x=>x&&x.label&&x.value).slice(0,4);return k.length?el("div",{class:"keynums"},k.map(x=>el("div",{class:"keynum"},el("div",{class:"l",text:x.label}),el("div",{class:"v",text:x.value}),x.note?el("div",{class:"n",text:x.note}):null))):null;}
 function whyBlock(n){return n.whyMoved?el("div",{class:"blk"},el("h4",{text:"Why it moved and what it means for the money"}),el("p",{text:n.whyMoved})):null;}
-function watchBlock(n){const w=(n.watch||[]).filter(x=>x&&x.what).slice(0,3);return w.length?el("div",{class:"blk"},el("h4",{text:"What to watch next"}),el("ul",{class:"watch"},w.map(x=>el("li",{},el("b",{text:x.date||""}),el("span",{text:x.what}))))):null;}
+
+// Less scrolling (2026-11-27): the brief shows its key numbers and the start of "Why it moved";
+// "Read more" opens the rest. Bulls, bears and what to watch are drop-downs (titles green/red, text inside white).
+function briefParts(n){
+  const body=[whyBlock(n),n.summary?el("p",{class:"lede",text:n.summary}):null,aboutLine(n)].filter(Boolean);
+  const box=body.length?el("div",{class:"bmore"},...body):null;
+  const long=body.length>1||(body[0]&&body[0].textContent.length>320);
+  const btn=long?el("button",{type:"button",class:"btn small bmorebtn",text:"Read more",onclick:e=>{const o=box.classList.toggle("open");e.currentTarget.textContent=o?"Show less":"Read more";}}):null;
+  if(box&&!long)box.classList.add("open");
+  const fold=(cls,title,items)=>items.length?el("details",{class:"drop fold "+cls},el("summary",{},el("span",{text:title})),el("ul",{},items)):null;
+  const w=(n.watch||[]).filter(x=>x&&x.what).slice(0,3);
+  const folds=[fold("bull","What the bulls say",(n.bull||[]).map(x=>el("li",{text:x}))),
+    fold("bear","What the bears say",(n.bear||[]).map(x=>el("li",{text:x}))),
+    w.length?el("details",{class:"drop fold watchfold"},el("summary",{},el("span",{text:"What to watch next"})),el("ul",{class:"watch"},w.map(x=>el("li",{},el("b",{text:x.date||""}),el("span",{text:x.what}))))):null].filter(Boolean);
+  return [box,btn,folds.length?el("div",{class:"folds"},...folds):null];
+}
 // "What they do": 1-2 plain sentences on the company, shown above the news (older briefs don't have it yet).
 function aboutLine(n){return n.about?el("p",{class:"about"},el("b",{text:n.market||n.fund?"What it is: ":"What they do: "}),n.about):null;}
 function renderSearchBrief(){
@@ -654,11 +669,7 @@ function renderSearchBrief(){
   box.replaceChildren(...[
     el("div",{class:"sechead"},el("div",{},el("div",{class:"eyebrow",text:`News brief · ${n.market?n.name:n.ticker}`}),el("h3",{text:n.headline||""})),sentiPill(n.sentiment)),
     keyNums(n),
-    aboutLine(n),
-    whyBlock(n),
-    el("p",{class:"lede",text:n.summary||""}),
-    el("div",{class:"sides"},el("div",{class:"side-col bull"},el("h4",{text:"What the bulls say"}),el("ul",{},(n.bull||[]).map(x=>el("li",{text:x})))),el("div",{class:"side-col bear"},el("h4",{text:"What the bears say"}),el("ul",{},(n.bear||[]).map(x=>el("li",{text:x}))))),
-    watchBlock(n),
+    ...briefParts(n),
     el("div",{class:"meta",text:`From ${(n.sources||[]).length} ${(n.sources||[]).length===1?"article":"articles"} · ${briefWhen(n).replace(/^./,c=>c.toLowerCase())}`}),
     inNews?el("div",{},el("button",{class:"btn small",text:"Sources and full brief →",onclick:()=>{S.newsTk=n.ticker;renderNews();showTab("news",true);}})):el("details",{class:"drop srcdrop"},el("summary",{},el("span",{text:`Sources (${(n.sources||[]).length})`})),el("ul",{class:"sources"},(n.sources||[]).map(s=>el("li",{},el("a",{href:s.url,target:"_blank",rel:"noopener noreferrer",text:s.title}),el("span",{class:"o",text:[s.outlet,s.date].filter(Boolean).join(" · ")})))))].filter(Boolean));
 }
@@ -768,7 +779,7 @@ function renderHomeNews(){
     el("span",{class:"hh"},el("span",{class:"tkp",text:label}),b.headline||""),el("span",{class:"hw",text:why(b.summary)})));
   const rows=[market&&item(market,"Market"),...own.map(b=>item(b,b.ticker))].filter(Boolean);
   box.replaceChildren(el("h3",{class:"h3",text:"News for your stocks"}),
-    el("p",{class:"meta",text:mine.length?[own.length?"Plain-English briefs for what you own. Tap one to read it all.":"",mineMissingNote(own)].filter(Boolean).join(" "):"Buy a stock in Paper Trading and its news shows up here."}),
+    mine.length?"":el("p",{class:"meta",text:"Buy a stock in Paper Trading and its news shows up here."}),
     rows.length?el("ul",{class:"homenews"},rows):"");
 }
 

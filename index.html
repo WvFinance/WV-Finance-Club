@@ -16,8 +16,8 @@
 <meta name="apple-mobile-web-app-title" content="Simple Street">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="assets/fonts.css?v=2026111201">
-<link rel="stylesheet" href="assets/style.css?v=2026112601">
-<link rel="stylesheet" href="assets/glow.css?v=2026112601">
+<link rel="stylesheet" href="assets/style.css?v=2026112701">
+<link rel="stylesheet" href="assets/glow.css?v=2026112701">
 <script>
 // The site opens for everyone, no login needed. Supabase keeps a login in this browser; without one the visitor is a guest.
 try{document.documentElement.classList.add(Object.keys(localStorage).some(k=>/^sb-.*-auth-token$/.test(k))?"unlocked":"guest");}catch(e){document.documentElement.classList.add("guest");}
@@ -198,7 +198,7 @@ setTimeout(done,5400);})();
   <div class="sechead">
     <div>
       <h2>Class Portfolio</h2>
-      <p class="sub">The stocks our club owns together.</p>
+      
     </div>
     <a class="btn primary" href="#ideas">Submit Suggestion</a>
   </div>
@@ -216,16 +216,16 @@ setTimeout(done,5400);})();
   </div>
  </div>
  <div class="pview" id="pv-positions" hidden>
-  <div class="sechead"><div><h2>All positions</h2><p class="sub">Every stock the club owns, what we paid, and what it's worth now.</p></div></div>
+  <div class="sechead"><div><h2>All positions</h2></div></div>
   <div id="picks"></div>
   <details class="drop" id="drop-pos"><summary><span>All positions table</span></summary><div class="dropbody" id="pos-body"></div></details>
  </div>
  <div class="pview" id="pv-sectors" hidden>
-  <div class="sechead"><div><h2>What we own by sector</h2><p class="sub">How our money is split across types of business, like Tech or Banks. Owning a mix helps if one area has a bad year.</p></div></div>
+  <div class="sechead"><div><h2>What we own by sector</h2></div></div>
   <div class="panel" id="sec-body"></div>
  </div>
  <div class="pview" id="pv-classnews" hidden>
-  <div class="sechead"><div><h2>News</h2><p class="sub">The latest news brief for each stock in the Class Portfolio. Tap a stock to read its brief.</p></div></div>
+  <div class="sechead"><div><h2>News</h2></div></div>
   <div class="panel" id="recap" hidden></div>
   <div class="panel" id="c-news-meter-panel" hidden>
     <div class="sechead" style="margin-bottom:8px"><div class="eyebrow">How the news feels for our stocks</div><div class="legend" id="c-news-legend"></div></div>
@@ -240,14 +240,14 @@ setTimeout(done,5400);})();
   </div>
  </div>
  <div class="pview" id="pv-history" hidden>
-  <div class="sechead"><div><h2>Club vs S&amp;P 500</h2><p class="sub">Our portfolio's value each day, next to what the same money would be worth in the S&amp;P 500. It shows how much we have gained or lost, in %, since we started.</p></div></div>
+  <div class="sechead"><div><h2>Club vs S&amp;P 500</h2></div></div>
   <div class="panel" id="hist-body"></div>
  </div>
  <div class="pview" id="pv-ideas" hidden>
    <div class="sechead">
      <div>
        <h2>Submit Suggestion</h2>
-       <p class="sub">Share an idea and upvote the ones you like. Votes are private.</p>
+       
      </div>
    </div>
    <form class="panel ideaform" id="idea-form" autocomplete="off">
@@ -297,25 +297,25 @@ setTimeout(done,5400);})();
   </div>
   <div class="panel" id="mine-news" hidden></div>
   <form class="panel joinclass" id="join-class" hidden>
-    <div><h3 class="h3">Part of a club or class?</h3><p class="meta" id="join-text">Add your class code to join your school's leaderboard and class portfolio.</p></div>
+    <div><h3 class="h3">Part of a club or class?</h3><p class="meta" id="join-text" hidden></p></div>
     <div class="jcrow"><input class="inp" id="join-code" type="text" placeholder="Class code, like wvhs01" aria-label="Class code" autocomplete="off" autocapitalize="none" spellcheck="false"><button class="btn primary" type="submit" id="join-go">Join a class</button></div>
     <p class="meta" id="join-msg" role="alert"></p>
   </form>
  </div>
  <div class="pview" id="mv-mystocks" hidden>
-  <div class="sechead"><div><h2>My stocks</h2><p class="sub">Every stock you own, what you paid, and what it's worth now.</p></div></div>
+  <div class="sechead"><div><h2>My stocks</h2></div></div>
   <div id="mine-stocks-box"></div>
  </div>
  <div class="pview" id="mv-mysectors" hidden>
-  <div class="sechead"><div><h2>What I own by sector</h2><p class="sub">How your money is split across types of business, like Tech or Banks. Owning a mix helps if one area has a bad year.</p></div></div>
+  <div class="sechead"><div><h2>What I own by sector</h2></div></div>
   <div class="panel" id="mine-sec"><p class="meta">Loading…</p></div>
  </div>
  <div class="pview" id="mv-myhistory" hidden>
-  <div class="sechead"><div><h2>Me vs S&amp;P 500</h2><p class="sub">Your account value each day, next to what the same $50,000 would be worth in the S&amp;P 500.</p></div></div>
+  <div class="sechead"><div><h2>Me vs S&amp;P 500</h2></div></div>
   <div class="panel" id="mine-hist"><p class="meta">Loading…</p></div>
  </div>
  <div class="pview" id="mv-mytrades" hidden>
-  <div class="sechead"><div><h2>My trades</h2><p class="sub">Every buy and sell you've made in Paper Trading, newest first.</p></div></div>
+  <div class="sechead"><div><h2>My trades</h2></div></div>
   <div class="panel" id="mine-trades"><p class="meta">Loading…</p></div>
  </div>
 </section>
@@ -325,7 +325,7 @@ setTimeout(done,5400);})();
   <div class="sechead">
     <div>
       <h2>Feed</h2>
-      <p class="sub">Trades from your friends, members of Congress, company insiders and big investors, with trades in your stocks first. <span class="fdcredit">Congress data via <a href="https://www.bargo.ai" target="_blank" rel="noopener">Bargo</a></span></p>
+      <p class="sub"><span class="fdcredit">Congress data via <a href="https://www.bargo.ai" target="_blank" rel="noopener">Bargo</a></span></p>
     </div>
   </div>
   <div class="fdgrid">
@@ -357,7 +357,7 @@ setTimeout(done,5400);})();
 <section role="tabpanel" id="top3" aria-labelledby="tab-discover" hidden>
   <div class="t3hero">
     <h2>Top 3 Today</h2>
-    <p class="sub">Three quick lists of stocks worth a closer look.</p>
+    
     <div class="t3chips"><span class="t3chip" id="t3-when"></span><span class="t3chip warn">Not advice, just ideas to research</span></div>
   </div>
   <div class="t3grid" id="t3-grid"></div>
@@ -367,7 +367,7 @@ setTimeout(done,5400);})();
 <section role="tabpanel" id="industries" aria-labelledby="tab-discover" class="disc" hidden>
   <div class="t3hero">
     <h2>Industries</h2>
-    <p class="sub">Pick an industry to see the companies in it, biggest first.</p>
+    
     <div class="t3chips"><span class="t3chip" id="in-when"></span></div>
   </div>
   <div id="in-body"></div>
@@ -375,7 +375,7 @@ setTimeout(done,5400);})();
 <section role="tabpanel" id="movers" aria-labelledby="tab-discover" class="disc" hidden>
   <div class="t3hero">
     <h2>Movers today</h2>
-    <p class="sub">Well-known stocks that moved the most today, and the news that may explain why.</p>
+    
     <div class="t3chips"><span class="t3chip" id="mv-when"></span><span class="t3chip warn">Not advice, just ideas to research</span></div>
   </div>
   <div class="t3grid mvgrid" id="mv-grid"></div>
@@ -383,7 +383,7 @@ setTimeout(done,5400);})();
 <section role="tabpanel" id="newstocks" aria-labelledby="tab-discover" class="disc" hidden>
   <div class="t3hero">
     <h2>New on the market</h2>
-    <p class="sub">When a company first sells its stock to the public, it's called an IPO. Here are the newest ones.</p>
+    
     <div class="t3chips"></div>
   </div>
   <div class="nwgrid" id="nw-body"></div>
@@ -391,7 +391,7 @@ setTimeout(done,5400);})();
 <section role="tabpanel" id="searched" aria-labelledby="tab-discover" class="disc" hidden>
   <div class="t3hero">
     <h2>Most searched</h2>
-    <p class="sub">The stocks people looked up most on Simple Street this week.</p>
+    
     <div class="t3chips"></div>
   </div>
   <div id="ms-body"></div>
@@ -399,7 +399,7 @@ setTimeout(done,5400);})();
 <section role="tabpanel" id="filters" aria-labelledby="tab-discover" class="disc" hidden>
   <div class="t3hero">
     <h2>Find stocks with filters</h2>
-    <p class="sub">Pick what you're looking for and see which companies match.</p>
+    
     <div class="t3chips"><span class="t3chip" id="fl-when"></span></div>
   </div>
   <div id="fl-body"></div>
@@ -410,7 +410,7 @@ setTimeout(done,5400);})();
   <div class="sechead">
     <div>
       <h2>Paper Trading</h2>
-      <p class="sub">Practice with $50,000 of pretend money at real prices. The biggest % gain tops the leaderboard.</p>
+      
     </div>
   </div>
   <p class="meta" id="pt-loading">Loading the game…</p>
@@ -478,7 +478,7 @@ setTimeout(done,5400);})();
       <div class="panel">
         <div class="sechead" style="margin-bottom:8px"><div class="eyebrow">My watchlist</div><button class="btn small" id="wl-toggle" type="button">Add to watchlist</button></div>
         <div class="wl" id="wl"></div>
-        <p class="meta" style="margin:8px 0 0"><span class="memonly">Saved to your account, so it follows you to any device.</span><span class="guestonly">Saved on this computer. Make a free account to keep it on any device.</span></p>
+        <p class="meta" style="margin:8px 0 0"><span class="guestonly">Saved on this computer. Make a free account to keep it on any device.</span></p>
       </div>
       <div class="panel rate" id="s-rate" hidden></div>
       <div class="panel like" id="s-like" hidden></div>
@@ -522,11 +522,11 @@ setTimeout(done,5400);})();
 <!-- DISTRICT LEADERBOARD -->
 <section role="tabpanel" id="district" aria-labelledby="tab-district" hidden>
  <div class="pview" id="dv-dschools">
-  <div class="sechead"><div><h2>District Leaderboard</h2><p class="sub">Every school's Class Portfolio, ranked by how much it has gained, in %, since its first pick.</p></div></div>
+  <div class="sechead"><div><h2>District Leaderboard</h2></div></div>
   <div class="panel" id="schools-body"></div>
  </div>
  <div class="pview" id="dv-dpeople" hidden>
-  <div class="sechead"><div><h2 id="dpeople-title">District Individual Leaderboard</h2><p class="sub" id="dpeople-sub">Every Paper Trading player in the district, ranked by how much their $50,000 has grown, in %.</p></div></div>
+  <div class="sechead"><div><h2 id="dpeople-title">District Individual Leaderboard</h2><p class="sub" id="dpeople-sub" hidden></p></div></div>
   <div class="panel" id="dpeople-body"></div>
  </div>
  <div class="pview" id="dv-dweek" hidden>
@@ -592,16 +592,16 @@ setTimeout(done,5400);})();
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="config.js?v=2026111201"></script>
-<script src="assets/app.js?v=2026112601"></script>
+<script src="assets/app.js?v=2026112701"></script>
 <script src="assets/vendor/supabase-2.118.0.js"></script>
 <script src="assets/account.js?v=2026112001"></script>
-<script src="assets/paper.js?v=2026112001"></script>
-<script src="assets/feed.js?v=2026112002"></script>
+<script src="assets/paper.js?v=2026112701"></script>
+<script src="assets/feed.js?v=2026112701"></script>
 <script src="assets/top3.js?v=2026111720"></script>
-<script src="assets/discover.js?v=2026112603"></script>
+<script src="assets/discover.js?v=2026112701"></script>
 <script src="assets/staff.js?v=2026111701"></script>
 <script src="assets/users.js?v=2026111701"></script>
-<script src="assets/numbers.js?v=2026111603"></script>
+<script src="assets/numbers.js?v=2026112701"></script>
 <script src="assets/ratings.js?v=2026111702"></script>
 <script>
 // Lets phones and Chromebooks install Simple Street as an app.
