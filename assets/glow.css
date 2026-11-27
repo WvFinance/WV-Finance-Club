@@ -46,15 +46,19 @@ html[data-school="me"] .ptboard li.me{background:linear-gradient(90deg,rgba(var(
 /* Home laid out like the Midnight Glow mockup (desktop): chart big on the left,
    number tiles on the right, friends leaderboard below. */
 @media(min-width:901px){
-  html[data-school="me"] #mine-game:not([hidden]){display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);grid-template-areas:"chart tiles" "stocks friends" "hold hold" "orders orders";gap:0 18px;align-items:start}
+  html[data-school="me"] #mine-game:not([hidden]){display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);grid-template-areas:"chart tiles" "chart friends" "stocks stocks" "hold hold" "orders orders";gap:0 18px;align-items:start}
   html[data-school="me"] #mine-game .minerow{display:contents}
   html[data-school="me"] #mine-chart{grid-area:chart;margin:0;align-self:stretch}
-  html[data-school="me"] #mine-tiles{grid-area:tiles;display:grid;grid-template-columns:1fr;grid-auto-rows:1fr;gap:14px;margin:0;align-self:stretch}
+  html[data-school="me"] #mine-tiles{grid-area:tiles;display:grid;grid-template-columns:1fr;gap:12px;margin:0;align-self:start}
+  html[data-school="me"] #mine-tiles .tile{padding:14px 18px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:0 12px}
+  html[data-school="me"] #mine-tiles .tile .eyebrow{grid-column:1}html[data-school="me"] #mine-tiles .tile .v{grid-column:2;grid-row:1/span 2;font-size:24px}
+  html[data-school="me"] #mine-tiles .tile .n{grid-column:1}
+
   html[data-school="me"] #mine-game:has(#mine-chart[hidden]){grid-template-areas:"tiles tiles" "friends friends" "hold hold" "orders orders"}
   html[data-school="me"] #mine-game:has(#mine-chart[hidden]) #mine-tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
   html[data-school="me"] #mine-friends{grid-area:friends;margin:18px 0 0}
   html[data-school="me"] #mine-stockscard{grid-area:stocks;margin:18px 0 0}
-  html[data-school="me"] #mine-game:has(#mine-stockscard[hidden]),html[data-school="me"] #mine-game:not(:has(#mine-stockscard)){grid-template-areas:"chart tiles" "friends friends" "hold hold" "orders orders"}
+  html[data-school="me"] #mine-game:has(#mine-stockscard[hidden]),html[data-school="me"] #mine-game:not(:has(#mine-stockscard)){grid-template-areas:"chart tiles" "chart friends" "hold hold" "orders orders"}
   html[data-school="me"] #mine-hold{grid-area:hold;margin:18px 0 0}
   html[data-school="me"] #mine-orders{grid-area:orders;margin:18px 0 0}
   html[data-school="me"] #mine-game>*[hidden]{display:none}
@@ -95,7 +99,7 @@ html[data-school="me"] #mv-mine>.sechead h2{font-size:32px;letter-spacing:-.01em
 .frlist .n{flex:1;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .frlist .g{font-family:var(--f-mono);font-size:13px}.frlist .g.up{color:var(--up)}.frlist .g.down{color:var(--down)}
 /* news as cards */
-html[data-school="me"] #mine-news .homenews{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:10px}
+html[data-school="me"] #mine-news .homenews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:10px}
 html[data-school="me"] #mine-news .homenews li{border:1px solid rgba(var(--gl),.14);border-radius:14px;background:rgba(var(--gp1),.35)}
 html[data-school="me"] #mine-news .homenews button{padding:16px}
 html[data-school="me"] #mine-news .homenews .tkp{background:rgba(var(--gl),.14);color:var(--gline);display:table;margin-bottom:8px}
@@ -125,3 +129,6 @@ html[data-school="me"] #mine-news .homenews .tkp{background:rgba(var(--gl),.14);
 /* Tab drop-downs (Home, Discover, Leaderboard): solid so the page doesn't show through. */
 html[data-school="me"] .tabmenu{background:#0f1a38;border-color:rgba(var(--gl),.2);border-top-color:var(--gline);border-radius:0 0 14px 14px}
 html[data-school="me"] .tabmenu button:hover,html[data-school="me"] .tabmenu button:focus-visible{background:rgba(var(--gl),.1)}
+/* Laptop: "Your stocks" in two columns so the row isn't one long empty line (2026-11-27). */
+@media (min-width:821px){html[data-school="me"] #mine-stockscard .stkcard{display:grid;grid-template-columns:1fr 1fr;column-gap:36px}
+  html[data-school="me"] #mine-stockscard .stkcard li:nth-child(2){border-top:1px solid var(--line)}}

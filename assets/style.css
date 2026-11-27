@@ -1121,8 +1121,6 @@ html.nointro #intro{display:none}
 /* Feed "All": one card per section, two columns on a laptop. */
 .fdseeall{justify-self:start;font-weight:600;font-size:.88rem}
 .fdempty{padding:12px 14px}
-@media(min-width:900px){#fd-list.fdall{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:18px;align-items:start}
-  #fd-list.fdall .fdsec{margin-bottom:22px}}
 /* Briefs: start of "Why it moved" + Read more; bulls/bears/watch drop-downs. */
 .bmore{display:grid;gap:12px}
 .bmore:not(.open)>:not(:first-child){display:none}
@@ -1170,3 +1168,14 @@ details.upfold>.uplist,details.upfold>.evmore{margin:0 10px 10px}
 .frmore{justify-self:start;font-weight:600;font-size:.88rem;margin-top:6px}
 /* Small explanation lines under headings are left out (Charlie, 2026-11-27). */
 .t3sub,.flck .meta,.mybr-sub{display:none}
+/* Laptop polish (2026-11-27): footer sits at the bottom of short pages. */
+body{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+body>main{flex:1 0 auto}
+/* Home: "Part of a club or class?" fits on one line on laptops. */
+@media (min-width:821px){.joinclass{grid-template-columns:minmax(0,1fr) minmax(0,440px);align-items:center}.joinclass>p:empty{display:none}}
+.joinclass #join-msg{grid-column:1/-1}.joinclass #join-msg:empty{display:none}
+/* Search on laptops: stock name/price and Buy/Sell share one row. */
+@media (min-width:901px){#search:not([hidden]){display:grid;grid-template-columns:minmax(0,1fr) 300px;column-gap:32px}
+  #search>*{grid-column:1/-1;min-width:0}
+  #search>#tv-info{grid-column:1}#search>#s-trade{grid-column:2;align-self:stretch;margin-top:0}
+  #s-trade{flex-direction:column;align-items:stretch;justify-content:center}}
