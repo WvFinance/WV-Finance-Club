@@ -779,7 +779,7 @@ function renderHomeNews(){
     el("span",{class:"hh"},el("span",{class:"tkp",text:label}),b.headline||""),el("span",{class:"hw",text:why(b.summary)})));
   const rows=[market&&item(market,"Market"),...own.map(b=>item(b,b.ticker))].filter(Boolean);
   box.replaceChildren(el("h3",{class:"h3",text:"News for your stocks"}),
-    mine.length?null:el("p",{class:"meta",text:"Buy a stock in Paper Trading and its news shows up here."}),
+    mine.length?"":el("p",{class:"meta",text:"Buy a stock in Paper Trading and its news shows up here."}),
     rows.length?el("ul",{class:"homenews"},rows):"");
 }
 
